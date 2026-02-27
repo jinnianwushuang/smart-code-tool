@@ -4,18 +4,28 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev-2": "vite",
+    "dev": "run-s create-entry dev-2",
+    "build-2": "vite build",
     "preview": "vite preview",
+    "create-entry": "node ./job/entry/index.js",
+    "build": "run-s create-entry build-2",
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "@quasar/extras": "^1.17.0",
+    "chalk": "^5.6.2",
+    "fs-extra": "^11.3.3",
+    "quasar": "^2.18.6",
     "vue": "^3.5.29",
     "vue-router": "^5.0.3"
   },
   "devDependencies": {
+    "@quasar/vite-plugin": "^1.10.0",
     "@vitejs/plugin-vue": "^6.0.4",
+    "npm-run-all": "^4.1.5",
     "prettier": "3.8.1",
+    "sass-embedded": "^1.97.3",
     "vite": "^7.3.1",
     "vite-plugin-vue-devtools": "^8.0.6"
   },
