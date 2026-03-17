@@ -9,6 +9,21 @@ export const routes = [
 
         component: () => import('src/pages/code-tool/index.vue'),
       },
+      {
+        path: 'common-tool',
+        name: 'common-tool',
+        component: () => import('src/pages/common-tool/index.vue'),
+      },
+      {
+        path: 'permanent-notice-calendar',
+        name: 'permanent-notice-calendar',
+        component: () => import('src/pages/single-smart-tool/permanent-notice-calendar/index.vue'),
+      },
+      {
+        path: 'domain-guide',
+        name: 'domain-guide',
+        component: () => import('src/pages/domain-guide/domain-guide.vue'),
+      },
     ],
   },
 ]

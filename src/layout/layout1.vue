@@ -3,7 +3,7 @@
     <q-header elevated :class="$q.dark.isActive ? 'bg-secondary' : 'bg-black'">
       <q-toolbar>
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-        <q-toolbar-title>Header</q-toolbar-title>
+        <q-toolbar-title>代码工具库</q-toolbar-title>
       </q-toolbar>
     </q-header>
 
@@ -48,48 +48,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { RouterView, useRouter } from 'vue-router'
+import { menuList } from './config/menu.js'
 const drawer = ref(false)
 const current_menu = ref({})
 const router = useRouter()
-const menuList = [
-  {
-    icon: 'inbox',
-    name: 'code-tool',
-    label: '代码工具',
-    separator: true,
-  },
-  // {
-  //   icon: 'send',
-  //   label: 'Outbox',
-  //   separator: false,
-  // },
-  // {
-  //   icon: 'delete',
-  //   label: 'Trash',
-  //   separator: false,
-  // },
-  // {
-  //   icon: 'error',
-  //   label: 'Spam',
-  //   separator: true,
-  // },
-  // {
-  //   icon: 'settings',
-  //   label: 'Settings',
-  //   separator: false,
-  // },
-  // {
-  //   icon: 'feedback',
-  //   label: 'Send Feedback',
-  //   separator: false,
-  // },
-  // {
-  //   icon: 'help',
-  //   iconColor: 'primary',
-  //   label: 'Help',
-  //   separator: false,
-  // },
-]
 
 onMounted(() => {
   current_menu.value = menuList[0]

@@ -1,0 +1,7 @@
+@use 'utils';
+// @import url("./utils.scss");
+// @import 'variables';
+// @import 'mixins';
+// @use 'utils' as *;
+// 在 main.scss 中引入 _utils.scss
+// @use 'utils'; // 这样在 main.scss 中就可以直接使用 utils 中定义的 mixin 和变量了，例如 @include utils.generate-utils()。

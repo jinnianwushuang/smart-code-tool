@@ -9,13 +9,13 @@
 左边一个属性加工组件，处理非嵌套属性转换
 需要支持 js 对象的属性键值对 转为 export const 的变量定义方式。
 可以支持多行一起解析生成，支持增加export 增加; 增加包裹VUE3 ref方法语法。
-支持生成结果的复制 以及所有变量的复制 
-其中默认所有对象属性不嵌套，只占一行 
+支持生成结果的复制 以及所有变量的复制
+其中默认所有对象属性不嵌套，只占一行
 
 右侧一个属性加工组件，处理单一嵌套属性转换
 
 两个组件的代码放在 当前目录下的component 文件夹内
-公用逻辑放在 当前目录下的 module 文件夹内 
+公用逻辑放在 当前目录下的 module 文件夹内
 
 
 使用 fs-extra 和原生 nodejs ，以及能在控制台彩色输出的插件，和其他行业内较好的插件
@@ -37,4 +37,85 @@
 
 请使用 job/file-util/file-util.js 中的方法
 使用 ESM形式 和  export const 形式
-编写脚本代码  扫描 src/core 和 src/boot 目录内的所有文件 
+编写脚本代码  扫描 src/core 和 src/boot 目录内的所有文件
+
+
+请使用VUE3 setup 结构， QUASAR组件 编写一个vue组件
+支持输入内容实现类似下面的转换：
+实现 前端 this.$refs.email  转换为 const email=useTemplateRef('email')
+
+
+
+原始格式：get_name(str){
+转换为: export const  get_name=(str)=>{
+
+
+
+    请使用VUE3 setup 结构， QUASAR组件 编写一个vue组件
+支持输入内容的多行文本切割去重：，
+并且支持使用checkboxbox选择是否去除注释,去除this. 去除.value 去除.sync 去除$ 去除中英文引号，去除中英文冒号并且自动换行，
+支持增加英文逗号，支持增加英文分号
+
+
+  请使用VUE3 setup 结构， QUASAR组件 编写一个vue组件,
+  实现函数代码修正:
+  规则如下：
+1.默认贴如的代码第一行为函数定义所在行，并且为 箭头函数 ，可能存在一个或者多个参数或者没有参数
+2.提取输入代码内所有的 变量.value 的形式的变量名称称，并生成一个 export const 形式定义
+3.如果 存在  变量.value 的形式变量名称，则将函数 的参数的最前面增加一个 payload 参数, 并在第二行 把变量从payload 中解构出来
+
+
+
+
+  请使用VUE3 setup 结构， QUASAR组件 编写一个vue组件,
+  实现VUE3 template  代码内  @绑定的函数名字提取:
+  提取的内容  并且 支持复制，支持每行后面增加英文逗号，
+  需要提供正则的复制按钮，方便去代码内提取内容
+
+  请使用VUE3 setup 结构， QUASAR组件 编写一个vue组件,
+  实现VUE3 template  代码内  :绑定的属性名字提取:
+  提取的内容  并且 支持复制，支持每行后面增加英文逗号，
+  需要提供正则的复制按钮，方便去代码内提取内容
+
+
+请使用VUE3 setup 结构， QUASAR组件 编写一个vue组件,
+实现输入以下类似路径
+src/pages/code-tool/componsable/
+生成可复制的代码片段;如下：
+
+import {src_pages_code_tool_componsable_index} from "./componsable/index.js";
+import {src_pages_code_tool_componsable_variable} from "./componsable/variable.js";
+
+const base_payload=src_pages_code_tool_componsable_variable({});
+
+const {} =src_pages_code_tool_componsable_index({
+    ...base_payload
+    });
+
+
+请使用VUE3 setup 结构， QUASAR组件 编写一个vue组件,
+安装三方优秀插件 ， 纯前端实现：
+实现 支持从本地 导入 excel 文件 或直接 粘贴excel 表格数据, 一键生成并下载  格式化后的 JSON 文件
+
+要求：纯前端实现
+多源导入：支持从本地 导入 excel 文件 或直接 粘贴excel 表格数据。
+ JSON 格式化：格式化 JSON 文件，并且支持在线查看和复制
+ 导出：一键生成并下载  格式化后的 JSON 文件。
+
+
+请使用VUE3 setup 结构， QUASAR组件 或者 antdv 组件 编写一个vue组件,
+安装三方优秀插件 ， 纯前端实现：
+
+时间戳转换解析器：
+时间字符串解析器：
+当前时间各种常用格式化
+需要支持复制
+需要支持选项是否自动更新
+需要支持可选开启时间对比模式，支持输入两个时间字符串，并返回时间相差信息
+
+
+
+请使用VUE3 setup 结构， QUASAR组件 或者 antdv 组件 编写一个vue组件,
+安装三方优秀插件 ， 纯前端实现：
+
+列举VUE前端开发重要的参照文档网站，并且进行分组

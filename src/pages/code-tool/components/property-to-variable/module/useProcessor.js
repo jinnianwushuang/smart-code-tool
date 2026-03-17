@@ -8,7 +8,7 @@ import { ref } from 'vue'
  * @param {import('vue').Ref<boolean>} useRefWrap - Option to wrap value in ref().
  * @returns {{outputText: import('vue').Ref<string>, process: () => void}}
  */
-export function useNonNestedProcessor(inputText, useExport, useSemicolon, useRefWrap) {
+export function useNonNestedProcessor({ inputText, useExport, useSemicolon, useRefWrap }) {
   const outputText = ref('')
 
   const process = () => {
@@ -50,7 +50,7 @@ export function useNonNestedProcessor(inputText, useExport, useSemicolon, useRef
  * @param {import('vue').Ref<string>} inputText - The input text containing a single nested object.
  * @returns {{outputText: import('vue').Ref<string>, process: () => void}}
  */
-export function useNestedProcessor(inputText) {
+export function useNestedProcessor1(inputText) {
   const outputText = ref('')
 
   const process = () => {
@@ -91,6 +91,44 @@ export function useNestedProcessor(inputText) {
       const accessPath = path.join('.')
 
       outputText.value = `const ${varName} = ${accessPath};`
+    } catch (e) {
+      outputText.value = `// Error parsing input: ${e.message}`
+    }
+  }
+
+  return {
+    outputText,
+    process,
+  }
+}
+/**
+ * Processes a single nested object into a const declaration for the innermost value.
+ * @param {import('vue').Ref<string>} inputText - The input text containing a single nested object.
+ * @returns {{outputText: import('vue').Ref<string>, process: () => void}}
+ */
+export function useNestedProcessor({ inputText, useExport, useSemicolon, useRefWrap }) {
+  const outputText = ref('')
+
+  const process = () => {
+    try {
+      const input = inputText.value.trim()
+      let [furst_line, ...rest_lines] = input.split('\n')
+
+      let [varName, other_part] = furst_line.split(':')
+      varName = varName.trim()
+      other_part = other_part.trim()
+      let remaining = rest_lines.length > 0 ? rest_lines.join('\n') : ''
+      remaining = `${remaining.endsWith(',') ? remaining.slice(0, -1) : remaining}`
+
+      remaining = other_part + (remaining ? `\n${remaining}` : '')
+      remaining = remaining.trim()
+      if (useRefWrap.value) {
+        remaining = `ref(${remaining})`
+      }
+      const prefix = useExport.value ? 'export const' : 'const'
+      const suffix = useSemicolon.value ? ';' : ''
+
+      outputText.value = `${prefix} ${varName} = ${remaining}${suffix}`
     } catch (e) {
       outputText.value = `// Error parsing input: ${e.message}`
     }

@@ -13,8 +13,7 @@
         filled
         type="textarea"
         label="输入 (例如: name: 'John')"
-        placeholder="name: 'John',
-age: 30,"
+        :placeholder="placeholder"
         rows="10"
       />
     </q-card-section>
@@ -55,13 +54,14 @@ const inputText = ref('')
 const useExport = ref(true)
 const useSemicolon = ref(true)
 const useRefWrap = ref(true)
-
-const { outputText, process } = useNonNestedProcessor(
+const placeholder = `name: 'John',
+age: 30,`
+const { outputText, process } = useNonNestedProcessor({
   inputText,
   useExport,
   useSemicolon,
   useRefWrap,
-)
+})
 
 const copyOutput = () => {
   copyText(outputText.value)
