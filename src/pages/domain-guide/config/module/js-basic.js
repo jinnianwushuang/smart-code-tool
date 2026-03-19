@@ -32,6 +32,14 @@ export const js_basic_doc = [
         tag: '实践',
         desc: 'JavaScript 运行时环境，支持构建高性能网络应用。',
       },
+
+      {
+        name: 'npm 仓库',
+        url: 'https://www.npmjs.com',
+        level: '实践',
+        tag: '实践',
+        desc: '全球最大的 JavaScript 包管理和分发平台。',
+      },
     ],
   },
 

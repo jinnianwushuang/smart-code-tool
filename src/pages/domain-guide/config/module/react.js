@@ -33,13 +33,7 @@ export const react_docs = [
         desc: 'React 声明式动画库，让复杂的组件入场、手势交互与布局过渡变得极其简单。',
         priority: 4,
       },
-      {
-        name: 'Zustand',
-        url: 'https://docs.pmnd.rs',
-        tag: 'State',
-        desc: '轻量且高效的状态管理库，没有模板代码，是目前 React 社区替代 Redux 的首选。',
-        priority: 4,
-      },
+
       {
         name: 'Tailwind CSS',
         url: 'https://tailwindcss.com',

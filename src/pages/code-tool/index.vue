@@ -21,6 +21,8 @@ import TemplateInterpolationExtract from './components/template-interpolation-ex
 import TemplateFunctionExtract from './components/template-function-extract/template-function-extract.vue'
 import TemplateColonPropertyExtract from './components/template-colon-property-extract/template-colon-property-extract.vue'
 import ComposableCodeGennerater from './components/composable-code-gennerater/composable-code-gennerater.vue'
+import SvgBatchConverter from 'src/pages/code-tool/components/svg-batch-converter/svg-batch-converter.vue'
+import I18nEditorWithDiff from 'src/pages/code-tool/components/i18n-editor-with-diff/i18n-editor-with-diff.vue'
 
 const current_tab_name = ref('PropertyToVariable')
 const all_tabs = [
@@ -52,6 +54,8 @@ const all_tabs = [
     label: '组合式代码生成',
     component: ComposableCodeGennerater,
   },
+  { name: 'SvgBatchConverter', label: 'SVG 批量转换VUE组件', component: SvgBatchConverter },
+  { name: 'I18nEditorWithDiff', label: 'i18n 编辑器（带版本对比）', component: I18nEditorWithDiff },
 ]
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)

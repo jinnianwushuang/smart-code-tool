@@ -4,6 +4,8 @@
       <q-toolbar>
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
         <q-toolbar-title>代码工具库</q-toolbar-title>
+        <q-space />
+        <div class="text-caption">构建时间: {{ buildTime }}</div>
       </q-toolbar>
     </q-header>
 
@@ -52,7 +54,7 @@ import { menuList } from './config/menu.js'
 const drawer = ref(false)
 const current_menu = ref({})
 const router = useRouter()
-
+const buildTime = __APP_BUILD_TIME__
 onMounted(() => {
   current_menu.value = menuList[0]
   router.push({ name: menuList[0].name })

@@ -22,6 +22,7 @@ import UrlAdvancedParser from 'src/pages/common-tool/components/url-advanced-par
 import IdGenerator from 'src/pages/common-tool/components/id-generator/id-generator.vue'
 import HttpStatusManual from 'src/pages/common-tool/components/http-status-manual/http-status-manual.vue'
 import ColorConverter from 'src/pages/common-tool/components/color-converter/color-converter.vue'
+import RegexTester from 'src/pages/common-tool/components/regex-tester/regex-tester.vue'
 
 const current_tab_name = ref('JsonExcelConverter')
 const all_tabs = [
@@ -36,6 +37,7 @@ const all_tabs = [
   { name: 'Base64Tool', label: 'Base64 工具', component: Base64Tool },
   { name: 'IdGenerator', label: 'UUID / NanoID 生成器', component: IdGenerator },
   { name: 'ColorConverter', label: '颜色转换器', component: ColorConverter },
+  { name: 'RegexTester', label: '正则表达式测试器', component: RegexTester },
 ]
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)

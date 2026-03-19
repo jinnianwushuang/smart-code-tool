@@ -9,17 +9,31 @@ export const architecture_docs = [
         tag: 'Build',
         desc: '极速的前端构建工具，Vue3 的标准开发工具。',
       },
-      {
-        name: 'VueUse',
-        url: 'https://vueuse.org',
-        tag: 'Hooks',
-        desc: '必装的组合式 API 工具库，提供数百个常用 hooks。',
-      },
+
       {
         name: 'TypeScript',
         url: 'https://www.typescriptlang.org',
         tag: 'Type',
         desc: 'Vue3 开发的强力伙伴，提供完美的类型支持。',
+      },
+
+      {
+        name: 'ESLint',
+        url: 'https://eslint.org',
+        tag: 'Lint',
+        desc: '可插拔的 JavaScript 代码检查工具，确保代码规范与质量。',
+      },
+      {
+        name: 'UnoCSS',
+        url: 'https://unocss.dev',
+        tag: 'CSS',
+        desc: '即时按需的原子化 CSS 引擎，极致的性能与灵活性。',
+      },
+      {
+        name: 'Nuxt.js',
+        url: 'https://nuxt.com.cn',
+        tag: 'Framework',
+        desc: '基于 Vue 的直观 Web 框架，支持服务端渲染 (SSR) 和静态生成。',
       },
     ],
   },

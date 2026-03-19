@@ -24,7 +24,7 @@ export const vue_docs = [
     ],
   },
   {
-    category: 'VUE主流 UI 组件库',
+    category: 'VUE主流库',
     color: 'blue',
     items: [
       {
@@ -44,6 +44,12 @@ export const vue_docs = [
         url: 'https://element-plus.org',
         tag: 'Desktop',
         desc: 'Vue 3 的 Element UI 后继者，社区极其活跃。',
+      },
+      {
+        name: 'VueUse',
+        url: 'https://vueuse.org',
+        tag: 'Hooks',
+        desc: '必装的组合式 API 工具库，提供数百个常用 hooks。',
       },
     ],
   },
