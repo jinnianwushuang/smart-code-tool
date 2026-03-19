@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
+
 // https://quasar.dev/start/vite-plugin
 // Your site is live at https://jinnianwushuang.github.io/smart-code-tool/
 // https://vite.dev/config/

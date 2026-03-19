@@ -21,7 +21,7 @@ export const menuList = [
   {
     icon: 'event',
     name: 'permanent-notice-calendar',
-    label: '永久日历',
+    label: '万年历',
     separator: true,
   },
 ]

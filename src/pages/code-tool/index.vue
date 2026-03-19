@@ -32,8 +32,8 @@ const all_tabs = [
     component: MethodNameToArrowFunction,
   },
 
-  { name: 'StringChangeCase', label: '字符串转换', component: StringChangeCase },
-  { name: 'ConvertToTemplateRef', label: '转换为 useTemplateRef', component: ConvertToTemplateRef },
+  { name: 'StringChangeCase', label: '字符串格式转换', component: StringChangeCase },
+  { name: 'ConvertToTemplateRef', label: 'useTemplateRef', component: ConvertToTemplateRef },
   { name: 'TextDeduplication', label: '文本去重清洗', component: TextDeduplication },
   { name: 'FunctionCodeCorrection', label: '函数代码纠正', component: FunctionCodeCorrection },
   {

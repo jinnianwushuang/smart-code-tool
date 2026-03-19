@@ -25,6 +25,13 @@ export const js_basic_doc = [
         tag: '底层',
         desc: '深入理解 JS 内存管理、JIT 编译及执行效率。',
       },
+      {
+        name: 'Node.js',
+        url: 'https://nodejs.org/',
+        level: '实践',
+        tag: '实践',
+        desc: 'JavaScript 运行时环境，支持构建高性能网络应用。',
+      },
     ],
   },
 

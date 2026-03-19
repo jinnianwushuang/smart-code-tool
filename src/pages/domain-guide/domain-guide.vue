@@ -125,10 +125,18 @@ const flatData = computed(() => {
 // 计算属性：根据搜索过滤
 const filteredData = computed(() => {
   const query = searchText.value.toLowerCase()
-  return flatData.value.filter(
-    (d) => d.name.toLowerCase().includes(query) || d.tag.toLowerCase().includes(query),
-  )
+  return fliter_by_query(flatData.value, query)
 })
+
+const fliter_by_query = (list, query) => {
+  const q = query.toLowerCase()
+  return list.filter(
+    (i) =>
+      (i.name || '').toLowerCase().includes(q) ||
+      (i.desc || '').toLowerCase().includes(q) ||
+      (i.tag || '').toLowerCase().includes(q),
+  )
+}
 
 // 计算属性：过滤后的分组数据（用于卡片）
 const groupedData = computed(() => {
@@ -136,9 +144,7 @@ const groupedData = computed(() => {
   return allDocGroups.value
     .map((group) => ({
       ...group,
-      items: group.items.filter(
-        (i) => i.name.toLowerCase().includes(query) || i.tag.toLowerCase().includes(query),
-      ),
+      items: fliter_by_query(group.items, query),
     }))
     .filter((g) => g.items.length > 0)
 })

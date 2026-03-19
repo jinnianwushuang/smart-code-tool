@@ -7,7 +7,7 @@
           <template #title>
             <div class="row items-center q-gutter-sm">
               <q-icon name="calendar_today" color="primary" size="sm" />
-              <span class="text-weight-bold">Antdv 高级万年历</span>
+              <span class="text-weight-bold">万年历</span>
             </div>
           </template>
           <template #extra>
@@ -26,7 +26,7 @@
               />
             </div>
           </template>
-
+          <div>今天日期：{{ dayjs().format('YYYY-MM-DD') }}</div>
           <a-calendar v-model:value="selectedDayjs" @select="onSelect">
             <!-- 自定义日期单元格内容 -->
             <template #dateCellRender="{ current }">

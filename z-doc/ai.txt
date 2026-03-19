@@ -115,7 +115,20 @@ const {} =src_pages_code_tool_componsable_index({
 
 
 
-请使用VUE3 setup 结构， QUASAR组件 或者 antdv 组件 编写一个vue组件,
+请使用VUE3 setup 结构，QUASAR组件 或者 antdv 组件 编写一个vue组件,
+不要使用Tailwind
 安装三方优秀插件 ， 纯前端实现：
 
-列举VUE前端开发重要的参照文档网站，并且进行分组
+HTTP 状态码手册
+需要支持快速查询 ，每个状态码带上在VUE/AXIOS 或者FLUTTER Dio 中典型的报错场景
+
+
+需要支持 文档 下载 为 PDF 离线版
+
+
+请使用VUE3 setup 结构，QUASAR组件 或者 antdv 组件 编写一个vue组件,
+不要使用Tailwind
+安装三方优秀插件 ， 纯前端实现：
+
+颜色转换器 各种颜色格式转换
+提供flutter 颜色代码 方便拷贝

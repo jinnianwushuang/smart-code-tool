@@ -21,7 +21,7 @@
         <div class="column q-gutter-y-sm">
           <div class="row items-center q-gutter-x-md">
             <span class="text-subtitle2 text-weight-bold">生成的代码片段:</span>
-            <q-btn label="清空" color="grey" variant="flat" @click="reset" />
+            <q-btn label="清空" color="grey" size="sm" variant="flat" @click="reset" />
             <q-btn
               color="secondary"
               icon="content_copy"

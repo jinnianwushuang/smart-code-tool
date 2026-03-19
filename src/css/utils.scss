@@ -67,7 +67,11 @@ $line-heights: (1, 12, 15, 18, 20);
 // 2. 核心生成 Mixin
 // ============================================================
 @mixin generate-utils($prefix: '') {
-  $p: if($prefix == '', '', '#{$prefix}\\:'); // 转义冒号用于类名如 md:w-10
+  $p: if(
+    sass($prefix == ''): '' ; else: '#{$prefix}\\:',
+  ); // 转义冒号用于类名如 md:w-10
+  // $p: if($prefix == '', '', '#{$prefix}\\:'); // 转义冒号用于类名如 md:w-10
+  //if(sass($prefix == ""): ""; else: "#{$prefix}\\:")
 
   // --- 宽度 & 高度 (固定像素) ---
   @each $v in $sizes {

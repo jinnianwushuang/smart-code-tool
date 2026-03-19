@@ -10,6 +10,29 @@
         <!-- 左侧：配置选项 -->
         <div class="col-12 col-md-4">
           <q-list bordered separator class="rounded-borders">
+            <q-item-label header>切分规则</q-item-label>
+
+            <q-item tag="label" v-ripple>
+              <q-item-section avatar
+                ><q-checkbox v-model="options.split_by_commas" color="positive"
+              /></q-item-section>
+              <q-item-section><q-item-label>中英文逗号切割</q-item-label></q-item-section>
+            </q-item>
+            <q-item tag="label" v-ripple>
+              <q-item-section avatar
+                ><q-checkbox v-model="options.split_by_colons" color="positive"
+              /></q-item-section>
+              <q-item-section><q-item-label>中英文冒号号切割</q-item-label></q-item-section>
+            </q-item>
+
+            <q-item tag="label" v-ripple>
+              <q-item-section avatar
+                ><q-checkbox v-model="options.split_by_semicolons" color="positive"
+              /></q-item-section>
+              <q-item-section><q-item-label>中英文分号切割</q-item-label></q-item-section>
+            </q-item>
+
+            <q-separator />
             <q-item-label header>清洗规则</q-item-label>
             <q-item tag="label" v-ripple>
               <q-item-section avatar
@@ -132,7 +155,34 @@ const options = reactive({
   removeColon: true,
   addComma: false,
   addSemicolon: false,
+
+  split_by_commas: true,
+  split_by_colons: false,
+  split_by_semicolons: false,
 })
+
+/**
+ * @param {Object} options 勾选状态
+ * @param {boolean} options.split_by_commas - 是否勾选中英文逗号 ( , ， )
+ * @param {boolean} options.split_by_colons - 是否勾选中英文冒号 ( : ： )
+ * @param {boolean} options.split_by_semicolons - 是否勾选分号 ( ; ； )
+ * @returns {RegExp|null} 返回生成的正则表达式
+ */
+const generateSplitRegex = () => {
+  let charSet = ''
+
+  // 1. 根据勾选状态拼接字符
+  if (options.split_by_commas) charSet += ',，'
+  if (options.split_by_colons) charSet += ':：'
+  if (options.split_by_semicolons) charSet += ';；'
+
+  // 2. 如果没有任何勾选，返回 null 或默认正则
+  if (!charSet) return null
+
+  // 3. 构建正则表达式
+  // [ ,，:：;； ]+ 表示匹配其中任意字符一次或多次（避免切出空字符串）
+  return new RegExp(`[${charSet}]+`, 'g')
+}
 
 // 核心处理逻辑
 const processText = () => {
@@ -151,6 +201,16 @@ const processText = () => {
 
   // 按行分割并去除每行首尾空格
   let lines = content.split(/\r?\n/)
+  let new_lines = []
+  let split_regex = generateSplitRegex()
+  lines.forEach((line) => {
+    if (split_regex) {
+      new_lines.push(...line.split(split_regex).map((l) => l.trim()))
+    } else {
+      new_lines.push(line.trim())
+    }
+  })
+  lines = new_lines
 
   let processedLines = lines.map((line) => {
     let temp = line
