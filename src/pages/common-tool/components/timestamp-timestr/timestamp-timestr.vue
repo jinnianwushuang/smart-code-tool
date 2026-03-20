@@ -6,7 +6,7 @@
         <q-card flat bordered class="bg-indigo-10 text-white shadow-2">
           <q-card-section class="row items-center q-pb-none">
             <q-icon name="public" size="md" class="q-mr-sm" />
-            <div class="text-h6 text-weight-bold">全球时间治理中心</div>
+            <div class="text-h6 text-weight-bold">时间转换器</div>
             <q-space />
             <q-select
               v-model="selectedTimezone"

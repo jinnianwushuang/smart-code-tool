@@ -4,7 +4,7 @@
       <!-- 头部工具栏 -->
       <q-card-section class="bg-blue-grey-10 text-white row items-center q-gutter-sm">
         <q-icon name="admin_panel_settings" size="sm" />
-        <div class="text-h6 text-weight-bold">全能数据治理中心 (类型修复增强版)</div>
+        <div class="text-h6 text-weight-bold">JSON-Excel 转换器</div>
         <q-space />
         <q-btn flat color="white" label="样例数据" icon="lightbulb" @click="loadSample" />
         <q-btn flat color="white" label="清空" icon="delete" @click="clearAll" />

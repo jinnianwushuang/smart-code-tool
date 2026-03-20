@@ -24,4 +24,10 @@ export const menuList = [
     label: '万年历',
     separator: true,
   },
+  {
+    icon: 'book',
+    name: 'vue-architecture-document',
+    label: 'Vue 架构文档',
+    separator: true,
+  },
 ]

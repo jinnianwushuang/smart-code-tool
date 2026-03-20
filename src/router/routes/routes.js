@@ -24,6 +24,13 @@ export const routes = [
         name: 'domain-guide',
         component: () => import('src/pages/domain-guide/domain-guide.vue'),
       },
+
+      {
+        path: 'vue-architecture-document',
+        name: 'vue-architecture-document',
+        component: () =>
+          import('src/pages/architecture-document/vue/vue-architecture-document.vue'),
+      },
     ],
   },
 ]

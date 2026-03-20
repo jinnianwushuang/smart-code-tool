@@ -6,7 +6,7 @@
         <q-card flat bordered class="shadow-2">
           <q-card-section class="bg-indigo-9 text-white row items-center">
             <q-icon name="fact_check" size="sm" class="q-mr-sm" />
-            <div class="text-h6 text-weight-bold">高级数据治理抽取器</div>
+            <div class="text-h6 text-weight-bold">随机抽取</div>
           </q-card-section>
 
           <q-card-section class="q-gutter-y-md">

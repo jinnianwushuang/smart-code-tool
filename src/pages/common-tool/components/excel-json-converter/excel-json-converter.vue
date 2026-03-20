@@ -4,7 +4,7 @@
       <!-- 头部工具栏 -->
       <q-card-section class="bg-teal-9 text-white row items-center q-gutter-sm">
         <q-icon name="transform" size="sm" />
-        <div class="text-h6 text-weight-bold">高级 Excel 数据工作站</div>
+        <div class="text-h6 text-weight-bold">Excel-JSON 转换器</div>
         <q-space />
         <q-btn flat color="white" label="清空" icon="clear_all" @click="clearAll" />
         <q-btn

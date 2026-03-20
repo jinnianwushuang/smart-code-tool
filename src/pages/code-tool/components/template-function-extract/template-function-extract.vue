@@ -10,7 +10,8 @@
         <!-- 正则提示与复制 -->
         <div class="row items-center bg-orange-1 q-pa-sm rounded-borders border-orange-2">
           <div class="text-caption text-orange-9">
-            通用匹配正则: <code class="bg-white q-px-xs">@[\w.-]+="([^"(]+)"</code>
+            通用匹配正则:
+            <code class="bg-white q-px-xs">/@([\w-]+)((?:\.[\w-]+)*)\s*=\s*["']([^"']+)["']/g</code>
           </div>
           <q-space />
           <q-btn
@@ -20,7 +21,7 @@
             icon="content_copy"
             label="复制正则"
             size="sm"
-            @click="copy(regPattern)"
+            @click="copy(VUE_EVENT_REGEX_COPY)"
           >
             <q-tooltip>用于 IDE 全局搜索提取</q-tooltip>
           </q-btn>
@@ -37,7 +38,7 @@
           @update:model-value="extractFunctions"
         />
         <div class="row q-my-md q-gutter-x-sm">
-          <q-btn label="清空" color="grey" variant="flat" @click="reset" />
+          <q-btn label="清空" color="grey" variant="flat" size="sm" @click="reset" />
         </div>
         <!-- 控制与统计 -->
         <div class="row items-center q-gutter-x-md">
@@ -86,30 +87,64 @@ const rawTemplate = ref('')
 const addComma = ref(true)
 const functionList = ref([])
 const regPattern = ref('@[\\w.-]+="([^"(]+)"')
+/**
+ * @([\w-]+)          - 第1组：事件名 (如 click)
+ * ((?:\.[\w-]+)*)    - 第2组：修饰符 (如 .stop.prevent)
+ * \s*=\s*            - 匹配等号及前后空格
+ * ["']([^"']+)["']   - 第3组：引号内的完整表达式 (不含引号本身)
+ */
+const VUE_EVENT_REGEX = /@([\w-]+)((?:\.[\w-]+)*)\s*=\s*["']([^"']+)["']/g
+const VUE_EVENT_REGEX_COPY = /@([\\w-]+)((?:\\.[\\w-]+)*)\\s*=\\s*["']([^"']+)["']/g
+/**
+ * 解析并提取函数名
+ * @param {string} expression - 正则捕获到的引号内字符串
+ * @returns {string|null} - 返回纯函数名，非函数则返回 null
+ */
+const parseVueHandler = (expression) => {
+  const content = expression.trim()
+  if (!content) return null
 
+  // 1. 排除包含赋值、算术运算、逻辑运算或箭头函数的内联代码
+  // 例如: count++, a = b, !show, val => ...
+  if (/[=+\-*/&|!>]/.test(content)) return null
+
+  // 2. 提取函数标识符
+  // 匹配规则：以字母/下划线/ $ 开头，后面跟着数字字母下划线
+  // 兼容带括号的情况：将 "handleSubmit(123)" 转换为 "handleSubmit"
+  const funcMatch = content.match(/^([a-zA-Z_$][\w$]*)/)
+
+  return funcMatch ? funcMatch[1] : null
+}
+
+const extractFunctions_inner = (rawTemplate) => {
+  if (!rawTemplate) return []
+
+  const funcSet = new Set()
+  let match
+
+  // 重置正则位置（防止多次调用时索引偏移）
+  VUE_EVENT_REGEX.lastIndex = 0
+
+  while ((match = VUE_EVENT_REGEX.exec(rawTemplate)) !== null) {
+    // match[3] 是正则捕获的引号内内容
+    const rawExpression = match[3]
+    const funcName = parseVueHandler(rawExpression)
+
+    if (funcName) {
+      funcSet.add(funcName)
+    }
+  }
+
+  return Array.from(funcSet)
+}
 const extractFunctions = () => {
   if (!rawTemplate.value) {
     functionList.value = []
     return
   }
 
-  // 正则逻辑：
-  // @[\w.-]+= 匹配 @click, @update:model-value 等
-  // "([^"(]+)  匹配引号内的内容，直到遇到左括号(（排除参数）或结束引号"
-  const eventRegex = /@[\w.-]+="([^"(]+)(?:\(.*?\))?"/g
-
-  const funcSet = new Set()
-  let match
-
-  while ((match = eventRegex.exec(rawTemplate.value)) !== null) {
-    const funcName = match[1].trim()
-    // 排除简单的内联表达式（如 @click="show = true"）
-    if (funcName && !funcName.includes('=') && !funcName.includes('=>')) {
-      funcSet.add(funcName)
-    }
-  }
-
-  functionList.value = Array.from(funcSet)
+  // --- 使用示例 ---
+  functionList.value = extractFunctions_inner(rawTemplate.value)
 }
 
 // 格式化输出字符串
