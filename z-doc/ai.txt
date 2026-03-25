@@ -128,5 +128,58 @@ HTTP 状态码手册
 
 请使用VUE3 setup 结构，QUASAR组件 或者 antdv 组件 编写一个vue组件,
 不要使用Tailwind
-安装三方优秀插件 ， 纯前端实现：
-树形目录结构编辑工具
+可以安装三方优秀插件 ， 纯前端实现：
+输入VUE文件代码路径 自动生成 代码引用片段
+比如 src/pages/architecture-document/vue/component/reference-code/reference-code.vue
+生成  import ReferenceCode from 'src/pages/architecture-document/vue/component/reference-code/reference-code.vue'
+
+
+基于VUE3 项目， 使用 js 封装一个通用的 定时器销毁 的组合式函数  支持传入 各种定时器对象： 数组对象 ，或者ref 的对象，或者普通对象 等等
+
+基于VUE3 项目， 使用 js 封装一个通用的 DOM引用销毁 的组合式函数  支持传入 各种定时器对象： 数组对象 ，或者ref 的对象，或者普通对象 等等
+
+
+基于VUE3 项目， 使用 js 封装一个通用的 原生事件监听销毁 的组合式函数  支持传入 各种定时器对象： 数组对象 ，或者ref 的对象，或者普通对象 等等
+
+
+基于VUE3 项目， 使用 js 封装一个通用的 MITT 事件监听销毁 的组合式函数  支持传入 各种定时器对象： 数组对象 ，或者ref 的对象，或者普通对象 等等
+
+基于VUE3 项目， 使用 js 封装一个通用的  VUE WATCH 监听销毁 的组合式函数  支持传入 各种定时器对象： 数组对象 ，或者ref 的对象，或者普通对象 等等
+你是否需要我针对 WebSocket 自动断开 或者 AbortController (请求取消) 增加对应的识别逻辑？
+在 Vue 3 开发中，除了你提到的那些，最容易被忽略且会导致严重内存泄漏的副作用还包括：AbortController（正在进行的网络请求）、WebSocket 连接、IntersectionObserver/ResizeObserver（各种观察者） 以及 Web Worker。
+
+
+
+基于VUE3 项目， 使用 js ,使用vite glob封装一个通用的 函数:
+1.扫描当前目录下module 目录内的所有 文件后缀不是下划线的js 文件 生成modules 对象
+2.记录当前文件路径 currentFilePath
+3. 封装函数 ，传入  modules  和 currentFilePath
+4.循环modules 对象，计算每个文件 的名字 的 snake_case 形式
+5.定义代理对象  all_pipeline_event
+6.定义一个新的生成器函数，传入payload参数，生成 all_pipeline_event
+7， 实现当 执行  all_pipeline_event.file_name.method_name 时，会执行 modules[file_name][method_name] ,并且增补一个 payload 参数 作为函数实际执行的的第一个参数
+8. 最终 返回   all_pipeline_event 对象 和  all_pipeline_event 的生成函数
+
+
+
+
+基于 vite  VUE3 项目， 使用 js ,使用vite glob封装一个通用的 函数: combine_all_componsable:
+
+ 扫描当前目录下module 目录内的所有 文件后缀不是下划线的js 文件
+ 当文件名包含 index 则为 事件生成器函数
+ 当文件名包含 variable 则为 变量状态机生成器函数
+ 当文件名包含 lifecycle 则为 生命周期生成器函数
+ 当文件名包含 assembler 则为  上面三种 内容 使用当前函数 返回的 聚合生成器函数
+
+ 要求函数  返回标准对象 ，内部有三个数组 ，variable_fn_arr  ,method_fn_arr , lifecycle_fn_arr
+
+ 这个函数需要能支持 传入任意多个 单种生成器函数或者 聚合生成器函数 返回标准对象
+
+
+
+ 再封装 一个组合式函数 ，传入  other_payload 和当前模块调用上面通用函数 返回的 聚合生成器函数，
+ 按照顺序执行三个数组 ，variable_fn_arr ,method_fn_arr , lifecycle_fn_arr 内部的函数
+
+ 最终和传入的 other_payload 合并成一个 payload ，用于 大型VUE模块组件的上下文 ，
+
+ 其中在定义设计上 ，所有的 生成器都有一个 上下文参数payload ,用于共享最终的上下文

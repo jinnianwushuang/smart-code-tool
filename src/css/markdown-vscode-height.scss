@@ -1,0 +1,30 @@
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
+/* 代码块容器 */
+.code-block-wrapper {
+  margin: 1.5em 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 按钮悬停效果 */
+.copy-btn:hover {
+  opacity: 1 !important;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* Shiki 默认生成的 pre 标签样式 */
+.shiki {
+  padding: 1.5em;
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: auto;
+}

@@ -11,10 +11,20 @@
 <script setup>
 import { computed, ref } from 'vue'
 
-import CorePrinciple from 'src/pages/architecture-document/vue/component/core-principle/core-principle.vue'
+import ArchitectureDocument from './component/architecture/architecture-document.vue'
+import ReferenceCode from 'src/pages/architecture-document/vue/component/reference-code/reference-code.vue'
+import StandardCode from 'src/pages/architecture-document/vue/component/standard-code/standard-code.vue'
+import GeneralTools from 'src/pages/architecture-document/vue/component/general-tools/general-tools.vue'
+import GeneralComposable from 'src/pages/architecture-document/vue/component/general-composable/general-composable.vue'
 
-const current_tab_name = ref('CorePrinciple')
-const all_tabs = [{ name: 'CorePrinciple', label: '核心原理', component: CorePrinciple }]
+const current_tab_name = ref('ArchitectureDocument')
+const all_tabs = [
+  { name: 'ArchitectureDocument', label: '架构文档', component: ArchitectureDocument },
+  { name: 'StandardCode', label: '标准代码', component: StandardCode },
+  { name: 'ReferenceCode', label: '参考代码', component: ReferenceCode },
+  { name: 'GeneralTools', label: '通用工具', component: GeneralTools },
+  { name: 'GeneralComposable', label: '通用组合式', component: GeneralComposable },
+]
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)
   return current_tab ? current_tab.component : null
@@ -26,4 +36,3 @@ const current_component = computed(() => {
   padding: 16px;
 }
 </style>
-pjt9sxBJw4HEsiQsFgbAh4rr

@@ -3,7 +3,7 @@
     <q-header elevated :class="$q.dark.isActive ? 'bg-secondary' : 'bg-black'">
       <q-toolbar>
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-        <q-toolbar-title>代码工具库</q-toolbar-title>
+        <q-toolbar-title>代码工具库{{ isDev ? '（开发版）' : '' }}</q-toolbar-title>
         <q-space />
         <div class="text-caption">构建时间: {{ buildTime }}</div>
       </q-toolbar>
@@ -51,6 +51,8 @@
 import { ref, onMounted } from 'vue'
 import { RouterView, useRouter } from 'vue-router'
 import { menuList } from './config/menu.js'
+const isDev = import.meta.env.DEV
+const envName = import.meta.env.MODE
 const drawer = ref(false)
 const current_menu = ref({})
 const router = useRouter()
