@@ -1,0 +1,35 @@
+export const methodConfigs = [
+  { method: 'snakeCase', desc: '下划线分隔 (foo_bar)' },
+  { method: 'pascalCase', desc: '大驼峰 (FooBar)' },
+  { method: 'kebabCase', desc: '短横线/肉串 (foo-bar)' },
+  { method: 'noCase', desc: '空格分隔小写 (foo bar)' },
+  { method: 'camelCase', desc: '小驼峰 (fooBar)' },
+  { method: 'pascalSnakeCase', desc: '大驼峰下划线 (Foo_Bar)' },
+  { method: 'capitalCase', desc: '首字母大写 (Foo Bar)' },
+  { method: 'constantCase', desc: '常量大写 (FOO_BAR)' },
+  { method: 'dotCase', desc: '点号分隔 (foo.bar)' },
+  { method: 'pathCase', desc: '路径分隔 (foo/bar)' },
+  { method: 'sentenceCase', desc: '句子格式 (Foo bar)' },
+  { method: 'trainCase', desc: '标题短横线 (Foo-Bar)' },
+]
+export const columns = [
+  { name: 'action1', label: '操作', field: 'action1', align: 'left' },
+  { name: 'index', label: '序号', field: 'index', align: 'left' },
+  { name: 'method', label: '转换方法', field: 'method', align: 'left' },
+  { name: 'desc', label: ' 描述', field: 'desc', align: 'left' },
+  { name: 'result', label: '转换结果', field: 'result', align: 'left' },
+  { name: 'action', label: '操作', field: 'action', align: 'left' },
+]
+export const suffixes = [
+  '.vue',
+  '.js',
+  '.ts',
+  '.json',
+  '.md',
+  '.html',
+  '.css',
+  '.scss',
+  '.less',
+  '.tsx',
+  '.jsx',
+]

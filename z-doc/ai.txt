@@ -183,3 +183,7 @@ HTTP 状态码手册
  最终和传入的 other_payload 合并成一个 payload ，用于 大型VUE模块组件的上下文 ，
 
  其中在定义设计上 ，所有的 生成器都有一个 上下文参数payload ,用于共享最终的上下文
+
+
+npm create vite@latest vue-architecture-template-- --template vue
+vue-architecture-template

@@ -15,7 +15,11 @@
           @update:model-value="processTransform"
           clearable
           bg-color="white"
-        />
+        >
+          <template #prepend>
+            <q-btn color="grey" @click="inputText = ''">清空</q-btn>
+          </template>
+        </q-input>
         <!-- 转换结果表格 -->
         <q-table
           :rows="rows"
@@ -53,6 +57,21 @@
               </div>
             </q-td>
           </template>
+          <template v-slot:body-cell-action1="props">
+            <q-td :props="props">
+              <q-btn
+                flat
+                round
+                color="grey-6"
+                icon="content_copy"
+                size="sm"
+                class="q-ml-sm"
+                @click="copyText(props.row.result)"
+              >
+                <q-tooltip>复制</q-tooltip>
+              </q-btn>
+            </q-td>
+          </template>
           <template v-slot:body-cell-action="props">
             <q-td :props="props">
               <q-btn
@@ -81,30 +100,22 @@ import { copyText } from 'src/output/common/project-common.js'
 const $q = useQuasar()
 const inputText = ref('src/pages/code-tool/components/string-change-case/string-change-case.vue')
 const rows = ref([])
+import { methodConfigs, suffixes, columns } from './config/config.js'
 // 定义需要展示的方法及其描述（对应你提供的列表）
-const methodConfigs = [
-  { method: 'snakeCase', desc: '下划线分隔 (foo_bar)' },
-  { method: 'pascalCase', desc: '大驼峰 (FooBar)' },
-  { method: 'kebabCase', desc: '短横线/肉串 (foo-bar)' },
-  { method: 'noCase', desc: '空格分隔小写 (foo bar)' },
-  { method: 'camelCase', desc: '小驼峰 (fooBar)' },
-  { method: 'pascalSnakeCase', desc: '大驼峰下划线 (Foo_Bar)' },
-  { method: 'capitalCase', desc: '首字母大写 (Foo Bar)' },
-  { method: 'constantCase', desc: '常量大写 (FOO_BAR)' },
-  { method: 'dotCase', desc: '点号分隔 (foo.bar)' },
-  { method: 'pathCase', desc: '路径分隔 (foo/bar)' },
-  { method: 'sentenceCase', desc: '句子格式 (Foo bar)' },
-  { method: 'trainCase', desc: '标题短横线 (Foo-Bar)' },
-]
-const columns = [
-  { name: 'index', label: '序号', field: 'index', align: 'left' },
-  { name: 'method', label: '转换方法', field: 'method', align: 'left' },
-  { name: 'desc', label: ' 描述', field: 'desc', align: 'left' },
-  { name: 'result', label: '转换结果', field: 'result', align: 'left' },
-  { name: 'action', label: '操作', field: 'action', align: 'left' },
-]
+
 const processTransform = () => {
-  const input = inputText.value?.trim()
+  let input = inputText.value?.trim()
+  if (!input) {
+    rows.value = []
+    return
+  }
+
+  suffixes.map((suffix) => {
+    if (input.endsWith(suffix)) {
+      input = input.replace(suffix, '')
+    }
+  })
+
   rows.value = methodConfigs.map((config) => {
     let result = ''
     try {
@@ -121,12 +132,7 @@ const processTransform = () => {
     }
   })
 }
-const copy = (val) => {
-  if (!val) return
-  copyToClipboard(val)
-    .then(() => $q.notify({ message: '已复制', color: 'positive', timeout: 800, position: 'top' }))
-    .catch(() => $q.notify({ message: '复制失败', color: 'negative' }))
-}
+
 // 页面加载时初始转换一次
 onMounted(() => {
   processTransform()
