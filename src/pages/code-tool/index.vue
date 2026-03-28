@@ -27,8 +27,9 @@ import PathCalculation from 'src/pages/code-tool/components/path-calculation/pat
 import TreeFolderEditer from 'src/pages/code-tool/components/tree-folder-editer/tree-folder-editer.vue'
 import VueCodeImport from 'src/pages/code-tool/components/vue-code-import/vue-code-import.vue'
 
-const current_tab_name = ref('PropertyToVariable')
+const current_tab_name = ref('StringChangeCase')
 const all_tabs = [
+  { name: 'StringChangeCase', label: '字符串格式转换', component: StringChangeCase },
   { name: 'PropertyToVariable', label: '属性转换为变量', component: PropertyToVariable },
   { name: 'VariableNameExtraction', label: '变量名称提取', component: VariableNameExtraction },
   {
@@ -37,7 +38,6 @@ const all_tabs = [
     component: MethodNameToArrowFunction,
   },
 
-  { name: 'StringChangeCase', label: '字符串格式转换', component: StringChangeCase },
   { name: 'ConvertToTemplateRef', label: 'useTemplateRef', component: ConvertToTemplateRef },
   { name: 'TextDeduplication', label: '文本去重清洗', component: TextDeduplication },
   { name: 'FunctionCodeCorrection', label: '函数代码纠正', component: FunctionCodeCorrection },
