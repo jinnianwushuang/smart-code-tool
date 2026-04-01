@@ -8,18 +8,16 @@ order: 21
 子模块不需要关心如何被聚合，正常导出即可：
 
 ```javascript
-// src/store/module/user.js
-
-export const user_info = { name: 'Guest' }
+import { ref } from 'vue'
+export const user_info = ref({ name: 'Guest' })
 
 export const logout = () => {
   /* ... */
 }
 
 // 这个函数会被提取到总的 init_singleton 中
-export const init_singleton = async (config) => {
-  console.log('User module initializing with:', config)
-  user_info.name = 'Admin'
+export const init_singleton = () => {
+  user_info.value = { name: 'Guest' }
 }
 ```
 
