@@ -4,7 +4,7 @@
     <a-card class="control-panel" :bordered="false">
       <a-row type="flex" justify="space-between" align="middle">
         <a-col>
-          <a-space size="large">
+          <a-space size="large" v-if="isDesktop">
             <span class="page-title">大前端架构导航</span>
             <a-radio-group v-model:value="viewMode" button-style="solid">
               <a-radio-button value="card"><appstore-outlined /> 卡片视图</a-radio-button>
@@ -91,10 +91,12 @@ import {
   BuildOutlined,
 } from '@ant-design/icons-vue'
 import { allDocGroups } from './config/config.js'
+import { useQuasar } from 'src/output/common/project-common.js'
 // 视图切换状态
 const viewMode = ref('card')
 const searchText = ref('')
-
+const $q = useQuasar()
+const isDesktop = $q.platform.is.desktop
 // 数据定义（合并了 Vue, React, 全栈, 工具库）
 
 // 表格列定义

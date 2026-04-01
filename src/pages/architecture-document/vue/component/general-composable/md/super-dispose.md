@@ -18,7 +18,7 @@ import { onUnmounted, isRef } from 'vue'
  * 全能副作用清理器 V2.0
  * 核心原理：特征识别 (Feature Detection) + 深度递归逻辑 + 容错执行
  */
-export function useSuperCleaner(resources, options = { debug: false }) {
+export function useAllCleaner(resources, options = { debug: false }) {
   const isDev = import.meta.env?.DEV || options.debug
 
   const log = (type, detail) => {
@@ -112,9 +112,9 @@ export function useSuperCleaner(resources, options = { debug: false }) {
           return
         }
 
-        // 4.4 Mitt / EventEmitter 结构 { emitter, type, handler }
-        if (item.emitter?.off && item.type && item.handler) {
-          item.emitter.off(item.type, item.handler)
+        // 4.4 Mitt   结构 { off ,type }
+        if (item.off) {
+          item.off?.()
           log('Mitt事件 (off)', item.type)
           return
         }
@@ -146,28 +146,18 @@ export function useSuperCleaner(resources, options = { debug: false }) {
 
 ## 2. 支持内容清单
 
-| 资源类别     | 识别特征 / 清理动作                | 常见场景                    |
-| :----------- | :--------------------------------- | :-------------------------- |
-| **定时器**   | `Number/String` -> `clearTimeout`  | 轮询、延迟逻辑              |
-| **Vue 监听** | `Function` -> `stop()`             | `watch`, `watchEffect`      |
-| **网络请求** | `AbortController` -> `abort()`     | 接口在页面离开时取消        |
-| **网络连接** | `WebSocket` -> `close()`           | 实时通讯、长连接            |
-| **第三方库** | `.dispose()` / `.destroy()`        | ECharts, Swiper, Editor     |
-| **原生事件** | `{ target, type, handler }`        | 窗口 `resize`, 全局 `click` |
-| **组件通信** | `{ emitter, type, handler }`       | Mitt 事件总线注销           |
-| **观察者**   | `instanceof Observer`              | 元素可见性监听、容器缩放    |
-| **多线程**   | `Worker` -> `.terminate()`         | 耗时计算 Web Worker         |
-| **动画帧**   | `Number` -> `cancelAnimationFrame` | Canvas 渲染、游戏循环       |
-
-#### 支持内容
-
-- **Vue 副作用**：`watch` / `watchEffect` 停止句柄。
-- **定时器**：`setTimeout` / `setInterval` / `requestAnimationFrame`。
-- **网络层**：`Axios/Fetch` 请求取消 (`AbortController`)、`WebSocket` 断开。
-- **UI 插件**：ECharts、Canvas、Editor、Swiper 等所有带 `destroy/dispose` 的实例。
-- **原生监听**：`window/DOM` 的 `addEventListener`。
-- **组件通信**：`mitt` 或 `EventEmitter` 的事件监听。
-- **浏览器观察者**：监听元素大小、可见性、DOM 树变动的各种 `Observer`。
+| 资源类别     | 识别特征 / 清理动作                | 常见场景                                          |
+| :----------- | :--------------------------------- | :------------------------------------------------ |
+| **定时器**   | `Number/String` -> `clearTimeout`  | 轮询、延迟逻辑                                    |
+| **Vue 监听** | `Function` -> `stop()`             | `watch`, `watchEffect`                            |
+| **网络请求** | `AbortController` -> `abort()`     | 接口在页面离开时取消                              |
+| **网络连接** | `WebSocket` -> `close()`           | 实时通讯、长连接                                  |
+| **第三方库** | `.dispose()` / `.destroy()`        | ECharts, Swiper, Editor                           |
+| **原生事件** | `{ target, type, handler }`        | 窗口 `resize`, 全局 `click`                       |
+| **组件通信** | `{ off, type}`                     | Mitt 事件总线注销 ,封装返回off 方法               |
+| **观察者**   | `instanceof Observer`              | 监听元素大小、可见性、DOM 树变动的各种 `Observer` |
+| **多线程**   | `Worker` -> `.terminate()`         | 耗时计算 Web Worker                               |
+| **动画帧**   | `Number` -> `cancelAnimationFrame` | Canvas 渲染、游戏循环                             |
 
 ---
 

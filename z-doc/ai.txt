@@ -37,7 +37,7 @@
 
 请使用 job/file-util/file-util.js 中的方法
 使用 ESM形式 和  export const 形式
-编写脚本代码  扫描 src/core 和 src/boot 目录内的所有文件
+编写脚本代码  扫描 src/common 和 src/boot 目录内的所有文件
 
 
 请使用VUE3 setup 结构， QUASAR组件 编写一个vue组件
@@ -115,9 +115,31 @@ const {} =src_pages_code_tool_componsable_index({
 
 
 
-请使用VUE3 setup 结构，QUASAR组件 或者 antdv 组件 编写一个vue组件,
+请使用VUE3 setup 结构， antdv 组件 ，编写一个vue组件,
 不要使用Tailwind
 安装三方优秀插件 ， 纯前端实现：
+转换类似下面的VUE3 变量定义 为赋值语句：
+转换前:
+export const all_dialog_state = ref({});
+export const query_form = ref({
+  address: "",
+});
+
+
+//传递给弹窗的 数据
+export const current_record_to_dialog_data = ref({});
+
+转换后：
+  all_dialog_state.value = {};
+  query_form.value = {
+    address: "",
+  };
+
+  current_record_to_dialog_data.value = {};
+
+
+
+
 
 HTTP 状态码手册
 需要支持快速查询 ，每个状态码带上在VUE/AXIOS 或者FLUTTER Dio 中典型的报错场景
@@ -187,3 +209,5 @@ HTTP 状态码手册
 
 npm create vite@latest vue-architecture-template-- --template vue
 vue-architecture-template
+
+基于VUE3 项目， 使用 js 封装一个通用的

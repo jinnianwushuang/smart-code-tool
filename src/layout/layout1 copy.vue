@@ -2,11 +2,12 @@
   <q-layout :view="view" style="" class="shadow-2 rounded-borders">
     <q-header elevated :class="$q.dark.isActive ? 'bg-secondary' : 'bg-black'">
       <q-toolbar>
-        <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-
+        <a-button type="text" @click="drawer = !drawer" shape="circle" size="small">
+          <template #icon><menu-outlined /></template>
+        </a-button>
         <q-toolbar-title>代码工具库{{ isDev ? '（开发版）' : '' }}</q-toolbar-title>
-        <q-space class="mobile-hide" />
-        <div class="text-caption mobile-hide">构建时间: {{ buildTime }}</div>
+        <q-space />
+        <div class="text-caption">构建时间: {{ buildTime }}</div>
       </q-toolbar>
     </q-header>
 

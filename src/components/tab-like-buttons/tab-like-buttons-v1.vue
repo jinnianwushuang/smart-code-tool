@@ -1,11 +1,9 @@
 <template>
-  <div class="row q-gutter-sm items-center">
-    <q-btn
+  <div class="row q-gutter-sm items-center q-pa-sm">
+    <a-button
       v-for="(item, index) in tabs"
       :key="item.name"
-      unelevated
-      :color="modelValue === item.name ? activeColor : inactiveColor"
-      :text-color="modelValue === item.name ? activeTextColor : inactiveTextColor"
+      :type="modelValue === item.name ? activeColor : inactiveColor"
       @click="updateTab(item.name)"
       class="q-px-md border-r-8 rounded-borders"
     >
@@ -13,7 +11,7 @@
         <span class="text-caption q-mr-xs text-weight-light">{{ index + 1 }}.</span>
         <span>{{ item.label }}</span>
       </div>
-    </q-btn>
+    </a-button>
   </div>
 </template>
 
@@ -38,15 +36,15 @@ const props = defineProps({
   },
   activeTextColor: {
     type: String,
-    default: 'white',
+    default: '',
   },
   inactiveColor: {
     type: String,
-    default: 'grey-2',
+    default: 'default',
   },
   inactiveTextColor: {
     type: String,
-    default: 'grey-7',
+    default: '',
   },
 })
 

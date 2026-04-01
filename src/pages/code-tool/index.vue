@@ -26,11 +26,17 @@ import I18nEditorWithDiff from 'src/pages/code-tool/components/i18n-editor-with-
 import PathCalculation from 'src/pages/code-tool/components/path-calculation/path-calculation.vue'
 import TreeFolderEditer from 'src/pages/code-tool/components/tree-folder-editer/tree-folder-editer.vue'
 import VueCodeImport from 'src/pages/code-tool/components/vue-code-import/vue-code-import.vue'
+import RefVariableToAssignmentStatement from 'src/pages/code-tool/components/ref-variable-to-assignment-statement/ref-variable-to-assignment-statement.vue'
 
 const current_tab_name = ref('StringChangeCase')
 const all_tabs = [
   { name: 'StringChangeCase', label: '字符串格式转换', component: StringChangeCase },
   { name: 'PropertyToVariable', label: '属性转换为变量', component: PropertyToVariable },
+  {
+    name: 'RefVariableToAssignmentStatement',
+    label: 'ref 赋值语句转换器',
+    component: RefVariableToAssignmentStatement,
+  },
   { name: 'VariableNameExtraction', label: '变量名称提取', component: VariableNameExtraction },
   {
     name: 'MethodNameToArrowFunction',
@@ -58,7 +64,7 @@ const all_tabs = [
     component: ComposableCodeGennerater,
   },
   { name: 'SvgBatchConverter', label: 'SVG 批量转换VUE组件', component: SvgBatchConverter },
-  { name: 'I18nEditorWithDiff', label: 'i18n 编辑器（带版本对比）', component: I18nEditorWithDiff },
+  { name: 'I18nEditorWithDiff', label: 'i18n 编辑器', component: I18nEditorWithDiff },
   { name: 'PathCalculation', label: '相对引用路径计算器', component: PathCalculation },
   { name: 'TreeFolderEditer', label: '树形文件夹编辑器', component: TreeFolderEditer },
   { name: 'VueCodeImport', label: 'Vue 组件引用生成器', component: VueCodeImport },
