@@ -15,10 +15,6 @@ order: 21
 import { ref } from 'vue'
 export const user_info = ref({ name: 'Guest' })
 
-export const logout = () => {
-  /* ... */
-}
-
 // 这个函数会被提取到总的 init_singleton 中
 export const init_singleton = () => {
   user_info.value = { name: 'Guest' }
@@ -39,7 +35,7 @@ export const init_singleton = () => {
  * 模块高级聚合器
  * @param {...Object} sources - 原始 glob 结果或已聚合的对象
  */
-export const smart_merge_modules = (...sources) => {
+export const common_assemble_singleton = (...sources) => {
   const final_all_singleton = {}
   const final_init_fns = []
 
@@ -131,7 +127,7 @@ import * as SystemScope from '@/core/index.js' // 已聚合的对象
 const bizModules = import.meta.glob('./biz/*.js', { eager: true }) // 原始 Glob
 
 // 混合合并
-const root = smart_merge_modules(SystemScope, bizModules)
+const root = common_assemble_singleton(SystemScope, bizModules)
 
 /**
  * 假设：
@@ -157,11 +153,10 @@ import { init_singleton, all_singleton } from './store/index.js'
 await init_singleton({ api_key: '123' })
 
 // 2. 访问具体单例的内容
-console.log(all_singleton.user.user_info.name) // 输出: Admin
-all_singleton.user.logout()
+console.log(all_singleton.user.user_info.name) // 输出：Guest
 ```
 
-## 💡 封装亮点：
+## 💡 封装亮点
 
 1. **逻辑解耦**：初始化逻辑（如请求基础配置、建立 WebSocket 连接）集中在 `init_singleton` 运行，而业务属性通过 `all_singleton` 访问。
 2. **全自动扫描**：只要在 `module` 目录下新增文件，它会自动被加入初始化序列和导出列表。

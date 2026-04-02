@@ -11,10 +11,6 @@ order: 21
 import { ref } from 'vue'
 export const user_info = ref({ name: 'Guest' })
 
-export const logout = () => {
-  /* ... */
-}
-
 // 这个函数会被提取到总的 init_singleton 中
 export const init_singleton = () => {
   user_info.value = { name: 'Guest' }
@@ -33,7 +29,7 @@ export const init_singleton = () => {
  * 模块高级聚合器
  * @param {...Object} sources - 原始 glob 结果或已聚合的对象
  */
-export const smart_merge_modules = (...sources) => {
+export const common_assemble_singleton = (...sources) => {
   const final_all_singleton = {}
   const final_init_fns = []
 
@@ -125,7 +121,7 @@ import * as SystemScope from '@/core/index.js' // 已聚合的对象
 const bizModules = import.meta.glob('./biz/*.js', { eager: true }) // 原始 Glob
 
 // 混合合并
-const root = smart_merge_modules(SystemScope, bizModules)
+const root = common_assemble_singleton(SystemScope, bizModules)
 
 /**
  * 假设：
