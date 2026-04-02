@@ -17,25 +17,21 @@ order: 21
 └── singleton.js
 ```
 
-
-
-
-
 ## 单实例属性
 
-####  1. 单实例子模块示例：state/singleton/other.js
+#### 1. 单实例子模块示例：state/singleton/other.js
 
 ```javascript
 import { ref } from 'vue'
 export const user_info = ref({ name: 'Guest' })
 
-// 这个函数会被提取到总的 init_singleton 中
+// 这个函数会被提取到总的 init_all_singleton 中
 export const init_singleton = () => {
   user_info.value = { name: 'Guest' }
 }
 ```
 
-####  2. 聚合单实例变量：state/singleton.js
+#### 2. 聚合单实例变量：state/singleton.js
 
 ```javascript
 import { common_assemble_singleton } from 'src/output/common/project-common.js'
@@ -50,34 +46,34 @@ export const { all_singleton, init_singleton } = common_assemble_singleton(
   dialog_copy_use_singleton,
 )
 ```
+
 ## 多实例属性：state/multiton.js
 
 ```javascript
- import { ref } from "vue";
+import { ref } from 'vue'
 
 export const create_multiton_variable = (payload) => {
-  const current_time = ref(new Date());
-  return { current_time };
-};
-
+  const current_time = ref(new Date())
+  return { current_time }
+}
 ```
+
 ## 计算属性：state/computed.js
 
 ```javascript
- import { computed } from "vue";
+import { computed } from 'vue'
 export const create_computed_variable = (payload) => {
   const demo_computed = computed(() => {
-    return "demo_computed";
-  });
+    return 'demo_computed'
+  })
   return {
     demo_computed,
-  };
-};
-
+  }
+}
 ```
+
 ## 常量属性：state/config.js
 
 ```javascript
- export const demo_options = [];
-
+export const demo_options = []
 ```

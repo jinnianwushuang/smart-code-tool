@@ -5,7 +5,7 @@
         <a-button type="text" @click="drawer = !drawer" shape="circle" size="small">
           <template #icon><menu-outlined /></template>
         </a-button>
-        <q-toolbar-title>代码工具库{{ isDev ? '（开发版）' : '' }}</q-toolbar-title>
+        <q-toolbar-title>工具库{{ isDev ? '（开发版）' : '' }}</q-toolbar-title>
         <q-space />
         <div class="text-caption">构建时间: {{ buildTime }}</div>
       </q-toolbar>

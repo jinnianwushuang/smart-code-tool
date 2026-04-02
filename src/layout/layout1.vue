@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
 
-        <q-toolbar-title>代码工具库{{ isDev ? '（开发版）' : '' }}</q-toolbar-title>
+        <q-toolbar-title>工具库{{ isDev ? '（开发版）' : '' }}</q-toolbar-title>
         <q-space class="mobile-hide" />
         <div class="text-caption mobile-hide">构建时间: {{ buildTime }}</div>
       </q-toolbar>

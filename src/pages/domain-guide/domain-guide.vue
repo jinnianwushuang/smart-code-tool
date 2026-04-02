@@ -5,7 +5,7 @@
       <a-row type="flex" justify="space-between" align="middle">
         <a-col>
           <a-space size="large" v-if="isDesktop">
-            <span class="page-title">大前端架构导航</span>
+            <span class="page-title">架构导航</span>
             <a-radio-group v-model:value="viewMode" button-style="solid">
               <a-radio-button value="card"><appstore-outlined /> 卡片视图</a-radio-button>
               <a-radio-button value="table"><table-outlined /> 表格视图</a-radio-button>

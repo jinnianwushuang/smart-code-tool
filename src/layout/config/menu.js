@@ -2,7 +2,7 @@ export const menuList = [
   {
     icon: 'book',
     name: 'domain-guide',
-    label: '大前端架构导航',
+    label: '架构导航',
     separator: false,
   },
 
@@ -27,7 +27,7 @@ export const menuList = [
   {
     icon: 'book',
     name: 'vue-architecture-document',
-    label: 'Vue 架构文档',
+    label: 'VUE架构',
     separator: true,
   },
 ]
