@@ -18,7 +18,9 @@ dayjs.extend(timezone)
 // Your site is live at https://jinnianwushuang.github.io/smart-code-tool/
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/smart-code-tool/', // 例如：'/my-vue-app/'
+  base: '/smart-code-tool/', // 例如：'/my-vue-app/'、
+  // base: '/',
+
   define: {
     // 注入全局变量
     __APP_BUILD_TIME__: JSON.stringify(dayjs().tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss Z')),

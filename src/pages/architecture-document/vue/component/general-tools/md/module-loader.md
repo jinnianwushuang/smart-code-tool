@@ -1,11 +1,11 @@
 ---
-title: 通用工具类 moduleLoader
-order: 3
+title: 模块聚合加载器
+order: 31
 ---
 
-## 通用工具类 moduleLoader
+## 模块聚合加载器
 
-进阶版本支持：
+支持特性：
 
 1. **自定义转换函数**：不局限于 `snake_case`，也可以传 `camelCase`。
 2. **自定义过滤规则**：通过回调函数决定哪些文件要排除。

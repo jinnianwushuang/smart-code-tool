@@ -23,7 +23,7 @@ const all_tabs = [
   { name: 'StandardCode', label: '标准代码', component: StandardCode },
   { name: 'ReferenceCode', label: '参考代码', component: ReferenceCode },
   { name: 'GeneralTools', label: '通用工具', component: GeneralTools },
-  { name: 'GeneralComposable', label: '通用组合式', component: GeneralComposable },
+  { name: 'GeneralComposable', label: '副作用清理', component: GeneralComposable },
 ]
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)

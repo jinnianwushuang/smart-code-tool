@@ -1,9 +1,9 @@
 ---
-title: 原生事件监听清理函数
+title: 原生事件监听清理
 order: 5
 ---
 
-## 原生事件监听清理函数
+## 原生事件监听清理
 
 在 Vue 3 中，原生事件监听（`addEventListener`）如果没有配对的 `removeEventListener`，在组件销毁后会导致内存泄漏甚至逻辑冲突。
 

@@ -16,6 +16,7 @@
               label="原始函数 (例如: get_name(str){ )"
               rows="12"
               placeholder="get_name(a, b) { ..."
+              @update:model-value="transformCode"
             />
           </div>
         </div>
@@ -55,6 +56,13 @@ const transformCode = () => {
     $q.notify({ message: '请输入代码', color: 'warning' })
     return
   }
+  let input_str = inputCode.value.trim()
+  input_str = input_str.replace(/function /g, ' ')
+  input_str = input_str.replace(/export /g, ' ')
+  let has_async = input_str.includes('async ')
+  if (has_async) {
+    input_str = input_str.replace(/async /g, ' ')
+  }
   // 正则逻辑说明：
   // ^\s* 匹配行首空格
   // ([a-zA-Z_$][\w$]*) 捕获组1：函数名
@@ -63,11 +71,11 @@ const transformCode = () => {
   const regex = /([a-zA-Z_$][\w$]*)\s*\((.*?)\)\s*\{/g
   const prefix = addExport.value ? 'export const ' : 'const '
   // 执行替换
-  const result = inputCode.value.replace(regex, (match, funcName, params) => {
-    return `${prefix}${funcName} = (${params}) => {`
+  const result = input_str.replace(regex, (match, funcName, params) => {
+    return `${prefix}${funcName} =  ${has_async ? 'async ' : ''}(${params}) => {`
   })
   outputCode.value = result
-  if (result === inputCode.value) {
+  if (result === inputCode.value.trim()) {
     $q.notify({ message: '未匹配到可转换的函数格式', color: 'orange' })
   }
   copyOutput()
@@ -78,6 +86,9 @@ const copyOutput = () => {
 const reset = () => {
   inputCode.value = ''
   outputCode.value = ''
+}
+async function get_name(str) {
+  return str
 }
 </script>
 <style scoped>

@@ -1,9 +1,9 @@
 ---
-title: watch清理函数
-order: 14
+title: watch清理
+order: 25
 ---
 
-## watch清理函数
+## watch清理
 
 在 Vue 3 中，`watch` 或 `watchEffect` 会返回一个 **停止监听函数 (Stop Handle)**。如果在组件外部或异步逻辑中创建了监听器，必须手动调用这个函数来销毁它，否则会造成内存泄漏。
 

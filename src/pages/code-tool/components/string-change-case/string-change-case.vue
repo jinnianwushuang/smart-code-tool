@@ -17,7 +17,7 @@
           bg-color="white"
         >
           <template #prepend>
-            <q-btn color="grey" @click="inputText = ''">清空</q-btn>
+            <q-btn color="grey" class="q-mr-lg" @click="inputText = ''">清空</q-btn>
           </template>
         </q-input>
         <!-- 转换结果表格 -->

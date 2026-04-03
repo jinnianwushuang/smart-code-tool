@@ -1,13 +1,13 @@
 ---
-title: DOM引用清理函数
-order: 1
+title: DOM引用清理
+order: 11
 ---
+
+## DOM引用清理
 
 这份笔记整理了 Vue 3.5+ 推出的 `useTemplateRef` 与传统 `ref` 在 DOM 引用管理上的核心差异，以及在面对第三方库（如 ECharts, Swiper）时的副作用销毁最佳实践。
 
-------
-
-## 📝 Vue 3 DOM 引用与副作用销毁指南
+---
 
 ## 一、 `useTemplateRef` vs `ref` 核心差异
 
@@ -19,7 +19,7 @@ order: 1
 | **TS 类型推导** | 需要手动指定：`ref<HTMLDivElement                 | null>(null)`                                   |
 | **初始化时机**  | 挂载前为 `null`                                   | 挂载前为 `null`                                |
 
-------
+---
 
 ## 二、 基础副作用销毁 (DOM 原生操作)
 
@@ -31,7 +31,9 @@ order: 1
 
 ```javascript
 const box = useTemplateRef('my-box')
-const handleResize = () => { /* ... */ }
+const handleResize = () => {
+  /* ... */
+}
 
 onMounted(() => {
   box.value?.addEventListener('resize', handleResize)
@@ -58,7 +60,7 @@ watchEffect((onCleanup) => {
 })
 ```
 
-------
+---
 
 ## 三、 三方库复杂 DOM 引用的副作用销毁 (重点)
 
@@ -83,7 +85,9 @@ onMounted(() => {
   if (chartDom.value) {
     // 2. 初始化实例
     myChart = echarts.init(chartDom.value)
-    myChart.setOption({ /* ... */ })
+    myChart.setOption({
+      /* ... */
+    })
   }
 })
 
@@ -91,12 +95,12 @@ onUnmounted(() => {
   // 3. 核心：执行三方库专用的销毁逻辑
   if (myChart) {
     myChart.dispose() // 释放 WebGL/Canvas 资源、解绑内部监听
-    myChart = null    // 彻底切断 JS 引用
+    myChart = null // 彻底切断 JS 引用
   }
 })
 ```
 
-------
+---
 
 ## 四、 总结与避坑指南
 
@@ -107,13 +111,7 @@ onUnmounted(() => {
 3. **Keep-alive 陷阱**：
    - 如果组件在 `<KeepAlive>` 中，`onUnmounted` 不会触发。请改用 `onDeactivated` 钩子来停止定时器或高耗能动画，并在 `onActivated` 中重新激活。
 
-------
-
-
-
-
-
-
+---
 
 ## DOM引用清理函数
 

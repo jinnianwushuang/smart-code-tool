@@ -30,25 +30,22 @@ order: 1
 | **接口调度**     | 组件私有API请求逻辑函数                                    | `模块/api-request/`                            |
 | **状态变更**     | 原 `VUEX` 中的 `Setter` 函数                               | 直接引入使用                                   |
 | **全局工具**     | 如日期格式化、消息提示等通用函数                           | `project-common.js`                            |
-| **向上事件派发** | 消息通信：对父级组件的派发事件生成器                       | `模块/module/emit/index.js`                    |
+| **向上事件派发** | 消息通信：对父级组件的派发事件生成器                       | `模块/module/emit/emit.js`                     |
 | **向下事件管道** | 消息通信：对子孙组件的事件管道注册器                       | `模块/module/event-pipeline/event-pipeline.js` |
-| **Vue监听清理**  | 副作用清理：Vue 监听生成器                                 | `模块/effect/watcher.js`                       |
-| **原生监听清理** | 副作用清理：DOM事件监听 生成器                             | `模块/effect/listener.js`                      |
-| **全局事件总线** | 副作用清理：Mitt 生成器                                    | `模块/effect/mitter.js`                        |
-| **DOM清理**      | 副作用清理：DOM 引用生成器                                 | `模块/effect/dom.js`                           |
-| **定时器清理**   | 副作用清理：定时器、动画帧 生成器                          | `模块/effect/timer.js`                         |
-| **其他清理**     | 副作用清理：Observer，AbortController，WebSocket 等 生成器 | `模块/effect/other.js`                         |
+| **Vue监听清理**  | 副作用清理：Vue 监听生成器                                 | `模块/module/effect/watcher.js`                |
+| **原生监听清理** | 副作用清理：DOM事件监听 生成器                             | `模块/module/effect/listener.js`               |
+| **全局事件总线** | 副作用清理：Mitt 生成器                                    | `模块/module/effect/mitter.js`                 |
+| **DOM清理**      | 副作用清理：DOM 引用生成器                                 | `模块/module/effect/dom.js`                    |
+| **定时器清理**   | 副作用清理：定时器、动画帧 生成器                          | `模块/module/effect/timer.js`                  |
+| **其他清理**     | 副作用清理：Observer，AbortController，WebSocket 等 生成器 | `模块/module/effect/other.js`                  |
 
 ## 3. 装配 (Assembly)
 
-| 步骤 | 事务                              | 说明                                                     | 对应 目录、文件                    |
-| ---- | --------------------------------- | -------------------------------------------------------- | ---------------------------------- |
-| 1    | 单元属性装配 (State Assembly)     | 将上述“零件：属性”（不包含 props） 全部组合返回。        | 切面/assembler/module/state.js     |
-| 2    | 单元方法装配 (Method Assembly)    | 将上述“零件：方法” 根据实际需要组合返回。                | 切面/assembler/module/method.js    |
-| 3    | 单元调度装配 (Lifecycle Assembly) | 将上述“零件：方法”按流程业务逻辑在生命周期内执行调度。   | 切面/assembler/module/lifecycle.js |
-| 4    | 单元聚合装配 (Assembler Assembly) | 将单元属性装配、单元方法装配、单元调度装配 聚合 装配。   | 切面/composable/assembler.js       |
-| 5    | 全部聚合装配 (All Assembly)       | 多个“单元聚合装配”的最终聚合。                           | 模块/composable/assembler.js       |
-| 6    | 上下文装配(Context Assembly)      | 执行最终聚合生成的队列，对提供的基础上下文进行扩充装配。 | 模块/index.vue                     |
+| 步骤 | 事务                              | 说明                                                     | 对应 目录、文件             |
+| ---- | --------------------------------- | -------------------------------------------------------- | --------------------------- |
+| 1    | 单元聚合装配 (Assembler Assembly) | 将属性、方法、调度聚合装配。                             | 切面/assembler/assembler.js |
+| 2    | 全部聚合装配 (All Assembly)       | 多个“单元聚合装配”的最终聚合。                           | 模块/assembler/assembler.js |
+| 3    | 上下文装配(Context Assembly)      | 执行最终聚合生成的队列，对提供的基础上下文进行扩充装配。 | 模块/index.vue              |
 
 ## 4. 调试指南
 

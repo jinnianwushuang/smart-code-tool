@@ -15,6 +15,7 @@
           label="粘贴代码到这里"
           placeholder='例如: export const myVar = ref("")'
           rows="10"
+          @update:model-value="extractVariables"
         />
 
         <!-- 操作按钮 -->

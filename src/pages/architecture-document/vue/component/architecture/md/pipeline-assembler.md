@@ -108,14 +108,13 @@ export const handle_query_click = (payload) => {
 ## 4. 最终调用效果
 
 ```javascript
-import { all_event_pipeline } from "src/standardization/backend-page-template/module/event-pipeline/event-pipeline.js";
+import { all_event_pipeline } from 'src/standardization/backend-page-template/module/event-pipeline/event-pipeline.js'
 
- <q-btn
-        label="查询"
-        color="primary"
-        @click="all_event_pipeline.other.handle_query_click"
-      />
-
+//  <q-btn
+//         label="查询"
+//         color="primary"
+//         @click="all_event_pipeline.other.handle_query_click"
+//       />
 ```
 
 ## 💡 核心逻辑说明
