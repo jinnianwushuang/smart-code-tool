@@ -1,4 +1,6 @@
-export const vue_docs = [
+export const tab_name = 'vue'
+export const order = 11
+export const docs = [
   {
     category: 'VUE核心框架与基础',
     color: 'green',

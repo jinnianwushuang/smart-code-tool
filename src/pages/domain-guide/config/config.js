@@ -1,21 +1,21 @@
-import { shallowRef } from 'vue'
-import { flutter_docs } from './module/flutter.js'
-import { fullstack_docs } from './module/fullstuck.js'
-import { react_docs } from './module/react.js'
-import { vue_docs } from './module/vue.js'
+const raw_modules = import.meta.glob('./module/*.js', { eager: true })
+import { map_glob_modules } from 'src/output/common/project-common.js'
 
-import { architecture_docs } from './module/architecture.js'
+const modules = map_glob_modules(raw_modules)
 
-import { js_basic_doc } from './module/js-basic.js'
+let all_tabs = []
 
-// 综合所有维度的文档数据
-export const allDocGroups = shallowRef([
-  ...js_basic_doc,
+let all_docs = {}
 
-  ...vue_docs,
-  ...react_docs,
-  ...flutter_docs,
-  ...fullstack_docs,
+Object.entries(modules).forEach(([key, value]) => {
+  const { docs, tab_name, order } = value
+  all_docs[key] = docs
+  all_tabs.push({
+    name: tab_name,
+    key,
+    order,
+  })
+})
+all_tabs.sort((a, b) => a.order - b.order)
 
-  ...architecture_docs,
-])
+export { all_docs, all_tabs }

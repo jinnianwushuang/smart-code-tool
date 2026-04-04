@@ -51,21 +51,19 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { RouterView, useRouter } from 'vue-router'
-import { MenuOutlined } from '@ant-design/icons-vue'
 import { menuList } from './config/menu.js'
 import { useQuasar } from 'quasar'
+import { useStorage } from '@vueuse/core'
 const $q = useQuasar()
 const isDesktop = $q.platform.is.desktop
 const view = isDesktop ? 'hHh Lpr lff' : 'lhh LpR lff'
 const isDev = import.meta.env.DEV
-const envName = import.meta.env.MODE
 const drawer = ref(false)
-const current_menu = ref({})
+const current_menu = useStorage('src_layout_layout1', menuList[0])
 const router = useRouter()
 const buildTime = __APP_BUILD_TIME__
 onMounted(() => {
-  current_menu.value = menuList[0]
-  router.push({ name: menuList[0].name })
+  router.push({ name: current_menu.name })
 })
 const handle_click_menu = (menuItem) => {
   console.log(menuItem)

@@ -1,4 +1,6 @@
-export const flutter_docs = [
+export const tab_name = 'flutter'
+export const order = 51
+export const docs = [
   {
     category: 'Flutter 跨平台核心',
     color: 'cyan',
@@ -12,6 +14,7 @@ export const flutter_docs = [
         desc: 'Google 出品的 UI 工具包，一份代码构建多端原生应用。',
         priority: 5,
       },
+
       {
         name: 'Dart 语言指南',
         url: 'https://dart.dev',
@@ -28,6 +31,31 @@ export const flutter_docs = [
       },
     ],
   },
+
+  {
+    category: 'Flutter 中文',
+    color: 'cyan',
+    brandColor: '#02569B',
+
+    items: [
+      {
+        name: 'Flutter 中文网',
+        url: 'https://flutter.cn',
+        tag: 'Framework',
+        desc: 'Flutter 官方中文社区，提供中文文档、资源、社区、博客、视频等。',
+        priority: 5,
+      },
+
+      {
+        name: 'Flutter 实战·第二版',
+        url: 'https://book.flutterchina.club/',
+        tag: '教程',
+        desc: '国内最流行、讲解极其透彻的入门进阶神书',
+        priority: 5,
+      },
+    ],
+  },
+
   {
     category: 'Flutter 状态管理选型',
     color: 'magenta',
@@ -83,6 +111,35 @@ export const flutter_docs = [
         url: 'https://skia.org',
         tag: 'Graphics',
         desc: '底层二维图形库文档，了解 Flutter 每一像素如何被绘制。',
+        priority: 3,
+      },
+    ],
+  },
+  {
+    category: 'Flutter 工具',
+    color: 'gold',
+    brandColor: '#FFB800',
+
+    items: [
+      {
+        name: 'Flutter DevTools',
+        url: 'https://flutter.dev/docs/development/tools/devtools/overview',
+        tag: 'Debug',
+        desc: 'Flutter 官方调试工具，提供完整的开发环境，包括 DevTools、Flutter Inspector、Flame Graph 等。',
+        priority: 5,
+      },
+      {
+        name: 'Flutter Gems',
+        url: 'https://fluttergems.dev',
+        tag: '资源导航',
+        desc: 'Flutter 生态可视化指南，按功能场景分类查找 UI 库',
+        priority: 4,
+      },
+      {
+        name: 'DartPad',
+        url: 'https://dartpad.dev',
+        tag: '工具/沙盒',
+        desc: '免安装环境，在线编写并直接运行 Flutter 代码',
         priority: 3,
       },
     ],

@@ -1,4 +1,6 @@
-export const react_docs = [
+export const tab_name = 'react'
+export const order = 71
+export const docs = [
   {
     category: 'React 生态与现代架构',
     color: 'cyan',

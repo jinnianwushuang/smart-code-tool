@@ -1,4 +1,6 @@
-export const architecture_docs = [
+export const tab_name = '架构'
+export const order = 8
+export const docs = [
   {
     category: '构建工具与生态',
     color: 'orange',

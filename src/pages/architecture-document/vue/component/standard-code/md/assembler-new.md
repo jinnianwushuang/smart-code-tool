@@ -1,5 +1,5 @@
 ---
-title: 装配-新版
+title: 装配
 order: 99
 ---
 
@@ -12,7 +12,6 @@ order: 99
 
 ```
 
-
 ## 聚合装配： assembler/assembler.js
 
 ```javascript
@@ -20,7 +19,9 @@ import * as composable_common from 'src/output/common/composable-common.js'
 import { super_assemble_assembler } from 'src/output/common/project-common.js'
 
 //公共的外部模块
-const income_assembler = ['useGlobalVariable']
+const public_assembler = ['useGlobalVariable']
+//手动引入的外部模块，不在 composable_common 中 的模块
+const manual_assembler = []
 //当前文件路径
 const current_file_path = import.meta.url
 
@@ -33,12 +34,12 @@ const modules = import.meta.glob(['../module/**/*.js', '../state/*.js'], {
 export const assemble_assembler = () => {
   return super_assemble_assembler({
     composable_common,
-    income_assembler,
+    public_assembler,
+    manual_assembler,
     current_file_path,
     modules,
   })
 }
-
 ```
 
 ## 上下文装配： index.vue

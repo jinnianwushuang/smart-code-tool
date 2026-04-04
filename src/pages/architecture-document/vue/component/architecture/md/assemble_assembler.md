@@ -52,9 +52,9 @@ import { get_file_name_cases } from 'src/common/util/file/file.js'
  * @param {Object} all_params 聚合参数
  * @returns {Object} 包含状态机、方法和生命周期函数队列的对象
  * @description
- * 1. 根据传入的参数类型（modules 或 income_assembler）选择不同的聚合策略。
+ * 1. 根据传入的参数类型（modules 或 public_assembler）选择不同的聚合策略。
  * 2. 当传入 modules 时，自动扫描并分类函数到状态机、方法和生命周期队列。
- * 3. 当传入 income_assembler 时，从公共库中提取指定函数，并根据命名约定分类。
+ * 3. 当传入 public_assembler 时，从公共库中提取指定函数，并根据命名约定分类。
  * 4. 支持特殊约定：如果函数名包含 "assembler"，则执行该函数并解构其内部的三个函数数组进行合并。
  */
 export const common_assemble_assembler = (all_params) => {
@@ -65,7 +65,7 @@ export const common_assemble_assembler = (all_params) => {
     return assemble_assembler_when_modules(all_params)
   } else {
     // 否则，处理传入的外部聚合器列表
-    return assemble_assembler_when_income_assembler(all_params)
+    return assemble_assembler_when_public_assembler(all_params)
   }
 }
 
@@ -118,21 +118,21 @@ const assemble_assembler_when_modules = (all_params) => {
 /**
  * 场景二：基于传入的名称列表从公共库中提取并合并聚合结果
  */
-const assemble_assembler_when_income_assembler = (all_params) => {
-  const { composable_common, income_assembler = [], local_assembler } = all_params
+const assemble_assembler_when_public_assembler = (all_params) => {
+  const { composable_common, public_assembler = [], local_assembler } = all_params
 
   const state_fn_arr = []
   const method_fn_arr = []
   const lifecycle_fn_arr = []
 
-  let check = Array.isArray(income_assembler) && income_assembler.length > 0
+  let check = Array.isArray(public_assembler) && public_assembler.length > 0
   // 如果没有外部传入的需求，则直接返回本地扫描的结果（若有）
   if (!check) {
     return local_assembler
   }
 
   // 遍历需求列表，从公共 Composable 库中提取对应函数
-  income_assembler.forEach((income_fn_name) => {
+  public_assembler.forEach((income_fn_name) => {
     const fn = composable_common[income_fn_name]
     if (typeof fn != 'function') {
       return

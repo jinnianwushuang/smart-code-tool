@@ -1,4 +1,6 @@
-export const js_basic_doc = [
+export const tab_name = 'JS基础'
+export const order = 21
+export const docs = [
   {
     category: 'JS 底层与标准 (Core Standards)',
     icon: 'GlobalOutlined',

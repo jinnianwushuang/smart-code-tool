@@ -16,6 +16,7 @@
     "@ant-design/icons-vue": "^7.0.1",
     "@quasar/extras": "^1.17.0",
     "@tailwindcss/vite": "^4.2.2",
+    "@vueuse/core": "^14.2.1",
     "@zxing/library": "^0.21.3",
     "ant-design-vue": "^4.2.6",
     "chalk": "^5.6.2",
