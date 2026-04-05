@@ -85,7 +85,7 @@
     </a-card>
 
     <!-- 弹窗：手动粘贴数据 -->
-    <a-modal v-model:visible="showPasteModal" title="粘贴 JSON 数据" @ok="handlePasteConfirm">
+    <a-modal v-model:open="showPasteModal" title="粘贴 JSON 数据" @ok="handlePasteConfirm">
       <a-alert
         message="支持嵌套或扁平 JSON，系统将自动识别并合并至当前列表。"
         type="info"

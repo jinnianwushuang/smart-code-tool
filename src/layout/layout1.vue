@@ -56,7 +56,7 @@ import { useQuasar } from 'quasar'
 import { useStorage } from '@vueuse/core'
 const $q = useQuasar()
 const isDesktop = $q.platform.is.desktop
-const view = isDesktop ? 'hHh Lpr lff' : 'lhh LpR lff'
+const view = isDesktop ? 'hHh Lpr lff' : 'hHh Lpr lff'
 const isDev = import.meta.env.DEV
 const drawer = ref(false)
 const current_menu = useStorage('src_layout_layout1', menuList[0])

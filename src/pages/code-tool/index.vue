@@ -25,7 +25,7 @@ import SvgBatchConverter from 'src/pages/code-tool/components/svg-batch-converte
 import I18nEditorWithDiff from 'src/pages/code-tool/components/i18n-editor-with-diff/i18n-editor-with-diff.vue'
 import PathCalculation from 'src/pages/code-tool/components/path-calculation/path-calculation.vue'
 import TreeFolderEditer from 'src/pages/code-tool/components/tree-folder-editer/tree-folder-editer.vue'
-import VueCodeImport from 'src/pages/code-tool/components/vue-code-import/vue-code-import.vue'
+
 import RefVariableToAssignmentStatement from 'src/pages/code-tool/components/ref-variable-to-assignment-statement/ref-variable-to-assignment-statement.vue'
 
 const current_tab_name = ref('StringChangeCase')
@@ -65,9 +65,8 @@ const all_tabs = [
   },
   { name: 'SvgBatchConverter', label: 'SVG 批量转换VUE组件', component: SvgBatchConverter },
   { name: 'I18nEditorWithDiff', label: 'i18n 编辑器', component: I18nEditorWithDiff },
-  { name: 'PathCalculation', label: '相对引用路径计算器', component: PathCalculation },
+  { name: 'PathCalculation', label: '引用路径计算', component: PathCalculation },
   { name: 'TreeFolderEditer', label: '树形文件夹编辑器', component: TreeFolderEditer },
-  { name: 'VueCodeImport', label: 'Vue 组件引用生成器', component: VueCodeImport },
 ]
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)
