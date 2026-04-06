@@ -17,6 +17,7 @@ import StandardCode from 'src/pages/architecture-document/vue/component/standard
 import GeneralTools from 'src/pages/architecture-document/vue/component/general-tools/general-tools.vue'
 import GeneralComposable from 'src/pages/architecture-document/vue/component/general-composable/general-composable.vue'
 
+import StandardizedTemplateCn from 'src/pages/architecture-document/vue/component/standardized-template-cn/standardized-template-cn.vue'
 const current_tab_name = ref('ArchitectureDocument')
 const all_tabs = [
   { name: 'ArchitectureDocument', label: '架构文档', component: ArchitectureDocument },
@@ -24,6 +25,7 @@ const all_tabs = [
   { name: 'ReferenceCode', label: '参考代码', component: ReferenceCode },
   { name: 'GeneralTools', label: '通用工具', component: GeneralTools },
   { name: 'GeneralComposable', label: '副作用清理', component: GeneralComposable },
+  { name: 'StandardizedTemplateCn', label: '标准模板', component: StandardizedTemplateCn },
 ]
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)

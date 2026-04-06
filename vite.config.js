@@ -9,7 +9,8 @@ import Markdown from 'unplugin-vue-markdown/vite'
 import { createHighlighter } from 'shiki'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
-
+import prism from 'markdown-it-prism'
+import matter from 'gray-matter' // 引入 frontmatter 解析器
 // 1. 扩展插件
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -17,74 +18,101 @@ dayjs.extend(timezone)
 // https://quasar.dev/start/vite-plugin
 // Your site is live at https://jinnianwushuang.github.io/smart-code-tool/
 // https://vite.dev/config/
-export default defineConfig({
-  base: '/smart-code-tool/', // 例如：'/my-vue-app/'、
-  // base: '/',
+export default defineConfig(async () => {
+  // 1. 初始化 Shiki 高亮器 (Vite 配置支持异步)
+  const highlighter = await createHighlighter({
+    themes: ['github-dark'],
+    langs: ['javascript', 'typescript', 'vue', 'html', 'bash', 'json'],
+  })
+  return {
+    base: '/smart-code-tool/', // 例如：'/my-vue-app/'、
+    // base: '/',
 
-  define: {
-    // 注入全局变量
-    __APP_BUILD_TIME__: JSON.stringify(dayjs().tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss Z')),
-  },
-  plugins: [
-    vue({
-      template: { transformAssetUrls },
-      // 必须：允许 vue 插件处理 .md 文件
-      include: [/\.vue$/, /\.md$/],
-    }),
-    // Markdown({
-    //   // 可选：如果你想在 md 里使用 Vue 组件 允许在 MD 中解析 Vue 指令和组件
-    //   vueTemplate: true,
-    //   // 可选：给 md 文件增加包装类名
-    //   wrapperClasses: 'markdown-body',
-    // }),
-    Markdown({
-      vueTemplate: true,
-      // 1. 配置代码高亮 (使用 Shiki)
-      markdownItSetup: async (md) => {
-        const highlighter = await createHighlighter({
-          themes: ['github-dark', 'github-light'],
-          langs: ['javascript', 'typescript', 'vue', 'html', 'css', 'bash'],
-        })
-
-        md.options.highlight = (code, lang) => {
-          return highlighter.codeToHtml(code, {
-            lang,
-            theme: 'github-dark',
-          })
-        }
-
-        // 2. 自定义插件：为代码块增加“复制”按钮的 HTML 结构
-        const defaultRender = md.renderer.rules.fence
-        md.renderer.rules.fence = (...args) => {
-          const [tokens, idx] = args
-          const content = tokens[idx].content.replace(/"/g, '&quot;')
-          const rawCode = defaultRender(...args)
-          // 在代码块外层包裹一层，并添加复制按钮
-          return `
-            <div class="code-block-wrapper" style="position: relative;">
-              <button class="copy-btn" onclick="navigator.clipboard.writeText(\`${content}\`).then(() => { this.innerText='已复制'; setTimeout(() => this.innerText='复制', 2000) })"
-                style="position: absolute; right: 10px; top: 10px; z-index: 10; opacity: 0.6; cursor: pointer; border: none; border-radius: 4px; padding: 4px 8px; font-size: 12px;">
-                复制
-              </button>
-              ${rawCode}
-            </div>
-          `
-        }
-      },
-    }),
-    // @quasar/plugin-vite options list:
-    // https://github.com/quasarframework/quasar/blob/dev/vite-plugin/index.d.ts
-    quasar({
-      sassVariables: fileURLToPath(new URL('./src/css/quasar-variables.sass', import.meta.url)),
-    }),
-    vueDevTools(),
-  ],
-  resolve: {
-    alias: {
-      src: fileURLToPath(new URL('./src', import.meta.url)),
+    define: {
+      // 注入全局变量
+      __APP_BUILD_TIME__: JSON.stringify(
+        dayjs().tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss Z'),
+      ),
     },
-  },
-  server: {
-    port: 23330,
-  },
+    plugins: [
+      vue({
+        template: { transformAssetUrls },
+        // 必须：允许 vue 插件处理 .md 文件
+        include: [/\.vue$/, /\.md$/],
+      }),
+      // https://github.com/unplugin/unplugin-vue-markdown/blob/HEAD/src/types.ts
+      // 1. Markdown 必须在 Vue 之前
+      Markdown({
+        include: [/\.md$/],
+        markdownUses: [prism],
+        // 关键 1: 关闭自带的 Frontmatter 解析，避免重复冲突
+        frontmatter: true,
+        // 关键 2: 关闭 Head 注入，解决 useHead 报错
+        headEnabled: true,
+        // 关键 3: 开启代码块转义
+        escapeCodeTagInterpolation: true,
+
+        // 关键 4: 手动彻底剥离 Frontmatter，确保留给 md-it 的是纯净的 Markdown
+        // transforms: {
+        //   before(code) {
+        //     // 使用 gray-matter 剥离，并确保返回的 content 前后有换行符
+        //     // 否则 ## 标题如果紧贴顶部可能无法识别
+        //     const { content } = matter(code)
+        //     return `\n${content}\n`
+        //   },
+        // },
+
+        // 关键 5: 使用最新的 markdownSetup 钩子
+        markdownSetup(md) {
+          md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+            const token = tokens[idx]
+            const lang = token.info.trim() || 'text'
+            const code = token.content
+
+            // 1. 确保 highlighter 存在，否则回退到默认渲染
+            if (!highlighter) {
+              return `<pre><code>${md.utils.escapeHtml(code)}</code></pre>`
+            }
+
+            // 2. 生成高亮 HTML
+            const highlightedHtml = highlighter.codeToHtml(code, {
+              lang,
+              // theme: 'vitesse-dark',
+              // 切换为 github-dark 或 github-light
+              theme: 'github-dark',
+            })
+
+            // 3. 对原始代码进行更安全的编码，防止在 HTML 属性中报错
+            const safeRawCode = encodeURIComponent(code)
+
+            // 注意：在返回的字符串中，确保 v-pre 所在标签包裹了所有可能含有 {{ }} 的内容
+            return `
+            <MarkdownCodeBlock lang="${lang}" rawCode="${safeRawCode}">
+              <div v-pre>${highlightedHtml}</div>
+            </MarkdownCodeBlock>\n`
+
+            //             return `
+
+            //   <div v-pre>${highlightedHtml}</div>
+            //  \n`
+          }
+        },
+      }),
+
+      // MarkdownCodeBlock
+
+      quasar({
+        sassVariables: fileURLToPath(new URL('./src/css/quasar-variables.sass', import.meta.url)),
+      }),
+      vueDevTools(),
+    ],
+    resolve: {
+      alias: {
+        src: fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    },
+    server: {
+      port: 23330,
+    },
+  }
 })

@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import { Quasar, Notify, Loading } from 'quasar'
 import { register_component } from 'src/boot/component.js'
 import Antd from 'ant-design-vue'
+import { createHead } from '@unhead/vue/client'
 // Import icon libraries
 import '@quasar/extras/roboto-font/roboto-font.css'
 import '@quasar/extras/material-icons/material-icons.css'
@@ -21,7 +22,7 @@ import 'src/css/index.scss'
 import App from './App.vue'
 import router from './router'
 const app = createApp(App)
-
+register_component(app)
 app.use(router)
 app.use(Quasar, {
   plugins: {
@@ -42,7 +43,7 @@ app.use(Quasar, {
   */
 })
 app.use(Antd)
-register_component(app)
-
+const head = createHead()
+app.use(head)
 // Assumes you have a <div id="app"></div> in your index.html
 app.mount('#app')

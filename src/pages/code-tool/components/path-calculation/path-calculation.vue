@@ -27,7 +27,7 @@
         <div v-if="generatedCode" style="margin-top: 24px">
           <p class="text-caption text-grey">生成结果：</p>
           <div class="result-box">
-            <code>{{ generatedCode }}</code>
+            <pre v-if="generatedCode" class="code-block q-ma-none">{{ generatedCode }}</pre>
           </div>
         </div>
       </div>
@@ -193,7 +193,11 @@ const generateCode_2 = () => {
   copyOutput()
 }
 const generateCode = (file_path) => {
-  if (!file_path) return
+  console.error(file_path)
+  if (!file_path) {
+    return ''
+  }
+  let sub = file_path.substring(file_path.lastIndexOf('.'))
   file_path = lodash.trimStart(file_path, './ ').replace(/\.\w+$/, '')
   // 1. 提取文件名。例如: '.../reference-code.vue' -> 'reference-code'
   const pathParts = file_path.split('/')
@@ -211,7 +215,7 @@ const generateCode = (file_path) => {
   // 如果路径不是以 src 或 @ 开头，可以根据项目规范在此处补全别名
   const path = file_path.trim()
 
-  return `import ${componentName} from "${path}"`
+  return `import ${componentName} from "${path}${sub}"`
 }
 const copyOutput = () => {
   copyText(generatedCode.value)

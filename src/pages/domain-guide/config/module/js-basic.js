@@ -87,4 +87,46 @@ export const docs = [
       },
     ],
   },
+  {
+    category: '教程',
+    color: 'purple',
+    items: [
+      {
+        name: 'ES6 入门教程',
+        url: 'https://es6.ruanyifeng.com/',
+        tag: 'Format',
+        desc: '阮一峰老师出品的 ES6 标准参考书',
+      },
+      {
+        name: 'TypeScript 教程',
+        url: 'https://wangdoc.com',
+        tag: 'TS',
+        desc: '阮一峰老师参与维护的 TypeScript 入门教程',
+      },
+      {
+        name: '现代 JavaScript 教程',
+        url: 'https://javascript.info',
+        tag: 'Guide',
+        desc: '从基础到高阶，内容极其详尽的开源教程',
+      },
+      {
+        name: 'MDN Web Docs',
+        url: 'https://mozilla.org',
+        tag: 'Reference',
+        desc: '权威、最全的 JavaScript 官方文档库',
+      },
+      {
+        name: 'JavaScript 经典教程集合',
+        url: 'https://awesome-programming-books.github.io/',
+        tag: 'Deep Dive',
+        desc: '深入探讨 JS 核心机制（闭包、原型、异步等）的经典书籍',
+      },
+      {
+        name: 'JavaScript 算法与数据结构',
+        url: 'https://github.com/trekhleb/javascript-algorithms',
+        tag: 'CS',
+        desc: '用 JS 实现的各种经典算法和数据结构示例',
+      },
+    ],
+  },
 ]

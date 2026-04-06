@@ -9,6 +9,17 @@
           :tab="category.name.toUpperCase()"
         />
       </a-tabs>
+      <div class="bg-white row items-center">
+        <!-- <div>关键字：</div> -->
+        <q-input
+          v-model="search_key"
+          placeholder="请输入关键字"
+          outlined
+          dense
+          clearable
+          :class="is_mobile ? 'col' : 'w-400'"
+        />
+      </div>
     </a-card>
 
     <!-- 视图区域 -->
@@ -16,7 +27,7 @@
       <!-- 2. 卡片视图模式 -->
       <div class="card-grid">
         <div
-          v-for="group in all_docs[current_category]"
+          v-for="group in fliter_by_query(all_docs[current_category])"
           :key="group.category"
           class="group-wrapper"
         >
@@ -47,14 +58,33 @@
 
 <script setup>
 import { ref, computed, markRaw } from 'vue'
+import { useQuasar, copyToClipboard } from 'quasar'
 import { ExportOutlined } from '@ant-design/icons-vue'
 import { all_tabs, all_docs } from './config/config.js'
 import { useStorage } from '@vueuse/core'
 const current_category = useStorage('src_pages_domain_guide_domain_guide', 'vue')
-
+const $q = useQuasar()
+const is_mobile = $q.platform.is.mobile
+const search_key = ref('')
 const openLink = (url) => window.open(url, '_blank')
 const hanle_tab_change = (key) => {
   current_category.value = key
+}
+const compute_if_show = (item) => {
+  if (!search_key.value) {
+    return true
+  }
+  let q = search_key.value.toLowerCase()
+  return [item.name, item.desc, item.tag].filter((x) => x).some((x) => x.toLowerCase().includes(q))
+}
+
+const fliter_by_query = (list) => {
+  return list
+    .map((obj) => ({
+      ...obj,
+      items: obj.items.filter((i) => compute_if_show(i)),
+    }))
+    .filter((obj) => obj.items.length > 0)
 }
 </script>
 
