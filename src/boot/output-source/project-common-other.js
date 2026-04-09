@@ -1,3 +1,5 @@
 export { useQuasar } from 'quasar'
 export { useRoute, useRouter } from 'vue-router'
-export  { default as lodash }from "lodash"
+export { default as lodash } from 'lodash'
+export { default as dayjs } from 'dayjs'
+export { message } from 'ant-design-vue'

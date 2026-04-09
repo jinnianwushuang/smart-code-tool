@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md bg-grey-1">
+  <div class="q-pa-md bg-grey-1">
     <q-card flat bordered class="q-mx-auto shadow-2 max-w-1200">
       <q-card-section class="bg-primary text-white">
         <div class="text-h6">Composable 代码生成器</div>
@@ -44,7 +44,7 @@
         </div>
       </q-card-section>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>

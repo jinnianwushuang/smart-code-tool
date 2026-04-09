@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md">
+  <div class="q-pa-md">
     <q-card flat bordered class="q-mx-auto shadow-2 max-w-1200">
       <q-card-section class="bg-indigo-7 text-white">
         <div class="text-h6">函数代码重构助手</div>
@@ -53,7 +53,7 @@
         </q-input>
       </q-card-section>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>

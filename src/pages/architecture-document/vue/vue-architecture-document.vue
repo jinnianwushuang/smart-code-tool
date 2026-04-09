@@ -1,11 +1,11 @@
 <template>
-  <q-page>
+  <div>
     <q-card>
       <TabLikeButtonsV1 v-model="current_tab_name" :tabs="all_tabs" />
 
       <component :is="current_component" />
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>
@@ -34,7 +34,7 @@ const current_component = computed(() => {
 </script>
 
 <style scoped>
-.q-page {
+.div {
   padding: 16px;
 }
 </style>

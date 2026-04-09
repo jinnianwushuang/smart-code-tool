@@ -1,13 +1,9 @@
 <template>
-  <q-page>
-    <q-splitter
-      v-model="splitterModel"
-      style="height: calc(100vh - 100px);"
-    >
-
+  <div>
+    <q-splitter v-model="splitterModel" style="height: calc(100vh - 100px)">
       <template v-slot:before>
         <div class="q-pa-md">
-           <NonNestedProcessor />
+          <NonNestedProcessor />
         </div>
       </template>
 
@@ -16,15 +12,14 @@
           <NestedProcessor />
         </div>
       </template>
-
     </q-splitter>
-  </q-page>
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import NonNestedProcessor from './component/NonNestedProcessor.vue';
-import NestedProcessor from './component/NestedProcessor.vue';
+import { ref } from 'vue'
+import NonNestedProcessor from './component/NonNestedProcessor.vue'
+import NestedProcessor from './component/NestedProcessor.vue'
 
-const splitterModel = ref(50); // start at 50%
+const splitterModel = ref(50) // start at 50%
 </script>

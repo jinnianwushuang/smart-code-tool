@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-lg bg-grey-1">
+  <div class="q-pa-lg bg-grey-1">
     <q-card flat bordered class="q-mx-auto shadow-2">
       <q-card-section class="bg-indigo text-white row items-center">
         <q-icon name="style" size="sm" class="q-mr-sm" />
@@ -90,7 +90,7 @@
         </q-table>
       </q-card-section>
     </q-card>
-  </q-page>
+  </div>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'

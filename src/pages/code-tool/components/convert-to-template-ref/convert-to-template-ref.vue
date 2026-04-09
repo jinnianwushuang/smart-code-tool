@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md">
+  <div class="q-pa-md">
     <q-card flat bordered class="q-mx-auto max-w-1200">
       <q-card-section class="bg-teal text-white row items-center">
         <q-icon name="code" size="sm" class="q-mr-sm" />
@@ -47,7 +47,7 @@
         </q-input>
       </q-card-section>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>

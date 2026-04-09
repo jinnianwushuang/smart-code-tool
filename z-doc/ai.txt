@@ -211,3 +211,15 @@ npm create vite@latest vue-architecture-template-- --template vue
 vue-architecture-template
 
 基于VUE3 项目， 使用 js 封装一个通用的
+
+
+
+
+
+
+使用 VUE3 SETUP ，ANTDV ，编写一个 完整的后台商户信息管理页面级别组件，
+要求使用卡片布局 ，不能使用表格布局，
+要求商户信息字段尽量完整，
+需要包含修改， 编辑 ，查询 ，支持弹窗修改编辑 ，
+需要支持翻页查询
+使用 js  不要使用 ts

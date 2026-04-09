@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <div>
     <q-card>
       <div class="tabs-container">
         <!-- 1. 渲染 Tab 按钮 -->
@@ -10,7 +10,7 @@
         </div>
       </div>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>

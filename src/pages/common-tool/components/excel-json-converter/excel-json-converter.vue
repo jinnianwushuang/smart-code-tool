@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md bg-grey-2">
+  <div class="q-pa-md bg-grey-2">
     <q-card flat bordered class="q-mx-auto shadow-2" style="max-width: 1200px">
       <!-- 头部工具栏 -->
       <q-card-section class="bg-teal-9 text-white row items-center q-gutter-sm">
@@ -140,7 +140,7 @@
         </div>
       </q-card-section>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>

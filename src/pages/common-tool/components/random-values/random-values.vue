@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md bg-grey-1">
+  <div class="q-pa-md bg-grey-1">
     <div class="row q-col-gutter-md justify-center">
       <!-- 左侧：生成配置 -->
       <div class="col-12 col-md-5">
@@ -129,7 +129,7 @@
         </q-card>
       </div>
     </div>
-  </q-page>
+  </div>
 </template>
 
 <script setup>

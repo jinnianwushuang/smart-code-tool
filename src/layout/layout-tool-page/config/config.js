@@ -1,32 +1,32 @@
 export const menuList = [
   {
     icon: 'book',
-    name: 'domain-guide',
+    key: 'domain-guide',
     label: '架构导航',
     separator: false,
   },
 
   {
     icon: 'inbox',
-    name: 'code-tool',
+    key: 'code-tool',
     label: '代码工具',
     separator: true,
   },
   {
     icon: 'drafts',
-    name: 'common-tool',
+    key: 'common-tool',
     label: '通用工具',
     separator: true,
   },
   {
     icon: 'event',
-    name: 'permanent-notice-calendar',
+    key: 'permanent-notice-calendar',
     label: '万年历',
     separator: true,
   },
   {
     icon: 'book',
-    name: 'vue-architecture-document',
+    key: 'vue-architecture-document',
     label: 'VUE架构',
     separator: true,
   },

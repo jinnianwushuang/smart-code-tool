@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md bg-grey-1">
+  <div class="q-pa-md bg-grey-1">
     <q-card flat bordered class="q-mx-auto shadow-2" style="max-width: 900px">
       <q-card-section class="bg-deep-orange-7 text-white row items-center">
         <q-icon name="ads_click" size="sm" class="q-mr-sm" />
@@ -75,7 +75,7 @@
         </q-input>
       </q-card-section>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>

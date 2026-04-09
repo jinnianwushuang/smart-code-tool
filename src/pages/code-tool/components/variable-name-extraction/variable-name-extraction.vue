@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md">
+  <div class="q-pa-md">
     <q-card flat bordered class="q-mx-auto max-w-1200">
       <q-card-section>
         <div class="text-h6">JavaScript 变量提取器</div>
@@ -39,7 +39,7 @@
         </q-input>
       </q-card-section>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>

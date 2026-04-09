@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md">
+  <div class="q-pa-md">
     <q-card flat bordered class="q-mx-auto shadow-3 max-w-1200">
       <q-card-section class="bg-blue-grey-8 text-white row items-center">
         <q-icon name="cleaning_services" size="sm" class="q-mr-sm" />
@@ -133,7 +133,7 @@
         </div>
       </q-card-section>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>

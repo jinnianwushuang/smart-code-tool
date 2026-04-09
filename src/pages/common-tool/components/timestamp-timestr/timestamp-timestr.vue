@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md bg-grey-2">
+  <div class="q-pa-md bg-grey-2">
     <div class="row q-col-gutter-md">
       <!-- 1. 顶部控制台 (主控时区/实时) -->
       <div class="col-12">
@@ -170,7 +170,7 @@
         </q-card>
       </div>
     </div>
-  </q-page>
+  </div>
 </template>
 
 <script setup>

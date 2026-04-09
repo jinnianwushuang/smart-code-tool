@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md bg-grey-2">
+  <div class="q-pa-md bg-grey-2">
     <q-card flat bordered class="q-mx-auto shadow-2" style="max-width: 1000px">
       <q-card-section class="bg-blue-8 text-white row items-center">
         <q-icon name="content_paste" size="sm" class="q-mr-sm" />
@@ -116,7 +116,7 @@
         </div>
       </q-card-section>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>
