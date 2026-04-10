@@ -77,6 +77,15 @@ const outputCode = ref('')
 const detectedVars = ref([])
 const addVariableDefinitions = ref(false)
 
+const recheck_str_left_half_bracket = (str) => {
+  str = str.trim()
+  if (str.end.endsWith('{')) {
+    return str
+  } else {
+    return `${str}{`
+  }
+}
+
 const transformCode = () => {
   const code = inputCode.value.trim()
   if (!code) {
@@ -120,10 +129,10 @@ const transformCode = () => {
         let params = p3.trim()
         // 如果原本没参数或者是空括号
         if (!params || params === '') {
-          return `${p1}(payload)${p5}{`
+          return recheck_str_left_half_bracket(`${p1}(payload)${p5}`)
         }
         // 如果已有参数，在最前面插入 payload
-        return `${p1}(payload, ${params})${p5}{`
+        return recheck_str_left_half_bracket(`${p1}(payload, ${params})${p5}`)
       })
     } else {
       // 没有括号的情况，直接在参数前插入 payload, 例如: const fn = a => { ... 变成 const fn = (payload, a) => { ...

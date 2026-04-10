@@ -8,7 +8,7 @@ order: 101
 ## 1. 封装通用调度器
 
 ```javascript
-import { get_file_name_cases } from 'src/common/util/file/file.js'
+import { get_file_name_cases } from 'src/common/architecture-design/util/file/file.js'
 
 /**
  * 通用管道事件调度器

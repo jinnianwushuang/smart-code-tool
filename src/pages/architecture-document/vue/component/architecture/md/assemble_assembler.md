@@ -44,8 +44,8 @@ Vue 组件初始化最常见的 Bug 源于“变量还没初始化，方法就�
 ## 2. 聚合入口函数
 
 ```javascript
-import { global_log } from 'src/common/util/log/log.js'
-import { get_file_name_cases } from 'src/common/util/file/file.js'
+import { global_log } from 'src/common/architecture-design/util/log/log.js'
+import { get_file_name_cases } from 'src/common/architecture-design/util/file/file.js'
 
 /**
  * assembler 聚合入口函数

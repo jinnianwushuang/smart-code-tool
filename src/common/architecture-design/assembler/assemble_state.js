@@ -14,7 +14,7 @@ import { global_log } from 'src/common/architecture-design/util/log/log.js'
 
  */
 
-const assemb_quene = [
+const assemble_quene = [
   {
     file_path: '/state/config.js',
     handle: (payload, module) => module || {},
@@ -34,13 +34,18 @@ const assemb_quene = [
   },
 ]
 
-export const common_assemble_state = ({ payload, modules }) => {
-  assemb_quene.forEach(({ file_path, handle }) => {
+export const common_assemble_state = ({ payload, modules, current_file_path }) => {
+  let main_folder = current_file_path.replace(/\\/g, '/').split('/').slice(0, -2).join('/')
+  assemble_quene.forEach(({ file_path, handle }) => {
     Object.keys(modules).forEach((path) => {
       if (path.includes(file_path)) {
         const module = modules[path]
         const dataToMerge = handle(payload, module)
-        merge_to_payload_with_conflict_logs({ payload, dataToMerge, file_path })
+        merge_to_payload_with_conflict_logs({
+          payload,
+          dataToMerge,
+          file_path: `${main_folder}${file_path}`,
+        })
       }
     })
   })

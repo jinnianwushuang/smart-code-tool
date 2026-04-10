@@ -1,4 +1,5 @@
-import { global_log } from "src/common/util/log/log.js";
+import { global_log } from 'src/common/architecture-design/util/log/log.js'
+import { architecture_check_when_merge_to_payload } from './architecture_check.js'
 /**
  *  合并数据到 payload 中，并记录冲突日志
  *  @param {Object} payload - 目标对象，数据将被合并到此对象中
@@ -14,27 +15,35 @@ import { global_log } from "src/common/util/log/log.js";
 export const merge_to_payload_with_conflict_logs = ({
   payload,
   dataToMerge,
-  file_path,
+  file_path = 'unknown',
 }) => {
-  const sourceMap = {}; // 用于记录 key -> file_path 的映射
-  const conflictLogs = []; // 存储冲突详情
+  // 生产环境直接合并，避免解析开销
+  const is_prod = import.meta.env?.PROD
+  if (is_prod) {
+    Object.assign(payload, dataToMerge)
+    return
+  }
+  // 开发环境进行冲突检查
+  // 1. 检查冲突
+  const sourceMap = {} // 用于记录 key -> file_path 的映射
+  const conflictLogs = [] // 存储冲突详情
 
   // 2. 检查冲突并合并
   Object.keys(dataToMerge).forEach((key) => {
     if (key in payload) {
       conflictLogs.push(
         `[冲突] 键 "${key}"  , 新值来源： ${file_path}   , 旧值来源： ${sourceMap[key]}`,
-      );
+      )
     }
-
-    payload[key] = dataToMerge[key];
-    sourceMap[key] = file_path; // 更新或记录来源
-  });
+    architecture_check_when_merge_to_payload(payload, key)
+    payload[key] = dataToMerge[key]
+    sourceMap[key] = file_path // 更新或记录来源
+  })
 
   if (conflictLogs.length > 0) {
-    global_log("[警告]: 键来源冲突报告");
-    console.group("[警告]: 键来源冲突报告");
-    conflictLogs.forEach((log) => console.warn(log));
-    console.groupEnd();
+    global_log('[警告]: 键来源冲突报告')
+    console.group('[警告]: 键来源冲突报告')
+    conflictLogs.forEach((log) => console.error(log))
+    console.groupEnd()
   }
-};
+}

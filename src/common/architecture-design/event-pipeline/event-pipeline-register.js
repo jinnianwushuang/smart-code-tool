@@ -1,5 +1,5 @@
 import { get_file_name_cases } from 'src/common/architecture-design/util/file/file.js'
-
+import { merge_to_payload_with_conflict_logs } from 'src/common/architecture-design/util/merge/merge.js'
 /**
  * 通用管道事件调度器
  * @param {Object} modules - 由 import.meta.glob 扫描出的原始对象
@@ -59,7 +59,12 @@ const register_inner = ({ modules, currentFilePath, multiton }) => {
 
       all_event_pipeline['income'] = income_pipeline_obj
     }
-    payload['all_event_pipeline'] = all_event_pipeline
+
+    merge_to_payload_with_conflict_logs({
+      payload,
+      dataToMerge: { all_event_pipeline },
+      file_path: currentFilePath,
+    })
   }
   if (multiton) {
     return { create_event_pipeline }

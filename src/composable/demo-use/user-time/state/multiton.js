@@ -8,5 +8,14 @@ export const create_multiton_variable = (payload) => {
   const use_time = ref(0)
   //页面进入时间
   const comein_time = ref(0)
-  return { timer1, timer2,use_time, comein_time }
+  // const income_pipeline = ['when_mounted']
+
+  return {
+    timer1,
+    timer2,
+    use_time,
+    //。
+    comein_time,
+    // income_pipeline,
+  }
 }

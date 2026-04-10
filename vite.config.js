@@ -25,7 +25,7 @@ export default defineConfig(async () => {
     langs: ['javascript', 'typescript', 'vue', 'html', 'bash', 'json'],
   })
   return {
-    base: '/smart-code-tool/', // 例如：'/my-vue-app/'、ß
+    base: '/smart-code-tool/', // 例如：'/my-vue-app/'、
     // base: '/',
 
     define: {

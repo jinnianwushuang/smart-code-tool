@@ -32,7 +32,7 @@ export const atoms_assembler = (all_params) => {
   atoms_assembler_when_manual_assembler(all_params, result_point)
 
   // modules 处理状态机
-  result_point.state_fn_arr.push(assemble_state(guilei_modules))
+  result_point.state_fn_arr.push(assemble_state(guilei_modules, current_file_path))
 
   //modules 处理业务方法
   result_point.method_fn_arr.push(assemble_method(guilei_modules, current_file_path))
@@ -46,11 +46,12 @@ export const atoms_assembler = (all_params) => {
  * @param {*} guilei_modules
  * @returns
  */
-const assemble_state = (guilei_modules) => {
+const assemble_state = (guilei_modules, current_file_path) => {
   return (payload) => {
     common_assemble_state({
       payload,
       modules: guilei_modules.state,
+      current_file_path,
     })
   }
 }

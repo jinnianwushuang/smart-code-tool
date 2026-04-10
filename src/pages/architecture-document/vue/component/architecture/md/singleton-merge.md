@@ -31,8 +31,8 @@ export const init_singleton = () => {
 通过这种方式，可以把“文件夹扫描结果”和“已经封装好的业务域”混合传入。
 
 ```javascript
-import { get_file_name_cases } from 'src/common/util/file/file.js'
-import { global_log } from 'src/common/util/log/log.js'
+import { get_file_name_cases } from 'src/common/architecture-design/util/file/file.js'
+import { global_log } from 'src/common/architecture-design/util/log/log.js'
 /**
  * 单例模块高级聚合器
  * @param {...Object} sources - 原始 glob 结果或已聚合的对象

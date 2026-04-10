@@ -16,3 +16,6 @@ const clear = () => {
 const copyOutput = () => {
   copyText(outputCode.value)
 }
+
+// create_multiton_variable
+// create_computed_variable
