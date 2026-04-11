@@ -1,7 +1,4 @@
 const architecture_check_keys = [
-  // 'state_fn_arr',
-  // 'method_fn_arr',
-  // 'lifecycle_fn_arr',
   {
     key: 'wrap_payload',
     default_count: 0,

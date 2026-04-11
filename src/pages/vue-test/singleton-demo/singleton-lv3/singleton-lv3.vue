@@ -25,11 +25,11 @@
   </div>
 </template>
 <script setup>
-import { ref, reactive, onMounted, computed } from 'vue'
 import { PlusOutlined } from '@ant-design/icons-vue'
 import UserSearch from './components/UserSearch.vue'
 import UserTable from './components/UserTable.vue'
 import UserModal from './components/UserModal.vue'
+
 import { create_variable } from './variable/index.js'
 import { composable_index } from './componsable/index.js'
 // 状态机

@@ -1,5 +1,32 @@
-import { get_file_name_cases } from 'src/common/architecture-design/util/file/file.js'
-import { merge_to_payload_with_conflict_logs } from 'src/common/architecture-design/util/merge/merge.js'
+import { get_file_name_cases } from '../util/file/file.js'
+import { merge_to_payload_with_conflict_logs } from '../util/merge/merge.js'
+
+const pipeline_count = {}
+
+/**
+ * 架构检查：检查当前文件是否已经注册过事件通道
+ * @param {string} currentFilePath - 当前文件路径
+ */
+const architecture_check_pipeline_count = (currentFilePath, multiton) => {
+  pipeline_count[currentFilePath] = (pipeline_count[currentFilePath] ?? 0) + 1
+  const is_prod = import.meta.env?.PROD
+  if (!multiton) {
+    if (pipeline_count[currentFilePath] > 1) {
+      let message_str = `[架构检查失败] 当前文件 ${currentFilePath}  注册事件通道次数超过 1 次： 当前一共注册了${pipeline_count[currentFilePath]}次，请检查是否正确使用单例模式。或者切换到多例方法调用！！`
+
+      if (is_prod) {
+        console.warn(message_str)
+      } else {
+        console.error(message_str)
+
+        console.error(
+          `[架构检查失败] 注册事件通道超过一次：单例模式下，事件通道必须保持唯一性，多次注册事件通道将引发不可预知的错误！ `,
+        )
+        throw new Error(message_str)
+      }
+    }
+  }
+}
 /**
  * 通用管道事件调度器
  * @param {Object} modules - 由 import.meta.glob 扫描出的原始对象
@@ -33,6 +60,9 @@ const register_inner = ({ modules, currentFilePath, multiton }) => {
       all_event_pipeline = {}
     }
 
+    //架构检查
+    architecture_check_pipeline_count(currentFilePath, multiton)
+
     // 3.  包装模块内容为 方法对象
     Object.entries(modules_obj).forEach(([fileName, moduleContent]) => {
       let all_methods = {}
@@ -65,6 +95,17 @@ const register_inner = ({ modules, currentFilePath, multiton }) => {
       dataToMerge: { all_event_pipeline },
       file_path: currentFilePath,
     })
+
+    return {
+      off: () => {
+        pipeline_count[currentFilePath] -= 1
+        if (pipeline_count[currentFilePath] <= 0) {
+          delete pipeline_count[currentFilePath]
+        }
+        console.error('[事件通道注销] 原始注册文件路径：', currentFilePath)
+        all_event_pipeline = {}
+      },
+    }
   }
   if (multiton) {
     return { create_event_pipeline }
