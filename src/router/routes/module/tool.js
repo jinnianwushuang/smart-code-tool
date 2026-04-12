@@ -2,9 +2,14 @@ export const routes_tool = [
   {
     path: '/tool',
     name: 'tool',
-    redirect: { name: 'code-tool' },
+    redirect: { name: 'domain-guide' },
     component: () => import('src/layout/layout-tool-page/layout-tool.vue'),
     children: [
+      {
+        path: 'domain-guide',
+        name: 'domain-guide',
+        component: () => import('src/pages/domain-guide/domain-guide.vue'),
+      },
       {
         path: 'code-tool',
         name: 'code-tool',
@@ -20,11 +25,6 @@ export const routes_tool = [
         path: 'permanent-notice-calendar',
         name: 'permanent-notice-calendar',
         component: () => import('src/pages/single-smart-tool/permanent-notice-calendar/index.vue'),
-      },
-      {
-        path: 'domain-guide',
-        name: 'domain-guide',
-        component: () => import('src/pages/domain-guide/domain-guide.vue'),
       },
 
       {

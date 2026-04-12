@@ -14,14 +14,12 @@
         theme="light"
         breakpoint="lg"
       >
-        <a-menu v-model:selectedKeys="selectedKeys" mode="inline" @click="handle_click_menu">
-          <a-menu-item v-for="menuItem in menuList" :key="menuItem.key">
-            <template #icon>
-              <!-- 这里假设 menuItem.icon 是 Antdv 的图标组件名，或者你可以动态渲染组件 -->
-              <component :is="menuItem.icon" />
-            </template>
-            <span>{{ menuItem.label }}</span>
-          </a-menu-item>
+        <a-menu
+          v-model:selectedKeys="selectedKeys"
+          mode="inline"
+          :items="menuList"
+          @click="handle_click_menu"
+        >
         </a-menu>
       </a-layout-sider>
 
@@ -44,12 +42,14 @@ const collapsed = ref(false)
 
 // const selectedKeys = useStorage('src_layout_layout1', menuList[0])
 const router = useRouter()
-const selectedKeys = ref([[menuList[0].name]])
+const selectedKeys = ref([[menuList[0].key]])
 onMounted(() => {
-  router.push({ name: selectedKeys[0] })
+  selectedKeys.value = [menuList[0].key]
+  handle_click_menu({ key: menuList[0].key })
 })
 const handle_click_menu = ({ key }) => {
   console.log('handle_click_menu---layout-tool-', key)
+  console.log('handle_click_menu---layout-tool-selectedKeys--', selectedKeys)
   router.push({ name: key })
 }
 </script>

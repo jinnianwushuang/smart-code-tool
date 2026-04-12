@@ -1,17 +1,17 @@
 <template>
   <a-layout-header class="header">
     <q-toolbar>
-      <div class="logo" />
+      <div class="logo" style="width: 80px">
+        <img src="logo/icons8-light-on-96.png" alt="logo" width="40px" height="40px" />
+      </div>
 
       <a-menu
         v-model:selectedKeys="selectedKeys1"
         theme="dark"
         mode="horizontal"
+        :items="topMenuList"
         @click="handle_click_menu"
       >
-        <a-menu-item v-for="item in topMenuList" :key="item.key">
-          {{ item.label }}
-        </a-menu-item>
       </a-menu>
       <q-space class="mobile-hide" />
       <div class="text-caption mobile-hide text-white">构建时间: {{ buildTime }}</div>

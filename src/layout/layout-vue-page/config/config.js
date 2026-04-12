@@ -1,7 +1,7 @@
 import {
   HomeOutlined,
   UserOutlined,
-  LaptopOutlined,
+  ShopOutlined,
   NotificationOutlined,
 } from '@ant-design/icons-vue'
 import { h } from 'vue'
@@ -16,7 +16,7 @@ export const sideMenuList = [
     key: 'singleton-demo',
     label: 'singleton-demo',
 
-    icon: () => h(LaptopOutlined),
+    icon: () => h(UserOutlined),
     children: [
       { key: 'singleton-lv1', label: 'singleton-lv1' },
       { key: 'singleton-lv2', label: 'singleton-lv2' },
@@ -29,7 +29,7 @@ export const sideMenuList = [
     key: 'multiton-demo',
     label: 'multiton-demo',
 
-    icon: () => h(UserOutlined),
+    icon: () => h(ShopOutlined),
     children: [
       { key: 'multiton-lv1', label: 'multiton-lv1' },
       { key: 'multiton-lv2', label: 'multiton-lv2' },
