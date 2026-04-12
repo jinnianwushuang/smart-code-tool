@@ -59,7 +59,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
-import { copyText } from 'src/output/common/project-common.js'
+import { copyText, lodash } from 'src/output/common/project-common.js'
 const $q = useQuasar()
 const inputCode = ref(`
 const test_fn_1 = (ww) => {
@@ -78,12 +78,43 @@ const detectedVars = ref([])
 const addVariableDefinitions = ref(false)
 
 const recheck_str_left_half_bracket = (str) => {
-  str = str.trim()
-  if (str.end.endsWith('{')) {
-    return str
+  str = lodash.trimEnd(str, '{ ')
+  return `${str} {`
+}
+
+const rebuild_first_line = (firstLine) => {
+  if (firstLine.includes('(')) {
+    // 已经有括号的情况，直接在参数列表前插入 payload, 例如: const fn = (a, b) => { ... 变成 const fn = (payload, a, b) => { ...
+
+    // 寻找箭头函数参数部分的正则
+    // 匹配类似 (a, b) => 或 ( ) => 或 a =>
+    firstLine = firstLine.replace(/([^()]*)(\()([^()]*?)(\))(\s*=>)/, (m, p1, p2, p3, p4, p5) => {
+      console.error('m----', m)
+      console.error('p1----', p1)
+      console.error('p2----', p2)
+      console.error('p3----', p3)
+      console.error('p4----', p4)
+      console.error('p5----', p5)
+
+      let params = p3.trim()
+      // 如果原本没参数或者是空括号
+      if (!params || params === '') {
+        return `${p1}(payload)${p5}`
+      }
+      // 如果已有参数，在最前面插入 payload
+      return `${p1}(payload, ${params})${p5}`
+    })
   } else {
-    return `${str}{`
+    // 没有括号的情况，直接在参数前插入 payload, 例如: const fn = a => { ... 变成 const fn = (payload, a) => { ...
+    firstLine = firstLine.replace(/([^=]*=)\s*([a-zA-Z_$][\w$]*)\s*=>/, (m, p1, p2) => {
+      console.error('m----', m)
+      console.error('p1----', p1)
+      console.error('p2----', p2)
+      return `${p1} (payload, ${p2}) =>`
+    })
   }
+
+  return firstLine
 }
 
 const transformCode = () => {
@@ -113,47 +144,16 @@ const transformCode = () => {
   const hasVars = vars.length > 0
 
   if (hasVars) {
-    if (firstLine.includes('(')) {
-      // 已经有括号的情况，直接在参数列表前插入 payload, 例如: const fn = (a, b) => { ... 变成 const fn = (payload, a, b) => { ...
-
-      // 寻找箭头函数参数部分的正则
-      // 匹配类似 (a, b) => 或 ( ) => 或 a =>
-      firstLine = firstLine.replace(/([^()]*)(\()([^()]*?)(\))(\s*=>)/, (m, p1, p2, p3, p4, p5) => {
-        console.error('m----', m)
-        console.error('p1----', p1)
-        console.error('p2----', p2)
-        console.error('p3----', p3)
-        console.error('p4----', p4)
-        console.error('p5----', p5)
-
-        let params = p3.trim()
-        // 如果原本没参数或者是空括号
-        if (!params || params === '') {
-          return recheck_str_left_half_bracket(`${p1}(payload)${p5}`)
-        }
-        // 如果已有参数，在最前面插入 payload
-        return recheck_str_left_half_bracket(`${p1}(payload, ${params})${p5}`)
-      })
-    } else {
-      // 没有括号的情况，直接在参数前插入 payload, 例如: const fn = a => { ... 变成 const fn = (payload, a) => { ...
-      firstLine = firstLine.replace(/([^=]*=)\s*([a-zA-Z_$][\w$]*)\s*=>/, (m, p1, p2) => {
-        console.error('m----', m)
-        console.error('p1----', p1)
-        console.error('p2----', p2)
-        return `${p1} (payload, ${p2}) =>`
-      })
-    }
+    firstLine = rebuild_first_line(firstLine)
   }
 
-  lines[0] = firstLine
+  lines[0] = recheck_str_left_half_bracket(firstLine)
 
   // 3. 生成解构行并插入第二行
   if (hasVars) {
     const destructureLine = `  const { ${vars.join(', ')} } = payload;`
-    // 检查第二行是否已经是左大括号，如果是，在其后插入
-    if (lines[0].includes('{')) {
-      lines.splice(1, 0, destructureLine)
-    }
+
+    lines.splice(1, 0, destructureLine)
   }
 
   // 4. 生成外部的 export const 定义 (放在最顶部展示)

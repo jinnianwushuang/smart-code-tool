@@ -20,6 +20,8 @@ import FunctionCodeCorrection from './components/function-code-correction/functi
 import TemplateInterpolationExtract from './components/template-interpolation-extract/template-interpolation-extract.vue'
 import TemplateFunctionExtract from './components/template-function-extract/template-function-extract.vue'
 import TemplateColonPropertyExtract from './components/template-colon-property-extract/template-colon-property-extract.vue'
+import TemplateUnifiedExtractor from './components/template-unified-extractor/template-unified-extractor.vue'
+
 import ComposableCodeGennerater from './components/composable-code-gennerater/composable-code-gennerater.vue'
 import SvgBatchConverter from 'src/pages/code-tool/components/svg-batch-converter/svg-batch-converter.vue'
 import I18nEditorWithDiff from 'src/pages/code-tool/components/i18n-editor-with-diff/i18n-editor-with-diff.vue'
@@ -47,17 +49,18 @@ const all_tabs = [
   { name: 'ConvertToTemplateRef', label: 'useTemplateRef', component: ConvertToTemplateRef },
   { name: 'TextDeduplication', label: '文本去重清洗', component: TextDeduplication },
   { name: 'FunctionCodeCorrection', label: '函数代码纠正', component: FunctionCodeCorrection },
-  {
-    name: 'TemplateInterpolationExtract',
-    label: '模板{{}}插值提取',
-    component: TemplateInterpolationExtract,
-  },
-  { name: 'TemplateFunctionExtract', label: '模板@函数提取', component: TemplateFunctionExtract },
-  {
-    name: 'TemplateColonPropertyExtract',
-    label: '模板:属性提取',
-    component: TemplateColonPropertyExtract,
-  },
+  { name: 'TemplateUnifiedExtractor', label: 'Vue模板提取器', component: TemplateUnifiedExtractor },
+  // {
+  //   name: 'TemplateInterpolationExtract',
+  //   label: '模板{{}}插值提取',
+  //   component: TemplateInterpolationExtract,
+  // },
+  // { name: 'TemplateFunctionExtract', label: '模板@函数提取', component: TemplateFunctionExtract },
+  // {
+  //   name: 'TemplateColonPropertyExtract',
+  //   label: '模板:属性提取',
+  //   component: TemplateColonPropertyExtract,
+  // },
   {
     name: 'ComposableCodeGennerater',
     label: '组合式代码生成',
