@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 24px; background: #fff; min-height: 100vh">
+  <div style="">
     <!-- 1. 搜索表单 -->
     <a-form layout="inline" :model="searchState" style="margin-bottom: 24px">
       <a-form-item label="用户名">

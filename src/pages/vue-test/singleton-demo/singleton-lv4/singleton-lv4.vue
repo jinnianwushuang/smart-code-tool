@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 24px; background: #fff; min-height: 100vh">
+  <div style="">
     <div>停留时长： {{ use_time_str }} : {{ encouragement }}</div>
     <UserSearch />
     <UserTable />

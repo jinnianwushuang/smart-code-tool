@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 24px; background: #fff; min-height: 100vh">
+  <div style="">
     <UserSearch :search-state="searchState" @search="onSearch" @reset="onReset" />
     <div style="margin-bottom: 16px">
       <a-button type="primary" @click="handleAdd">

@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 24px; background: #f0f2f5; min-height: 100vh">
+  <div>
     <!-- 1. 顶部查询区域 -->
     <MerchantSearch :search-state="searchState" @search="onSearch" @reset="onReset" />
 

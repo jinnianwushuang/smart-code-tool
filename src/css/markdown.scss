@@ -1,0 +1,112 @@
+:root {
+  /* 默认使用日间模式 */
+  --markdown-bg: #0d1117;
+  --markdown-text: #c9d1d9;
+  --markdown-border: #30363d;
+  --markdown-zebra: #161b22;
+}
+
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 45px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+
+  /* 基础元素布局 */
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-top: 0;
+    margin-bottom: 16px;
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+
+    th,
+    td {
+      padding: 6px 13px;
+      border: 1px solid;
+    }
+    th {
+      font-weight: 600;
+    }
+  }
+
+  /* 代码块容器 */
+  .code-block-wrapper {
+    margin: 1.5em 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  // 通用的 Shiki 代码块基础样式
+  .shiki {
+    padding: 16px;
+    border-radius: 6px;
+    overflow: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    line-height: 1.45;
+  }
+}
+
+// 1. 日间模式逻辑
+body.body--light,
+body.body--dark {
+  .markdown-body {
+    background-color: var(--markdown-bg);
+    color: var(--markdown-text);
+
+    // 表格样式补全
+    table {
+      tr {
+        background-color: transparent;
+        border-top: 1px solid var(--markdown-border);
+      }
+      tr:nth-child(2n) {
+        background-color: var(--markdown-zebra);
+      }
+      th,
+      td {
+        border-color: var(--markdown-border);
+      }
+    }
+
+    // 引用样式
+    blockquote {
+      color: var(--markdown-text);
+      border-left: 0.25em solid var(--markdown-border);
+      padding: 0 1em;
+      margin: 0 0 16px 0;
+    }
+
+    // 行内代码
+    code:not(.shiki code) {
+      background-color: rgba(175, 184, 193, 0.2);
+      border-radius: 6px;
+      padding: 0.2em 0.4em;
+    }
+
+    hr {
+      background-color: var(--markdown-border);
+      height: 0.25em;
+      border: 0;
+      margin: 24px 0;
+    }
+
+    // 强制 Shiki 使用亮色主题变量
+    .shiki {
+      background-color: var(--shiki-light-bg) !important;
+
+      span {
+        color: var(--markdown-text) !important;
+        // font-style: var(--shiki-light-font-style) !important;
+        // font-weight: var(--shiki-light-font-weight) !important;
+        // text-decoration: var(--shiki-light-text-decoration) !important;
+      }
+    }
+  }
+}
