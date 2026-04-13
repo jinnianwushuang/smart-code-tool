@@ -2,7 +2,7 @@ import { getAllJsFilePaths, writeFile } from '../../file-util/file-util.js'
 
 let all_files = ['src/boot/output-source/project-common-other.js']
 
-const scan_folders = ['src/common/']
+const scan_folders = ['src/common/', 'src/constant']
 
 for (let i = 0; i < scan_folders.length; i++) {
   const folder = scan_folders[i]

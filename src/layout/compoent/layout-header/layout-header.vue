@@ -7,7 +7,7 @@
 
       <a-menu
         v-model:selectedKeys="selectedKeys1"
-        :theme="isDark ? 'dark' : 'light'"
+        :theme="$q.dark.isActive ? 'dark' : 'light'"
         mode="horizontal"
         :items="topMenuList"
         class="header-menu"
@@ -16,35 +16,52 @@
       </a-menu>
       <q-space />
 
-      <div class="text-caption mobile-hide header-text">{{ buildTime }}</div>
+      <!-- <div class="text-caption mobile-hide header-text">
+        {{ buildTime }}
+      </div> -->
+      <div class="text-caption mobile-hide header-text columns">
+        <div class="text-caption">
+          {{ build_date }}
+        </div>
+        <div class="text-caption">
+          {{ build_time }}
+        </div>
+      </div>
+
       <q-btn
         flat
         round
         dense
-        :icon="isDark ? 'nightlight_round' : 'light_mode'"
+        :icon="isDarkTheme ? 'nightlight_round' : 'light_mode'"
         @click="hanle_toogle"
         class="q-mr-sm header-btn"
       >
-        <q-tooltip>{{ isDark ? '切换至日间模式' : '切换至夜间模式' }}</q-tooltip>
+        <q-tooltip>{{ isDarkTheme ? '切换至日间模式' : '切换至夜间模式' }}</q-tooltip>
       </q-btn>
+      <!-- <q-toggle
+        v-model="isDarkTheme"
+        color="indigo"
+        keep-color
+        icon="light_mode"
+        checked-icon="nightlight_round"
+        unchecked-icon="light_mode"
+        class="q-mr-sm header-toggle"
+      >
+        <q-tooltip>{{ isDarkTheme ? '切换至日间模式' : '切换至夜间模式' }}</q-tooltip>
+      </q-toggle> -->
     </q-toolbar>
   </a-layout-header>
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { useDark, useToggle } from '@vueuse/core'
+import { ref, onMounted, watch, computed } from 'vue'
+import { dayjs, isDarkTheme } from 'src/output/common/project-common.js'
 import { useGlobalState } from 'src/output/common/composable-common.js'
 const { router, route, $q } = useGlobalState()
 const buildTime = __APP_BUILD_TIME__
-// 自动管理 html 上的 .dark 类
-const isDark = useDark({
-  selector: 'body',
-  attribute: 'class',
-  valueDark: 'body--dark',
-  valueLight: 'body--light',
-})
-const toggleDark = useToggle(isDark)
+const build_date = dayjs(buildTime).format('YYYY-MM-DD')
+const build_time = dayjs(buildTime).format('HH:mm:ss Z')
+
 const topMenuList = [
   { key: 'tool', label: '工具库' },
   { key: 'vue-test', label: 'VUE 架构验证' },
@@ -76,8 +93,7 @@ const check_route = () => {
 }
 
 const hanle_toogle = () => {
-  $q.dark.toggle()
-  toggleDark()
+  isDarkTheme.value = !isDarkTheme.value
 }
 
 const handle_click_menu = ({ key }) => {
@@ -99,7 +115,8 @@ const handle_click_menu = ({ key }) => {
 }
 
 .header-text,
-.header-btn {
+.header-btn,
+.header-toggle {
   color: var(--q-header-text-color) !important;
   transition: color 0.3s ease;
 }

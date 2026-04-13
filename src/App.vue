@@ -4,18 +4,18 @@
   </a-config-provider>
 </template>
 <script setup>
-import { computed, ref, watch, onMounted } from 'vue'
+import { computed, ref, watch, onMounted, onBeforeMount } from 'vue'
 import { theme } from 'ant-design-vue'
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import enUS from 'ant-design-vue/es/locale/en_US'
 import { useQuasar } from 'quasar'
-
+import { dayjs, isDarkTheme } from 'src/output/common/project-common.js'
 const $q = useQuasar()
 
 // --- 1. 全局主题切换逻辑 ---
 // 自动响应 Quasar 的深色模式状态并同步给 Ant Design Vue
 const antTheme = computed(() => ({
-  algorithm: $q.dark.isActive ? theme.darkAlgorithm : theme.defaultAlgorithm,
+  algorithm: isDarkTheme.value ? theme.darkAlgorithm : theme.defaultAlgorithm,
   token: {
     // 你可以在这里统一配置 Ant Design 的品牌色
     // colorPrimary: '#1976d2',
@@ -37,8 +37,8 @@ const toggleLanguage = () => {
   // $q.lang.set(currentLocale.value === 'zh' ? 'zh-CN' : 'en-US')
 }
 
-onMounted(() => {
-  document.documentElement.classList.add('dark')
+onBeforeMount(() => {
+  isDarkTheme.value = true
 })
 </script>
 <style lang="scss">
