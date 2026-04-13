@@ -21,7 +21,7 @@ dayjs.extend(timezone)
 export default defineConfig(async () => {
   // 1. 初始化 Shiki 高亮器 (Vite 配置支持异步)
   const highlighter = await createHighlighter({
-    themes: ['github-dark'],
+    themes: ['github-dark', 'github-light'],
     langs: ['javascript', 'typescript', 'vue', 'html', 'bash', 'json'],
   })
   return {
@@ -79,7 +79,11 @@ export default defineConfig(async () => {
               lang,
               // theme: 'vitesse-dark',
               // 切换为 github-dark 或 github-light
-              theme: 'github-dark',
+              themes: {
+                light: 'github-light',
+                dark: 'github-dark',
+              },
+              // theme: 'github-dark',
             })
 
             // 3. 对原始代码进行更安全的编码，防止在 HTML 属性中报错

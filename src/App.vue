@@ -4,7 +4,7 @@
   </a-config-provider>
 </template>
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch, onMounted } from 'vue'
 import { theme } from 'ant-design-vue'
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import enUS from 'ant-design-vue/es/locale/en_US'
@@ -36,6 +36,10 @@ const toggleLanguage = () => {
   // 同步切换 Quasar 的语言包 (如果已配置)
   // $q.lang.set(currentLocale.value === 'zh' ? 'zh-CN' : 'en-US')
 }
+
+onMounted(() => {
+  document.documentElement.classList.add('dark')
+})
 </script>
 <style lang="scss">
 // 全局样式微调

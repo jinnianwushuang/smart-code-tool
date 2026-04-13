@@ -24,7 +24,7 @@
       </a-layout-sider>
 
       <!-- 内容区 -->
-      <a-layout-content ref="scrollContainer" class="layout-content" @scroll="handle_scroll">
+      <a-layout-content ref="scrollContainer" class="layout-content dark" @scroll="handle_scroll">
         <router-view />
 
         <!-- 滚动到顶部按钮 -->
@@ -78,7 +78,6 @@ const scroll_to_top = () => {
 </script>
 <style lang="scss" scoped>
 .layout-content {
-  background: #fff;
   padding: 24px;
   margin: 0;
   min-height: 680px;

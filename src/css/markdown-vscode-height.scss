@@ -1,30 +1,172 @@
+// 定义一些基础颜色变量（可选，方便维护）
+$light-bg: #ffffff;
+$light-text: #24292f;
+$light-border: #d0d7de;
+$light-zebra: #f6f8fa;
+
+$dark-bg: #0d1117;
+$dark-text: #c9d1d9;
+$dark-border: #30363d;
+$dark-zebra: #161b22;
+
 .markdown-body {
   box-sizing: border-box;
   min-width: 200px;
   max-width: 980px;
   margin: 0 auto;
-  padding: 45px;
-}
-/* 代码块容器 */
-.code-block-wrapper {
-  margin: 1.5em 0;
-  border-radius: 8px;
-  overflow: hidden;
+  padding: 24px 45px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+
+  /* 基础元素布局 */
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-top: 0;
+    margin-bottom: 16px;
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+
+    th,
+    td {
+      padding: 6px 13px;
+      border: 1px solid;
+    }
+    th {
+      font-weight: 600;
+    }
+  }
+
+  /* 代码块容器 */
+  .code-block-wrapper {
+    margin: 1.5em 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  // 通用的 Shiki 代码块基础样式
+  .shiki {
+    padding: 16px;
+    border-radius: 6px;
+    overflow: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    line-height: 1.45;
+  }
 }
 
-/* 按钮悬停效果 */
-.copy-btn:hover {
-  opacity: 1 !important;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
+// 1. 日间模式逻辑
+body.light {
+  .markdown-body {
+    background-color: $light-bg;
+    color: $light-text;
+
+    // 表格样式补全
+    table {
+      tr {
+        background-color: transparent;
+        border-top: 1px solid $light-border;
+      }
+      tr:nth-child(2n) {
+        background-color: $light-zebra;
+      }
+      th,
+      td {
+        border-color: $light-border;
+      }
+    }
+
+    // 引用样式
+    blockquote {
+      color: #57606a;
+      border-left: 0.25em solid $light-border;
+      padding: 0 1em;
+      margin: 0 0 16px 0;
+    }
+
+    // 行内代码
+    code:not(.shiki code) {
+      background-color: rgba(175, 184, 193, 0.2);
+      border-radius: 6px;
+      padding: 0.2em 0.4em;
+    }
+
+    hr {
+      background-color: $light-border;
+      height: 0.25em;
+      border: 0;
+      margin: 24px 0;
+    }
+
+    // 强制 Shiki 使用亮色主题变量
+    .shiki {
+      background-color: var(--shiki-light-bg) !important;
+
+      span {
+        color: var(--shiki-light) !important;
+        font-style: var(--shiki-light-font-style) !important;
+        font-weight: var(--shiki-light-font-weight) !important;
+        text-decoration: var(--shiki-light-text-decoration) !important;
+      }
+    }
+  }
 }
 
-/* Shiki 默认生成的 pre 标签样式 */
-.shiki {
-  padding: 1.5em;
-  margin: 0;
-  font-family: 'Fira Code', monospace;
-  font-size: 14px;
-  line-height: 1.6;
-  overflow-x: auto;
+// 2. 夜间模式逻辑
+body.dark {
+  .markdown-body {
+    background-color: $dark-bg;
+    color: $dark-text;
+
+    // 表格样式补全
+    table {
+      tr {
+        background-color: transparent;
+        border-top: 1px solid $dark-border;
+      }
+      tr:nth-child(2n) {
+        background-color: $dark-zebra;
+      }
+      th,
+      td {
+        border-color: $dark-border;
+      }
+    }
+
+    // 引用样式
+    blockquote {
+      color: #8b949e;
+      border-left: 0.25em solid $dark-border;
+      padding: 0 1em;
+      margin: 0 0 16px 0;
+    }
+
+    // 行内代码
+    code:not(.shiki code) {
+      background-color: rgba(110, 118, 129, 0.4);
+      border-radius: 6px;
+      padding: 0.2em 0.4em;
+    }
+
+    hr {
+      background-color: $dark-border;
+      height: 0.25em;
+      border: 0;
+      margin: 24px 0;
+    }
+
+    // 强制 Shiki 切换为暗色主题变量
+    .shiki {
+      background-color: var(--shiki-dark-bg) !important;
+
+      span {
+        // 核心：使用 Shiki 生成的 --shiki-dark 系列变量覆盖内联样式
+        color: var(--shiki-dark) !important;
+        font-style: var(--shiki-dark-font-style) !important;
+        font-weight: var(--shiki-dark-font-weight) !important;
+        text-decoration: var(--shiki-dark-text-decoration) !important;
+      }
+    }
+  }
 }

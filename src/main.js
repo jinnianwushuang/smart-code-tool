@@ -13,7 +13,7 @@ import 'ant-design-vue/dist/reset.css'
 // A few examples for animations from Animate.css:
 // import @quasar/extras/animate/fadeIn.css
 // import @quasar/extras/animate/fadeOut.css
-
+import 'github-markdown-css/github-markdown.css'
 // Import Quasar cssC
 import 'quasar/src/css/index.sass'
 import 'src/css/index.scss'
@@ -29,6 +29,9 @@ app.use(Quasar, {
     Notify, // import Quasar plugins and add here
     Loading,
   }, // import Quasar plugins and add here
+  config: {
+    dark: true,
+  },
   /*
   config: {
     brand: {

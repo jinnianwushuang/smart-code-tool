@@ -17,6 +17,7 @@
           outlined
           dense
           clearable
+          dark
           :class="is_mobile ? 'col' : 'w-400'"
         />
       </div>
@@ -90,8 +91,6 @@ const fliter_by_query = (list) => {
 
 <style scoped>
 .nav-manager {
-  /* padding: 24px; */
-  background: #f0f2f5;
   min-height: 100vh;
 }
 .control-panel {
@@ -105,7 +104,6 @@ const fliter_by_query = (list) => {
   color: #1890ff;
 }
 .content-viewport {
-  background: #fff;
   padding: 24px;
   border-radius: 8px;
 }
@@ -152,6 +150,5 @@ const fliter_by_query = (list) => {
   font-weight: 500;
 }
 .custom-table :deep(.ant-table-thead > tr > th) {
-  background: #fafafa;
 }
 </style>

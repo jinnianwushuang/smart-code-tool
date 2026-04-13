@@ -15,16 +15,16 @@
       </a-menu>
       <q-space class="mobile-hide" />
 
-      <div class="text-caption mobile-hide text-white">构建时间: {{ buildTime }}</div>
+      <div class="text-caption mobile-hide text-white">构建时间: {{ buildTime }} {{ isDark }}</div>
       <q-btn
         flat
         round
         dense
-        :icon="$q.dark.isActive ? 'nightlight_round' : 'light_mode'"
-        @click="$q.dark.toggle()"
+        :icon="isDark ? 'nightlight_round' : 'light_mode'"
+        @click="hanle_toogle"
         class="q-mr-sm text-white"
       >
-        <q-tooltip>{{ $q.dark.isActive ? '切换至日间模式' : '切换至夜间模式' }}</q-tooltip>
+        <q-tooltip>{{ isDark ? '切换至日间模式' : '切换至夜间模式' }}</q-tooltip>
       </q-btn>
     </q-toolbar>
   </a-layout-header>
@@ -32,10 +32,18 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
+import { useDark, useToggle } from '@vueuse/core'
 import { useGlobalState } from 'src/output/common/composable-common.js'
 const { router, route, $q } = useGlobalState()
 const buildTime = __APP_BUILD_TIME__
-
+// 自动管理 html 上的 .dark 类
+const isDark = useDark({
+  selector: 'body',
+  attribute: 'class',
+  valueDark: 'dark',
+  valueLight: 'light',
+})
+const toggleDark = useToggle(isDark)
 const topMenuList = [
   { key: 'tool', label: '工具库' },
   { key: 'vue-test', label: 'VUE 架构验证' },
@@ -64,6 +72,11 @@ const check_route = () => {
   if (match) {
     selectedKeys1.value = [match]
   }
+}
+
+const hanle_toogle = () => {
+  $q.dark.toggle()
+  toggleDark()
 }
 
 const handle_click_menu = ({ key }) => {
