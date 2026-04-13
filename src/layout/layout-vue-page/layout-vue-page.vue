@@ -19,16 +19,25 @@
           <a-breadcrumb-item>{{ menu_lv1?.label }}</a-breadcrumb-item>
           <a-breadcrumb-item v-if="menu_lv2">{{ menu_lv2?.label }}</a-breadcrumb-item>
         </a-breadcrumb>
-        <a-layout-content class="layout-content">
+        <a-layout-content ref="scrollContainer" class="layout-content" @scroll="handle_scroll">
           <router-view></router-view>
+
+          <!-- 滚动到顶部按钮 -->
+          <transition name="fade">
+            <div v-if="show_back_top" class="back-to-top" @click="scroll_to_top">
+              <a-button type="primary" shape="circle" size="large" shadow>
+                <template #icon><vertical-align-top-outlined /></template>
+              </a-button>
+            </div>
+          </transition>
         </a-layout-content>
       </a-layout>
     </a-layout>
   </a-layout>
 </template>
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-
+import { ref, onMounted, watch, useTemplateRef } from 'vue'
+import { VerticalAlignTopOutlined } from '@ant-design/icons-vue'
 import { sideMenuList } from './config/config.js'
 import LayoutHeader from 'src/layout/compoent/layout-header/layout-header.vue'
 
@@ -38,11 +47,24 @@ const openKeys = ref([])
 const menu_lv1 = ref('')
 const menu_lv2 = ref('')
 
+const show_back_top = ref(false)
+const scroll_container_ref = useTemplateRef('scrollContainer')
+
 const { router, route } = useGlobalState()
 
 watch(route, () => {
   check_route()
 })
+
+const handle_scroll = (e) => {
+  show_back_top.value = e.target.scrollTop > 300
+}
+
+const scroll_to_top = () => {
+  // 获取原生 DOM 元素进行滚动
+  const el = scroll_container_ref.value?.$el || scroll_container_ref.value
+  el?.scrollTo({ top: 0, behavior: 'smooth' })
+}
 
 onMounted(() => {
   check_route()

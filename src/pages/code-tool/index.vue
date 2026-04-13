@@ -33,6 +33,7 @@ import RefVariableToAssignmentStatement from 'src/pages/code-tool/components/ref
 const current_tab_name = ref('StringChangeCase')
 const all_tabs = [
   { name: 'StringChangeCase', label: '字符串格式转换', component: StringChangeCase },
+  { name: 'TextDeduplication', label: '文本去重清洗', component: TextDeduplication },
   { name: 'PropertyToVariable', label: '属性转换为变量', component: PropertyToVariable },
   {
     name: 'RefVariableToAssignmentStatement',
@@ -40,14 +41,13 @@ const all_tabs = [
     component: RefVariableToAssignmentStatement,
   },
   { name: 'VariableNameExtraction', label: '变量名称提取', component: VariableNameExtraction },
+  { name: 'ConvertToTemplateRef', label: 'useTemplateRef', component: ConvertToTemplateRef },
   {
     name: 'MethodNameToArrowFunction',
     label: '方法名称转箭头函数',
     component: MethodNameToArrowFunction,
   },
 
-  { name: 'ConvertToTemplateRef', label: 'useTemplateRef', component: ConvertToTemplateRef },
-  { name: 'TextDeduplication', label: '文本去重清洗', component: TextDeduplication },
   { name: 'FunctionCodeCorrection', label: '函数代码纠正', component: FunctionCodeCorrection },
   { name: 'TemplateUnifiedExtractor', label: 'Vue模板提取器', component: TemplateUnifiedExtractor },
   // {
@@ -66,6 +66,7 @@ const all_tabs = [
     label: '组合式代码生成',
     component: ComposableCodeGennerater,
   },
+
   { name: 'SvgBatchConverter', label: 'SVG 批量转换VUE组件', component: SvgBatchConverter },
   { name: 'I18nEditorWithDiff', label: 'i18n 编辑器', component: I18nEditorWithDiff },
   { name: 'PathCalculation', label: '引用路径计算', component: PathCalculation },

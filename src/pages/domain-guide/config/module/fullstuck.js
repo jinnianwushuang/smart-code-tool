@@ -50,4 +50,24 @@ export const docs = [
       },
     ],
   },
+  {
+    category: '桌面应用',
+    color: 'orange',
+    items: [
+      {
+        name: 'Electron',
+        url: 'https://www.electronjs.org',
+        tag: '桌面应用',
+        desc: '基于 Chromium 和 Node.js 的开源桌面应用框架，用于构建跨平台桌面应用。',
+        priority: 5,
+      },
+      {
+        name: 'tauri',
+        url: 'https://v2.tauri.app/',
+        tag: '桌面应用',
+        desc: '基于 Rust 的开源桌面应用框架，用于构建跨平台桌面应用。',
+        priority: 5,
+      },
+    ],
+  },
 ]

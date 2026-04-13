@@ -14,7 +14,18 @@
       >
       </a-menu>
       <q-space class="mobile-hide" />
+
       <div class="text-caption mobile-hide text-white">构建时间: {{ buildTime }}</div>
+      <q-btn
+        flat
+        round
+        dense
+        :icon="$q.dark.isActive ? 'nightlight_round' : 'light_mode'"
+        @click="$q.dark.toggle()"
+        class="q-mr-sm text-white"
+      >
+        <q-tooltip>{{ $q.dark.isActive ? '切换至日间模式' : '切换至夜间模式' }}</q-tooltip>
+      </q-btn>
     </q-toolbar>
   </a-layout-header>
 </template>
