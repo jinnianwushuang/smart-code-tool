@@ -1,9 +1,12 @@
 <template>
-  <div class="q-pa-md">
-    <q-card flat bordered class="q-mx-auto max-w-1200">
-      <q-card-section>
-        <div class="text-h6">JavaScript 变量提取器</div>
-        <div class="text-caption text-grey">输入 JS 代码，自动提取 const 定义的变量名</div>
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
+      <q-card-section class="bg-indigo-8 text-white row items-center">
+        <q-icon name="list_alt" size="sm" class="q-mr-sm" />
+        <div>
+          <div class="text-h6 text-weight-bold">JavaScript 变量提取器</div>
+          <div class="text-caption text-grey-3">输入 JS 代码，自动提取 const 定义的变量名</div>
+        </div>
       </q-card-section>
 
       <q-card-section class="q-gutter-y-md">
@@ -14,15 +17,32 @@
           filled
           label="粘贴代码到这里"
           placeholder='例如: export const myVar = ref("")'
-          rows="10"
+          rows="12"
+          clearable
+          class="font-mono"
           @update:model-value="extractVariables"
         />
 
         <!-- 操作按钮 -->
-        <div class="row q-gutter-x-sm">
-          <q-btn label="提取变量" color="primary" @click="extractVariables" />
-          <q-btn label="清空" color="grey" variant="flat" @click="clear" />
-          <q-btn label="复制结果" color="secondary" variant="flat" @click="copyOutput" />
+        <div class="row items-center q-gutter-x-sm">
+          <q-btn
+            label="提取变量"
+            color="indigo"
+            outline
+            icon="analytics"
+            size="sm"
+            @click="extractVariables"
+          />
+          <q-btn label="清空" color="grey-7" outline icon="delete" size="sm" @click="clear" />
+          <q-space />
+          <q-btn
+            label="复制结果"
+            color="secondary"
+            icon="content_copy"
+            size="sm"
+            @click="copyOutput"
+            :disable="!result.length"
+          />
         </div>
 
         <!-- 结果展示 -->
@@ -32,7 +52,15 @@
       </q-card-section>
 
       <q-card-section>
-        <q-input v-model="outputText" filled readonly type="textarea" label="生成结果" rows="10">
+        <q-input
+          v-model="outputText"
+          filled
+          readonly
+          type="textarea"
+          label="生成结果"
+          rows="12"
+          class="font-mono"
+        >
           <template v-slot:append>
             <q-btn flat icon="content_copy" @click="copyOutput" padding="xs" />
           </template>

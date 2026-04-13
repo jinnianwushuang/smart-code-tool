@@ -115,30 +115,46 @@ const handle_click_menu = ({ key, keyPath }) => {
   router.push({ name: key })
 }
 </script>
-<style scoped>
-#components-layout-demo-top-side-2 .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.ant-row-rtl #components-layout-demo-top-side-2 .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
-}
-
-.site-layout-background {
-  background: #fff;
-}
+<style lang="scss" scoped>
 .layout-content {
-  background: #fff;
   padding: 24px;
   margin: 0;
   min-height: 680px;
   height: calc(100vh - 64px);
-
   overflow-y: auto;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 1000;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px var(--q-dark-page, rgba(0, 0, 0, 0.15));
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* 渐变动画 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+:deep(.ant-layout-sider),
+:deep(.ant-menu) {
+  transition:
+    background 0.3s,
+    border 0.3s;
 }
 </style>

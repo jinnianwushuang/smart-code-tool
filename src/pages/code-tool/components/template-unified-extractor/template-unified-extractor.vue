@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md bg-grey-2">
+  <div class="q-pa-md generator-wrapper">
     <q-card flat bordered class="q-mx-auto shadow-2" style="max-width: 1200px">
       <!-- 头部 -->
       <q-card-section class="bg-indigo-8 text-white row items-center">
@@ -22,7 +22,9 @@
         />
 
         <!-- 全局控制栏 -->
-        <div class="row items-center q-gutter-x-md bg-white q-pa-sm rounded-borders border-grey-4">
+        <div
+          class="row items-center q-gutter-x-md control-panel q-pa-sm rounded-borders border-grey-4"
+        >
           <q-btn
             label="清空全部"
             color="grey-7"
@@ -99,9 +101,41 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { copyText, extract_base_variable } from 'src/output/common/project-common.js'
-import ResultCard from './component/result-card.vue'
+
 // --- 子组件：结果卡片 ---
 // 为了代码整洁，内部定义一个小组件或直接在主模板中书写
+const ResultCard = {
+  props: ['title', 'icon', 'color', 'content'],
+  template: `
+    <q-card flat bordered class="full-height">
+      <q-item :class="'bg-' + color + ' text-white'">
+        <q-item-section avatar>
+          <q-icon :name="icon" size="xs" />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label class="text-weight-bold">{{ title }}</q-item-label>
+        </q-item-section>
+      </q-item>
+      <q-separator />
+      <q-card-section class="q-pa-none">
+        <q-input
+          :model-value="content"
+          type="textarea"
+          borderless
+          readonly
+          class="q-px-sm"
+          placeholder="无数据"
+          rows="10"
+          input-style="font-family: monospace; font-size: 12px;"
+        />
+      </q-card-section>
+      <q-separator />
+      <q-card-actions align="right">
+        <q-btn flat dense :color="color" icon="content_copy" label="复制" @click="$emit('copy')" :disable="!content" />
+      </q-card-actions>
+    </q-card>
+  `,
+}
 
 // --- 状态管理 ---
 const rawTemplate = ref('')
@@ -209,12 +243,26 @@ const copy = (text) => {
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.control-panel {
+  background-color: rgba(128, 128, 128, 0.05);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
 .rounded-borders {
   border-radius: 8px;
 }
+
 .border-grey-4 {
-  border: 1px solid #e0e0e0;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  transition: border-color 0.3s;
 }
+
 .full-height {
   height: 100%;
   display: flex;

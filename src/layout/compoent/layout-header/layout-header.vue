@@ -7,22 +7,23 @@
 
       <a-menu
         v-model:selectedKeys="selectedKeys1"
-        theme="dark"
+        :theme="isDark ? 'dark' : 'light'"
         mode="horizontal"
         :items="topMenuList"
+        class="header-menu"
         @click="handle_click_menu"
       >
       </a-menu>
-      <q-space class="mobile-hide" />
+      <q-space />
 
-      <div class="text-caption mobile-hide text-white">构建时间: {{ buildTime }} {{ isDark }}</div>
+      <div class="text-caption mobile-hide header-text">{{ buildTime }}</div>
       <q-btn
         flat
         round
         dense
         :icon="isDark ? 'nightlight_round' : 'light_mode'"
         @click="hanle_toogle"
-        class="q-mr-sm text-white"
+        class="q-mr-sm header-btn"
       >
         <q-tooltip>{{ isDark ? '切换至日间模式' : '切换至夜间模式' }}</q-tooltip>
       </q-btn>
@@ -40,8 +41,8 @@ const buildTime = __APP_BUILD_TIME__
 const isDark = useDark({
   selector: 'body',
   attribute: 'class',
-  valueDark: 'dark',
-  valueLight: 'light',
+  valueDark: 'body--dark',
+  valueLight: 'body--light',
 })
 const toggleDark = useToggle(isDark)
 const topMenuList = [
@@ -89,7 +90,35 @@ const handle_click_menu = ({ key }) => {
 
 <style lang="scss" scoped>
 .header {
-  height: 50px;
-  line-height: 50px;
+  height: 64px;
+  line-height: 64px;
+  background: var(--q-header-bg) !important;
+  border-bottom: 1px solid var(--q-header-border-color);
+  transition: all 0.3s ease; /* 添加过渡效果 */
+  padding: 0 16px;
+}
+
+.header-text,
+.header-btn {
+  color: var(--q-header-text-color) !important;
+  transition: color 0.3s ease;
+}
+
+.header-menu {
+  background: transparent !important;
+  line-height: 64px;
+  border-bottom: none !important;
+}
+
+body.body--light .header {
+  --q-header-bg: #ffffff;
+  --q-header-text-color: rgba(0, 0, 0, 0.85);
+  --q-header-border-color: rgba(0, 0, 0, 0.1); /* 日间模式下使用浅色边框 */
+}
+
+body.body--dark .header {
+  --q-header-bg: #141414;
+  --q-header-text-color: rgba(255, 255, 255, 0.85);
+  --q-header-border-color: rgba(255, 255, 255, 0.1); /* 夜间模式下使用深色边框 */
 }
 </style>

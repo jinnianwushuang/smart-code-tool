@@ -1,7 +1,7 @@
 <template>
-  <div class="q-pa-lg bg-grey-1">
-    <q-card flat bordered class="q-mx-auto shadow-2">
-      <q-card-section class="bg-indigo text-white row items-center">
+  <div class="q-pa-lg change-case-wrapper">
+    <q-card flat bordered class="q-mx-auto shadow-2 transition-base">
+      <q-card-section class="bg-indigo-8 text-white row items-center">
         <q-icon name="style" size="sm" class="q-mr-sm" />
         <div class="text-h6 text-weight-bold">Change-Case 全格式转换器</div>
       </q-card-section>
@@ -14,7 +14,6 @@
           placeholder="例如: helloWorld 或 user-profile-avatar"
           @update:model-value="processTransform"
           clearable
-          bg-color="white"
         >
           <template #prepend>
             <q-btn color="grey" class="q-mr-lg" @click="inputText = ''">清空</q-btn>
@@ -51,7 +50,7 @@
           <template v-slot:body-cell-result="props">
             <q-td :props="props">
               <div class="row items-center no-wrap">
-                <q-badge outline color="black" class="q-pa-sm text-body2 font-mono">
+                <q-badge outline color="primary" class="q-pa-sm text-body2 font-mono result-badge">
                   {{ props.value || '-' }}
                 </q-badge>
               </div>
@@ -139,7 +138,24 @@ onMounted(() => {
 })
 </script>
 <style scoped>
+.change-case-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
 .font-mono {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+.result-badge {
+  /* 确保在深色模式下背景半透明，提升质感 */
+  background-color: rgba(128, 128, 128, 0.05);
+  font-weight: 500;
 }
 </style>

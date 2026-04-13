@@ -1,66 +1,76 @@
 <template>
-  <div style="padding: 24px; background: #f0f2f5; min-height: 100vh">
-    <a-card title="SVG 批量转 Vue (带单文件复制)" :bordered="false">
-      <template #extra>
-        <a-space>
-          <a-checkbox v-model:checked="autoColor">自动 currentColor</a-checkbox>
-          <a-button type="primary" :disabled="!fileList.length" @click="handleDownloadAll">
-            <template #icon><DownloadOutlined /></template>
-            打包下载 ZIP
-          </a-button>
-        </a-space>
-      </template>
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
+      <q-card-section class="bg-indigo-8 text-white row items-center">
+        <q-icon name="wallpaper" size="sm" class="q-mr-sm" />
+        <div class="text-h6 text-weight-bold">SVG 批量转 Vue 组件</div>
+        <q-space />
+        <div class="row items-center q-gutter-x-md">
+          <q-checkbox v-model="autoColor" label="自动 currentColor" dark color="white" />
+          <q-btn
+            color="secondary"
+            outline
+            label="打包下载 ZIP"
+            icon="download"
+            size="sm"
+            :disable="!fileList.length"
+            @click="handleDownloadAll"
+          />
+        </div>
+      </q-card-section>
 
-      <!-- 上传区 -->
-      <a-upload-dragger
-        v-model:fileList="fileList"
-        :multiple="true"
-        accept=".svg"
-        :before-upload="() => false"
-      >
-        <p class="ant-upload-drag-icon"><InboxOutlined /></p>
-        <p class="ant-upload-text">点击或拖拽 SVG 文件</p>
-      </a-upload-dragger>
+      <q-card-section class="q-gutter-y-md">
+        <!-- 上传区 -->
+        <a-upload-dragger
+          v-model:fileList="fileList"
+          :multiple="true"
+          accept=".svg"
+          :before-upload="() => false"
+        >
+          <p class="ant-upload-drag-icon ant-upload-icon-color"><InboxOutlined /></p>
+          <p class="ant-upload-text ant-upload-text-color">点击或拖拽 SVG 文件到此处</p>
+        </a-upload-dragger>
 
-      <!-- 文件列表 -->
-      <a-list
-        v-if="fileList.length"
-        item-layout="horizontal"
-        :data-source="fileList"
-        style="margin-top: 20px; background: #fff; border-radius: 8px"
-      >
-        <template #renderItem="{ item }">
-          <a-list-item>
-            <!-- 列表操作：复制按钮 -->
-            <template #actions>
-              <a-button size="small" type="link" @click="copySingleVue(item)">
-                <template #icon><CopyOutlined /></template>
-                复制 Vue 代码
-              </a-button>
-            </template>
-
-            <a-list-item-meta
-              :title="item.name"
-              :description="`${(item.size / 1024).toFixed(1)} KB`"
-            >
-              <template #avatar>
-                <div class="svg-preview" v-html="previews[item.uid]"></div>
+        <!-- 文件列表 -->
+        <a-list
+          v-if="fileList.length"
+          item-layout="horizontal"
+          :data-source="fileList"
+          class="svg-list-container q-mt-md"
+        >
+          <template #renderItem="{ item }">
+            <a-list-item>
+              <!-- 列表操作：复制按钮 -->
+              <template #actions>
+                <a-button size="small" type="link" @click="copySingleVue(item)">
+                  <template #icon><CopyOutlined /></template>
+                  复制 Vue 代码
+                </a-button>
               </template>
-            </a-list-item-meta>
-          </a-list-item>
-        </template>
-      </a-list>
-    </a-card>
+
+              <a-list-item-meta
+                :title="item.name"
+                :description="`${(item.size / 1024).toFixed(1)} KB`"
+              >
+                <template #avatar>
+                  <div class="svg-preview" v-html="previews[item.uid]"></div>
+                </template>
+              </a-list-item-meta>
+            </a-list-item>
+          </template>
+        </a-list>
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 
 <script setup>
 import { ref, watch } from 'vue'
-import { message } from 'ant-design-vue'
 import { InboxOutlined, DownloadOutlined, CopyOutlined } from '@ant-design/icons-vue'
 import { parse } from 'svgson'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
+import { copyText } from 'src/output/common/project-common.js'
 
 const fileList = ref([])
 const autoColor = ref(true)
@@ -117,10 +127,9 @@ const copySingleVue = async (file) => {
   try {
     const rawText = (await file.originFileObj?.text()) || (await file.text())
     const vueCode = await convertToVue(rawText)
-    await navigator.clipboard.writeText(vueCode)
-    message.success(`${file.name} 代码已复制`)
+    copyText(vueCode)
   } catch (err) {
-    message.error('复制失败')
+    console.error('复制失败', err)
   }
 }
 
@@ -140,14 +149,36 @@ const handleDownloadAll = async () => {
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
+.svg-list-container {
+  background: rgba(128, 128, 128, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(128, 128, 128, 0.1);
+  padding: 0 16px;
+}
+
 .svg-preview {
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fafafa;
-  border: 1px solid #eee;
+  background: rgba(128, 128, 128, 0.05);
+  border: 1px solid rgba(128, 128, 128, 0.1);
   border-radius: 4px;
   padding: 4px;
 }

@@ -85,6 +85,7 @@ const scroll_to_top = () => {
 
   overflow-y: auto;
   position: relative;
+  transition: background-color 0.3s ease;
 }
 
 .back-to-top {
@@ -93,8 +94,13 @@ const scroll_to_top = () => {
   bottom: 40px;
   z-index: 1000;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 50%;
+  box-shadow: 0 4px 12px var(--q-dark-page, rgba(0, 0, 0, 0.15));
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
 }
 
 /* 渐变动画 */

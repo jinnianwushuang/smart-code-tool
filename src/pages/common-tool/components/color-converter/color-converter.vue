@@ -1,14 +1,117 @@
+<template>
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto max-w-1200 transition-base shadow-2">
+      <!-- 统一头部 -->
+      <q-card-section class="bg-indigo-8 text-white row items-center">
+        <q-icon name="colorize" size="sm" class="q-mr-sm" />
+        <div class="text-h6 text-weight-bold">色彩转换与配色大师</div>
+      </q-card-section>
+
+      <q-card-section class="row q-col-gutter-lg">
+        <!-- 左侧：核心转换与输入 -->
+        <div class="col-12 col-md-5 q-gutter-y-md border-right-adaptive">
+          <div class="text-subtitle2 text-grey-8">核心预览与转换</div>
+
+          <div
+            class="main-preview transition-base shadow-inner"
+            :style="{ backgroundColor: colorInput, color: colorDetails?.isDark ? '#fff' : '#000' }"
+          >
+            <span class="preview-text font-mono">{{ colorDetails?.hex }}</span>
+          </div>
+
+          <div class="row items-center q-gutter-x-sm">
+            <q-input
+              v-model="colorInput"
+              filled
+              dense
+              label="颜色输入 (#Hex, RGB, Name)"
+              class="col"
+            />
+            <input type="color" v-model="colorInput" class="color-picker-input cursor-pointer" />
+          </div>
+
+          <div class="result-box rounded-borders control-panel q-pa-md" v-if="colorDetails">
+            <div class="res-item row items-center justify-between">
+              <span class="text-caption text-grey-7">Flutter (ARGB)</span>
+              <code
+                class="font-mono cursor-pointer text-primary"
+                @click="copy(colorDetails.flutter)"
+                >{{ colorDetails.flutter }}</code
+              >
+            </div>
+            <div class="res-item row items-center justify-between q-mt-sm">
+              <span class="text-caption text-grey-7">RGB / RGBA</span>
+              <code class="font-mono cursor-pointer text-primary" @click="copy(colorDetails.rgb)">{{
+                colorDetails.rgb
+              }}</code>
+            </div>
+          </div>
+
+          <!-- 变量导出 -->
+          <div class="q-mt-lg">
+            <div class="row items-center justify-between q-mb-sm">
+              <div class="text-subtitle2 text-grey-8">代码变量导出</div>
+              <q-btn
+                flat
+                dense
+                color="primary"
+                icon="content_copy"
+                size="sm"
+                label="复制全部"
+                @click="copy(variablesCode)"
+              />
+            </div>
+            <div class="code-wrapper font-mono">
+              <pre class="q-ma-none"><code>{{ variablesCode }}</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧：配色方案 -->
+        <div class="col-12 col-md-7">
+          <div class="row items-center justify-between q-mb-md">
+            <div class="text-subtitle2 text-grey-8">配色方案生成</div>
+            <q-btn
+              color="indigo"
+              outline
+              size="sm"
+              label="导出方案 (JSON)"
+              icon="download"
+              @click="exportToJson"
+            />
+          </div>
+
+          <div v-for="scheme in schemes" :key="scheme.label" class="scheme-group q-mb-lg">
+            <div class="scheme-label text-caption q-mb-xs text-grey-7 font-bold">
+              {{ scheme.label }}
+            </div>
+            <div class="scheme-palette shadow-1">
+              <div
+                v-for="(c, idx) in scheme.colors"
+                :key="idx"
+                class="palette-item transition-base relative-position"
+                :style="{ backgroundColor: c.toHexString() }"
+                @click="applyColor(c)"
+              >
+                <q-tooltip class="bg-black">{{ c.toHexString().toUpperCase() }}</q-tooltip>
+                <span class="hex-tip">{{ c.toHexString().toUpperCase() }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hint q-mt-xl text-grey-6 text-center text-caption">
+            <q-icon name="info" class="q-mr-xs" /> 点击上方任意色块可快速切换主颜色
+          </div>
+        </div>
+      </q-card-section>
+    </q-card>
+  </div>
+</template>
+
 <script setup>
-import { ref, reactive, computed, watch, onMounted } from 'vue'
-import {
-  BgColorsOutlined,
-  CopyOutlined,
-  ExportOutlined,
-  FormatPainterOutlined,
-  ThunderboltOutlined,
-} from '@ant-design/icons-vue'
-import { message } from 'ant-design-vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import tinycolor from 'tinycolor2'
+import { copyText as projectCopyText } from 'src/output/common/project-common.js'
 
 // --- 状态定义 ---
 const colorInput = ref('#1890ff')
@@ -66,8 +169,8 @@ $primary-dark: darken($primary-color, 15%);`
 })
 
 const copy = (text) => {
-  navigator.clipboard.writeText(text)
-  message.success('已复制')
+  if (!text) return
+  projectCopyText(text)
 }
 
 const applyColor = (c) => {
@@ -105,126 +208,51 @@ const exportToJson = () => {
   link.download = `color-scheme-${colorDetails.value.hex}.json`
   link.click()
   URL.revokeObjectURL(url)
-  message.success('JSON 配色方案已导出')
 }
 
 watch(colorInput, generateSchemes)
 onMounted(generateSchemes)
 </script>
 
-<template>
-  <div class="color-master-container">
-    <a-row :gutter="24">
-      <!-- 左侧：主输入与转换 -->
-      <a-col :xs="24" :lg="10">
-        <a-card title="核心转换" :bordered="false" class="card-shadow">
-          <div
-            class="main-preview"
-            :style="{ backgroundColor: colorInput, color: colorDetails?.isDark ? '#fff' : '#000' }"
-          >
-            <span class="preview-text">{{ colorDetails?.hex }}</span>
-          </div>
-
-          <div class="input-section">
-            <a-input-group compact style="display: flex">
-              <a-input v-model:value="colorInput" placeholder="#1890ff" style="flex: 1" />
-              <input type="color" v-model="colorInput" class="color-picker-input" />
-            </a-input-group>
-          </div>
-
-          <div class="result-box" v-if="colorDetails">
-            <div class="res-item">
-              <span class="res-label">Flutter</span>
-              <code @click="copy(colorDetails.flutter)">{{ colorDetails.flutter }}</code>
-            </div>
-            <div class="res-item">
-              <span class="res-label">RGB</span>
-              <code @click="copy(colorDetails.rgb)">{{ colorDetails.rgb }}</code>
-            </div>
-          </div>
-        </a-card>
-
-        <!-- 变量导出 -->
-        <a-card title="代码导出 (CSS/SCSS)" :bordered="false" class="card-shadow mt-24">
-          <template #extra>
-            <a-button type="link" size="small" @click="copy(variablesCode)"
-              ><CopyOutlined /> 复制全部</a-button
-            >
-          </template>
-          <pre class="code-pre"><code>{{ variablesCode }}</code></pre>
-        </a-card>
-      </a-col>
-
-      <!-- 右侧：配色方案 -->
-      <a-col :xs="24" :lg="14">
-        <a-card title="配色方案生成" :bordered="false" class="card-shadow">
-          <template #extra><FormatPainterOutlined /></template>
-
-          <div v-for="scheme in schemes" :key="scheme.label" class="scheme-group">
-            <div class="scheme-label">{{ scheme.label }}</div>
-            <div class="scheme-palette">
-              <div
-                v-for="(c, idx) in scheme.colors"
-                :key="idx"
-                class="palette-item"
-                :style="{ backgroundColor: c.toHexString() }"
-                @click="applyColor(c)"
-                :title="c.toHexString()"
-              >
-                <span class="hex-tip">{{ c.toHexString().toUpperCase() }}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="hint"><ThunderboltOutlined /> 点击上方色块可直接切换主颜色</div>
-        </a-card>
-        <!-- 右侧：配色方案卡片头部 -->
-        <a-card title="配色方案生成" :bordered="false" class="card-shadow">
-          <template #extra>
-            <a-space>
-              <a-button size="small" @click="exportToJson">
-                <template #icon><ExportOutlined /></template>
-                导出 JSON
-              </a-button>
-              <FormatPainterOutlined />
-            </a-space>
-          </template>
-
-          <!-- ... 方案列表内容保持不变 ... -->
-        </a-card>
-      </a-col>
-    </a-row>
-  </div>
-</template>
-
 <style scoped>
-.color-master-container {
-  padding: 24px;
-  background: #f0f2f5;
-  min-height: 100vh;
+.generator-wrapper {
+  transition: background-color 0.3s;
 }
-.card-shadow {
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.2s;
 }
-.mt-24 {
-  margin-top: 24px;
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
+.control-panel {
+  background-color: rgba(128, 128, 128, 0.05);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.font-mono {
+  font-family: 'Fira Code', 'Monaco', 'Courier New', monospace;
 }
 
 /* 预览区 */
 .main-preview {
-  height: 100px;
-  border-radius: 8px;
+  height: 120px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  transition: 0.3s;
 }
 .preview-text {
-  font-family: monospace;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* 输入与结果 */
@@ -232,42 +260,14 @@ onMounted(generateSchemes)
   width: 40px;
   height: 32px;
   padding: 0;
-  border: 1px solid #d9d9d9;
-  cursor: pointer;
-}
-.result-box {
-  margin-top: 20px;
-  background: #fafafa;
-  padding: 12px;
-  border-radius: 8px;
-}
-.res-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 13px;
-}
-.res-item code {
-  cursor: pointer;
-  color: #1890ff;
-}
-.res-label {
-  color: #8c8c8c;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 4px;
 }
 
 /* 配色方案 */
-.scheme-group {
-  margin-bottom: 24px;
-}
-.scheme-label {
-  font-size: 12px;
-  color: #8c8c8c;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
 .scheme-palette {
   display: flex;
-  height: 40px;
+  height: 48px;
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
@@ -277,36 +277,29 @@ onMounted(generateSchemes)
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
-.palette-item:hover .hex-tip {
-  opacity: 1;
+.palette-item:hover {
+  transform: scaleY(1.1);
+  z-index: 1;
 }
 .hex-tip {
   opacity: 0;
   color: #fff;
-  font-size: 10px;
+  font-size: 9px;
   background: rgba(0, 0, 0, 0.5);
   padding: 2px 4px;
   border-radius: 3px;
-  pointer-events: none;
-  transition: 0.2s;
+  font-family: monospace;
+}
+.palette-item:hover .hex-tip {
+  opacity: 1;
 }
 
-/* 代码区域 */
-.code-pre {
-  background: #282c34;
-  color: #abb2bf;
-  padding: 12px;
+.code-wrapper {
+  background: rgba(40, 44, 52, 0.95);
   border-radius: 8px;
+  padding: 16px;
+  color: #9cdcfe;
   font-size: 12px;
-  margin: 0;
-  overflow-x: auto;
-}
-.hint {
-  margin-top: 16px;
-  font-size: 12px;
-  color: #bfbfbf;
-  text-align: center;
 }
 </style>

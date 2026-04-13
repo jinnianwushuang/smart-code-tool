@@ -1,13 +1,13 @@
 <template>
-  <div class="q-pa-md bg-grey-2">
+  <div class="q-pa-md generator-wrapper">
     <div class="row q-col-gutter-md justify-center">
       <div class="col-12 col-md-11">
-        <q-card flat bordered class="shadow-4">
+        <q-card flat bordered class="shadow-4 transition-base max-w-1200 q-mx-auto">
           <!-- 顶部导航 -->
           <q-tabs
             v-model="activeTab"
             dense
-            class="bg-indigo-10 text-white"
+            class="bg-indigo-8 text-white"
             active-color="cyan-3"
             indicator-color="cyan-3"
             align="justify"
@@ -94,7 +94,7 @@
               </div>
 
               <div class="col-12 col-md-5 flex flex-center column">
-                <div class="qr-preview-box q-pa-md bg-white shadow-5 rounded-borders">
+                <div class="qr-preview-box q-pa-md shadow-5 rounded-borders transition-base">
                   <!-- 隐藏组件用于逻辑生成 -->
 
                   <qrcode-vue
@@ -155,7 +155,7 @@
                 </div>
               </div>
 
-              <div class="col-12 col-md-8">
+              <div class="col-12 col-md-8 q-pa-md">
                 <div id="pdf-content" class="bg-white q-pa-md rounded-borders min-height-400">
                   <div class="row q-col-gutter-md" v-if="batchCards.length">
                     <div v-for="(card, index) in batchCards" :key="index" class="col-4 text-center">
@@ -250,7 +250,7 @@ import QrcodeVue, { QrcodeCanvas, QrcodeSvg } from 'qrcode.vue'
 import jsQR from 'jsqr'
 import html2pdf from 'html2pdf.js'
 import { BrowserMultiFormatReader } from '@zxing/library'
-
+import { copyText as projectCopyText } from 'src/output/common/project-common.js'
 const $q = useQuasar()
 
 // 基础状态
@@ -453,14 +453,14 @@ const clearLogo = () => {
   logoImage.value = null
   refreshCanvas()
 }
-const copyText = (txt) => {
-  copyToClipboard(txt).then(() => $q.notify({ message: '文本已复制', color: 'green' }))
+const copyText = (text) => {
+  if (!text) return
+  projectCopyText(text)
 }
 
 onMounted(refreshCanvas)
 onUnmounted(stopScanner)
 </script>
-
 <style scoped>
 .responsive-canvas {
   max-width: 100%;
@@ -468,7 +468,8 @@ onUnmounted(stopScanner)
   border-radius: 8px;
 }
 .qr-preview-box {
-  border: 1px solid #ddd;
+  background: rgba(128, 128, 128, 0.03);
+  border: 1px solid rgba(128, 128, 128, 0.1);
   line-height: 0;
 }
 .video-box {
@@ -495,7 +496,49 @@ onUnmounted(stopScanner)
   }
 }
 .border-dashed {
-  border: 1.5px dashed #ccc;
+  border: 1.5px dashed rgba(128, 128, 128, 0.3);
+}
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
+.max-w-900 {
+  max-width: 900px;
+}
+
+/* 批量名片预览区域 */
+#pdf-content {
+  background: rgba(128, 128, 128, 0.03);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+/* Ant Design Vue 组件的样式覆盖 */
+:deep(.ant-upload-wrapper) {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+:deep(.ant-upload-drag) {
+  background-color: rgba(128, 128, 128, 0.05); /* 适配黑白主题 */
+  border-color: rgba(128, 128, 128, 0.1); /* 适配黑白主题 */
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 .font-mono {
   font-family: 'Fira Code', monospace;

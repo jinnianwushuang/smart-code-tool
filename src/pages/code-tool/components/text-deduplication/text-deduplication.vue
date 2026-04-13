@@ -1,7 +1,7 @@
 <template>
-  <div class="q-pa-md">
-    <q-card flat bordered class="q-mx-auto shadow-3 max-w-1200">
-      <q-card-section class="bg-blue-grey-8 text-white row items-center">
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto shadow-2 max-w-1200 transition-base">
+      <q-card-section class="bg-indigo-8 text-white row items-center">
         <q-icon name="cleaning_services" size="sm" class="q-mr-sm" />
         <div class="text-h6 text-weight-bold">代码文本清洗 & 去重工具</div>
       </q-card-section>
@@ -9,7 +9,7 @@
       <q-card-section class="row q-col-gutter-md">
         <!-- 左侧：配置选项 -->
         <div class="col-12 col-md-4">
-          <q-list bordered separator class="rounded-borders">
+          <q-list bordered separator class="rounded-borders transition-base">
             <q-item-label header>切分规则</q-item-label>
 
             <q-item tag="label" v-ripple>
@@ -114,8 +114,8 @@
             filled
             readonly
             label="清洗去重后的结果"
-            bg-color="grey-2"
             rows="10"
+            class="font-mono"
           >
             <template v-slot:append>
               <q-btn round dense flat icon="content_copy" @click="copyResult">
@@ -124,11 +124,18 @@
             </template>
           </q-input>
 
-          <div class="row items-center justify-between bg-grey-3 q-pa-sm rounded-borders">
+          <div class="row items-center justify-between control-panel q-pa-sm rounded-borders">
             <div class="text-caption">
               结果统计: <b>{{ stats.count }}</b> 行
             </div>
-            <q-btn label="强制重新处理" color="primary" icon="refresh" @click="processText" />
+            <q-btn
+              label="重新处理"
+              color="indigo"
+              outline
+              icon="refresh"
+              size="sm"
+              @click="processText"
+            />
           </div>
         </div>
       </q-card-section>
@@ -138,7 +145,8 @@
 
 <script setup>
 import { ref, reactive, watch } from 'vue'
-import { useQuasar, copyToClipboard } from 'quasar'
+import { useQuasar } from 'quasar'
+import { copyText } from 'src/output/common/project-common.js'
 
 const $q = useQuasar()
 const inputText = ref('')
@@ -246,16 +254,39 @@ watch(options, () => processText())
 
 const copyResult = () => {
   if (!outputText.value) return
-  copyToClipboard(outputText.value)
-    .then(() =>
-      $q.notify({ message: '复制成功', color: 'positive', position: 'top', timeout: 1000 }),
-    )
-    .catch(() => $q.notify({ message: '复制失败', color: 'negative' }))
+  copyText(outputText.value)
 }
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
+.control-panel {
+  background-color: rgba(128, 128, 128, 0.05);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+}
+
 .rounded-borders {
   border-radius: 8px;
+}
+
+.font-mono :deep(textarea) {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  background: rgba(128, 128, 128, 0.02);
 }
 </style>

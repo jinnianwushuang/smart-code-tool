@@ -1,76 +1,102 @@
 <template>
-  <div style="padding: 24px; background: #f0f2f5; min-height: 100vh">
-    <a-card :bordered="false" style="max-width: 950px; margin: 0 auto">
-      <template #title>
-        <a-space size="large">
-          <a-radio-group v-model:value="currentArch" button-style="solid" @change="loadData">
-            <a-radio-button value="Arch_A">架构 A</a-radio-button>
-            <a-radio-button value="Arch_B">架构 B</a-radio-button>
-            <a-radio-button value="Arch_C">架构 C</a-radio-button>
-          </a-radio-group>
-          <!-- 搜索框 -->
-          <a-input-search
-            v-model:value="searchValue"
-            placeholder="搜索文件名或注释..."
-            style="width: 250px"
-            allow-clear
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
+      <!-- 顶部状态栏 -->
+      <q-card-section class="bg-indigo-8 text-white row items-center q-gutter-x-md">
+        <q-icon name="account_tree" size="sm" class="q-mr-sm" />
+        <div class="text-h6 text-weight-bold q-mr-md">树形文件夹编辑器</div>
+
+        <a-radio-group
+          v-model:value="currentArch"
+          button-style="solid"
+          size="small"
+          @change="loadData"
+        >
+          <a-radio-button value="Arch_A">架构 A</a-radio-button>
+          <a-radio-button value="Arch_B">架构 B</a-radio-button>
+          <a-radio-button value="Arch_C">架构 C</a-radio-button>
+        </a-radio-group>
+
+        <a-input-search
+          v-model:value="searchValue"
+          placeholder="搜索文件名或注释..."
+          size="small"
+          style="width: 200px"
+          allow-clear
+        />
+
+        <q-space />
+
+        <div class="row q-gutter-x-sm">
+          <q-btn
+            color="white"
+            text-color="indigo-8"
+            label="导出 JSON"
+            icon="download"
+            size="sm"
+            @click="downloadJSON"
           />
-        </a-space>
-      </template>
+          <q-btn
+            color="white"
+            text-color="primary"
+            label="新增根目录"
+            icon="add"
+            size="sm"
+            @click="addNode(null, 'directory')"
+          />
+        </div>
+      </q-card-section>
 
-      <template #extra>
-        <a-space>
-          <a-button @click="downloadJSON"><download-outlined />导出 JSON</a-button>
-          <a-button type="primary" @click="addNode(null, 'directory')">新增根目录</a-button>
-        </a-space>
-      </template>
+      <q-card-section>
+        <!-- 展示过滤后的树数据 -->
+        <a-directory-tree
+          draggable
+          block-node
+          :tree-data="displayTreeData"
+          :expanded-keys="expandedKeys"
+          class="custom-tree"
+          @expand="(keys) => (expandedKeys = keys)"
+        >
+          <template #title="{ title, key, isLeaf, description }">
+            <div class="tree-node-content">
+              <div class="node-main">
+                <a-input
+                  v-if="editKey === key"
+                  size="small"
+                  v-model:value="editValue"
+                  @blur="saveEdit(key)"
+                  @pressEnter="saveEdit(key)"
+                  v-focus
+                />
+                <!-- 高亮显示标题 -->
+                <span v-else class="node-title" v-html="highlightText(title)"></span>
 
-      <!-- 展示过滤后的树数据 -->
-      <a-directory-tree
-        draggable
-        block-node
-        :tree-data="displayTreeData"
-        :expanded-keys="expandedKeys"
-        @expand="(keys) => (expandedKeys = keys)"
-      >
-        <template #title="{ title, key, isLeaf, description }">
-          <div class="tree-node-content">
-            <div class="node-main">
-              <a-input
-                v-if="editKey === key"
-                size="small"
-                v-model:value="editValue"
-                @blur="saveEdit(key)"
-                @pressEnter="saveEdit(key)"
-                v-focus
-              />
-              <!-- 高亮显示标题 -->
-              <span v-else class="node-title" v-html="highlightText(title)"></span>
+                <!-- 高亮显示注释 -->
+                <span v-if="description && editKey !== key" class="node-desc">
+                  <span class="desc-prefix">//</span>
+                  <span v-html="highlightText(description)"></span>
+                </span>
+              </div>
 
-              <!-- 高亮显示注释 -->
-              <span v-if="description && editKey !== key" class="node-desc">
-                // <span v-html="highlightText(description)"></span>
-              </span>
+              <div class="node-actions">
+                <a-tooltip title="编辑注释"
+                  ><comment-outlined @click.stop="openDescModal(key, title, description)"
+                /></a-tooltip>
+                <plus-circle-outlined v-if="!isLeaf" @click.stop="addNode(key, 'directory')" />
+                <edit-outlined @click.stop="enterEdit(key, title)" />
+                <delete-outlined @click.stop="deleteNode(key)" style="color: #ff4d4f" />
+              </div>
             </div>
+          </template>
+        </a-directory-tree>
 
-            <div class="node-actions">
-              <a-tooltip title="编辑注释"
-                ><comment-outlined @click.stop="openDescModal(key, title, description)"
-              /></a-tooltip>
-              <plus-circle-outlined v-if="!isLeaf" @click.stop="addNode(key, 'directory')" />
-              <edit-outlined @click.stop="enterEdit(key, title)" />
-              <delete-outlined @click.stop="deleteNode(key)" style="color: #ff4d4f" />
-            </div>
-          </div>
-        </template>
-      </a-directory-tree>
-
-      <a-empty
-        v-if="displayTreeData.length === 0"
-        description="未找到匹配项"
-        style="margin-top: 40px"
-      />
-    </a-card>
+        <a-empty
+          v-if="displayTreeData.length === 0"
+          description="未找到匹配项"
+          style="margin-top: 40px"
+        />
+      </q-card-section>
+    </q-card>
 
     <a-modal v-model:open="descModalVisible" title="说明注释" @ok="handleDescOk">
       <a-textarea v-model:value="tempDescription" :rows="4" placeholder="输入功能描述..." />
@@ -156,7 +182,7 @@ watch(searchValue, (val) => {
 const highlightText = (text) => {
   if (!searchValue.value || !text) return text
   const regex = new RegExp(`(${searchValue.value})`, 'gi')
-  return text.replace(regex, '<span style="color: #f50; font-weight: bold;">$1</span>')
+  return text.replace(regex, '<span class="search-highlight">$1</span>')
 }
 
 // --- 数据持久化 ---
@@ -247,33 +273,79 @@ const vFocus = { mounted: (el) => el.focus() }
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
 .tree-node-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding-right: 8px;
 }
+
 .node-main {
   display: flex;
   align-items: center;
   flex: 1;
   gap: 8px;
   overflow: hidden;
+  font-family: 'Fira Code', monospace;
 }
+
 .node-desc {
-  color: #8c8c8c;
+  color: rgba(128, 128, 128, 0.7);
   font-size: 12px;
   font-style: italic;
 }
+
+.desc-prefix {
+  opacity: 0.5;
+  margin-right: 4px;
+}
+
 .node-actions {
   display: none;
   gap: 10px;
-  color: #1890ff;
+  color: var(--q-primary);
 }
+
 .tree-node-content:hover .node-actions {
   display: flex;
 }
+
 :deep(.ant-tree-node-content-wrapper) {
   display: flex !important;
+  transition: background-color 0.2s;
+}
+
+:deep(.search-highlight) {
+  color: #ff9800;
+  font-weight: bold;
+  text-decoration: underline;
+  background: rgba(255, 152, 0, 0.1);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.custom-tree {
+  background: transparent;
+}
+
+/* 适配深色模式 */
+:deep(.ant-tree) {
+  background: transparent !important;
 }
 </style>

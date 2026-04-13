@@ -1,25 +1,28 @@
 <template>
-  <div class="q-pa-md bg-grey-1">
-    <q-card flat bordered class="q-mx-auto shadow-2" style="max-width: 1300px">
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto shadow-2 transition-base" style="max-width: 1300px">
       <!-- 头部工具栏 -->
-      <q-card-section class="bg-blue-grey-10 text-white row items-center q-gutter-sm">
-        <q-icon name="admin_panel_settings" size="sm" />
+      <q-card-section class="bg-indigo-8 text-white row items-center q-gutter-sm">
+        <q-icon name="auto_fix_high" size="sm" />
         <div class="text-h6 text-weight-bold">JSON-Excel 转换器</div>
         <q-space />
-        <q-btn flat color="white" label="样例数据" icon="lightbulb" @click="loadSample" />
-        <q-btn flat color="white" label="清空" icon="delete" @click="clearAll" />
+        <q-btn flat color="white" label="样例数据" icon="lightbulb" size="sm" @click="loadSample" />
+        <q-btn flat color="white" label="清空" icon="delete" size="sm" @click="clearAll" />
         <q-btn
-          color="cyan-4"
-          text-color="black"
+          color="white"
+          text-color="indigo-8"
           label="下载 JSON"
           icon="download"
+          size="sm"
           @click="downloadJson"
           :disable="!finalData.length"
         />
         <q-btn
-          color="green-7"
+          color="white"
+          text-color="positive"
           label="导出 Excel"
           icon="description"
+          size="sm"
           @click="exportToExcel"
           :disable="!finalData.length"
         />
@@ -48,7 +51,7 @@
                 filled
                 label="支持标准 JSON 或 JS 数组"
                 rows="10"
-                class="code-font"
+                class="font-mono"
                 @update:model-value="smartParse"
               />
             </q-tab-panel>
@@ -59,6 +62,7 @@
                 label="选择文件"
                 accept=".json,.txt,.js"
                 @update:model-value="handleFileImport"
+                clearable
               >
                 <template v-slot:prepend><q-icon name="cloud_upload" /></template>
               </q-file>
@@ -66,13 +70,13 @@
           </q-tab-panels>
 
           <!-- 治理工具箱 -->
-          <q-list bordered class="rounded-borders bg-white shadow-1">
-            <q-item-label header class="text-weight-bold text-indigo">数据治理配置</q-item-label>
+          <q-list bordered class="rounded-borders transition-base control-panel shadow-1">
+            <q-item-label header class="text-weight-bold text-primary">数据治理配置</q-item-label>
 
             <!-- 1. 类型自动修复 (新增功能) -->
             <q-item tag="label" v-ripple>
               <q-item-section avatar
-                ><q-checkbox v-model="config.autoTypeRepair" color="green-7"
+                ><q-checkbox v-model="config.autoTypeRepair" color="positive"
               /></q-item-section>
               <q-item-section>
                 <q-item-label>类型自动修复</q-item-label>
@@ -175,8 +179,7 @@
                   filled
                   readonly
                   rows="22"
-                  bg-color="white"
-                  class="code-font"
+                  class="font-mono result-area"
                 />
               </div>
             </q-tab-panel>
@@ -189,9 +192,10 @@
 
 <script setup>
 import { ref, reactive, computed } from 'vue'
-import { useQuasar, exportFile, copyToClipboard } from 'quasar'
+import { useQuasar, exportFile } from 'quasar'
 import * as XLSX from 'xlsx'
 import * as changeCaseLib from 'change-case'
+import { copyText as projectCopyText } from 'src/output/common/project-common.js'
 
 const $q = useQuasar()
 const inputTab = ref('paste')
@@ -307,10 +311,10 @@ const loadSample = () => {
   rawInput.value = `[{ "User_ID": "1001", "User_Name": "张三", "Age": "25", "Is_Admin": "true", "Avatar": "null" }]`
   smartParse(rawInput.value)
 }
-const copy = (txt) =>
-  copyToClipboard(txt).then(() =>
-    $q.notify({ message: '复制成功', color: 'positive', timeout: 800 }),
-  )
+const copy = (txt) => {
+  if (!txt) return
+  projectCopyText(txt)
+}
 const downloadJson = () => exportFile(`治理结果.json`, formattedJson.value)
 const exportToExcel = () => {
   const ws = XLSX.utils.json_to_sheet(finalData.value)
@@ -321,11 +325,40 @@ const exportToExcel = () => {
 </script>
 
 <style scoped>
-.code-font :deep(textarea) {
-  font-family: 'Fira Code', monospace;
-  font-size: 12px;
+.generator-wrapper {
+  transition: background-color 0.3s;
 }
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.control-panel {
+  background-color: rgba(128, 128, 128, 0.05);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.font-mono :deep(textarea),
+.font-mono :deep(.q-table) {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.result-area :deep(textarea) {
+  background: rgba(128, 128, 128, 0.02);
+}
+
 .result-table-area {
-  height: 500px;
+  height: 540px;
+}
+
+.rounded-borders {
+  border-radius: 8px;
 }
 </style>

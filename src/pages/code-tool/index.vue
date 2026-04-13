@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <q-card>
+  <div class="q-pa-md">
+    <q-card flat bordered class="tool-main-card">
       <TabLikeButtonsV1 v-model="current_tab_name" :tabs="all_tabs" />
 
       <component :is="current_component" />
@@ -17,9 +17,7 @@ import StringChangeCase from './components/string-change-case/string-change-case
 import ConvertToTemplateRef from './components/convert-to-template-ref/convert-to-template-ref.vue'
 import TextDeduplication from './components/text-deduplication/text-deduplication.vue'
 import FunctionCodeCorrection from './components/function-code-correction/function-code-correction.vue'
-import TemplateInterpolationExtract from './components/template-interpolation-extract/template-interpolation-extract.vue'
-import TemplateFunctionExtract from './components/template-function-extract/template-function-extract.vue'
-import TemplateColonPropertyExtract from './components/template-colon-property-extract/template-colon-property-extract.vue'
+
 import TemplateUnifiedExtractor from './components/template-unified-extractor/template-unified-extractor.vue'
 
 import ComposableCodeGennerater from './components/composable-code-gennerater/composable-code-gennerater.vue'
@@ -50,17 +48,7 @@ const all_tabs = [
 
   { name: 'FunctionCodeCorrection', label: '函数代码纠正', component: FunctionCodeCorrection },
   { name: 'TemplateUnifiedExtractor', label: 'Vue模板提取器', component: TemplateUnifiedExtractor },
-  // {
-  //   name: 'TemplateInterpolationExtract',
-  //   label: '模板{{}}插值提取',
-  //   component: TemplateInterpolationExtract,
-  // },
-  // { name: 'TemplateFunctionExtract', label: '模板@函数提取', component: TemplateFunctionExtract },
-  // {
-  //   name: 'TemplateColonPropertyExtract',
-  //   label: '模板:属性提取',
-  //   component: TemplateColonPropertyExtract,
-  // },
+
   {
     name: 'ComposableCodeGennerater',
     label: '组合式代码生成',
@@ -79,7 +67,12 @@ const current_component = computed(() => {
 </script>
 
 <style scoped>
-.div {
-  padding: 16px;
+.tool-main-card {
+  /* 确保在切换黑白主题时有平滑过渡 */
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+  min-height: 600px;
 }
 </style>

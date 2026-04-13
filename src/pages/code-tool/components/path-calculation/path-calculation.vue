@@ -1,53 +1,70 @@
 <template>
-  <div style="padding: 24px; background: #f0f2f5; min-height: 100vh">
-    <a-card
-      title="Vue 组件引用生成器"
-      :bordered="false"
-      class="q-mb-lg max-w-1250"
-      style="max-width: 1250px; margin: 0 auto 20px auto"
-    >
-      <div class="q-gutter-md">
+  <div class="q-pa-md generator-wrapper">
+    <!-- 1. 引用生成器 -->
+    <q-card flat bordered class="q-mx-auto max-w-1200 transition-base q-mb-lg">
+      <q-card-section class="bg-indigo-8 text-white row items-center">
+        <q-icon name="link" size="sm" class="q-mr-sm" />
+        <div class="text-h6 text-weight-bold">Vue 组件引用生成器</div>
+      </q-card-section>
+
+      <q-card-section class="q-gutter-y-md">
         <!-- 输入框 -->
-        <a-input
-          v-model:value="fullPath"
+        <q-input
+          v-model="fullPath"
+          filled
           placeholder="粘贴 Vue 文件路径 (例如: src/pages/user/UserInfo.vue)"
-          allow-clear
-          @change="generateCode_2"
+          clearable
+          @update:model-value="generateCode_2"
         />
 
         <!-- 操作按钮 -->
-        <div style="margin-top: 16px; display: flex; gap: 10px">
-          <a-button type="primary" @click="generateCode_2" :disabled="!fullPath">
-            生成引用
-          </a-button>
-          <a-button v-if="generatedCode" @click="copyOutput"> 一键复制 </a-button>
+        <div class="row items-center q-gutter-x-sm">
+          <q-btn
+            color="indigo"
+            outline
+            label="生成引用"
+            size="sm"
+            @click="generateCode_2"
+            :disabled="!fullPath"
+          />
+          <q-space />
+          <q-btn
+            v-if="generatedCode"
+            color="secondary"
+            icon="content_copy"
+            label="一键复制"
+            size="sm"
+            @click="copyOutput"
+          />
         </div>
 
         <!-- 结果展示 -->
-        <div v-if="generatedCode" style="margin-top: 24px">
-          <p class="text-caption text-grey">生成结果：</p>
-          <div class="result-box">
-            <pre v-if="generatedCode" class="code-block q-ma-none">{{ generatedCode }}</pre>
-          </div>
+        <div v-if="generatedCode">
+          <div class="text-caption text-grey q-mb-xs">生成结果：</div>
+          <pre class="code-block font-mono">{{ generatedCode }}</pre>
         </div>
-      </div>
-    </a-card>
-    <a-card
-      title="Vue 相对引用路径计算器"
-      :bordered="false"
-      style="max-width: 1250px; margin: 0 auto"
-    >
-      <a-form layout="vertical">
-        <a-form-item label="文件 A">
-          <a-input v-model:value="pathA" placeholder="src/pages/dir1/a.vue" allow-clear />
-        </a-form-item>
+      </q-card-section>
+    </q-card>
 
-        <a-form-item label="文件 B">
-          <a-input v-model:value="pathB" placeholder="src/pages/dir2/b.vue" allow-clear />
-        </a-form-item>
+    <!-- 2. 相对路径计算器 -->
+    <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
+      <q-card-section class="bg-indigo-8 text-white row items-center">
+        <q-icon name="route" size="sm" class="q-mr-sm" />
+        <div class="text-h6 text-weight-bold">Vue 相对引用路径计算器</div>
+      </q-card-section>
 
-        <a-divider />
-      </a-form>
+      <q-card-section>
+        <a-form layout="vertical">
+          <a-form-item label="文件 A">
+            <a-input v-model:value="pathA" placeholder="src/pages/dir1/a.vue" allow-clear />
+          </a-form-item>
+
+          <a-form-item label="文件 B">
+            <a-input v-model:value="pathB" placeholder="src/pages/dir2/b.vue" allow-clear />
+          </a-form-item>
+        </a-form>
+      </q-card-section>
+
       <!-- 计算结果: A 引入 B -->
       <q-list bordered separator class="rounded-borders q-mb-md">
         <q-item-label header class="text-weight-bold text-primary">计算结果: A 引入 B</q-item-label>
@@ -56,7 +73,7 @@
           <q-item-section>
             <q-item-label caption>相对引用路径 (Relative Import)</q-item-label>
             <div class="row items-center justify-between q-gutter-sm q-mt-md">
-              <code v-if="relativeImport_AB" class="path-code text-body2">{{
+              <code v-if="relativeImport_AB" class="path-code text-body2 font-mono">{{
                 relativeImport_AB
               }}</code>
               <span v-else class="text-grey-6">请输入完整路径</span>
@@ -75,18 +92,19 @@
         <q-item>
           <q-item-section>
             <q-item-label caption>代码示例</q-item-label>
-            <div class="row items-start justify-between q-gutter-sm q-mt-md">
-              <pre v-if="relativeImport_AB" class="code-block q-ma-none">{{
+            <div class="column q-gutter-y-sm q-mt-md">
+              <pre v-if="relativeImport_AB" class="code-block font-mono">{{
                 generateCode(relativeImport_AB)
               }}</pre>
-              <q-space />
-              <q-btn
-                color="primary"
-                size="sm"
-                label="复制引用"
-                :disabled="!relativeImport_AB"
-                @click="copy(generateCode(relativeImport_AB))"
-              />
+              <div class="row justify-end">
+                <q-btn
+                  color="primary"
+                  size="sm"
+                  label="复制引用"
+                  :disabled="!relativeImport_AB"
+                  @click="copy(generateCode(relativeImport_AB))"
+                />
+              </div>
             </div>
           </q-item-section>
         </q-item>
@@ -100,7 +118,7 @@
           <q-item-section>
             <q-item-label caption>相对引用路径 (Relative Import)</q-item-label>
             <div class="row items-center justify-between q-gutter-sm q-mt-md">
-              <code v-if="relativeImport_BA" class="path-code text-body2">{{
+              <code v-if="relativeImport_BA" class="path-code text-body2 font-mono">{{
                 relativeImport_BA
               }}</code>
               <span v-else class="text-grey-6">请输入完整路径</span>
@@ -119,23 +137,24 @@
         <q-item>
           <q-item-section>
             <q-item-label caption>代码示例</q-item-label>
-            <div class="row items-start justify-between q-gutter-sm q-mt-md">
-              <pre v-if="relativeImport_BA" class="code-block q-ma-none">{{
+            <div class="column q-gutter-y-sm q-mt-md">
+              <pre v-if="relativeImport_BA" class="code-block font-mono">{{
                 generateCode(relativeImport_BA)
               }}</pre>
-              <q-space />
-              <q-btn
-                color="primary"
-                size="sm"
-                label="复制引用"
-                :disabled="!relativeImport_BA"
-                @click="copy(generateCode(relativeImport_BA))"
-              />
+              <div class="row justify-end">
+                <q-btn
+                  color="primary"
+                  size="sm"
+                  label="复制引用"
+                  :disabled="!relativeImport_BA"
+                  @click="copy(generateCode(relativeImport_BA))"
+                />
+              </div>
             </div>
           </q-item-section>
         </q-item>
       </q-list>
-    </a-card>
+    </q-card>
   </div>
 </template>
 
@@ -226,22 +245,40 @@ const copy = async (text) => {
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
 .path-code {
-  background: #fffbe6;
+  background: rgba(255, 251, 230, 0.1);
   padding: 4px 8px;
-  border: 1px solid #ffe58f;
+  border: 1px solid rgba(255, 229, 143, 0.5);
   border-radius: 4px;
-  color: #d46b08;
-  font-weight: bold;
-  font-family: 'Cascadia Code', Consolas, monospace;
+  color: var(--q-primary);
+  font-weight: 600;
 }
 
 .code-block {
-  background: #2d2d2d;
-  color: #ccc;
+  background: rgba(128, 128, 128, 0.05);
   padding: 12px;
   border-radius: 4px;
   margin: 0;
-  font-size: 13px;
+  font-size: 12px;
+  border: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.font-mono {
+  font-family: 'Fira Code', 'Cascadia Code', Consolas, monospace;
 }
 </style>

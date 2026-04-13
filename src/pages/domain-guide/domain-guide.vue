@@ -1,7 +1,7 @@
 <template>
-  <div class="nav-manager">
+  <div class="nav-manager generator-wrapper">
     <!-- 控制栏 -->
-    <a-card class="control-panel" :bordered="false">
+    <a-card class="control-panel q-mx-auto max-w-1200 transition-base" :bordered="false">
       <a-tabs v-model:activeKey="current_category" @change="hanle_tab_change" :tab-bar-gutter="16">
         <a-tab-pane
           v-for="category in all_tabs"
@@ -9,7 +9,7 @@
           :tab="category.name.toUpperCase()"
         />
       </a-tabs>
-      <div class="bg-white row items-center">
+      <div class="search-bar-container row items-center q-px-sm q-pb-md">
         <!-- <div>关键字：</div> -->
         <q-input
           v-model="search_key"
@@ -17,14 +17,18 @@
           outlined
           dense
           clearable
-          dark
+          :dark="$q.dark.isActive"
           :class="is_mobile ? 'col' : 'w-400'"
-        />
+        >
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
       </div>
     </a-card>
 
     <!-- 视图区域 -->
-    <div class="content-viewport">
+    <div class="content-viewport q-mx-auto max-w-1200">
       <!-- 2. 卡片视图模式 -->
       <div class="card-grid">
         <div
@@ -38,7 +42,7 @@
           </a-divider>
           <a-row :gutter="[16, 16]">
             <a-col :xs="24" :sm="12" :md="8" :lg="6" v-for="item in group.items" :key="item.name">
-              <a-card hoverable class="nav-card" @click="openLink(item.url)">
+              <a-card hoverable class="nav-card transition-base" @click="openLink(item.url)">
                 <div class="card-top">
                   <span class="name">{{ item.name }}</span>
                   <a-tag color="blue" size="small">{{ item.tag }}</a-tag>
@@ -92,17 +96,20 @@ const fliter_by_query = (list) => {
 <style scoped>
 .nav-manager {
   min-height: 100vh;
+  transition: background-color 0.3s;
 }
-.control-panel {
-  margin-bottom: 8 px;
 
+.control-panel {
+  margin-bottom: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background: transparent;
 }
-.page-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #1890ff;
+
+.search-bar-container {
+  background: rgba(128, 128, 128, 0.05);
+  border-radius: 4px;
 }
+
 .content-viewport {
   padding: 24px;
   border-radius: 8px;

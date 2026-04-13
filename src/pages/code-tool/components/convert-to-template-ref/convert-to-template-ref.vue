@@ -1,7 +1,7 @@
 <template>
-  <div class="q-pa-md">
-    <q-card flat bordered class="q-mx-auto max-w-1200">
-      <q-card-section class="bg-teal text-white row items-center">
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
+      <q-card-section class="bg-indigo-8 text-white row items-center">
         <q-icon name="code" size="sm" class="q-mr-sm" />
         <div class="text-h6">TemplateRef 转换器 (Vue 3.5+)</div>
       </q-card-section>
@@ -27,12 +27,14 @@
         </div>
 
         <!-- 操作 -->
-        <div class="row q-gutter-x-sm">
-          <q-btn label="清空" color="grey" @click="clear" />
+        <div class="row items-center q-gutter-x-sm">
+          <q-btn label="清空" color="grey-7" outline icon="delete" size="sm" @click="clear" />
+          <q-space />
           <q-btn
             label="复制结果"
-            color="teal"
+            color="secondary"
             icon="content_copy"
+            size="sm"
             @click="copyOutput"
             :disable="!outputCode"
           />
@@ -107,12 +109,26 @@ const copyOutput = () => {
 </script>
 
 <style scoped>
-.max-width-800 {
-  max-width: 800px;
+.generator-wrapper {
+  transition: background-color 0.3s;
 }
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
 code {
-  background: #eee;
+  background: rgba(128, 128, 128, 0.1);
+  color: #c41d7f;
   padding: 2px 4px;
   border-radius: 4px;
+  font-family: monospace;
 }
 </style>

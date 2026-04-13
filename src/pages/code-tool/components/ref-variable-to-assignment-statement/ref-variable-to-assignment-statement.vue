@@ -1,36 +1,64 @@
 <template>
-  <div style="padding: 24px; background: #f0f2f5; min-height: 100vh">
-    <a-card title="Vue3 ref 赋值语句转换器" :bordered="false">
-      <a-row :gutter="20">
-        <!-- 输入 -->
-        <a-col :span="12">
-          <div style="margin-bottom: 8px; font-weight: 500">原始定义语句：</div>
-          <a-textarea
-            v-model:value="inputCode"
-            placeholder="请粘贴 export const xxx = ref(...) 语句"
-            :auto-size="{ minRows: 12, maxRows: 20 }"
-          />
-        </a-col>
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
+      <q-card-section class="bg-indigo-8 text-white row items-center">
+        <q-icon name="assignment_turned_in" size="sm" class="q-mr-sm" />
+        <div class="text-h6 text-weight-bold">Vue3 ref 赋值语句转换器</div>
+      </q-card-section>
 
-        <!-- 输出 -->
-        <a-col :span="12">
-          <div style="margin-bottom: 8px; font-weight: 500; color: #1890ff">转换后的赋值语句：</div>
-          <a-textarea
-            v-model:value="outputCode"
-            readonly
-            placeholder="转换结果将显示在这里"
-            :auto-size="{ minRows: 12, maxRows: 20 }"
-            style="background: #fafafa; font-family: 'Courier New', Courier, monospace"
-          />
-        </a-col>
-      </a-row>
+      <q-card-section class="q-gutter-y-md">
+        <div class="row q-col-gutter-md">
+          <!-- 输入 -->
+          <div class="col-12 col-md-6">
+            <div class="text-subtitle2 q-mb-xs">原始定义语句：</div>
+            <q-input
+              v-model="inputCode"
+              type="textarea"
+              filled
+              placeholder="请粘贴 export const xxx = ref(...) 语句"
+              rows="15"
+              class="font-mono"
+              @update:model-value="handleConvert"
+            />
+          </div>
 
-      <div style="margin-top: 20px; display: flex; gap: 12px">
-        <a-button type="primary" size="large" @click="handleConvert"> 执行转换 </a-button>
-        <a-button size="large" @click="handleCopy" :disabled="!outputCode"> 复制结果 </a-button>
-        <a-button size="large" danger @click="handleClear"> 清空 </a-button>
-      </div>
-    </a-card>
+          <!-- 输出 -->
+          <div class="col-12 col-md-6">
+            <div class="text-subtitle2 q-mb-xs text-primary">转换后的赋值语句：</div>
+            <q-input
+              v-model="outputCode"
+              type="textarea"
+              filled
+              readonly
+              placeholder="转换结果将显示在这里"
+              rows="15"
+              class="font-mono result-area"
+            />
+          </div>
+        </div>
+
+        <div class="row items-center q-gutter-x-sm q-mt-md">
+          <q-btn
+            color="indigo"
+            outline
+            label="执行转换"
+            icon="play_arrow"
+            size="sm"
+            @click="handleConvert"
+          />
+          <q-btn label="清空" color="grey-7" outline icon="delete" size="sm" @click="handleClear" />
+          <q-space />
+          <q-btn
+            color="secondary"
+            icon="content_copy"
+            label="复制结果"
+            size="sm"
+            @click="handleCopy"
+            :disabled="!outputCode"
+          />
+        </div>
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 

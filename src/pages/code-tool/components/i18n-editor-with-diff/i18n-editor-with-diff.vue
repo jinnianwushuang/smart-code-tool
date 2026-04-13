@@ -1,6 +1,6 @@
 <template>
-  <div class="i18n-master-container">
-    <a-card title="🚀 国际化多语言高级编辑器" :bordered="false">
+  <div class="q-pa-md generator-wrapper">
+    <a-card :bordered="false" class="q-mx-auto max-w-1200 transition-base">
       <!-- 顶部操作栏 -->
       <template #extra>
         <a-space>
@@ -18,6 +18,11 @@
         </a-space>
       </template>
 
+      <a-card-meta>
+        <template #title
+          ><span class="text-h6 text-weight-bold">🚀 国际化多语言高级编辑器</span></template
+        >
+      </a-card-meta>
       <!-- 搜索与批量功能区 -->
       <div class="toolbar-wrapper">
         <a-row :gutter="16" align="middle">
@@ -31,7 +36,7 @@
           <a-col :span="4">
             <a-checkbox v-model:checked="showOnlyEmpty">仅看未完成</a-checkbox>
           </a-col>
-          <a-col :span="12" style="text-align: right">
+          <a-col :span="12" class="text-right">
             <a-space>
               <a-button
                 type="primary"
@@ -247,29 +252,46 @@ const deleteKey = (key) => {
 </script>
 
 <style scoped>
-.i18n-master-container {
-  padding: 20px;
-  background: #f0f2f5;
-  min-height: 100vh;
+.generator-wrapper {
+  transition: background-color 0.3s;
 }
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
 .toolbar-wrapper {
   margin-bottom: 16px;
-  background: #fff;
+  background: rgba(128, 128, 128, 0.05); /* 适配黑白主题 */
   padding: 16px;
   border-radius: 8px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid rgba(128, 128, 128, 0.1); /* 适配黑白主题 */
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
+
 .empty-cell {
   border-color: #ff4d4f !important;
-  background: #fff2f0;
+  background: rgba(255, 77, 79, 0.1); /* 红色半透明背景，适配黑白主题 */
 }
+
 .key-input {
   font-family: monospace;
   font-weight: 600;
   color: #1890ff;
 }
+
 :deep(.ant-table-wrapper) {
-  background: #fff;
+  /* 移除硬编码的背景色，让 Ant Design Vue 自动适配主题 */
+  /* background: #fff; */
   border-radius: 8px;
   overflow: hidden;
 }

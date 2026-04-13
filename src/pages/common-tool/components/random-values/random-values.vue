@@ -1,10 +1,10 @@
 <template>
-  <div class="q-pa-md bg-grey-1">
-    <div class="row q-col-gutter-md justify-center">
+  <div class="q-pa-md generator-wrapper">
+    <div class="row q-col-gutter-md justify-center q-mx-auto max-w-1200">
       <!-- 左侧：生成配置 -->
       <div class="col-12 col-md-5">
-        <q-card flat bordered class="shadow-2">
-          <q-card-section class="bg-primary text-white row items-center">
+        <q-card flat bordered class="shadow-2 transition-base">
+          <q-card-section class="bg-indigo-8 text-white row items-center">
             <q-icon name="lock" size="sm" class="q-mr-sm" />
             <div class="text-h6 text-weight-bold">随机密码生成器</div>
           </q-card-section>
@@ -14,10 +14,10 @@
             <div class="text-subtitle2 text-grey-8">
               密码长度: <span class="text-primary text-h6">{{ config.length }}</span>
             </div>
-            <q-slider v-model="config.length" :min="4" :max="64" :step="1" label color="primary" />
+            <q-slider v-model="config.length" :min="4" :max="64" :step="1" label color="indigo" />
 
             <!-- 字符选项 -->
-            <q-list bordered separator class="rounded-borders">
+            <q-list bordered separator class="rounded-borders transition-base">
               <q-item tag="label" v-ripple>
                 <q-item-section avatar><q-checkbox v-model="config.uppercase" /></q-item-section>
                 <q-item-section><q-item-label>包含大写字母 (A-Z)</q-item-label></q-item-section>
@@ -47,7 +47,7 @@
 
             <q-btn
               class="full-width q-py-sm"
-              color="primary"
+              color="indigo"
               label="立即生成"
               icon="autorenew"
               @click="generatePassword"
@@ -58,8 +58,8 @@
 
       <!-- 右侧：结果与强度 -->
       <div class="col-12 col-md-6">
-        <q-card flat bordered class="full-height shadow-1">
-          <q-card-section class="bg-blue-grey-9 text-white row items-center q-py-sm">
+        <q-card flat bordered class="full-height shadow-1 transition-base">
+          <q-card-section class="bg-indigo-8 text-white row items-center q-py-sm">
             <div class="text-subtitle1">生成结果</div>
             <q-space />
             <q-btn
@@ -74,7 +74,7 @@
 
           <q-card-section class="q-gutter-y-lg text-center">
             <!-- 主密码展示 -->
-            <div class="q-pa-lg bg-grey-2 rounded-borders border-dashed relative-position">
+            <div class="main-password-box q-pa-lg rounded-borders border-dashed relative-position">
               <div v-if="mainPassword" class="text-h4 font-mono text-break word-wrap">
                 {{ mainPassword }}
               </div>
@@ -103,8 +103,8 @@
               <q-radio v-model="batchCount" :val="10" label="10个" />
               <q-btn flat color="secondary" label="重新批量生成" size="sm" @click="generateBatch" />
               <q-btn
-                flat
-                color="secondary"
+                color="indigo"
+                outline
                 label="一键复制"
                 size="sm"
                 @click="copyBatch"
@@ -115,7 +115,7 @@
             <q-list
               bordered
               separator
-              class="bg-white rounded-borders overflow-hidden"
+              class="batch-list-container rounded-borders overflow-hidden"
               v-if="batchList.length"
             >
               <q-item v-for="(p, i) in batchList" :key="i" class="q-py-xs">
@@ -134,7 +134,8 @@
 
 <script setup>
 import { ref, reactive, computed, watch } from 'vue'
-import { useQuasar, copyToClipboard } from 'quasar'
+import { useQuasar } from 'quasar'
+import { copyText as projectCopyText } from 'src/output/common/project-common.js'
 
 const $q = useQuasar()
 
@@ -240,28 +241,53 @@ const strengthColor = computed(() => {
 
 // 工具函数
 const copy = (val) => {
-  copyToClipboard(val).then(() => {
-    $q.notify({ message: '复制成功', color: 'positive', icon: 'done', timeout: 800 })
-  })
+  if (!val) return
+  projectCopyText(val)
 }
 
 const copyBatch = () => {
-  copyToClipboard(batchList.value.join('\n')).then(() => {
-    $q.notify({ message: '批量密码已复制', color: 'positive', icon: 'done', timeout: 800 })
-  })
+  if (!batchList.value.length) return
+  projectCopyText(batchList.value.join('\n'))
 }
 
 watch(() => batchCount.value, generateBatch)
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.2s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
 .font-mono {
   font-family: 'Fira Code', 'Courier New', monospace;
   letter-spacing: 1px;
 }
-.border-dashed {
-  border: 2px dashed #ccc;
+
+.main-password-box {
+  background: rgba(128, 128, 128, 0.05);
+  border: 2px dashed rgba(128, 128, 128, 0.2);
 }
+
+.batch-list-container {
+  background: rgba(128, 128, 128, 0.02);
+}
+
+.border-dashed {
+  border-style: dashed;
+}
+
 .text-break {
   word-break: break-all;
 }

@@ -1,8 +1,11 @@
 <template>
-  <div class="q-pa-md bg-grey-1">
-    <q-card flat bordered class="q-mx-auto shadow-2 max-w-1200">
-      <q-card-section class="bg-primary text-white">
-        <div class="text-h6">Composable 代码生成器</div>
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto shadow-2 max-w-1200 transition-base">
+      <q-card-section class="bg-indigo-8 text-white">
+        <div class="row items-center">
+          <q-icon name="code" size="sm" class="q-mr-sm" />
+          <div class="text-h6 text-weight-bold">Composable 代码生成器</div>
+        </div>
         <div class="text-caption text-grey-3">根据目录路径自动生成标准模块引入及初始化代码</div>
       </q-card-section>
 
@@ -15,13 +18,15 @@
           placeholder="例如: src/pages/code-tool/componsable/"
           hint="末尾的斜杠会自动处理"
           @update:model-value="generateCode"
+          clearable
         />
 
         <!-- 结果展示 -->
         <div class="column q-gutter-y-sm">
           <div class="row items-center q-gutter-x-md">
             <span class="text-subtitle2 text-weight-bold">生成的代码片段:</span>
-            <q-btn label="清空" color="grey" size="sm" variant="flat" @click="reset" />
+            <q-space />
+            <q-btn label="清空" color="grey-7" size="sm" outline icon="delete" @click="reset" />
             <q-btn
               color="secondary"
               icon="content_copy"
@@ -37,8 +42,7 @@
             type="textarea"
             filled
             readonly
-            rows="10"
-            bg-color="white"
+            rows="12"
             class="font-mono"
           />
         </div>
@@ -102,9 +106,24 @@ generateCode()
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
 .font-mono :deep(textarea) {
   font-family: 'Fira Code', 'Courier New', monospace;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
 }
 </style>

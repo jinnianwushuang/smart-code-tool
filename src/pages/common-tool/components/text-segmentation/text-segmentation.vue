@@ -1,119 +1,160 @@
 <template>
-  <div class="p-6 max-w-5xl mx-auto">
-    <a-card title="🛠️ 进阶文本切割专家" :bordered="false" class="shadow-lg">
-      <template #extra>
-        <a-space>
-          <a-upload :before-upload="handleFileUpload" :show-upload-list="false">
-            <a-button type="dashed">读取大文件 (.txt)</a-button>
-          </a-upload>
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto max-w-1200 transition-base shadow-2">
+      <!-- 统一头部 -->
+      <q-card-section class="bg-indigo-8 text-white row items-center">
+        <q-icon name="content_cut" size="sm" class="q-mr-sm" />
+        <div class="text-h6 text-weight-bold">进阶文本切割专家</div>
+        <q-space />
+        <div class="row items-center q-gutter-x-sm">
           <a-tag color="orange">支持 ZIP 导出</a-tag>
-        </a-space>
-      </template>
-
-      <a-space direction="vertical" class="w-full" size="large">
-        <!-- 输入区 -->
-        <div class="relative">
-          <a-textarea
-            v-model:value="inputText"
-            placeholder="粘贴文本或通过上方按钮导入文件..."
-            :auto-size="{ minRows: 8, maxRows: 12 }"
-            allow-clear
-          />
-          <div class="absolute bottom-2 right-4 text-gray-400 text-xs">
-            当前字数: {{ inputText.length.toLocaleString() }}
-          </div>
+          <a-upload :before-upload="handleFileUpload" :show-upload-list="false">
+            <q-btn
+              color="white"
+              text-color="indigo-8"
+              label="读取大文件 (.txt)"
+              icon="upload_file"
+              size="sm"
+            />
+          </a-upload>
         </div>
+      </q-card-section>
+
+      <q-card-section class="q-gutter-y-md">
+        <!-- 输入区 -->
+        <q-input
+          v-model="inputText"
+          type="textarea"
+          filled
+          label="原始文本内容"
+          placeholder="粘贴文本或通过上方按钮导入文件..."
+          rows="10"
+          clearable
+          class="font-mono"
+        >
+          <template v-slot:hint> 当前字数: {{ inputText.length.toLocaleString() }} </template>
+        </q-input>
 
         <!-- 高级配置面板 -->
-        <a-tabs v-model:activeKey="config.type" type="card">
-          <!-- 长度模式 -->
-          <a-tab-pane key="length" tab="按字数切割">
-            <a-input-number
-              v-model:value="config.length"
-              :min="1"
-              addon-after="字/份"
-              class="w-64"
-            />
-          </a-tab-pane>
-
-          <!-- 份数模式 -->
-          <a-tab-pane key="count" tab="均分为份数">
-            <a-input-number
-              v-model:value="config.count"
-              :min="1"
-              addon-after="总份数"
-              class="w-64"
-            />
-          </a-tab-pane>
-
-          <!-- 正则模式 -->
-          <a-tab-pane key="regex" tab="正则/预设切割">
-            <a-space>
-              <a-select
-                v-model:value="config.regexPreset"
-                style="width: 200px"
-                @change="applyPreset"
-              >
-                <a-select-option value="\n\n+">按段落 (空行)</a-select-option>
-                <a-select-option value="[。！？?!\n]">按句子 (中英文标点)</a-select-option>
-                <a-select-option value="第[一二三四五六七八九十\d]+章"
-                  >按章节名 (第x章)</a-select-option
-                >
-                <a-select-option value="custom">自定义正则表达式</a-select-option>
-              </a-select>
-              <a-input
-                v-if="config.regexPreset === 'custom'"
-                v-model:value="config.regexStr"
-                placeholder="输入正则，如 \d+"
+        <div class="control-panel q-pa-md rounded-borders">
+          <a-tabs v-model:activeKey="config.type" type="card">
+            <!-- 长度模式 -->
+            <a-tab-pane key="length" tab="按字数切割">
+              <a-input-number
+                v-model:value="config.length"
+                :min="1"
+                addon-after="字/份"
+                class="w-64"
               />
-            </a-space>
-          </a-tab-pane>
-        </a-tabs>
+            </a-tab-pane>
 
-        <a-button type="primary" block size="large" @click="handleSplit" :loading="loading">
+            <!-- 份数模式 -->
+            <a-tab-pane key="count" tab="均分为份数">
+              <a-input-number
+                v-model:value="config.count"
+                :min="1"
+                addon-after="总份数"
+                class="w-64"
+              />
+            </a-tab-pane>
+
+            <!-- 正则模式 -->
+            <a-tab-pane key="regex" tab="正则/预设切割">
+              <a-space>
+                <a-select
+                  v-model:value="config.regexPreset"
+                  style="width: 200px"
+                  @change="applyPreset"
+                >
+                  <a-select-option value="\n\n+">按段落 (空行)</a-select-option>
+                  <a-select-option value="[。！？?!\n]">按句子 (中英文标点)</a-select-option>
+                  <a-select-option value="第[一二三四五六七八九十\d]+章"
+                    >按章节名 (第x章)</a-select-option
+                  >
+                  <a-select-option value="custom">自定义正则表达式</a-select-option>
+                </a-select>
+                <a-input
+                  v-if="config.regexPreset === 'custom'"
+                  v-model:value="config.regexStr"
+                  placeholder="输入正则，如 \d+"
+                />
+              </a-space>
+            </a-tab-pane>
+          </a-tabs>
+        </div>
+
+        <a-button
+          type="primary"
+          block
+          size="large"
+          @click="handleSplit"
+          :loading="loading"
+          class="btn-process"
+        >
+          <template #icon><ThunderboltOutlined v-if="!loading" /></template>
           开始处理并生成预览
         </a-button>
 
         <!-- 结果控制与展示 -->
         <div v-if="results.length > 0">
-          <div class="flex justify-between items-center mb-4 bg-blue-50 p-3 rounded">
-            <div>
+          <div
+            class="row items-center justify-between q-mb-md results-header q-pa-sm rounded-borders"
+          >
+            <div class="text-subtitle2">
               生成了 <span class="font-bold text-blue-600">{{ results.length }}</span> 个片段
             </div>
             <a-space>
-              <a-button @click="downloadAsTxt">单文件导出 (.txt)</a-button>
+              <a-button size="small" @click="downloadAsTxt">合并导出 (.txt)</a-button>
               <a-button type="primary" @click="downloadAsZip">打包下载 (.zip)</a-button>
             </a-space>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-96 overflow-y-auto pr-2">
-            <a-card
+            <q-card
               v-for="(item, index) in results"
               :key="index"
-              size="small"
-              :title="`#${index + 1}`"
-              hoverable
+              flat
+              bordered
+              class="segment-card transition-base"
             >
-              <template #extra>
-                <a-typography-link @click="copyToClipboard(item)">复制</a-typography-link>
-              </template>
-              <div class="text-xs text-gray-500 line-clamp-4 leading-relaxed">
+              <q-card-section
+                class="q-py-xs row items-center justify-between bg-grey-1 transition-base card-header"
+              >
+                <span class="text-caption text-weight-bold">#{{ index + 1 }}</span>
+                <q-btn
+                  flat
+                  round
+                  dense
+                  icon="content_copy"
+                  size="xs"
+                  color="primary"
+                  @click="copyToClipboard(item)"
+                >
+                  <q-tooltip>复制此段</q-tooltip>
+                </q-btn>
+              </q-card-section>
+              <q-separator />
+              <q-card-section class="text-xs text-grey-8 line-clamp-4 leading-relaxed font-mono">
                 {{ item }}
-              </div>
-              <div class="mt-2 text-[10px] text-gray-300">{{ item.length }} chars</div>
-            </a-card>
+              </q-card-section>
+              <q-card-section class="q-pt-none row justify-end">
+                <div class="text-[10px] text-grey-5">{{ item.length }} chars</div>
+              </q-card-section>
+            </q-card>
           </div>
         </div>
-      </a-space>
-    </a-card>
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
-import { message, Modal } from 'ant-design-vue'
+import { message } from 'ant-design-vue'
+import { ThunderboltOutlined } from '@ant-design/icons-vue'
 import { saveAs } from 'file-saver'
 import JSZip from 'jszip'
+import { copyText as projectCopyText } from 'src/output/common/project-common.js'
 
 const inputText = ref('')
 const loading = ref(false)
@@ -199,16 +240,68 @@ const downloadAsTxt = () => {
 }
 
 const copyToClipboard = (text) => {
-  navigator.clipboard.writeText(text)
-  message.success('已复制')
+  projectCopyText(text)
 }
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.2s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
+.control-panel {
+  background-color: rgba(128, 128, 128, 0.05);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.results-header {
+  background-color: rgba(33, 150, 243, 0.08);
+  border: 1px solid rgba(33, 150, 243, 0.2);
+}
+
+.segment-card {
+  background: rgba(128, 128, 128, 0.02);
+}
+
+.segment-card:hover {
+  border-color: var(--q-primary);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  background: rgba(128, 128, 128, 0.05) !important;
+}
+
+.font-mono {
+  font-family: 'Fira Code', 'Monaco', 'Courier New', monospace;
+}
+
+.btn-process {
+  height: 48px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
 .line-clamp-4 {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.rounded-borders {
+  border-radius: 8px;
 }
 </style>

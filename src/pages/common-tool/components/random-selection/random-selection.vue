@@ -1,10 +1,10 @@
 <template>
-  <div class="q-pa-md bg-grey-1">
-    <div class="row q-col-gutter-md justify-center">
+  <div class="q-pa-md generator-wrapper">
+    <div class="row q-col-gutter-md justify-center q-mx-auto max-w-1200">
       <!-- 左侧：治理与抽取控制 -->
       <div class="col-12 col-md-7">
-        <q-card flat bordered class="shadow-2">
-          <q-card-section class="bg-indigo-9 text-white row items-center">
+        <q-card flat bordered class="shadow-2 transition-base">
+          <q-card-section class="bg-indigo-8 text-white row items-center">
             <q-icon name="fact_check" size="sm" class="q-mr-sm" />
             <div class="text-h6 text-weight-bold">随机抽取</div>
           </q-card-section>
@@ -50,10 +50,7 @@
             </div>
 
             <!-- [核心增强] 标准预览、一键复制、多格式导出 -->
-            <div
-              v-if="processedList.length > 0"
-              class="bg-indigo-0 q-pa-sm rounded-borders border-indigo-1"
-            >
+            <div v-if="processedList.length > 0" class="preview-section q-pa-sm rounded-borders">
               <div class="row items-center justify-between q-mb-xs">
                 <div class="text-caption text-indigo-9 text-weight-bold">
                   标准数据预览 (共 {{ processedList.length }} 项):
@@ -133,10 +130,10 @@
           v-if="drawResults.length"
           flat
           bordered
-          class="q-mt-md bg-amber-1 border-amber animate__animated animate__fadeIn"
+          class="q-mt-md result-card animate__animated animate__fadeIn"
         >
           <q-card-section class="row items-center">
-            <div class="text-h6 text-amber-10 text-weight-bold">
+            <div class="text-h6 text-weight-bold result-text">
               🎉 结果: {{ drawResults.join(' / ') }}
             </div>
             <q-space />
@@ -144,7 +141,7 @@
               flat
               round
               icon="content_copy"
-              color="amber-10"
+              color="orange-9"
               @click="copy(drawResults.join('、'))"
             />
           </q-card-section>
@@ -153,8 +150,8 @@
 
       <!-- 右侧：快照库 -->
       <div class="col-12 col-md-5">
-        <q-card flat bordered class="full-height-card shadow-1">
-          <q-card-actions class="bg-grey-3 q-mb-md">
+        <q-card flat bordered class="full-height-card shadow-1 transition-base">
+          <q-card-actions class="snapshot-actions q-mb-md">
             <q-input v-model="libName" dense filled label="快照名称" class="col q-mr-sm" />
             <q-btn
               color="indigo"
@@ -164,7 +161,7 @@
               :disable="!processedList.length"
             />
           </q-card-actions>
-          <q-card-section class="bg-blue-grey-9 text-white row items-center">
+          <q-card-section class="bg-indigo-8 text-white row items-center">
             <q-icon name="inventory_2" size="xs" class="q-mr-xs" />
             <span>治理快照库</span>
             <q-space />
@@ -193,7 +190,7 @@
                 @click="loadFromHistory(item)"
               >
                 <q-item-section>
-                  <q-item-label class="text-weight-bold text-primary">{{ item.name }}</q-item-label>
+                  <q-item-label class="text-weight-bold text-indigo">{{ item.name }}</q-item-label>
                   <q-item-label caption lines="1"
                     >标准数据: {{ item.standardData.length }} 项</q-item-label
                   >
@@ -219,8 +216,9 @@
 
 <script setup>
 import { ref, onMounted, toRaw } from 'vue'
-import { useQuasar, copyToClipboard, exportFile } from 'quasar'
+import { useQuasar, exportFile } from 'quasar'
 import Dexie from 'dexie'
+import { copyText as projectCopyText } from 'src/output/common/project-common.js'
 
 const $q = useQuasar()
 const db = new Dexie('FinalDataGovernanceDB')
@@ -353,32 +351,71 @@ const exportHistory = () =>
     JSON.stringify(historyList.value, null, 2),
     'application/json',
   )
-const copy = (txt) =>
-  copyToClipboard(txt).then(() => $q.notify({ message: '已复制到剪贴板', color: 'indigo' }))
+const copy = (txt) => {
+  if (!txt) return
+  projectCopyText(txt)
+}
 
 onMounted(refreshHistory)
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.2s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
 .full-height-card {
   height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
 }
+
 .scroll-area {
   flex: 1;
   overflow-y: auto;
 }
-.border-amber {
-  border: 2px dashed #ffa000;
+
+.result-card {
+  background: rgba(255, 160, 0, 0.1);
+  border: 2px dashed rgba(255, 160, 0, 0.4);
 }
-.border-indigo-1 {
-  border: 1px solid #e8eaf6;
+
+.result-text {
+  color: #ef6c00;
 }
+
 .rounded-borders {
   border-radius: 8px;
 }
-.bg-indigo-0 {
-  background: #f5f7ff;
+
+.preview-section {
+  background: rgba(63, 81, 181, 0.05);
+  border: 1px solid rgba(63, 81, 181, 0.1);
+}
+
+.snapshot-actions {
+  background: rgba(128, 128, 128, 0.05);
+  transition: background-color 0.3s;
+}
+
+.font-mono {
+  font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+/* 适配深色模式文字颜色 */
+:deep(.text-indigo-9) {
+  color: var(--q-primary) !important;
 }
 </style>

@@ -1,22 +1,24 @@
 <template>
-  <div class="q-pa-md bg-grey-1 min-height-screen">
-    <div class="row q-col-gutter-md">
+  <div class="q-pa-md generator-wrapper">
+    <div class="row q-col-gutter-md q-mx-auto max-w-1400">
       <!-- 左侧：Antdv 日历主体 -->
       <div class="col-12 col-md-8">
-        <a-card :bordered="false" class="shadow-1">
-          <template #title>
-            <div class="row items-center q-gutter-sm">
-              <q-icon name="calendar_today" color="primary" size="sm" />
-              <span class="text-weight-bold">万年历</span>
-            </div>
-          </template>
-          <template #extra>
+        <q-card flat bordered class="shadow-2 transition-base">
+          <q-card-section class="bg-indigo-8 text-white row items-center">
+            <q-icon name="calendar_today" size="sm" class="q-mr-sm" />
+            <div class="text-h6 text-weight-bold">万年历</div>
+            <q-space />
             <div class="row q-gutter-x-sm">
-              <a-button size="small" @click="triggerFileInput">导入恢复</a-button>
-              <a-button size="small" type="primary" ghost @click="exportToJSON">备份导出</a-button>
-              <a-popconfirm title="确定清理本月数据？" @confirm="clearCurrentMonth">
-                <a-button size="small" danger ghost>清理本月</a-button>
-              </a-popconfirm>
+              <q-btn flat color="white" size="sm" label="导入恢复" @click="triggerFileInput" />
+              <q-btn
+                flat
+                color="white"
+                size="sm"
+                label="备份导出"
+                icon="download"
+                @click="exportToJSON"
+              />
+              <q-btn outline color="white" size="sm" label="清理本月" @click="confirmClearMonth" />
               <input
                 type="file"
                 ref="fileInput"
@@ -25,49 +27,56 @@
                 @change="importFromJSON"
               />
             </div>
-          </template>
-          <div>今天日期：{{ dayjs().format('YYYY-MM-DD') }}</div>
-          <a-calendar v-model:value="selectedDayjs" @select="onSelect">
-            <!-- 自定义日期单元格内容 -->
-            <template #dateCellRender="{ current }">
-              <div class="calendar-cell">
-                <!-- 农历显示 -->
-                <div class="lunar-text text-grey-6">{{ getLunarDay(current) }}</div>
+          </q-card-section>
 
-                <!-- 节日提醒 -->
-                <div class="festival-tag" v-if="getFestival(current)">
-                  {{ getFestival(current) }}
-                </div>
+          <q-card-section class="q-pb-none">
+            <div class="text-caption text-grey-7 font-mono">
+              今天日期：{{ dayjs().format('YYYY-MM-DD') }}
+            </div>
+          </q-card-section>
 
-                <!-- 备注标记点 -->
-                <div class="notes-dots row justify-center q-gutter-x-xs">
-                  <div
-                    v-for="note in getNotesByDate(current)"
-                    :key="note.date"
-                    :class="['dot', `bg-${getNoteColor(note.content)}`]"
-                  ></div>
+          <q-card-section>
+            <a-calendar v-model:value="selectedDayjs" @select="onSelect">
+              <!-- 自定义日期单元格内容 -->
+              <template #dateCellRender="{ current }">
+                <div class="calendar-cell">
+                  <!-- 农历显示 -->
+                  <div class="lunar-text">{{ getLunarDay(current) }}</div>
+
+                  <!-- 节日提醒 -->
+                  <div class="festival-tag" v-if="getFestival(current)">
+                    {{ getFestival(current) }}
+                  </div>
+
+                  <!-- 备注标记点 -->
+                  <div class="notes-dots row justify-center q-gutter-x-xs">
+                    <div
+                      v-for="note in getNotesByDate(current)"
+                      :key="note.date"
+                      :class="['dot', `bg-${getNoteColor(note.content)}`]"
+                    ></div>
+                  </div>
                 </div>
-              </div>
-            </template>
-          </a-calendar>
-        </a-card>
+              </template>
+            </a-calendar>
+          </q-card-section>
+        </q-card>
       </div>
 
       <!-- 右侧：管理面板 -->
       <div class="col-12 col-md-4">
-        <a-card title="备注同步中心" :bordered="false" class="shadow-1 sticky-card">
-          <template #extra>
-            <a-tag :color="allNotes.length >= 55 ? 'red' : 'blue'">
+        <q-card flat bordered class="shadow-2 sticky-card transition-base">
+          <q-card-section class="bg-indigo-8 text-white row items-center q-py-sm">
+            <q-icon name="assignment" size="xs" class="q-mr-xs" />
+            <div class="text-subtitle2">备注同步中心</div>
+            <q-space />
+            <q-badge :color="allNotes.length >= 55 ? 'red' : 'cyan-3'" text-color="black">
               {{ allNotes.length }} / 60
-            </a-tag>
-          </template>
+            </q-badge>
+          </q-card-section>
 
-          <div class="q-gutter-y-md">
-            <a-input-search
-              v-model:value="searchQuery"
-              placeholder="搜索日期或内容..."
-              allow-clear
-            />
+          <q-card-section class="q-gutter-y-md">
+            <q-input v-model="searchQuery" placeholder="搜索日期或内容..." filled dense clearable />
 
             <div class="scroll-list">
               <a-list item-layout="horizontal" :data-source="filteredNotes">
@@ -101,28 +110,39 @@
                 </template>
               </a-list>
             </div>
-          </div>
-        </a-card>
+          </q-card-section>
+        </q-card>
       </div>
     </div>
 
     <!-- 编辑弹窗 -->
-    <a-modal
-      v-model:visible="editVisible"
-      :title="`备注: ${selectedDayjs.format('YYYY-MM-DD')}`"
-      @ok="handleSave"
-    >
-      <div class="q-mb-md text-primary text-caption">
-        {{ getFullLunarDetail(selectedDayjs) }}
-      </div>
-      <a-textarea
-        v-model:value="tempContent"
-        placeholder="在此输入备注..."
-        :rows="4"
-        show-count
-        :maxlength="100"
-      />
-    </a-modal>
+    <q-dialog v-model="editVisible">
+      <q-card style="min-width: 350px" class="transition-base">
+        <q-card-section class="bg-indigo-8 text-white">
+          <div class="text-h6">备注: {{ selectedDayjs.format('YYYY-MM-DD') }}</div>
+        </q-card-section>
+
+        <q-card-section>
+          <div class="q-mb-md text-primary text-caption">
+            {{ getFullLunarDetail(selectedDayjs) }}
+          </div>
+          <q-input
+            v-model="tempContent"
+            type="textarea"
+            filled
+            placeholder="在此输入备注..."
+            rows="4"
+            counter
+            maxlength="100"
+          />
+        </q-card-section>
+
+        <q-card-actions align="right" class="text-primary">
+          <q-btn flat label="取消" v-close-popup />
+          <q-btn flat label="保存" @click="handleSave" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -196,6 +216,17 @@ const onSelect = async (val) => {
   editVisible.value = true
 }
 
+const confirmClearMonth = () => {
+  $q.dialog({
+    title: '确认清理',
+    message: '确定清理本月数据吗？',
+    cancel: true,
+    persistent: true,
+  }).onOk(() => {
+    clearCurrentMonth()
+  })
+}
+
 const handleSave = async () => {
   const dStr = selectedDayjs.value.format('YYYY-MM-DD')
   if (allNotes.value.length >= 60 && !allNotes.value.find((n) => n.date === dStr)) {
@@ -254,6 +285,22 @@ onMounted(loadData)
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.2s;
+}
+
+.max-w-1400 {
+  max-width: 1400px;
+}
+
 .calendar-cell {
   position: relative;
   height: 100%;
@@ -264,11 +311,12 @@ onMounted(loadData)
   position: absolute;
   top: 2px;
   right: 2px;
+  color: rgba(128, 128, 128, 0.6);
 }
 .festival-tag {
   font-size: 10px;
   color: #f5222d;
-  background: #fff1f0;
+  background: rgba(255, 241, 240, 0.8);
   padding: 0 2px;
   border-radius: 2px;
   margin-top: 18px;
@@ -289,18 +337,25 @@ onMounted(loadData)
   border-radius: 50%;
 }
 .scroll-list {
-  max-height: 500px;
+  max-height: calc(100vh - 280px);
   overflow-y: auto;
 }
 .sticky-card {
   position: sticky;
   top: 16px;
 }
-.min-height-screen {
-  min-height: 90vh;
+
+.font-mono {
+  font-family: 'Fira Code', 'Monaco', 'Courier New', monospace;
 }
+
 /* 屏蔽 antd 原生蓝色点 */
 :deep(.ant-picker-calendar-date-content) {
   overflow-y: hidden !important;
+}
+
+/* 适配深色模式 */
+:deep(.ant-picker-calendar) {
+  background: transparent !important;
 }
 </style>

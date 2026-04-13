@@ -1,8 +1,11 @@
 <template>
-  <div class="q-pa-md">
-    <q-card flat bordered class="q-mx-auto shadow-2 max-w-1200">
-      <q-card-section class="bg-indigo-7 text-white">
-        <div class="text-h6">函数代码重构助手</div>
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto shadow-2 max-w-1200 transition-base">
+      <q-card-section class="bg-indigo-8 text-white">
+        <div class="row items-center">
+          <q-icon name="auto_fix_high" size="sm" class="q-mr-sm" />
+          <div class="text-h6 text-weight-bold">函数代码重构助手</div>
+        </div>
         <div class="text-caption">规则：自动注入 payload 参数并提取 .value 变量</div>
       </q-card-section>
 
@@ -16,22 +19,31 @@
               filled
               label="原始函数代码"
               placeholder="export const myFunc = (id) => { ..."
-              rows="20"
+              rows="12"
+              clearable
+              class="font-mono"
               @update:model-value="transformCode"
             />
           </div>
         </div>
 
-        <div
-          class="row justify-between items-center bg-grey-3 q-pa-sm rounded-borders q-gutter-x-md"
-        >
-          <q-btn label="解析识别" color="primary" @click="transformCode" :disable="!inputCode" />
+        <div class="row items-center control-panel q-pa-sm rounded-borders q-gutter-x-md">
+          <q-btn
+            label="解析识别"
+            color="indigo"
+            outline
+            icon="sync"
+            size="sm"
+            @click="transformCode"
+            :disable="!inputCode"
+          />
           <q-btn
             label="复制重构代码"
             color="primary"
             icon="content_copy"
             @click="copyOutput"
             :disable="!outputCode"
+            size="sm"
           />
           <q-space />
           <q-checkbox
@@ -46,7 +58,15 @@
         </div>
       </q-card-section>
       <q-card-section>
-        <q-input v-model="outputCode" filled readonly type="textarea" label="生成结果" rows="20">
+        <q-input
+          v-model="outputCode"
+          filled
+          readonly
+          type="textarea"
+          label="生成结果"
+          rows="15"
+          class="font-mono"
+        >
           <template v-slot:append>
             <q-btn flat icon="content_copy" @click="copyOutput" padding="xs" />
           </template>
@@ -173,7 +193,33 @@ const copyOutput = () => {
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.control-panel {
+  background-color: rgba(128, 128, 128, 0.05);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+}
+
 .rounded-borders {
-  border-radius: 4px;
+  border-radius: 8px;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
+.font-mono :deep(textarea) {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.5;
 }
 </style>

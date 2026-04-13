@@ -1,15 +1,15 @@
 <template>
-  <div class="q-pa-md bg-grey-2">
-    <q-card flat bordered class="q-mx-auto shadow-2" style="max-width: 1200px">
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto shadow-2 transition-base" style="max-width: 1200px">
       <!-- 头部工具栏 -->
-      <q-card-section class="bg-teal-9 text-white row items-center q-gutter-sm">
+      <q-card-section class="bg-indigo-8 text-white row items-center q-gutter-sm">
         <q-icon name="transform" size="sm" />
         <div class="text-h6 text-weight-bold">Excel-JSON 转换器</div>
         <q-space />
         <q-btn flat color="white" label="清空" icon="clear_all" @click="clearAll" />
         <q-btn
           color="white"
-          text-color="teal-10"
+          text-color="indigo-8"
           label="下载 JSON"
           icon="download"
           @click="downloadJson"
@@ -62,7 +62,7 @@
           <q-expansion-item
             icon="settings"
             label="表头映射与过滤"
-            header-class="bg-white border-radius-4"
+            header-class="control-panel border-radius-4"
             default-opened
           >
             <q-card>
@@ -109,7 +109,7 @@
           <div class="row items-center justify-between q-mb-sm">
             <div class="text-subtitle2 text-grey-8">
               JSON 实时预览
-              <q-badge color="teal" class="q-ml-sm">{{ finalJson.length }} 条记录</q-badge>
+              <q-badge color="indigo" class="q-ml-sm">{{ finalJson.length }} 条记录</q-badge>
             </div>
             <div class="q-gutter-x-xs">
               <q-btn
@@ -133,8 +133,7 @@
             filled
             readonly
             rows="25"
-            bg-color="white"
-            class="code-font"
+            class="font-mono result-area"
             placeholder="数据转换结果将显示在这里..."
           />
         </div>
@@ -145,8 +144,9 @@
 
 <script setup>
 import { ref, reactive, computed, watch } from 'vue'
-import { useQuasar, exportFile, copyToClipboard } from 'quasar'
+import { useQuasar, exportFile } from 'quasar'
 import * as XLSX from 'xlsx'
+import { copyText } from 'src/output/common/project-common.js'
 
 const $q = useQuasar()
 
@@ -243,7 +243,8 @@ const handlePaste = (e) => {
 
 // 复制与下载
 const copy = (txt) => {
-  copyToClipboard(txt).then(() => $q.notify({ message: '已复制', color: 'positive', timeout: 800 }))
+  if (!txt) return
+  copyText(txt)
 }
 
 const downloadJson = () => {
@@ -260,11 +261,38 @@ const clearAll = () => {
 </script>
 
 <style scoped>
-.code-font :deep(textarea) {
-  font-family: 'Fira Code', monospace;
-  font-size: 12px;
-  background: #fafafa;
+.generator-wrapper {
+  transition: background-color 0.3s;
 }
+
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.control-panel {
+  background-color: rgba(128, 128, 128, 0.05);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.max-w-1200 {
+  max-width: 1200px;
+}
+
+.font-mono :deep(textarea) {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.result-area :deep(textarea) {
+  background: rgba(128, 128, 128, 0.02);
+}
+
 .border-radius-4 {
   border-radius: 4px;
 }
