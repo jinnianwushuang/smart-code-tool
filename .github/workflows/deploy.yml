@@ -26,26 +26,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
 
-      - name: Install and Build Vue
-        run: |
-          npm install
-          npm run build  # 确保产物在 dist 目录
+      - name: Install dependencies
+        run: npm ci
 
-      # 如果你的 Jekyll 部分也需要构建，可以在此处运行 jekyll build
-      # 但通常 Vue 项目会将构建后的 dist 作为最终站点内容
+      - name: Build Vue
+        run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # 这里的路径必须指向你构建后的静态文件夹
+          path: ./dist
 
   deploy:
     needs: build
@@ -56,4 +54,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4
