@@ -8,9 +8,7 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-env:
-  # 强制让所有 JS Actions 运行在 Node.js 24 上
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -28,10 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: 'npm'
@@ -43,7 +41,7 @@ jobs:
         run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
 
@@ -56,4 +54,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4.0.5
+        uses: actions/deploy-pages@v5
