@@ -15,9 +15,7 @@
       </a-layout-sider>
       <a-layout style="padding: 0 24px 24px">
         <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>VUE-TEST</a-breadcrumb-item>
-          <a-breadcrumb-item>{{ menu_lv1?.label }}</a-breadcrumb-item>
-          <a-breadcrumb-item v-if="menu_lv2">{{ menu_lv2?.label }}</a-breadcrumb-item>
+          <a-breadcrumb-item v-for="item in title_arr" :key="item">{{ item }}</a-breadcrumb-item>
         </a-breadcrumb>
         <a-layout-content ref="scrollContainer" class="layout-content" @scroll="handle_scroll">
           <router-view></router-view>
@@ -38,14 +36,16 @@
 <script setup>
 import { ref, onMounted, watch, useTemplateRef } from 'vue'
 import { VerticalAlignTopOutlined } from '@ant-design/icons-vue'
-import { sideMenuList } from './config/config.js'
+// import { sideMenuList } from './config/config.js'
 import LayoutHeader from 'src/layout/compoent/layout-header/layout-header.vue'
 
 import { useGlobalState } from 'src/output/common/composable-common.js'
+import { menu_vue_test } from 'src/router/routes/module/vue-test.js'
+const sideMenuList = menu_vue_test[0].children
 const selectedKeys2 = ref([])
 const openKeys = ref([])
-const menu_lv1 = ref('')
-const menu_lv2 = ref('')
+
+const title_arr = ref([])
 
 const show_back_top = ref(false)
 const scroll_container_ref = useTemplateRef('scrollContainer')
@@ -71,47 +71,23 @@ onMounted(() => {
 })
 
 const check_route = () => {
-  console.log('route------------layout-vue-page---2----', route)
+  // console.log('src/layout/layout-vue-page/layout-vue-page.vue ,       check_route    ', route)
+  // console.log('src/layout/layout-vue-page/layout-vue-page.vue ,    selectedKeys2 ', selectedKeys2)
+  // console.log('src/layout/layout-vue-page/layout-vue-page.vue ,    openKeys ', openKeys)
+  let t_arr = []
 
-  let len = route.matched.length
-  if (len > 3) {
-    let lv1_name = route.matched[len - 2]?.name
-    let lv2_name = route.matched[len - 1]?.name
-    selectedKeys2.value = [lv2_name]
-
-    openKeys.value = [lv1_name]
-    menu_lv2.value = { key: lv2_name, label: lv2_name }
-    menu_lv1.value = { key: lv1_name, label: lv1_name }
-  } else {
-    let lv1_name = route.matched[len - 1]?.name
-
-    menu_lv1.value = { key: lv1_name, label: lv1_name }
-    menu_lv2.value = null
+  let matched = route.matched
+  let matched_len = matched.length
+  for (let i = 0; i < matched_len; i++) {
+    let item = matched[i]
+    t_arr.push(item.meta.title)
   }
+  openKeys.value = [matched[matched_len - 2].name]
+  selectedKeys2.value = [matched[matched_len - 1].name]
+  title_arr.value = t_arr.filter((item) => item)
 }
 
 const handle_click_menu = ({ key, keyPath }) => {
-  console.log('handle_click_menu--layout-vue-page--', selectedKeys2.value)
-
-  for (let i = 0; i < sideMenuList.length; i++) {
-    if (sideMenuList[i].children) {
-      for (let j = 0; j < sideMenuList[i].children.length; j++) {
-        let item = sideMenuList[i].children[j]
-        if (item.key === key) {
-          menu_lv1.value = sideMenuList[i]
-          menu_lv2.value = item
-          break
-        }
-      }
-    } else {
-      if (sideMenuList[i].key === key) {
-        menu_lv1.value = sideMenuList[i]
-        menu_lv2.value = null
-        break
-      }
-    }
-  }
-
   router.push({ name: key })
 }
 </script>

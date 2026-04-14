@@ -32,7 +32,7 @@ for (let i = 0; i < scan_folders.length; i++) {
   all_files.push(...files.filter((file) => check_file_path(file)))
 }
 
-console.log('Composable files found:', all_files.length, all_files)
+// console.log('Composable files found:', all_files.length, all_files)
 
 writeFile('src/output/json/composable-common-files.json', JSON.stringify(all_files, null, 2))
 

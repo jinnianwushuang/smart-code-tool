@@ -10,7 +10,7 @@ for (let i = 0; i < scan_folders.length; i++) {
   all_files.push(...files)
 }
 
-console.log('Common files found:', all_files.length, all_files)
+// console.log('Common files found:', all_files.length, all_files)
 
 writeFile('src/output/json/project-common-files.json', JSON.stringify(all_files, null, 2))
 

@@ -106,7 +106,7 @@ export default defineConfig(async () => {
       // MarkdownCodeBlock
 
       quasar({
-        sassVariables: fileURLToPath(new URL('./src/css/quasar-variables.sass', import.meta.url)),
+        sassVariables: fileURLToPath(new URL('./src/css/quasar-variables.scss', import.meta.url)),
       }),
       vueDevTools(),
     ],

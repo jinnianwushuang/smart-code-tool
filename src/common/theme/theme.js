@@ -10,18 +10,8 @@ export const isDarkTheme = computed({
 })
 
 const markdown_themes = {
-  light: {
-    '--markdown-bg': '#ffffff',
-    '--markdown-text': '#24292f',
-    '--markdown-border': '#d0d7de',
-    '--markdown-zebra': '#f6f8fa',
-  },
-  dark: {
-    '--markdown-bg': '#0d1117',
-    '--markdown-text': '#c9d1d9',
-    '--markdown-border': '#30363d',
-    '--markdown-zebra': '#161b22',
-  },
+  light: {},
+  dark: {},
 }
 
 /**

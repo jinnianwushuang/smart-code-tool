@@ -1,41 +1,61 @@
 <template>
-  <div class="content-guide-container">
-    <a-card title="架构验证代码分级说明" :bordered="false">
-      <a-typography v-for="item in guideData" :key="item.level" class="guide-section">
+  <div class="content-guide-container q-pa-md q-pa-sm-xl">
+    <a-card :bordered="false" class="main-card shadow-10">
+      <template #title>
+        <div class="text-h5 text-weight-bolder q-py-sm">架构验证代码分级说明</div>
+      </template>
+
+      <div v-for="item in guideData" :key="item.level" class="guide-section q-mb-xl">
         <!-- 级别标题 -->
-        <a-typography-title level="5"> L{{ item.level }} - {{ item.title }} </a-typography-title>
+        <div class="level-header flex items-center q-mb-lg">
+          <q-badge
+            rounded
+            class="level-badge q-px-md q-py-xs q-mr-md"
+            :label="`LEVEL ${item.level}`"
+          />
+          <div class="text-h5 text-weight-bold level-title">{{ item.title }}</div>
+        </div>
 
-        <div class="text-h6">思路</div>
-        <div class="description-list">
-          <div v-for="(desc, index) in item.approach" :key="index" class="desc-item">
-            <span class="index-badge">{{ index + 1 }}、</span>
-            <a-typography-text>{{ desc }}</a-typography-text>
+        <div class="sections-wrapper q-gutter-y-md">
+          <!-- 思路 -->
+          <div class="section-block approach-block">
+            <div class="section-label text-overline text-weight-black">思路</div>
+            <div class="q-gutter-y-xs">
+              <div v-for="(desc, index) in item.approach" :key="index" class="flex no-wrap">
+                <span class="index-badge q-mr-sm">{{ index + 1 }}.</span>
+                <div class="text-body1">{{ desc }}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 描述 -->
+          <div class="section-block description-block">
+            <div class="section-label text-overline text-weight-black">描述</div>
+            <div class="q-gutter-y-xs">
+              <div v-for="(desc, index) in item.description" :key="index" class="flex no-wrap">
+                <span class="index-badge q-mr-sm">{{ index + 1 }}.</span>
+                <div class="text-body2 text-grey-7">{{ desc }}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 评价 -->
+          <div class="section-block appraise-block">
+            <div class="section-label text-overline text-weight-black">评价</div>
+            <div class="q-gutter-y-xs">
+              <div
+                v-for="(desc, index) in item.appraise"
+                :key="index"
+                class="text-body1 text-weight-medium"
+              >
+                {{ desc }}
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- 描述列表：自动带序号 -->
-        <div class="text-h6">描述</div>
-        <div class="description-list">
-          <div v-for="(desc, index) in item.description" :key="index" class="desc-item">
-            <span class="index-badge">{{ index + 1 }}、</span>
-            <a-typography-text>{{ desc }}</a-typography-text>
-          </div>
-        </div>
-        <div class="text-h6">评价</div>
-        <div class="description-list">
-          <div v-for="(desc, index) in item.appraise" :key="index" class="desc-item">
-            <span class="index-badge">{{ index + 1 }}、</span>
-            <a-typography-text>{{ desc }}</a-typography-text>
-          </div>
-        </div>
-        <!-- 示例展示 -->
-        <!-- <div v-if="item.example" class="example-box">
-          <a-tag color="blue">示例</a-tag>
-          <code>{{ item.example }}</code>
-        </div> -->
-
-        <a-divider v-if="item.level < 7" />
-      </a-typography>
+        <q-separator v-if="item.level < guideData.length" class="q-my-xl opacity-25" />
+      </div>
     </a-card>
   </div>
 </template>
@@ -128,9 +148,6 @@ const guideData = ref([
       'VUE代码进一步整洁，子组件无需props,emit。',
       '但是多个切面之间存在执行顺序交叉',
       '另外必须了解每一个切面的输入输出',
-    ],
-
-    description: [
       '父组件状态机（State Machine）重构为单例模式，跨组件共享统一的数据源快照。',
       '子孙组件通过引入单例状态机集合，实现对父级数据的直接消费，摆脱 Props 逐级透传。',
       '父组件事件函数采用 MITT 管道函数式封装，建立标准化的事件派发（Dispatch）机制。',
@@ -162,16 +179,8 @@ const guideData = ref([
     ],
 
     description: [
-      '在LV4的基础上，使用高阶函数代理，实现事件管道的注入。支持链式调用。',
-      '封装扫描架构,工具函数，和聚合函数以及组合式函数，实现代码的自动注入和解耦。',
-      '封装使用全局装配函数，把所有零件装配好，在VUE组件内，注入基础上下文，并且不断扩展，生成上下文。',
-      '所有函数和公共切面逻辑全部采用从上下文获取内容的方式',
-      '无需考虑各个切面的输入输出的逻辑 ',
-      '界面组件直接消费的函数，提供专门包装，闭合上下文，不用的不做多余封装，不混淆。',
-      '所有地方消费的上下文是同一个，不会出现不一致。',
-      '心智模型再次降低难度，一切只需要从payload上下文内获取',
-    ],
-    description: [
+      '在LV4的基础上，使用高阶函数代理，实现事件管道的注入，支持链式调用。',
+      '封装扫描架构、工具函数、聚合函数及组合式函数，实现代码自动注入与解耦。',
       '心智模型再次降低难度，一切逻辑与状态只需要从 Payload 上下文内获取。',
       '利用 Vite 自动扫描目录，实现状态机、函数、事件管道的零手动引入与自动装配。',
       '全局封装调度引擎，统一管理生命周期钩子、副作用生成（Effect）及其自动销毁。',
@@ -194,21 +203,79 @@ const guideData = ref([
 </script>
 
 <style scoped>
+/* 全局响应式主题颜色 */
+
+.main-card {
+  border-radius: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--guide-card-bg);
+  transition: background-color 0.3s ease;
+}
+
 .content-guide-container {
-  padding: 24px;
-  background-color: #f0f2f5;
+  background-color: var(--guide-container-bg);
   min-height: 100vh;
+  transition: background-color 0.3s ease;
 }
 
-.guide-item {
-  margin-bottom: 20px;
+.level-badge {
+  background: linear-gradient(135deg, #2196f3 0%, #1565c0 100%) !important;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
 }
 
-.example-box {
-  background: #f5f5f5;
-  padding: 12px;
-  border-radius: 4px;
-  border-left: 4px solid #1890ff;
-  font-family: monospace;
+.level-title {
+  color: var(--text-primary);
+}
+
+.section-block {
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--block-border-color);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.section-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-label {
+  opacity: 0.6;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 2px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.2;
+  margin-left: 12px;
+}
+
+/* 区块特定重音 */
+.approach-block {
+  background-color: var(--block-approach-bg);
+  border-left: 6px solid #2196f3;
+}
+.description-block {
+  background-color: var(--block-description-bg);
+  border-left: 6px solid #9e9e9e;
+}
+.appraise-block {
+  background-color: var(--block-appraise-bg);
+  border-left: 6px solid #4caf50;
+}
+
+.index-badge {
+  font-family: 'JetBrains Mono', monospace;
+  opacity: 0.5;
+  font-size: 0.9rem;
+  flex-shrink: 0;
 }
 </style>
