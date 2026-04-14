@@ -43,10 +43,12 @@
 import { ref, onMounted, useTemplateRef } from 'vue'
 import { VerticalAlignTopOutlined } from '@ant-design/icons-vue'
 import { RouterView, useRouter } from 'vue-router'
-import { menuList } from './config/config.js'
+// import { menuList } from './config/config.js'
 import { useQuasar } from 'quasar'
 import { useStorage } from '@vueuse/core'
 import LayoutHeader from 'src/layout/compoent/layout-header/layout-header.vue'
+import { menu_routes_tool } from 'src/router/routes/module/tool.js'
+const menuList = menu_routes_tool[0].children
 const $q = useQuasar()
 const collapsed = ref(false)
 

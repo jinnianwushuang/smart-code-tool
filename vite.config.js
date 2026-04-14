@@ -22,7 +22,19 @@ export default defineConfig(async () => {
   // 1. 初始化 Shiki 高亮器 (Vite 配置支持异步)
   const highlighter = await createHighlighter({
     themes: ['github-dark', 'github-light'],
-    langs: ['javascript', 'typescript', 'vue', 'html', 'bash', 'json'],
+    langs: [
+      'javascript',
+      'typescript',
+      'vue',
+      'html',
+      'bash',
+      'json',
+      'css',
+      'scss',
+      'yaml',
+      'python',
+      'dart',
+    ],
   })
   return {
     base: '/smart-code-tool/', // 例如：'/my-vue-app/'、
