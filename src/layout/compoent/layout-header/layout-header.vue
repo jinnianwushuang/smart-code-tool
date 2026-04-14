@@ -7,7 +7,6 @@
 
       <a-menu
         v-model:selectedKeys="selectedKeys1"
-        :theme="$q.dark.isActive ? 'dark' : 'light'"
         mode="horizontal"
         :items="topMenuList"
         class="header-menu"
@@ -122,20 +121,52 @@ const handle_click_menu = ({ key }) => {
 }
 
 .header-menu {
-  background: transparent !important;
-  line-height: 64px;
+  background: transparent;
   border-bottom: none !important;
+  height: 64px;
+  flex: 1;
+
+  // 深度覆盖 Ant Design 菜单项样式
+  :deep(.ant-menu-item) {
+    height: 64px !important;
+    line-height: 64px !important;
+    padding: 0 20px !important;
+    margin: 0 4px !important;
+    top: 0 !important;
+    color: var(--q-header-text-color) !important;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-bottom: 3px solid transparent !important; // 初始透明边框防止抖动
+
+    // 移除 Ant Design 默认的下划线伪元素
+    &::after {
+      display: none !important;
+    }
+
+    &:hover {
+      color: var(--q-primary) !important;
+      background: rgba(25, 118, 210, 0.05); // 悬停时淡淡的背景色
+    }
+  }
+
+  :deep(.ant-menu-item-selected) {
+    color: var(--q-primary) !important;
+    border-bottom-color: var(--q-primary) !important; // 选中时的底部色线
+    background: transparent !important;
+    font-weight: 600;
+  }
 }
 
 body.body--light .header {
   --q-header-bg: #ffffff;
   --q-header-text-color: rgba(0, 0, 0, 0.85);
   --q-header-border-color: rgba(0, 0, 0, 0.1); /* 日间模式下使用浅色边框 */
+  --q-primary: #1976d2;
 }
 
 body.body--dark .header {
   --q-header-bg: #141414;
   --q-header-text-color: rgba(255, 255, 255, 0.85);
   --q-header-border-color: rgba(255, 255, 255, 0.1); /* 夜间模式下使用深色边框 */
+  --q-primary: #2196f3;
 }
 </style>

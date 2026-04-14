@@ -22,7 +22,7 @@ export function generate_menu_from_routes(routes, basePath = '') {
       name: route.name, // 对应路由的 name，用于 router.push
       key: route.name,
       label: route.meta?.title || '未命名',
-      // icon: route.meta?.icon || '',
+      icon: route.meta?.icon || '',
     }
 
     // 4. 递归处理子路由

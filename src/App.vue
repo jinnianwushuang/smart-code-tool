@@ -9,18 +9,8 @@ import { theme } from 'ant-design-vue'
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import enUS from 'ant-design-vue/es/locale/en_US'
 import { useQuasar } from 'quasar'
-import { dayjs, isDarkTheme } from 'src/output/common/project-common.js'
+import { dayjs, isDarkTheme, antTheme } from 'src/output/common/project-common.js'
 const $q = useQuasar()
-
-// --- 1. 全局主题切换逻辑 ---
-// 自动响应 Quasar 的深色模式状态并同步给 Ant Design Vue
-const antTheme = computed(() => ({
-  algorithm: isDarkTheme.value ? theme.darkAlgorithm : theme.defaultAlgorithm,
-  token: {
-    // 你可以在这里统一配置 Ant Design 的品牌色
-    // colorPrimary: '#1976d2',
-  },
-}))
 
 // --- 2. 国际化切换逻辑 ---
 // currentLocale 可以后续接入 Pinia 或 localStorage 实现持久化

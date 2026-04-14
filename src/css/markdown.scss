@@ -99,14 +99,25 @@ body.body--dark {
 
     // 强制 Shiki 使用亮色主题变量
     .shiki {
-      background-color: var(--shiki-light-bg) !important;
+      background-color: var(--markdown-bg);
+    }
+  }
+}
 
-      span {
-        color: var(--markdown-text) !important;
-        // font-style: var(--shiki-light-font-style) !important;
-        // font-weight: var(--shiki-light-font-weight) !important;
-        // text-decoration: var(--shiki-light-text-decoration) !important;
-      }
+body.body--light {
+  // 强制 Shiki 使用亮色主题变量
+  .shiki {
+    span {
+      color: var(--shiki-light);
+    }
+  }
+}
+
+body.body--dark {
+  // 强制 Shiki 使用亮色主题变量
+  .shiki {
+    span {
+      color: var(--shiki-dark);
     }
   }
 }

@@ -83,7 +83,17 @@ export default defineConfig(async () => {
                 light: 'github-light',
                 dark: 'github-dark',
               },
+              // 核心：告诉 Shiki 使用 CSS 变量来切换，而不是内联固定颜色
+              defaultColor: false,
               // theme: 'github-dark',
+              transformers: [
+                {
+                  pre(node) {
+                    // 将内联背景色替换为你的全局 CSS 变量
+                    // node.properties.style = `background-color: var(--markdown-bg); color: var(--markdown-text);`
+                  },
+                },
+              ],
             })
 
             // 3. 对原始代码进行更安全的编码，防止在 HTML 属性中报错
