@@ -34,6 +34,10 @@ export default defineConfig(async () => {
       'yaml',
       'python',
       'dart',
+      'toml',
+      'rust',
+      'jsx',
+      'tsx',
     ],
   })
   return {

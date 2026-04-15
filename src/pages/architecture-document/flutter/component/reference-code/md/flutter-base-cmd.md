@@ -111,4 +111,85 @@ iOS 打包必须在 **macOS** 环境下通过 **Xcode** 完成。
   flutter pub run build_runner build --delete-conflicting-outputs
   ```
 
-您目前是正在配置 **Android 的签名证书**，还是需要了解如何将 Flutter 项目**部署到 Web 平台**？
+## 四、 GETX + json_serializable 搭配
+
+在 Flutter 开发中，结合 **GetX**（状态管理/路由）和 **json_serializable**（序列化）是高效率的黄金组合。
+
+以下是这两个工具最常用的命令和提问 AI 的实战指引：
+
+## 1. json_serializable 核心生成命令
+
+由于 `json_serializable` 是基于代码生成的，你必须运行 `build_runner`：
+
+- **单次执行（最常用）**：
+
+  ```bash
+  dart run build_runner build --delete-conflicting-outputs
+  ```
+
+  注：`--delete-conflicting-outputs` 建议常带，防止因旧文件冲突导致报错。
+
+- **持续监听（开发 Model 时推荐）**：
+
+  ```bash
+  dart run build_runner watch
+  ```
+
+- **清理缓存（生成出错时执行）**：
+
+  ```bash
+  dart run build_runner clean
+  ```
+
+---
+
+## 2. GetX 相关常用命令
+
+GetX 本身不依赖代码生成，其命令主要通过 **GetX CLI**（如果安装了的话）来快速创建模版：
+
+- **安装 GetX CLI**（如果你还没装）：
+
+  ```bash
+  flutter pub global activate get_cli
+  ```
+
+- **创建新的模块（页面+Controller+Binding）**：
+
+  ```bash
+  get create page:user_profile
+  ```
+
+- **安装 GetX 依赖**（标准 pub 命令）：
+
+  ```bash
+  flutter pub add get
+  ```
+
+---
+
+## 3. 让 AI 结合 GetX + 序列化的提问模板
+
+当你需要 AI 帮你写一套完整的业务逻辑（从 Model 到 Controller）时，这个模板最有效：
+
+> **Prompt 语句：**
+> “请基于 **GetX** 状态管理和 **json_serializable** 帮我实现一个 **[功能名，如：用户订单列表]** 模块。
+>
+> **要求：**
+>
+> 1. **Model 层**：根据这段 JSON [粘贴 JSON]，使用 `json_serializable` 编写类，包含 `part` 引用。
+> 2. **Provider 层**：使用 `GetConnect` 或 `Dio` 封装一个请求方法。
+> 3. **Controller 层**：
+>    - 使用 `RxList` 或 `RxStatus` 管理订单列表状态。
+>    - 实现一个 `fetchData` 异步方法，包含加载态（Loading）和异常处理。
+> 4. **UI 层**：
+>    - 使用 `GetView<YourController>` 编写简单的页面。
+>    - 使用 `Obx()` 或 `GetBuilder` 包裹列表，展示从 Model 解析出来的数据。
+> 5. **代码风格**：逻辑清晰，遵循 GetX 标准工程目录结构。”
+
+---
+
+## 💡 避坑小贴士：
+
+1. **忘记写 `part`**：AI 生成 Model 时，一定要检查类文件顶部是否有 `part 'filename.g.dart';`，否则执行生成命令会跳过该文件。
+2. **响应式丢失**：在 GetX 中，如果 Model 里的字段需要响应式，建议在 Controller 中定义 `var user = UserModel().obs;`。
+3. **泛型解析**：如果你在做通用 API 返回封装（如 `BaseResponse<T>`），请务必在 Prompt 里注明“**需要处理泛型 T 的 json 转换逻辑**”。

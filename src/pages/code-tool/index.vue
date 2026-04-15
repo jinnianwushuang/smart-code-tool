@@ -17,6 +17,7 @@ import StringChangeCase from './components/string-change-case/string-change-case
 import ConvertToTemplateRef from './components/convert-to-template-ref/convert-to-template-ref.vue'
 import TextDeduplication from './components/text-deduplication/text-deduplication.vue'
 import FunctionCodeCorrection from './components/function-code-correction/function-code-correction.vue'
+import WebCharacterEscape from 'src/pages/code-tool/components/web-character-escape/web-character-escape.vue'
 
 import TemplateUnifiedExtractor from './components/template-unified-extractor/template-unified-extractor.vue'
 
@@ -59,6 +60,7 @@ const all_tabs = [
   { name: 'I18nEditorWithDiff', label: 'i18n 编辑器', component: I18nEditorWithDiff },
   { name: 'PathCalculation', label: '引用路径计算', component: PathCalculation },
   { name: 'TreeFolderEditer', label: '树形文件夹编辑器', component: TreeFolderEditer },
+  { name: 'WebCharacterEscape', label: 'Web 字符转义', component: WebCharacterEscape },
 ]
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)

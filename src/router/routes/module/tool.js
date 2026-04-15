@@ -4,6 +4,7 @@ import {
   CodeOutlined,
   CalendarOutlined,
   FileTextOutlined,
+  ToolOutlined,
 } from '@ant-design/icons-vue'
 import { h } from 'vue'
 
@@ -30,7 +31,7 @@ export const routes_tool = [
       {
         path: 'common-tool',
         name: 'common-tool',
-        meta: { title: '通用工具', icon: () => h(HomeOutlined) },
+        meta: { title: '通用工具', icon: () => h(ToolOutlined) },
         component: () => import('src/pages/common-tool/index.vue'),
       },
       {
@@ -39,25 +40,51 @@ export const routes_tool = [
         meta: { title: '万年历', icon: () => h(CalendarOutlined) },
         component: () => import('src/pages/single-smart-tool/permanent-notice-calendar/index.vue'),
       },
+      {
+        path: 'ai-document',
+        name: 'ai-document',
+        meta: { title: 'AI', icon: () => h('span', 'AI') },
+        component: () => import('src/pages/architecture-document/ai/document.vue'),
+      },
 
       {
         path: 'vue-architecture-document',
         name: 'vue-architecture-document',
-        meta: { title: 'VUE架构', icon: () => h(FileTextOutlined) },
+        meta: { title: 'VUE', icon: () => h('span', 'V') },
         component: () =>
           import('src/pages/architecture-document/vue/vue-architecture-document.vue'),
       },
       {
-        path: 'python-document',
-        name: 'python-document',
-        meta: { title: 'Python架构', icon: () => h(FileTextOutlined) },
-        component: () => import('src/pages/architecture-document/python/document.vue'),
+        path: 'react-document',
+        name: 'react-document',
+        meta: { title: 'REACT', icon: () => h('span', 'RE') },
+        component: () => import('src/pages/architecture-document/react/document.vue'),
       },
       {
         path: 'flutter-document',
         name: 'flutter-document',
-        meta: { title: 'flutter架构', icon: () => h(FileTextOutlined) },
+        meta: { title: 'FLUTTER', icon: () => h('span', 'FL') },
         component: () => import('src/pages/architecture-document/flutter/document.vue'),
+      },
+      {
+        path: 'python-document',
+        name: 'python-document',
+        meta: { title: 'PYTHON', icon: () => h('span', 'PY') },
+        component: () => import('src/pages/architecture-document/python/document.vue'),
+      },
+
+      {
+        path: 'rust-document',
+        name: 'rust-document',
+        meta: { title: 'RUST', icon: () => h('span', 'RU') },
+        component: () => import('src/pages/architecture-document/rust/document.vue'),
+      },
+
+      {
+        path: 'code-analysis-document',
+        name: 'code-analysis-document',
+        meta: { title: '代码分析', icon: () => h('span', 'CA') },
+        component: () => import('src/pages/architecture-document/code-analysis/document.vue'),
       },
     ],
   },
