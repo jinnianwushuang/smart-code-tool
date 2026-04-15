@@ -1,5 +1,5 @@
 ---
-title: VUE转REACT原因
+title: 原因
 order: 14
 ---
 

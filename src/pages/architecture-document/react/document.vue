@@ -16,7 +16,7 @@ import IdeaDoc from './component/idea-doc/idea-doc.vue'
 
 const current_tab_name = ref('IdeaDoc')
 const all_tabs = [
-  { name: 'IdeaDoc', label: '思考', component: IdeaDoc },
+  { name: 'IdeaDoc', label: 'VUE转REACT思考', component: IdeaDoc },
   { name: 'ReferenceCode', label: '参考代码', component: ReferenceCode },
 ]
 const current_component = computed(() => {
