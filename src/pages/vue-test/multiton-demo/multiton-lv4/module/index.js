@@ -35,7 +35,7 @@ export const handleEdit = (payload, item) => {
   Object.assign(formState, { ...item })
   modalVisible.value = true
 }
-export const handleModalOk = (payload) => {
+export const handleModalOk = (payload, values) => {
   const { isEdit, modalVisible, confirmLoading } = payload
   confirmLoading.value = true
   // 这里通常是调用 API 提交 values

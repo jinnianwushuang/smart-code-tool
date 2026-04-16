@@ -14,10 +14,12 @@ import { computed, ref } from 'vue'
 import ReferenceCode from './component/reference-code/reference-code.vue'
 import IdeaDoc from './component/idea-doc/idea-doc.vue'
 
+import PrincipleDoc from './component/principle/idea-doc.vue'
 const current_tab_name = ref('IdeaDoc')
 const all_tabs = [
   { name: 'IdeaDoc', label: 'VUE转REACT思考', component: IdeaDoc },
   { name: 'ReferenceCode', label: '参考代码', component: ReferenceCode },
+  { name: 'PrincipleDoc', label: '原理', component: PrincipleDoc },
 ]
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)

@@ -1,0 +1,37 @@
+// // setup 的执行时机非常早。它在 beforeCreate 钩子之前执行。
+// // setup 执行时，组件实例（this）尚未被创建，拿不到参数以及相对应的变量
+
+// // 定义响应式状态： 创建变量
+// // 暴露数据给模板：
+// //  setup 模式下，所有顶层声明的变量、函数、导入的组件都会自动暴露给 vue 模板使用。
+// // 注册生命周期钩子：通过 onMounted, onUpdated 等函数，在 setup 内部直接注册组件不同阶段的操作。
+// // 定义计算属性和侦听器：通过 computed() 和 watch() 处理逻辑依赖。
+
+// setup 4个关键节点
+// 1. 执行时机：在实例挂载前的“抢跑”
+// 在 Vue 3 的源码逻辑中（component.ts），setup 是在 mountComponent 阶段被调用的。
+// 早于一切：它在 beforeCreate 钩子之前执行。
+// 实例创建中：此时组件实例（InternalRenderContext）刚刚被创建，但尚未完成初始化，因此 setup 内部没有 this，它通过参数直接接收 props 和 setupContext。
+
+// 2. 执行上下文的构建
+// 当你写 setup(props, context) 时，Vue 内部会执行以下操作：
+// Props 代理：传入的 props 是一个由 shallowReactive 包装的响应式 Proxy 对象，这保证了父组件更新时，setup 内部拿到的值也是最新的。
+// Context 对象：Vue 会创建一个包含 attrs, slots, emit, expose 的普通 JavaScript 对象。为了节省开销，如果你的 setup 没写第二个参数，Vue 有时会跳过部分 Context 的生成步骤。
+
+// 3. 结果的“双重分流”处理
+// setup 执行完毕后会返回一个值，Vue 会根据返回值类型走不同的底层处理逻辑：
+// 返回对象：这是最常见的情况。Vue 会利用 proxyRefs 对返回的对象进行一层包装（自动解包 ref），然后将其挂载到组件实例的 setupState 上。后续模板在渲染时，会优先从这个状态里找变量。
+// 返回函数：此时 Vue 会认为该函数就是组件的 render 函数。这种做法会直接跳过模板编译步骤，底层直接调用该函数生成虚拟 DOM。
+
+// 4. <script setup> 的编译器“魔法”
+// 如果是这种语法糖模式，底层实现就不只是运行时函数调用，还涉及 静态编译过程：
+// 作用域提升：编译器会将 <script setup> 里的代码直接包装进一个隐藏的 setup() 函数中。
+// 自动 Expose：在普通 setup() 中，所有返回的东西默认都能从组件外部访问；但在 <script setup> 中，底层会自动调用 expose() 锁住内部变量，除非你显式使用 defineExpose 暴露出来。
+// 渲染函数优化：编译器知道哪些变量是响应式的，在生成渲染函数代码时，它会跳过 this 代理，直接通过闭包引用变量，性能比传统写法更高
+
+// /* vue3  上下文隔离   闭包 */
+
+// 为什么不再用 this？（上下文隔离）
+// setup 彻底抛弃了 this。
+// 它通过函数参数（props, context）显式传递外部信息，而内部状态通过局部变量定义。
+// 这种方式实现了物理层面的隔离：每个组件的 setup 都是一个独立的函数作用域，变量互不干扰。

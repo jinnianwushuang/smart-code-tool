@@ -47,18 +47,20 @@ export const routes_vue_test = [
             component: () =>
               import('src/pages/vue-test/multiton-demo/multiton-lv2/multiton-lv2.vue'),
           },
-          // {
-          //   path: 'multiton-lv3',
-          //   name: 'multiton-lv3',
-          //   component: () =>
-          //     import('src/pages/vue-test/multiton-demo/multiton-lv3/multiton-lv3.vue'),
-          // },
-          // {
-          //   path: 'multiton-lv4',
-          //   name: 'multiton-lv4',
-          //   component: () =>
-          //     import('src/pages/vue-test/multiton-demo/multiton-lv4/multiton-lv4.vue'),
-          // },
+          {
+            path: 'multiton-lv3',
+            name: 'multiton-lv3',
+            meta: { title: '多例验证-LV3' },
+            component: () =>
+              import('src/pages/vue-test/multiton-demo/multiton-lv3/multiton-lv3.vue'),
+          },
+          {
+            path: 'multiton-lv4',
+            name: 'multiton-lv4',
+            meta: { title: '多例验证-LV4' },
+            component: () =>
+              import('src/pages/vue-test/multiton-demo/multiton-lv4/multiton-lv4.vue'),
+          },
         ],
       },
       {

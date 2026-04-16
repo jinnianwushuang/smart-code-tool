@@ -10,6 +10,7 @@ order: 124
 ## 1. 快速创建项目 (推荐 Vite)
 
 Vite 速度极快，是目前 React 开发的首选。
+[VIte 官方模板](https://github.com/vitejs/vite/tree/main/packages/create-vite)
 
 ```bash
 # 使用 npm

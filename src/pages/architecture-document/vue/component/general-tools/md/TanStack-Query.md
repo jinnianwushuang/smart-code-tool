@@ -240,17 +240,15 @@ const { data: logs } = useOrderLogs(id) // Key: ['orders', 'detail', id, 'logs']
   queryKey: ['users', { sort: 'desc', page: 1 }]
   ```
 
-  [1, 2, 3, 4]
-
 #### 2. 避免 “QueryKey 漂移” (Drift)
 
-在大项目多人协作时，不同开发者可能为同一个接口写出略微不同的 Key（例如 `['user']` 和 `['users']`），导致缓存失效或冗余请求。 [5]
+在大项目多人协作时，不同开发者可能为同一个接口写出略微不同的 Key（例如 `['user']` 和 `['users']`），导致缓存失效或冗余请求。
 
-- **对策**：使用 [Query Key Factory](https://tanstack.com/query/v4/docs/react/community/lukemorales-query-key-factory) 库或强类型定义。强制要求团队成员只能从工厂方法中获取 Key，绝不允许在组件内手动书写数组字符串。 [6, 7]
+- **对策**：使用 [Query Key Factory](https://tanstack.com/query/v4/docs/react/community/lukemorales-query-key-factory) 库或强类型定义。强制要求团队成员只能从工厂方法中获取 Key，绝不允许在组件内手动书写数组字符串。
 
 #### 3. 利用层次结构实现“地毯式刷新”
 
-利用 `invalidateQueries` 的**前缀匹配特性**，在大页面中可以实现非常精细或大面积的数据更新： [8, 9]
+利用 `invalidateQueries` 的**前缀匹配特性**，在大页面中可以实现非常精细或大面积的数据更新：
 
 - **失效全部用户数据**：`queryClient.invalidateQueries({ queryKey: ['users'] })`
 - **仅失效搜索列表**：`queryClient.invalidateQueries({ queryKey: ['users', 'list'] })`
@@ -258,7 +256,7 @@ const { data: logs } = useOrderLogs(id) // Key: ['orders', 'detail', id, 'logs']
 
 #### 4. 解决“序列化”陷阱
 
-`QueryKey` 必须是**可序列化的**。 [3, 10]
+`QueryKey` 必须是**可序列化的**。
 
 - **错误示例**：不要把复杂的 Class 实例、函数或带有循环引用的对象放进 `QueryKey`。
 - **后果**：会导致哈希计算失败或无限重复请求。

@@ -9,14 +9,14 @@ export const docs = [
     items: [
       {
         name: 'React 官网',
-        url: 'https://react.dev',
+        url: 'https://zh-hans.react.dev/',
         tag: 'Core',
         desc: '全新 Hooks 优先的官方文档，深度解析并发渲染 (Concurrent) 与服务端组件 (RSC)。',
         priority: 5,
       },
       {
         name: 'Next.js',
-        url: 'https://nextjs.org',
+        url: 'https://www.nextjs.cn/',
         tag: 'Framework',
         desc: 'React 生产级框架之王，支持 App Router、全栈 API 路由与极致的 SEO 优化方案。',
         priority: 5,

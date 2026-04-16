@@ -3,7 +3,7 @@
     <!-- 1. 顶部查询区域 -->
     <MerchantSearch :search-state="searchState" @search="onSearch" @reset="onReset" />
 
-    <!-- 2. 操作栏 -->
+    <!-- 2. 入住新商户 按钮 + 操作栏 -->
     <div
       style="
         margin-bottom: 16px;

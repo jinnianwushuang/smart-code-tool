@@ -5,7 +5,7 @@ order: 44
 
 将 Vue 3 代码转换为最新的 React 代码（React 18/19），核心是将 Vue 的**响应式系统**和**模板语法**映射到 React 的 **Hooks** 和 **JSX** 上。
 
-如果你不想手动重写，可以使用 [VuReact](https://juejin.cn/post/7628206582480371721) 这种自动编译器，它能将 Vue 3 代码编译为标准 React 代码，并自动处理 `watchEffect` 和依赖数组。 [1, 2]
+如果你不想手动重写，可以使用 [VuReact](https://juejin.cn/post/7628206582480371721) 这种自动编译器，它能将 Vue 3 代码编译为标准 React 代码，并自动处理 `watchEffect` 和依赖数组。
 
 以下是核心语法的**手动转换对照表**：
 
@@ -80,7 +80,7 @@ export default function Counter() {
 ## 推荐工具与进阶
 
 1. **自动转换工具**：[VuReact](https://juejin.cn/post/7627751127488987151) 支持全自动 `defineProps` 转换、TS 类型交叉支持及 `useAttrs` 兼容。
-2. **状态管理**：如果你在 Vue 中使用 Pinia，迁移到 React 时推荐使用 [Zustand](https://zhuanlan.zhihu.com/p/2021611801972842620)，它的 API 风格与 Vue 开发者习惯更接近，避免了 Redux 的复杂样板代码。 [2, 3, 4]
+2. **状态管理**：如果你在 Vue 中使用 Pinia，迁移到 React 时推荐使用 [Zustand](https://zhuanlan.zhihu.com/p/2021611801972842620)，它的 API 风格与 Vue 开发者习惯更接近，避免了 Redux 的复杂样板代码。
 
 为了最直观地展示转型差异，我挑选了一个包含 **响应式状态、计算属性、侦听器、生命周期、以及父子通信（插槽）** 的经典 Vue 3 组件，并将其重构为高质量的 React 代码。
 

@@ -17,8 +17,8 @@ order: 34
   - **Vue：** 数据是响应式的（Proxy），修改 `data.a = 1` 视图自动变。
   - **React：** UI 是状态的**快照**。必须通过 `setCount(newCount)` 触发重新渲染。**切记：** 不要直接修改 State，永远返回新对象。
 - **指令 vs 逻辑：**
-  - `v-if` / `v-for` $\rightarrow$ 全部回归到 JS 的 `logical &&` 和 `map()`。
-  - `v-model` $\rightarrow$ 拆解为 `value` 属性 + `onChange` 回调。
+  - `v-if` / `v-for` ==> 全部回归到 JS 的 `logical &&` 和 `map()`。
+  - `v-model` ==> 拆解为 `value` 属性 + `onChange` 回调。
 
 ## 第二阶段：核心 API 深度对标（Day 3-5）
 
@@ -28,10 +28,10 @@ order: 34
   - **Vue 3 Composition API：** `setup` 只执行一次，通过闭包维护响应式。
   - **React Hooks：** 组件每次渲染都会**从上到下完整执行一遍**。必须严格遵守 Hooks 规则（不能在循环/判断中使用）。
 - **核心 Hook 映射：**
-  - `ref` / `reactive` $\rightarrow$ `useState` (基本值/对象)
-  - `computed` $\rightarrow$ `useMemo` (缓存计算结果)
-  - `watch` / 生命周期 $\rightarrow$ `useEffect` (副作用处理)
-  - `template ref` $\rightarrow$ `useRef` (操作 DOM)
+  - `ref` / `reactive` ==> `useState` (基本值/对象)
+  - `computed` ==> `useMemo` (缓存计算结果)
+  - `watch` / 生命周期 ==> `useEffect` (副作用处理)
+  - `template ref` ==> `useRef` (操作 DOM)
 
 ## 第三阶段：组件模式与通信（Day 6-8）
 
@@ -40,7 +40,7 @@ order: 34
 - **Slot 的替代方案：**
   - Vue 的插槽在 React 中就是 **`children` 属性** 或 **Render Props**（传入一个返回 JSX 的函数）。
 - **状态管理：**
-  - Vuex / Pinia $\rightarrow$ 简单的跨层级传参用 `useContext`，复杂逻辑推荐 `Zustand` 或 `Redux Toolkit`。
+  - Vuex / Pinia ==> 简单的跨层级传参用 `useContext`，复杂逻辑推荐 `Zustand` 或 `Redux Toolkit`。
 - **CSS 处理：**
   - 由于没有 `scoped` 概念，资深开发者应快速上手 **Tailwind CSS** 或 **CSS Modules**，这是 React 生态的主流。
 
