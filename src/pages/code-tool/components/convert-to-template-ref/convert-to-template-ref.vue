@@ -2,7 +2,7 @@
   <div class="q-pa-md generator-wrapper">
     <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
       <q-card-section class="bg-indigo-8 text-white row items-center">
-        <q-icon name="code" size="sm" class="q-mr-sm" />
+        <q-icon name="code" class="q-mr-sm" />
         <div class="text-h6">TemplateRef 转换器 (Vue 3.5+)</div>
       </q-card-section>
 
@@ -28,13 +28,12 @@
 
         <!-- 操作 -->
         <div class="row items-center q-gutter-x-sm">
-          <q-btn label="清空" color="grey-7" outline icon="delete" size="sm" @click="clear" />
+          <q-btn label="清空" color="grey-7" icon="delete" @click="clear" />
           <q-space />
           <q-btn
             label="复制结果"
             color="secondary"
             icon="content_copy"
-            size="sm"
             @click="copyOutput"
             :disable="!outputCode"
           />

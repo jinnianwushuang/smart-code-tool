@@ -3,7 +3,7 @@
     <q-card flat bordered class="q-mx-auto shadow-2" style="max-width: 1200px">
       <!-- 头部 -->
       <q-card-section class="bg-indigo-8 text-white row items-center">
-        <q-icon name="analytics" size="sm" class="q-mr-sm" />
+        <q-icon name="analytics" class="q-mr-sm" />
         <div class="text-h6">Vue 模板全能提取器</div>
         <q-space />
         <div class="text-caption">支持 {{}}、@Event 和 :Property</div>
@@ -23,20 +23,13 @@
 
         <!-- 全局控制栏 -->
         <div
-          class="row items-center q-gutter-x-md control-panel q-pa-sm rounded-borders border-grey-4"
+          class="row items-center q-gutter-x-md control-panel q-pa-sm rounded-borders border-grey-4 q-my-md"
         >
-          <q-btn
-            label="清空全部"
-            color="grey-7"
-            outline
-            @click="reset"
-            icon="delete_sweep"
-            size="sm"
-          />
+          <q-btn label="清空全部" color="grey-7" @click="reset" icon="delete_sweep" />
           <q-separator vertical inset />
           <q-checkbox v-model="addComma" label="末尾加逗号" dense color="indigo" />
           <q-space />
-          <div class="text-caption text-grey-7">
+          <div class="text-caption">
             共识别:
             <q-badge color="blue" class="q-mx-xs">{{
               mustacheProps.length + mustacheMethods.length
@@ -101,41 +94,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { copyText, extract_base_variable } from 'src/output/common/project-common.js'
+import ResultCard from './components/result-card.vue'
 
 // --- 子组件：结果卡片 ---
 // 为了代码整洁，内部定义一个小组件或直接在主模板中书写
-const ResultCard = {
-  props: ['title', 'icon', 'color', 'content'],
-  template: `
-    <q-card flat bordered class="full-height">
-      <q-item :class="'bg-' + color + ' text-white'">
-        <q-item-section avatar>
-          <q-icon :name="icon" size="xs" />
-        </q-item-section>
-        <q-item-section>
-          <q-item-label class="text-weight-bold">{{ title }}</q-item-label>
-        </q-item-section>
-      </q-item>
-      <q-separator />
-      <q-card-section class="q-pa-none">
-        <q-input
-          :model-value="content"
-          type="textarea"
-          borderless
-          readonly
-          class="q-px-sm"
-          placeholder="无数据"
-          rows="10"
-          input-style="font-family: monospace; font-size: 12px;"
-        />
-      </q-card-section>
-      <q-separator />
-      <q-card-actions align="right">
-        <q-btn flat dense :color="color" icon="content_copy" label="复制" @click="$emit('copy')" :disable="!content" />
-      </q-card-actions>
-    </q-card>
-  `,
-}
 
 // --- 状态管理 ---
 const rawTemplate = ref('')

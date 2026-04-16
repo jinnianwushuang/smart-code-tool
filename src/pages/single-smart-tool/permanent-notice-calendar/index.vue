@@ -30,9 +30,7 @@
           </q-card-section>
 
           <q-card-section class="q-pb-none">
-            <div class="text-caption text-grey-7 font-mono">
-              今天日期：{{ dayjs().format('YYYY-MM-DD') }}
-            </div>
+            <div class="text-caption font-mono">今天日期：{{ dayjs().format('YYYY-MM-DD') }}</div>
           </q-card-section>
 
           <q-card-section>

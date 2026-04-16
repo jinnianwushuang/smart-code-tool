@@ -2,7 +2,7 @@
   <div class="q-pa-lg change-case-wrapper">
     <q-card flat bordered class="q-mx-auto shadow-2 transition-base">
       <q-card-section class="bg-indigo-8 text-white row items-center">
-        <q-icon name="style" size="sm" class="q-mr-sm" />
+        <q-icon name="style" class="q-mr-sm" />
         <div class="text-h6 text-weight-bold">Change-Case 全格式转换器</div>
       </q-card-section>
       <q-card-section class="q-gutter-y-md">
@@ -32,25 +32,25 @@
         >
           <template v-slot:body-cell-index="props">
             <q-td :props="props">
-              <div class="text-weight-bold text-indigo">{{ props.rowIndex + 1 }}</div>
+              <div class="text-weight-bold text-primary">{{ props.rowIndex + 1 }}</div>
             </q-td>
           </template>
           <!-- 方法名列：显示函数名 -->
           <template v-slot:body-cell-method="props">
             <q-td :props="props">
-              <div class="text-weight-bold text-indigo">{{ props.value }}</div>
+              <div class="text-weight-bold text-primary">{{ props.value }}</div>
             </q-td>
           </template>
           <template v-slot:body-cell-desc="props">
             <q-td :props="props">
-              <div class="text-caption text-grey-7">{{ props.row.desc }}</div>
+              <div class="text-caption">{{ props.row.desc }}</div>
             </q-td>
           </template>
           <!-- 结果列：显示转换后的内容并支持复制 -->
           <template v-slot:body-cell-result="props">
             <q-td :props="props">
               <div class="row items-center no-wrap">
-                <q-badge outline color="primary" class="q-pa-sm text-body2 font-mono result-badge">
+                <q-badge color="primary" class="q-pa-sm text-body2 font-mono result-badge">
                   {{ props.value || '-' }}
                 </q-badge>
               </div>
@@ -63,7 +63,6 @@
                 round
                 color="grey-6"
                 icon="content_copy"
-                size="sm"
                 class="q-ml-sm"
                 @click="copyText(props.row.result)"
               >
@@ -78,7 +77,6 @@
                 round
                 color="grey-6"
                 icon="content_copy"
-                size="sm"
                 class="q-ml-sm"
                 @click="copyText(props.row.result)"
               >

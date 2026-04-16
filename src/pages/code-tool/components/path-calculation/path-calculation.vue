@@ -3,7 +3,7 @@
     <!-- 1. 引用生成器 -->
     <q-card flat bordered class="q-mx-auto max-w-1200 transition-base q-mb-lg">
       <q-card-section class="bg-indigo-8 text-white row items-center">
-        <q-icon name="link" size="sm" class="q-mr-sm" />
+        <q-icon name="link" class="q-mr-sm" />
         <div class="text-h6 text-weight-bold">Vue 组件引用生成器</div>
       </q-card-section>
 
@@ -19,21 +19,13 @@
 
         <!-- 操作按钮 -->
         <div class="row items-center q-gutter-x-sm">
-          <q-btn
-            color="indigo"
-            outline
-            label="生成引用"
-            size="sm"
-            @click="generateCode_2"
-            :disabled="!fullPath"
-          />
+          <q-btn color="indigo" label="生成引用" @click="generateCode_2" :disabled="!fullPath" />
           <q-space />
           <q-btn
             v-if="generatedCode"
             color="secondary"
             icon="content_copy"
             label="一键复制"
-            size="sm"
             @click="copyOutput"
           />
         </div>
@@ -49,7 +41,7 @@
     <!-- 2. 相对路径计算器 -->
     <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
       <q-card-section class="bg-indigo-8 text-white row items-center">
-        <q-icon name="route" size="sm" class="q-mr-sm" />
+        <q-icon name="route" class="q-mr-sm" />
         <div class="text-h6 text-weight-bold">Vue 相对引用路径计算器</div>
       </q-card-section>
 
@@ -80,7 +72,6 @@
 
               <q-btn
                 color="primary"
-                size="sm"
                 label="复制引用"
                 :disabled="!relativeImport_AB"
                 @click="copy(relativeImport_AB)"
@@ -99,7 +90,6 @@
               <div class="row justify-end">
                 <q-btn
                   color="primary"
-                  size="sm"
                   label="复制引用"
                   :disabled="!relativeImport_AB"
                   @click="copy(generateCode(relativeImport_AB))"
@@ -125,7 +115,6 @@
 
               <q-btn
                 color="primary"
-                size="sm"
                 label="复制引用"
                 :disabled="!relativeImport_BA"
                 @click="copy(relativeImport_BA)"
@@ -144,7 +133,6 @@
               <div class="row justify-end">
                 <q-btn
                   color="primary"
-                  size="sm"
                   label="复制引用"
                   :disabled="!relativeImport_BA"
                   @click="copy(generateCode(relativeImport_BA))"
@@ -216,6 +204,8 @@ const generateCode = (file_path) => {
   if (!file_path) {
     return ''
   }
+  let raw_file_path = file_path.trim()
+
   let sub = file_path.substring(file_path.lastIndexOf('.'))
   file_path = lodash.trimStart(file_path, './ ').replace(/\.\w+$/, '')
   // 1. 提取文件名。例如: '.../reference-code.vue' -> 'reference-code'
@@ -234,7 +224,7 @@ const generateCode = (file_path) => {
   // 如果路径不是以 src 或 @ 开头，可以根据项目规范在此处补全别名
   const path = file_path.trim()
 
-  return `import ${componentName} from "${path}${sub}"`
+  return `import ${componentName} from "${raw_file_path}"`
 }
 const copyOutput = () => {
   copyText(generatedCode.value)

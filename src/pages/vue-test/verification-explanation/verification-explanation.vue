@@ -34,7 +34,7 @@
             <div class="q-gutter-y-xs">
               <div v-for="(desc, index) in item.description" :key="index" class="flex no-wrap">
                 <span class="index-badge q-mr-sm">{{ index + 1 }}.</span>
-                <div class="text-body2 text-grey-7">{{ desc }}</div>
+                <div class="text-body2">{{ desc }}</div>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@ const guideData = ref([
       '把状态机抽离为singleton，事件和监听抽离为module，事件调度生命周期抽离为composable，',
       '使用MITT封装事件管道，为下游组件提供管道消费函数。',
       '父级组件内部消费状态机上下文。',
-      '下游组件直接消费单利状态机和MITT事件管道。',
+      '下游组件直接消费单例状态机和MITT事件管道。',
       '组件层级可以进一步拉伸更多层',
       'VUE代码进一步整洁，子组件无需props,emit。',
       '但是多个切面之间存在执行顺序交叉',
@@ -175,7 +175,7 @@ const guideData = ref([
       '最后在模块内固定的文件内调用全局封装的零件聚合函数， 聚合零件生成队列。',
       '在VUE组件内，调用全局封装的组合式函数，注入基础上下文，执行上面生成的零件生成队列， 不断扩展上下文，生成上下文。',
       '所有地方消费的上下文是同一个，不会出现不一致。',
-      "一切只需要从payload上下文内获取'",
+      '一切只需要从payload上下文内获取',
     ],
 
     description: [

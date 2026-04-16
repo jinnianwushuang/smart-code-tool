@@ -32,7 +32,7 @@
 
           <div class="result-box rounded-borders control-panel q-pa-md" v-if="colorDetails">
             <div class="res-item row items-center justify-between">
-              <span class="text-caption text-grey-7">Flutter (ARGB)</span>
+              <span class="text-caption">Flutter (ARGB)</span>
               <code
                 class="font-mono cursor-pointer text-primary"
                 @click="copy(colorDetails.flutter)"
@@ -40,7 +40,7 @@
               >
             </div>
             <div class="res-item row items-center justify-between q-mt-sm">
-              <span class="text-caption text-grey-7">RGB / RGBA</span>
+              <span class="text-caption">RGB / RGBA</span>
               <code class="font-mono cursor-pointer text-primary" @click="copy(colorDetails.rgb)">{{
                 colorDetails.rgb
               }}</code>
@@ -73,7 +73,6 @@
             <div class="text-subtitle2 text-grey-8">配色方案生成</div>
             <q-btn
               color="indigo"
-              outline
               size="sm"
               label="导出方案 (JSON)"
               icon="download"
@@ -82,7 +81,7 @@
           </div>
 
           <div v-for="scheme in schemes" :key="scheme.label" class="scheme-group q-mb-lg">
-            <div class="scheme-label text-caption q-mb-xs text-grey-7 font-bold">
+            <div class="scheme-label text-caption q-mb-xs font-bold">
               {{ scheme.label }}
             </div>
             <div class="scheme-palette shadow-1">

@@ -2,17 +2,15 @@
   <div class="q-pa-md generator-wrapper">
     <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
       <q-card-section class="bg-indigo-8 text-white row items-center">
-        <q-icon name="wallpaper" size="sm" class="q-mr-sm" />
+        <q-icon name="wallpaper" class="q-mr-sm" />
         <div class="text-h6 text-weight-bold">SVG 批量转 Vue 组件</div>
         <q-space />
         <div class="row items-center q-gutter-x-md">
           <q-checkbox v-model="autoColor" label="自动 currentColor" dark color="white" />
           <q-btn
             color="secondary"
-            outline
             label="打包下载 ZIP"
             icon="download"
-            size="sm"
             :disable="!fileList.length"
             @click="handleDownloadAll"
           />

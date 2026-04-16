@@ -2,7 +2,7 @@
   <div class="q-pa-md generator-wrapper">
     <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
       <q-card-section class="bg-indigo-8 text-white row items-center">
-        <q-icon name="list_alt" size="sm" class="q-mr-sm" />
+        <q-icon name="list_alt" class="q-mr-sm" />
         <div>
           <div class="text-h6 text-weight-bold">JavaScript 变量提取器</div>
           <div class="text-caption text-grey-3">输入 JS 代码，自动提取 const 定义的变量名</div>
@@ -25,21 +25,13 @@
 
         <!-- 操作按钮 -->
         <div class="row items-center q-gutter-x-sm">
-          <q-btn
-            label="提取变量"
-            color="indigo"
-            outline
-            icon="analytics"
-            size="sm"
-            @click="extractVariables"
-          />
-          <q-btn label="清空" color="grey-7" outline icon="delete" size="sm" @click="clear" />
+          <q-btn label="提取变量" color="indigo" icon="analytics" @click="extractVariables" />
+          <q-btn label="清空" color="grey-7" icon="delete" @click="clear" />
           <q-space />
           <q-btn
             label="复制结果"
             color="secondary"
             icon="content_copy"
-            size="sm"
             @click="copyOutput"
             :disable="!result.length"
           />

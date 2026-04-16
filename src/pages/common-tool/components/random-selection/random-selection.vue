@@ -94,7 +94,7 @@
                 </div>
               </div>
               <div class="row q-gutter-xs overflow-hidden" style="max-height: 60px">
-                <q-badge v-for="item in processedList" :key="item" outline color="indigo-4">{{
+                <q-badge v-for="item in processedList" :key="item" color="indigo-4">{{
                   item
                 }}</q-badge>
               </div>

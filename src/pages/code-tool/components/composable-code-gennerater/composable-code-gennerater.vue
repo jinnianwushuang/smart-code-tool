@@ -3,7 +3,7 @@
     <q-card flat bordered class="q-mx-auto shadow-2 max-w-1200 transition-base">
       <q-card-section class="bg-indigo-8 text-white">
         <div class="row items-center">
-          <q-icon name="code" size="sm" class="q-mr-sm" />
+          <q-icon name="code" class="q-mr-sm" />
           <div class="text-h6 text-weight-bold">Composable 代码生成器</div>
         </div>
         <div class="text-caption text-grey-3">根据目录路径自动生成标准模块引入及初始化代码</div>
@@ -26,12 +26,11 @@
           <div class="row items-center q-gutter-x-md">
             <span class="text-subtitle2 text-weight-bold">生成的代码片段:</span>
             <q-space />
-            <q-btn label="清空" color="grey-7" size="sm" outline icon="delete" @click="reset" />
+            <q-btn label="清空" color="grey-7" icon="delete" @click="reset" />
             <q-btn
               color="secondary"
               icon="content_copy"
               label="一键复制"
-              size="sm"
               @click="copyOutput"
               :disable="!generatedCode"
             />

@@ -2,7 +2,7 @@
   <div class="q-pa-md generator-wrapper">
     <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
       <q-card-section class="bg-indigo-8 text-white row items-center">
-        <q-icon name="assignment_turned_in" size="sm" class="q-mr-sm" />
+        <q-icon name="assignment_turned_in" class="q-mr-sm" />
         <div class="text-h6 text-weight-bold">Vue3 ref 赋值语句转换器</div>
       </q-card-section>
 
@@ -38,21 +38,13 @@
         </div>
 
         <div class="row items-center q-gutter-x-sm q-mt-md">
-          <q-btn
-            color="indigo"
-            outline
-            label="执行转换"
-            icon="play_arrow"
-            size="sm"
-            @click="handleConvert"
-          />
-          <q-btn label="清空" color="grey-7" outline icon="delete" size="sm" @click="handleClear" />
+          <q-btn color="indigo" label="执行转换" icon="play_arrow" @click="handleConvert" />
+          <q-btn label="清空" color="grey-7" icon="delete" @click="handleClear" />
           <q-space />
           <q-btn
             color="secondary"
             icon="content_copy"
             label="复制结果"
-            size="sm"
             @click="handleCopy"
             :disabled="!outputCode"
           />

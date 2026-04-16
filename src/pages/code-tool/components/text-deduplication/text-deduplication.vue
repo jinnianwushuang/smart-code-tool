@@ -2,7 +2,7 @@
   <div class="q-pa-md generator-wrapper">
     <q-card flat bordered class="q-mx-auto shadow-2 max-w-1200 transition-base">
       <q-card-section class="bg-indigo-8 text-white row items-center">
-        <q-icon name="cleaning_services" size="sm" class="q-mr-sm" />
+        <q-icon name="cleaning_services" class="q-mr-sm" />
         <div class="text-h6 text-weight-bold">代码文本清洗 & 去重工具</div>
       </q-card-section>
 
@@ -128,14 +128,7 @@
             <div class="text-caption">
               结果统计: <b>{{ stats.count }}</b> 行
             </div>
-            <q-btn
-              label="重新处理"
-              color="indigo"
-              outline
-              icon="refresh"
-              size="sm"
-              @click="processText"
-            />
+            <q-btn label="重新处理" color="indigo" icon="refresh" @click="processText" />
           </div>
         </div>
       </q-card-section>

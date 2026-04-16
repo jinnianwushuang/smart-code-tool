@@ -52,6 +52,13 @@ export const docs = [
 
     items: [
       {
+        name: 'shadcn/ui',
+        url: 'https://ui.shadcn.com',
+        tag: 'Modern',
+        desc: '当前最火的组件构建方式：非传统依赖包，而是代码所有权归你，基于 Radix UI 和 Tailwind。',
+        priority: 5,
+      },
+      {
         name: 'Ant Design',
         url: 'https://ant.design',
         tag: 'Enterprise',
@@ -65,13 +72,7 @@ export const docs = [
         desc: '基于 Google Material Design 规范，世界级流行的 React 组件库，定制化能力极强。',
         priority: 5,
       },
-      {
-        name: 'shadcn/ui',
-        url: 'https://ui.shadcn.com',
-        tag: 'Modern',
-        desc: '当前最火的组件构建方式：非传统依赖包，而是代码所有权归你，基于 Radix UI 和 Tailwind。',
-        priority: 5,
-      },
+
       {
         name: 'Chakra UI',
         url: 'https://chakra-ui.com',

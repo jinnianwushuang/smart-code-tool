@@ -55,11 +55,11 @@ export const routes_vue_test = [
               import('src/pages/vue-test/multiton-demo/multiton-lv3/multiton-lv3.vue'),
           },
           {
-            path: 'multiton-lv4',
-            name: 'multiton-lv4',
-            meta: { title: '多例验证-LV4' },
+            path: 'multiton-lv5',
+            name: 'multiton-lv5',
+            meta: { title: '多例验证-LV5' },
             component: () =>
-              import('src/pages/vue-test/multiton-demo/multiton-lv4/multiton-lv4.vue'),
+              import('src/pages/vue-test/multiton-demo/multiton-lv5-2/multiton-lv5-2.vue'),
           },
         ],
       },

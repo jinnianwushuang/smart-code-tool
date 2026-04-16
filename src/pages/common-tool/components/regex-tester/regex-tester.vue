@@ -13,7 +13,7 @@
           <a-space direction="vertical" style="width: 100%" size="middle">
             <!-- 常用库 -->
             <div class="library-tags">
-              <div class="text-caption text-grey-7 q-mb-xs">常用正则库:</div>
+              <div class="text-caption q-mb-xs">常用正则库:</div>
               <a-tag
                 v-for="item in regexLib"
                 :key="item.name"

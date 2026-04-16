@@ -3,7 +3,7 @@
     <q-card flat bordered class="q-mx-auto shadow-2 max-w-1200 transition-base">
       <q-card-section class="bg-indigo-8 text-white">
         <div class="row items-center">
-          <q-icon name="auto_fix_high" size="sm" class="q-mr-sm" />
+          <q-icon name="auto_fix_high" class="q-mr-sm" />
           <div class="text-h6 text-weight-bold">函数代码重构助手</div>
         </div>
         <div class="text-caption">规则：自动注入 payload 参数并提取 .value 变量</div>
@@ -28,12 +28,11 @@
         </div>
 
         <div class="row items-center control-panel q-pa-sm rounded-borders q-gutter-x-md">
+          <q-btn label="清空全部" color="grey-7" @click="reset" icon="delete_sweep" />
           <q-btn
             label="解析识别"
             color="indigo"
-            outline
             icon="sync"
-            size="sm"
             @click="transformCode"
             :disable="!inputCode"
           />
@@ -43,7 +42,6 @@
             icon="content_copy"
             @click="copyOutput"
             :disable="!outputCode"
-            size="sm"
           />
           <q-space />
           <q-checkbox
@@ -81,18 +79,7 @@ import { ref } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { copyText, lodash } from 'src/output/common/project-common.js'
 const $q = useQuasar()
-const inputCode = ref(`
-const test_fn_1 = (ww) => {
-  console.log('test_fn_1')
-  var_a.value = 123
-  console.log(var_a.value)
-  console.log(var_b.value)
-  var_c.value = {
-    name: 'test_fn_1',
-    value: var_a.value,
-  }
-}
-`)
+const inputCode = ref(``)
 const outputCode = ref('')
 const detectedVars = ref([])
 const addVariableDefinitions = ref(false)
@@ -109,12 +96,12 @@ const rebuild_first_line = (firstLine) => {
     // 寻找箭头函数参数部分的正则
     // 匹配类似 (a, b) => 或 ( ) => 或 a =>
     firstLine = firstLine.replace(/([^()]*)(\()([^()]*?)(\))(\s*=>)/, (m, p1, p2, p3, p4, p5) => {
-      console.error('m----', m)
-      console.error('p1----', p1)
-      console.error('p2----', p2)
-      console.error('p3----', p3)
-      console.error('p4----', p4)
-      console.error('p5----', p5)
+      // console.error('m----', m)
+      // console.error('p1----', p1)
+      // console.error('p2----', p2)
+      // console.error('p3----', p3)
+      // console.error('p4----', p4)
+      // console.error('p5----', p5)
 
       let params = p3.trim()
       // 如果原本没参数或者是空括号
@@ -127,9 +114,9 @@ const rebuild_first_line = (firstLine) => {
   } else {
     // 没有括号的情况，直接在参数前插入 payload, 例如: const fn = a => { ... 变成 const fn = (payload, a) => { ...
     firstLine = firstLine.replace(/([^=]*=)\s*([a-zA-Z_$][\w$]*)\s*=>/, (m, p1, p2) => {
-      console.error('m----', m)
-      console.error('p1----', p1)
-      console.error('p2----', p2)
+      // console.error('m----', m)
+      // console.error('p1----', p1)
+      // console.error('p2----', p2)
       return `${p1} (payload, ${p2}) =>`
     })
   }
@@ -137,8 +124,14 @@ const rebuild_first_line = (firstLine) => {
   return firstLine
 }
 
+const reset = () => {
+  inputCode.value = ''
+  outputCode.value = ''
+  detectedVars.value = []
+}
+
 const transformCode = () => {
-  const code = inputCode.value.trim()
+  const code = inputCode.value?.trim()
   if (!code) {
     outputCode.value = ''
     detectedVars.value = []
@@ -185,6 +178,7 @@ const transformCode = () => {
   }
 
   outputCode.value = definitions + lines.join('\n')
+  copyOutput()
 }
 
 const copyOutput = () => {

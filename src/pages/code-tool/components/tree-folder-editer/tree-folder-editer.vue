@@ -3,7 +3,7 @@
     <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
       <!-- 顶部状态栏 -->
       <q-card-section class="bg-indigo-8 text-white row items-center q-gutter-x-md">
-        <q-icon name="account_tree" size="sm" class="q-mr-sm" />
+        <q-icon name="account_tree" class="q-mr-sm" />
         <div class="text-h6 text-weight-bold q-mr-md">树形文件夹编辑器</div>
 
         <a-radio-group
@@ -33,7 +33,6 @@
             text-color="indigo-8"
             label="导出 JSON"
             icon="download"
-            size="sm"
             @click="downloadJSON"
           />
           <q-btn
@@ -41,7 +40,6 @@
             text-color="primary"
             label="新增根目录"
             icon="add"
-            size="sm"
             @click="addNode(null, 'directory')"
           />
         </div>

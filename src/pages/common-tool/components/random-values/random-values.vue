@@ -104,7 +104,6 @@
               <q-btn flat color="secondary" label="重新批量生成" size="sm" @click="generateBatch" />
               <q-btn
                 color="indigo"
-                outline
                 label="一键复制"
                 size="sm"
                 @click="copyBatch"

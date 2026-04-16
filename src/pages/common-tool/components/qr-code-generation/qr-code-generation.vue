@@ -116,9 +116,7 @@
                     class="responsive-canvas"
                   ></canvas>
                 </div>
-                <div class="text-caption q-mt-md text-grey-7 text-center">
-                  支持实时预览及图片合成
-                </div>
+                <div class="text-caption q-mt-md text-center">支持实时预览及图片合成</div>
               </div>
             </q-tab-panel>
 

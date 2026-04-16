@@ -3,7 +3,7 @@
     <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
       <!-- 头部区域 -->
       <q-card-section class="bg-teal-8 text-white row items-center">
-        <q-icon name="swap_horiz" size="sm" class="q-mr-sm" />
+        <q-icon name="swap_horiz" class="q-mr-sm" />
         <div>
           <div class="text-h6 text-weight-bold">Web 字符转义工具</div>
           <div class="text-caption text-grey-3">支持 HTML 实体与 URL 参数的编码与解码</div>
@@ -25,53 +25,34 @@
 
         <!-- 操作按钮组 -->
         <div class="row items-center q-gutter-sm">
-          <q-btn-group outline>
-            <q-btn
-              label="HTML 转义"
-              color="teal"
-              outline
-              icon="code"
-              size="sm"
-              @click="handleAction('escapeHtml')"
-            >
+          <q-btn-group>
+            <q-btn label="HTML 转义" color="teal" icon="code" @click="handleAction('escapeHtml')">
               <q-tooltip>将 < 变为 &lt;</q-tooltip>
             </q-btn>
             <q-btn
               label="HTML 反转义"
               color="teal"
-              outline
               icon="code_off"
-              size="sm"
               @click="handleAction('unescapeHtml')"
             />
           </q-btn-group>
 
-          <q-btn-group outline>
-            <q-btn
-              label="URL 编码"
-              color="cyan-9"
-              outline
-              icon="link"
-              size="sm"
-              @click="handleAction('urlEncode')"
-            />
+          <q-btn-group>
+            <q-btn label="URL 编码" color="cyan-9" icon="link" @click="handleAction('urlEncode')" />
             <q-btn
               label="URL 解码"
               color="cyan-9"
-              outline
               icon="link_off"
-              size="sm"
               @click="handleAction('urlDecode')"
             />
           </q-btn-group>
 
-          <q-btn label="清空" color="grey-7" outline icon="delete" size="sm" @click="clear" />
+          <q-btn label="清空" color="grey-7" icon="delete" @click="clear" />
           <q-space />
           <q-btn
             label="复制结果"
             color="secondary"
             icon="content_copy"
-            size="sm"
             @click="copyOutput"
             :disable="!outputText"
           />

@@ -2,7 +2,7 @@
   <div class="q-pa-md generator-wrapper">
     <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
       <q-card-section class="bg-indigo-8 text-white row items-center">
-        <q-icon name="bolt" size="sm" class="q-mr-sm" />
+        <q-icon name="bolt" class="q-mr-sm" />
         <div class="text-h6 text-weight-bold">JS 函数转箭头函数</div>
         <q-space />
         <q-checkbox v-model="addExport" label="添加 export" keep-color color="white" dark />
@@ -26,21 +26,13 @@
         </div>
 
         <div class="row items-center q-gutter-x-sm">
-          <q-btn
-            label="开始转换"
-            color="indigo"
-            outline
-            icon="play_arrow"
-            size="sm"
-            @click="transformCode"
-          />
-          <q-btn label="重置" color="grey-7" outline icon="refresh" size="sm" @click="reset" />
+          <q-btn label="开始转换" color="indigo" icon="play_arrow" @click="transformCode" />
+          <q-btn label="重置" color="grey-7" icon="refresh" @click="reset" />
           <q-space />
           <q-btn
             label="复制结果"
             color="secondary"
             icon="content_copy"
-            size="sm"
             @click="copyOutput"
             :disable="!outputCode"
           />

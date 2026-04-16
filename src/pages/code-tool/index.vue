@@ -47,7 +47,7 @@ const all_tabs = [
     component: MethodNameToArrowFunction,
   },
 
-  { name: 'FunctionCodeCorrection', label: '函数代码纠正', component: FunctionCodeCorrection },
+  { name: 'FunctionCodeCorrection', label: '函数代码修正', component: FunctionCodeCorrection },
   { name: 'TemplateUnifiedExtractor', label: 'Vue模板提取器', component: TemplateUnifiedExtractor },
 
   {
