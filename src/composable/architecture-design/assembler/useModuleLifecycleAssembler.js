@@ -75,15 +75,15 @@ const assemble_lifecycle_centralized = (all_params) => {
       event_listener_config_arr.push(...method(payload))
     }
   }
-
+  // 事件管道的函数 需要在生命周期开始前就生成好，供组件内其他函数调用
+  event_pipeline_off = event_pipeline_fn(payload)
   onBeforeMount(() => {
     // 组件生命周期开始前，先执行单例函数，生成单例对象，供组件内其他函数调用
     singleton_fn(payload)
     // 执行传入的生命周期回调函数
 
     run_lifecycle_hook(payload, lifecycle, 'lifecycle_onBeforeMount')
-    // 事件管道的函数 需要在生命周期开始前就生成好，供组件内其他函数调用
-    event_pipeline_off = event_pipeline_fn(payload)
+
     //原生事件监听的相关逻辑
     event_listener_config_arr.forEach(({ target, type, handler, options = {} }) => {
       // 关键：将 signal 传入 addEventListener 的配置项
