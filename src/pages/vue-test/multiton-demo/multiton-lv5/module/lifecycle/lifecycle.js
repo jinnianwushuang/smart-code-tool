@@ -1,9 +1,6 @@
 import { loadData } from '../../api-request/loadData.js'
-
 export const lifecycle_onBeforeMount = (payload) => {
   console.log('lifecycle_onBeforeMount')
-  const { pagination } = payload
-  pagination.value.pageSize = 200
 }
 export const lifecycle_onMounted = (payload) => {
   console.log('lifecycle_onMounted')
@@ -15,7 +12,7 @@ export const lifecycle_onBeforeUnmount = (payload) => {
 }
 
 export const lifecycle_onUnmounted = (payload) => {
-  console.log('lifecycle_onUnmounted')
+  console.log('')
 }
 
 export const lifecycle_onActivated = (payload) => {

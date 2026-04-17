@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <div>
     <q-card>
       <div class="tabs-container">
         <!-- 1. 渲染 Tab 按钮 -->
@@ -13,11 +13,11 @@
         </div>
       </div>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>
-import { ref, shallowRef, watch, onMounted } from 'vue'
+import { ref, shallowRef, watch, onMounted, inject } from 'vue'
 
 const props = defineProps({
   // 传入已经通过 get_markdown_tabs 处理好的数组
@@ -30,6 +30,7 @@ const props = defineProps({
 
 const current_tab_name = ref('')
 const current_component = shallowRef(null)
+const parent_tab = inject('parent_tab')
 
 // 处理切换逻辑
 const handle_tab_change = (new_tab_name) => {
@@ -43,10 +44,13 @@ const handle_tab_change = (new_tab_name) => {
 
 // 初始化及监听外部数据变化
 watch(
-  () => props.tabs,
-  (newTabs) => {
-    if (newTabs.length > 0 && !current_tab_name.value) {
-      handle_tab_change(newTabs[0].name)
+  [() => props.tabs, () => parent_tab.value],
+  ([newTabs]) => {
+    let find_obj = newTabs.find((t) => t.name === current_tab_name.value)
+    if (find_obj) {
+      handle_tab_change(find_obj.name)
+    } else {
+      handle_tab_change(newTabs[0]?.name)
     }
   },
   { immediate: true },

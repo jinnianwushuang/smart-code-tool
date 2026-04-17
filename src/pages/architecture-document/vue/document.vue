@@ -10,13 +10,18 @@
 
 <script setup>
 import { computed, ref, provide } from 'vue'
-
 import { mapMarkdownFolderModulesToTabs, pascalCase } from 'src/output/common/project-common.js'
-const default_tab_name = 'reference-code'
+const default_tab_name = 'architecture'
 // 1. 定义中文映射表
 const folderLabelMap = {
+  architecture: '架构文档',
   'reference-code': '参考代码',
+  'standard-code': '标准代码',
+  'general-tools': '通用工具',
+  'general-composable': '副作用清理',
+  'standardized-template-cn': '标准模板',
 }
+
 const current_tab_name = ref(pascalCase(default_tab_name))
 provide('parent_tab', current_tab_name)
 // 1. 全量扫描（注意路径要能覆盖所有子目录）

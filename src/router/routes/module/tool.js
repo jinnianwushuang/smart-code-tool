@@ -51,8 +51,7 @@ export const routes_tool = [
         path: 'vue-architecture-document',
         name: 'vue-architecture-document',
         meta: { title: 'VUE', icon: () => h('span', 'VU') },
-        component: () =>
-          import('src/pages/architecture-document/vue/vue-architecture-document.vue'),
+        component: () => import('src/pages/architecture-document/vue/document.vue'),
       },
       {
         path: 'react-document',

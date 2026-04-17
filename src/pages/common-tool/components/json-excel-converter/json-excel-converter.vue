@@ -2,30 +2,39 @@
   <div class="q-pa-md generator-wrapper">
     <q-card flat bordered class="q-mx-auto shadow-2 transition-base" style="max-width: 1300px">
       <!-- 头部工具栏 -->
-      <q-card-section class="bg-indigo-8 text-white row items-center q-gutter-sm">
-        <q-icon name="auto_fix_high" size="sm" />
-        <div class="text-h6 text-weight-bold">JSON-Excel 转换器</div>
-        <q-space />
-        <q-btn flat color="white" label="样例数据" icon="lightbulb" size="sm" @click="loadSample" />
-        <q-btn flat color="white" label="清空" icon="delete" size="sm" @click="clearAll" />
-        <q-btn
-          color="white"
-          text-color="indigo-8"
-          label="下载 JSON"
-          icon="download"
-          size="sm"
-          @click="downloadJson"
-          :disable="!finalData.length"
-        />
-        <q-btn
-          color="white"
-          text-color="positive"
-          label="导出 Excel"
-          icon="description"
-          size="sm"
-          @click="exportToExcel"
-          :disable="!finalData.length"
-        />
+      <q-card-section class="bg-indigo-8 text-white">
+        <div class="row items-center q-gutter-sm">
+          <q-icon name="auto_fix_high" size="sm" />
+          <div class="text-h6 text-weight-bold">JSON-Excel 转换器</div>
+          <q-space />
+          <q-btn
+            flat
+            color="white"
+            label="样例数据"
+            icon="lightbulb"
+            size="sm"
+            @click="loadSample"
+          />
+          <q-btn flat color="white" label="清空" icon="delete" size="sm" @click="clearAll" />
+          <q-btn
+            color="white"
+            text-color="indigo-8"
+            label="下载 JSON"
+            icon="download"
+            size="sm"
+            @click="downloadJson"
+            :disable="!finalData.length"
+          />
+          <q-btn
+            color="white"
+            text-color="positive"
+            label="导出 Excel"
+            icon="description"
+            size="sm"
+            @click="exportToExcel"
+            :disable="!finalData.length"
+          />
+        </div>
       </q-card-section>
 
       <q-card-section class="row q-col-gutter-lg">

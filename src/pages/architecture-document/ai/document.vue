@@ -9,15 +9,25 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, provide } from 'vue'
+import { mapMarkdownFolderModulesToTabs, pascalCase } from 'src/output/common/project-common.js'
+const default_tab_name = 'sentence_assembly'
+// 1. 定义中文映射表
+const folderLabelMap = {
+  sentence_assembly: '语句组装',
 
-import SentenceAssembly from 'src/pages/architecture-document/ai/component/sentence_assembly/sentence_assembly.vue'
-import VueCase from 'src/pages/architecture-document/ai/component/vue/vue-case.vue'
-const current_tab_name = ref('SentenceAssembly')
-const all_tabs = [
-  { name: 'SentenceAssembly', label: '语句组装', component: SentenceAssembly },
-  { name: 'VueCase', label: 'Vue语句', component: VueCase },
-]
+  vue: 'Vue语句',
+}
+const current_tab_name = ref(pascalCase(default_tab_name))
+provide('parent_tab', current_tab_name)
+// 1. 全量扫描（注意路径要能覆盖所有子目录）
+const allMdModules = import.meta.glob('./md-doc/*/*.md', { eager: true })
+
+const all_tabs = mapMarkdownFolderModulesToTabs({
+  allMdModules,
+  folderLabelMap,
+})
+
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)
   return current_tab ? current_tab.component : null

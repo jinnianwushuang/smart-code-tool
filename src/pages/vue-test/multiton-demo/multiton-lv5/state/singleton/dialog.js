@@ -1,13 +1,17 @@
-import { ref, reactive, onMounted, computed } from 'vue'
+import { ref } from "vue";
+
+export const all_dialog_state = ref({});
+export const query_form = ref({});
+
+
 // --- 弹窗逻辑 ---
-export const modalVisible = ref(false)
-export const confirmLoading = ref(false)
-export const isEdit = ref(false)
-export const formRef = ref(null)
+
+
 
 export const init_singleton = () => {
-  modalVisible.value = false
-  confirmLoading.value = false
-  formRef.value = null
-  isEdit.value = false
-}
+  all_dialog_state.value = {};
+  query_form.value = {};
+
+
+
+};

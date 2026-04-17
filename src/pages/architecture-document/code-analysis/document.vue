@@ -9,17 +9,25 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, provide } from 'vue'
+import { mapMarkdownFolderModulesToTabs, pascalCase } from 'src/output/common/project-common.js'
+const default_tab_name = 'idea-doc'
+// 1. 定义中文映射表
+const folderLabelMap = {
+  'idea-doc': '思路整理',
 
-import IdeaDoc from './component/idea-doc/idea-doc.vue'
+  fragment: '碎片',
+}
+const current_tab_name = ref(pascalCase(default_tab_name))
+provide('parent_tab', current_tab_name)
+// 1. 全量扫描（注意路径要能覆盖所有子目录）
+const allMdModules = import.meta.glob('./md-doc/*/*.md', { eager: true })
 
-import FragmentDoc from './component/fragment/doc.vue'
-const current_tab_name = ref('IdeaDoc')
-const all_tabs = [
-  { name: 'IdeaDoc', label: '思路整理', component: IdeaDoc },
+const all_tabs = mapMarkdownFolderModulesToTabs({
+  allMdModules,
+  folderLabelMap,
+})
 
-  { name: 'FragmentDoc', label: '碎片', component: FragmentDoc },
-]
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)
   return current_tab ? current_tab.component : null

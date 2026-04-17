@@ -2,49 +2,40 @@
   <div class="q-pa-md generator-wrapper">
     <q-card flat bordered class="q-mx-auto max-w-1200 transition-base">
       <!-- 顶部状态栏 -->
-      <q-card-section class="bg-indigo-8 text-white row items-center q-gutter-x-md">
-        <q-icon name="account_tree" class="q-mr-sm" />
-        <div class="text-h6 text-weight-bold q-mr-md">树形文件夹编辑器</div>
-
-        <a-radio-group
-          v-model:value="currentArch"
-          button-style="solid"
-          size="small"
-          @change="loadData"
-        >
-          <a-radio-button value="Arch_A">架构 A</a-radio-button>
-          <a-radio-button value="Arch_B">架构 B</a-radio-button>
-          <a-radio-button value="Arch_C">架构 C</a-radio-button>
-        </a-radio-group>
-
-        <a-input-search
-          v-model:value="searchValue"
-          placeholder="搜索文件名或注释..."
-          size="small"
-          style="width: 200px"
-          allow-clear
-        />
-
-        <q-space />
-
-        <div class="row q-gutter-x-sm">
-          <q-btn
-            color="white"
-            text-color="indigo-8"
-            label="导出 JSON"
-            icon="download"
-            @click="downloadJSON"
+      <q-card-section class="bg-indigo-8 text-white">
+        <div class="row items-center q-gutter-x-md">
+          <q-icon name="account_tree" class="q-mr-sm" />
+          <div class="text-h6 text-weight-bold q-mr-md">树形文件夹编辑器</div>
+          <a-radio-group v-model:value="currentArch" button-style="solid" @change="loadData">
+            <a-radio-button value="Arch_A">架构 A</a-radio-button>
+            <a-radio-button value="Arch_B">架构 B</a-radio-button>
+            <a-radio-button value="Arch_C">架构 C</a-radio-button>
+          </a-radio-group>
+          <a-input-search
+            v-model:value="searchValue"
+            placeholder="搜索文件名或注释..."
+            style="width: 200px"
+            allow-clear
           />
-          <q-btn
-            color="white"
-            text-color="primary"
-            label="新增根目录"
-            icon="add"
-            @click="addNode(null, 'directory')"
-          />
+          <q-space />
+          <div class="row q-gutter-x-sm">
+            <q-btn
+              color="white"
+              text-color="indigo-8"
+              label="导出 JSON"
+              icon="download"
+              @click="downloadJSON"
+            />
+            <q-btn
+              color="white"
+              text-color="primary"
+              label="新增根目录"
+              icon="add"
+              @click="addNode(null, 'directory')"
+            />
+          </div>
         </div>
       </q-card-section>
-
       <q-card-section>
         <!-- 展示过滤后的树数据 -->
         <a-directory-tree
@@ -68,14 +59,12 @@
                 />
                 <!-- 高亮显示标题 -->
                 <span v-else class="node-title" v-html="highlightText(title)"></span>
-
                 <!-- 高亮显示注释 -->
                 <span v-if="description && editKey !== key" class="node-desc">
                   <span class="desc-prefix">//</span>
                   <span v-html="highlightText(description)"></span>
                 </span>
               </div>
-
               <div class="node-actions">
                 <a-tooltip title="编辑注释"
                   ><comment-outlined @click.stop="openDescModal(key, title, description)"
@@ -87,7 +76,6 @@
             </div>
           </template>
         </a-directory-tree>
-
         <a-empty
           v-if="displayTreeData.length === 0"
           description="未找到匹配项"
@@ -95,13 +83,11 @@
         />
       </q-card-section>
     </q-card>
-
     <a-modal v-model:open="descModalVisible" title="说明注释" @ok="handleDescOk">
       <a-textarea v-model:value="tempDescription" :rows="4" placeholder="输入功能描述..." />
     </a-modal>
   </div>
 </template>
-
 <script setup>
 import { ref, onMounted, watch, toRaw, computed } from 'vue'
 import { message, Modal } from 'ant-design-vue'
@@ -114,11 +100,9 @@ import {
 } from '@ant-design/icons-vue'
 import Dexie from 'dexie'
 import { base_architecture_tree } from './config/base-architecture-tree.js'
-
 // --- 数据库与状态 ---
 const db = new Dexie('ArchitectureTreeFolderDB')
 db.version(1).stores({ configs: 'id' })
-
 const currentArch = ref('Arch_A')
 const rawTreeData = ref([]) // 原始持久化数据
 const expandedKeys = ref([])
@@ -128,39 +112,31 @@ const editValue = ref('')
 const descModalVisible = ref(false)
 const tempDescription = ref('')
 const activeNodeKey = ref('')
-
 // --- 搜索过滤核心逻辑 ---
 const displayTreeData = computed(() => {
   const keyword = searchValue.value.toLowerCase().trim()
   if (!keyword) return rawTreeData.value
-
   const filterTree = (data) => {
     return data
       .map((node) => ({ ...node }))
       .filter((node) => {
         const titleMatch = node.title.toLowerCase().includes(keyword)
         const descMatch = (node.description || '').toLowerCase().includes(keyword)
-
         if (node.children) {
           node.children = filterTree(node.children)
         }
-
         const hasChildMatch = node.children && node.children.length > 0
-
         // 如果本级匹配或子级有匹配，则保留
         const isMatch = titleMatch || descMatch || hasChildMatch
-
         // 匹配时自动记录需要展开的 Key
         if (isMatch && keyword && !expandedKeys.value.includes(node.key)) {
           // 这里不直接修改 ref 避免循环更新，通过 watch 处理
         }
-
         return isMatch
       })
   }
   return filterTree(rawTreeData.value)
 })
-
 // 搜索时自动展开节点
 watch(searchValue, (val) => {
   if (val) {
@@ -175,20 +151,17 @@ watch(searchValue, (val) => {
     expandedKeys.value = keys
   }
 })
-
 /** 文字高亮处理 */
 const highlightText = (text) => {
   if (!searchValue.value || !text) return text
   const regex = new RegExp(`(${searchValue.value})`, 'gi')
   return text.replace(regex, '<span class="search-highlight">$1</span>')
 }
-
 // --- 数据持久化 ---
 const loadData = async () => {
   const config = await db.configs.get(currentArch.value)
   rawTreeData.value = config ? config.data : base_architecture_tree
 }
-
 watch(
   rawTreeData,
   async (newVal) => {
@@ -196,9 +169,7 @@ watch(
   },
   { deep: true },
 )
-
 onMounted(loadData)
-
 // --- 树操作方法 (作用于 rawTreeData) ---
 const enterEdit = (key, title) => {
   editKey.value = key
@@ -269,23 +240,19 @@ const downloadJSON = () => {
 }
 const vFocus = { mounted: (el) => el.focus() }
 </script>
-
 <style scoped>
 .generator-wrapper {
   transition: background-color 0.3s;
 }
-
 .transition-base {
   transition:
     background-color 0.3s,
     border-color 0.3s,
     box-shadow 0.3s;
 }
-
 .max-w-1200 {
   max-width: 1200px;
 }
-
 .tree-node-content {
   display: flex;
   align-items: center;
@@ -293,7 +260,6 @@ const vFocus = { mounted: (el) => el.focus() }
   width: 100%;
   padding-right: 8px;
 }
-
 .node-main {
   display: flex;
   align-items: center;
@@ -302,33 +268,27 @@ const vFocus = { mounted: (el) => el.focus() }
   overflow: hidden;
   font-family: 'Fira Code', monospace;
 }
-
 .node-desc {
   color: rgba(128, 128, 128, 0.7);
   font-size: 12px;
   font-style: italic;
 }
-
 .desc-prefix {
   opacity: 0.5;
   margin-right: 4px;
 }
-
 .node-actions {
   display: none;
   gap: 10px;
   color: var(--q-primary);
 }
-
 .tree-node-content:hover .node-actions {
   display: flex;
 }
-
 :deep(.ant-tree-node-content-wrapper) {
   display: flex !important;
   transition: background-color 0.2s;
 }
-
 :deep(.search-highlight) {
   color: #ff9800;
   font-weight: bold;
@@ -337,11 +297,9 @@ const vFocus = { mounted: (el) => el.focus() }
   padding: 0 2px;
   border-radius: 2px;
 }
-
 .custom-tree {
   background: transparent;
 }
-
 /* 适配深色模式 */
 :deep(.ant-tree) {
   background: transparent !important;

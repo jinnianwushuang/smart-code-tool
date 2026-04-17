@@ -63,8 +63,8 @@ onMounted(() => {
   handle_click_menu({ key: menuList[0].key })
 })
 const handle_click_menu = ({ key }) => {
-  console.log('handle_click_menu---layout-tool-', key)
-  console.log('handle_click_menu---layout-tool-selectedKeys--', selectedKeys)
+  // console.log('handle_click_menu---layout-tool-', key)
+  // console.log('handle_click_menu---layout-tool-selectedKeys--', selectedKeys)
   router.push({ name: key })
 }
 

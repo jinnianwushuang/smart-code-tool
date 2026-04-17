@@ -1,20 +1,18 @@
-import { loadData } from '../../../api-request/loadData.js'
-
-// 搜索与重置
-export const onSearch = (payload) => {
-  const { pagination } = payload
-  pagination.value.current = 1
-  loadData(payload)
+// --- 搜索逻辑 ---
+const onSearch = () => {
+  pagination.current = 1
+  loadData()
 }
-export const onReset = (payload) => {
-  const { searchState } = payload
+const onReset = () => {
   searchState.name = ''
   searchState.category = undefined
-  onSearch(payload)
+  onSearch()
 }
-// 打开新增弹窗
-export const handleAdd = (payload) => {
-  const { isEdit, modalVisible, formState } = payload
+
+
+
+
+const handleAdd = () => {
   isEdit.value = false
   Object.assign(formState, {
     id: null,

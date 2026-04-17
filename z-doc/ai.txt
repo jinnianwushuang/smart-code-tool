@@ -223,3 +223,39 @@ vue-architecture-template
 需要包含修改， 编辑 ，查询 ，支持弹窗修改编辑 ，
 需要支持翻页查询
 使用 js  不要使用 ts
+
+请封装一个函数 传入 import.meta.glob('./component/*/md/*.md', { eager: true })
+
+返回一个大对象  使下面的数据 内的 component 从  这个大对象内取值
+
+const all_tabs = [
+  {
+    name: 'IdeaDoc',
+    label: 'VUE转REACT思考',
+    component: createMarkdownTabViewerComponent(
+      import.meta.glob('./component/idea-doc/md/*.md', { eager: true }),
+    ),
+  },
+  {
+    name: 'OtherIdea',
+    label: '其他思考',
+    component: createMarkdownTabViewerComponent(
+      import.meta.glob('./component/other-idea/md/*.md', { eager: true }),
+    ),
+  },
+  {
+    name: 'ReferenceCode',
+    label: '参考代码',
+    component: createMarkdownTabViewerComponent(
+      import.meta.glob('./component/reference-code/md/*.md', { eager: true }),
+    ),
+  },
+
+  {
+    name: 'Principle',
+    label: '原理',
+    component: createMarkdownTabViewerComponent(
+      import.meta.glob('./component/principle/md/*.md', { eager: true }),
+    ),
+  },
+]

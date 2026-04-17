@@ -59,7 +59,7 @@ export const routes_vue_test = [
             name: 'multiton-lv5',
             meta: { title: '多例验证-LV5' },
             component: () =>
-              import('src/pages/vue-test/multiton-demo/multiton-lv5-2/multiton-lv5-2.vue'),
+              import('src/pages/vue-test/multiton-demo/multiton-lv5/multiton-lv5.vue'),
           },
         ],
       },

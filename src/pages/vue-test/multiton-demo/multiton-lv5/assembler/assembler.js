@@ -1,7 +1,7 @@
 import { atoms_assembler } from 'src/output/common/project-common.js'
 
 //公共的外部模块
-const public_assembler = ['useGlobalState', 'src_composable_demo_use_user_time_assembler_assembler']
+const public_assembler = ['useGlobalState']
 //手动引入的外部模块，不在 composable_common 中 的模块
 const manual_assembler = []
 //当前文件路径
