@@ -49,29 +49,33 @@ order: 99
 ## 1. 单例状态
 
 ### 定义
+
 单例状态是**全局共享**的，在整个页面的生命周期中创建一个实例并保持。
 
 ### 位置
+
 `/state/singleton/`
 
 ### 文件
 
 **singleton.js** - 聚合所有单例模块：
+
 ```javascript
 import { common_assemble_singleton } from 'src/output/common/project-common.js'
 import * as dialog_copy_use_singleton from 'src/components/dialog/dialog-copy-use/state/singleton.js'
 
 const modules = import.meta.glob('./singleton/*.js', { eager: true })
 
-export const { all_singleton, init_singleton } = common_assemble_singleton(
+export const { all_singleton, init_all_singleton } = common_assemble_singleton(
   modules,
   dialog_copy_use_singleton,
 )
 ```
 
 **singleton/table.js** - 表格数据状态：
+
 ```javascript
-import { ref } from "vue"
+import { ref } from 'vue'
 
 const default_pagination = {
   current: 1,
@@ -93,8 +97,9 @@ export const init_singleton = () => {
 ```
 
 **singleton/dialog.js** - 对话框状态：
+
 ```javascript
-import { ref } from "vue"
+import { ref } from 'vue'
 
 export const all_dialog_state = ref({})
 export const query_form = ref({})
@@ -108,19 +113,21 @@ export const init_singleton = () => {
 ```
 
 **singleton/other.js** - 其他共享状态：
-```javascript
-import { ref } from "vue"
 
-export const user_info = ref({ name: "Guest" })
+```javascript
+import { ref } from 'vue'
+
+export const user_info = ref({ name: 'Guest' })
 
 export const init_singleton = () => {
-  user_info.value = { name: "Guest" }
+  user_info.value = { name: 'Guest' }
 }
 ```
 
 ### 访问模式
 
 在组件中：
+
 ```javascript
 import { all_singleton } from "src/standardization/backend-page-template/state/singleton.js"
 
@@ -133,6 +140,7 @@ const { table_data, pagination, user_info } = all_singleton
 ```
 
 在事件处理程序中：
+
 ```javascript
 // Event handlers receive payload with singleton state injected
 // 事件处理程序接收注入单例状态的有效载荷
@@ -154,15 +162,17 @@ export const handle_query_click = (payload) => {
 ## 2. 多例状态
 
 ### 定义
+
 多例状态是**每实例**的，为每个组件实例创建新的副本。每个实例有自己的副本。
 
 ### 位置
+
 `/state/multiton.js`
 
 ### 示例
 
 ```javascript
-import { ref } from "vue"
+import { ref } from 'vue'
 
 export const create_multiton_variable = (payload) => {
   const current_time = ref(new Date())
@@ -196,19 +206,21 @@ const { current_time: componentB_time } = useContextAssembler(payload, assembler
 ## 3. 计算状态
 
 ### 定义
+
 计算属性是**派生值**，使用 Vue 的 `computed()` 从单例或多例状态计算。
 
 ### 位置
+
 `/state/computed.js`
 
 ### 示例
 
 ```javascript
-import { computed } from "vue"
+import { computed } from 'vue'
 
 export const create_computed_variable = (payload) => {
   const demo_computed = computed(() => {
-    return "demo_computed"
+    return 'demo_computed'
   })
 
   return { demo_computed }
@@ -218,7 +230,7 @@ export const create_computed_variable = (payload) => {
 ### 高级示例
 
 ```javascript
-import { computed } from "vue"
+import { computed } from 'vue'
 
 export const create_computed_variable = (payload) => {
   const { table_data, user_info } = payload
@@ -259,9 +271,11 @@ export const create_computed_variable = (payload) => {
 ## 配置状态
 
 ### 位置
+
 `/state/config.js`
 
 ### 目的
+
 存储应用级配置选项
 
 ### 示例
@@ -337,6 +351,7 @@ export const handle_query_click = (payload) => {
 ## 状态变更模式
 
 ### 模式 1：直接变更
+
 ```javascript
 export const handle_reset = (payload) => {
   const { table_data, pagination } = payload
@@ -347,6 +362,7 @@ export const handle_reset = (payload) => {
 ```
 
 ### 模式 2：计算派生状态
+
 ```javascript
 const total_count = computed(() => {
   return table_data.value.reduce((sum, item) => sum + item.count, 0)
@@ -354,6 +370,7 @@ const total_count = computed(() => {
 ```
 
 ### 模式 3：条件更新
+
 ```javascript
 export const handle_api_response = (payload, response) => {
   const { table_data, pagination } = payload
@@ -368,19 +385,23 @@ export const handle_api_response = (payload, response) => {
 ## 响应式依赖
 
 ### 观察器的副作用
+
 ```javascript
 // In cleanup_effect_watcher
 // 在 cleanup_effect_watcher 中
 export const cleanup_effect_watcher = (payload) => {
   const { current_time } = payload
 
-  return [watch(current_time, (new_time) => {
-    console.log('Time changed:', new_time)
-  })]
+  return [
+    watch(current_time, (new_time) => {
+      console.log('Time changed:', new_time)
+    }),
+  ]
 }
 ```
 
 ### 具有多个依赖的计算
+
 ```javascript
 const can_submit = computed(() => {
   const hasData = table_data.value.length > 0
@@ -394,6 +415,7 @@ const can_submit = computed(() => {
 ## 状态初始化和重置
 
 ### 初始化
+
 ```javascript
 import { all_singleton } from './state/singleton.js'
 
@@ -406,6 +428,7 @@ export const lifecycle_onBeforeMount = (payload) => {
 ```
 
 ### 重置模式
+
 ```javascript
 export const handle_reset_form = (payload) => {
   const { query_form } = payload
@@ -421,6 +444,7 @@ export const handle_reset_form = (payload) => {
 ## 最佳实践
 
 ### ✅ 应该做
+
 - 对真正全局状态使用单例（用户信息、共享配置）
 - 对组件作用域临时状态使用多例
 - 对派生计算使用计算
@@ -428,6 +452,7 @@ export const handle_reset_form = (payload) => {
 - 记录状态形状和变更
 
 ### ❌ 不应该做
+
 - 混合单例和本地组件状态
 - 创建读取兄弟计算的计算（创建合并计算）
 - 在不重新分配的情况下深度变更数组/对象

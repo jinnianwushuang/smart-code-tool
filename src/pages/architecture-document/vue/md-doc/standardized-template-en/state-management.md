@@ -44,29 +44,33 @@ The template uses a sophisticated state management system combining Vue 3's reac
 ## 1. Singleton State
 
 ### Definition
+
 Singleton state is **shared globally** across the entire page. A single instance is created and persists throughout the page's lifetime.
 
 ### Location
+
 `/state/singleton/`
 
 ### Files
 
 **singleton.js** - Aggregates all singleton modules:
+
 ```javascript
 import { common_assemble_singleton } from 'src/output/common/project-common.js'
 import * as dialog_copy_use_singleton from 'src/components/dialog/dialog-copy-use/state/singleton.js'
 
 const modules = import.meta.glob('./singleton/*.js', { eager: true })
 
-export const { all_singleton, init_singleton } = common_assemble_singleton(
+export const { all_singleton, init_all_singleton } = common_assemble_singleton(
   modules,
   dialog_copy_use_singleton,
 )
 ```
 
 **singleton/table.js** - Table data state:
+
 ```javascript
-import { ref } from "vue"
+import { ref } from 'vue'
 
 const default_pagination = {
   current: 1,
@@ -88,8 +92,9 @@ export const init_singleton = () => {
 ```
 
 **singleton/dialog.js** - Dialog state:
+
 ```javascript
-import { ref } from "vue"
+import { ref } from 'vue'
 
 export const all_dialog_state = ref({})
 export const query_form = ref({})
@@ -103,19 +108,21 @@ export const init_singleton = () => {
 ```
 
 **singleton/other.js** - Other shared state:
-```javascript
-import { ref } from "vue"
 
-export const user_info = ref({ name: "Guest" })
+```javascript
+import { ref } from 'vue'
+
+export const user_info = ref({ name: 'Guest' })
 
 export const init_singleton = () => {
-  user_info.value = { name: "Guest" }
+  user_info.value = { name: 'Guest' }
 }
 ```
 
 ### Access Pattern
 
 In components:
+
 ```javascript
 import { all_singleton } from "src/standardization/backend-page-template/state/singleton.js"
 
@@ -127,11 +134,12 @@ const { table_data, pagination, user_info } = all_singleton
 ```
 
 In event handlers:
+
 ```javascript
 // Event handlers receive payload with singleton state injected
 export const handle_query_click = (payload) => {
   const { table_data, pagination } = payload
-  
+
   table_data.value = []
   pagination.value.current = 1
 }
@@ -147,19 +155,21 @@ export const handle_query_click = (payload) => {
 ## 2. Multiton State
 
 ### Definition
+
 Multiton state is **per-instance**, created fresh for each component instance. Each instance has its own copy.
 
 ### Location
+
 `/state/multiton.js`
 
 ### Example
 
 ```javascript
-import { ref } from "vue"
+import { ref } from 'vue'
 
 export const create_multiton_variable = (payload) => {
   const current_time = ref(new Date())
-  
+
   return { current_time }
 }
 ```
@@ -172,7 +182,7 @@ Each component invoking `useContextAssembler()` gets its own `current_time`:
 // Component A
 const { current_time: componentA_time } = useContextAssembler(payload, assembler)
 
-// Component B  
+// Component B
 const { current_time: componentB_time } = useContextAssembler(payload, assembler)
 
 // componentA_time and componentB_time are independent refs
@@ -187,21 +197,23 @@ const { current_time: componentB_time } = useContextAssembler(payload, assembler
 ## 3. Computed State
 
 ### Definition
+
 Computed properties are **derived values** calculated from singleton or multiton state using Vue's `computed()`.
 
 ### Location
+
 `/state/computed.js`
 
 ### Example
 
 ```javascript
-import { computed } from "vue"
+import { computed } from 'vue'
 
 export const create_computed_variable = (payload) => {
   const demo_computed = computed(() => {
-    return "demo_computed"
+    return 'demo_computed'
   })
-  
+
   return { demo_computed }
 }
 ```
@@ -209,26 +221,26 @@ export const create_computed_variable = (payload) => {
 ### Advanced Example
 
 ```javascript
-import { computed } from "vue"
+import { computed } from 'vue'
 
 export const create_computed_variable = (payload) => {
   const { table_data, user_info } = payload
-  
+
   // Computed property: row count
   const visible_row_count = computed(() => {
     return table_data.value.length
   })
-  
+
   // Computed property: is user admin
   const is_admin = computed(() => {
     return user_info.value.role === 'admin'
   })
-  
+
   // Computed property: can user delete
   const can_delete = computed(() => {
     return is_admin.value && visible_row_count.value > 0
   })
-  
+
   return {
     visible_row_count,
     is_admin,
@@ -247,9 +259,11 @@ export const create_computed_variable = (payload) => {
 ## Configuration State
 
 ### Location
+
 `/state/config.js`
 
 ### Purpose
+
 Store app-level configuration options
 
 ### Example
@@ -271,7 +285,7 @@ Payload is the context object passed through the assembler, containing:
 const payload = {
   // Vue component props
   props,
-  
+
   // Singleton state
   table_data,
   pagination,
@@ -279,18 +293,18 @@ const payload = {
   all_dialog_state,
   query_form,
   current_record_to_dialog_data,
-  
+
   // Multiton state
   current_time,
-  
+
   // Computed properties
   visible_row_count,
   is_admin,
   can_delete,
-  
+
   // Emit functions
   emit,
-  
+
   // Config
   income_pipeline,
   wrap_payload,
@@ -302,10 +316,10 @@ const payload = {
 ```javascript
 export const handle_query_click = (payload) => {
   const { table_data, query_form, pagination } = payload
-  
+
   // Use state
   table_data.value = newData
-  
+
   // API call with current state
   api_service.query({
     keyword: query_form.value.key_word,
@@ -317,16 +331,18 @@ export const handle_query_click = (payload) => {
 ## State Mutation Patterns
 
 ### Pattern 1: Direct Mutation
+
 ```javascript
 export const handle_reset = (payload) => {
   const { table_data, pagination } = payload
-  
+
   table_data.value = []
   pagination.value.current = 1
 }
 ```
 
 ### Pattern 2: Computed Derived State
+
 ```javascript
 const total_count = computed(() => {
   return table_data.value.reduce((sum, item) => sum + item.count, 0)
@@ -334,10 +350,11 @@ const total_count = computed(() => {
 ```
 
 ### Pattern 3: Conditional Updates
+
 ```javascript
 export const handle_api_response = (payload, response) => {
   const { table_data, pagination } = payload
-  
+
   if (response.code === 200) {
     table_data.value = response.data.rows
     pagination.value.total = response.data.total
@@ -348,24 +365,28 @@ export const handle_api_response = (payload, response) => {
 ## Reactive Dependencies
 
 ### Watchers for Side Effects
+
 ```javascript
 // In cleanup_effect_watcher
 export const cleanup_effect_watcher = (payload) => {
   const { current_time } = payload
-  
-  return [watch(current_time, (new_time) => {
-    console.log('Time changed:', new_time)
-  })]
+
+  return [
+    watch(current_time, (new_time) => {
+      console.log('Time changed:', new_time)
+    }),
+  ]
 }
 ```
 
 ### Computed with Multiple Dependencies
+
 ```javascript
 const can_submit = computed(() => {
   const hasData = table_data.value.length > 0
   const isValid = validation_result.value === true
   const notLoading = !table_loading.value
-  
+
   return hasData && isValid && notLoading
 })
 ```
@@ -373,6 +394,7 @@ const can_submit = computed(() => {
 ## State Initialization & Reset
 
 ### Initialization
+
 ```javascript
 import { all_singleton } from './state/singleton.js'
 
@@ -384,10 +406,11 @@ export const lifecycle_onBeforeMount = (payload) => {
 ```
 
 ### Reset Pattern
+
 ```javascript
 export const handle_reset_form = (payload) => {
   const { query_form } = payload
-  
+
   query_form.value = {
     key_word: '',
     category: '',
@@ -399,6 +422,7 @@ export const handle_reset_form = (payload) => {
 ## Best Practices
 
 ### ✅ Do
+
 - Use singleton for truly global state (user info, shared config)
 - Use multiton for component-scoped temporary state
 - Use computed for derived calculations
@@ -406,6 +430,7 @@ export const handle_reset_form = (payload) => {
 - Document state shape and mutations
 
 ### ❌ Don't
+
 - Mix singleton and local component state
 - Create computed that reads sibling computed (create merged computed instead)
 - Mutate arrays/objects deeply without reassigning
