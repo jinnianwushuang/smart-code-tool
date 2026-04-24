@@ -3,6 +3,7 @@ import {
   architecture_check_after_process,
   merge_to_payload_with_conflict_logs,
 } from 'src/output/common/project-common.js'
+import { useAllExceptEventListenerCleaner } from 'src/composable/architecture-design/lifecycle-disposer-composable/useAllExceptEventListenerCleaner.js'
 
 /**
  * 上下文启动器
@@ -35,8 +36,14 @@ export const useContextAssembler = (initialPayload, config_obj = {}) => {
   config_obj.method_fn_arr?.forEach((fn) => {
     Object.assign(payload, fn(payload))
   })
-  // 3. 生命周期激活 合并返回的 emit 函数
+  // 3. 生命周期激活
   config_obj.lifecycle_fn_arr?.forEach((fn) => Object.assign(payload, fn(payload)))
+
+  // 处理VUE监听器
+  config_obj.watcher_fn_arr?.forEach((fn) => {
+    useAllExceptEventListenerCleaner(fn(payload))
+  })
+
   // 4. 函数包装
   const { wrap_payload } = payload
 

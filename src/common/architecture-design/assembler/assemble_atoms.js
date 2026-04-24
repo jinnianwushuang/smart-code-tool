@@ -24,6 +24,7 @@ export const atoms_assembler = (all_params) => {
     state_fn_arr: [], // 存储状态机初始化相关的生成器函数
     method_fn_arr: [], // 存储业务方法相关的生成器函数
     lifecycle_fn_arr: [], // 存储生命周期相关的生成器函数
+    watcher_fn_arr: [], //存储VUE监听器相关的副作用生成器函数
   }
 
   //公共的外部模块 聚合
@@ -38,6 +39,9 @@ export const atoms_assembler = (all_params) => {
   result_point.method_fn_arr.push(assemble_method(guilei_modules, current_file_path))
   //modules 处理生命周期
   result_point.lifecycle_fn_arr.push(assemble_lifecycle(guilei_modules))
+  //modules 处理VUE监听器
+  result_point.watcher_fn_arr.push(...assemble_watcher(guilei_modules))
+
   global_log('[assembler] 聚合结果：', result_point)
   return result_point
 }
@@ -100,13 +104,31 @@ const assemble_lifecycle = (guilei_modules) => {
     })
   }
 }
+
+/**
+ *  modules 处理VUE监听器
+ * @param {*} guilei_modules
+ * @returns
+ */
+const assemble_watcher = (guilei_modules) => {
+  let { watcher } = guilei_modules
+  let fn_arr = []
+  let mods = Object.entries(watcher)
+
+  mods.forEach((mod) => {
+    fn_arr.push(...Object.values(mod))
+  })
+
+  return fn_arr
+}
+
 /**
  *  modules 聚合分组
  * @param {*} param0
  * @returns
  */
 const group_modules = ({ modules }) => {
-  const res = { state: {}, singleton: {}, lifecycle: {}, method: {} }
+  const res = { state: {}, singleton: {}, lifecycle: {}, watcher: {}, method: {} }
 
   for (const [path, mod] of Object.entries(modules)) {
     let file_name_cases = get_file_name_cases(path)
@@ -128,7 +150,11 @@ const group_modules = ({ modules }) => {
       path.includes('/module/lifecycle/') ||
       path.includes('/module/effect/')
     ) {
-      res.lifecycle[path] = mod
+      if (path.includes('/module/effect/watcher.js')) {
+        res.watcher[path] = mod
+      } else {
+        res.lifecycle[path] = mod
+      }
     }
     if (path.includes('/module/exposed-method/')) {
       res.method[path] = mod
@@ -150,7 +176,7 @@ const atoms_assembler_when_public_assembler = (all_params, result_point) => {
     return
   }
 
-  const { state_fn_arr, method_fn_arr, lifecycle_fn_arr } = result_point
+  const { state_fn_arr, method_fn_arr, lifecycle_fn_arr, watcher_fn_arr } = result_point
   // 遍历列表，从公共 Composable 库中提取对应函数
   public_assembler.forEach((income_fn_name) => {
     const fn = composable_common[income_fn_name]
@@ -170,6 +196,7 @@ const atoms_assembler_when_public_assembler = (all_params, result_point) => {
         state_fn_arr.push(...fn_result.state_fn_arr)
         method_fn_arr.push(...fn_result.method_fn_arr)
         lifecycle_fn_arr.push(...fn_result.lifecycle_fn_arr)
+        watcher_fn_arr.push(...fn_result.watcher_fn_arr)
       }
     }
   })
@@ -196,5 +223,6 @@ const atoms_assembler_when_manual_assembler = (all_params, result_point) => {
     result_point.state_fn_arr.push(...(manual_obj.state_fn_arr || []))
     result_point.method_fn_arr.push(...(manual_obj.method_fn_arr || []))
     result_point.lifecycle_fn_arr.push(...(manual_obj.lifecycle_fn_arr || []))
+    result_point.watcher_fn_arr.push(...(manual_obj.watcher_fn_arr || []))
   })
 }
