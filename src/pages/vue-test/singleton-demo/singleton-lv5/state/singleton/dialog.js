@@ -3,10 +3,13 @@ export const modalVisible = ref(false)
 export const confirmLoading = ref(false)
 export const formRef = ref(null)
 export const isEdit = ref(false)
+export const formState = ref({})
 export const init_singleton = () => {
   modalVisible.value = false
   confirmLoading.value = false
   formRef.value = null
   isEdit.value = false
+  formState.value = {}
+
 
 }

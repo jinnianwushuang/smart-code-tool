@@ -1,4 +1,4 @@
-import { loadData } from '../../../api-request/loadData.js'
+import { loadData } from '../../api-request/loadData.js'
 
 // 搜索与重置
 export const onSearch = (payload) => {
@@ -14,8 +14,8 @@ export const onReset = (payload) => {
 }
 // 打开新增弹窗
 export const handleAdd = (payload) => {
-  const { isEdit, modalVisible } = payload
+  const { isEdit, modalVisible, formState } = payload
   isEdit.value = false
-  Object.assign(formState, { id: undefined, username: '', email: '', status: '1' })
+  Object.assign(formState.value, { id: undefined, username: '', email: '', status: '1' })
   modalVisible.value = true
 }

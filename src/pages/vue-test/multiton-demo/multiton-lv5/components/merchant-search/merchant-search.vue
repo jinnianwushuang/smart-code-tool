@@ -18,8 +18,8 @@
           </a-select>
         </a-form-item>
         <a-form-item>
-          <a-button type="primary" @click="all_event_pipeline.other.search()">查询</a-button>
-          <a-button style="margin-left: 8px" @click="all_event_pipeline.other.reset()">
+          <a-button type="primary" @click="ALL_EVENT_PIPELINE.other.search()">查询</a-button>
+          <a-button style="margin-left: 8px" @click="ALL_EVENT_PIPELINE.other.reset()">
             重置</a-button
           >
         </a-form-item>
@@ -35,7 +35,7 @@
         align-items: center;
       "
     >
-      <a-button type="primary" size="large" @click="all_event_pipeline.other.handleAdd()">
+      <a-button type="primary" size="large" @click="ALL_EVENT_PIPELINE.other.handleAdd()">
         <template #icon><plus-outlined /></template>
         入驻新商户
       </a-button>
@@ -48,7 +48,7 @@
 import { PlusOutlined } from '@ant-design/icons-vue'
 import { all_singleton } from '../../state/singleton.js'
 import * as all_config from '../../state/config.js'
-import { all_event_pipeline } from '../../module/event-pipeline/event-pipeline.js'
+import { ALL_EVENT_PIPELINE } from '../../module/event-pipeline/event-pipeline.js'
 const { categoryOptions } = all_config
 const { searchState, pagination } = all_singleton
 </script>

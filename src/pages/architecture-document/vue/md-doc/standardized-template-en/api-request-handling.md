@@ -3,6 +3,7 @@
 ## Overview
 
 The API request system provides a structured, testable approach to backend communication with clear separation between:
+
 - **Request orchestration** - Command flow and state management
 - **Parameter computation** - Request payload building
 - **API invocation** - Service layer integration
@@ -77,21 +78,21 @@ import { api_service } from 'src/api/index.js'
 
 export const handle_init_table_data = async (payload) => {
   const {} = payload
-  
+
   try {
     // 1. Pre-check
     const can_proceed = check_request_eligibility(payload)
     if (!can_proceed) return
-    
+
     // 2. Compute params
     const final_params = compute_request_params(payload)
-    
+
     // 3. Get API function
     const api_func = get_target_api_func(payload)
-    
+
     // 4. Execute request
     const response = await api_func(final_params)
-    
+
     // 5. Handle response
     handle_api_response(payload, response)
   } catch (error) {
@@ -113,19 +114,19 @@ Validates if request should proceed:
 ```javascript
 const check_request_eligibility = (payload) => {
   const { params, is_loading } = payload
-  
+
   // Guard: prevent duplicate requests
   if (is_loading) {
     console.warn('Request already in progress')
     return false
   }
-  
+
   // Guard: validate required parameters
   if (!params || !params.key_word) {
     console.warn('Missing required parameters')
     return false
   }
-  
+
   return true
 }
 ```
@@ -139,20 +140,20 @@ Transforms state into API request payload:
 ```javascript
 const compute_request_params = (payload) => {
   const { params, user_id, pagination } = payload
-  
+
   return {
     // Original params
     keyword: params.key_word,
     category: params.category,
-    
+
     // Pagination
     page: pagination.value.current,
     limit: pagination.value.pageSize,
-    
+
     // Context
     uid: user_id,
     timestamp: Date.now(),
-    
+
     // Computed
     sort_by: 'updated_at',
     sort_order: 'desc',
@@ -169,13 +170,13 @@ Selects appropriate API method via strategy pattern:
 ```javascript
 const get_target_api_func = (payload) => {
   const { api_type } = payload
-  
+
   const api_map = {
-    'fetch_users': api_service.fetchUsers,
-    'fetch_products': api_service.fetchProducts,
-    'search': api_service.search,
+    fetch_users: api_service.fetchUsers,
+    fetch_products: api_service.fetchProducts,
+    search: api_service.search,
   }
-  
+
   return api_map[api_type] || api_service.defaultFetch
 }
 ```
@@ -191,16 +192,17 @@ const response = await api_func(final_params)
 ```
 
 **With Loading State**:
+
 ```javascript
 const { table_loading } = payload
 
-table_loading.value = true  // Set before request
+table_loading.value = true // Set before request
 
 try {
   const response = await api_func(final_params)
   return response
 } finally {
-  table_loading.value = false  // Always reset
+  table_loading.value = false // Always reset
 }
 ```
 
@@ -211,7 +213,7 @@ Processes successful responses:
 ```javascript
 const handle_api_response = (payload, response) => {
   const { table_data, pagination } = payload
-  
+
   if (response.code === 200) {
     success_handler(payload, response.data)
   } else {
@@ -221,14 +223,14 @@ const handle_api_response = (payload, response) => {
 
 const success_handler = (payload, data) => {
   const { table_data, pagination } = payload
-  
+
   // Update table data
   table_data.value = data.rows || []
-  
+
   // Update pagination
   pagination.value.total = data.total
   pagination.value.current = data.page
-  
+
   // Show success message
   console.log('Data loaded successfully')
 }
@@ -241,15 +243,15 @@ Manages failures:
 ```javascript
 const error_handler = (payload, message) => {
   const { table_data } = payload
-  
+
   console.error('Request failed:', message)
-  
+
   // Show error notification
   notify.error('Failed to load data')
-  
+
   // Optional: Reset to last known state
   // table_data.value = [...cached_data]
-  
+
   // Optional: Retry logic
   // retry_count++
 }
@@ -262,13 +264,13 @@ Post-request cleanup:
 ```javascript
 const finally_handler = (payload) => {
   const { table_loading } = payload
-  
+
   // Ensure loading state reset
   table_loading.value = false
-  
+
   // Log analytics
   console.log('Request completed')
-  
+
   // Trigger callbacks
   emit('data-loaded')
 }
@@ -291,6 +293,7 @@ export default common_assemble_function(modules)
 ```
 
 **Usage**:
+
 ```javascript
 import { handle_init_table_data } from 'src/standardization/backend-page-template/api-request/index.js'
 
@@ -311,16 +314,16 @@ import { api_service } from 'src/api/index.js'
 
 export const handle_search_users = async (payload) => {
   const { search_query, filters } = payload
-  
+
   try {
     const params = {
       q: search_query.value,
       ...filters.value,
       timestamp: Date.now(),
     }
-    
+
     const response = await api_service.searchUsers(params)
-    
+
     if (response.code === 200) {
       // Update state
       payload.search_results.value = response.data.users
@@ -353,7 +356,7 @@ export const handle_search_click = (payload) => {
 
 ```vue
 <template>
-  <q-btn @click="all_event_pipeline.search.handle_search_click" />
+  <q-btn @click="ALL_EVENT_PIPELINE.search.handle_search_click" />
 </template>
 ```
 
@@ -364,19 +367,19 @@ export const handle_search_click = (payload) => {
 ```javascript
 const compute_request_params = (payload) => {
   const { pagination, sort_config, filters } = payload
-  
+
   return {
     // Pagination
     page: pagination.value.current,
     page_size: pagination.value.pageSize,
-    
+
     // Sorting
     sort_by: sort_config.value.column,
     sort_order: sort_config.value.order,
-    
+
     // Filtering
     ...filters.value,
-    
+
     // Metadata
     timestamp: Date.now(),
     request_id: generateRequestId(),
@@ -389,18 +392,18 @@ const compute_request_params = (payload) => {
 ```javascript
 const executeWithRetry = async (apiFunc, params, maxRetries = 3) => {
   let lastError
-  
+
   for (let i = 0; i < maxRetries; i++) {
     try {
       return await apiFunc(params)
     } catch (error) {
       lastError = error
       if (i < maxRetries - 1) {
-        await delay(1000 * (i + 1))  // Exponential backoff
+        await delay(1000 * (i + 1)) // Exponential backoff
       }
     }
   }
-  
+
   throw lastError
 }
 ```
@@ -418,16 +421,16 @@ const getCachedOrFetch = async (api_func, params, cacheKey) => {
       return cached.data
     }
   }
-  
+
   // Fetch fresh data
   const response = await api_func(params)
-  
+
   // Cache result
   requestCache.set(cacheKey, {
     data: response,
     timestamp: Date.now(),
   })
-  
+
   return response
 }
 ```
@@ -437,13 +440,13 @@ const getCachedOrFetch = async (api_func, params, cacheKey) => {
 ```javascript
 export const handle_init_page_data = async (payload) => {
   const { table_data, stats_data } = payload
-  
+
   try {
     const [tableResponse, statsResponse] = await Promise.all([
       api_service.fetchTableData(),
       api_service.fetchStats(),
     ])
-    
+
     table_data.value = tableResponse.data
     stats_data.value = statsResponse.data
   } catch (error) {
@@ -459,22 +462,22 @@ const requestControllers = new Map()
 
 export const handle_search_users = async (payload) => {
   const { search_query } = payload
-  
+
   // Cancel previous request
   if (requestControllers.has('search_users')) {
     requestControllers.get('search_users').abort()
   }
-  
+
   // Create new controller
   const controller = new AbortController()
   requestControllers.set('search_users', controller)
-  
+
   try {
     const response = await api_service.searchUsers(
       { q: search_query.value },
-      { signal: controller.signal }
+      { signal: controller.signal },
     )
-    
+
     payload.search_results.value = response.data
   } catch (error) {
     if (error.name !== 'AbortError') {
@@ -487,6 +490,7 @@ export const handle_search_users = async (payload) => {
 ## Best Practices
 
 ### ✅ Do
+
 - Pre-validate before making requests
 - Transform params clearly in separate function
 - Use strategy/factory pattern for API selection
@@ -496,6 +500,7 @@ export const handle_search_users = async (payload) => {
 - Log request lifecycle for debugging
 
 ### ❌ Don't
+
 - Make requests directly from components
 - Mix API logic with event handlers
 - Forget error handling
@@ -513,16 +518,15 @@ test('handle_init_table_data fetches and updates state', async () => {
     pagination: { value: { current: 1 } },
     table_loading: { value: false },
   }
-  
+
   // Mock API
-  jest.spyOn(api_service, 'fetchTable')
-    .mockResolvedValue({
-      code: 200,
-      data: { rows: [{ id: 1 }], total: 10 },
-    })
-  
+  jest.spyOn(api_service, 'fetchTable').mockResolvedValue({
+    code: 200,
+    data: { rows: [{ id: 1 }], total: 10 },
+  })
+
   await handle_init_table_data(payload)
-  
+
   expect(payload.table_data.value).toEqual([{ id: 1 }])
   expect(payload.pagination.value.total).toBe(10)
 })

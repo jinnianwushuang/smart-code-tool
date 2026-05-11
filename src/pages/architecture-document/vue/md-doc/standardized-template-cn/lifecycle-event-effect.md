@@ -43,17 +43,20 @@ export const lifecycle_onMounted = (payload) => {
 
 ## 事件管道模块
 
-`module/event-pipeline/event-pipeline.js` 使用 `event_pipeline_register` 扫描当前目录下的事件模块：
+`module/event-pipeline/event-pipeline.js` 使用 `assemble_event_pipeline` 扫描当前目录下的事件模块：
 
 ```javascript
 const modules = import.meta.glob('../module/event-pipeline/*.js', {
   eager: true,
 })
-export const { all_event_pipeline, create_event_pipeline } =
-  event_pipeline_register(modules, currentFilePath)
+export const { ALL_EVENT_PIPELINE, create_event_pipeline } = assemble_event_pipeline(
+  modules,
+  currentFilePath,
+)
 ```
 
 该设计支持：
+
 - 事件模块自动注册
 - 按需创建事件管道
 - 模块化拆分事件逻辑

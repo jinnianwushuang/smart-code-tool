@@ -10,19 +10,15 @@
       />
 
       <q-space />
-      <q-btn
-        label="查询"
-        color="primary"
-        @click="all_event_pipeline.other.handle_query_click"
-      />
+      <q-btn label="查询" color="primary" @click="ALL_EVENT_PIPELINE.other.handle_query_click" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { all_singleton } from "src/standardization/backend-page-template/state/singleton.js";
-import { all_event_pipeline } from "src/standardization/backend-page-template/module/event-pipeline/event-pipeline.js";
-const { query_form } = all_singleton;
+import { all_singleton } from 'src/standardization/backend-page-template/state/singleton.js'
+import { ALL_EVENT_PIPELINE } from 'src/standardization/backend-page-template/module/event-pipeline/event-pipeline.js'
+const { query_form } = all_singleton
 </script>
 
 <style lang="scss" scoped></style>

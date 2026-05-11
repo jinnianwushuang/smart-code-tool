@@ -7,7 +7,7 @@ import { get_file_name_cases } from 'src/common/architecture-design/util/file/fi
  * @returns {Object} 包含代理对象和生成器
  */
 export const event_pipeline_register_v1_proxy = ({ modules, currentFilePath }) => {
-  const all_event_pipeline = {}
+  const ALL_EVENT_PIPELINE = {}
 
   // 1. 预处理：解析路径并转换 snake_case，排除下划线文件
   Object.keys(modules).forEach((path) => {
@@ -17,7 +17,7 @@ export const event_pipeline_register_v1_proxy = ({ modules, currentFilePath }) =
     if (original.endsWith('___')) return
 
     // 提取模块内容（兼容 default 导出和具名导出）
-    all_event_pipeline[snake] = modules[path].default || modules[path]
+    ALL_EVENT_PIPELINE[snake] = modules[path].default || modules[path]
   })
 
   // 4. 处理 income_pipeline 注入
@@ -33,7 +33,7 @@ export const event_pipeline_register_v1_proxy = ({ modules, currentFilePath }) =
         }
       })
 
-      all_event_pipeline['income'] = income_pipeline_obj
+      ALL_EVENT_PIPELINE['income'] = income_pipeline_obj
     }
   }
 
@@ -44,7 +44,7 @@ export const event_pipeline_register_v1_proxy = ({ modules, currentFilePath }) =
     // 4. 处理 income_pipeline 注入
     create_income_pipeline(payload)
     // 3. 定义代理对象
-    return new Proxy(all_event_pipeline, {
+    return new Proxy(ALL_EVENT_PIPELINE, {
       get(target, fileName) {
         // 第一层拦截：文件名 (file_name)
 
@@ -72,13 +72,13 @@ export const event_pipeline_register_v1_proxy = ({ modules, currentFilePath }) =
   }
 
   return {
-    all_event_pipeline,
+    ALL_EVENT_PIPELINE,
     create_event_pipeline,
   }
 }
 
 // // src/api/events/index.js
-// import { event_pipeline_register } from "src/output/common/project-common.js";
+// import { assemble_event_pipeline } from "src/output/common/project-common.js";
 
 // // 1. 扫描当前目录下 module 文件夹中的 JS
 // const modules = import.meta.glob('./module/*.js', { eager: true })
@@ -87,16 +87,16 @@ export const event_pipeline_register_v1_proxy = ({ modules, currentFilePath }) =
 // const currentFilePath = import.meta.url
 
 // // 3. 传入参数进行封装
-// export const { all_event_pipeline, create_event_pipeline } = event_pipeline_register(
+// export const { ALL_EVENT_PIPELINE, create_event_pipeline } = assemble_event_pipeline(
 //   modules,
 //   currentFilePath,
 // )
 
-// import { all_event_pipeline, create_event_pipeline } from "@/api/events";
+// import { ALL_EVENT_PIPELINE, create_event_pipeline } from "@/api/events";
 
 // // 方式 A: 直接执行默认对象
 // // 实际执行: update_profile({}, '001', '张三')
-// all_event_pipeline.user_center.update_profile("001", "张三");
+// ALL_EVENT_PIPELINE.user_center.update_profile("001", "张三");
 
 // // 方式 B: 注入 Payload 执行
 // // 实际执行: update_profile({ token: 'xyz' }, '002', '李四')

@@ -19,20 +19,21 @@ Each component follows a consistent pattern:
   <WrappedComponent
     :config="wrapper_config"
     :all_singleton="all_singleton"
-    :all_event_pipeline="all_event_pipeline"
+    :ALL_EVENT_PIPELINE="ALL_EVENT_PIPELINE"
     :all_config="all_config"
   />
 </template>
 
 <script setup>
 // Import central service modules
-const { all_singleton } = all_singleton; // State
-const { all_event_pipeline } = all_event_pipeline; // Events
-const { wrapper_config } = wrapper_config; // Configuration
+const { all_singleton } = all_singleton // State
+const { ALL_EVENT_PIPELINE } = ALL_EVENT_PIPELINE // Events
+const { wrapper_config } = wrapper_config // Configuration
 </script>
 ```
 
 This pattern ensures:
+
 - **Consistent Props** - All components receive same prop structure
 - **Shared State** - All components access singleton state
 - **Unified Events** - Centralized event handling
@@ -45,11 +46,13 @@ This pattern ensures:
 **Purpose**: Manages modal dialog displays with pluggable dialog types
 
 **Files**:
+
 - `dialog-wrapper.vue` - Main wrapper component
 - `config/config.js` - Dialog configuration and auto-loading
 - `component/dialog-copy-use/` - Example dialog implementation
 
 **Configuration** (`config.js`):
+
 ```javascript
 import { common_assemble_component } from 'src/output/common/project-common.js'
 import { markRaw } from 'vue'
@@ -61,10 +64,10 @@ const { DialogCopyUse } = components
 
 // Define available dialogs
 export const dialog_wrapper_config = [
-  { 
-    name: '警告弹窗', 
-    model_key: 'dialog_copy_use', 
-    component: markRaw(DialogCopyUse) 
+  {
+    name: '警告弹窗',
+    model_key: 'dialog_copy_use',
+    component: markRaw(DialogCopyUse),
   },
   {
     name: '确认弹窗',
@@ -75,6 +78,7 @@ export const dialog_wrapper_config = [
 ```
 
 **State Management**:
+
 ```javascript
 // In state/singleton/dialog.js
 export const all_dialog_state = ref({})
@@ -82,6 +86,7 @@ export const current_record_to_dialog_data = ref({})
 ```
 
 **Adding a New Dialog**:
+
 1. Create new `.vue` file in `component/dialog-wrapper/component/`
 2. Component automatically discovered by glob
 3. Add entry to `dialog_wrapper_config` array
@@ -94,11 +99,13 @@ export const current_record_to_dialog_data = ref({})
 **Purpose**: Displays paginated tabular data with custom cell rendering
 
 **Files**:
+
 - `table-main-area.vue` - Main table component
 - `config/config.js` - Column definitions and component assembly
 - `component/table-td-copy-use/` - Example custom cell component
 
 **Column Configuration** (`config.js`):
+
 ```javascript
 const { TableTdCopyUse } = components
 
@@ -125,6 +132,7 @@ export const columns = [
 ```
 
 **State Management**:
+
 ```javascript
 // In state/singleton/table.js
 export const table_data = ref([])
@@ -134,6 +142,7 @@ export const pagination = ref({ current: 1, pageSize: 10, total: 0 })
 ```
 
 **Event Handling**:
+
 ```javascript
 // In module/event-pipeline/module/table.js
 export const on_table_change = (payload, { pagination, filters, sorter }) => {
@@ -146,6 +155,7 @@ export const handle_table_action_confirm_click = (payload, str) => {
 ```
 
 **Adding a Custom Cell Component**:
+
 1. Create `.vue` component in `component/table-main-area/component/table-td-copy-use/`
 2. Component receives `{ text, record, index }` props
 3. Add to columns config using `customRender`
@@ -158,11 +168,13 @@ export const handle_table_action_confirm_click = (payload, str) => {
 **Purpose**: Search/filter interface for table queries
 
 **Features**:
+
 - Input fields for search criteria
 - Query button triggering API calls
 - Direct state mutations
 
 **State Integration**:
+
 ```javascript
 // In state/singleton/dialog.js
 export const query_form = ref({})
@@ -170,26 +182,28 @@ export const query_form = ref({})
 // Usage in TopSearchArea
 <template>
   <q-input v-model="query_form.key_word" label="关键字" />
-  <q-btn @click="all_event_pipeline.other.handle_query_click" label="查询" />
+  <q-btn @click="ALL_EVENT_PIPELINE.other.handle_query_click" label="查询" />
 </template>
 ```
 
 ## Component Communication Flow
 
 ### Props Flow (Parent → Child)
+
 ```
 index.vue
   ↓ passes config/state/events
-DialogWrapper → DialogCopyUse (receives all_singleton, all_event_pipeline)
+DialogWrapper → DialogCopyUse (receives all_singleton, ALL_EVENT_PIPELINE)
 TableMainArea → TableTdCopyUse (receives record, index, text)
 TopSearchArea → (uses shared state)
 ```
 
 ### Event Flow (Child → Event Pipeline)
+
 ```
 User clicks button
   ↓
-Component emits event via all_event_pipeline
+Component emits event via ALL_EVENT_PIPELINE
   ↓
 Event handler in module/event-pipeline/
   ↓
@@ -199,6 +213,7 @@ Reactive propagation to all components
 ```
 
 ### State Update Flow
+
 ```
 API response
   ↓
@@ -216,18 +231,21 @@ Dependent components update via computed properties
 ### How Components Are Auto-Loaded
 
 **In dialog wrapper config**:
+
 ```javascript
 const modules = import.meta.glob('../component/*/*.vue', { eager: true })
 const components = common_assemble_component(modules)
 ```
 
 **What happens**:
+
 1. Glob finds all `.vue` files matching pattern
 2. `common_assemble_component()` processes them
 3. Components keyed by filename
 4. Components available as `components.DialogCopyUse`
 
 **Benefits**:
+
 - Add new dialog → automatic discovery
 - No manual imports needed
 - Minimal build overhead with eager loading
@@ -235,12 +253,14 @@ const components = common_assemble_component(modules)
 ## Best Practices
 
 ### ✅ Do
+
 - Keep components focused on single responsibility
 - Use provided props (config, state, events)
 - Delegate business logic to event pipelines
 - Use `markRaw()` for heavy components
 
 ### ❌ Don't
+
 - Create local component state (use singleton instead)
 - Emit custom events (use event pipeline instead)
 - Import other components directly
@@ -274,6 +294,7 @@ const handle_click = () => {
 ```
 
 Then in `config/config.js`:
+
 ```javascript
 const { CustomCell } = components
 
@@ -297,10 +318,7 @@ export const columns = [
         <div class="text-h6">Confirm Action</div>
       </q-card-section>
       <q-card-actions>
-        <q-btn
-          label="Confirm"
-          @click="all_event_pipeline.dialog.handle_confirm"
-        />
+        <q-btn label="Confirm" @click="ALL_EVENT_PIPELINE.dialog.handle_confirm" />
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -310,7 +328,7 @@ export const columns = [
 const model_key = 'confirm_dialog'
 const props = defineProps({
   all_singleton: Object,
-  all_event_pipeline: Object,
+  ALL_EVENT_PIPELINE: Object,
 })
 
 const { all_dialog_state } = props.all_singleton
@@ -318,6 +336,7 @@ const { all_dialog_state } = props.all_singleton
 ```
 
 Then in `dialog-wrapper.vue` config:
+
 ```javascript
 export const dialog_wrapper_config = [
   {
@@ -326,3 +345,4 @@ export const dialog_wrapper_config = [
     component: markRaw(ConfirmDialog),
   },
 ]
+```

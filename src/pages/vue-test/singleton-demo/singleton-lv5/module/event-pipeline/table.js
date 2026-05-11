@@ -1,5 +1,5 @@
 import { message } from 'ant-design-vue'
-import { loadData } from '../../../api-request/loadData.js'
+import { loadData } from '../../api-request/loadData.js'
 
 // 表格分页/排序改变
 export const handleTableChange = (payload, pag) => {

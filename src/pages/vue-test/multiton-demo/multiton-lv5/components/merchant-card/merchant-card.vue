@@ -16,7 +16,7 @@
 
     <!-- 操作按钮 -->
     <template #actions>
-      <a-button type="link" @click="all_event_pipeline_parent.other.handleEdit(item)"
+      <a-button type="link" @click="ALL_EVENT_PIPELINE_parent.other.handleEdit(item)"
         ><edit-outlined /> 编辑</a-button
       >
       <a-popconfirm title="确定删除该商户及其所有数据？" @confirm="$emit('delete', item.id)">
@@ -71,16 +71,16 @@ const payload = useContextAssembler(base_payload, all_atoms_assembler())
 
 const {
   // wrapped_payload: {   },
-  // all_event_pipeline,
+  // ALL_EVENT_PIPELINE,
 } = payload
 
 const { parent_payload } = props
 const {} = parent_payload
 
 const parent_index = parent_payload.props.index
-const all_event_pipeline_parent = parent_payload.all_event_pipeline
+const ALL_EVENT_PIPELINE_parent = parent_payload.ALL_EVENT_PIPELINE
 
-// provide('all_event_pipeline', all_event_pipeline)
+// provide('ALL_EVENT_PIPELINE', ALL_EVENT_PIPELINE)
 </script>
 
 <style scoped>

@@ -7,25 +7,22 @@
     <div>
       <q-btn
         label="like"
-        :class="all_event_pipeline.other.compute_btn_class()"
-        @click="all_event_pipeline.other.handle_xxx_demo"
+        :class="ALL_EVENT_PIPELINE.other.compute_btn_class()"
+        @click="ALL_EVENT_PIPELINE.other.handle_xxx_demo"
       />
     </div>
   </div>
 </template>
 
 <script setup>
-
-const {parent_payload} = defineProps({
+const { parent_payload } = defineProps({
   parent_payload: {
     type: Object,
     required: true,
   },
-
 })
 
-
-const { current_card_data ,all_event_pipeline } = parent_payload
+const { current_card_data, ALL_EVENT_PIPELINE } = parent_payload
 </script>
 
 <style lang="scss" scoped></style>

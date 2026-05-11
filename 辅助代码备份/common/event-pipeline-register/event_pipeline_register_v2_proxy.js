@@ -8,7 +8,7 @@ import { get_file_name_cases } from 'src/common/architecture-design/util/file/fi
  */
 export const event_pipeline_register_v2_proxy = ({ modules, currentFilePath }) => {
   const modules_obj = {}
-  const all_event_pipeline = {}
+  const ALL_EVENT_PIPELINE = {}
 
   // 1. 预处理：解析路径并转换 snake_case，排除下划线文件
   Object.keys(modules).forEach((path) => {
@@ -26,9 +26,9 @@ export const event_pipeline_register_v2_proxy = ({ modules, currentFilePath }) =
    */
   const create_event_pipeline = (payload = {}) => {
     // 3. 定义代理对象
-    Object.keys(all_event_pipeline).forEach((fileName) => {
+    Object.keys(ALL_EVENT_PIPELINE).forEach((fileName) => {
       const moduleContent = modules_obj[fileName]
-      all_event_pipeline[fileName] = new Proxy(moduleContent, {
+      ALL_EVENT_PIPELINE[fileName] = new Proxy(moduleContent, {
         get(subTarget, methodName) {
           // 第二层拦截：函数名 (method_name)
           const originMethod = moduleContent[methodName]
@@ -55,12 +55,12 @@ export const event_pipeline_register_v2_proxy = ({ modules, currentFilePath }) =
         }
       })
 
-      all_event_pipeline['income'] = income_pipeline_obj
+      ALL_EVENT_PIPELINE['income'] = income_pipeline_obj
     }
   }
 
   return {
-    all_event_pipeline,
+    ALL_EVENT_PIPELINE,
     create_event_pipeline,
   }
 }

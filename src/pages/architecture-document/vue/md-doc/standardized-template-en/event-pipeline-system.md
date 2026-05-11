@@ -28,19 +28,22 @@ UI Re-render
 ## Core Files
 
 ### event-pipeline.js
+
 Registers and exposes all event pipelines:
 
 ```javascript
-import { event_pipeline_register } from "src/output/common/project-common.js"
+import { assemble_event_pipeline } from 'src/output/common/project-common.js'
 
-const modules = import.meta.glob("../module/event-pipeline/*.js", {
+const modules = import.meta.glob('../module/event-pipeline/*.js', {
   eager: true,
 })
 
 const currentFilePath = import.meta.url
 
-export const { all_event_pipeline, create_event_pipeline } =
-  event_pipeline_register(modules, currentFilePath)
+export const { ALL_EVENT_PIPELINE, create_event_pipeline } = assemble_event_pipeline(
+  modules,
+  currentFilePath,
+)
 ```
 
 ### Module Structure
@@ -73,12 +76,12 @@ export const handle_dialog_copy_use_confirm_click = (payload) => {
 
 ```javascript
 export const handle_table_action_confirm_click = (payload, str) => {
-  console.log("handle_table_action_confirm_click", payload, str)
+  console.log('handle_table_action_confirm_click', payload, str)
   // Handle table action
 }
 
 export const on_table_change = (payload, { pagination, filters, sorter }) => {
-  console.log("Pagination changed:", pagination)
+  console.log('Pagination changed:', pagination)
   // Fetch new data based on pagination
 }
 ```
@@ -108,14 +111,11 @@ export const handle_query_click = (payload) => {
 
 ```vue
 <template>
-  <q-btn
-    label="查询"
-    @click="all_event_pipeline.other.handle_query_click"
-  />
+  <q-btn label="查询" @click="ALL_EVENT_PIPELINE.other.handle_query_click" />
 </template>
 
 <script setup>
-import { all_event_pipeline } from "src/standardization/backend-page-template/module/event-pipeline/event-pipeline.js"
+import { ALL_EVENT_PIPELINE } from 'src/standardization/backend-page-template/module/event-pipeline/event-pipeline.js'
 </script>
 ```
 
@@ -125,7 +125,7 @@ import { all_event_pipeline } from "src/standardization/backend-page-template/mo
 <template>
   <q-btn
     label="Delete"
-    @click="() => all_event_pipeline.table.handle_table_action_confirm_click(payload, 'delete')"
+    @click="() => ALL_EVENT_PIPELINE.table.handle_table_action_confirm_click(payload, 'delete')"
   />
 </template>
 ```
@@ -135,14 +135,14 @@ import { all_event_pipeline } from "src/standardization/backend-page-template/mo
 ```javascript
 // In component
 const handle_table_row_click = (record) => {
-  all_event_pipeline.table.handle_row_click({ record })
+  ALL_EVENT_PIPELINE.table.handle_row_click({ record })
 }
 
 // In event handler
 export const handle_row_click = (payload, data) => {
   const { current_record_to_dialog_data } = payload
   const { record } = data
-  
+
   current_record_to_dialog_data.value = record
 }
 ```
@@ -171,7 +171,7 @@ Assembler automatically finds it via glob pattern.
 const { handle_new_feature_action } = useContextAssembler(payload, all_atoms_assembler())
 
 // Or via event pipeline if configured
-all_event_pipeline.new_feature.handle_new_feature_action()
+ALL_EVENT_PIPELINE.new_feature.handle_new_feature_action()
 ```
 
 ## Event Chaining
@@ -180,13 +180,13 @@ Events can trigger other events:
 
 ```javascript
 export const handle_save_record = (payload) => {
-  const { all_event_pipeline, table_data } = payload
-  
+  const { ALL_EVENT_PIPELINE, table_data } = payload
+
   // Save operation
   saveToDatabase(table_data.value)
-  
+
   // Chain: trigger refresh
-  all_event_pipeline.other.handle_query_click(payload)
+  ALL_EVENT_PIPELINE.other.handle_query_click(payload)
 }
 ```
 
@@ -196,14 +196,14 @@ export const handle_save_record = (payload) => {
 // Handler with custom parameters
 export const handle_delete_record = (payload, recordId, callback) => {
   const { table_data } = payload
-  
-  table_data.value = table_data.value.filter(item => item.id !== recordId)
-  
-  if(callback) callback()
+
+  table_data.value = table_data.value.filter((item) => item.id !== recordId)
+
+  if (callback) callback()
 }
 
 // Usage
-all_event_pipeline.table.handle_delete_record(null, recordId, () => {
+ALL_EVENT_PIPELINE.table.handle_delete_record(null, recordId, () => {
   console.log('Delete complete')
 })
 ```
@@ -211,31 +211,41 @@ all_event_pipeline.table.handle_delete_record(null, recordId, () => {
 ## Event Lifecycle
 
 ### 1. Event Fired
+
 ```javascript
-all_event_pipeline.dialog.handle_dialog_copy_use_confirm_click()
+ALL_EVENT_PIPELINE.dialog.handle_dialog_copy_use_confirm_click()
 ```
 
 ### 2. Handler Invoked
+
 Event system passes:
+
 - `payload` - Full context object
 - `...args` - Additional parameters
 
 ### 3. State Mutation
+
 Handler modifies state via payload references:
+
 ```javascript
 const { all_dialog_state } = payload
-all_dialog_state.value = { /* new state */ }
+all_dialog_state.value = {
+  /* new state */
+}
 ```
 
 ### 4. Reactivity Triggered
+
 Vue detects ref changes and re-renders
 
 ### 5. Components Update
+
 All components reading modified state see changes
 
 ## Best Practices
 
 ### ✅ Do
+
 - Keep handlers focused (single responsibility)
 - Use descriptive handler names (`handle_*`, `on_*`)
 - Organize by domain (dialog, table, etc.)
@@ -243,6 +253,7 @@ All components reading modified state see changes
 - Keep handlers pure when possible
 
 ### ❌ Don't
+
 - Create side effects outside handlers
 - Modify state in components directly
 - Create handlers that modify other domains' state
@@ -260,9 +271,9 @@ test('handle_query_click updates table data', () => {
     query_form: { value: { key_word: 'test' } },
     table_data: { value: [] },
   }
-  
+
   handle_query_click(payload)
-  
+
   // Assert state changes
   expect(payload.table_data.value.length).toBeGreaterThan(0)
 })
@@ -273,17 +284,18 @@ test('handle_query_click updates table data', () => {
 ```javascript
 export const handle_api_call = (payload) => {
   const { table_data, table_loading } = payload
-  
+
   table_loading.value = true
-  
+
   try {
     const response = await api_service.fetch(payload)
     table_data.value = response.data
   } catch (error) {
     console.error('API Error:', error)
     // Trigger error event
-    all_event_pipeline.other.handle_error(payload, error)
+    ALL_EVENT_PIPELINE.other.handle_error(payload, error)
   } finally {
     table_loading.value = false
   }
 }
+```

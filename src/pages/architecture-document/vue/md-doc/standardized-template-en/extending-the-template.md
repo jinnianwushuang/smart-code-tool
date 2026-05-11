@@ -13,8 +13,9 @@ The backend-page-template is designed for extensibility. This guide covers commo
 **Steps**:
 
 1. Create `state/singleton/permissions.js`:
+
 ```javascript
-import { ref } from "vue"
+import { ref } from 'vue'
 
 export const user_role = ref('guest')
 export const user_permissions = ref([])
@@ -28,11 +29,13 @@ export const init_singleton = () => {
 2. It's automatically discovered and aggregated by `state/singleton.js`
 
 3. Access in components:
+
 ```javascript
 const { user_role, user_permissions } = all_singleton
 ```
 
 4. Use in computed properties:
+
 ```javascript
 const can_edit = computed(() => {
   return user_permissions.value.includes('edit')
@@ -46,28 +49,30 @@ const can_edit = computed(() => {
 **Steps**:
 
 1. Create `module/event-pipeline/module/user.js`:
+
 ```javascript
 export const handle_role_changed = (payload, newRole) => {
   const { user_role, user_permissions } = payload
-  
+
   user_role.value = newRole
-  
+
   // Update permissions based on role
   const permissionMap = {
-    'admin': ['create', 'read', 'update', 'delete'],
-    'editor': ['create', 'read', 'update'],
-    'viewer': ['read'],
+    admin: ['create', 'read', 'update', 'delete'],
+    editor: ['create', 'read', 'update'],
+    viewer: ['read'],
   }
-  
+
   user_permissions.value = permissionMap[newRole] || []
 }
 ```
 
 2. Use in components:
+
 ```javascript
 <q-select
   :options="['admin', 'editor', 'viewer']"
-  @update:model-value="(role) => all_event_pipeline.user.handle_role_changed(role)"
+  @update:model-value="(role) => ALL_EVENT_PIPELINE.user.handle_role_changed(role)"
 />
 ```
 
@@ -78,23 +83,17 @@ export const handle_role_changed = (payload, newRole) => {
 **Steps**:
 
 1. Create `component/export-dialog/export-dialog.vue`:
+
 ```vue
 <template>
   <q-dialog v-model="all_dialog_state[model_key]">
     <q-card>
       <q-card-section>
         <div class="text-h6">Export Data</div>
-        <q-select
-          v-model="export_format"
-          :options="['CSV', 'JSON', 'Excel']"
-          label="Format"
-        />
+        <q-select v-model="export_format" :options="['CSV', 'JSON', 'Excel']" label="Format" />
       </q-card-section>
       <q-card-actions>
-        <q-btn
-          label="Export"
-          @click="all_event_pipeline.export.handle_export_click"
-        />
+        <q-btn label="Export" @click="ALL_EVENT_PIPELINE.export.handle_export_click" />
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -104,7 +103,7 @@ export const handle_role_changed = (payload, newRole) => {
 const model_key = 'export_dialog'
 const props = defineProps({
   all_singleton: Object,
-  all_event_pipeline: Object,
+  ALL_EVENT_PIPELINE: Object,
 })
 
 const export_format = ref('CSV')
@@ -113,6 +112,7 @@ const { all_dialog_state } = props.all_singleton
 ```
 
 2. Update `component/dialog-wrapper/config/config.js`:
+
 ```javascript
 const { ExportDialog } = components
 
@@ -127,8 +127,9 @@ export const dialog_wrapper_config = [
 ```
 
 3. Create state for export in `state/singleton/export.js`:
+
 ```javascript
-import { ref } from "vue"
+import { ref } from 'vue'
 
 export const export_format = ref('CSV')
 export const exported_data = ref(null)
@@ -140,13 +141,14 @@ export const init_singleton = () => {
 ```
 
 4. Create API handler `api-request/module/handle_export_data.js`:
+
 ```javascript
 export const handle_export_data = async (payload) => {
   const { table_data, export_format } = payload
-  
+
   const data = table_data.value
   let output
-  
+
   if (export_format.value === 'CSV') {
     output = convertToCSV(data)
   } else if (export_format.value === 'JSON') {
@@ -154,12 +156,13 @@ export const handle_export_data = async (payload) => {
   } else if (export_format.value === 'Excel') {
     output = convertToExcel(data)
   }
-  
+
   downloadFile(output, `export.${getExtension(export_format.value)}`)
 }
 ```
 
 5. Create event handler `module/event-pipeline/module/export.js`:
+
 ```javascript
 import { handle_export_data } from 'src/standardization/backend-page-template/api-request/index.js'
 
@@ -175,15 +178,16 @@ export const handle_export_click = (payload) => {
 **Steps**:
 
 1. Create `api-request/module/handle_fetch_user_profile.js`:
+
 ```javascript
 import { api_service } from 'src/api/index.js'
 
 export const handle_fetch_user_profile = async (payload) => {
   const { user_info } = payload
-  
+
   try {
     const response = await api_service.getUserProfile()
-    
+
     if (response.code === 200) {
       user_info.value = response.data
     }
@@ -194,6 +198,7 @@ export const handle_fetch_user_profile = async (payload) => {
 ```
 
 2. Update lifecycle `module/lifecycle/lifecycle.js`:
+
 ```javascript
 import { handle_fetch_user_profile } from '../../api-request/index.js'
 
@@ -210,15 +215,16 @@ export const lifecycle_onMounted = (payload) => {
 **Steps**:
 
 1. Create `module/effect/refresh.js`:
+
 ```javascript
 export const cleanup_effect_refresh = (payload) => {
   const { handle_init_table_data } = payload
-  
+
   // Auto-refresh every 30 seconds
   const intervalId = setInterval(() => {
     handle_init_table_data(payload)
   }, 30000)
-  
+
   return [intervalId]
 }
 ```
@@ -236,12 +242,12 @@ Simply delete the component file, e.g., delete `component/top-search-area/top-se
 ```javascript
 const check_request_eligibility = (payload) => {
   // ... existing checks
-  
+
   // Disable data loading
   if (import.meta.env.VITE_DISABLE_API === 'true') {
     return false
   }
-  
+
   return true
 }
 ```
@@ -249,12 +255,15 @@ const check_request_eligibility = (payload) => {
 ### Conditional Module Loading
 
 ```javascript
-const modules = import.meta.glob([
-  '../module/**/*.js',
-  '../state/*.js',
-  // Load environment-specific configs
-  ...(isAdminMode ? ['../admin-modules/**/*.js'] : []),
-], { eager: true })
+const modules = import.meta.glob(
+  [
+    '../module/**/*.js',
+    '../state/*.js',
+    // Load environment-specific configs
+    ...(isAdminMode ? ['../admin-modules/**/*.js'] : []),
+  ],
+  { eager: true },
+)
 ```
 
 ## Customization Patterns
@@ -271,6 +280,7 @@ export const handle_init_table_data_v2 = async (payload) => {
 ```
 
 Then use in event:
+
 ```javascript
 export const handle_query_click = (payload) => {
   if (useAdvancedSearch) {
@@ -286,13 +296,13 @@ export const handle_query_click = (payload) => {
 ```javascript
 export const handle_query_click_with_validation = (payload) => {
   const { query_form } = payload
-  
+
   // Add validation
   if (!validates(query_form.value)) {
     notify.error('Invalid search parameters')
     return
   }
-  
+
   // Call original
   handle_query_click(payload)
 }
@@ -304,10 +314,10 @@ export const handle_query_click_with_validation = (payload) => {
 export const handle_save_and_refresh = async (payload) => {
   // Save
   await handle_save_record(payload)
-  
+
   // Refresh
   await handle_init_table_data(payload)
-  
+
   // Notify
   notify.success('Data saved and refreshed')
 }
@@ -318,6 +328,7 @@ export const handle_save_and_refresh = async (payload) => {
 ### Multi-Tab Support
 
 Create `state/singleton/tabs.js`:
+
 ```javascript
 export const active_tab = ref('table')
 export const tab_data = ref({
@@ -333,11 +344,12 @@ export const init_singleton = () => {
 ```
 
 Create event handler:
+
 ```javascript
 export const handle_tab_change = (payload, tabName) => {
   const { active_tab, tab_data } = payload
   active_tab.value = tabName
-  
+
   // Load tab-specific data
   load_tab_data(tabName, payload)
 }
@@ -353,7 +365,7 @@ export const current_page_id = ref('home')
 export const handle_navigate_to_page = (payload, pageId) => {
   const { current_page_id } = payload
   current_page_id.value = pageId
-  
+
   // Load page data
   load_page_data(pageId, payload)
 }
@@ -364,18 +376,17 @@ export const handle_navigate_to_page = (payload, pageId) => {
 ```javascript
 export const cleanup_effect_watcher = (payload) => {
   const { query_form, table_data, filtered_data } = payload
-  
-  return [watch(
-    () => query_form.value,
-    (newForm) => {
-      // Complex filtering logic
-      filtered_data.value = applyMultipleFilters(
-        table_data.value,
-        newForm
-      )
-    },
-    { deep: true }
-  )]
+
+  return [
+    watch(
+      () => query_form.value,
+      (newForm) => {
+        // Complex filtering logic
+        filtered_data.value = applyMultipleFilters(table_data.value, newForm)
+      },
+      { deep: true },
+    ),
+  ]
 }
 ```
 
@@ -385,7 +396,7 @@ export const cleanup_effect_watcher = (payload) => {
 
 ```javascript
 const modules = import.meta.glob('../module/**/*.js', {
-  eager: false,  // Lazy load
+  eager: false, // Lazy load
 })
 ```
 
@@ -393,7 +404,7 @@ const modules = import.meta.glob('../module/**/*.js', {
 
 ```javascript
 const expensive_computed = computed(() => {
-  return table_data.value.map(item => ({
+  return table_data.value.map((item) => ({
     ...item,
     display_name: formatName(item.first_name, item.last_name),
     age_group: computeAgeGroup(item.age),
@@ -405,10 +416,7 @@ const expensive_computed = computed(() => {
 
 ```vue
 <template>
-  <q-virtual-scroll
-    :items="table_data"
-    virtual-scroll-item-size="50"
-  >
+  <q-virtual-scroll :items="table_data" virtual-scroll-item-size="50">
     <template v-slot="props">
       <table-row :data="props.item" />
     </template>
@@ -466,16 +474,19 @@ export const handle_save_user_profile = async (payload) => {
 ## Troubleshooting Extensions
 
 ### Module Not Loading
+
 - Check glob pattern includes file path
 - Verify file extension is `.js`
 - Ensure eager: true in glob
 
 ### State Not Updating
+
 - Verify state is using Vue's `ref()`
 - Check payload includes state reference
 - Confirm handler modifies `.value`
 
 ### Event Not Firing
+
 - Check event handler filename follows pattern
 - Verify event imported in event-pipeline.js
 - Check component calls with correct function name
@@ -492,6 +503,7 @@ When adding major features:
 4. Test thoroughly before removing old modules
 
 Example:
+
 ```javascript
 // Old
 export const handle_init_table_data = ...

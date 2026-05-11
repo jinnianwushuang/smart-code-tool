@@ -5,6 +5,7 @@ import { common_assemble_state } from './assemble_state.js'
 import { merge_to_payload_with_conflict_logs } from 'src/common/architecture-design/util/merge/merge.js'
 import { useModuleLifecycleAssembler } from 'src/composable/architecture-design/assembler/useModuleLifecycleAssembler.js'
 
+import { assemble_event_pipeline } from './assemble_event_pipeline.js'
 /**
  * assembler 聚合入口函数
  * @param {Object} all_params 聚合参数
@@ -22,9 +23,11 @@ export const atoms_assembler = (all_params) => {
 
   const result_point = {
     state_fn_arr: [], // 存储状态机初始化相关的生成器函数
+    singleton_init_fn_arr: [], // 存储单例相关的初始化函数
     method_fn_arr: [], // 存储业务方法相关的生成器函数
     lifecycle_fn_arr: [], // 存储生命周期相关的生成器函数
     watcher_fn_arr: [], //存储VUE监听器相关的副作用生成器函数
+    event_pipeline_fn_arr: [], // 存储事件管道相关的生成器函数
   }
 
   //公共的外部模块 聚合
@@ -33,14 +36,18 @@ export const atoms_assembler = (all_params) => {
   atoms_assembler_when_manual_assembler(all_params, result_point)
 
   // modules 处理状态机
-  result_point.state_fn_arr.push(assemble_state(guilei_modules, current_file_path))
+  handle_state(guilei_modules, result_point, current_file_path)
+  // modules 处理单例状态机的初始化逻辑
+  handle_init_all_singleton(guilei_modules, result_point)
 
   //modules 处理业务方法
-  result_point.method_fn_arr.push(assemble_method(guilei_modules, current_file_path))
+  handle_method(guilei_modules, result_point, current_file_path)
   //modules 处理生命周期
-  result_point.lifecycle_fn_arr.push(assemble_lifecycle(guilei_modules))
+  handle_lifecycle(guilei_modules, result_point)
   //modules 处理VUE监听器
-  result_point.watcher_fn_arr.push(...assemble_watcher(guilei_modules))
+  handle_watcher(guilei_modules, result_point)
+  //modules 处理事件管道
+  handle_event_pipeline(guilei_modules, result_point)
 
   global_log('[assembler] 聚合结果：', result_point)
   return result_point
@@ -50,23 +57,43 @@ export const atoms_assembler = (all_params) => {
  * @param {*} guilei_modules
  * @returns
  */
-const assemble_state = (guilei_modules, current_file_path) => {
-  return (payload) => {
+const handle_state = (guilei_modules, result_point, current_file_path) => {
+  // console.error('处理状态机,', guilei_modules.state)
+  const fn = (payload) => {
     common_assemble_state({
       payload,
       modules: guilei_modules.state,
       current_file_path,
     })
   }
+  result_point.state_fn_arr.push(fn)
 }
+
+/**
+ *  modules 处理单例状态机的初始化逻辑
+ * @param {*} guilei_modules
+ * @returns
+ */
+const handle_init_all_singleton = (guilei_modules, result_point) => {
+  const arr = Object.values(guilei_modules.singleton)
+  if (arr.length === 0) {
+    return
+  }
+
+  let fn = (payload) => {
+    arr[0]?.['init_all_singleton']?.(payload)
+  }
+  result_point.singleton_init_fn_arr.push(fn)
+}
+
 /**
  *  modules 处理业务方法
  * @param {*} guilei_modules
  * @returns
  */
-const assemble_method = (guilei_modules, current_file_path) => {
-  return (payload) => {
-    const exposed_method = Object.values(guilei_modules.method)[0]
+const handle_method = (guilei_modules, result_point, current_file_path) => {
+  const fn = (payload) => {
+    const exposed_method = Object.values(guilei_modules.exposed_method)[0]
     if (!exposed_method) {
       return
     }
@@ -90,18 +117,40 @@ const assemble_method = (guilei_modules, current_file_path) => {
       })
     }
   }
+  result_point.method_fn_arr.push(fn)
 }
 /**
  *  modules 处理生命周期
  * @param {*} guilei_modules
  * @returns
  */
-const assemble_lifecycle = (guilei_modules) => {
-  return (payload) => {
+const handle_lifecycle = (guilei_modules, result_point) => {
+  const fn = (payload) => {
     useModuleLifecycleAssembler({
       payload,
       modules: guilei_modules.lifecycle,
     })
+  }
+  result_point.lifecycle_fn_arr.push(fn)
+}
+
+/**
+ *  modules 处理事件管道
+ * @param {*} guilei_modules
+ * @returns
+ */
+const handle_event_pipeline = (guilei_modules, result_point) => {
+  const mods = Object.values(guilei_modules.event_pipeline)
+  if (mods.length > 0) {
+    const fn = (payload) => {
+      const create_event_pipeline = assemble_event_pipeline({
+        modules: guilei_modules.event_pipeline,
+        currentFilePath: payload.VUE_FILE_PATH,
+      })
+
+      create_event_pipeline(payload)
+    }
+    result_point.event_pipeline_fn_arr.push(fn)
   }
 }
 
@@ -110,16 +159,16 @@ const assemble_lifecycle = (guilei_modules) => {
  * @param {*} guilei_modules
  * @returns
  */
-const assemble_watcher = (guilei_modules) => {
+const handle_watcher = (guilei_modules, result_point) => {
   let { watcher } = guilei_modules
   let fn_arr = []
-  let mods = Object.entries(watcher)
+  let mods = Object.values(watcher)
 
   mods.forEach((mod) => {
     fn_arr.push(...Object.values(mod))
   })
 
-  return fn_arr
+  result_point.watcher_fn_arr.push(...fn_arr)
 }
 
 /**
@@ -128,7 +177,15 @@ const assemble_watcher = (guilei_modules) => {
  * @returns
  */
 const group_modules = ({ modules }) => {
-  const res = { state: {}, singleton: {}, lifecycle: {}, watcher: {}, method: {} }
+  // console.error('group_modules---', modules)
+  const res = {
+    state: {},
+    singleton: {},
+    lifecycle: {},
+    watcher: {},
+    exposed_method: {},
+    event_pipeline: {},
+  }
 
   for (const [path, mod] of Object.entries(modules)) {
     let file_name_cases = get_file_name_cases(path)
@@ -143,13 +200,8 @@ const group_modules = ({ modules }) => {
     }
     if (path.includes('/state/singleton.js')) {
       res.singleton[path] = mod
-      res.lifecycle[path] = mod
     }
-    if (
-      path.includes('/module/event-pipeline/') ||
-      path.includes('/module/lifecycle/') ||
-      path.includes('/module/effect/')
-    ) {
+    if (path.includes('/module/lifecycle/') || path.includes('/module/effect/')) {
       if (path.includes('/module/effect/watcher.js')) {
         res.watcher[path] = mod
       } else {
@@ -157,13 +209,14 @@ const group_modules = ({ modules }) => {
       }
     }
     if (path.includes('/module/exposed-method/')) {
-      res.method[path] = mod
+      res.exposed_method[path] = mod
+    }
+    if (path.includes('/module/event-pipeline/')) {
+      res.event_pipeline[path] = mod
     }
   }
-
   return res
 }
-
 /**
  *  公共的外部模块 聚合
  */
@@ -176,7 +229,14 @@ const atoms_assembler_when_public_assembler = (all_params, result_point) => {
     return
   }
 
-  const { state_fn_arr, method_fn_arr, lifecycle_fn_arr, watcher_fn_arr } = result_point
+  const {
+    state_fn_arr,
+    method_fn_arr,
+    lifecycle_fn_arr,
+    watcher_fn_arr,
+    event_pipeline_fn_arr,
+    singleton_init_fn_arr,
+  } = result_point
   // 遍历列表，从公共 Composable 库中提取对应函数
   public_assembler.forEach((income_fn_name) => {
     const fn = composable_common[income_fn_name]
@@ -194,9 +254,11 @@ const atoms_assembler_when_public_assembler = (all_params, result_point) => {
       const fn_result = fn()
       if (fn_result) {
         state_fn_arr.push(...fn_result.state_fn_arr)
+        singleton_init_fn_arr.push(...fn_result.singleton_init_fn_arr)
         method_fn_arr.push(...fn_result.method_fn_arr)
         lifecycle_fn_arr.push(...fn_result.lifecycle_fn_arr)
         watcher_fn_arr.push(...fn_result.watcher_fn_arr)
+        event_pipeline_fn_arr.push(...fn_result.event_pipeline_fn_arr)
       }
     }
   })
@@ -221,8 +283,10 @@ const atoms_assembler_when_manual_assembler = (all_params, result_point) => {
     }
 
     result_point.state_fn_arr.push(...(manual_obj.state_fn_arr || []))
+    result_point.singleton_init_fn_arr.push(...(manual_obj.singleton_init_fn_arr || []))
     result_point.method_fn_arr.push(...(manual_obj.method_fn_arr || []))
     result_point.lifecycle_fn_arr.push(...(manual_obj.lifecycle_fn_arr || []))
     result_point.watcher_fn_arr.push(...(manual_obj.watcher_fn_arr || []))
+    result_point.event_pipeline_fn_arr.push(...(manual_obj.event_pipeline_fn_arr || []))
   })
 }

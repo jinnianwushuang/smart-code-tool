@@ -7,6 +7,7 @@ The **Assembler Pattern** is the central orchestration mechanism that auto-disco
 ## Core Concept
 
 Instead of manually importing and wiring modules, the assembler:
+
 1. **Discovers** modules via `import.meta.glob()`
 2. **Validates** module structure and exports
 3. **Composes** into a unified context object
@@ -49,11 +50,8 @@ const manual_assembler = []
 const current_file_path = import.meta.url
 
 // 4. Module discovery via glob
-const modules = import.meta.glob([
-  '../module/**/*.js', 
-  '../state/*.js'
-], {
-  eager: true,  // Synchronous loading
+const modules = import.meta.glob(['../module/**/*.js', '../state/*.js'], {
+  eager: true, // Synchronous loading
 })
 
 // 5. Assemble and export
@@ -72,15 +70,19 @@ export const all_atoms_assembler = () => {
 ### Step 1: Module Discovery
 
 ```javascript
-const modules = import.meta.glob([
-  '../module/**/*.js',  // Find all module JS files
-  '../state/*.js'       // Find all state files
-], {
-  eager: true,          // Load synchronously
-})
+const modules = import.meta.glob(
+  [
+    '../module/**/*.js', // Find all module JS files
+    '../state/*.js', // Find all state files
+  ],
+  {
+    eager: true, // Load synchronously
+  },
+)
 ```
 
 Results in:
+
 ```javascript
 {
   '/path/to/module/lifecycle/lifecycle.js': { lifecycle_onMounted, ... },
@@ -93,6 +95,7 @@ Results in:
 ### Step 2: Module Validation & Transformation
 
 The `atoms_assembler()` function:
+
 1. Validates each module has proper exports
 2. Categorizes modules by type (state, effects, lifecycle, etc.)
 3. Extracts function names and signatures
@@ -101,29 +104,30 @@ The `atoms_assembler()` function:
 ### Step 3: Context Composition
 
 Creates unified context:
+
 ```javascript
 {
   // State (from state/singleton.js)
   user_info,
   table_data,
   pagination,
-  
+
   // Computed properties (from state/computed.js)
   visible_row_count,
-  
+
   // Lifecycle hooks (from module/lifecycle/lifecycle.js)
   lifecycle_onBeforeMount,
   lifecycle_onMounted,
-  
+
   // Emit functions (from module/emit/emit.js)
   btn_a_click,
-  
+
   // Exposed methods
   handle_xxx_demo,
   handle_query_demo,
-  
+
   // Event pipeline (dynamically created)
-  all_event_pipeline: {
+  ALL_EVENT_PIPELINE: {
     dialog: { handle_dialog_copy_use_confirm_click, ... },
     table: { handle_table_action_confirm_click, ... },
     other: { handle_query_click, ... },
@@ -134,14 +138,16 @@ Creates unified context:
 ### Step 4: Dependency Injection
 
 In main component:
+
 ```javascript
 const { user_info, btn_a_click, handle_query_demo } = useContextAssembler(
   base_payload,
-  all_atoms_assembler()
+  all_atoms_assembler(),
 )
 ```
 
 The `useContextAssembler()`:
+
 1. Creates payload with injected state
 2. Calls all initialization functions
 3. Binds event handlers
@@ -150,6 +156,7 @@ The `useContextAssembler()`:
 ## Configuration Parameters
 
 ### public_assembler
+
 ```javascript
 const public_assembler = ['useGlobalState']
 ```
@@ -159,6 +166,7 @@ const public_assembler = ['useGlobalState']
 - Reduces duplication
 
 ### manual_assembler
+
 ```javascript
 const manual_assembler = ['custom_module_path']
 ```
@@ -168,6 +176,7 @@ const manual_assembler = ['custom_module_path']
 - Allows exceptions to convention
 
 ### current_file_path
+
 ```javascript
 const current_file_path = import.meta.url
 ```
@@ -253,7 +262,7 @@ Assembler automatically finds it via glob pattern.
 const { handle_custom_action } = useContextAssembler(payload, all_atoms_assembler())
 
 // Or via event pipeline if configured
-all_event_pipeline.custom_feature.handle_custom_action()
+ALL_EVENT_PIPELINE.custom_feature.handle_custom_action()
 ```
 
 ## Advanced: Custom Assembler
@@ -263,15 +272,15 @@ all_event_pipeline.custom_feature.handle_custom_action()
 ```javascript
 const custom_assembler = () => {
   const base_context = all_atoms_assembler()
-  
+
   return {
     ...base_context,
-    
+
     // Add custom derived context
     custom_computed: computed(() => {
       return base_context.table_data.value.length > 0
     }),
-    
+
     // Override behavior
     handle_custom_action: (payload) => {
       console.log('Custom override')
@@ -307,13 +316,15 @@ const custom_assembler = () => {
 ## Best Practices
 
 ### ✅ Do
+
 - Keep modules focused and single-purpose
-- Follow naming conventions (lifecycle_, handle_, cleanup_, etc.)
+- Follow naming conventions (lifecycle*, handle*, cleanup\_, etc.)
 - Export pure functions when possible
 - Document module interface with comments
 - Group related modules in subdirectories
 
 ### ❌ Don't
+
 - Create circular dependencies between modules
 - Mutate global state outside event handlers
 - Mix concerns in single module
@@ -323,11 +334,13 @@ const custom_assembler = () => {
 ## Performance Considerations
 
 ### Module Loading
+
 - `eager: true` loads all modules synchronously
 - Use `eager: false` for lazy loading if page has many modules
 - Glob patterns are optimized by Vite
 
 ### Context Composition
+
 - Assembler runs once at component mount
 - Context reused via destructuring
 - No performance impact from additional modules
@@ -344,7 +357,7 @@ const all_atoms_assembler = (custom_context) => {
     current_file_path,
     modules,
   })
-  
+
   return { ...base, ...custom_context }
 }
 ```
@@ -352,10 +365,13 @@ const all_atoms_assembler = (custom_context) => {
 ### Conditional Module Loading
 
 ```javascript
-const modules = import.meta.glob([
-  '../module/**/*.js',
-  '../state/*.js',
-  // Load environment-specific configs
-  ...(isAdminMode ? ['../admin-module/**/*.js'] : []),
-], { eager: true })
+const modules = import.meta.glob(
+  [
+    '../module/**/*.js',
+    '../state/*.js',
+    // Load environment-specific configs
+    ...(isAdminMode ? ['../admin-module/**/*.js'] : []),
+  ],
+  { eager: true },
+)
 ```

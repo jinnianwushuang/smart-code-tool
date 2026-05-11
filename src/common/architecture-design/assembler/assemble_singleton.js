@@ -30,9 +30,9 @@ export const common_assemble_singleton = (...sources) => {
   })
 
   // 聚合初始化函数
-  const init_all_singleton = async (...args) => {
+  const init_all_singleton = (...args) => {
     for (const fn of state.final_init_fns) {
-      await fn(...args)
+      fn(...args)
     }
   }
 

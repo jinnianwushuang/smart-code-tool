@@ -36,11 +36,18 @@ const assemble_quene = [
 
 export const common_assemble_state = ({ payload, modules, current_file_path }) => {
   let main_folder = current_file_path.replace(/\\/g, '/').split('/').slice(0, -2).join('/')
+
   assemble_quene.forEach(({ file_path, handle }) => {
     Object.keys(modules).forEach((path) => {
       if (path.includes(file_path)) {
         const module = modules[path]
         const dataToMerge = handle(payload, module)
+
+        if (payload.ALL_CONTEXT_STATE) {
+          Object.assign(payload.ALL_CONTEXT_STATE, dataToMerge)
+          // console.error('common_assemble_state------2---', dataToMerge)
+        }
+
         merge_to_payload_with_conflict_logs({
           payload,
           dataToMerge,

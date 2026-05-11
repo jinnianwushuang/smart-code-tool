@@ -8,8 +8,7 @@ import {
 } from 'vue'
 import {
   genarate_event_listener,
-  genarate_event_pipeline,
-  genarate_singleton,
+
 } from './config/config.js'
 
 import { useAllExceptEventListenerCleaner } from 'src/composable/architecture-design/lifecycle-disposer-composable/useAllExceptEventListenerCleaner.js'
@@ -58,10 +57,8 @@ const assemble_lifecycle_centralized = (all_params) => {
     return item.default()
   }
 
-  // 事件管道的 相关逻辑
-  const event_pipeline_fn = genarate_fn(genarate_event_pipeline)
-  const singleton_fn = genarate_fn(genarate_singleton)
-  let event_pipeline_off = null
+
+
   // 事件监听的 相关逻辑  合并
 
   {
@@ -75,11 +72,9 @@ const assemble_lifecycle_centralized = (all_params) => {
       event_listener_config_arr.push(...method(payload))
     }
   }
-  // 事件管道的函数 需要在生命周期开始前就生成好，供组件内其他函数调用
-  event_pipeline_off = event_pipeline_fn(payload)
+
   onBeforeMount(() => {
-    // 组件生命周期开始前，先执行单例函数，生成单例对象，供组件内其他函数调用
-    singleton_fn(payload)
+
     // 执行传入的生命周期回调函数
 
     run_lifecycle_hook(payload, lifecycle, 'lifecycle_onBeforeMount')
@@ -106,9 +101,9 @@ const assemble_lifecycle_centralized = (all_params) => {
     // 执行传入的生命周期回调函数
 
     run_lifecycle_hook(payload, lifecycle, 'lifecycle_onUnmounted')
-    // 组件生命周期结束时，执行一次单例函数，进行清理工作
-    singleton_fn(payload)
-    event_pipeline_off?.off()
+  
+
+
   })
   onActivated(() => {
     // 执行传入的生命周期回调函数

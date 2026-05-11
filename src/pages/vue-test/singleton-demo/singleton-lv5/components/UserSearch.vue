@@ -17,15 +17,15 @@
         </a-select>
       </a-form-item>
       <a-form-item>
-        <a-button type="primary" @click="all_event_pipeline.other.onSearch">查询</a-button>
-        <a-button style="margin-left: 8px" @click="all_event_pipeline.other.onReset">重置</a-button>
+        <a-button type="primary" @click="ALL_EVENT_PIPELINE.other.onSearch">查询</a-button>
+        <a-button style="margin-left: 8px" @click="ALL_EVENT_PIPELINE.other.onReset">重置</a-button>
       </a-form-item>
     </a-form>
 
     <q-space />
 
     <div style="margin-bottom: 16px">
-      <a-button type="primary" @click="all_event_pipeline.other.handleAdd">
+      <a-button type="primary" @click="ALL_EVENT_PIPELINE.other.handleAdd">
         <template #icon><plus-outlined /></template>
         新增用户
       </a-button>
@@ -34,10 +34,15 @@
 </template>
 
 <script setup>
+import { provide, inject, onMounted } from 'vue'
 import { PlusOutlined } from '@ant-design/icons-vue'
-import { statusOptions } from '../state/config.js'
-import { all_singleton } from '../state/singleton.js'
-import { all_event_pipeline } from '../module/event-pipeline/event-pipeline.js'
-const { searchState } = all_singleton
-defineProps({})
+// import { ALL_CONTEXT_STATE, ALL_EVENT_PIPELINE } from '../assembler/expose.js'
+
+const ALL_EVENT_PIPELINE = inject('ALL_EVENT_PIPELINE')
+const ALL_CONTEXT_STATE = inject('ALL_CONTEXT_STATE')
+const { searchState, statusOptions } = ALL_CONTEXT_STATE
+
+onMounted(() => {
+  console.error('ALL_CONTEXT_STATE--------', ALL_CONTEXT_STATE)
+})
 </script>

@@ -24,7 +24,7 @@ order: 42
   <WrappedComponent
     :config="wrapper_config"
     :all_singleton="all_singleton"
-    :all_event_pipeline="all_event_pipeline"
+    :ALL_EVENT_PIPELINE="ALL_EVENT_PIPELINE"
     :all_config="all_config"
   />
 </template>
@@ -33,7 +33,7 @@ order: 42
 // Import central service modules
 // 导入中央服务模块
 const { all_singleton } = all_singleton; // 状态
-const { all_event_pipeline } = all_event_pipeline; // 事件
+const { ALL_EVENT_PIPELINE } = ALL_EVENT_PIPELINE; // 事件
 const { wrapper_config } = wrapper_config; // 配置
 </script>
 ```
@@ -197,7 +197,7 @@ export const query_form = ref({})
 // TopSearchArea 中的用法
 <template>
   <q-input v-model="query_form.key_word" label="关键字" />
-  <q-btn @click="all_event_pipeline.other.handle_query_click" label="查询" />
+  <q-btn @click="ALL_EVENT_PIPELINE.other.handle_query_click" label="查询" />
 </template>
 ```
 
@@ -209,8 +209,8 @@ export const query_form = ref({})
 index.vue
   ↓ passes config/state/events
   ↓ 传递配置/状态/事件
-DialogWrapper → DialogCopyUse (receives all_singleton, all_event_pipeline)
-                              (接收 all_singleton, all_event_pipeline)
+DialogWrapper → DialogCopyUse (receives all_singleton, ALL_EVENT_PIPELINE)
+                              (接收 all_singleton, ALL_EVENT_PIPELINE)
 TableMainArea → TableTdCopyUse (receives record, index, text)
                                (接收 record, index, text)
 TopSearchArea → (uses shared state)
@@ -223,8 +223,8 @@ TopSearchArea → (uses shared state)
 User clicks button
 用户点击按钮
   ↓
-Component emits event via all_event_pipeline
-组件通过 all_event_pipeline 发出事件
+Component emits event via ALL_EVENT_PIPELINE
+组件通过 ALL_EVENT_PIPELINE 发出事件
   ↓
 Event handler in module/event-pipeline/
 module/event-pipeline/ 中的事件处理程序
@@ -349,7 +349,7 @@ export const columns = [
       <q-card-actions>
         <q-btn
           label="确认"
-          @click="all_event_pipeline.dialog.handle_confirm"
+          @click="ALL_EVENT_PIPELINE.dialog.handle_confirm"
         />
       </q-card-actions>
     </q-card>
@@ -360,7 +360,7 @@ export const columns = [
 const model_key = 'confirm_dialog'
 const props = defineProps({
   all_singleton: Object,
-  all_event_pipeline: Object,
+  ALL_EVENT_PIPELINE: Object,
 })
 
 const { all_dialog_state } = props.all_singleton

@@ -33,17 +33,22 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { formRules, statusOptions } from '../state/config.js'
-import { all_singleton } from '../state/singleton.js'
+import { provide, inject } from 'vue'
 
-import { all_event_pipeline } from '../module/event-pipeline/event-pipeline.js'
+const ALL_EVENT_PIPELINE = inject('ALL_EVENT_PIPELINE')
+const ALL_CONTEXT_STATE = inject('ALL_CONTEXT_STATE')
 const visible = defineModel('visible')
 const props = defineProps({})
 
-const { isEdit, confirmLoading, current_editing_record } = all_singleton
-
-const formRef = ref(null)
-const formState = ref({})
+const {
+  isEdit,
+  confirmLoading,
+  current_editing_record,
+  formState,
+  formRef,
+  formRules,
+  statusOptions,
+} = ALL_CONTEXT_STATE
 
 watch(
   () => props.visible,
@@ -55,7 +60,7 @@ watch(
 
 const handleOk = () => {
   formRef.value.validate().then(() => {
-    all_event_pipeline.dialog.handleModalOk(formState.value)
+    ALL_EVENT_PIPELINE.dialog.handleModalOk(formState.value)
   })
 }
 </script>

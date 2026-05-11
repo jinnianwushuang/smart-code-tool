@@ -43,7 +43,7 @@ UI 重新渲染
 注册并公开所有事件管道：
 
 ```javascript
-import { event_pipeline_register } from 'src/output/common/project-common.js'
+import { assemble_event_pipeline } from 'src/output/common/project-common.js'
 
 const modules = import.meta.glob('../module/event-pipeline/\*.js', {
   eager: true,
@@ -51,7 +51,7 @@ const modules = import.meta.glob('../module/event-pipeline/\*.js', {
 
 const currentFilePath = import.meta.url
 
-export const { all_event_pipeline, create_event_pipeline } = event_pipeline_register(
+export const { ALL_EVENT_PIPELINE, create_event_pipeline } = assemble_event_pipeline(
   modules,
   currentFilePath,
 )
@@ -125,9 +125,9 @@ export const handle_query_click = (payload) => {
 ### 在组件中
 
 ```javascript
-<q-btn label="查询" @click="all_event_pipeline.other.handle_query_click" />
+<q-btn label="查询" @click="ALL_EVENT_PIPELINE.other.handle_query_click" />
 
-import { all_event_pipeline } from
+import { ALL_EVENT_PIPELINE } from
 'src/standardization/backend-page-template/module/event-pipeline/event-pipeline.js'
 ```
 
@@ -136,7 +136,7 @@ import { all_event_pipeline } from
 ```javascript
 <q-btn
   label="Delete"
-  @click="() => all_event_pipeline.table.handle_table_action_confirm_click(payload, 'delete')"
+  @click="() => ALL_EVENT_PIPELINE.table.handle_table_action_confirm_click(payload, 'delete')"
 />
 ```
 
@@ -146,7 +146,7 @@ import { all_event_pipeline } from
 // In component
 // 在组件中
 const handle_table_row_click = (record) => {
-  all_event_pipeline.table.handle_row_click({ record })
+  ALL_EVENT_PIPELINE.table.handle_row_click({ record })
 }
 
 // In event handler
@@ -184,7 +184,7 @@ const { handle_new_feature_action } = useContextAssembler(payload, all_atoms_ass
 
 // Or via event pipeline if configured
 // 或者如果配置了通过事件管道
-all_event_pipeline.new_feature.handle_new_feature_action()
+ALL_EVENT_PIPELINE.new_feature.handle_new_feature_action()
 ```
 
 ## 事件链
@@ -193,7 +193,7 @@ all_event_pipeline.new_feature.handle_new_feature_action()
 
 ```javascript
 export const handle_save_record = (payload) => {
-  const { all_event_pipeline, table_data } = payload
+  const { ALL_EVENT_PIPELINE, table_data } = payload
 
   // Save operation
   // 保存操作
@@ -201,7 +201,7 @@ export const handle_save_record = (payload) => {
 
   // Chain: trigger refresh
   // 链式：触发刷新
-  all_event_pipeline.other.handle_query_click(payload)
+  ALL_EVENT_PIPELINE.other.handle_query_click(payload)
 }
 ```
 
@@ -220,7 +220,7 @@ export const handle_delete_record = (payload, recordId, callback) => {
 
 // Usage
 // 用法
-all_event_pipeline.table.handle_delete_record(null, recordId, () => {
+ALL_EVENT_PIPELINE.table.handle_delete_record(null, recordId, () => {
   console.log('Delete complete')
 })
 ```
@@ -230,7 +230,7 @@ all_event_pipeline.table.handle_delete_record(null, recordId, () => {
 ### 1. 事件被触发
 
 ```javascript
-all_event_pipeline.dialog.handle_dialog_copy_use_confirm_click()
+ALL_EVENT_PIPELINE.dialog.handle_dialog_copy_use_confirm_click()
 ```
 
 ### 2. 处理程序被调用
@@ -313,7 +313,7 @@ export const handle_api_call = (payload) => {
     console.error('API Error:', error)
     // Trigger error event
     // 触发错误事件
-    all_event_pipeline.other.handle_error(payload, error)
+    ALL_EVENT_PIPELINE.other.handle_error(payload, error)
   } finally {
     table_loading.value = false
   }

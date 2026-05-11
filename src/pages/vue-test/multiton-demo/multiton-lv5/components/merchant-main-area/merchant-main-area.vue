@@ -40,7 +40,7 @@
 import MerchantCard from '../merchant-card/merchant-card.vue'
 import MerchantFormModal from '../merchant-form-modal/merchant-form-modal.vue'
 
-import { all_event_pipeline as all_event_pipeline_parent } from '../../module/event-pipeline/event-pipeline.js'
+import { ALL_EVENT_PIPELINE as ALL_EVENT_PIPELINE_parent } from '../../module/event-pipeline/event-pipeline.js'
 
 import { provide, inject } from 'vue'
 import { useContextAssembler } from 'src/output/common/composable-common.js'
@@ -67,7 +67,7 @@ const base_payload = {
   //   current_tab,
   props,
   income_pipeline,
-  all_event_pipeline_parent,
+  ALL_EVENT_PIPELINE_parent,
   wrap_payload,
 }
 const payload = useContextAssembler(base_payload, all_atoms_assembler())
@@ -80,10 +80,10 @@ const {
   loading,
   isEdit,
   wrapped_payload: { handle_on_pagination_change },
-  // all_event_pipeline,
+  // ALL_EVENT_PIPELINE,
 } = payload
 
-// provide('all_event_pipeline', all_event_pipeline)
+// provide('ALL_EVENT_PIPELINE', ALL_EVENT_PIPELINE)
 </script>
 
 <style lang="scss" scoped></style>

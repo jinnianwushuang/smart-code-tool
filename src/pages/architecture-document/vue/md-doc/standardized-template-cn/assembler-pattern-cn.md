@@ -12,6 +12,7 @@ order: 32
 ## 核心概念
 
 无需手动导入和连接模块，装配器：
+
 1. **发现**模块通过 `import.meta.glob()`
 2. **验证**模块结构和导出
 3. **组合**成统一的上下文对象
@@ -70,12 +71,9 @@ const current_file_path = import.meta.url
 
 // 4. Module discovery via glob
 // 4. 通过全局模式进行模块发现
-const modules = import.meta.glob([
-  '../module/**/*.js',
-  '../state/*.js'
-], {
-  eager: true,  // Synchronous loading
-               // 同步加载
+const modules = import.meta.glob(['../module/**/*.js', '../state/*.js'], {
+  eager: true, // Synchronous loading
+  // 同步加载
 })
 
 // 5. Assemble and export
@@ -95,18 +93,22 @@ export const all_atoms_assembler = () => {
 ### 步骤 1：模块发现
 
 ```javascript
-const modules = import.meta.glob([
-  '../module/**/*.js',  // Find all module JS files
-                         // 查找所有模块 JS 文件
-  '../state/*.js'       // Find all state files
-                        // 查找所有状态文件
-], {
-  eager: true,          // Load synchronously
-                        // 同步加载
-})
+const modules = import.meta.glob(
+  [
+    '../module/**/*.js', // Find all module JS files
+    // 查找所有模块 JS 文件
+    '../state/*.js', // Find all state files
+    // 查找所有状态文件
+  ],
+  {
+    eager: true, // Load synchronously
+    // 同步加载
+  },
+)
 ```
 
 结果为：
+
 ```javascript
 {
   '/path/to/module/lifecycle/lifecycle.js': { lifecycle_onMounted, ... },
@@ -120,6 +122,7 @@ const modules = import.meta.glob([
 ### 步骤 2：模块验证和转换
 
 `atoms_assembler()` 函数：
+
 1. 验证每个模块有适当的导出
 2. 按类型分类模块（状态、副作用、生命周期等）
 3. 提取函数名称和签名
@@ -128,6 +131,7 @@ const modules = import.meta.glob([
 ### 步骤 3：上下文组合
 
 创建统一上下文：
+
 ```javascript
 {
   // State (from state/singleton.js)
@@ -156,7 +160,7 @@ const modules = import.meta.glob([
 
   // Event pipeline (dynamically created)
   // 事件管道（动态创建）
-  all_event_pipeline: {
+  ALL_EVENT_PIPELINE: {
     dialog: { handle_dialog_copy_use_confirm_click, ... },
     table: { handle_table_action_confirm_click, ... },
     other: { handle_query_click, ... },
@@ -167,14 +171,16 @@ const modules = import.meta.glob([
 ### 步骤 4：依赖注入
 
 在主组件中：
+
 ```javascript
 const { user_info, btn_a_click, handle_query_demo } = useContextAssembler(
   base_payload,
-  all_atoms_assembler()
+  all_atoms_assembler(),
 )
 ```
 
 `useContextAssembler()`：
+
 1. 创建带有注入状态的有效载荷
 2. 调用所有初始化函数
 3. 绑定事件处理程序
@@ -183,6 +189,7 @@ const { user_info, btn_a_click, handle_query_demo } = useContextAssembler(
 ## 配置参数
 
 ### public_assembler
+
 ```javascript
 const public_assembler = ['useGlobalState']
 ```
@@ -192,6 +199,7 @@ const public_assembler = ['useGlobalState']
 - 减少重复
 
 ### manual_assembler
+
 ```javascript
 const manual_assembler = ['custom_module_path']
 ```
@@ -201,6 +209,7 @@ const manual_assembler = ['custom_module_path']
 - 允许对约定的例外
 
 ### current_file_path
+
 ```javascript
 const current_file_path = import.meta.url
 ```
@@ -287,7 +296,7 @@ const { handle_custom_action } = useContextAssembler(payload, all_atoms_assemble
 
 // Or via event pipeline if configured
 // 或者如果配置了通过事件管道
-all_event_pipeline.custom_feature.handle_custom_action()
+ALL_EVENT_PIPELINE.custom_feature.handle_custom_action()
 ```
 
 ## 高级：自定义装配器
@@ -343,13 +352,15 @@ const custom_assembler = () => {
 ## 最佳实践
 
 ### ✅ 应该做
+
 - 保持模块专注于单一目的
-- 遵循命名约定（lifecycle_、handle_、cleanup_ 等）
+- 遵循命名约定（lifecycle*、handle*、cleanup\_ 等）
 - 尽可能导出纯函数
 - 使用注释记录模块接口
 - 按子目录分组相关模块
 
 ### ❌ 不应该做
+
 - 在模块间创建循环依赖
 - 在事件处理程序外部变更全局状态
 - 在单个模块中混合关注点
@@ -359,11 +370,13 @@ const custom_assembler = () => {
 ## 性能考虑
 
 ### 模块加载
+
 - `eager: true` 同步加载所有模块
 - 如果页面有许多模块，使用 `eager: false` 进行延迟加载
 - 全局模式由 Vite 优化
 
 ### 上下文组合
+
 - 装配器在组件挂载时运行一次
 - 通过解构重用上下文
 - 对附加模块无性能影响
@@ -388,11 +401,14 @@ const all_atoms_assembler = (custom_context) => {
 ### 条件模块加载
 
 ```javascript
-const modules = import.meta.glob([
-  '../module/**/*.js',
-  '../state/*.js',
-  // Load environment-specific configs
-  // 加载环境特定配置
-  ...(isAdminMode ? ['../admin-module/**/*.js'] : []),
-], { eager: true })
+const modules = import.meta.glob(
+  [
+    '../module/**/*.js',
+    '../state/*.js',
+    // Load environment-specific configs
+    // 加载环境特定配置
+    ...(isAdminMode ? ['../admin-module/**/*.js'] : []),
+  ],
+  { eager: true },
+)
 ```

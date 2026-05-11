@@ -1,4 +1,4 @@
-import { multiton_event_pipeline_register } from 'src/output/common/project-common.js'
+import { assemble_event_pipeline } from 'src/output/common/project-common.js'
 
 // 1. 扫描当前目录下 module 文件夹中的 JS
 const modules = import.meta.glob('./module/*.js', {
@@ -9,7 +9,7 @@ const modules = import.meta.glob('./module/*.js', {
 const currentFilePath = import.meta.url
 
 // 3. 传入参数进行封装
-export const { create_event_pipeline } = multiton_event_pipeline_register({
+export const { create_event_pipeline } = assemble_event_pipeline({
   modules,
   currentFilePath,
 })

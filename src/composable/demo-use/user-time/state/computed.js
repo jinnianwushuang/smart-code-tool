@@ -7,7 +7,7 @@ export const create_computed_variable = (payload) => {
     if (use_time.value < 10 * 1000) return '刚刚开始，保持专注哦！'
     if (use_time.value < 300 * 1000) return '状态渐入佳境，继续加油！'
     if (use_time.value < 900 * 1000)
-      return `你已经坚持 ${Math.floor(use_time.value / 1000 / 60)}} 分钟了，真棒！`
+      return `你已经坚持 ${Math.floor(use_time.value / 1000 / 60)} 分钟了，真棒！`
     return '你是时间管理大师！专注力惊人 🚀'
   })
 

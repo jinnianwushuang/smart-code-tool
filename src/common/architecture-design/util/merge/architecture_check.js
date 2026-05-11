@@ -15,10 +15,6 @@ const architecture_check_keys = [
     key: 'emit',
     default_count: 0,
   },
-  {
-    key: 'all_event_pipeline',
-    default_count: 0,
-  },
 
   {
     key: 'useContextAssembler',
@@ -29,8 +25,6 @@ const architecture_check_keys = [
     default_count: 1,
     max_count: 1,
   },
-
-  ,
 ]
 const architecture_check_keys_arr = architecture_check_keys.map((config) => config.key)
 const error_message_use_arr = architecture_check_keys_arr.slice(0, -1)

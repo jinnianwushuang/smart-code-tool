@@ -8,7 +8,7 @@ import { get_file_name_cases } from 'src/common/architecture-design/util/file/fi
  */
 export const event_pipeline_register_v3_proxy = ({ modules, currentFilePath }) => {
   const modules_obj = {}
-  const all_event_pipeline = new Proxy(
+  const ALL_EVENT_PIPELINE = new Proxy(
     {},
     {
       get(target, fileName) {
@@ -65,7 +65,7 @@ export const event_pipeline_register_v3_proxy = ({ modules, currentFilePath }) =
   }
 
   return {
-    all_event_pipeline,
+    ALL_EVENT_PIPELINE,
     create_event_pipeline,
   }
 }

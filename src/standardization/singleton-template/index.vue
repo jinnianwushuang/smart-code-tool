@@ -8,6 +8,10 @@
 <script setup>
 import { useContextAssembler } from 'src/output/common/composable-common.js'
 import { all_atoms_assembler } from './assembler/assembler.js'
+import { ALL_CONTEXT_STATE, ALL_EVENT_PIPELINE } from './assembler/expose.js'
+
+// 记录当前文件路径
+const VUE_FILE_PATH = import.meta.url
 
 // 组件内定义的 props
 const props = defineProps({})
@@ -22,6 +26,11 @@ const base_payload = {
   props,
   income_pipeline,
   wrap_payload,
+  ALL_CONTEXT_STATE,
+  ALL_EVENT_PIPELINE,
+
+  VUE_FILE_PATH,
+  emit,
 }
 const {
   user_info,

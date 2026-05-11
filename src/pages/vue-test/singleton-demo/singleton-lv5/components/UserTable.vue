@@ -4,7 +4,7 @@
     :data-source="tableData"
     :loading="loading"
     :pagination="pagination"
-    @change="(pag) => all_event_pipeline.table.handleTableChange(pag)"
+    @change="(pag) => ALL_EVENT_PIPELINE.table?.handleTableChange(pag)"
     row-key="id"
     bordered
   >
@@ -15,11 +15,11 @@
         </a-tag>
       </template>
       <template v-else-if="column.key === 'action'">
-        <a @click="all_event_pipeline.table.handleEdit(record)">编辑</a>
+        <a @click="ALL_EVENT_PIPELINE.table?.handleEdit(record)">编辑</a>
         <a-divider type="vertical" />
         <a-popconfirm
           title="确定要删除该用户吗？"
-          @confirm="all_event_pipeline.table.handleDelete(record.id)"
+          @confirm="ALL_EVENT_PIPELINE.table?.handleDelete(record.id)"
         >
           <a style="color: #ff4d4f">删除</a>
         </a-popconfirm>
@@ -29,10 +29,11 @@
 </template>
 
 <script setup>
-import { columns } from '../state/config.js'
-import { all_singleton } from '../state/singleton.js'
-import { all_event_pipeline } from '../module/event-pipeline/event-pipeline.js'
-const { tableData, loading, pagination } = all_singleton
+import { provide, inject } from 'vue'
+
+const ALL_EVENT_PIPELINE = inject('ALL_EVENT_PIPELINE')
+const ALL_CONTEXT_STATE = inject('ALL_CONTEXT_STATE')
+const { tableData, loading, pagination, columns } = ALL_CONTEXT_STATE
 defineProps({})
 </script>
 

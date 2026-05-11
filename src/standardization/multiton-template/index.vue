@@ -10,6 +10,13 @@ import { provide, inject } from 'vue'
 import { useContextAssembler } from 'src/output/common/composable-common.js'
 import { all_atoms_assembler } from './assembler/assembler.js'
 import ComponentDemo from './component/component-demo/component-demo.vue'
+// 定义当前组件的对下游组件提供的状态机的挂载点
+const ALL_CONTEXT_STATE = {}
+// 定义当前组件的对下游组件提供的事件通道的挂载点
+const ALL_EVENT_PIPELINE = {}
+// 记录当前文件路径
+const VUE_FILE_PATH = import.meta.url
+
 const current_tab = inject('current_tab')
 // 组件内定义的 props
 const props = defineProps({})
@@ -24,6 +31,11 @@ const base_payload = {
   current_tab,
   props,
   income_pipeline,
+  emit,
+  ALL_CONTEXT_STATE,
+  ALL_EVENT_PIPELINE,
+
+  VUE_FILE_PATH,
 
   wrap_payload,
 }
@@ -33,10 +45,11 @@ const {
   user_info,
   btn_a_click,
   wrapped_payload: { handle_query_demo },
-  // all_event_pipeline,
+  // ALL_EVENT_PIPELINE,
 } = payload
 
-// provide('all_event_pipeline', all_event_pipeline)
+// provide('ALL_EVENT_PIPELINE', ALL_EVENT_PIPELINE)
+// provide('ALL_CONTEXT_STATE', ALL_CONTEXT_STATE)
 </script>
 
 <style lang="scss" scoped></style>

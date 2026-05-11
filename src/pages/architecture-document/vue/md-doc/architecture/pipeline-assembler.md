@@ -19,11 +19,11 @@ import { get_file_name_cases } from 'src/common/architecture-design/util/file/fi
  * 1. 预处理：解析路径并转换 snake_case，排除下划线文件。
  * 2. 定义新的生成器函数 (传入 payload 参数)，支持动态注入上下文。
  * 3. 包装模块内容为方法对象，自动补全第一个参数为 payload。
- * 4. 处理 income_pipeline 注入，将指定函数添加到 all_event_pipeline 的 income 属性中。
+ * 4. 处理 income_pipeline 注入，将指定函数添加到 ALL_EVENT_PIPELINE 的 income 属性中。
  */
-export const event_pipeline_register = ({ modules, currentFilePath }) => {
+export const assemble_event_pipeline = ({ modules, currentFilePath }) => {
   const modules_obj = {}
-  const all_event_pipeline = {}
+  const ALL_EVENT_PIPELINE = {}
 
   // 1. 预处理：解析路径并转换 snake_case，排除下划线文件
   Object.keys(modules).forEach((path) => {
@@ -47,7 +47,7 @@ export const event_pipeline_register = ({ modules, currentFilePath }) => {
           // 核心实现：补全第一个参数为 payload
           moduleContent[methodName] = (...args) => originMethod(payload, ...args)
         }
-        all_event_pipeline[fileName] = moduleContent
+        ALL_EVENT_PIPELINE[fileName] = moduleContent
       })
     })
     // 4. 处理 income_pipeline 注入
@@ -63,12 +63,12 @@ export const event_pipeline_register = ({ modules, currentFilePath }) => {
         }
       })
 
-      all_event_pipeline['income'] = income_pipeline_obj
+      ALL_EVENT_PIPELINE['income'] = income_pipeline_obj
     }
   }
 
   return {
-    all_event_pipeline,
+    ALL_EVENT_PIPELINE,
     create_event_pipeline,
   }
 }
@@ -77,7 +77,7 @@ export const event_pipeline_register = ({ modules, currentFilePath }) => {
 ## 2. 在业务目录中使用示例(`module/event-pipeline/event-pipeline.js`)
 
 ```javascript
-import { event_pipeline_register } from 'src/output/common/project-common.js'
+import { assemble_event_pipeline } from 'src/output/common/project-common.js'
 
 // 1. 扫描当前目录下 module 文件夹中的 JS
 const modules = import.meta.glob('../module/event-pipeline/*.js', {
@@ -88,7 +88,7 @@ const modules = import.meta.glob('../module/event-pipeline/*.js', {
 const currentFilePath = import.meta.url
 
 // 3. 传入参数进行封装
-export const { all_event_pipeline, create_event_pipeline } = event_pipeline_register(
+export const { ALL_EVENT_PIPELINE, create_event_pipeline } = assemble_event_pipeline(
   modules,
   currentFilePath,
 )
@@ -108,17 +108,17 @@ export const handle_query_click = (payload) => {
 ## 4. 最终调用效果
 
 ```javascript
-import { all_event_pipeline } from 'src/standardization/backend-page-template/module/event-pipeline/event-pipeline.js'
+import { ALL_EVENT_PIPELINE } from 'src/standardization/backend-page-template/module/event-pipeline/event-pipeline.js'
 
 //  <q-btn
 //         label="查询"
 //         color="primary"
-//         @click="all_event_pipeline.other.handle_query_click"
+//         @click="ALL_EVENT_PIPELINE.other.handle_query_click"
 //       />
 ```
 
 ## 💡 核心逻辑说明
 
 1. **增补参数策略**：`return (...args) => originMethod(payload, ...args)` 确保了 `payload` 永远是第一个参数，后续业务参数依次排列，非常适合处理**上下文注入**。
-2. **上下文隔离**：`all_event_pipeline.other.handle_query_click` 子孙组件调用父级方法时，会自动将父级方法第一个参数 `payload` 透传给被调用的方法。
+2. **上下文隔离**：`ALL_EVENT_PIPELINE.other.handle_query_click` 子孙组件调用父级方法时，会自动将父级方法第一个参数 `payload` 透传给被调用的方法。
 3. **Snake Case 约束**：无论文件名是 `UserCenter.js` 还是 `userCenter.js`，最终通过代理访问时必须使用 `user_center`，保证了调用链命名的规范性。
