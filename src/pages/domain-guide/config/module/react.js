@@ -22,6 +22,14 @@ export const docs = [
         priority: 5,
       },
       {
+        name: 'Next.js 中文文档',
+        url: 'hhttps://nextjscn.org/docs',
+        tag: 'Framework',
+        desc: 'React 生产级框架之王，支持 App Router、全栈 API 路由与极致的 SEO 优化方案。',
+        priority: 5,
+      },
+
+      {
         name: 'TanStack Query',
         url: 'https://tanstack.com',
         tag: 'Data Fetching',

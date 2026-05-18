@@ -13,6 +13,13 @@ export const docs = [
         priority: 5,
       },
       {
+        name: 'NestJS 官方中文文档',
+        url: 'https://docs.nestjs.cn',
+        tag: 'Node.js',
+        desc: '基于 TypeScript 的渐进式 Node.js 框架，深受 Angular 启发，内置依赖注入与模块化架构。',
+        priority: 5,
+      },
+      {
         name: 'Prisma',
         url: 'https://www.prisma.io',
         tag: 'ORM',
