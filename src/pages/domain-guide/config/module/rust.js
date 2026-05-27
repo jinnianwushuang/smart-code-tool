@@ -83,6 +83,18 @@ export const docs = [
         tag: 'Guide',
         desc: '通过可运行的示例学习 Rust 语法。',
       },
+      {
+        name: 'Meilisearch',
+        url: 'https://github.com/meilisearch/meilisearch',
+        tag: 'Search',
+        desc: 'Rust 编写的高性能开源搜索引擎，研究 Rust 大规模工程的最佳案例。',
+      },
+      {
+        name: 'Lemmy',
+        url: 'https://github.com/LemmyNet/lemmy',
+        tag: 'Fediverse',
+        desc: 'Rust 编写的去中心化社交平台，研究 Actix-web 实战的必看项目。',
+      },
     ],
   },
 ]

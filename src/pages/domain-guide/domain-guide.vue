@@ -32,7 +32,7 @@
       <!-- 2. 卡片视图模式 -->
       <div class="card-grid">
         <div
-          v-for="group in fliter_by_query(all_docs[current_category])"
+          v-for="group in filtered_groups"
           :key="group.category"
           class="group-wrapper"
         >
@@ -62,7 +62,7 @@
 </template>
 
 <script setup>
-import { ref, computed, markRaw } from 'vue'
+import { ref, computed } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { ExportOutlined } from '@ant-design/icons-vue'
 import { all_tabs, all_docs } from './config/config.js'
@@ -75,22 +75,22 @@ const openLink = (url) => window.open(url, '_blank')
 const hanle_tab_change = (key) => {
   current_category.value = key
 }
-const compute_if_show = (item) => {
-  if (!search_key.value) {
-    return true
-  }
-  let q = search_key.value.toLowerCase()
-  return [item.name, item.desc, item.tag].filter((x) => x).some((x) => x.toLowerCase().includes(q))
-}
 
-const fliter_by_query = (list) => {
-  return list
-    .map((obj) => ({
-      ...obj,
-      items: obj.items.filter((i) => compute_if_show(i)),
+const filtered_groups = computed(() => {
+  const groups = all_docs[current_category.value] || []
+  if (!search_key.value) {
+    return groups
+  }
+  const q = search_key.value.toLowerCase()
+  return groups
+    .map((group) => ({
+      ...group,
+      items: group.items.filter((item) =>
+        [item.name, item.desc, item.tag].some((val) => val?.toLowerCase().includes(q)),
+      ),
     }))
-    .filter((obj) => obj.items.length > 0)
-}
+    .filter((group) => group.items.length > 0)
+})
 </script>
 
 <style scoped>

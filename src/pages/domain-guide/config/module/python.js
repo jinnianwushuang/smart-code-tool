@@ -73,4 +73,28 @@ export const docs = [
       },
     ],
   },
+  {
+    category: '顶级开源项目与实战参考',
+    color: 'purple',
+    items: [
+      {
+        name: 'Transformers',
+        url: 'https://github.com/huggingface/transformers',
+        tag: 'AI/ML',
+        desc: '大模型时代的标准库，研究现代 Python 工程化、模型加载与 AI 能力集成的必看项目。',
+      },
+      {
+        name: 'LocalStack',
+        url: 'https://github.com/localstack/localstack',
+        tag: 'Cloud Native',
+        desc: '极其强大的云堆栈模拟工具，展示了如何用 Python 构建高度复杂的系统级基础设施模拟环境。',
+      },
+      {
+        name: 'FastAPI RealWorld',
+        url: 'https://github.com/nsidnev/fastapi-realworld-example-app',
+        tag: 'Backend',
+        desc: 'FastAPI 的工业级实战示例，涵盖了干净的项目结构、异步 ORM 和鉴权模式的最佳实践。',
+      },
+    ],
+  },
 ]

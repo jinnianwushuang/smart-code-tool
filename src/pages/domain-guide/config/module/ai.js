@@ -65,6 +65,18 @@ export const docs = [
         tag: 'Image',
         desc: '最活跃的 Stable Diffusion 提示词与模型分享社区。',
       },
+      {
+        name: 'Vercel AI SDK',
+        url: 'https://sdk.vercel.ai/',
+        tag: 'Integration',
+        desc: '在 React/Vue 中构建流式对话 UI 的行业标准 SDK。',
+      },
+      {
+        name: 'Open WebUI',
+        url: 'https://github.com/open-webui/open-webui',
+        tag: 'Application',
+        desc: '目前功能最全、设计最优雅的开源 AI 聊天交互界面参考。',
+      },
     ],
   },
 ]

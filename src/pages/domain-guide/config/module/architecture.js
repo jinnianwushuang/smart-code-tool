@@ -107,4 +107,23 @@ export const docs = [
       },
     ],
   },
+  {
+    category: '技术决策与知识沉淀',
+    icon: 'FileDoneOutlined',
+    tagColor: 'green',
+    items: [
+      {
+        name: 'ADR Guide',
+        url: 'https://adr.github.io/',
+        tag: 'Governance',
+        desc: '架构决策记录 (ADR) 标准，记录每一个重大技术选型的背景与权衡。',
+      },
+      {
+        name: 'Mermaid.js',
+        url: 'https://mermaid.live/',
+        tag: 'Diagram',
+        desc: '使用代码绘制流程图、序列图，是编写 RFC 文档的标配工具。',
+      },
+    ],
+  },
 ]

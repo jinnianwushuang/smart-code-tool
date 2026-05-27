@@ -144,4 +144,52 @@ export const docs = [
       },
     ],
   },
+  {
+    category: '精选实战与顶级开源项目',
+    color: 'blue',
+    items: [
+      {
+        name: 'AppFlowy',
+        url: 'https://github.com/AppFlowy-IO/AppFlowy',
+        tag: 'Architecture',
+        desc: '基于 Rust 和 Flutter 构建的开源 Notion 替代品，研究大型跨端应用与高性能后端集成的顶尖案例。',
+      },
+      {
+        name: 'Wonderous',
+        url: 'https://github.com/gskinnerTeam/flutter-wonderous-app',
+        tag: 'UI/UX',
+        desc: '官方合作伙伴 gskinner 出品，展示了 Flutter 极高级别的动画效果、性能优化与交互设计。',
+      },
+      {
+        name: 'Immich',
+        url: 'https://github.com/immich-app/immich',
+        tag: 'App',
+        desc: '高性能自托管照片备份方案，其移动端是 Flutter 开发中处理大规模多媒体数据的优秀实战参考。',
+      },
+    ],
+  },
+  {
+    category: '桌面端特化实战参考',
+    color: 'geekblue',
+    items: [
+      {
+        name: 'LocalSend',
+        url: 'https://github.com/localsend/localsend',
+        tag: 'Utility',
+        desc: '极其流行的跨平台文件传输工具，研究 Flutter 桌面端网络通讯、多设备发现与自愈界面的典范。',
+      },
+      {
+        name: 'RustDesk',
+        url: 'https://github.com/rustdesk/rustdesk',
+        tag: 'Tool',
+        desc: '开源远程桌面工具，展示了 Flutter 在处理高性能底层 C++/Rust 绑定与复杂窗口管理中的实力。',
+      },
+      {
+        name: 'Spotube',
+        url: 'https://github.com/KRTirtho/spotube',
+        tag: 'Media',
+        desc: '现代化轻量级音乐播放器，研究 Flutter 桌面端多媒体 API 调用与原生视觉风格适配的最佳实践。',
+      },
+    ],
+  },
 ]

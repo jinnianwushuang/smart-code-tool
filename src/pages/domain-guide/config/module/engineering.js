@@ -36,6 +36,18 @@ export const docs = [
         desc: '基于 Rust 的极速 JavaScript/TypeScript 编译工具。',
       },
       {
+        name: 'Rspack',
+        url: 'https://www.rspack.dev/',
+        tag: 'Build',
+        desc: '字节跳动出品，兼容 Webpack 生态的 Rust 编写高性能打包工具。',
+      },
+      {
+        name: 'Farm',
+        url: 'https://www.farmfe.org/',
+        tag: 'Build',
+        desc: '极致性能的次世代增量构建引擎，真正实现秒级编译。',
+      },
+      {
         name: 'Tailwind CSS',
         url: 'https://tailwindcss.com',
         tag: 'CSS',
@@ -262,6 +274,30 @@ export const docs = [
         url: 'https://sentry.io/for/performance/',
         tag: 'Monitoring',
         desc: '实时性能监控平台，能够追踪 LCP、FID、CLS 等指标并定位异常事务。',
+      },
+    ],
+  },
+  {
+    category: '安全合规与代码审计',
+    color: 'red',
+    items: [
+      {
+        name: 'Snyk',
+        url: 'https://snyk.io/',
+        tag: 'Security',
+        desc: '自动扫描依赖库漏洞，架构师在 CI/CD 阶段必须设置的安全红线。',
+      },
+      {
+        name: 'SonarQube',
+        url: 'https://www.sonarqube.org/',
+        tag: 'Audit',
+        desc: '工业级代码质量审计平台，追踪技术债、覆盖率与安全隐患。',
+      },
+      {
+        name: 'FOSSA',
+        url: 'https://fossa.com/',
+        tag: 'Compliance',
+        desc: '自动化开源许可（License）合规管理，规避企业法律风险。',
       },
     ],
   },

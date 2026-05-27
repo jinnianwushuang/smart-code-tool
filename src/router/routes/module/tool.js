@@ -43,7 +43,7 @@ export const routes_tool = [
       {
         path: 'ai-document',
         name: 'ai-document',
-        meta: { title: 'AI', icon: () => h('span', 'AI') },
+        meta: { title: 'AI和架构', icon: () => h('span', 'AI') },
         component: () => import('src/pages/architecture-document/ai/document.vue'),
       },
 

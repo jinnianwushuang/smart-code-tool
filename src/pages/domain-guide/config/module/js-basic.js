@@ -129,4 +129,22 @@ export const docs = [
       },
     ],
   },
+  {
+    category: '精选实战与代码美学',
+    color: 'green',
+    items: [
+      {
+        name: '30 Seconds of Code',
+        url: 'https://www.30secondsofcode.org/',
+        tag: 'Snippets',
+        desc: '精选的高质量 JavaScript 代码片段，涵盖各种常见算法与工具函数。',
+      },
+      {
+        name: 'Clean Code JS',
+        url: 'https://github.com/ryanmcdermott/clean-code-javascript',
+        tag: 'Best Practice',
+        desc: '将经典的《代码整洁之道》原则应用到 JavaScript 中，大厂面试与架构必读。',
+      },
+    ],
+  },
 ]

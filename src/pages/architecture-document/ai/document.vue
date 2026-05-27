@@ -11,9 +11,10 @@
 <script setup>
 import { computed, ref, provide } from 'vue'
 import { mapMarkdownFolderModulesToTabs, pascalCase } from 'src/output/common/project-common.js'
-const default_tab_name = 'sentence_assembly'
+const default_tab_name = 'architectural-vision'
 // 1. 定义中文映射表
 const folderLabelMap = {
+  "architectural-vision": '架构愿景',
   sentence_assembly: '语句组装',
 
   vue: 'Vue语句',

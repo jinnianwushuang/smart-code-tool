@@ -85,4 +85,22 @@ export const docs = [
       },
     ],
   },
+  {
+    category: '企业级实战项目',
+    color: 'pink',
+    items: [
+      {
+        name: 'Vue Vben Admin',
+        url: 'https://github.com/vbenjs/vue-vben-admin',
+        tag: 'Admin',
+        desc: '基于 Vue3, Vite, Ant Design 的超大规模中后台集成方案。',
+      },
+      {
+        name: 'Nuxt UI Example',
+        url: 'https://github.com/nuxt/ui',
+        tag: 'Nuxt',
+        desc: 'Nuxt 官方出品的 UI 框架实战，展示了现代 Vue 全栈开发的极速体验。',
+      },
+    ],
+  },
 ]

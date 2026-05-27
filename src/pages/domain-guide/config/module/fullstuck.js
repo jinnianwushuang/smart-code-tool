@@ -75,6 +75,18 @@ export const docs = [
         desc: '基于 Rust 的开源桌面应用框架，用于构建跨平台桌面应用。',
         priority: 5,
       },
+      {
+        name: 'PocketBase',
+        url: 'https://pocketbase.io/',
+        tag: 'BaaS',
+        desc: '单个文件构成的 Go 语言实时后端，集成了数据库、鉴权与文件存储。',
+      },
+      {
+        name: 'Coolify',
+        url: 'https://coolify.io/',
+        tag: 'Self-hosted',
+        desc: '开源、自托管的 Heroku/Vercel 替代品，架构师管理服务器的利器。',
+      },
     ],
   },
 ]

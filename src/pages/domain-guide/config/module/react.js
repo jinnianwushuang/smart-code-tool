@@ -103,4 +103,22 @@ export const docs = [
       },
     ],
   },
+  {
+    category: '全栈实战与最佳实践',
+    color: 'magenta',
+    items: [
+      {
+        name: 'Taxonomy',
+        url: 'https://github.com/shadcn-ui/taxonomy',
+        tag: 'Next.js',
+        desc: '由 shadcn 开发，展示了 Next.js App Router、RSC 和 Server Actions 的最佳实践。',
+      },
+      {
+        name: 'Bulletproof React',
+        url: 'https://github.com/alan2207/bulletproof-react',
+        tag: 'Architecture',
+        desc: '目前 GitHub 上最受推崇的 React 企业级项目架构参考指南。',
+      },
+    ],
+  },
 ]
