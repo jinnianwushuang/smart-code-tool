@@ -28,10 +28,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9 # 你也可以指定具体版本，如 9.1.0
+
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: 24 # 建议使用 LTS 版本，或根据实际项目需求锁定
+          node-version: 22 # 目前 Node 22 是最新的 LTS 版本，24 尚未发布 LTS
           cache: 'pnpm'
 
       - name: Install dependencies
