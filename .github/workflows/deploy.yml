@@ -30,9 +30,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9 # 你也可以指定具体版本，如 9.1.0
-
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
