@@ -1,57 +1,87 @@
-export const tab_name = 'vue'
-export const order = 11
+export const tab_name = 'Vue'
+export const order = 30
 export const docs = [
   {
-    category: 'VUE核心框架与基础',
+    category: 'Vue 生态核心',
     color: 'green',
     items: [
       {
-        name: 'Vue.js 官网',
-        url: 'https://cn.vuejs.org/',
+        name: 'Vue 3',
+        url: 'https://cn.vuejs.org',
         tag: 'Core',
-        desc: 'Vue3 官方中文文档，包含基础语法、组合式 API 等。',
+        desc: '易学易用、性能卓越、灵活多变的渐进式框架。',
       },
       {
-        name: 'Vue Router',
-        url: 'https://router.vuejs.org/zh/',
-        tag: 'Router',
-        desc: '官方路由管理器，用于构建单页面应用。',
+        name: 'Nuxt.js',
+        url: 'https://nuxt.com',
+        tag: 'Framework',
+        desc: '直观的 Vue 框架，内置 SSR、SSG 和混合渲染能力。',
       },
       {
-        name: 'Pinia / Vuex',
-        url: 'https://pinia.vuejs.org/zh/',
-        tag: 'Store',
-        desc: '新一代状态管理库（Pinia）及传统 Vuex。',
+        name: 'Vue RFCs',
+        url: 'https://github.com/vuejs/rfcs',
+        tag: 'Design',
+        desc: '跟踪 Vue 核心 API 的变动逻辑与设计哲学。',
       },
     ],
   },
   {
-    category: 'VUE主流库',
+    category: 'UI 组件方案',
     color: 'blue',
     items: [
       {
-        name: 'Ant Design Vue',
-        url: 'https://antdv.com/',
-        tag: 'Desktop',
-        desc: '企业级 UI 组件库，基于 Ant Design 设计体系。',
+        name: 'shadcn-vue',
+        url: 'https://www.shadcn-vue.com',
+        tag: 'Components',
+        desc: 'shadcn/ui 的 Vue 社区移植版，完美适配 Radix Vue，为 Vue 开发者提供极致的 UI 自定义自由度。',
+      },
+    ],
+  },
+  {
+    category: 'Headless UI (无样式组件库)',
+    color: 'cyan',
+    items: [
+      {
+        name: 'Radix Vue',
+        url: 'https://www.radix-vue.com',
+        tag: 'Headless',
+        desc: 'Radix UI 的 Vue 移植版，保持高水准的无障碍支持。',
       },
       {
-        name: 'Quasar Framework',
-        url: 'https://quasar.dev',
-        tag: 'Full-stack',
-        desc: '高性能 Vue 框架，一套代码同时发布 Web、App、PWA 等。',
+        name: 'PrimeVue (Unstyled)',
+        url: 'https://primevue.org/uikit/',
+        tag: 'Unstyled',
+        desc: '提供强大的“非样式模式”，允许开发者完全自定义 UI 表现。',
       },
       {
-        name: 'Element Plus',
-        url: 'https://element-plus.org',
-        tag: 'Desktop',
-        desc: 'Vue 3 的 Element UI 后继者，社区极其活跃。',
+        name: 'Headless UI Vue',
+        url: 'https://headlessui.com/vue/menu',
+        tag: 'Headless',
+        desc: 'Headless UI 的 Vue 官方实现版本。',
       },
+    ],
+  },
+  {
+    category: '生态工具',
+    color: 'orange',
+    items: [
       {
         name: 'VueUse',
         url: 'https://vueuse.org',
-        tag: 'Hooks',
-        desc: '必装的组合式 API 工具库，提供数百个常用 hooks。',
+        tag: 'Utils',
+        desc: '基于 Composition API 的高质量实用函数集合。',
+      },
+      {
+        name: 'Pinia',
+        url: 'https://pinia.vuejs.org/zh/',
+        tag: 'State',
+        desc: '符合直觉的 Vue 官方状态管理库。',
+      },
+      {
+        name: 'VitePress',
+        url: 'https://vitepress.dev',
+        tag: 'Docs',
+        desc: '基于 Vite 和 Vue 的极速静态站点生成器。',
       },
     ],
   },

@@ -1,5 +1,5 @@
 export const tab_name = 'Rust'
-export const order = 13456
+export const order = 90
 export const docs = [
   {
     category: 'Rust 核心与生态',
@@ -52,6 +52,18 @@ export const docs = [
         url: 'https://tokio.rs/',
         tag: 'Runtime',
         desc: 'Rust 异步编程的事实标准运行时。',
+      },
+      {
+        name: 'SQLx',
+        url: 'https://github.com/launchbadge/sqlx',
+        tag: 'Database',
+        desc: '纯 Rust 编写的异步、编译时类型检查的 SQL 查询库。',
+      },
+      {
+        name: 'Leptos',
+        url: 'https://leptos.dev',
+        tag: 'Frontend',
+        desc: '全栈、高性能的 Rust Web 框架，具有细粒度的响应式系统。',
       },
     ],
   },

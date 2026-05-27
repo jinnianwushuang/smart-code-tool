@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@11.3.0",
   "scripts": {
     "dev-2": "vite",
     "dev": "run-s create-entry dev-2",
@@ -36,6 +37,7 @@
     "jspdf": "^4.2.1",
     "jsqr": "^1.4.0",
     "jszip": "^3.10.1",
+    "lodash": "^4.18.1",
     "lodash-es": "^4.17.23",
     "lucide-vue-next": "^0.577.0",
     "lunar-javascript": "^1.7.7",
@@ -43,6 +45,7 @@
     "markdown-it-emoji": "^3.0.0",
     "markdown-it-prism": "^3.0.1",
     "md-editor-v3": "^6.4.0",
+    "mitt": "^3.0.1",
     "nanoid": "^5.1.7",
     "qrcode.vue": "^3.8.0",
     "qs": "^6.15.0",

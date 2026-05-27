@@ -11,9 +11,10 @@
 <script setup>
 import { computed, ref, provide } from 'vue'
 import { mapMarkdownFolderModulesToTabs, pascalCase } from 'src/output/common/project-common.js'
-const default_tab_name = 'architecture'
+const default_tab_name = 'technology-selection'
 // 1. 定义中文映射表
 const folderLabelMap = {
+  "technology-selection": "技术选型",
   architecture: '架构文档',
   'reference-code': '参考代码',
   'standard-code': '标准代码',

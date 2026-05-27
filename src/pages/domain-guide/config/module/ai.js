@@ -1,5 +1,5 @@
 export const tab_name = 'AI'
-export const order = 15761
+export const order = 100
 export const docs = [
   {
     category: '主流大模型 (LLMs)',

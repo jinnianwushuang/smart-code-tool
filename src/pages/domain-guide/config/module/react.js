@@ -1,106 +1,105 @@
-export const tab_name = 'react'
-export const order = 71
+export const tab_name = 'React'
+export const order = 20
 export const docs = [
   {
-    category: 'React 生态与现代架构',
-    color: 'cyan',
-    brandColor: '#61dafb',
-
+    category: 'React 生态核心',
+    color: 'blue',
     items: [
       {
-        name: 'React 官网',
-        url: 'https://zh-hans.react.dev/',
+        name: 'React',
+        url: 'https://react.dev',
         tag: 'Core',
-        desc: '全新 Hooks 优先的官方文档，深度解析并发渲染 (Concurrent) 与服务端组件 (RSC)。',
-        priority: 5,
+        desc: '用于构建用户界面的 JavaScript 库，引领了声明式编程范式。',
       },
       {
         name: 'Next.js',
-        url: 'https://www.nextjs.cn/',
+        url: 'https://nextjs.org',
         tag: 'Framework',
-        desc: 'React 生产级框架之王，支持 App Router、全栈 API 路由与极致的 SEO 优化方案。',
-        priority: 5,
+        desc: '当前最流行的 React 全栈框架，支持 App Router 与多种渲染模式。',
       },
       {
-        name: 'Next.js 中文文档',
-        url: 'https://nextjscn.org/docs',
+        name: 'Remix',
+        url: 'https://remix.run',
         tag: 'Framework',
-        desc: 'React 生产级框架之王，支持 App Router、全栈 API 路由与极致的 SEO 优化方案。',
-        priority: 5,
-      },
-
-      {
-        name: 'TanStack Query',
-        url: 'https://tanstack.com',
-        tag: 'Data Fetching',
-        desc: '异步状态管理库，解决请求缓存、SWR 更新及复杂的服务器状态同步问题。',
-        priority: 5,
+        desc: '专注于 Web 标准和现代 HTTP 策略的全栈 UI 框架。',
       },
       {
-        name: 'Framer Motion',
-        url: 'https://www.framer.com',
-        tag: 'Animation',
-        desc: 'React 声明式动画库，让复杂的组件入场、手势交互与布局过渡变得极其简单。',
-        priority: 4,
-      },
-
-      {
-        name: 'Tailwind CSS',
-        url: 'https://tailwindcss.com',
-        tag: 'Styling',
-        desc: '原子类优先的 CSS 框架，与现代组件化开发完美契合，极大地提升了开发效率。',
-        priority: 5,
+        name: 'React RFCs',
+        url: 'https://github.com/reactjs/rfcs',
+        tag: 'Design',
+        desc: '研究 React 未来特性的设计提案，理解技术背后的 Why。',
       },
     ],
   },
   {
-    category: 'React 主流 UI 组件库',
-    color: 'blue',
-    brandColor: '#61dafb',
-
+    category: 'UI 组件方案',
+    color: 'cyan',
     items: [
       {
         name: 'shadcn/ui',
         url: 'https://ui.shadcn.com',
-        tag: 'Modern',
-        desc: '当前最火的组件构建方式：非传统依赖包，而是代码所有权归你，基于 Radix UI 和 Tailwind。',
-        priority: 5,
+        tag: 'Components',
+        desc: '基于 Radix UI 和 Tailwind CSS 的组件集合，引领了“代码拷贝”而非依赖安装的 UI 整合新模式。',
       },
+    ],
+  },
+  {
+    category: 'Headless UI (无样式组件库)',
+    color: 'purple',
+    items: [
       {
-        name: 'Ant Design',
-        url: 'https://ant.design',
-        tag: 'Enterprise',
-        desc: '全球使用最广的 React 中后台 UI 体系，拥有极度完善的设计规范与组件生态。',
-        priority: 5,
-      },
-      {
-        name: 'MUI (Material UI)',
-        url: 'https://mui.com',
-        tag: 'Standard',
-        desc: '基于 Google Material Design 规范，世界级流行的 React 组件库，定制化能力极强。',
-        priority: 5,
-      },
-
-      {
-        name: 'Chakra UI',
-        url: 'https://chakra-ui.com',
-        tag: 'DX',
-        desc: '简单、模块化且易于使用的组件库，通过 Props 直接控制样式，开发体验极佳。',
-        priority: 4,
-      },
-      {
-        name: 'NextUI',
-        url: 'https://nextui.org',
-        tag: 'Design',
-        desc: '基于 Tailwind CSS 构建的现代感十足、动画丝滑的 UI 库，非常适合 C 端产品。',
-        priority: 4,
+        name: 'Radix UI',
+        url: 'https://www.radix-ui.com',
+        tag: 'Headless',
+        desc: '高质量、无样式、完全无障碍的组件原语，shadcn/ui 的底层核心。',
       },
       {
         name: 'Headless UI',
         url: 'https://headlessui.com',
-        tag: 'Unstyled',
-        desc: '由 Tailwind 官方出品，完全无样式但包含完美交互逻辑的组件，适合深度自研 UI。',
-        priority: 4,
+        tag: 'Headless',
+        desc: '由 Tailwind Labs 开发，与 Tailwind CSS 深度集成的无头库。',
+      },
+      {
+        name: 'React Aria',
+        url: 'https://react-spectrum.adobe.com/react-aria/',
+        tag: 'Hooks',
+        desc: '来自 Adobe，提供完整的无障碍支持和高度定制化的 Hooks。',
+      },
+      {
+        name: 'Ark UI',
+        url: 'https://ark-ui.com',
+        tag: 'Headless',
+        desc: '基于 Zag.js 状态机驱动的跨框架无头组件库。',
+      },
+    ],
+  },
+  {
+    category: '数据流与逻辑处理',
+    color: 'orange',
+    items: [
+      {
+        name: 'TanStack Query',
+        url: 'https://tanstack.com/query',
+        tag: 'Async',
+        desc: '强大的异步状态管理库，处理缓存、同步与更新。',
+      },
+      {
+        name: 'Zustand',
+        url: 'https://zustand-demo.pmnd.rs',
+        tag: 'State',
+        desc: '极致轻量、基于 Flux 原理的 React 状态管理方案。',
+      },
+    ],
+  },
+  {
+    category: '动画与交互',
+    color: 'pink',
+    items: [
+      {
+        name: 'Framer Motion',
+        url: 'https://www.framer.com/motion/',
+        tag: 'Animation',
+        desc: '为 React 准备的工业级动画库，声明式 API 极其优雅。',
       },
     ],
   },

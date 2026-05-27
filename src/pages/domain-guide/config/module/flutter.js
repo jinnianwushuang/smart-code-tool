@@ -1,5 +1,5 @@
 export const tab_name = 'flutter'
-export const order = 51
+export const order = 70
 export const docs = [
   {
     category: 'Flutter 跨平台核心',

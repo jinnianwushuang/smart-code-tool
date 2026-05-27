@@ -1,5 +1,5 @@
 export const tab_name = 'Python'
-export const order = 12333
+export const order = 80
 export const docs = [
   {
     category: 'Python 核心与文档',
