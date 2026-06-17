@@ -1,14 +1,14 @@
 export const tab_name = 'Flutter'
-export const order = 70
+export const order = 80
 export const docs = [
   {
-    category: 'Flutter 核心与文档',
+    category: 'Flutter 核心与学习',
     color: 'cyan',
     items: [
       {
         name: 'Flutter 官网',
         url: 'https://docs.flutter.dev',
-        tag: 'Framework',
+        tag: 'Official',
         desc: 'Google 出品的 UI 工具包,一份代码构建多端原生应用。',
       },
       {
@@ -18,10 +18,16 @@ export const docs = [
         desc: '深入理解强类型、混入 (Mixin) 及 AOT/JIT 编译特性。',
       },
       {
-        name: 'pub 仓库',
-        url: 'https://pub.dev',
-        tag: 'Packages',
-        desc: '仓库中数以万计的 Flutter 包,涵盖状态管理、UI 组件、工具库等各个方面。',
+        name: 'Flutter Cookbook',
+        url: 'https://docs.flutter.dev/cookbook',
+        tag: 'Cookbook',
+        desc: '官方提供的常见任务解决方案,快速查找实现方法。',
+      },
+      {
+        name: 'Effective Dart',
+        url: 'https://dart.dev/effective-dart',
+        tag: 'Guide',
+        desc: 'Dart 语言的最佳实践和编码规范指南。',
       },
     ],
   },
@@ -40,6 +46,30 @@ export const docs = [
         url: 'https://book.flutterchina.club/',
         tag: 'Book',
         desc: '国内最流行、讲解极其透彻的入门进阶神书。',
+      },
+    ],
+  },
+  {
+    category: '包管理与生态',
+    color: 'orange',
+    items: [
+      {
+        name: 'pub.dev',
+        url: 'https://pub.dev',
+        tag: 'Registry',
+        desc: 'Flutter/Dart 官方包仓库,数以万计的优质包等待发现。',
+      },
+      {
+        name: 'Flutter Gems',
+        url: 'https://fluttergems.dev',
+        tag: 'Guide',
+        desc: 'Flutter 生态可视化指南,按功能场景分类查找 UI 库。',
+      },
+      {
+        name: 'Pub Score',
+        url: 'https://pub.dev/packages?sort=score',
+        tag: 'Ranking',
+        desc: '根据受欢迎程度排序的 Flutter 包列表,快速找到高质量组件。',
       },
     ],
   },
@@ -74,32 +104,62 @@ export const docs = [
     ],
   },
   {
-    category: '进阶与图形渲染',
+    category: 'UI 组件库',
     color: 'purple',
     items: [
       {
-        name: 'Flutter Rendering',
-        url: 'https://docs.flutter.dev/resources/architectural-overview',
-        tag: 'Engine',
-        desc: '解析三棵树渲染机制(Widget/Element/RenderObject)。',
+        name: 'Material Design',
+        url: 'https://m3.material.io/',
+        tag: 'Design',
+        desc: 'Google 的设计系统,Flutter 内置 Material 组件库。',
       },
       {
-        name: 'Flutter Samples',
-        url: 'https://flutter.github.io/samples',
-        tag: 'Showcase',
-        desc: '官方精品项目实战代码库,架构师参考其组件封装模式。',
+        name: 'Cupertino',
+        url: 'https://docs.flutter.dev/ui/widgets/cupertino',
+        tag: 'iOS',
+        desc: 'Flutter 内置的 iOS 风格组件库,实现原生 iOS 体验。',
       },
       {
-        name: 'Skia Graphics',
-        url: 'https://skia.org',
-        tag: 'Graphics',
-        desc: '底层二维图形库文档,了解 Flutter 每一像素如何被绘制。',
+        name: 'FlutterFlow',
+        url: 'https://flutterflow.io/',
+        tag: 'No-Code',
+        desc: '可视化 Flutter 应用构建平台,快速原型开发。',
       },
       {
-        name: 'CustomPainter Guide',
-        url: 'https://docs.flutter.dev/cookbook/design/custom-painter',
-        tag: 'Custom Paint',
-        desc: '学习如何使用 CustomPainter 进行自定义绘制,实现复杂动画和视觉效果。',
+        name: 'Rive',
+        url: 'https://rive.app/',
+        tag: 'Animation',
+        desc: '交互式动画和图形设计工具,完美集成 Flutter。',
+      },
+    ],
+  },
+  {
+    category: '测试与调试',
+    color: 'red',
+    items: [
+      {
+        name: 'Flutter Test',
+        url: 'https://docs.flutter.dev/testing',
+        tag: 'Testing',
+        desc: 'Flutter 官方测试框架,支持单元测试、Widget 测试和集成测试。',
+      },
+      {
+        name: 'Mockito',
+        url: 'https://pub.dev/packages/mockito',
+        tag: 'Mock',
+        desc: 'Dart 的 Mock 框架,用于单元测试中的依赖模拟。',
+      },
+      {
+        name: 'Integration Test',
+        url: 'https://docs.flutter.dev/testing/integration-tests',
+        tag: 'E2E',
+        desc: '端到端测试框架,模拟真实用户操作。',
+      },
+      {
+        name: 'Flutter DevTools',
+        url: 'https://docs.flutter.dev/tools/devtools',
+        tag: 'Debug',
+        desc: 'Flutter 官方调试工具,提供完整的开发环境,包括 DevTools、Flutter Inspector、Flame Graph 等。',
       },
     ],
   },
@@ -166,6 +226,36 @@ export const docs = [
         url: 'https://github.com/rustdesk/rustdesk',
         tag: 'Remote Desktop',
         desc: '开源远程桌面工具,展示了 Flutter 在处理高性能底层 C++/Rust 绑定与复杂窗口管理中的实力。',
+      },
+    ],
+  },
+  {
+    category: '性能优化与部署',
+    color: 'teal',
+    items: [
+      {
+        name: 'Flutter Performance',
+        url: 'https://docs.flutter.dev/perf',
+        tag: 'Performance',
+        desc: '官方性能优化指南,涵盖渲染性能、内存管理和启动速度优化。',
+      },
+      {
+        name: 'Flutter Web Deployment',
+        url: 'https://docs.flutter.dev/deployment/web',
+        tag: 'Web',
+        desc: 'Flutter Web 应用的部署指南,支持多种托管平台。',
+      },
+      {
+        name: 'Firebase Hosting',
+        url: 'https://firebase.google.com/docs/hosting',
+        tag: 'Hosting',
+        desc: 'Google Firebase 提供的静态网站托管服务,适合 Flutter Web 应用。',
+      },
+      {
+        name: 'Codemagic',
+        url: 'https://codemagic.io/',
+        tag: 'CI/CD',
+        desc: '专为 Flutter 打造的 CI/CD 平台,自动化构建、测试和发布流程。',
       },
     ],
   },

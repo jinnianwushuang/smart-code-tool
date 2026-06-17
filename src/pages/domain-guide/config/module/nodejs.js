@@ -1,5 +1,5 @@
 export const tab_name = 'Node.js'
-export const order = 65
+export const order = 70
 export const docs = [
   {
     category: '运行时与版本管理',

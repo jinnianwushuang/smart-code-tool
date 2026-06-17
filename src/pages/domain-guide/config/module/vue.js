@@ -24,6 +24,18 @@ export const docs = [
         desc: '直观的 Vue 框架,内置 SSR、SSG 和混合渲染能力。',
       },
       {
+        name: 'Quasar',
+        url: 'https://quasar.dev/',
+        tag: 'Framework',
+        desc: '高性能 Vue.js 框架,一套代码构建 SPA、SSR、PWA、移动端和桌面应用。',
+      },
+      {
+        name: 'DCloud (uni-app)',
+        url: 'https://www.dcloud.io/',
+        tag: 'Cross-platform',
+        desc: '使用 Vue.js 开发所有前端应用的框架,一套代码可发布到 iOS、Android、Web、小程序等多端。',
+      },
+      {
         name: 'Vue RFCs',
         url: 'https://github.com/vuejs/rfcs',
         tag: 'Design',

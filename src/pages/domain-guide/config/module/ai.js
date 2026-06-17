@@ -2,6 +2,55 @@ export const tab_name = 'AI'
 export const order = 9
 export const docs = [
   {
+    category: 'AI 搜索引擎（免登录）',
+    color: 'cyan',
+    items: [
+      {
+        name: '百度 AI 搜索',
+        url: 'https://chat.baidu.com/search',
+        tag: 'Search',
+        desc: '百度推出的 AI 驱动搜索引擎,无需登录即可使用智能问答和搜索功能。',
+      },
+      {
+        name: 'Google Gemini',
+        url: 'https://gemini.google.com/',
+        tag: 'Search',
+        desc: 'Google 的 AI 助手,支持智能搜索、内容生成和多模态交互,可直接访问。',
+      },
+      {
+        name: 'Perplexity',
+        url: 'https://www.perplexity.ai/',
+        tag: 'AI Search',
+        desc: '基于 AI 的答案引擎,提供准确、实时的搜索结果并附带引用来源。',
+      },
+
+      {
+        name: 'Kimi 智能搜索',
+        url: 'https://kimi.moonshot.cn/',
+        tag: 'Chinese',
+        desc: '月之暗面出品的 AI 助手,支持超长文本处理和智能搜索,国内访问友好。',
+      },
+    ],
+  },
+  {
+    category: 'AI 工具导航与资源',
+    color: 'pink',
+    items: [
+      {
+        name: 'AI 工具箱',
+        url: 'https://ai-bot.cn/',
+        tag: 'Navigation',
+        desc: '全面的 AI 工具导航网站,收录国内外优质 AI 产品、教程和资源。',
+      },
+      {
+        name: 'AMZ123 AI 导航',
+        url: 'https://www.amz123.com/ai',
+        tag: 'Navigation',
+        desc: '跨境电商领域的 AI 工具集合,提供电商运营相关的 AI 应用推荐。',
+      },
+    ],
+  },
+  {
     category: '主流大模型 (LLMs)',
     color: 'purple',
     items: [

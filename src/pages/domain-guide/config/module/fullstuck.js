@@ -228,6 +228,12 @@ export const docs = [
     color: 'magenta',
     items: [
       {
+        name: '阿里云帮助中心',
+        url: 'https://help.aliyun.com/zh',
+        tag: 'Cloud',
+        desc: '阿里云官方技术文档中心,涵盖 ECS、OSS、RDS、容器服务等全栈云产品使用指南。',
+      },
+      {
         name: 'Supabase',
         url: 'https://supabase.com',
         tag: 'BaaS',

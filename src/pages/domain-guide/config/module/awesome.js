@@ -1,10 +1,9 @@
-export const tab_name = 'Awesome 集合'
-export const order = 120
+export const tab_name = 'Awesome'
+export const order = 160
 export const docs = [
   {
     category: '顶级 Awesome 汇总',
-    icon: 'StarOutlined',
-    tagColor: 'gold',
+    color: 'gold',
     items: [
       {
         name: 'Awesome',
@@ -28,8 +27,7 @@ export const docs = [
   },
   {
     category: '大前端框架与生态',
-    icon: 'ProjectOutlined',
-    tagColor: 'blue',
+    color: 'blue',
     items: [
       {
         name: 'Awesome Node.js',
@@ -83,8 +81,7 @@ export const docs = [
   },
   {
     category: '工程化与性能进阶',
-    icon: 'BuildOutlined',
-    tagColor: 'green',
+    color: 'green',
     items: [
       {
         name: 'Awesome Web Performance',
@@ -108,8 +105,7 @@ export const docs = [
   },
   {
     category: '架构师内功',
-    icon: 'BlockOutlined',
-    tagColor: 'purple',
+    color: 'purple',
     items: [
       {
         name: 'Awesome System Design',
@@ -133,14 +129,13 @@ export const docs = [
   },
   {
     category: '全栈、后端与系统编程',
-    icon: 'DatabaseOutlined',
-    tagColor: 'volcano',
+    color: 'volcano',
     items: [
       {
         name: 'Awesome NestJS',
         url: 'https://github.com/jmcdo29/awesome-nestjs',
         tag: 'NestJS',
-        desc: '精选的 NestJS 框架相关资源，大前端全栈进阶的工业级优选。',
+        desc: '精选的 NestJS 框架相关资源,大前端全栈进阶的工业级优选。',
       },
       {
         name: 'Awesome Python',
@@ -152,7 +147,67 @@ export const docs = [
         name: 'Awesome Rust',
         url: 'https://github.com/rust-unofficial/awesome-rust',
         tag: 'Rust',
-        desc: 'Rust 代码和资源的精选清单，系统编程与高性能 WebAssembly 的核心参考。',
+        desc: 'Rust 代码和资源的精选清单,系统编程与高性能 WebAssembly 的核心参考。',
+      },
+    ],
+  },
+  {
+    category: '移动端与跨平台',
+    color: 'cyan',
+    items: [
+      {
+        name: 'Awesome iOS',
+        url: 'https://github.com/vsouza/awesome-ios',
+        tag: 'iOS',
+        desc: 'iOS 开发资源的终极集合,涵盖 Swift、Objective-C 及相关工具。',
+      },
+      {
+        name: 'Awesome Android',
+        url: 'https://github.com/JStumpp/awesome-android',
+        tag: 'Android',
+        desc: 'Android 开发优秀库、工具和资源汇总。',
+      },
+      {
+        name: 'Awesome React Native',
+        url: 'https://github.com/jondotme/awesome-react-native',
+        tag: 'React Native',
+        desc: 'React Native 生态系统的精选资源列表。',
+      },
+      {
+        name: 'Awesome Electron',
+        url: 'https://github.com/sindresorhus/awesome-electron',
+        tag: 'Electron',
+        desc: '使用 Web 技术构建跨平台桌面应用的资源集合。',
+      },
+    ],
+  },
+  {
+    category: 'DevOps 与云原生',
+    color: 'blue',
+    items: [
+      {
+        name: 'Awesome Docker',
+        url: 'https://github.com/veggiemonkey/awesome-docker',
+        tag: 'Docker',
+        desc: 'Docker 生态系统中的优秀资源、工具和最佳实践。',
+      },
+      {
+        name: 'Awesome Kubernetes',
+        url: 'https://github.com/ramitsurana/awesome-kubernetes',
+        tag: 'K8s',
+        desc: 'Kubernetes 相关资源、工具和教程的全面集合。',
+      },
+      {
+        name: 'Awesome Terraform',
+        url: 'https://github.com/shuaibiyy/awesome-terraform',
+        tag: 'IaC',
+        desc: '基础设施即代码 (IaC) 工具 Terraform 的资源汇总。',
+      },
+      {
+        name: 'Awesome GraphQL',
+        url: 'https://github.com/chentschel/awesome-graphql',
+        tag: 'GraphQL',
+        desc: 'GraphQL 生态系统的精选资源,包括客户端、服务端和工具。',
       },
     ],
   },

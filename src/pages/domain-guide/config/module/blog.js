@@ -1,5 +1,5 @@
-export const tab_name = '博客 & 资讯'
-export const order = 110
+export const tab_name = '资讯'
+export const order = 150
 export const docs = [
   {
     category: '全球大厂技术博客',

@@ -1,4 +1,4 @@
-export const tab_name = 'JS基础'
+export const tab_name = 'JS'
 export const order = 10
 export const docs = [
   {
@@ -85,6 +85,12 @@ export const docs = [
     color: 'purple',
     items: [
       {
+        name: '菜鸟教程',
+        url: 'https://www.runoob.com/',
+        tag: 'Tutorial',
+        desc: '全面的技术教程网站,涵盖 HTML、CSS、JavaScript、Python、Java 等多种编程语言。',
+      },
+      {
         name: 'ES6 入门教程',
         url: 'https://es6.ruanyifeng.com/',
         tag: 'Format',
@@ -97,10 +103,16 @@ export const docs = [
         desc: '阮一峰老师参与维护的 TypeScript 入门教程',
       },
       {
+        name: 'TypeScript 官方文档',
+        url: 'https://www.typescriptlang.org/docs/',
+        tag: 'Official',
+        desc: 'TypeScript 官方权威文档,涵盖类型系统、配置选项和最佳实践。',
+      },
+      {
         name: '现代 JavaScript 教程',
         url: 'https://javascript.info',
         tag: 'Guide',
-        desc: '从基础到高阶，内容极其详尽的开源教程',
+        desc: '从基础到高阶,内容极其详尽的开源教程',
       },
       {
         name: 'MDN Web Docs',

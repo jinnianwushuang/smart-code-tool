@@ -1,5 +1,5 @@
 export const tab_name = 'CSS'
-export const order = 15
+export const order = 11
 export const docs = [
   {
     category: '核心标准与文档',

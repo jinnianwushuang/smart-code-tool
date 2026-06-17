@@ -2,13 +2,35 @@
   <div class="nav-manager generator-wrapper">
     <!-- 控制栏 -->
     <a-card class="control-panel q-mx-auto max-w-1200 transition-base" :bordered="false">
-      <a-tabs v-model:activeKey="current_category" @change="hanle_tab_change" :tab-bar-gutter="16">
-        <a-tab-pane
-          v-for="category in all_tabs"
-          :key="category.key"
-          :tab="category.name.toUpperCase()"
-        />
-      </a-tabs>
+      <!-- PC 端：按钮组 -->
+      <div class="pc-tabs-container hidden-sm-and-down" v-if="!is_mobile">
+        <div class="button-group">
+          <a-button
+            v-for="category in all_tabs"
+            :key="category.key"
+            :type="current_category === category.key ? 'primary' : 'default'"
+            @click="handleCategoryClick(category.key)"
+            class="category-btn"
+          >
+            {{ category.name }}
+          </a-button>
+        </div>
+      </div>
+
+      <!-- H5 端：Tabs -->
+      <div class="mobile-tabs-container hidden-md-and-up" v-if="is_mobile">
+        <div class="tabs-wrapper">
+          <a-tabs
+            v-model:activeKey="current_category"
+            @change="hanle_tab_change"
+            :tab-bar-gutter="12"
+            type="card"
+            class="custom-tabs"
+          >
+            <a-tab-pane v-for="category in all_tabs" :key="category.key" :tab="category.name" />
+          </a-tabs>
+        </div>
+      </div>
       <div class="search-bar-container row items-center q-px-sm q-pb-md">
         <q-input
           v-model="search_key"
@@ -99,6 +121,13 @@ const hanle_tab_change = (key) => {
   search_key.value = ''
   filtered_groups.value = handle_filter_groups()
 }
+
+// PC 端按钮点击处理
+const handleCategoryClick = (key) => {
+  current_category.value = key
+  search_key.value = ''
+  filtered_groups.value = handle_filter_groups()
+}
 onMounted(() => {
   filtered_groups.value = handle_filter_groups()
 })
@@ -180,6 +209,108 @@ const handle_filter_groups = () => {
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   background: transparent;
+}
+
+/* PC 端按钮组样式 */
+.pc-tabs-container {
+  margin-bottom: 12px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.category-btn {
+  font-size: 14px;
+  padding: 6px 16px;
+  height: auto;
+  border-radius: 6px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.category-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.2);
+}
+
+.category-btn:active {
+  transform: translateY(0);
+}
+
+/* H5 端：横向滚动 */
+@media (max-width: 768px) {
+  .tabs-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 transparent;
+  }
+
+  .tabs-wrapper::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .tabs-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .tabs-wrapper::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    border-radius: 3px;
+  }
+
+  .tabs-wrapper:hover::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8;
+  }
+
+  .dark .tabs-wrapper::-webkit-scrollbar-thumb {
+    background-color: #595959;
+  }
+
+  .dark .tabs-wrapper:hover::-webkit-scrollbar-thumb {
+    background-color: #8c8c8c;
+  }
+}
+
+/* 自定义 Tabs 样式 */
+.custom-tabs :deep(.ant-tabs-nav) {
+  margin-bottom: 0;
+}
+
+.custom-tabs :deep(.ant-tabs-tab) {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+
+.custom-tabs :deep(.ant-tabs-tab-btn) {
+  padding: 0;
+}
+
+.custom-tabs :deep(.ant-tabs-ink-bar) {
+  height: 3px;
+  background: linear-gradient(90deg, #1890ff, #36cfc9);
+}
+
+.custom-tabs :deep(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+  color: #1890ff;
+  font-weight: 600;
+}
+
+/* 暗色模式 Tabs */
+.dark .custom-tabs :deep(.ant-tabs-tab) {
+  color: #a6a6a6;
+}
+
+.dark .custom-tabs :deep(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+  color: #177ddc;
 }
 
 .search-bar-container {
