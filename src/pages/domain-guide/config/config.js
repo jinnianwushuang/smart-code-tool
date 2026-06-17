@@ -16,7 +16,11 @@ let all_docs_list = []
 
 Object.entries(modules).forEach(([key, value]) => {
   const { docs, tab_name, order } = value
+  docs.forEach((doc) => {
+    doc.tab_name = tab_name
+  })
   all_docs[key] = docs
+
   all_tabs.push({
     name: tab_name,
     key,

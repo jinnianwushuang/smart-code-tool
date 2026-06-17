@@ -1,194 +1,171 @@
-export const tab_name = 'flutter'
+export const tab_name = 'Flutter'
 export const order = 70
 export const docs = [
   {
-    category: 'Flutter 跨平台核心',
+    category: 'Flutter 核心与文档',
     color: 'cyan',
-    brandColor: '#02569B',
-
     items: [
       {
         name: 'Flutter 官网',
         url: 'https://docs.flutter.dev',
         tag: 'Framework',
-        desc: 'Google 出品的 UI 工具包，一份代码构建多端原生应用。',
-        priority: 5,
+        desc: 'Google 出品的 UI 工具包,一份代码构建多端原生应用。',
       },
-
       {
         name: 'Dart 语言指南',
         url: 'https://dart.dev',
         tag: 'Language',
         desc: '深入理解强类型、混入 (Mixin) 及 AOT/JIT 编译特性。',
-        priority: 5,
       },
       {
         name: 'pub 仓库',
         url: 'https://pub.dev',
-        tag: 'packages',
-        desc: '仓库中数以万计的 Flutter 包，涵盖状态管理、UI 组件、工具库等各个方面。',
-        priority: 4,
+        tag: 'Packages',
+        desc: '仓库中数以万计的 Flutter 包,涵盖状态管理、UI 组件、工具库等各个方面。',
       },
     ],
   },
-
   {
-    category: 'Flutter 中文',
-    color: 'cyan',
-    brandColor: '#02569B',
-
+    category: 'Flutter 中文资源',
+    color: 'blue',
     items: [
       {
         name: 'Flutter 中文网',
         url: 'https://flutter.cn',
-        tag: 'Framework',
-        desc: 'Flutter 官方中文社区，提供中文文档、资源、社区、博客、视频等。',
-        priority: 5,
+        tag: 'Community',
+        desc: 'Flutter 官方中文社区,提供中文文档、资源、社区、博客、视频等。',
       },
-
       {
         name: 'Flutter 实战·第二版',
         url: 'https://book.flutterchina.club/',
-        tag: '教程',
-        desc: '国内最流行、讲解极其透彻的入门进阶神书',
-        priority: 5,
+        tag: 'Book',
+        desc: '国内最流行、讲解极其透彻的入门进阶神书。',
       },
     ],
   },
-
   {
-    category: 'Flutter 状态管理选型',
+    category: '状态管理方案',
     color: 'magenta',
-    brandColor: '#02569B',
-
     items: [
-      {
-        name: 'GetX',
-        url: 'https://pub.dev',
-        tag: 'All-in-One',
-        desc: '三合一框架（状态、路由、DI）。上手极快，无需 Context 即可跳转，适合中小型快速开发。',
-        priority: 4,
-      },
       {
         name: 'Riverpod',
         url: 'https://riverpod.dev',
-        tag: 'Compile-safe',
-        desc: 'Provider 的进阶版。不依赖 BuildContext，编译时安全，是目前大型工程化项目的首选方案。',
-        priority: 5,
+        tag: 'Recommended',
+        desc: 'Provider 的进阶版。不依赖 BuildContext,编译时安全,是目前大型工程化项目的首选方案。',
       },
       {
         name: 'Bloc',
         url: 'https://bloclibrary.dev',
         tag: 'Enterprise',
-        desc: '基于事件流 (Stream) 的严谨架构。强制逻辑与 UI 分离，适合对测试和规范有极致要求的项目。',
-        priority: 5,
+        desc: '基于事件流 (Stream) 的严谨架构。强制逻辑与 UI 分离,适合对测试和规范有极致要求的项目。',
+      },
+      {
+        name: 'GetX',
+        url: 'https://pub.dev/packages/get',
+        tag: 'All-in-One',
+        desc: '三合一框架(状态、路由、DI)。上手极快,无需 Context 即可跳转,适合中小型快速开发。',
+      },
+      {
+        name: 'Provider',
+        url: 'https://pub.dev/packages/provider',
+        tag: 'Simple',
+        desc: 'Flutter 官方推荐的状态管理方案,简单易用,适合初学者和小型项目。',
       },
     ],
   },
-
   {
-    category: 'Flutter 进阶与图形',
-    color: 'geekblue',
-    brandColor: '#0175C2',
-
+    category: '进阶与图形渲染',
+    color: 'purple',
     items: [
       {
         name: 'Flutter Rendering',
-        url: 'https://docs.flutter.devresources/architectural-overview',
+        url: 'https://docs.flutter.dev/resources/architectural-overview',
         tag: 'Engine',
-        desc: '解析三棵树渲染机制（Widget/Element/RenderObject）。',
-        priority: 5,
+        desc: '解析三棵树渲染机制(Widget/Element/RenderObject)。',
       },
       {
         name: 'Flutter Samples',
-        url: 'https://flutter.github.io',
+        url: 'https://flutter.github.io/samples',
         tag: 'Showcase',
-        desc: '官方精品项目实战代码库，架构师参考其组件封装模式。',
-        priority: 4,
+        desc: '官方精品项目实战代码库,架构师参考其组件封装模式。',
       },
       {
         name: 'Skia Graphics',
         url: 'https://skia.org',
         tag: 'Graphics',
-        desc: '底层二维图形库文档，了解 Flutter 每一像素如何被绘制。',
-        priority: 3,
+        desc: '底层二维图形库文档,了解 Flutter 每一像素如何被绘制。',
+      },
+      {
+        name: 'CustomPainter Guide',
+        url: 'https://docs.flutter.dev/cookbook/design/custom-painter',
+        tag: 'Custom Paint',
+        desc: '学习如何使用 CustomPainter 进行自定义绘制,实现复杂动画和视觉效果。',
       },
     ],
   },
   {
-    category: 'Flutter 工具',
-    color: 'gold',
-    brandColor: '#FFB800',
-
+    category: '开发工具',
+    color: 'orange',
     items: [
       {
         name: 'Flutter DevTools',
-        url: 'https://flutter.dev/docs/development/tools/devtools/overview',
+        url: 'https://docs.flutter.dev/tools/devtools',
         tag: 'Debug',
-        desc: 'Flutter 官方调试工具，提供完整的开发环境，包括 DevTools、Flutter Inspector、Flame Graph 等。',
-        priority: 5,
+        desc: 'Flutter 官方调试工具,提供完整的开发环境,包括 DevTools、Flutter Inspector、Flame Graph 等。',
       },
       {
         name: 'Flutter Gems',
         url: 'https://fluttergems.dev',
-        tag: '资源导航',
-        desc: 'Flutter 生态可视化指南，按功能场景分类查找 UI 库',
-        priority: 4,
+        tag: 'Resources',
+        desc: 'Flutter 生态可视化指南,按功能场景分类查找 UI 库。',
       },
       {
         name: 'DartPad',
         url: 'https://dartpad.dev',
-        tag: '工具/沙盒',
-        desc: '免安装环境，在线编写并直接运行 Flutter 代码',
-        priority: 3,
+        tag: 'Playground',
+        desc: '免安装环境,在线编写并直接运行 Flutter 代码。',
+      },
+      {
+        name: 'FlutterFire',
+        url: 'https://firebase.flutter.dev',
+        tag: 'Firebase',
+        desc: 'Flutter 与 Firebase 的官方集成,简化后端服务接入。',
       },
     ],
   },
   {
-    category: '精选实战与顶级开源项目',
-    color: 'blue',
+    category: '精选开源项目',
+    color: 'green',
     items: [
       {
         name: 'AppFlowy',
         url: 'https://github.com/AppFlowy-IO/AppFlowy',
-        tag: 'Architecture',
-        desc: '基于 Rust 和 Flutter 构建的开源 Notion 替代品，研究大型跨端应用与高性能后端集成的顶尖案例。',
+        tag: 'Productivity',
+        desc: '基于 Rust 和 Flutter 构建的开源 Notion 替代品,研究大型跨端应用与高性能后端集成的顶尖案例。',
       },
       {
         name: 'Wonderous',
         url: 'https://github.com/gskinnerTeam/flutter-wonderous-app',
         tag: 'UI/UX',
-        desc: '官方合作伙伴 gskinner 出品，展示了 Flutter 极高级别的动画效果、性能优化与交互设计。',
+        desc: '官方合作伙伴 gskinner 出品,展示了 Flutter 极高级别的动画效果、性能优化与交互设计。',
       },
       {
         name: 'Immich',
         url: 'https://github.com/immich-app/immich',
-        tag: 'App',
-        desc: '高性能自托管照片备份方案，其移动端是 Flutter 开发中处理大规模多媒体数据的优秀实战参考。',
+        tag: 'Media',
+        desc: '高性能自托管照片备份方案,其移动端是 Flutter 开发中处理大规模多媒体数据的优秀实战参考。',
       },
-    ],
-  },
-  {
-    category: '桌面端特化实战参考',
-    color: 'geekblue',
-    items: [
       {
         name: 'LocalSend',
         url: 'https://github.com/localsend/localsend',
         tag: 'Utility',
-        desc: '极其流行的跨平台文件传输工具，研究 Flutter 桌面端网络通讯、多设备发现与自愈界面的典范。',
+        desc: '极其流行的跨平台文件传输工具,研究 Flutter 桌面端网络通讯、多设备发现与自愈界面的典范。',
       },
       {
         name: 'RustDesk',
         url: 'https://github.com/rustdesk/rustdesk',
-        tag: 'Tool',
-        desc: '开源远程桌面工具，展示了 Flutter 在处理高性能底层 C++/Rust 绑定与复杂窗口管理中的实力。',
-      },
-      {
-        name: 'Spotube',
-        url: 'https://github.com/KRTirtho/spotube',
-        tag: 'Media',
-        desc: '现代化轻量级音乐播放器，研究 Flutter 桌面端多媒体 API 调用与原生视觉风格适配的最佳实践。',
+        tag: 'Remote Desktop',
+        desc: '开源远程桌面工具,展示了 Flutter 在处理高性能底层 C++/Rust 绑定与复杂窗口管理中的实力。',
       },
     ],
   },

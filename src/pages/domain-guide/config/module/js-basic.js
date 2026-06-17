@@ -3,43 +3,36 @@ export const order = 10
 export const docs = [
   {
     category: 'JS 底层与标准 (Core Standards)',
-    icon: 'GlobalOutlined',
-    tagColor: 'orange',
+    color: 'orange',
     items: [
       {
         name: 'ECMA-262',
         url: 'https://tc39.es',
-        level: '标准',
-        tag: '标准',
+        tag: 'Standard',
         desc: 'JavaScript(ECMAScript) 最新语言规范提案。',
       },
       {
         name: 'MDN Web Docs',
         url: 'https://developer.mozilla.org',
-        level: '权威',
-        tag: '权威',
-        desc: 'Web 技术最权威的百科全书，架构师必查。',
+        tag: 'Reference',
+        desc: 'Web 技术最权威的百科全书,架构师必查。',
       },
       {
         name: 'V8 引擎博客',
         url: 'https://v8.dev',
-        level: '底层',
-        tag: '底层',
+        tag: 'Engine',
         desc: '深入理解 JS 内存管理、JIT 编译及执行效率。',
       },
       {
         name: 'Node.js',
         url: 'https://nodejs.org/',
-        level: '实践',
-        tag: '实践',
-        desc: 'JavaScript 运行时环境，支持构建高性能网络应用。',
+        tag: 'Runtime',
+        desc: 'JavaScript 运行时环境,支持构建高性能网络应用。',
       },
-
       {
         name: 'npm 仓库',
         url: 'https://www.npmjs.com',
-        level: '实践',
-        tag: '实践',
+        tag: 'Registry',
         desc: '全球最大的 JavaScript 包管理和分发平台。',
       },
     ],

@@ -277,11 +277,11 @@ const atoms_assembler_when_manual_assembler = (all_params, result_point) => {
   }
 
   // 遍历列表，
-  manual_assembler.forEach((manual_obj) => {
-    if (!manual_obj) {
+  manual_assembler.forEach((manual_obj_fn) => {
+    if (typeof manual_obj_fn !== 'function') {
       return
     }
-
+    let manual_obj = manual_obj_fn()
     result_point.state_fn_arr.push(...(manual_obj.state_fn_arr || []))
     result_point.singleton_init_fn_arr.push(...(manual_obj.singleton_init_fn_arr || []))
     result_point.method_fn_arr.push(...(manual_obj.method_fn_arr || []))

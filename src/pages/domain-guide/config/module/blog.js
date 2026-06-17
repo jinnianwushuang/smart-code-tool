@@ -3,8 +3,7 @@ export const order = 110
 export const docs = [
   {
     category: '全球大厂技术博客',
-    icon: 'GlobalOutlined',
-    tagColor: 'blue',
+    color: 'blue',
     items: [
       {
         name: 'Vercel Blog',
@@ -34,7 +33,7 @@ export const docs = [
         name: 'Airbnb Engineering',
         url: 'https://medium.com/airbnb-engineering',
         tag: 'Design',
-        desc: '设计系统（Design Systems）与大规模 React 应用的最佳实践。',
+        desc: '设计系统(Design Systems)与大规模 React 应用的最佳实践。',
       },
       {
         name: '字节跳动技术团队',
@@ -42,30 +41,35 @@ export const docs = [
         tag: 'Frontend',
         desc: '国内大前端领域、跨端方案及自研工具链的深度分享。',
       },
+      {
+        name: 'Google Developers Blog',
+        url: 'https://developers.google.com/blog',
+        tag: 'Web',
+        desc: 'Google 官方开发者博客,涵盖 Web 技术、Chrome 更新及最佳实践。',
+      },
     ],
   },
   {
     category: '行业大牛专栏',
-    icon: 'UserOutlined',
-    tagColor: 'green',
+    color: 'green',
     items: [
       {
         name: 'Overreacted',
         url: 'https://overreacted.io',
         tag: 'React',
-        desc: 'Dan Abramov 的个人博客，深入浅出讲解 React 核心思维。',
+        desc: 'Dan Abramov 的个人博客,深入浅出讲解 React 核心思维。',
       },
       {
         name: 'Anthony Fu',
         url: 'https://antfu.me/posts',
         tag: 'Vue/Vite',
-        desc: 'Vue/Vite 核心成员，分享极简主义的代码美学与开源心得。',
+        desc: 'Vue/Vite 核心成员,分享极简主义的代码美学与开源心得。',
       },
       {
         name: 'Lee Robinson',
         url: 'https://leerob.io/blog',
         tag: 'Next.js',
-        desc: 'Vercel 副总裁，关于产品设计、工程管理与前端趋势的思考。',
+        desc: 'Vercel 副总裁,关于产品设计、工程管理与前端趋势的思考。',
       },
       {
         name: 'Josh W. Comeau',
@@ -73,30 +77,41 @@ export const docs = [
         tag: 'Tutorial',
         desc: '业界公认质量最高的交互式前端教程博客。',
       },
+      {
+        name: 'Kent C. Dodds',
+        url: 'https://kentcdodds.com/blog',
+        tag: 'Testing',
+        desc: 'Testing Library 作者,专注于软件测试与最佳实践。',
+      },
     ],
   },
   {
     category: '前沿资讯与趋势',
-    icon: 'NotificationOutlined',
-    tagColor: 'orange',
+    color: 'orange',
     items: [
       {
         name: 'JavaScript Weekly',
         url: 'https://javascriptweekly.com',
         tag: 'Weekly',
-        desc: '全球最知名的 JS 生态周刊，每周追踪最新工具与文章。',
+        desc: '全球最知名的 JS 生态周刊,每周追踪最新工具与文章。',
       },
       {
         name: 'TLDR Tech',
         url: 'https://tldr.tech',
         tag: 'Tech',
-        desc: '每日精选科技新闻，涵盖 AI、工程化及初创企业动态。',
+        desc: '每日精选科技新闻,涵盖 AI、工程化及初创企业动态。',
       },
       {
         name: 'InfoQ',
         url: 'https://www.infoq.com',
         tag: 'Arch',
         desc: '深度解析软件开发领域的架构演进与前沿趋势。',
+      },
+      {
+        name: 'Hacker News',
+        url: 'https://news.ycombinator.com',
+        tag: 'Community',
+        desc: 'Y Combinator 运营的技术新闻社区,高质量讨论与前沿话题。',
       },
     ],
   },
