@@ -11,7 +11,7 @@ export const menuList = [
   {
     icon: () => h(HomeOutlined),
     key: 'domain-guide',
-    label: '架构导航',
+    label: '技术导航',
     separator: false,
   },
 

@@ -19,7 +19,7 @@ export const routes_tool = [
       {
         path: 'domain-guide',
         name: 'domain-guide',
-        meta: { title: '架构导航', icon: () => h(HomeOutlined) },
+        meta: { title: '技术导航', icon: () => h(HomeOutlined) },
         component: () => import('src/pages/domain-guide/domain-guide.vue'),
       },
       {
