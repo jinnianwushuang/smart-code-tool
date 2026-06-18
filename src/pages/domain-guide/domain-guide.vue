@@ -31,7 +31,7 @@
           </a-tabs>
         </div>
       </div>
-      <div class="search-bar-container row items-center q-px-sm q-pb-md">
+      <div class="search-bar-container row items-center q-py-md">
         <q-input
           v-model="search_key"
           placeholder="请输入关键字搜索..."
@@ -316,7 +316,6 @@ const handle_filter_groups = () => {
 .search-bar-container {
   background: rgba(128, 128, 128, 0.04);
   border-radius: 8px;
-  padding: 8px;
 }
 
 .content-viewport {
