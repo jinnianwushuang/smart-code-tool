@@ -39,17 +39,6 @@
       >
         <q-tooltip>{{ isDarkTheme ? '切换至日间模式' : '切换至夜间模式' }}</q-tooltip>
       </q-btn>
-      <!-- <q-toggle
-        v-model="isDarkTheme"
-        color="indigo"
-        keep-color
-        icon="light_mode"
-        checked-icon="nightlight_round"
-        unchecked-icon="light_mode"
-        class="q-mr-sm header-toggle"
-      >
-        <q-tooltip>{{ isDarkTheme ? '切换至日间模式' : '切换至夜间模式' }}</q-tooltip>
-      </q-toggle> -->
     </q-toolbar>
   </a-layout-header>
 </template>
@@ -91,13 +80,36 @@ const check_route = () => {
 
 const hanle_toogle = () => {
   isDarkTheme.value = !isDarkTheme.value
+
+  // 如果当前在文档页面，同步主题到 VitePress
+  if (route.path.includes('/docs')) {
+    syncThemeToDocs()
+  }
+}
+
+// 同步主题到文档 iframe
+const syncThemeToDocs = () => {
+  const currentTheme = isDarkTheme.value ? 'dark' : 'light'
+
+  // 查找文档页面的 iframe 元素
+  const iframe = document.querySelector('iframe[src*="docs"]')
+
+  if (iframe && iframe.contentWindow) {
+    // 向 iframe 发送主题变更消息
+    iframe.contentWindow.postMessage({ type: 'theme-change', theme: currentTheme }, '*')
+    console.log('[Header] 主题已同步到 iframe:', currentTheme)
+  }
 }
 
 const handle_click_menu = ({ key }) => {
-  // console.log(item, key, keyPath)
   console.log('handle_click_menu----layout-header---', key)
 
-  router.push({ name: key })
+  // 如果是文档菜单，跳转到文档路由
+  if (key === 'docs') {
+    router.push({ name: 'docs' })
+  } else {
+    router.push({ name: key })
+  }
 }
 </script>
 

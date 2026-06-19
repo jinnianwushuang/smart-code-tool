@@ -7,7 +7,7 @@
     <a-layout>
       <!-- 内容区 -->
       <a-layout-content ref="scrollContainer" class="layout-content dark" @scroll="handle_scroll">
-        <iframe src="./docs/index.html" class="iframe-container"></iframe>
+        <iframe ref="docsIframe" src="./docs/index.html" class="iframe-container"></iframe>
 
         <!-- 滚动到顶部按钮 -->
         <transition name="fade">
@@ -22,22 +22,50 @@
   </a-layout>
 </template>
 <script setup>
-import { ref, onMounted, useTemplateRef } from 'vue'
+import { ref, onMounted, useTemplateRef, watch } from 'vue'
 import { VerticalAlignTopOutlined } from '@ant-design/icons-vue'
 import { RouterView, useRouter } from 'vue-router'
 
 import { useQuasar } from 'quasar'
 import { useStorage } from '@vueuse/core'
 import LayoutHeader from 'src/layout/compoent/layout-header/layout-header.vue'
+import { isDarkTheme } from 'src/output/common/project-common.js'
 
 const $q = useQuasar()
 
 const show_back_top = ref(false)
 const scroll_container_ref = useTemplateRef('scrollContainer')
+const iframe_ref = useTemplateRef('docsIframe')
 
 const router = useRouter()
 
-onMounted(() => {})
+onMounted(() => {
+  // iframe 加载完成后发送初始主题
+  const iframe = document.querySelector('iframe[src*="docs"]')
+  if (iframe) {
+    iframe.addEventListener('load', () => {
+      syncThemeToIframe()
+    })
+  }
+})
+
+// 监听主题变化，同步到 iframe
+watch(isDarkTheme, () => {
+  syncThemeToIframe()
+})
+
+// 同步主题到 iframe
+const syncThemeToIframe = () => {
+  const iframe = iframe_ref.value
+  const currentTheme = isDarkTheme.value ? 'dark' : 'light'
+
+  if (iframe && iframe.contentWindow) {
+    iframe.contentWindow.postMessage({ type: 'theme-change', theme: currentTheme }, '*')
+    console.log('[Docs Layout] 主题已同步到 iframe:', currentTheme)
+  } else {
+    console.warn('[Docs Layout] iframe 未就绪')
+  }
+}
 
 const handle_scroll = (e) => {
   show_back_top.value = e.target.scrollTop > 300
@@ -53,7 +81,7 @@ const scroll_to_top = () => {
 .layout-content {
   margin: 0;
   min-height: 680px;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 66px);
 
   overflow-y: auto;
   position: relative;

@@ -163,6 +163,21 @@
 
 ### 📖 开发手册 (Handbook)
 
+- [TypeScript 手册](./handbook/typescript-handbook.md) - TypeScript 开发参考
+- [NestJS 手册](./handbook/nestjs-handbook.md) - NestJS 后端框架指南
+- [Prisma 手册](./handbook/prisma-handbook.md) - Prisma ORM 数据库工具
+- [Sequelize 手册](./handbook/sequelize-handbook.md) - Sequelize SQL ORM
+- [Mongoose 手册](./handbook/mongoose-handbook.md) - Mongoose MongoDB ODM
+- [MySQL 手册](./handbook/mysql-handbook.md) - MySQL 关系型数据库速查
+- [MongoDB 手册](./handbook/mongodb-handbook.md) - MongoDB NoSQL 数据库速查
+- [Shell 手册](./handbook/shell-handbook.md) - Shell 脚本编程指南
+- [Linux 命令速查](./handbook/linux-handbook.md) - Linux 日常最常用命令
+- [Vue 3 手册](./handbook/vue3-handbook.md) - Vue 3 前端框架开发
+- [React 19 手册](./handbook/react19-handbook.md) - React 19 最新特性
+- [SCSS 手册](./handbook/scss-handbook.md) - SCSS/Sass 样式预处理器
+- [CSS 手册](./handbook/css-handbook.md) - CSS3 样式开发参考
+- [Dart 手册](./handbook/dart-handbook.md) - Dart 编程语言指南
+- [Flutter 手册](./handbook/flutter-handbook.md) - Flutter 跨平台移动开发
 - [Docker 手册](./handbook/docker-handbook.md) - Docker 容器化部署指南
 - [JavaScript 手册](./handbook/javascript-handbook.md) - JavaScript 开发手册
 - [JS 手册](./handbook/js-handbook.md) - JS 快速参考手册

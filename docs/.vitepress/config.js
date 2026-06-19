@@ -20,6 +20,46 @@ export default defineConfig({
     // 导航栏
     nav: [
       { text: '首页', link: '/' },
+      {
+        text: '开发手册',
+        items: [
+          // 前端框架
+          { text: 'Vue 3', link: '/handbook/vue3-handbook' },
+          { text: 'React 19', link: '/handbook/react19-handbook' },
+          // 后端框架
+          { text: 'NestJS', link: '/handbook/nestjs-handbook' },
+          // TypeScript & JavaScript
+          { text: 'TypeScript', link: '/handbook/typescript-handbook' },
+          // 数据库 ORM
+          { text: 'Prisma', link: '/handbook/prisma-handbook' },
+          { text: 'Sequelize', link: '/handbook/sequelize-handbook' },
+          { text: 'Mongoose', link: '/handbook/mongoose-handbook' },
+          // 数据库
+          { text: 'MySQL', link: '/handbook/mysql-handbook' },
+          { text: 'MongoDB', link: '/handbook/mongodb-handbook' },
+          // 移动开发
+          { text: 'Dart', link: '/handbook/dart-handbook' },
+          { text: 'Flutter', link: '/handbook/flutter-handbook' },
+          // 样式相关
+          { text: 'CSS', link: '/handbook/css-handbook' },
+          { text: 'SCSS', link: '/handbook/scss-handbook' },
+          // 系统运维
+          { text: 'Shell', link: '/handbook/shell-handbook' },
+          { text: 'Linux 命令', link: '/handbook/linux-handbook' },
+        ],
+      },
+      {
+        text: '架构文档',
+        items: [
+          {
+            text: 'AI 相关',
+            link: '/architecture-document/ai/architectural-vision/architectural-vision-1',
+          },
+          { text: 'Vue 架构', link: '/architecture-document/vue/architecture/core-principle' },
+          { text: 'React 文档', link: '/architecture-document/react/idea-doc/idea1' },
+          { text: '代码分析', link: '/architecture-document/code-analysis/idea-doc/idea' },
+        ],
+      },
       { text: 'GitHub', link: 'https://github.com/jinnianwushuang/smart-code-tool' },
     ],
 
@@ -489,11 +529,43 @@ export default defineConfig({
         text: '📖 开发手册',
         collapsed: false,
         items: [
-          { text: 'Docker 手册', link: '/handbook/docker-handbook' },
+          // ========== 前端框架 ==========
+          { text: 'Vue 3 手册', link: '/handbook/vue3-handbook' },
+          { text: 'React 19 手册', link: '/handbook/react19-handbook' },
+
+          // ========== JavaScript & TypeScript ==========
+          { text: 'TypeScript 手册', link: '/handbook/typescript-handbook' },
           { text: 'JavaScript 手册', link: '/handbook/javascript-handbook' },
           { text: 'JS 手册', link: '/handbook/js-handbook' },
-          { text: 'Python 手册', link: '/handbook/python-handbook' },
+
+          // ========== 后端框架 ==========
+          { text: 'NestJS 手册', link: '/handbook/nestjs-handbook' },
+
+          // ========== 数据库 ORM ==========
+          { text: 'Prisma 手册', link: '/handbook/prisma-handbook' },
+          { text: 'Sequelize 手册', link: '/handbook/sequelize-handbook' },
+          { text: 'Mongoose 手册', link: '/handbook/mongoose-handbook' },
+
+          // ========== 数据库 ==========
+          { text: 'MySQL 手册', link: '/handbook/mysql-handbook' },
+          { text: 'MongoDB 手册', link: '/handbook/mongodb-handbook' },
+
+          // ========== 移动开发 ==========
+          { text: 'Dart 手册', link: '/handbook/dart-handbook' },
+          { text: 'Flutter 手册', link: '/handbook/flutter-handbook' },
+
+          // ========== 样式相关 ==========
+          { text: 'CSS 手册', link: '/handbook/css-handbook' },
+          { text: 'SCSS 手册', link: '/handbook/scss-handbook' },
           { text: 'Tailwind CSS 手册', link: '/handbook/tailwind-css-handbook' },
+
+          // ========== 系统运维 ==========
+          { text: 'Shell 手册', link: '/handbook/shell-handbook' },
+          { text: 'Linux 命令速查', link: '/handbook/linux-handbook' },
+
+          // ========== 其他工具 ==========
+          { text: 'Python 手册', link: '/handbook/python-handbook' },
+          { text: 'Docker 手册', link: '/handbook/docker-handbook' },
           { text: 'Vim 手册', link: '/handbook/vim-handbook' },
         ],
       },
