@@ -33,10 +33,4 @@ export const menuList = [
     label: '万年历',
     separator: true,
   },
-  {
-    icon: () => h(FileTextOutlined),
-    key: 'vue-architecture-document',
-    label: 'VUE架构',
-    separator: true,
-  },
 ]

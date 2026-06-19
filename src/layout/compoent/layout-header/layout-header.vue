@@ -8,10 +8,12 @@
       <a-menu
         v-model:selectedKeys="selectedKeys1"
         mode="horizontal"
-        :items="topMenuList"
         class="header-menu"
         @click="handle_click_menu"
       >
+        <a-menu-item key="tool">工具库</a-menu-item>
+        <a-menu-item key="vue-test">VUE 架构验证</a-menu-item>
+        <a-menu-item key="docs">文档</a-menu-item>
       </a-menu>
       <q-space />
 
@@ -61,12 +63,6 @@ const buildTime = __APP_BUILD_TIME__
 const build_date = dayjs(buildTime).format('YYYY-MM-DD')
 const build_time = dayjs(buildTime).format('HH:mm:ss Z')
 
-const topMenuList = [
-  { key: 'tool', label: '工具库' },
-  { key: 'vue-test', label: 'VUE 架构验证' },
-  //   { key: '3', label: 'nav 3' },
-]
-
 const selectedKeys1 = ref([])
 
 onMounted(() => {
@@ -88,6 +84,8 @@ const check_route = () => {
 
   if (match) {
     selectedKeys1.value = [match]
+  } else {
+    selectedKeys1.value = []
   }
 }
 
