@@ -174,6 +174,7 @@
 - [Linux 命令速查](./handbook/linux-handbook.md) - Linux 日常最常用命令
 - [Vue 3 手册](./handbook/vue3-handbook.md) - Vue 3 前端框架开发
 - [React 19 手册](./handbook/react19-handbook.md) - React 19 最新特性
+- [Next.js 手册](./handbook/nextjs-handbook.md) - Next.js 全栈框架指南
 - [SCSS 手册](./handbook/scss-handbook.md) - SCSS/Sass 样式预处理器
 - [CSS 手册](./handbook/css-handbook.md) - CSS3 样式开发参考
 - [Dart 手册](./handbook/dart-handbook.md) - Dart 编程语言指南

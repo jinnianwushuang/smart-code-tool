@@ -732,13 +732,11 @@ import Validators = Validation.Validators
 
 ### 8.3 ambient 命名空间
 
-```typescript
+```ts
 declare namespace D3 {
   export interface Selectors {
-    select: {
-      (selector: string): Selection
-      (element: EventTarget): Selection
-    }
+    select(selector: string): Selection
+    selectElement(element: EventTarget): Selection
   }
 
   export interface Event {
@@ -945,7 +943,7 @@ class Greeter {
 
 ## 十一、工具类型
 
-### 11.1 Partial<T>
+### 11.1 `Partial<T>`
 
 ```typescript
 interface Todo {
@@ -967,7 +965,7 @@ const todo2 = updateTodo(todo1, {
 })
 ```
 
-### 11.2 Required<T>
+### 11.2 `Required<T>`
 
 ```typescript
 interface Props {
@@ -981,7 +979,7 @@ const props: Required<Props> = {
 }
 ```
 
-### 11.3 Readonly<T>
+### 11.3 `Readonly<T>`
 
 ```typescript
 interface Todo {
@@ -1062,14 +1060,14 @@ type T0 = Extract<'a' | 'b' | 'c', 'a' | 'f'> // "a"
 type T1 = Extract<string | number | (() => void), Function> // () => void
 ```
 
-### 11.9 NonNullable<T>
+### 11.9 `NonNullable<T>`
 
 ```typescript
 type T0 = NonNullable<string | number | undefined> // string | number
 type T1 = NonNullable<string[] | null | undefined> // string[]
 ```
 
-### 11.10 Parameters<T>
+### 11.10 `Parameters<T>`
 
 ```typescript
 declare function f1(arg: { a: number; b: string }): void
@@ -1080,7 +1078,7 @@ type T2 = Parameters<<T>(arg: T) => T> // [unknown]
 type T3 = Parameters<typeof f1> // [{ a: number; b: string }]
 ```
 
-### 11.11 ReturnType<T>
+### 11.11 `ReturnType<T>`
 
 ```typescript
 declare function f1(): { a: number; b: string }
@@ -1092,7 +1090,7 @@ type T3 = ReturnType<<T extends U, U extends number[]>() => T> // number[]
 type T4 = ReturnType<typeof f1> // { a: number; b: string }
 ```
 
-### 11.12 InstanceType<T>
+### 11.12 `InstanceType<T>`
 
 ```typescript
 class C {

@@ -55,7 +55,7 @@ prisma/
 
 ### 1.4 环境变量
 
-```env
+```bash
 # .env
 DATABASE_URL="postgresql://user:password@localhost:5432/mydb"
 ```
@@ -937,7 +937,7 @@ type UserWithPosts = Prisma.UserGetPayload<{
 
 ### 10.6 环境变量
 
-```env
+```bash
 # .env
 DATABASE_URL="postgresql://user:password@localhost:5432/mydb"
 DIRECT_URL="postgresql://user:password@localhost:5432/mydb"

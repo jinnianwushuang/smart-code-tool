@@ -26,6 +26,7 @@ export default defineConfig({
           // 前端框架
           { text: 'Vue 3', link: '/handbook/vue3-handbook' },
           { text: 'React 19', link: '/handbook/react19-handbook' },
+          { text: 'Next.js', link: '/handbook/nextjs-handbook' },
           // 后端框架
           { text: 'NestJS', link: '/handbook/nestjs-handbook' },
           // TypeScript & JavaScript
@@ -532,6 +533,7 @@ export default defineConfig({
           // ========== 前端框架 ==========
           { text: 'Vue 3 手册', link: '/handbook/vue3-handbook' },
           { text: 'React 19 手册', link: '/handbook/react19-handbook' },
+          { text: 'Next.js 手册', link: '/handbook/nextjs-handbook' },
 
           // ========== JavaScript & TypeScript ==========
           { text: 'TypeScript 手册', link: '/handbook/typescript-handbook' },
