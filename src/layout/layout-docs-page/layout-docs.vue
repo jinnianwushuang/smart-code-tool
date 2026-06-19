@@ -7,7 +7,7 @@
     <a-layout>
       <!-- 内容区 -->
       <a-layout-content ref="scrollContainer" class="layout-content dark" @scroll="handle_scroll">
-        <iframe src="./docs/index.html" width="100%" height="calc(100vh - 65px)"></iframe>
+        <iframe src="./docs/index.html" class="iframe-container"></iframe>
 
         <!-- 滚动到顶部按钮 -->
         <transition name="fade">
@@ -51,7 +51,6 @@ const scroll_to_top = () => {
 </script>
 <style lang="scss" scoped>
 .layout-content {
-  padding: 24px;
   margin: 0;
   min-height: 680px;
   height: calc(100vh - 64px);
@@ -59,6 +58,11 @@ const scroll_to_top = () => {
   overflow-y: auto;
   position: relative;
   transition: background-color 0.3s ease;
+  .iframe-container {
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .back-to-top {
