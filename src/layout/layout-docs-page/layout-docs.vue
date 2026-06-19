@@ -7,7 +7,7 @@
     <a-layout>
       <!-- 内容区 -->
       <a-layout-content ref="scrollContainer" class="layout-content dark" @scroll="handle_scroll">
-        <router-view />
+        <iframe src="./docs/index.html" width="100%" height="calc(100vh - 65px)"></iframe>
 
         <!-- 滚动到顶部按钮 -->
         <transition name="fade">
