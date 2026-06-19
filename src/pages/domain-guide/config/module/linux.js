@@ -42,10 +42,16 @@ export const docs = [
     color: 'green',
     items: [
       {
-        name: 'Bash Guide',
-        url: 'https://www.gnu.org/software/bash/manual/',
+        name: 'Bash Handbook',
+        url: 'https://github.com/denysdovhan/bash-handbook',
         tag: 'Shell',
-        desc: 'GNU Bash 官方手册,学习 Shell 脚本编程的权威参考。',
+        desc: '简洁实用的 Bash 脚本编程指南,适合初学者快速入门。',
+      },
+      {
+        name: 'Shell Scripting Tutorial',
+        url: 'https://www.shellscript.sh/',
+        tag: 'Tutorial',
+        desc: '全面的 Shell 脚本教程,从基础语法到高级技巧,配有丰富示例。',
       },
       {
         name: 'Oh My Zsh',
@@ -60,6 +66,12 @@ export const docs = [
         desc: '终端复用器,支持会话管理、窗口分割,远程开发必备工具。',
       },
       {
+        name: 'WindTerm',
+        url: 'https://github.com/kingToolbox/WindTerm',
+        tag: 'SSH Client',
+        desc: '跨平台的 SSH/Telnet/Serial/Shell/Sftp 客户端,功能强大且免费开源。',
+      },
+      {
         name: 'The Art of Command Line',
         url: 'https://github.com/jlevy/the-art-of-command-line',
         tag: 'Guide',
@@ -70,6 +82,18 @@ export const docs = [
         url: 'https://explainshell.com/',
         tag: 'Helper',
         desc: '在线工具,逐段解释 shell 命令的含义,帮助理解复杂命令。',
+      },
+      {
+        name: 'Command Line Power User',
+        url: 'https://commandlinepoweruser.com/',
+        tag: 'Video',
+        desc: 'Wes Bos 出品的命令行进阶视频教程,提升终端工作效率。',
+      },
+      {
+        name: 'Linux Command Library',
+        url: 'https://linuxcommandlibrary.com/',
+        tag: 'Reference',
+        desc: 'Linux 命令速查库,提供详细的命令用法、参数说明和示例。',
       },
     ],
   },
@@ -286,6 +310,12 @@ export const docs = [
         url: 'https://man7.org/linux/man-pages/index.html',
         tag: 'Manual',
         desc: '在线 Linux 手册页,查询命令用法和参数的权威参考。',
+      },
+      {
+        name: 'Ubuntu Manpages',
+        url: 'https://manpages.ubuntu.com/',
+        tag: 'Manual',
+        desc: 'Ubuntu 官方在线手册页,提供完整的命令文档和示例,支持多版本查询。',
       },
     ],
   },
