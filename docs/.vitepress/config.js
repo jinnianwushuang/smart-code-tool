@@ -32,6 +32,7 @@ export default defineConfig({
           { text: 'TypeScript 手册', link: '/handbook/typescript-handbook' },
           { text: 'JavaScript 手册', link: '/handbook/javascript-handbook' },
           { text: 'JS 手册', link: '/handbook/js-handbook' },
+          { text: '正则速查', link: '/handbook/regex-handbook' },
 
           // ========== 后端框架 ==========
           { text: 'NestJS 手册', link: '/handbook/nestjs-handbook' },
@@ -57,6 +58,7 @@ export default defineConfig({
           // ========== 系统运维 ==========
           { text: 'Shell 手册', link: '/handbook/shell-handbook' },
           { text: 'Linux 命令速查', link: '/handbook/linux-handbook' },
+          { text: 'Git 速查', link: '/handbook/git-handbook' },
 
           // ========== 其他工具 ==========
           { text: 'Python 手册', link: '/handbook/python-handbook' },
@@ -554,6 +556,7 @@ export default defineConfig({
           { text: 'TypeScript 手册', link: '/handbook/typescript-handbook' },
           { text: 'JavaScript 手册', link: '/handbook/javascript-handbook' },
           { text: 'JS 手册', link: '/handbook/js-handbook' },
+          { text: '正则速查', link: '/handbook/regex-handbook' },
 
           // ========== 后端框架 ==========
           { text: 'NestJS 手册', link: '/handbook/nestjs-handbook' },
@@ -579,6 +582,7 @@ export default defineConfig({
           // ========== 系统运维 ==========
           { text: 'Shell 手册', link: '/handbook/shell-handbook' },
           { text: 'Linux 命令速查', link: '/handbook/linux-handbook' },
+          { text: 'Git 速查', link: '/handbook/git-handbook' },
 
           // ========== 其他工具 ==========
           { text: 'Python 手册', link: '/handbook/python-handbook' },
