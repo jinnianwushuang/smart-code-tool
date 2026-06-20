@@ -706,6 +706,8 @@ git branch -D feature-old >> deleted-branches.log
 
 ### 9.6 实用批量删除脚本
 
+#### Bash 版本
+
 ```bash
 #!/bin/bash
 # delete-old-branches.sh
@@ -735,6 +737,828 @@ if [[ $confirm == "y" ]]; then
 else
   echo "已取消"
 fi
+```
+
+**使用方法**：
+
+```bash
+chmod +x delete-old-branches.sh
+./delete-old-branches.sh
+```
+
+#### Python 版本
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+git-cleanup.py - Git 批量清理工具
+功能：批量删除旧分支、标签，清理远程追踪
+"""
+
+import subprocess
+import sys
+import re
+from datetime import datetime, timedelta
+from typing import List, Tuple
+
+
+class GitCleanup:
+    def __init__(self, days_threshold: int = 90, dry_run: bool = False):
+        self.days_threshold = days_threshold
+        self.dry_run = dry_run
+        self.protected_branches = {'main', 'master', 'develop', 'dev'}
+
+    def run_command(self, cmd: str) -> Tuple[int, str, str]:
+        """执行命令并返回结果"""
+        try:
+            result = subprocess.run(
+                cmd,
+                shell=True,
+                capture_output=True,
+                text=True,
+                check=False
+            )
+            return result.returncode, result.stdout, result.stderr
+        except Exception as e:
+            return 1, '', str(e)
+
+    def get_old_branches(self) -> List[str]:
+        """获取超过指定天数未更新的分支"""
+        print(f"🔍 查找 {self.days_threshold} 天未活动的分支...")
+
+        # 获取所有本地分支及其最后提交时间
+        code, output, error = self.run_command('git branch -v')
+        if code != 0:
+            print(f"❌ 错误: {error}")
+            return []
+
+        old_branches = []
+        cutoff_date = datetime.now() - timedelta(days=self.days_threshold)
+
+        for line in output.strip().split('\n'):
+            if not line.strip():
+                continue
+
+            # 解析分支信息
+            match = re.match(r'^(?:\*?\s*)(\S+)\s+\S+\s+(.+)$', line)
+            if not match:
+                continue
+
+            branch_name = match.group(1)
+            commit_info = match.group(2)
+
+            # 跳过受保护的分支
+            if branch_name in self.protected_branches or branch_name.startswith('*'):
+                continue
+
+            # 提取日期（假设格式为 "Mon Jan 15 10:30:00 2024"）
+            date_match = re.search(r'(\w{3} \w{3} \d{1,2} \d{2}:\d{2}:\d{2} \d{4})', commit_info)
+            if date_match:
+                try:
+                    date_str = date_match.group(1)
+                    branch_date = datetime.strptime(date_str, '%a %b %d %H:%M:%S %Y')
+
+                    if branch_date < cutoff_date:
+                        old_branches.append(branch_name)
+                except ValueError:
+                    continue
+
+        return old_branches
+
+    def get_merged_branches(self) -> List[str]:
+        """获取已合并的分支"""
+        print("🔍 查找已合并的分支...")
+
+        code, output, error = self.run_command('git branch --merged main')
+        if code != 0:
+            # 尝试使用 master
+            code, output, error = self.run_command('git branch --merged master')
+            if code != 0:
+                print(f"❌ 错误: {error}")
+                return []
+
+        branches = []
+        for line in output.strip().split('\n'):
+            branch = line.strip().lstrip('* ').strip()
+            if branch and branch not in self.protected_branches:
+                branches.append(branch)
+
+        return branches
+
+    def get_pattern_branches(self, pattern: str) -> List[str]:
+        """获取匹配模式的分支"""
+        print(f"🔍 查找匹配 '{pattern}' 的分支...")
+
+        code, output, error = self.run_command('git branch')
+        if code != 0:
+            print(f"❌ 错误: {error}")
+            return []
+
+        branches = []
+        for line in output.strip().split('\n'):
+            branch = line.strip().lstrip('* ').strip()
+            if branch and re.search(pattern, branch) and branch not in self.protected_branches:
+                branches.append(branch)
+
+        return branches
+
+    def delete_local_branches(self, branches: List[str], force: bool = False) -> int:
+        """删除本地分支"""
+        if not branches:
+            print("✅ 没有需要删除的分支")
+            return 0
+
+        print(f"\n📋 将删除 {len(branches)} 个本地分支:")
+        for branch in branches:
+            print(f"   - {branch}")
+
+        if self.dry_run:
+            print("\n⚠️  干运行模式，未实际删除")
+            return len(branches)
+
+        # 确认删除
+        confirm = input("\n确认删除？(yes/no): ").strip().lower()
+        if confirm not in ['yes', 'y']:
+            print("❌ 已取消")
+            return 0
+
+        deleted_count = 0
+        flag = '-D' if force else '-d'
+
+        for branch in branches:
+            print(f"🗑️  删除分支: {branch}")
+            code, output, error = self.run_command(f'git branch {flag} {branch}')
+            if code == 0:
+                deleted_count += 1
+            else:
+                print(f"   ⚠️  失败: {error.strip()}")
+
+        print(f"\n✅ 成功删除 {deleted_count}/{len(branches)} 个分支")
+        return deleted_count
+
+    def delete_remote_branches(self, branches: List[str]) -> int:
+        """删除远程分支"""
+        if not branches:
+            print("✅ 没有需要删除的远程分支")
+            return 0
+
+        print(f"\n📋 将删除 {len(branches)} 个远程分支:")
+        for branch in branches:
+            print(f"   - origin/{branch}")
+
+        if self.dry_run:
+            print("\n⚠️  干运行模式，未实际删除")
+            return len(branches)
+
+        confirm = input("\n确认删除远程分支？(yes/no): ").strip().lower()
+        if confirm not in ['yes', 'y']:
+            print("❌ 已取消")
+            return 0
+
+        deleted_count = 0
+        for branch in branches:
+            print(f"🗑️  删除远程分支: origin/{branch}")
+            code, output, error = self.run_command(f'git push origin --delete {branch}')
+            if code == 0:
+                deleted_count += 1
+            else:
+                print(f"   ⚠️  失败: {error.strip()}")
+
+        print(f"\n✅ 成功删除 {deleted_count}/{len(branches)} 个远程分支")
+        return deleted_count
+
+    def cleanup_remote_tracking(self):
+        """清理远程追踪分支"""
+        print("\n🧹 清理远程追踪分支...")
+
+        if self.dry_run:
+            code, output, error = self.run_command('git remote prune origin --dry-run')
+        else:
+            code, output, error = self.run_command('git remote prune origin')
+
+        if code == 0:
+            if output.strip():
+                print(output)
+            else:
+                print("✅ 没有需要清理的远程追踪分支")
+        else:
+            print(f"⚠️  清理失败: {error.strip()}")
+
+    def show_stats(self):
+        """显示统计信息"""
+        print("\n" + "="*60)
+        print("📊 Git 仓库统计")
+        print("="*60)
+
+        # 本地分支数
+        code, output, _ = self.run_command('git branch | wc -l')
+        if code == 0:
+            print(f"本地分支: {output.strip()}")
+
+        # 远程分支数
+        code, output, _ = self.run_command('git branch -r | wc -l')
+        if code == 0:
+            print(f"远程分支: {output.strip()}")
+
+        # 标签数
+        code, output, _ = self.run_command('git tag | wc -l')
+        if code == 0:
+            print(f"标签数量: {output.strip()}")
+
+        print("="*60)
+
+
+def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Git 批量清理工具')
+    parser.add_argument('--days', type=int, default=90, help='删除多少天未活动的分支 (默认: 90)')
+    parser.add_argument('--pattern', type=str, help='删除匹配正则表达式的分支')
+    parser.add_argument('--merged', action='store_true', help='删除已合并的分支')
+    parser.add_argument('--remote', action='store_true', help='同时删除远程分支')
+    parser.add_argument('--force', action='store_true', help='强制删除（未合并的分支）')
+    parser.add_argument('--dry-run', action='store_true', help='干运行模式（不实际删除）')
+    parser.add_argument('--stats', action='store_true', help='显示统计信息')
+
+    args = parser.parse_args()
+
+    cleanup = GitCleanup(days_threshold=args.days, dry_run=args.dry_run)
+
+    if args.stats:
+        cleanup.show_stats()
+        return
+
+    branches_to_delete = []
+
+    if args.merged:
+        branches_to_delete.extend(cleanup.get_merged_branches())
+
+    if args.pattern:
+        branches_to_delete.extend(cleanup.get_pattern_branches(args.pattern))
+
+    if not args.merged and not args.pattern:
+        # 默认删除旧分支
+        branches_to_delete.extend(cleanup.get_old_branches())
+
+    # 去重
+    branches_to_delete = list(set(branches_to_delete))
+
+    if not branches_to_delete:
+        print("✅ 没有需要删除的分支")
+        return
+
+    # 删除本地分支
+    cleanup.delete_local_branches(branches_to_delete, force=args.force)
+
+    # 删除远程分支
+    if args.remote:
+        cleanup.delete_remote_branches(branches_to_delete)
+
+    # 清理远程追踪
+    cleanup.cleanup_remote_tracking()
+
+    # 显示统计
+    cleanup.show_stats()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+**使用方法**：
+
+```bash
+# 安装依赖（无需额外依赖，使用 Python 标准库）
+# Python 3.6+
+
+# 查看帮助
+python git-cleanup.py --help
+
+# 删除 90 天未活动的分支（干运行）
+python git-cleanup.py --dry-run
+
+# 删除 30 天未活动的分支
+python git-cleanup.py --days 30
+
+# 删除已合并的分支
+python git-cleanup.py --merged
+
+# 删除匹配模式的分支
+python git-cleanup.py --pattern "feature/.*"
+
+# 删除旧分支并同时删除远程分支
+python git-cleanup.py --days 60 --remote
+
+# 强制删除未合并的分支
+python git-cleanup.py --days 90 --force
+
+# 显示统计信息
+python git-cleanup.py --stats
+```
+
+**特性**：
+
+- ✅ 支持多种删除策略（按时间、按模式、已合并）
+- ✅ 干运行模式，安全预览
+- ✅ 交互式确认，防止误删
+- ✅ 自动跳过受保护分支
+- ✅ 支持删除远程分支
+- ✅ 详细的统计信息
+- ✅ 跨平台支持（Windows/macOS/Linux）
+
+#### Node.js 版本
+
+```javascript
+#!/usr/bin/env node
+/**
+ * git-cleanup.js - Git 批量清理工具
+ * 功能：批量删除旧分支、标签，清理远程追踪
+ *
+ * 使用方法:
+ *   node git-cleanup.js [options]
+ *
+ * 选项:
+ *   --days <number>      删除多少天未活动的分支 (默认: 90)
+ *   --pattern <regex>    删除匹配正则表达式的分支
+ *   --merged             删除已合并的分支
+ *   --remote             同时删除远程分支
+ *   --force              强制删除（未合并的分支）
+ *   --dry-run            干运行模式（不实际删除）
+ *   --stats              显示统计信息
+ *   --help               显示帮助
+ */
+
+const { execSync, exec } = require('child_process')
+const readline = require('readline')
+
+class GitCleanup {
+  constructor(options = {}) {
+    this.daysThreshold = options.days || 90
+    this.dryRun = options.dryRun || false
+    this.protectedBranches = new Set(['main', 'master', 'develop', 'dev'])
+  }
+
+  /**
+   * 执行命令
+   */
+  runCommand(cmd) {
+    try {
+      const output = execSync(cmd, {
+        encoding: 'utf-8',
+        stdio: ['pipe', 'pipe', 'pipe'],
+      })
+      return { success: true, output: output.trim(), error: null }
+    } catch (error) {
+      return { success: false, output: null, error: error.message }
+    }
+  }
+
+  /**
+   * 异步执行命令（用于需要交互的场景）
+   */
+  runCommandAsync(cmd) {
+    return new Promise((resolve) => {
+      exec(cmd, (error, stdout, stderr) => {
+        resolve({
+          success: !error,
+          output: stdout ? stdout.trim() : null,
+          error: error ? error.message : null,
+        })
+      })
+    })
+  }
+
+  /**
+   * 询问用户确认
+   */
+  askQuestion(query) {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    })
+
+    return new Promise((resolve) => {
+      rl.question(query, (answer) => {
+        rl.close()
+        resolve(answer.trim().toLowerCase())
+      })
+    })
+  }
+
+  /**
+   * 获取超过指定天数未更新的分支
+   */
+  async getOldBranches() {
+    console.log(`🔍 查找 ${this.daysThreshold} 天未活动的分支...`)
+
+    const result = this.runCommand('git branch -v')
+    if (!result.success) {
+      console.error(`❌ 错误: ${result.error}`)
+      return []
+    }
+
+    const cutoffDate = new Date()
+    cutoffDate.setDate(cutoffDate.getDate() - this.daysThreshold)
+
+    const lines = result.output.split('\n').filter((line) => line.trim())
+    const oldBranches = []
+
+    for (const line of lines) {
+      // 解析分支信息
+      const match = line.match(/^(?:\*?\s*)(\S+)\s+\S+\s+(.+)$/)
+      if (!match) continue
+
+      const branchName = match[1]
+      const commitInfo = match[2]
+
+      // 跳过受保护的分支
+      if (this.protectedBranches.has(branchName) || branchName.startsWith('*')) {
+        continue
+      }
+
+      // 提取日期
+      const dateMatch = commitInfo.match(/(\w{3} \w{3} \d{1,2} \d{2}:\d{2}:\d{2} \d{4})/)
+      if (dateMatch) {
+        try {
+          const branchDate = new Date(dateMatch[1])
+          if (branchDate < cutoffDate) {
+            oldBranches.push(branchName)
+          }
+        } catch (e) {
+          // 忽略日期解析错误
+        }
+      }
+    }
+
+    return oldBranches
+  }
+
+  /**
+   * 获取已合并的分支
+   */
+  getMergedBranches() {
+    console.log('🔍 查找已合并的分支...')
+
+    let result = this.runCommand('git branch --merged main')
+    if (!result.success) {
+      result = this.runCommand('git branch --merged master')
+      if (!result.success) {
+        console.error(`❌ 错误: ${result.error}`)
+        return []
+      }
+    }
+
+    const branches = result.output
+      .split('\n')
+      .map((line) => line.trim().replace(/^\*?\s*/, ''))
+      .filter((branch) => branch && !this.protectedBranches.has(branch))
+
+    return branches
+  }
+
+  /**
+   * 获取匹配模式的分支
+   */
+  getPatternBranches(pattern) {
+    console.log(`🔍 查找匹配 '${pattern}' 的分支...`)
+
+    const result = this.runCommand('git branch')
+    if (!result.success) {
+      console.error(`❌ 错误: ${result.error}`)
+      return []
+    }
+
+    const regex = new RegExp(pattern)
+    const branches = result.output
+      .split('\n')
+      .map((line) => line.trim().replace(/^\*?\s*/, ''))
+      .filter((branch) => branch && regex.test(branch) && !this.protectedBranches.has(branch))
+
+    return branches
+  }
+
+  /**
+   * 删除本地分支
+   */
+  async deleteLocalBranches(branches, force = false) {
+    if (branches.length === 0) {
+      console.log('✅ 没有需要删除的分支')
+      return 0
+    }
+
+    console.log(`\n📋 将删除 ${branches.length} 个本地分支:`)
+    branches.forEach((branch) => console.log(`   - ${branch}`))
+
+    if (this.dryRun) {
+      console.log('\n⚠️  干运行模式，未实际删除')
+      return branches.length
+    }
+
+    // 确认删除
+    const confirm = await this.askQuestion('\n确认删除？(yes/no): ')
+    if (confirm !== 'yes' && confirm !== 'y') {
+      console.log('❌ 已取消')
+      return 0
+    }
+
+    let deletedCount = 0
+    const flag = force ? '-D' : '-d'
+
+    for (const branch of branches) {
+      console.log(`🗑️  删除分支: ${branch}`)
+      const result = this.runCommand(`git branch ${flag} ${branch}`)
+      if (result.success) {
+        deletedCount++
+      } else {
+        console.log(`   ⚠️  失败: ${result.error}`)
+      }
+    }
+
+    console.log(`\n✅ 成功删除 ${deletedCount}/${branches.length} 个分支`)
+    return deletedCount
+  }
+
+  /**
+   * 删除远程分支
+   */
+  async deleteRemoteBranches(branches) {
+    if (branches.length === 0) {
+      console.log('✅ 没有需要删除的远程分支')
+      return 0
+    }
+
+    console.log(`\n📋 将删除 ${branches.length} 个远程分支:`)
+    branches.forEach((branch) => console.log(`   - origin/${branch}`))
+
+    if (this.dryRun) {
+      console.log('\n⚠️  干运行模式，未实际删除')
+      return branches.length
+    }
+
+    const confirm = await this.askQuestion('\n确认删除远程分支？(yes/no): ')
+    if (confirm !== 'yes' && confirm !== 'y') {
+      console.log('❌ 已取消')
+      return 0
+    }
+
+    let deletedCount = 0
+
+    for (const branch of branches) {
+      console.log(`🗑️  删除远程分支: origin/${branch}`)
+      const result = await this.runCommandAsync(`git push origin --delete ${branch}`)
+      if (result.success) {
+        deletedCount++
+      } else {
+        console.log(`   ⚠️  失败: ${result.error}`)
+      }
+    }
+
+    console.log(`\n✅ 成功删除 ${deletedCount}/${branches.length} 个远程分支`)
+    return deletedCount
+  }
+
+  /**
+   * 清理远程追踪分支
+   */
+  cleanupRemoteTracking() {
+    console.log('\n🧹 清理远程追踪分支...')
+
+    const cmd = this.dryRun ? 'git remote prune origin --dry-run' : 'git remote prune origin'
+
+    const result = this.runCommand(cmd)
+
+    if (result.success) {
+      if (result.output) {
+        console.log(result.output)
+      } else {
+        console.log('✅ 没有需要清理的远程追踪分支')
+      }
+    } else {
+      console.log(`⚠️  清理失败: ${result.error}`)
+    }
+  }
+
+  /**
+   * 显示统计信息
+   */
+  showStats() {
+    console.log('\n' + '='.repeat(60))
+    console.log('📊 Git 仓库统计')
+    console.log('='.repeat(60))
+
+    const localResult = this.runCommand('git branch | wc -l')
+    if (localResult.success) {
+      console.log(`本地分支: ${localResult.output}`)
+    }
+
+    const remoteResult = this.runCommand('git branch -r | wc -l')
+    if (remoteResult.success) {
+      console.log(`远程分支: ${remoteResult.output}`)
+    }
+
+    const tagResult = this.runCommand('git tag | wc -l')
+    if (tagResult.success) {
+      console.log(`标签数量: ${tagResult.output}`)
+    }
+
+    console.log('='.repeat(60))
+  }
+}
+
+/**
+ * 解析命令行参数
+ */
+function parseArgs() {
+  const args = process.argv.slice(2)
+  const options = {
+    days: 90,
+    pattern: null,
+    merged: false,
+    remote: false,
+    force: false,
+    dryRun: false,
+    stats: false,
+    help: false,
+  }
+
+  for (let i = 0; i < args.length; i++) {
+    switch (args[i]) {
+      case '--days':
+        options.days = parseInt(args[++i]) || 90
+        break
+      case '--pattern':
+        options.pattern = args[++i]
+        break
+      case '--merged':
+        options.merged = true
+        break
+      case '--remote':
+        options.remote = true
+        break
+      case '--force':
+        options.force = true
+        break
+      case '--dry-run':
+        options.dryRun = true
+        break
+      case '--stats':
+        options.stats = true
+        break
+      case '--help':
+        options.help = true
+        break
+    }
+  }
+
+  return options
+}
+
+/**
+ * 显示帮助信息
+ */
+function showHelp() {
+  console.log(`
+Git 批量清理工具
+
+用法: node git-cleanup.js [选项]
+
+选项:
+  --days <number>      删除多少天未活动的分支 (默认: 90)
+  --pattern <regex>    删除匹配正则表达式的分支
+  --merged             删除已合并的分支
+  --remote             同时删除远程分支
+  --force              强制删除（未合并的分支）
+  --dry-run            干运行模式（不实际删除）
+  --stats              显示统计信息
+  --help               显示此帮助信息
+
+示例:
+  node git-cleanup.js --dry-run                    # 干运行预览
+  node git-cleanup.js --days 30                    # 删除 30 天未活动的分支
+  node git-cleanup.js --merged                     # 删除已合并的分支
+  node git-cleanup.js --pattern "feature/.*"       # 删除匹配模式的分支
+  node git-cleanup.js --days 60 --remote           # 删除旧分支并删除远程分支
+  node git-cleanup.js --stats                      # 显示统计信息
+`)
+}
+
+/**
+ * 主函数
+ */
+async function main() {
+  const options = parseArgs()
+
+  if (options.help) {
+    showHelp()
+    return
+  }
+
+  const cleanup = new GitCleanup({
+    days: options.days,
+    dryRun: options.dryRun,
+  })
+
+  if (options.stats) {
+    cleanup.showStats()
+    return
+  }
+
+  let branchesToDelete = []
+
+  if (options.merged) {
+    branchesToDelete.push(...cleanup.getMergedBranches())
+  }
+
+  if (options.pattern) {
+    branchesToDelete.push(...cleanup.getPatternBranches(options.pattern))
+  }
+
+  if (!options.merged && !options.pattern) {
+    // 默认删除旧分支
+    branchesToDelete.push(...(await cleanup.getOldBranches()))
+  }
+
+  // 去重
+  branchesToDelete = [...new Set(branchesToDelete)]
+
+  if (branchesToDelete.length === 0) {
+    console.log('✅ 没有需要删除的分支')
+    return
+  }
+
+  // 删除本地分支
+  await cleanup.deleteLocalBranches(branchesToDelete, options.force)
+
+  // 删除远程分支
+  if (options.remote) {
+    await cleanup.deleteRemoteBranches(branchesToDelete)
+  }
+
+  // 清理远程追踪
+  cleanup.cleanupRemoteTracking()
+
+  // 显示统计
+  cleanup.showStats()
+}
+
+// 运行主函数
+main().catch((error) => {
+  console.error('❌ 发生错误:', error)
+  process.exit(1)
+})
+```
+
+**使用方法**：
+
+```bash
+# 查看帮助
+node git-cleanup.js --help
+
+# 删除 90 天未活动的分支（干运行）
+node git-cleanup.js --dry-run
+
+# 删除 30 天未活动的分支
+node git-cleanup.js --days 30
+
+# 删除已合并的分支
+node git-cleanup.js --merged
+
+# 删除匹配模式的分支
+node git-cleanup.js --pattern "feature/.*"
+
+# 删除旧分支并同时删除远程分支
+node git-cleanup.js --days 60 --remote
+
+# 强制删除未合并的分支
+node git-cleanup.js --days 90 --force
+
+# 显示统计信息
+node git-cleanup.js --stats
+```
+
+**特性**：
+
+- ✅ 基于 Node.js，跨平台支持
+- ✅ 支持多种删除策略
+- ✅ 干运行模式，安全预览
+- ✅ 交互式确认
+- ✅ 异步执行，性能更好
+- ✅ 详细的错误处理
+- ✅ 可直接作为 CLI 工具使用
+- ✅ 无需额外依赖（使用 Node.js 标准库）
+
+**安装为全局命令（可选）**：
+
+```bash
+# 创建符号链接
+ln -s $(pwd)/git-cleanup.js /usr/local/bin/git-cleanup
+
+# 或者在 package.json 中添加 bin 字段后全局安装
+npm install -g .
+
+# 然后可以直接使用
+git-cleanup --days 90 --dry-run
 ```
 
 ---
