@@ -59,6 +59,7 @@ export default defineConfig({
           { text: 'Shell 手册', link: '/handbook/shell-handbook' },
           { text: 'Linux 命令速查', link: '/handbook/linux-handbook' },
           { text: 'Git 速查', link: '/handbook/git-handbook' },
+          { text: 'Nginx 速查', link: '/handbook/nginx-handbook' },
 
           // ========== 其他工具 ==========
           { text: 'Python 手册', link: '/handbook/python-handbook' },
@@ -583,6 +584,7 @@ export default defineConfig({
           { text: 'Shell 手册', link: '/handbook/shell-handbook' },
           { text: 'Linux 命令速查', link: '/handbook/linux-handbook' },
           { text: 'Git 速查', link: '/handbook/git-handbook' },
+          { text: 'Nginx 速查', link: '/handbook/nginx-handbook' },
 
           // ========== 其他工具 ==========
           { text: 'Python 手册', link: '/handbook/python-handbook' },
