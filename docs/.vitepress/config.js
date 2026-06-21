@@ -115,7 +115,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           {
-            text: 'AI 相关文档',
+            text: 'AI 架构',
             collapsed: true,
             items: [
               {
@@ -174,7 +174,7 @@ export default defineConfig({
             ],
           },
           {
-            text: '代码分析文档',
+            text: '代码分析工具',
             collapsed: true,
             items: [
               { text: '代码分析思路', link: '/architecture-document/code-analysis/idea-doc/idea' },
@@ -195,7 +195,7 @@ export default defineConfig({
             ],
           },
           {
-            text: 'Flutter 参考代码',
+            text: 'Flutter 架构',
             collapsed: true,
             items: [
               {
@@ -217,7 +217,7 @@ export default defineConfig({
             ],
           },
           {
-            text: 'Python 参考代码',
+            text: 'Python 架构',
             collapsed: true,
             items: [
               {
@@ -231,24 +231,33 @@ export default defineConfig({
             ],
           },
           {
-            text: 'React 文档',
+            text: 'React 架构',
             collapsed: true,
             items: [
               {
-                text: '设计思路',
+                text: 'Vue to React',
                 items: [
-                  { text: '思路 1', link: '/architecture-document/react/idea-doc/idea1' },
-                  { text: '思路 2', link: '/architecture-document/react/idea-doc/idea2' },
-                  { text: '思路 3', link: '/architecture-document/react/idea-doc/idea3' },
-                  { text: '思路 4', link: '/architecture-document/react/idea-doc/idea4' },
-                  { text: '思路 5', link: '/architecture-document/react/idea-doc/idea5' },
-                  { text: '思路 6', link: '/architecture-document/react/idea-doc/idea6' },
+                  { text: 'Vue vs React', link: '/architecture-document/react/idea-doc/idea1' },
+                  {
+                    text: 'Vue to React 原因',
+                    link: '/architecture-document/react/idea-doc/idea2',
+                  },
+                  {
+                    text: 'Vue to React 路径图',
+                    link: '/architecture-document/react/idea-doc/idea3',
+                  },
+                  {
+                    text: 'Vue to React 代码',
+                    link: '/architecture-document/react/idea-doc/idea4',
+                  },
+
+                  { text: 'React 神库', link: '/architecture-document/react/idea-doc/idea6' },
                 ],
               },
               {
-                text: '其他思路',
+                text: '性能思考',
                 items: [
-                  { text: '其他思路 1', link: '/architecture-document/react/other-idea/idea1' },
+                  { text: '大型单例设计', link: '/architecture-document/react/other-idea/idea1' },
                 ],
               },
               {
@@ -297,14 +306,14 @@ export default defineConfig({
             ],
           },
           {
-            text: 'Rust 入门',
+            text: 'Rust 架构',
             collapsed: true,
             items: [
               { text: 'Rust 学习指南', link: '/architecture-document/rust/begin/rust-study' },
             ],
           },
           {
-            text: 'Vue 架构文档',
+            text: 'Vue 架构',
             collapsed: true,
             items: [
               {
@@ -540,6 +549,17 @@ export default defineConfig({
                     link: '/architecture-document/vue/technology-selection/desktop-project',
                   },
                 ],
+              },
+            ],
+          },
+
+          {
+            text: '工程化',
+            collapsed: true,
+            items: [
+              {
+                text: 'Docker 镜像构建脚本对比笔记',
+                link: '/architecture-document/engineering/job/docker-image-build-script-comparison',
               },
             ],
           },

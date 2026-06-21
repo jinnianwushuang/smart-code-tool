@@ -17,21 +17,19 @@ dayjs.extend(timezone)
 // https://vite.dev/config/
 export default defineConfig(async () => {
   return {
-    base: '/smart-code-tool/', // 例如：'/my-vue-app/'、
+    base: '/smart-code-tool/',
     // base: '/',
 
     define: {
       // 注入全局变量
       __APP_BUILD_TIME__: JSON.stringify(
-        dayjs().tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss Z'),
+        dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm:ss Z'),
       ),
     },
     plugins: [
       vue({
         template: { transformAssetUrls },
       }),
-
-      // MarkdownCodeBlock
 
       quasar({
         sassVariables: fileURLToPath(new URL('./src/css/quasar-variables.scss', import.meta.url)),

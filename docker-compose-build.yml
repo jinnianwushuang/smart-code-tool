@@ -1,0 +1,21 @@
+version: '3.8'
+# http://localhost:18990/smart-code-tool/
+services:
+  web:
+    # image: nginx:latest
+    # 替换为你刚打好的本地镜像名称
+    image: smart-code-tool-frontend:latest
+    container_name: nginx-container-smart-code-tool-frontend-preview
+    ports:
+      - '18990:80'
+    # 物理挂载可以删掉了！因为代码已经打包进镜像内部了
+    # volumes:
+    #   - ./dist:/usr/share/nginx/html/smart-code-tool
+    restart: always
+    # depends_on:
+    #   - smart-code-tool
+    networks:
+      - smart-code-tool-network
+networks:
+  smart-code-tool-network:
+    driver: bridge
