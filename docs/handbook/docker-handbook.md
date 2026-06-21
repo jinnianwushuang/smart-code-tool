@@ -56,13 +56,13 @@
 
 ### 1.2 与传统虚拟机的区别
 
-| 特性 | Docker 容器 | 虚拟机 |
-|------|------------|--------|
-| 启动速度 | 秒级 | 分钟级 |
+| 特性     | Docker 容器    | 虚拟机       |
+| -------- | -------------- | ------------ |
+| 启动速度 | 秒级           | 分钟级       |
 | 资源占用 | 低（共享内核） | 高（独立OS） |
-| 隔离性 | 进程级 | 系统级 |
-| 便携性 | 高 | 中 |
-| 性能 | 接近原生 | 有损耗 |
+| 隔离性   | 进程级         | 系统级       |
+| 便携性   | 高             | 中           |
+| 性能     | 接近原生       | 有损耗       |
 
 ---
 
@@ -71,6 +71,7 @@
 ### 2.1 安装 Docker
 
 #### macOS
+
 ```bash
 # 使用 Homebrew
 brew install --cask docker
@@ -80,6 +81,7 @@ brew install --cask docker
 ```
 
 #### Ubuntu/Debian
+
 ```bash
 # 更新包索引
 sudo apt-get update
@@ -111,6 +113,7 @@ docker compose version
 ```
 
 #### CentOS/RHEL
+
 ```bash
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
@@ -121,13 +124,11 @@ sudo systemctl enable docker
 
 ### 2.2 配置 Docker
 
-####  daemon.json 配置
+#### daemon.json 配置
+
 ```json
 {
-  "registry-mirrors": [
-    "https://docker.mirrors.ustc.edu.cn",
-    "https://hub-mirror.c.163.com"
-  ],
+  "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn", "https://hub-mirror.c.163.com"],
   "insecure-registries": [],
   "max-concurrent-downloads": 10,
   "log-driver": "json-file",
@@ -147,11 +148,13 @@ sudo systemctl enable docker
 ```
 
 配置文件位置：
+
 - Linux: `/etc/docker/daemon.json`
 - macOS: Docker Desktop → Settings → Docker Engine
 - Windows: Docker Desktop → Settings → Docker Engine
 
 重启 Docker 使配置生效：
+
 ```bash
 sudo systemctl restart docker
 ```
@@ -499,6 +502,7 @@ CMD ["node", "server.js"]
 ### 5.2 指令详解
 
 #### FROM - 基础镜像
+
 ```dockerfile
 FROM ubuntu:20.04
 FROM node:18-alpine AS builder
@@ -506,6 +510,7 @@ FROM scratch                    # 空镜像
 ```
 
 #### RUN - 执行命令
+
 ```dockerfile
 # 单行
 RUN apt-get update && apt-get install -y curl
@@ -526,6 +531,7 @@ RUN apt-get update && \
 ```
 
 #### COPY vs ADD
+
 ```dockerfile
 # COPY - 复制本地文件（推荐）
 COPY package.json /app/
@@ -544,6 +550,7 @@ node_modules
 ```
 
 #### CMD vs ENTRYPOINT
+
 ```dockerfile
 # CMD - 可被覆盖
 CMD ["node", "server.js"]
@@ -562,6 +569,7 @@ docker run --entrypoint bash myapp  # 覆盖ENTRYPOINT
 ```
 
 #### ENV vs ARG
+
 ```dockerfile
 # ARG - 构建时参数，不保留在镜像中
 ARG NODE_VERSION=18
@@ -603,6 +611,7 @@ CMD ["node", "dist/server.js"]
 ### 5.4 语言特定示例
 
 #### Python
+
 ```dockerfile
 FROM python:3.9-slim
 
@@ -631,6 +640,7 @@ CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:app"]
 ```
 
 #### Java/Spring Boot
+
 ```dockerfile
 FROM maven:3.8-openjdk-11 AS builder
 
@@ -649,6 +659,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
 
 #### Go
+
 ```dockerfile
 FROM golang:1.19-alpine AS builder
 
@@ -667,6 +678,7 @@ CMD ["./main"]
 ```
 
 #### Node.js
+
 ```dockerfile
 FROM node:18-alpine
 
@@ -744,6 +756,8 @@ Docker Compose 用于定义和运行多容器 Docker 应用。
 
 ### 6.2 基本示例
 
+#### 示例 1: Web + API + PostgreSQL
+
 ```yaml
 # docker-compose.yml
 version: '3.8'
@@ -752,7 +766,7 @@ services:
   web:
     build: .
     ports:
-      - "8080:80"
+      - '8080:80'
     volumes:
       - ./app:/usr/share/nginx/html
     depends_on:
@@ -770,7 +784,7 @@ services:
       - NODE_ENV=production
       - DB_HOST=db
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - db
     networks:
@@ -788,7 +802,7 @@ services:
     networks:
       - backend
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin"]
+      test: ['CMD-SHELL', 'pg_isready -U admin']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -799,6 +813,184 @@ volumes:
 networks:
   frontend:
   backend:
+```
+
+#### 示例 2: Node.js + MongoDB + Redis
+
+```yaml
+version: '3.8'
+
+services:
+  # Node.js 应用
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo:27017/myapp
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - app-network
+    restart: unless-stopped
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+
+  # MongoDB 数据库
+  mongo:
+    image: mongo:7-jammy
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+      MONGO_INITDB_DATABASE: myapp
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  # Redis 缓存
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes --requirepass redispassword
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'redis-cli', '-a', 'redispassword', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MongoDB Express (可选，Web 管理界面)
+  mongo-express:
+    image: mongo-express:latest
+    ports:
+      - '8081:8081'
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: secret
+      ME_CONFIG_MONGODB_URL: mongodb://admin:secret@mongo:27017/
+      ME_CONFIG_BASICAUTH: false
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+  redis_data:
+
+networks:
+  app-network:
+    driver: bridge
+```
+
+**MongoDB 初始化脚本示例** (`./mongo-init/init.js`)：
+
+```javascript
+// 创建用户和索引
+db = db.getSiblingDB('myapp')
+
+// 创建应用用户
+db.createUser({
+  user: 'appuser',
+  pwd: 'apppassword',
+  roles: [{ role: 'readWrite', db: 'myapp' }],
+})
+
+// 创建集合和索引
+db.createCollection('users')
+db.users.createIndex({ email: 1 }, { unique: true })
+db.users.createIndex({ createdAt: -1 })
+
+db.createCollection('products')
+db.products.createIndex({ name: 'text' })
+db.products.createIndex({ price: 1 })
+
+db.createCollection('orders')
+db.orders.createIndex({ userId: 1 })
+db.orders.createIndex({ status: 1, createdAt: -1 })
+
+print('Database initialized successfully!')
+```
+
+**Dockerfile 示例** (`./app/Dockerfile`)：
+
+```dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001
+USER nodejs
+
+EXPOSE 3000
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3000/health || exit 1
+
+CMD ["node", "server.js"]
+```
+
+**使用命令**：
+
+```bash
+# 启动所有服务
+docker compose up -d
+
+# 查看服务状态
+docker compose ps
+
+# 查看日志
+docker compose logs -f app
+docker compose logs -f mongo
+
+# 进入 MongoDB shell
+docker compose exec mongo mongosh -u admin -p secret
+
+# 进入 Redis CLI
+docker compose exec redis redis-cli -a redispassword
+
+# 备份 MongoDB 数据
+docker compose exec mongo mongodump --uri="mongodb://admin:secret@localhost:27017" --out=/dump
+
+# 恢复 MongoDB 数据
+docker compose exec mongo mongorestore --uri="mongodb://admin:secret@localhost:27017" /dump
+
+# 停止服务
+docker compose down
+
+# 停止并删除数据卷（谨慎使用！）
+docker compose down -v
 ```
 
 ### 6.3 常用命令
@@ -865,18 +1057,18 @@ services:
       - "${WEB_PORT:-80}:80"
 ```
 
-### 6.5  profiles 功能
+### 6.5 profiles 功能
 
 ```yaml
 services:
   web:
     image: nginx
-    profiles: ["frontend"]
-  
+    profiles: ['frontend']
+
   monitoring:
     image: prometheus
-    profiles: ["monitoring"]
-  
+    profiles: ['monitoring']
+
   redis:
     image: redis
     # 无profiles，始终启动
@@ -902,8 +1094,8 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/ssl:/etc/nginx/ssl
@@ -915,7 +1107,7 @@ services:
       - frontend
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ['CMD', 'curl', '-f', 'http://localhost']
       interval: 30s
       timeout: 10s
       retries: 3
@@ -975,7 +1167,7 @@ services:
       - backend
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin"]
+      test: ['CMD-SHELL', 'pg_isready -U admin']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -990,7 +1182,7 @@ services:
       - backend
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ['CMD', 'redis-cli', 'ping']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -1022,7 +1214,7 @@ networks:
     driver: bridge
   backend:
     driver: bridge
-    internal: true  # 内部网络，外部不可访问
+    internal: true # 内部网络，外部不可访问
 ```
 
 ---
@@ -1223,10 +1415,10 @@ services:
     volumes:
       # 命名卷
       - postgres_data:/var/lib/postgresql/data
-      
+
       # 绑定挂载
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      
+
       # 只读挂载
       - ./config:/etc/postgresql:ro
 
@@ -1235,7 +1427,7 @@ services:
     volumes:
       # 匿名卷
       - /app/logs
-      
+
       # tmpfs
       - type: tmpfs
         target: /tmp
@@ -1339,7 +1531,7 @@ services:
   web:
     image: nginx
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ['CMD', 'curl', '-f', 'http://localhost']
       interval: 30s
       timeout: 10s
       retries: 3
@@ -1372,6 +1564,7 @@ docker events --format '{{.Time}} {{.Actor.Attributes.name}} {{.Action}}'
 ### 9.6 监控工具集成
 
 #### Prometheus + Grafana
+
 ```yaml
 version: '3.8'
 
@@ -1379,7 +1572,7 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     ports:
-      - "8080:8080"
+      - '8080:8080'
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -1390,7 +1583,7 @@ services:
   prometheus:
     image: prom/prometheus
     ports:
-      - "9090:9090"
+      - '9090:9090'
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     restart: unless-stopped
@@ -1398,7 +1591,7 @@ services:
   grafana:
     image: grafana/grafana
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
@@ -1992,7 +2185,7 @@ services:
   wordpress:
     image: wordpress:latest
     ports:
-      - "8080:80"
+      - '8080:80'
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wordpress
@@ -2030,11 +2223,11 @@ services:
     image: redis:7-alpine
     command: redis-server --appendonly yes
     ports:
-      - "6379:6379"
+      - '6379:6379'
     volumes:
       - redis_master_data:/data
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ['CMD', 'redis-cli', 'ping']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -2047,7 +2240,7 @@ services:
     volumes:
       - redis_slave_data:/data
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ['CMD', 'redis-cli', 'ping']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -2072,9 +2265,9 @@ services:
     volumes:
       - es_data:/usr/share/elasticsearch/data
     ports:
-      - "9200:9200"
+      - '9200:9200'
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      test: ['CMD', 'curl', '-f', 'http://localhost:9200']
       interval: 30s
       timeout: 10s
       retries: 5
@@ -2084,9 +2277,9 @@ services:
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline
     ports:
-      - "5044:5044"
-      - "5000:5000/tcp"
-      - "5000:5000/udp"
+      - '5044:5044'
+      - '5000:5000/tcp'
+      - '5000:5000/udp'
     depends_on:
       - elasticsearch
 
@@ -2095,7 +2288,7 @@ services:
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     ports:
-      - "5601:5601"
+      - '5601:5601'
     depends_on:
       - elasticsearch
 
@@ -2141,7 +2334,7 @@ services:
       - ./app:/app
       - node_modules:/app/node_modules
     ports:
-      - "3000:3000"
+      - '3000:3000'
     command: npm run dev
     environment:
       - NODE_ENV=development
@@ -2153,7 +2346,7 @@ services:
     volumes:
       - ./backend:/app
     ports:
-      - "8000:8000"
+      - '8000:8000'
     command: python manage.py runserver 0.0.0.0:8000
     environment:
       - DEBUG=true
@@ -2166,7 +2359,7 @@ services:
       POSTGRES_PASSWORD: dev
       POSTGRES_DB: devdb
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgres_dev_data:/var/lib/postgresql/data
 
@@ -2174,14 +2367,14 @@ services:
   redis-dev:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - '6379:6379'
 
   # Mailhog (邮件测试)
   mailhog:
     image: mailhog/mailhog
     ports:
-      - "1025:1025"
-      - "8025:8025"
+      - '1025:1025'
+      - '8025:8025'
 
 volumes:
   node_modules:
@@ -2198,7 +2391,7 @@ services:
   gateway:
     build: ./gateway
     ports:
-      - "80:8080"
+      - '80:8080'
     depends_on:
       - user-service
       - order-service
@@ -2264,7 +2457,7 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     ports:
-      - "15672:15672"
+      - '15672:15672'
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
     networks:
@@ -2285,7 +2478,7 @@ services:
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     ports:
-      - "5601:5601"
+      - '5601:5601'
     depends_on:
       - elasticsearch
     networks:
@@ -2356,10 +2549,10 @@ dclean() {
 ### C. 版本兼容性
 
 | Docker 版本 | Compose 版本 | 发布日期 |
-|------------|-------------|---------|
-| 20.10+ | 2.x | 2020-12 |
-| 19.03+ | 1.29.x | 2019-07 |
-| 18.09+ | 1.25.x | 2018-12 |
+| ----------- | ------------ | -------- |
+| 20.10+      | 2.x          | 2020-12  |
+| 19.03+      | 1.29.x       | 2019-07  |
+| 18.09+      | 1.25.x       | 2018-12  |
 
 ---
 

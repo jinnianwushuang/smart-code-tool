@@ -45,6 +45,7 @@ export default defineConfig({
           // ========== 数据库 ==========
           { text: 'MySQL 手册', link: '/handbook/mysql-handbook' },
           { text: 'MongoDB 手册', link: '/handbook/mongodb-handbook' },
+          { text: 'PostgreSQL 速查', link: '/handbook/postgresql-handbook' },
 
           // ========== 移动开发 ==========
           { text: 'Dart 手册', link: '/handbook/dart-handbook' },
@@ -570,6 +571,7 @@ export default defineConfig({
           // ========== 数据库 ==========
           { text: 'MySQL 手册', link: '/handbook/mysql-handbook' },
           { text: 'MongoDB 手册', link: '/handbook/mongodb-handbook' },
+          { text: 'PostgreSQL 速查', link: '/handbook/postgresql-handbook' },
 
           // ========== 移动开发 ==========
           { text: 'Dart 手册', link: '/handbook/dart-handbook' },
