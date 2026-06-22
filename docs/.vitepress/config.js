@@ -558,7 +558,7 @@ export default defineConfig({
             collapsed: true,
             items: [
               {
-                text: 'Docker 镜像构建脚本对比笔记',
+                text: 'Docker 镜像构建脚本对比',
                 link: '/architecture-document/engineering/job/docker-image-build-script-comparison',
               },
             ],
