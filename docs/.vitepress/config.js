@@ -21,6 +21,15 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       {
+        text: '心理学',
+        items: [
+          { text: '思维闭环 - 学习之道', link: '/psychology/thought-loop-the-path-of-learning' },
+          { text: '纳瓦尔宝典', link: '/psychology/vaval-almanack' },
+          { text: '十大世界运转法则', link: '/psychology/world-operation' },
+          { text: '走出精神内耗', link: '/psychology/break-from-mental-exhaustion' },
+        ],
+      },
+      {
         text: '开发手册',
         items: [
           // ========== 前端框架 ==========
@@ -111,6 +120,48 @@ export default defineConfig({
     // 侧边栏配置
     sidebar: [
       {
+        text: '🧠 心理学',
+        collapsed: false,
+        items: [
+          {
+            text: '认知与学习',
+            items: [
+              {
+                text: '思维闭环 - 学习之道',
+                link: '/psychology/thought-loop-the-path-of-learning',
+              },
+            ],
+          },
+          {
+            text: '人生哲学',
+            items: [
+              {
+                text: '纳瓦尔宝典',
+                link: '/psychology/vaval-almanack',
+              },
+            ],
+          },
+          {
+            text: '世界规律',
+            items: [
+              {
+                text: '十大世界运转法则',
+                link: '/psychology/world-operation',
+              },
+            ],
+          },
+          {
+            text: '心理健康',
+            items: [
+              {
+                text: '走出精神内耗',
+                link: '/psychology/break-from-mental-exhaustion',
+              },
+            ],
+          },
+        ],
+      },
+      {
         text: '🏗️ 架构文档',
         collapsed: false,
         items: [
@@ -118,6 +169,15 @@ export default defineConfig({
             text: 'AI 架构',
             collapsed: true,
             items: [
+              {
+                text: 'AI知识库',
+                items: [
+                  {
+                    text: '本地知识库',
+                    link: '/architecture-document/ai/idea/kbs',
+                  },
+                ],
+              },
               {
                 text: '架构愿景',
                 collapsed: true,
