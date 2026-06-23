@@ -36,6 +36,7 @@ export default defineConfig({
             text: '1天彻底改变人生（中文）',
             link: '/psychology/how-to-fix-your-entire-life-in-1-day-zh',
           },
+          { text: '个人成长顺序', link: '/psychology/sequence-of-personal-growth' },
         ],
       },
       {
@@ -151,6 +152,10 @@ export default defineConfig({
                 text: '1天彻底改变人生（中文）',
                 link: '/psychology/how-to-fix-your-entire-life-in-1-day-zh',
               },
+              {
+                text: '个人成长顺序',
+                link: '/psychology/sequence-of-personal-growth',
+              },
             ],
           },
           {
@@ -196,6 +201,10 @@ export default defineConfig({
                   {
                     text: '本地知识库',
                     link: '/architecture-document/ai/idea/kbs',
+                  },
+                  {
+                    text: 'M4 Max 新电脑整备指南',
+                    link: '/architecture-document/ai/idea/new-mac-setup-guide',
                   },
                 ],
               },
