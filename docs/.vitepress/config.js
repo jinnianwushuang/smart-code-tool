@@ -28,7 +28,14 @@ export default defineConfig({
           { text: '十大世界运转法则', link: '/psychology/world-operation' },
           { text: '走出精神内耗', link: '/psychology/break-from-mental-exhaustion' },
           { text: '玩游戏与学习的差异', link: '/psychology/games-and-learning' },
-          { text: '1天彻底改变人生', link: '/psychology/how-to-fix-your-entire-life-in-1-day' },
+          {
+            text: '1天彻底改变人生（英文）',
+            link: '/psychology/how-to-fix-your-entire-life-in-1-day-en',
+          },
+          {
+            text: '1天彻底改变人生（中文）',
+            link: '/psychology/how-to-fix-your-entire-life-in-1-day-zh',
+          },
         ],
       },
       {
@@ -137,8 +144,12 @@ export default defineConfig({
                 link: '/psychology/games-and-learning',
               },
               {
-                text: '1天彻底改变人生',
-                link: '/psychology/how-to-fix-your-entire-life-in-1-day',
+                text: '1天彻底改变人生（英文）',
+                link: '/psychology/how-to-fix-your-entire-life-in-1-day-en',
+              },
+              {
+                text: '1天彻底改变人生（中文）',
+                link: '/psychology/how-to-fix-your-entire-life-in-1-day-zh',
               },
             ],
           },
