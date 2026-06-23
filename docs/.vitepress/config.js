@@ -27,6 +27,7 @@ export default defineConfig({
           { text: '纳瓦尔宝典', link: '/psychology/vaval-almanack' },
           { text: '十大世界运转法则', link: '/psychology/world-operation' },
           { text: '走出精神内耗', link: '/psychology/break-from-mental-exhaustion' },
+          { text: '玩游戏与学习的差异', link: '/psychology/games-and-learning' },
         ],
       },
       {
@@ -129,6 +130,10 @@ export default defineConfig({
               {
                 text: '思维闭环 - 学习之道',
                 link: '/psychology/thought-loop-the-path-of-learning',
+              },
+              {
+                text: '玩游戏与学习的差异',
+                link: '/psychology/games-and-learning',
               },
             ],
           },
