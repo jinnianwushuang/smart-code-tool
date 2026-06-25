@@ -23,20 +23,28 @@ export default defineConfig({
       {
         text: '心理学',
         items: [
+          // ========== 人生哲学 ==========
+          { text: '纳瓦尔·拉维康特的名言', link: '/psychology/naval-ravikant' },
+          { text: '卡尔·荣格经典名言', link: '/psychology/carl-gustav-jung' },
+          { text: '乔丹·彼得森人生法则', link: '/psychology/jordan-b-peterson' },
+
+          // ========== 认知与学习 ==========
           { text: '思维闭环 - 学习之道', link: '/psychology/thought-loop-the-path-of-learning' },
-          { text: '纳瓦尔宝典', link: '/psychology/vaval-almanack' },
-          { text: '十大世界运转法则', link: '/psychology/world-operation' },
-          { text: '走出精神内耗', link: '/psychology/break-from-mental-exhaustion' },
           { text: '玩游戏与学习的差异', link: '/psychology/games-and-learning' },
-          {
-            text: '1天彻底改变人生（英文）',
-            link: '/psychology/how-to-fix-your-entire-life-in-1-day-en',
-          },
-          {
-            text: '1天彻底改变人生（中文）',
-            link: '/psychology/how-to-fix-your-entire-life-in-1-day-zh',
-          },
           { text: '个人成长顺序', link: '/psychology/sequence-of-personal-growth' },
+          {
+            text: '1天彻底改变人生',
+            link: '/psychology/how-to-fix-your-entire-life-in-1-day',
+          },
+
+          // ========== 世界规律 ==========
+          { text: '十大世界运转法则', link: '/psychology/world-operation' },
+
+          // ========== 心理健康 ==========
+          { text: '走出精神内耗', link: '/psychology/break-from-mental-exhaustion' },
+
+          // ========== 综合指南 ==========
+          { text: '现代生存双指南', link: '/psychology/modern-survival-dual-guide' },
         ],
       },
       {
@@ -134,6 +142,23 @@ export default defineConfig({
         collapsed: false,
         items: [
           {
+            text: '人生哲学',
+            items: [
+              {
+                text: '纳瓦尔·拉维康特的名言',
+                link: '/psychology/naval-ravikant',
+              },
+              {
+                text: '卡尔·荣格经典名言',
+                link: '/psychology/carl-gustav-jung',
+              },
+              {
+                text: '乔丹·彼得森人生法则',
+                link: '/psychology/jordan-b-peterson',
+              },
+            ],
+          },
+          {
             text: '认知与学习',
             items: [
               {
@@ -145,25 +170,12 @@ export default defineConfig({
                 link: '/psychology/games-and-learning',
               },
               {
-                text: '1天彻底改变人生（英文）',
-                link: '/psychology/how-to-fix-your-entire-life-in-1-day-en',
-              },
-              {
-                text: '1天彻底改变人生（中文）',
-                link: '/psychology/how-to-fix-your-entire-life-in-1-day-zh',
-              },
-              {
                 text: '个人成长顺序',
                 link: '/psychology/sequence-of-personal-growth',
               },
-            ],
-          },
-          {
-            text: '人生哲学',
-            items: [
               {
-                text: '纳瓦尔宝典',
-                link: '/psychology/vaval-almanack',
+                text: '1天彻底改变人生',
+                link: '/psychology/how-to-fix-your-entire-life-in-1-day',
               },
             ],
           },
@@ -182,6 +194,15 @@ export default defineConfig({
               {
                 text: '走出精神内耗',
                 link: '/psychology/break-from-mental-exhaustion',
+              },
+            ],
+          },
+          {
+            text: '综合指南',
+            items: [
+              {
+                text: '现代生存双指南',
+                link: '/psychology/modern-survival-dual-guide',
               },
             ],
           },
