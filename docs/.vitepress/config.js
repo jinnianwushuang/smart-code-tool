@@ -21,13 +21,41 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       {
-        text: '心理学',
+        text: '心理认知',
         items: [
           // ========== 人生哲学 ==========
-          { text: '纳瓦尔·拉维康特的名言', link: '/psychology/naval-ravikant' },
-          { text: '卡尔·荣格经典名言', link: '/psychology/carl-gustav-jung' },
-          { text: '米哈里·契克森米哈赖名言', link: '/psychology/mihaly-csikszentmihalyi' },
-          { text: '乔丹·彼得森人生法则', link: '/psychology/jordan-b-peterson' },
+          {
+            text: '威廉·詹姆斯名言',
+            link: '/psychology/william-james', // 1842年出生，现代心理学与实用主义先驱
+          },
+          {
+            text: '西格蒙德·弗洛伊德名言',
+            link: '/psychology/sigmund-freud', // 1856年出生，精神分析学派创始人
+          },
+          {
+            text: '阿尔弗雷德·阿德勒名言',
+            link: '/psychology/alfred-adler', // 1870年出生，个体心理学创始人
+          },
+          {
+            text: '卡尔·荣格经典名言',
+            link: '/psychology/carl-gustav-jung', // 1875年出生，分析心理学创始人
+          },
+          {
+            text: '维克多·弗兰克尔名言',
+            link: '/psychology/viktor-frankl', // 1905年出生，存在主义与意义治疗大师
+          },
+          {
+            text: '米哈里·契克森米哈赖名言',
+            link: '/psychology/mihaly-csikszentmihalyi', // 1934年出生，积极心理学与心流之父
+          },
+          {
+            text: '乔丹·彼得森名言',
+            link: '/psychology/jordan-b-peterson', // 1962年出生，当代临床心理学家
+          },
+          {
+            text: '纳瓦尔·拉维康特的名言',
+            link: '/psychology/naval-ravikant', // 1974年出生，当代硅谷现代思想家、投资人
+          },
 
           // ========== 认知与学习 ==========
           { text: '思维闭环 - 学习之道', link: '/psychology/thought-loop-the-path-of-learning' },
@@ -139,24 +167,43 @@ export default defineConfig({
     // 侧边栏配置
     sidebar: [
       {
-        text: '🧠 心理学',
+        text: '🧠 心理认知',
         collapsed: false,
         items: [
           {
             text: '人生哲学',
             items: [
               {
-                text: '纳瓦尔·拉维康特的名言',
-                link: '/psychology/naval-ravikant',
+                text: '威廉·詹姆斯名言',
+                link: '/psychology/william-james', // 1842年出生，现代心理学与实用主义先驱
+              },
+              {
+                text: '西格蒙德·弗洛伊德名言',
+                link: '/psychology/sigmund-freud', // 1856年出生，精神分析学派创始人
+              },
+              {
+                text: '阿尔弗雷德·阿德勒名言',
+                link: '/psychology/alfred-adler', // 1870年出生，个体心理学创始人
               },
               {
                 text: '卡尔·荣格经典名言',
-                link: '/psychology/carl-gustav-jung',
+                link: '/psychology/carl-gustav-jung', // 1875年出生，分析心理学创始人
               },
-              { text: '米哈里·契克森米哈赖名言', link: '/psychology/mihaly-csikszentmihalyi' },
               {
-                text: '乔丹·彼得森人生法则',
-                link: '/psychology/jordan-b-peterson',
+                text: '维克多·弗兰克尔名言',
+                link: '/psychology/viktor-frankl', // 1905年出生，存在主义与意义治疗大师
+              },
+              {
+                text: '米哈里·契克森米哈赖名言',
+                link: '/psychology/mihaly-csikszentmihalyi', // 1934年出生，积极心理学与心流之父
+              },
+              {
+                text: '乔丹·彼得森名言',
+                link: '/psychology/jordan-b-peterson', // 1962年出生，当代临床心理学家
+              },
+              {
+                text: '纳瓦尔·拉维康特的名言',
+                link: '/psychology/naval-ravikant', // 1974年出生，当代硅谷现代思想家、投资人
               },
             ],
           },
