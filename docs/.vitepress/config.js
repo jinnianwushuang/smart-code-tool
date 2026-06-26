@@ -26,6 +26,7 @@ export default defineConfig({
           // ========== 人生哲学 ==========
           { text: '纳瓦尔·拉维康特的名言', link: '/psychology/naval-ravikant' },
           { text: '卡尔·荣格经典名言', link: '/psychology/carl-gustav-jung' },
+          { text: '米哈里·契克森米哈赖名言', link: '/psychology/mihaly-csikszentmihalyi' },
           { text: '乔丹·彼得森人生法则', link: '/psychology/jordan-b-peterson' },
 
           // ========== 认知与学习 ==========
@@ -152,6 +153,7 @@ export default defineConfig({
                 text: '卡尔·荣格经典名言',
                 link: '/psychology/carl-gustav-jung',
               },
+              { text: '米哈里·契克森米哈赖名言', link: '/psychology/mihaly-csikszentmihalyi' },
               {
                 text: '乔丹·彼得森人生法则',
                 link: '/psychology/jordan-b-peterson',
@@ -174,7 +176,7 @@ export default defineConfig({
                 link: '/psychology/sequence-of-personal-growth',
               },
               {
-                text: '1天彻底改变人生',
+                text: '一天彻底改变人生',
                 link: '/psychology/how-to-fix-your-entire-life-in-1-day',
               },
             ],
