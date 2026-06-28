@@ -214,7 +214,166 @@ CREATE TABLE users (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 ```
 
-### 3.4 修改表结构
+### 3.4 外键约束
+
+#### 3.4.1 创建外键
+
+```sql
+-- 创建订单表(引用用户表)
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY COMMENT '订单ID',
+    order_no VARCHAR(50) NOT NULL UNIQUE COMMENT '订单号',
+    user_id INT NOT NULL COMMENT '用户ID',
+    amount DECIMAL(10,2) NOT NULL COMMENT '订单金额',
+    status TINYINT DEFAULT 0 COMMENT '状态: 0-待支付, 1-已支付, 2-已取消',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+    -- 外键约束
+    CONSTRAINT fk_orders_user FOREIGN KEY (user_id) REFERENCES users(id)
+        ON DELETE CASCADE      -- 删除用户时级联删除订单
+        ON UPDATE CASCADE,     -- 更新用户ID时级联更新
+
+    INDEX idx_user_id (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
+
+-- 创建订单项表(引用订单表和产品表)
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL COMMENT '订单ID',
+    product_id INT NOT NULL COMMENT '产品ID',
+    quantity INT NOT NULL DEFAULT 1 COMMENT '数量',
+    price DECIMAL(10,2) NOT NULL COMMENT '单价',
+
+    -- 外键约束
+    CONSTRAINT fk_items_order FOREIGN KEY (order_id) REFERENCES orders(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_items_product FOREIGN KEY (product_id) REFERENCES products(id)
+        ON DELETE RESTRICT     -- 禁止删除有引用的产品
+        ON UPDATE CASCADE,
+
+    INDEX idx_order_id (order_id),
+    INDEX idx_product_id (product_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='订单项表';
+```
+
+#### 3.4.2 外键操作类型
+
+```sql
+-- ON DELETE / ON UPDATE 可选操作:
+-- CASCADE:     级联操作(删除/更新主表时,从表也跟着删除/更新)
+-- RESTRICT:    限制操作(如果从表有引用,禁止删除/更新主表)
+-- NO ACTION:   与RESTRICT类似(MySQL中相同)
+-- SET NULL:    设置为NULL(删除/更新主表时,从表外键设为NULL)
+-- SET DEFAULT: 设置为默认值(需要字段有默认值)
+
+-- 示例: 软删除场景
+CREATE TABLE articles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT COMMENT '分类ID',
+    title VARCHAR(200) NOT NULL,
+    content TEXT,
+    is_deleted TINYINT DEFAULT 0 COMMENT '是否删除: 0-否, 1-是',
+
+    -- 删除分类时,文章category_id设为NULL
+    CONSTRAINT fk_article_category FOREIGN KEY (category_id)
+        REFERENCES categories(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+
+#### 3.4.3 管理外键
+
+```sql
+-- 查看外键信息
+SELECT
+    CONSTRAINT_NAME,
+    TABLE_NAME,
+    COLUMN_NAME,
+    REFERENCED_TABLE_NAME,
+    REFERENCED_COLUMN_NAME
+FROM information_schema.KEY_COLUMN_USAGE
+WHERE TABLE_SCHEMA = 'database_name'
+    AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+-- 添加外键(表已存在时)
+ALTER TABLE orders
+ADD CONSTRAINT fk_orders_user
+FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE;
+
+-- 删除外键
+ALTER TABLE orders DROP FOREIGN KEY fk_orders_user;
+
+-- 禁用外键检查(批量导入数据时使用)
+SET FOREIGN_KEY_CHECKS = 0;
+-- 执行批量操作...
+SET FOREIGN_KEY_CHECKS = 1;
+```
+
+### 3.5 表关系设计
+
+#### 3.5.1 一对一关系 (1:1)
+
+```sql
+-- 用户和用户详情
+CREATE TABLE user_profiles (
+    user_id INT PRIMARY KEY,  -- 既是主键也是外键
+    bio TEXT COMMENT '个人简介',
+    avatar VARCHAR(255) COMMENT '头像URL',
+    address VARCHAR(500) COMMENT '地址',
+
+    FOREIGN KEY (user_id) REFERENCES users(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+
+#### 3.5.2 一对多关系 (1:N)
+
+最常见的外键关系，一个用户可以有多个订单（参考上面的 orders 表示例）。
+
+#### 3.5.3 多对多关系 (M:N)
+
+多对多关系需要中间表来实现：
+
+```sql
+-- 学生表
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    student_no VARCHAR(20) UNIQUE NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 课程表
+CREATE TABLE courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(100) NOT NULL,
+    credit INT NOT NULL DEFAULT 1 COMMENT '学分'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 中间表（学生选课）
+CREATE TABLE student_courses (
+    student_id INT NOT NULL,
+    course_id INT NOT NULL,
+    enroll_date DATE DEFAULT (CURDATE()) COMMENT '选课日期',
+    grade DECIMAL(5,2) COMMENT '成绩',
+
+    PRIMARY KEY (student_id, course_id),  -- 联合主键
+    FOREIGN KEY (student_id) REFERENCES students(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    INDEX idx_course_id (course_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='学生选课表';
+```
+
+### 3.6 修改表结构
 
 ```sql
 -- 添加列
@@ -243,7 +402,7 @@ ALTER TABLE users ADD INDEX idx_age (age);
 ALTER TABLE users DROP INDEX idx_age;
 ```
 
-### 3.5 删除表
+### 3.7 删除表
 
 ```sql
 DROP TABLE users;
@@ -253,7 +412,7 @@ DROP TABLE IF EXISTS users;
 TRUNCATE TABLE users;
 ```
 
-### 3.6 查看表信息
+### 3.8 查看表信息
 
 ```sql
 -- 查看建表语句
@@ -492,18 +651,20 @@ HAVING count > 10;
 
 ### 6.1 JOIN 连接查询
 
+#### 6.1.1 基本 JOIN 类型
+
 ```sql
--- INNER JOIN (内连接)
+-- INNER JOIN (内连接) - 只返回匹配的行
 SELECT u.username, o.order_no
 FROM users u
 INNER JOIN orders o ON u.id = o.user_id;
 
--- LEFT JOIN (左连接)
+-- LEFT JOIN (左连接) - 返回左表所有行，右表无匹配则为NULL
 SELECT u.username, o.order_no
 FROM users u
 LEFT JOIN orders o ON u.id = o.user_id;
 
--- RIGHT JOIN (右连接)
+-- RIGHT JOIN (右连接) - 返回右表所有行，左表无匹配则为NULL
 SELECT u.username, o.order_no
 FROM users u
 RIGHT JOIN orders o ON u.id = o.user_id;
@@ -516,8 +677,12 @@ UNION
 SELECT u.username, o.order_no
 FROM users u
 RIGHT JOIN orders o ON u.id = o.user_id;
+```
 
--- 多表连接
+#### 6.1.2 多表连接
+
+```sql
+-- 三表连接
 SELECT
     u.username,
     o.order_no,
@@ -526,6 +691,106 @@ FROM users u
 INNER JOIN orders o ON u.id = o.user_id
 INNER JOIN order_items oi ON o.id = oi.order_id
 INNER JOIN products p ON oi.product_id = p.id;
+
+-- 查询订单及详细信息(完整示例)
+SELECT
+    o.order_no,
+    u.username,
+    u.email,
+    p.product_name,
+    oi.quantity,
+    oi.price,
+    (oi.quantity * oi.price) as subtotal,
+    o.created_at as order_time
+FROM orders o
+INNER JOIN users u ON o.user_id = u.id
+INNER JOIN order_items oi ON o.id = oi.order_id
+INNER JOIN products p ON oi.product_id = p.id
+WHERE o.id = 100;
+```
+
+#### 6.1.3 实际应用场景
+
+```sql
+-- 场景1: 查询用户及其订单信息
+SELECT
+    u.username,
+    u.email,
+    o.order_no,
+    o.amount,
+    o.created_at as order_time
+FROM users u
+INNER JOIN orders o ON u.id = o.user_id
+WHERE u.id = 1;
+
+-- 场景2: 查询学生的选课情况(多对多关系)
+SELECT
+    s.name as student_name,
+    s.student_no,
+    c.course_name,
+    sc.grade,
+    c.credit,
+    sc.enroll_date
+FROM students s
+INNER JOIN student_courses sc ON s.id = sc.student_id
+INNER JOIN courses c ON sc.course_id = c.id
+ORDER BY s.name, c.course_name;
+
+-- 场景3: 统计每个用户的订单数量和总金额
+SELECT
+    u.username,
+    COUNT(o.id) as order_count,
+    SUM(o.amount) as total_amount,
+    AVG(o.amount) as avg_amount,
+    MAX(o.amount) as max_order,
+    MIN(o.amount) as min_order
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+GROUP BY u.id, u.username
+HAVING order_count > 0
+ORDER BY total_amount DESC;
+
+-- 场景4: 查找没有订单的用户
+SELECT
+    u.username,
+    u.email
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+WHERE o.id IS NULL;
+
+-- 场景5: 查询每个分类的文章数量
+SELECT
+    c.category_name,
+    COUNT(a.id) as article_count
+FROM categories c
+LEFT JOIN articles a ON c.id = a.category_id
+GROUP BY c.id, c.category_name
+ORDER BY article_count DESC;
+```
+
+#### 6.1.4 JOIN 优化建议
+
+```sql
+-- ✅ 好的实践
+-- 1. 使用明确的字段列表代替 SELECT *
+SELECT u.username, o.order_no, o.amount
+FROM users u
+INNER JOIN orders o ON u.id = o.user_id;
+
+-- 2. 为JOIN条件字段创建索引
+-- 确保 user_id, order_id 等外键字段有索引
+
+-- 3. 先过滤再JOIN(减少数据量)
+SELECT u.username, o.order_no
+FROM users u
+INNER JOIN (
+    SELECT * FROM orders WHERE amount > 1000
+) o ON u.id = o.user_id;
+
+-- ❌ 避免的做法
+-- 1. 避免不必要的多表JOIN
+-- 2. 避免在JOIN条件中使用函数
+-- 3. 避免JOIN大表时没有合适的索引
 ```
 
 ### 6.2 子查询
