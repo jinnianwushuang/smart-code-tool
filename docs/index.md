@@ -162,28 +162,71 @@
 
 ### 📖 开发手册 (Handbook)
 
-- [TypeScript 手册](./handbook/typescript-handbook.md) - TypeScript 开发参考
-- [NestJS 手册](./handbook/nestjs-handbook.md) - NestJS 后端框架指南
-- [Prisma 手册](./handbook/prisma-handbook.md) - Prisma ORM 数据库工具
-- [Sequelize 手册](./handbook/sequelize-handbook.md) - Sequelize SQL ORM
-- [Mongoose 手册](./handbook/mongoose-handbook.md) - Mongoose MongoDB ODM
-- [MySQL 手册](./handbook/mysql-handbook.md) - MySQL 关系型数据库速查
-- [MongoDB 手册](./handbook/mongodb-handbook.md) - MongoDB NoSQL 数据库速查
-- [Shell 手册](./handbook/shell-handbook.md) - Shell 脚本编程指南
-- [Linux 命令速查](./handbook/linux-handbook.md) - Linux 日常最常用命令
-- [Vue 3 手册](./handbook/vue3-handbook.md) - Vue 3 前端框架开发
-- [React 19 手册](./handbook/react19-handbook.md) - React 19 最新特性
-- [Next.js 手册](./handbook/nextjs-handbook.md) - Next.js 全栈框架指南
-- [SCSS 手册](./handbook/scss-handbook.md) - SCSS/Sass 样式预处理器
-- [CSS 手册](./handbook/css-handbook.md) - CSS3 样式开发参考
-- [Dart 手册](./handbook/dart-handbook.md) - Dart 编程语言指南
-- [Flutter 手册](./handbook/flutter-handbook.md) - Flutter 跨平台移动开发
-- [Docker 手册](./handbook/docker-handbook.md) - Docker 容器化部署指南
-- [JavaScript 手册](./handbook/javascript-handbook.md) - JavaScript 开发手册
-- [JS 手册](./handbook/js-handbook.md) - JS 快速参考手册
-- [Python 手册](./handbook/python-handbook.md) - Python 开发手册
-- [Tailwind CSS 手册](./handbook/tailwind-css-handbook.md) - Tailwind CSS 样式框架指南
-- [Vim 手册](./handbook/vim-handbook.md) - Vim 编辑器使用指南
+#### 前端开发
+
+##### 前端框架
+
+- [Vue 3 手册](./handbook/frontend/vue3-handbook.md) - Vue 3 前端框架开发
+- [React 19 手册](./handbook/frontend/react19-handbook.md) - React 19 最新特性
+- [Next.js 手册](./handbook/frontend/nextjs-handbook.md) - Next.js 全栈框架指南
+
+##### JavaScript & TypeScript
+
+- [TypeScript 手册](./handbook/frontend/typescript-handbook.md) - TypeScript 开发参考
+- [JavaScript 手册](./handbook/frontend/javascript-handbook.md) - JavaScript 开发手册
+- [JS 手册](./handbook/frontend/js-handbook.md) - JS 快速参考手册
+- [正则速查](./handbook/frontend/regex-handbook.md) - 正则表达式速查
+
+##### 样式相关
+
+- [CSS 手册](./handbook/frontend/css-handbook.md) - CSS3 样式开发参考
+- [SCSS 手册](./handbook/frontend/scss-handbook.md) - SCSS/Sass 样式预处理器
+- [Tailwind CSS 手册](./handbook/frontend/tailwind-css-handbook.md) - Tailwind CSS 样式框架指南
+
+#### 后端开发
+
+##### 后端框架
+
+- [NestJS 手册](./handbook/backend/nestjs-handbook.md) - NestJS 后端框架指南
+- [FastAPI 手册](./handbook/backend/fastapi-handbook.md) - FastAPI Python Web 框架
+
+#### 数据库
+
+##### 数据库 ORM
+
+- [Prisma 手册](./handbook/database/prisma-handbook.md) - Prisma ORM 数据库工具
+- [Sequelize 手册](./handbook/database/sequelize-handbook.md) - Sequelize SQL ORM
+- [Mongoose 手册](./handbook/database/mongoose-handbook.md) - Mongoose MongoDB ODM
+
+##### 数据库系统
+
+- [MySQL 手册](./handbook/database/mysql-handbook.md) - MySQL 关系型数据库速查
+- [MongoDB 手册](./handbook/database/mongodb-handbook.md) - MongoDB NoSQL 数据库速查
+- [PostgreSQL 速查](./handbook/database/postgresql-handbook.md) - PostgreSQL 数据库速查
+
+#### 移动开发
+
+##### 移动端技术
+
+- [Dart 手册](./handbook/mobile/dart-handbook.md) - Dart 编程语言指南
+- [Flutter 手册](./handbook/mobile/flutter-handbook.md) - Flutter 跨平台移动开发
+
+#### 系统运维
+
+##### 运维工具
+
+- [Shell 手册](./handbook/devops/shell-handbook.md) - Shell 脚本编程指南
+- [Linux 命令速查](./handbook/devops/linux-handbook.md) - Linux 日常最常用命令
+- [Git 速查](./handbook/devops/git-handbook.md) - Git 版本控制速查
+- [Nginx 速查](./handbook/devops/nginx-handbook.md) - Nginx Web 服务器配置
+
+#### 开发工具
+
+##### 通用工具
+
+- [Python 手册](./handbook/tools/python-handbook.md) - Python 开发手册
+- [Docker 手册](./handbook/tools/docker-handbook.md) - Docker 容器化部署指南
+- [Vim 手册](./handbook/tools/vim-handbook.md) - Vim 编辑器使用指南
 
 ---
 

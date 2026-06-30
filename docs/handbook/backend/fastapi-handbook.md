@@ -101,7 +101,7 @@ app = FastAPI(
     title="My API",
     description="API description",
     version="1.0.0",
-    docs_url="/docs",        # Swagger UI
+    docs_url="/docs",        # Swagger UIx
     redoc_url="/redoc",      # ReDoc
     openapi_url="/openapi.json"
 )
@@ -109,8 +109,12 @@ app = FastAPI(
 
 访问：
 
+```text
+
 - http://localhost:8000/docs - Swagger UI
 - http://localhost:8000/redoc - ReDoc
+
+```
 
 ---
 
