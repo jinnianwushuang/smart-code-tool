@@ -10,12 +10,15 @@ export default defineConfig({
   title: 'Smart Code Tool',
   description: 'Smart Code Tool 文档中心',
 
-  // 必须设置 base。如果你的 GitHub 仓库名是 'my-project'，
-  // 那么基础路径必须包含仓库名，格式为：/仓库名/docs/
+  // 必须设置 base。如果你的 GitHub 仓库名是 'my-project',
+  // 那么基础路径必须包含仓库名,格式为:/仓库名/docs/
   base: '/smart-code-tool/docs/',
 
-  // 让 VitePress 打包出来的文件，直接塞进主应用的打包目录内
+  // 让 VitePress 打包出来的文件,直接塞进主应用的打包目录内
   outDir: '../dist/docs',
+
+  // 忽略死链接检查(允许 localhost 等本地开发链接)
+  ignoreDeadLinks: [/^https?:\/\/localhost/],
 
   // 自定义主题配置
   themeConfig: {
@@ -25,6 +28,6 @@ export default defineConfig({
     sidebar,
   },
 
-  // 核心：利用 vite 的 define 配置注入全局变量
+  // 核心:利用 vite 的 define 配置注入全局变量
   vite,
 })
