@@ -552,6 +552,10 @@ export const sidebar = [
         collapsed: true,
         items: [
           {
+            text: '前端脚手架背后的脚本语言解析',
+            link: '/architecture-document/engineering/job/frontend-scaffold-scripts',
+          },
+          {
             text: 'Docker 镜像构建脚本对比',
             link: '/architecture-document/engineering/job/docker-image-build-script-comparison',
           },

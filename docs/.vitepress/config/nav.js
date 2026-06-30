@@ -118,6 +118,10 @@ export const nav = [
       { text: 'Vue 架构', link: '/architecture-document/vue/architecture/core-principle' },
       { text: 'React 文档', link: '/architecture-document/react/idea-doc/idea1' },
       { text: '代码分析', link: '/architecture-document/code-analysis/idea-doc/idea' },
+      {
+        text: '工程化',
+        link: '/architecture-document/engineering/job/frontend-scaffold-scripts',
+      },
     ],
   },
   { text: 'GitHub', link: 'https://github.com/jinnianwushuang/smart-code-tool' },
