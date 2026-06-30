@@ -196,13 +196,14 @@ git clone --depth=1 https://github.com/romkatex/powerlevel10k.git ${ZSH_CUSTOM:-
 p10k configure
 ```
 
-#### Starship（现代化提示符，备选）
+#### Starship（现代化提示符,备选）
 
 ```bash
 brew install starship
 
 # 添加到 ~/.zshrc
-eval "$(starship init zsh)"
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
 ### 2.3 版本管理工具
@@ -213,11 +214,12 @@ eval "$(starship init zsh)"
 # 方案一：nvm（稳定）
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-# 方案二：fnm（更快，Rust 编写，推荐 M 系列芯片）
+# 方案二:fnm(更快,Rust 编写,推荐 M 系列芯片)
 brew install fnm
 
-# 配置 fnm（~/.zshrc）
-eval "$(fnm env --use-on-cd)"
+# 配置 fnm(~/.zshrc)
+echo 'eval "$(fnm env --use-on-cd)"' >> ~/.zshrc
+source ~/.zshrc
 
 # 安装 Node.js LTS
 fnm install --lts
@@ -235,9 +237,12 @@ npm --version
 brew install pyenv
 
 # 配置 ~/.zshrc
+cat >> ~/.zshrc << 'EOF'
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+EOF
+source ~/.zshrc
 
 # 安装 Python
 pyenv install 3.12.0
@@ -254,7 +259,8 @@ pip --version
 brew install rbenv ruby-build
 
 # 配置 ~/.zshrc
-eval "$(rbenv init - zsh)"
+echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
+source ~/.zshrc
 
 # 安装 Ruby
 rbenv install 3.3.0
@@ -742,7 +748,7 @@ ollama pull qwen2.5:7b             # 7B 参数，平衡性能
 
 ### 5.3 RAG 系统搭建
 
-参考之前创建的 [kbs.md](file:///Users/jinnian/Code/web/smart-code-tool/docs/architecture-document/ai/idea/kbs.md) 文档，快速部署：
+参考之前创建的 [程序员离线 AI 知识库搭建指南](./kbs.md) 文档，快速部署：
 
 ```bash
 # 创建项目
