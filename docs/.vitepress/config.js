@@ -80,48 +80,49 @@ export default defineConfig({
         text: '开发手册',
         items: [
           // ========== 前端框架 ==========
-          { text: 'Vue 3 手册', link: '/handbook/vue3-handbook' },
-          { text: 'React 19 手册', link: '/handbook/react19-handbook' },
-          { text: 'Next.js 手册', link: '/handbook/nextjs-handbook' },
+          { text: 'Vue 3 手册', link: '/handbook/frontend/vue3-handbook' },
+          { text: 'React 19 手册', link: '/handbook/frontend/react19-handbook' },
+          { text: 'Next.js 手册', link: '/handbook/frontend/nextjs-handbook' },
 
           // ========== JavaScript & TypeScript ==========
-          { text: 'TypeScript 手册', link: '/handbook/typescript-handbook' },
-          { text: 'JavaScript 手册', link: '/handbook/javascript-handbook' },
-          { text: 'JS 手册', link: '/handbook/js-handbook' },
-          { text: '正则速查', link: '/handbook/regex-handbook' },
-
-          // ========== 后端框架 ==========
-          { text: 'NestJS 手册', link: '/handbook/nestjs-handbook' },
-
-          // ========== 数据库 ORM ==========
-          { text: 'Prisma 手册', link: '/handbook/prisma-handbook' },
-          { text: 'Sequelize 手册', link: '/handbook/sequelize-handbook' },
-          { text: 'Mongoose 手册', link: '/handbook/mongoose-handbook' },
-
-          // ========== 数据库 ==========
-          { text: 'MySQL 手册', link: '/handbook/mysql-handbook' },
-          { text: 'MongoDB 手册', link: '/handbook/mongodb-handbook' },
-          { text: 'PostgreSQL 速查', link: '/handbook/postgresql-handbook' },
-
-          // ========== 移动开发 ==========
-          { text: 'Dart 手册', link: '/handbook/dart-handbook' },
-          { text: 'Flutter 手册', link: '/handbook/flutter-handbook' },
+          { text: 'TypeScript 手册', link: '/handbook/frontend/typescript-handbook' },
+          { text: 'JavaScript 手册', link: '/handbook/frontend/javascript-handbook' },
+          { text: 'JS 手册', link: '/handbook/frontend/js-handbook' },
+          { text: '正则速查', link: '/handbook/frontend/regex-handbook' },
 
           // ========== 样式相关 ==========
-          { text: 'CSS 手册', link: '/handbook/css-handbook' },
-          { text: 'SCSS 手册', link: '/handbook/scss-handbook' },
-          { text: 'Tailwind CSS 手册', link: '/handbook/tailwind-css-handbook' },
+          { text: 'CSS 手册', link: '/handbook/frontend/css-handbook' },
+          { text: 'SCSS 手册', link: '/handbook/frontend/scss-handbook' },
+          { text: 'Tailwind CSS 手册', link: '/handbook/frontend/tailwind-css-handbook' },
+
+          // ========== 后端框架 ==========
+          { text: 'NestJS 手册', link: '/handbook/backend/nestjs-handbook' },
+          { text: 'FastAPI 手册', link: '/handbook/backend/fastapi-handbook' },
+
+          // ========== 数据库 ORM ==========
+          { text: 'Prisma 手册', link: '/handbook/database/prisma-handbook' },
+          { text: 'Sequelize 手册', link: '/handbook/database/sequelize-handbook' },
+          { text: 'Mongoose 手册', link: '/handbook/database/mongoose-handbook' },
+
+          // ========== 数据库 ==========
+          { text: 'MySQL 手册', link: '/handbook/database/mysql-handbook' },
+          { text: 'MongoDB 手册', link: '/handbook/database/mongodb-handbook' },
+          { text: 'PostgreSQL 速查', link: '/handbook/database/postgresql-handbook' },
+
+          // ========== 移动开发 ==========
+          { text: 'Dart 手册', link: '/handbook/mobile/dart-handbook' },
+          { text: 'Flutter 手册', link: '/handbook/mobile/flutter-handbook' },
 
           // ========== 系统运维 ==========
-          { text: 'Shell 手册', link: '/handbook/shell-handbook' },
-          { text: 'Linux 命令速查', link: '/handbook/linux-handbook' },
-          { text: 'Git 速查', link: '/handbook/git-handbook' },
-          { text: 'Nginx 速查', link: '/handbook/nginx-handbook' },
+          { text: 'Shell 手册', link: '/handbook/devops/shell-handbook' },
+          { text: 'Linux 命令速查', link: '/handbook/devops/linux-handbook' },
+          { text: 'Git 速查', link: '/handbook/devops/git-handbook' },
+          { text: 'Nginx 速查', link: '/handbook/devops/nginx-handbook' },
 
           // ========== 其他工具 ==========
-          { text: 'Python 手册', link: '/handbook/python-handbook' },
-          { text: 'Docker 手册', link: '/handbook/docker-handbook' },
-          { text: 'Vim 手册', link: '/handbook/vim-handbook' },
+          { text: 'Python 手册', link: '/handbook/tools/python-handbook' },
+          { text: 'Docker 手册', link: '/handbook/tools/docker-handbook' },
+          { text: 'Vim 手册', link: '/handbook/tools/vim-handbook' },
         ],
       },
       {
@@ -729,49 +730,114 @@ export default defineConfig({
         text: '📖 开发手册',
         collapsed: false,
         items: [
-          // ========== 前端框架 ==========
-          { text: 'Vue 3 手册', link: '/handbook/vue3-handbook' },
-          { text: 'React 19 手册', link: '/handbook/react19-handbook' },
-          { text: 'Next.js 手册', link: '/handbook/nextjs-handbook' },
-
-          // ========== JavaScript & TypeScript ==========
-          { text: 'TypeScript 手册', link: '/handbook/typescript-handbook' },
-          { text: 'JavaScript 手册', link: '/handbook/javascript-handbook' },
-          { text: 'JS 手册', link: '/handbook/js-handbook' },
-          { text: '正则速查', link: '/handbook/regex-handbook' },
-
-          // ========== 后端框架 ==========
-          { text: 'NestJS 手册', link: '/handbook/nestjs-handbook' },
-
-          // ========== 数据库 ORM ==========
-          { text: 'Prisma 手册', link: '/handbook/prisma-handbook' },
-          { text: 'Sequelize 手册', link: '/handbook/sequelize-handbook' },
-          { text: 'Mongoose 手册', link: '/handbook/mongoose-handbook' },
-
-          // ========== 数据库 ==========
-          { text: 'MySQL 手册', link: '/handbook/mysql-handbook' },
-          { text: 'MongoDB 手册', link: '/handbook/mongodb-handbook' },
-          { text: 'PostgreSQL 速查', link: '/handbook/postgresql-handbook' },
-
-          // ========== 移动开发 ==========
-          { text: 'Dart 手册', link: '/handbook/dart-handbook' },
-          { text: 'Flutter 手册', link: '/handbook/flutter-handbook' },
-
-          // ========== 样式相关 ==========
-          { text: 'CSS 手册', link: '/handbook/css-handbook' },
-          { text: 'SCSS 手册', link: '/handbook/scss-handbook' },
-          { text: 'Tailwind CSS 手册', link: '/handbook/tailwind-css-handbook' },
-
-          // ========== 系统运维 ==========
-          { text: 'Shell 手册', link: '/handbook/shell-handbook' },
-          { text: 'Linux 命令速查', link: '/handbook/linux-handbook' },
-          { text: 'Git 速查', link: '/handbook/git-handbook' },
-          { text: 'Nginx 速查', link: '/handbook/nginx-handbook' },
-
-          // ========== 其他工具 ==========
-          { text: 'Python 手册', link: '/handbook/python-handbook' },
-          { text: 'Docker 手册', link: '/handbook/docker-handbook' },
-          { text: 'Vim 手册', link: '/handbook/vim-handbook' },
+          {
+            text: '前端开发',
+            collapsed: true,
+            items: [
+              {
+                text: '前端框架',
+                items: [
+                  { text: 'Vue 3 手册', link: '/handbook/frontend/vue3-handbook' },
+                  { text: 'React 19 手册', link: '/handbook/frontend/react19-handbook' },
+                  { text: 'Next.js 手册', link: '/handbook/frontend/nextjs-handbook' },
+                ],
+              },
+              {
+                text: 'JavaScript & TypeScript',
+                items: [
+                  { text: 'TypeScript 手册', link: '/handbook/frontend/typescript-handbook' },
+                  { text: 'JavaScript 手册', link: '/handbook/frontend/javascript-handbook' },
+                  { text: 'JS 手册', link: '/handbook/frontend/js-handbook' },
+                  { text: '正则速查', link: '/handbook/frontend/regex-handbook' },
+                ],
+              },
+              {
+                text: '样式相关',
+                items: [
+                  { text: 'CSS 手册', link: '/handbook/frontend/css-handbook' },
+                  { text: 'SCSS 手册', link: '/handbook/frontend/scss-handbook' },
+                  { text: 'Tailwind CSS 手册', link: '/handbook/frontend/tailwind-css-handbook' },
+                ],
+              },
+            ],
+          },
+          {
+            text: '后端开发',
+            collapsed: true,
+            items: [
+              {
+                text: '后端框架',
+                items: [
+                  { text: 'NestJS 手册', link: '/handbook/backend/nestjs-handbook' },
+                  { text: 'FastAPI 手册', link: '/handbook/backend/fastapi-handbook' },
+                ],
+              },
+            ],
+          },
+          {
+            text: '数据库',
+            collapsed: true,
+            items: [
+              {
+                text: '数据库 ORM',
+                items: [
+                  { text: 'Prisma 手册', link: '/handbook/database/prisma-handbook' },
+                  { text: 'Sequelize 手册', link: '/handbook/database/sequelize-handbook' },
+                  { text: 'Mongoose 手册', link: '/handbook/database/mongoose-handbook' },
+                ],
+              },
+              {
+                text: '数据库系统',
+                items: [
+                  { text: 'MySQL 手册', link: '/handbook/database/mysql-handbook' },
+                  { text: 'MongoDB 手册', link: '/handbook/database/mongodb-handbook' },
+                  { text: 'PostgreSQL 速查', link: '/handbook/database/postgresql-handbook' },
+                ],
+              },
+            ],
+          },
+          {
+            text: '移动开发',
+            collapsed: true,
+            items: [
+              {
+                text: '移动端技术',
+                items: [
+                  { text: 'Dart 手册', link: '/handbook/mobile/dart-handbook' },
+                  { text: 'Flutter 手册', link: '/handbook/mobile/flutter-handbook' },
+                ],
+              },
+            ],
+          },
+          {
+            text: '系统运维',
+            collapsed: true,
+            items: [
+              {
+                text: '运维工具',
+                items: [
+                  { text: 'Shell 手册', link: '/handbook/devops/shell-handbook' },
+                  { text: 'Linux 命令速查', link: '/handbook/devops/linux-handbook' },
+                  { text: 'Git 速查', link: '/handbook/devops/git-handbook' },
+                  { text: 'Nginx 速查', link: '/handbook/devops/nginx-handbook' },
+                ],
+              },
+            ],
+          },
+          {
+            text: '开发工具',
+            collapsed: true,
+            items: [
+              {
+                text: '通用工具',
+                items: [
+                  { text: 'Python 手册', link: '/handbook/tools/python-handbook' },
+                  { text: 'Docker 手册', link: '/handbook/tools/docker-handbook' },
+                  { text: 'Vim 手册', link: '/handbook/tools/vim-handbook' },
+                ],
+              },
+            ],
+          },
         ],
       },
     ],
@@ -799,6 +865,11 @@ export default defineConfig({
 
     // 社交链接
     socialLinks: [{ icon: 'github', link: 'https://github.com/jinnianwushuang/smart-code-tool' }],
+    //
+    outline: {
+      // level: [2, 3],
+      label: '页面导航',
+    },
   },
 
   // 核心：利用 vite 的 define 配置注入全局变量

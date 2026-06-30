@@ -654,17 +654,17 @@ HAVING count > 10;
 #### 6.1.1 基本 JOIN 类型
 
 ```sql
--- INNER JOIN (内连接) - 只返回匹配的行
+-- INNER JOIN (内连接) - 只返回两个表内都匹配的行，交集
 SELECT u.username, o.order_no
 FROM users u
 INNER JOIN orders o ON u.id = o.user_id;
 
--- LEFT JOIN (左连接) - 返回左表所有行，右表无匹配则为NULL
+-- LEFT JOIN (左连接) - 返回左表（users）所有行，右表无匹配则为NULL
 SELECT u.username, o.order_no
 FROM users u
 LEFT JOIN orders o ON u.id = o.user_id;
 
--- RIGHT JOIN (右连接) - 返回右表所有行，左表无匹配则为NULL
+-- RIGHT JOIN (右连接) - 返回右表(orders)所有行，左表无匹配则为NULL
 SELECT u.username, o.order_no
 FROM users u
 RIGHT JOIN orders o ON u.id = o.user_id;
