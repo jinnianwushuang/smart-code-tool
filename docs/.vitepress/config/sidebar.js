@@ -94,8 +94,8 @@ const psychologySidebar = {
   ],
 }
 
-const architectureSidebar = {
-  text: '🏗️ AI架构',
+const aiSidebar = {
+  text: '🤖 AI',
   collapsed: false,
   items: [
     {
@@ -107,27 +107,41 @@ const architectureSidebar = {
           items: [
             {
               text: 'AI行业核心概念与术语',
-              link: '/architecture-document/ai/base-knowledge/ai-industry-concepts',
+              link: '/ai/base-knowledge/ai-industry-concepts',
             },
             {
               text: '本地知识库',
-              link: '/architecture-document/ai/idea/kbs',
+              link: '/ai/idea/kbs',
             },
             {
               text: 'M4 Max 新电脑整备指南',
-              link: '/architecture-document/ai/idea/new-mac-setup-guide',
+              link: '/ai/idea/new-mac-setup-guide',
+            },
+          ],
+        },
+
+        {
+          text: 'AI手册',
+          items: [
+            {
+              text: 'LangChain 手册',
+              link: '/handbook/ai/langchain-handbook',
+            },
+            {
+              text: 'Ollama 手册',
+              link: '/handbook/ai/ollama-handbook',
             },
           ],
         },
 
         {
           text: 'Vue 句子组装',
-          collapsed: true,
+
           items: [
-            { text: '管理端句子', link: '/architecture-document/ai/vue/admin-sentence' },
-            { text: 'Vue 基础句子', link: '/architecture-document/ai/vue/base-sentence-vue' },
-            { text: 'JS 句子', link: '/architecture-document/ai/vue/js-sentence' },
-            { text: 'Web 句子', link: '/architecture-document/ai/vue/web-sentence' },
+            { text: '管理端句子', link: '/ai/vue/admin-sentence' },
+            { text: 'Vue 基础句子', link: '/ai/vue/base-sentence-vue' },
+            { text: 'JS 句子', link: '/ai/vue/js-sentence' },
+            { text: 'Web 句子', link: '/ai/vue/web-sentence' },
           ],
         },
         {
@@ -135,12 +149,18 @@ const architectureSidebar = {
           items: [
             {
               text: '基础句子模板',
-              link: '/architecture-document/ai/sentence_assembly/base-sentence',
+              link: '/ai/sentence_assembly/base-sentence',
             },
           ],
         },
       ],
     },
+  ],
+}
+const architectureSidebar = {
+  text: '🏗️ 架构',
+  collapsed: false,
+  items: [
     {
       text: '架构愿景',
       collapsed: false,
@@ -570,7 +590,7 @@ const architectureSidebar = {
 }
 
 const handbookSidebar = {
-  text: '📚 开发手册索引',
+  text: '📚 开发手册',
   collapsed: false,
   items: [
     {
@@ -630,6 +650,7 @@ const handbookSidebar = {
 
 // 导出侧边栏配置函数,根据路径返回对应的侧边栏
 export const sidebar = {
+  '/ai/': [aiSidebar],
   // 心理认知相关路径
   '/psychology/': [psychologySidebar],
 
@@ -640,5 +661,5 @@ export const sidebar = {
   '/handbook/': [handbookSidebar],
 
   // 默认侧边栏(首页等)
-  '/': [psychologySidebar, architectureSidebar, handbookSidebar],
+  '/': [aiSidebar, psychologySidebar, architectureSidebar, handbookSidebar],
 }
