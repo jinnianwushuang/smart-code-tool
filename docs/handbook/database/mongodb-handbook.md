@@ -86,6 +86,9 @@ show collections
 // 删除当前数据库
 db.dropDatabase()
 
+//获取数据库版本
+db.version()
+
 // 退出
 exit
 ```
@@ -252,6 +255,50 @@ db.users.findOne({ name: 'John' })
 // 计数
 db.users.countDocuments()
 db.users.countDocuments({ age: { $gte: 18 } })
+
+// ========== 关键字匹配查询 ==========
+
+// 精确匹配(完全相等)
+db.users.find({ name: 'John Doe' })
+db.users.find({ status: 'active' })
+
+// 多条件精确匹配
+db.users.find({ name: 'John', status: 'active' })
+
+// 数组中包含特定值
+db.products.find({ tags: 'mongodb' })
+db.products.find({ categories: { $in: ['electronics', 'sale'] } })
+
+// 模糊匹配 - 包含关键字(不区分大小写)
+db.users.find({ name: { $regex: 'john', $options: 'i' } })
+
+// 以关键字开头
+db.users.find({ name: { $regex: '^John', $options: 'i' } })
+
+// 以关键字结尾
+db.users.find({ email: { $regex: '@gmail\.com$', $options: 'i' } })
+
+// 包含多个关键字(OR关系)
+db.articles.find({
+  $or: [
+    { title: { $regex: 'mongodb', $options: 'i' } },
+    { content: { $regex: 'mongodb', $options: 'i' } },
+  ],
+})
+
+// 包含多个关键字(AND关系)
+db.articles.find({
+  title: { $regex: 'mongodb' },
+  content: { $regex: 'database' },
+})
+
+// 排除包含关键字的文档
+db.users.find({ name: { $not: /admin/i } })
+
+// 正则表达式匹配(更灵活的关键字搜索)
+db.users.find({ name: /john/i }) // 包含john,不区分大小写
+db.users.find({ name: /^John\s+Doe$/ }) // 精确匹配 "John Doe"
+db.users.find({ email: /^[a-z]+@company\.com$/i }) // 公司邮箱格式
 ```
 
 ### 3.5 更新文档
@@ -272,6 +319,43 @@ db.users.findOneAndUpdate(
   { $set: { age: 28 } },
   { returnDocument: 'after' }, // 返回更新后的文档
 )
+
+// ========== 通过关键字/正则匹配更新 ==========
+
+// 批量更新包含特定关键字的文档
+db.users.updateMany({ name: { $regex: 'john', $options: 'i' } }, { $set: { verified: true } })
+
+// 更新邮箱符合特定模式的文档
+db.users.updateMany(
+  { email: { $regex: '@oldcompany\.com$', $options: 'i' } },
+  { $set: { companyStatus: 'needs_update' } },
+)
+
+// 批量修正包含错误拼写的文档
+db.products.updateMany(
+  { description: { $regex: 'recieve', $options: 'i' } },
+  { $set: { descriptionNeedsReview: true } },
+)
+
+// 为所有测试用户添加标记
+db.users.updateMany(
+  { name: { $regex: '^Test.*', $options: 'i' } },
+  { $set: { isTestUser: true, testFlag: new Date() } },
+)
+
+// 更新标签包含特定值的文档
+db.posts.updateMany({ tags: 'deprecated' }, { $addToSet: { tags: 'archived' } })
+
+// 使用正则捕获组进行复杂更新(需要聚合管道)
+db.users.updateMany({ email: { $regex: '^(.+)@oldcompany\\.com$' } }, [
+  {
+    $set: {
+      email: {
+        $concat: [{ $arrayElemAt: [{ $split: ['$email', '@'] }, 0] }, '@newcompany.com'],
+      },
+    },
+  },
+])
 ```
 
 ### 3.6 删除文档
@@ -288,6 +372,26 @@ db.users.deleteMany({})
 
 // 查找并删除
 db.users.findOneAndDelete({ name: 'John' })
+
+// ========== 通过关键字/正则匹配删除 ==========
+
+// 删除包含特定关键字的文档
+db.users.deleteMany({ name: { $regex: 'test', $options: 'i' } })
+
+// 删除邮箱符合特定模式的文档
+db.users.deleteMany({ email: { $regex: '@temp\.com$', $options: 'i' } })
+
+// 删除标签包含特定值的文档
+db.posts.deleteMany({ tags: 'spam' })
+
+// 删除标题包含敏感词的文档
+db.articles.deleteMany({ title: { $regex: '(违规|广告| spam)', $options: 'i' } })
+
+// 删除创建时间超过30天且状态为inactive的文档
+db.logs.deleteMany({
+  createdAt: { $lt: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) },
+  status: 'inactive',
+})
 ```
 
 ---
