@@ -18,7 +18,7 @@ export default defineConfig({
   outDir: '../dist/docs',
 
   // 忽略死链接检查(允许 localhost 等本地开发链接)
-  ignoreDeadLinks: [/^https?:\/\/localhost/],
+  ignoreDeadLinks: [/^https?:\/\/localhost/, /^https?:\/\/127.0.0.1/],
 
   // 自定义主题配置
   themeConfig: {
