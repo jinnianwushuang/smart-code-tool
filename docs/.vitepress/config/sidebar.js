@@ -638,6 +638,9 @@ const handbookSidebar = {
         { text: 'Linux 命令速查', link: '/handbook/devops/linux-handbook' },
         { text: 'Git 速查', link: '/handbook/devops/git-handbook' },
         { text: 'Shell 手册', link: '/handbook/devops/shell-handbook' },
+        { text: 'Nginx 速查', link: '/handbook/devops/nginx-handbook' },
+        { text: 'Jenkins 手册', link: '/handbook/devops/jenkins-handbook' },
+        { text: 'Google zx 手册', link: '/handbook/devops/google-zx-handbook' },
       ],
     },
     {

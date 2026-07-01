@@ -87,12 +87,14 @@
 
 ### 运维工具
 
-| 手册                                              | 描述                                         |
-| ------------------------------------------------- | -------------------------------------------- |
-| [Shell 手册](/handbook/devops/shell-handbook)     | Shell 脚本编程、常用命令、自动化任务         |
-| [Linux 命令速查](/handbook/devops/linux-handbook) | Linux 系统管理、文件操作、进程管理、权限控制 |
-| [Git 速查](/handbook/devops/git-handbook)         | Git 版本控制、分支管理、协作工作流           |
-| [Nginx 速查](/handbook/devops/nginx-handbook)     | Nginx 配置、反向代理、负载均衡、SSL 证书     |
+| 手册                                                  | 描述                                         |
+| ----------------------------------------------------- | -------------------------------------------- |
+| [Shell 手册](/handbook/devops/shell-handbook)         | Shell 脚本编程、常用命令、自动化任务         |
+| [Linux 命令速查](/handbook/devops/linux-handbook)     | Linux 系统管理、文件操作、进程管理、权限控制 |
+| [Git 速查](/handbook/devops/git-handbook)             | Git 版本控制、分支管理、协作工作流           |
+| [Nginx 速查](/handbook/devops/nginx-handbook)         | Nginx 配置、反向代理、负载均衡、SSL 证书     |
+| [Jenkins 手册](/handbook/devops/jenkins-handbook)     | Jenkins CI/CD 流水线、自动化构建、持续部署   |
+| [Google zx 手册](/handbook/devops/google-zx-handbook) | JavaScript 编写脚本、自动化任务、CI/CD 集成  |
 
 ---
 

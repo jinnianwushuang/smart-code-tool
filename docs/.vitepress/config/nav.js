@@ -17,5 +17,5 @@ export const nav = [
     text: '开发手册',
     link: '/handbook',
   },
-  { text: 'GitHub', link: 'https://github.com/jinnianwushuang/smart-code-tool' },
+  // { text: 'GitHub', link: 'https://github.com/jinnianwushuang/smart-code-tool' },
 ]
