@@ -57,4 +57,3 @@
 - **移动开发**: 查看 [Flutter 架构](./flutter/reference-code/flutter-base-cmd)
 - **后端开发**: 查看 [Python 架构](./python/reference-code/python-base-cmd)
 - **系统编程**: 查看 [Rust 架构](./rust/begin/rust-study)
-- **AI 应用**: 查看 [AI 架构](./ai/idea/kbs)
