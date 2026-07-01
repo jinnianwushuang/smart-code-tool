@@ -648,6 +648,7 @@ const handbookSidebar = {
       items: [
         { text: 'Python 手册', link: '/handbook/tools/python-handbook' },
         { text: 'VBA 手册', link: '/handbook/tools/vba-handbook' },
+        { text: 'Excel 公式手册', link: '/handbook/tools/excel-formulas-handbook' },
         { text: 'Vim 手册', link: '/handbook/tools/vim-handbook' },
       ],
     },

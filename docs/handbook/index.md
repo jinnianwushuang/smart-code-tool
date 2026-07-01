@@ -102,12 +102,13 @@
 
 ### 通用工具
 
-| 手册                                           | 描述                                          |
-| ---------------------------------------------- | --------------------------------------------- |
-| [Python 手册](/handbook/tools/python-handbook) | Python 编程基础、标准库、虚拟环境管理         |
-| [VBA 手册](/handbook/tools/vba-handbook)       | Excel VBA 自动化、批量报表生成、数据处理      |
-| [Docker 手册](/handbook/tools/docker-handbook) | Docker 容器化、镜像构建、容器编排、多阶段构建 |
-| [Vim 手册](/handbook/tools/vim-handbook)       | Vim 编辑器快捷键、配置、插件管理              |
+| 手册                                                      | 描述                                          |
+| --------------------------------------------------------- | --------------------------------------------- |
+| [Python 手册](/handbook/tools/python-handbook)            | Python 编程基础、标准库、虚拟环境管理         |
+| [VBA 手册](/handbook/tools/vba-handbook)                  | Excel VBA 自动化、批量报表生成、数据处理      |
+| [Excel 公式手册](/handbook/tools/excel-formulas-handbook) | Excel 常用公式、函数详解、实用案例            |
+| [Docker 手册](/handbook/tools/docker-handbook)            | Docker 容器化、镜像构建、容器编排、多阶段构建 |
+| [Vim 手册](/handbook/tools/vim-handbook)                  | Vim 编辑器快捷键、配置、插件管理              |
 
 ---
 

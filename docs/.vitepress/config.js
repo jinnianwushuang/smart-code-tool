@@ -33,5 +33,6 @@ export default defineConfig({
   markdown: {
     // Shiki 语法高亮配置
     theme: 'github-dark',
+    // languages: ['excel'],
   },
 })
