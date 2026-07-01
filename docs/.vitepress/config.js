@@ -30,4 +30,8 @@ export default defineConfig({
 
   // 核心:利用 vite 的 define 配置注入全局变量
   vite,
+  markdown: {
+    // Shiki 语法高亮配置
+    theme: 'github-dark',
+  },
 })

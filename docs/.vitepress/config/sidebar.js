@@ -3,7 +3,7 @@
 
 // 定义各个分类的侧边栏数据
 const psychologySidebar = {
-  text: '🧠 心理认知',
+  // text: '🧠 心理认知',
   collapsed: false,
   items: [
     {
@@ -95,70 +95,65 @@ const psychologySidebar = {
 }
 
 const aiSidebar = {
-  text: '🤖 AI',
+  // text: '🤖 AI',
+
   collapsed: false,
   items: [
     {
-      text: 'AI',
-      collapsed: false,
+      text: 'AI知识库',
       items: [
         {
-          text: 'AI知识库',
-          items: [
-            {
-              text: 'AI行业核心概念与术语',
-              link: '/ai/base-knowledge/ai-industry-concepts',
-            },
-            {
-              text: '本地知识库',
-              link: '/ai/idea/kbs',
-            },
-            {
-              text: 'M4 Max 新电脑整备指南',
-              link: '/ai/idea/new-mac-setup-guide',
-            },
-          ],
-        },
-
-        {
-          text: 'AI手册',
-          items: [
-            {
-              text: 'LangChain 手册',
-              link: '/handbook/ai/langchain-handbook',
-            },
-            {
-              text: 'Ollama 手册',
-              link: '/handbook/ai/ollama-handbook',
-            },
-          ],
-        },
-
-        {
-          text: 'Vue 句子组装',
-
-          items: [
-            { text: '管理端句子', link: '/ai/vue/admin-sentence' },
-            { text: 'Vue 基础句子', link: '/ai/vue/base-sentence-vue' },
-            { text: 'JS 句子', link: '/ai/vue/js-sentence' },
-            { text: 'Web 句子', link: '/ai/vue/web-sentence' },
-          ],
+          text: 'AI行业核心概念与术语',
+          link: '/ai/base-knowledge/ai-industry-concepts',
         },
         {
-          text: '基础句子',
-          items: [
-            {
-              text: '基础句子模板',
-              link: '/ai/sentence_assembly/base-sentence',
-            },
-          ],
+          text: '本地知识库',
+          link: '/ai/idea/kbs',
+        },
+        {
+          text: 'M4 Max 新电脑整备指南',
+          link: '/ai/idea/new-mac-setup-guide',
+        },
+      ],
+    },
+
+    {
+      text: 'AI手册',
+      items: [
+        {
+          text: 'LangChain 手册',
+          link: '/handbook/ai/langchain-handbook',
+        },
+        {
+          text: 'Ollama 手册',
+          link: '/handbook/ai/ollama-handbook',
+        },
+      ],
+    },
+
+    {
+      text: 'Vue 句子组装',
+
+      items: [
+        { text: '管理端句子', link: '/ai/vue/admin-sentence' },
+        { text: 'Vue 基础句子', link: '/ai/vue/base-sentence-vue' },
+        { text: 'JS 句子', link: '/ai/vue/js-sentence' },
+        { text: 'Web 句子', link: '/ai/vue/web-sentence' },
+      ],
+    },
+    {
+      text: '基础句子',
+      items: [
+        {
+          text: '基础句子模板',
+          link: '/ai/sentence_assembly/base-sentence',
         },
       ],
     },
   ],
 }
 const architectureSidebar = {
-  text: '🏗️ 架构',
+  // text: '🏗️ 架构',
   collapsed: false,
   items: [
     {
@@ -590,7 +585,7 @@ const architectureSidebar = {
 }
 
 const handbookSidebar = {
-  text: '📚 开发手册',
+  // text: '📚 开发手册',
   collapsed: false,
   items: [
     {
@@ -645,6 +640,35 @@ const handbookSidebar = {
         { text: 'Shell 手册', link: '/handbook/devops/shell-handbook' },
       ],
     },
+    {
+      text: '开发工具',
+      items: [
+        { text: 'Python 手册', link: '/handbook/tools/python-handbook' },
+        { text: 'VBA 手册', link: '/handbook/tools/vba-handbook' },
+        { text: 'Vim 手册', link: '/handbook/tools/vim-handbook' },
+      ],
+    },
+  ],
+}
+
+const homeSidebar = {
+  // text: '🏠 首页',
+  items: [
+    { text: '首页', link: '/' },
+    { text: 'AI', link: '/ai/' },
+    {
+      text: '架构',
+      link: '/architecture-document/',
+    },
+    {
+      text: '心理认知',
+      link: '/psychology/',
+    },
+
+    {
+      text: '开发手册',
+      link: '/handbook',
+    },
   ],
 }
 
@@ -661,5 +685,6 @@ export const sidebar = {
   '/handbook/': [handbookSidebar],
 
   // 默认侧边栏(首页等)
-  '/': [aiSidebar, psychologySidebar, architectureSidebar, handbookSidebar],
+  // '/': [aiSidebar, psychologySidebar, architectureSidebar, handbookSidebar],
+  '/': [homeSidebar],
 }
