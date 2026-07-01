@@ -9,7 +9,7 @@ export const nav = [
   },
 
   {
-    text: '架构文档',
+    text: 'AI架构',
     link: '/architecture-document/',
   },
   {

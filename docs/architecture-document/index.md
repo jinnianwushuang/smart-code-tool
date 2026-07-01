@@ -4,12 +4,16 @@
 
 ## 📖 文档分类
 
-### 🤖 AI 架构
+### 🤖 AI
 
+- [AI 行业核心概念与术语](./ai/base-knowledge/ai-industry-concepts)
 - [AI知识库](./ai/idea/kbs) - 本地知识库建设
 - [M4 Max 新电脑整备指南](./ai/idea/new-mac-setup-guide)
-- [架构愿景](./ai/architectural-vision/architectural-vision-1) - 整体架构设计
 - [Vue 句子组装](./ai/vue/admin-sentence) - AI 辅助代码生成
+
+### 架构
+
+- [架构愿景](./architectural-vision/architectural-vision-1) - 整体架构设计
 
 ### 💻 代码分析工具
 

@@ -78,13 +78,13 @@
 
 #### AI 架构
 
-- [架构愿景](./architecture-document/ai/architectural-vision/architectural-vision-1.md) - 项目整体架构愿景
-- [闭环设计](./architecture-document/ai/architectural-vision/closed-loop-1.md) - 系统闭环设计方案
-- [影响分析](./architecture-document/ai/architectural-vision/influence-1.md) - 架构变更影响分析
-- [设计原则](./architecture-document/ai/architectural-vision/principles-1.md) - 架构设计核心原则
-- [实施报告](./architecture-document/ai/architectural-vision/report-1.md) - 架构实施进展报告
-- [路线图](./architecture-document/ai/architectural-vision/roadmap-1.md) - 技术发展路线图
-- [检查清单](./architecture-document/ai/architectural-vision/checklist-1.md) - 架构审查检查清单
+- [架构愿景](./architecture-document/architectural-vision/architectural-vision-1.md) - 项目整体架构愿景
+- [闭环设计](./architecture-document/architectural-vision/closed-loop-1.md) - 系统闭环设计方案
+- [影响分析](./architecture-document/architectural-vision/influence-1.md) - 架构变更影响分析
+- [设计原则](./architecture-document/architectural-vision/principles-1.md) - 架构设计核心原则
+- [实施报告](./architecture-document/architectural-vision/report-1.md) - 架构实施进展报告
+- [路线图](./architecture-document/architectural-vision/roadmap-1.md) - 技术发展路线图
+- [检查清单](./architecture-document/architectural-vision/checklist-1.md) - 架构审查检查清单
 
 ##### Vue 句子组装
 

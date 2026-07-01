@@ -95,50 +95,20 @@ const psychologySidebar = {
 }
 
 const architectureSidebar = {
-  text: '🏗️ 架构文档',
+  text: '🏗️ AI架构',
   collapsed: false,
   items: [
     {
-      text: '架构愿景',
-      collapsed: false,
-      items: [
-        {
-          text: '架构愿景',
-          link: '/architecture-document/ai/architectural-vision/architectural-vision-1',
-        },
-        {
-          text: '闭环设计',
-          link: '/architecture-document/ai/architectural-vision/closed-loop-1',
-        },
-        {
-          text: '影响分析',
-          link: '/architecture-document/ai/architectural-vision/influence-1',
-        },
-        {
-          text: '设计原则',
-          link: '/architecture-document/ai/architectural-vision/principles-1',
-        },
-        {
-          text: '实施报告',
-          link: '/architecture-document/ai/architectural-vision/report-1',
-        },
-        {
-          text: '路线图',
-          link: '/architecture-document/ai/architectural-vision/roadmap-1',
-        },
-        {
-          text: '检查清单',
-          link: '/architecture-document/ai/architectural-vision/checklist-1',
-        },
-      ],
-    },
-    {
-      text: 'AI 架构',
+      text: 'AI',
       collapsed: false,
       items: [
         {
           text: 'AI知识库',
           items: [
+            {
+              text: 'AI行业核心概念与术语',
+              link: '/architecture-document/ai/base-knowledge/ai-industry-concepts',
+            },
             {
               text: '本地知识库',
               link: '/architecture-document/ai/idea/kbs',
@@ -171,6 +141,41 @@ const architectureSidebar = {
         },
       ],
     },
+    {
+      text: '架构愿景',
+      collapsed: false,
+      items: [
+        {
+          text: '架构愿景',
+          link: '/architecture-document/architectural-vision/architectural-vision-1',
+        },
+        {
+          text: '闭环设计',
+          link: '/architecture-document/architectural-vision/closed-loop-1',
+        },
+        {
+          text: '影响分析',
+          link: '/architecture-document/architectural-vision/influence-1',
+        },
+        {
+          text: '设计原则',
+          link: '/architecture-document/architectural-vision/principles-1',
+        },
+        {
+          text: '实施报告',
+          link: '/architecture-document/architectural-vision/report-1',
+        },
+        {
+          text: '路线图',
+          link: '/architecture-document/architectural-vision/roadmap-1',
+        },
+        {
+          text: '检查清单',
+          link: '/architecture-document/architectural-vision/checklist-1',
+        },
+      ],
+    },
+
     {
       text: '代码分析工具',
       collapsed: true,
