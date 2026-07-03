@@ -192,6 +192,12 @@ export const docs = [
         tag: 'Library',
         desc: '强大的 NLP 库,提供数千个预训练模型用于文本、图像和音频处理。',
       },
+      {
+        name: '阿里云百炼',
+        url: 'https://bailian.console.aliyun.com/',
+        tag: 'Platform',
+        desc: '阿里巴巴推出的一站式大模型应用开发平台,提供模型调用、微调和应用部署能力。',
+      },
     ],
   },
   {
