@@ -1,9 +1,11 @@
 // .vitepress/theme/index.js
 import DefaultTheme from 'vitepress/theme'
+import Layout from './Layout.vue'
 import './custom.css'
 
 export default {
   ...DefaultTheme,
+  Layout,
   enhanceApp({ app, router, siteData }) {
     // 在应用启动时同步主题
     syncThemeFromURL()
