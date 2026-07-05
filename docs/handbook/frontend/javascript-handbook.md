@@ -1895,6 +1895,126 @@ class ApiClient {
     return 'new implementation'
   }
 }
+
+// 属性装饰器
+function readonly(target, context) {
+  if (context.kind === 'field') {
+    return function (initialValue) {
+      Object.defineProperty(this, context.name, {
+        value: initialValue,
+        writable: false,
+        enumerable: true,
+        configurable: true,
+      })
+    }
+  }
+}
+
+class User {
+  @readonly
+  id = 123
+
+  constructor(name) {
+    this.name = name
+  }
+}
+
+const user = new User('Alice')
+user.id // 123
+// user.id = 456; // Error! Cannot assign to read only property
+
+// 存取器装饰器 (getter/setter)
+function logAccess(target, context) {
+  if (context.kind === 'accessor') {
+    const { get, set } = target
+    return {
+      get() {
+        console.log(`Getting ${String(context.name)}`)
+        return get.call(this)
+      },
+      set(value) {
+        console.log(`Setting ${String(context.name)} to`, value)
+        set.call(this, value)
+      },
+    }
+  }
+}
+
+class BankAccount {
+  #balance = 0
+
+  @logAccess
+  get balance() {
+    return this.#balance
+  }
+
+  @logAccess
+  set balance(value) {
+    if (value < 0) {
+      throw new Error('Balance cannot be negative')
+    }
+    this.#balance = value
+  }
+}
+
+const account = new BankAccount()
+account.balance = 1000 // "Setting balance to 1000"
+console.log(account.balance) // "Getting balance", 1000
+
+// addInitializer - 在类实例化时执行初始化逻辑
+function validate(target, context) {
+  if (context.kind === 'class') {
+    context.addInitializer(function () {
+      console.log(`Initializing ${this.constructor.name}`)
+      // 可以在这里进行实例级别的验证或设置
+      if (!this.validate) {
+        this.validate = function () {
+          return true
+        }
+      }
+    })
+  }
+}
+
+@validate
+class Product {
+  constructor(name, price) {
+    this.name = name
+    this.price = price
+  }
+
+  validate() {
+    return this.price > 0 && this.name.length > 0
+  }
+}
+
+const product = new Product('Laptop', 999)
+product.validate() // true
+
+// 属性装饰器中使用 addInitializer
+function bound(target, context) {
+  if (context.kind === 'method' || context.kind === 'getter' || context.kind === 'setter') {
+    context.addInitializer(function () {
+      // 将方法绑定到当前实例
+      this[context.name] = this[context.name].bind(this)
+    })
+  }
+}
+
+class EventHandler {
+  constructor() {
+    this.message = 'Hello'
+  }
+
+  @bound
+  handleClick() {
+    console.log(this.message)
+  }
+}
+
+const handler = new EventHandler()
+const button = { onclick: handler.handleClick }
+button.onclick() // "Hello" (this 正确指向 handler 实例)
 ```
 
 ### 28.2 Array Grouping - ECMAScript 2024
