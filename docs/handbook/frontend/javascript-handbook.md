@@ -18,16 +18,29 @@
 - [八、字符串](#八字符串)
 - [九、ES6+ 新特性](#九es6-新特性)
 - [十、异步编程](#十异步编程)
-- [十一、DOM 操作](#十一dom-操作)
-- [十二、事件处理](#十二事件处理)
-- [十三、模块化](#十三模块化)
-- [十四、错误处理](#十四错误处理)
-- [十五、正则表达式](#十五正则表达式)
-- [十六、常用 API](#十六常用-api)
-- [十七、性能优化](#十七性能优化)
-- [十八、调试技巧](#十八调试技巧)
-- [十九、设计模式](#十九设计模式)
-- [二十、最佳实践](#二十最佳实践)
+- [十一、事件循环](#十一事件循环)
+- [十二、原型和继承](#十二原型和继承)
+- [十三、DOM 操作](#十三dom-操作)
+- [十四、事件处理](#十四事件处理)
+- [十五、存储 API](#十五存储-api)
+- [十六、模块化](#十六模块化)
+- [十七、正则表达式](#十七正则表达式)
+- [十八、JSON](#十八json)
+- [十九、类型转换](#十九类型转换)
+- [二十、错误处理](#二十错误处理)
+- [二十一、解构赋值](#二十一解构赋值)
+- [二十二、扩展运算符](#二十二扩展运算符)
+- [二十三、Map 和 Set](#二十三map-和-set)
+- [二十四、WeakMap 和 WeakSet](#二十四weakmap-和-weakset)
+- [二十五、Symbol](#二十五symbol)
+- [二十六、代理和反射](#二十六代理和反射)
+- [二十七、迭代和生成器](#二十七迭代和生成器)
+- [二十八、实验性语法](#二十八实验性语法)
+- [二十九、性能优化](#二十九性能优化)
+- [三十、调试技巧](#三十调试技巧)
+- [三十一、设计模式](#三十一设计模式)
+- [三十二、最佳实践](#三十二最佳实践)
+- [三十三、实用工具函数](#三十三实用工具函数)
 
 ---
 
@@ -923,7 +936,84 @@ async function postData() {
 
 ---
 
-## 十一、DOM 操作
+## 十一、事件循环
+
+### 11.1 宏任务 vs 微任务
+
+- **宏任务**: `setTimeout`, `setInterval`, `setImmediate`
+- **微任务**: `Promise`, `queueMicrotask`, `MutationObserver`
+
+### 11.2 执行顺序示例
+
+```javascript
+console.log('Script start')
+
+setTimeout(() => {
+  console.log('setTimeout')
+}, 0)
+
+Promise.resolve()
+  .then(() => {
+    console.log('Promise 1')
+  })
+  .then(() => {
+    console.log('Promise 2')
+  })
+
+console.log('Script end')
+
+// 输出顺序:
+// Script start
+// Script end
+// Promise 1
+// Promise 2
+// setTimeout
+```
+
+---
+
+## 十二、原型和继承
+
+### 12.1 原型链
+
+```javascript
+function Animal(name) {
+  this.name = name
+}
+
+Animal.prototype.move = function () {
+  console.log(`${this.name} is moving`)
+}
+
+function Dog(name, breed) {
+  Animal.call(this, name) // 调用父构造函数
+  this.breed = breed
+}
+
+// 设置原型链
+Dog.prototype = Object.create(Animal.prototype)
+Dog.prototype.constructor = Dog
+
+Dog.prototype.bark = function () {
+  console.log(`${this.name} is barking`)
+}
+
+const dog = new Dog('Buddy', 'Golden Retriever')
+dog.move() // Buddy is moving
+dog.bark() // Buddy is barking
+```
+
+### 12.2 检查原型
+
+```javascript
+dog instanceof Dog // true
+dog instanceof Animal // true
+Object.getPrototypeOf(dog) === Dog.prototype // true
+```
+
+---
+
+## 十三、DOM 操作
 
 ### 11.1 选择元素
 
@@ -1026,7 +1116,7 @@ element.scrollIntoView()
 
 ---
 
-## 十二、事件处理
+## 十四、事件处理
 
 ### 12.1 事件监听
 
@@ -1093,7 +1183,34 @@ document.getElementById('list').addEventListener('click', (e) => {
 
 ---
 
-## 十三、模块化
+## 十五、存储 API
+
+### 15.1 LocalStorage (永久存储)
+
+```javascript
+localStorage.setItem('key', 'value')
+localStorage.getItem('key') // 'value'
+localStorage.removeItem('key')
+localStorage.clear() // 清空所有
+```
+
+### 15.2 SessionStorage (会话存储)
+
+```javascript
+sessionStorage.setItem('key', 'value')
+sessionStorage.getItem('key')
+```
+
+### 15.3 Cookie
+
+```javascript
+document.cookie = 'name=value; path=/; expires=' + new Date(2026, 6, 5)
+document.cookie = 'name=value; path=/; max-age=3600' // 1小时
+```
+
+---
+
+## 十六、模块化
 
 ### 13.1 ES Modules
 
@@ -1135,7 +1252,85 @@ const { add, subtract } = require('./math')
 
 ---
 
-## 十四、错误处理
+## 十八、JSON
+
+### 18.1 序列化和反序列化
+
+```javascript
+const obj = { name: 'John', age: 30, active: true }
+const jsonStr = JSON.stringify(obj)
+const parsed = JSON.parse(jsonStr)
+```
+
+### 18.2 自定义转换
+
+```javascript
+// 自定义序列化
+JSON.stringify(obj, (key, value) => {
+  if (typeof value === 'number') {
+    return value * 2
+  }
+  return value
+})
+
+// 自定义反序列化
+JSON.parse(jsonStr, (key, value) => {
+  if (key === 'age') {
+    return value + 1
+  }
+  return value
+})
+```
+
+### 18.3 格式化输出
+
+```javascript
+JSON.stringify(obj, null, 2) // 美化输出
+
+// 过滤函数属性
+JSON.stringify(obj, (key, value) => {
+  if (typeof value === 'function') {
+    return undefined
+  }
+  return value
+})
+```
+
+---
+
+## 十九、类型转换
+
+### 19.1 显式转换
+
+```javascript
+String(123) // '123'
+Number('123') // 123
+Boolean(1) // true
+parseInt('123') // 123
+parseFloat('123.45') // 123.45
+```
+
+### 19.2 隐式转换
+
+```javascript
+123 + '' // '123'
+'123' - 0 // 123
+!0 // true
+!!1 // true
+```
+
+### 19.3 相等比较
+
+```javascript
+0 == false // true (宽松)
+0 === false // false (严格)
+null == undefined // true (宽松)
+null === undefined // false (严格)
+```
+
+---
+
+## 二十、错误处理
 
 ### 14.1 try-catch
 
@@ -1200,7 +1395,7 @@ process.on('unhandledRejection', (reason, promise) => {
 
 ---
 
-## 十五、正则表达式
+## 十七、正则表达式
 
 ### 15.1 创建正则
 
@@ -1411,7 +1606,413 @@ url.searchParams.append('key', 'value2')
 
 ---
 
-## 十七、性能优化
+## 二十一、解构赋值
+
+### 21.1 数组解构
+
+```javascript
+const [a, b, c] = [1, 2, 3]
+const [x, , z] = [1, 2, 3] // 跳过第二个
+const [first, ...rest] = [1, 2, 3, 4] // first=1, rest=[2,3,4]
+const [d = 10] = [] // 默认值
+```
+
+### 21.2 对象解构
+
+```javascript
+const { name: personName, age: personAge } = { name: 'John', age: 30 }
+const { name = 'Guest', email = 'no-email' } = obj
+const { x: coords_x, y: coords_y } = { x: 10, y: 20 }
+```
+
+### 21.3 嵌套解构
+
+```javascript
+const {
+  address: { city },
+} = person
+```
+
+### 21.4 函数参数解构
+
+```javascript
+function printPerson({ name, age }) {
+  console.log(`${name} is ${age} years old`)
+}
+```
+
+---
+
+## 二十二、扩展运算符
+
+### 22.1 数组展开
+
+```javascript
+const arr1 = [1, 2, 3]
+const arr2 = [0, ...arr1, 4] // [0, 1, 2, 3, 4]
+```
+
+### 22.2 对象展开
+
+```javascript
+const obj_a = { a: 1, b: 2 }
+const obj_b = { ...obj_a, c: 3 } // { a: 1, b: 2, c: 3 }
+```
+
+### 22.3 函数参数
+
+```javascript
+const numbers = [1, 2, 3]
+Math.max(...numbers) // 3
+```
+
+---
+
+## 二十三、Map 和 Set
+
+### 23.1 Map
+
+```javascript
+// 键值对集合，键可以是任意类型
+const map = new Map()
+map.set('key1', 'value1')
+map.set(42, 'value2')
+map.get('key1') // 'value1'
+map.size // 2
+map.has('key1') // true
+map.delete('key1')
+map.clear()
+
+for (const [key, value] of map) {
+  console.log(key, value)
+}
+```
+
+### 23.2 Set
+
+```javascript
+// 唯一值集合
+const set = new Set([1, 2, 2, 3, 3, 3])
+set.size // 3
+set.add(4)
+set.has(2) // true
+set.delete(2)
+set.clear()
+
+for (const value of set) {
+  console.log(value) // 1, 3, 4
+}
+
+// 数组去重
+const unique = [...new Set([1, 2, 2, 3, 3, 3])] // [1, 2, 3]
+```
+
+---
+
+## 二十四、WeakMap 和 WeakSet
+
+### 24.1 WeakMap
+
+```javascript
+// 键只能是对象，垃圾回收安全
+const wm = new WeakMap()
+const key1 = { id: 1 }
+
+wm.set(key1, 'value')
+wm.get(key1) // 'value'
+wm.has(key1) // true
+wm.delete(key1) // true
+```
+
+### 24.2 WeakSet
+
+```javascript
+// 值只能是对象
+const ws = new WeakSet()
+const obj = { id: 1 }
+
+ws.add(obj)
+ws.has(obj) // true
+ws.delete(obj) // true
+```
+
+---
+
+## 二十五、Symbol
+
+### 25.1 基本用法
+
+```javascript
+const sym1 = Symbol('description')
+const sym2 = Symbol('description')
+sym1 === sym2 // false (每个 Symbol 都是唯一的)
+```
+
+### 25.2 全局 Symbol 注册表
+
+```javascript
+const globalSym = Symbol.for('app.id')
+const sameSym = Symbol.for('app.id')
+globalSym === sameSym // true
+```
+
+### 25.3 对象属性名
+
+```javascript
+const obj = {}
+obj[sym1] = 'value1'
+obj[sym2] = 'value2'
+
+Object.keys(obj) // [] (Symbol 属性不被枚举)
+Object.getOwnPropertySymbols(obj) // [sym1, sym2]
+```
+
+### 25.4 常见 Symbol
+
+```javascript
+Symbol.iterator // 可迭代协议
+Symbol.asyncIterator // 异步可迭代
+Symbol.hasInstance // instanceof 行为
+Symbol.toStringTag // Object.prototype.toString
+```
+
+---
+
+## 二十六、代理和反射
+
+### 26.1 Proxy
+
+```javascript
+const target = { name: 'John', age: 30 }
+
+const handler = {
+  get(target, property) {
+    console.log(`Getting ${property}`)
+    return target[property]
+  },
+  set(target, property, value) {
+    console.log(`Setting ${property} to ${value}`)
+    target[property] = value
+    return true
+  },
+}
+
+const proxy = new Proxy(target, handler)
+proxy.name // 'Getting name', 'John'
+proxy.age = 31 // 'Setting age to 31'
+```
+
+### 26.2 Reflect API
+
+```javascript
+Reflect.get(target, 'name') // 'John'
+Reflect.set(target, 'age', 32) // true
+Reflect.has(target, 'name') // true
+Reflect.ownKeys(target) // ['name', 'age']
+```
+
+---
+
+## 二十七、迭代和生成器
+
+### 27.1 可迭代协议
+
+```javascript
+const iterable = {
+  [Symbol.iterator]() {
+    let count = 0
+    return {
+      next: () => ({
+        value: count++,
+        done: count > 3,
+      }),
+    }
+  },
+}
+
+for (const value of iterable) {
+  console.log(value) // 0, 1, 2
+}
+```
+
+### 27.2 Generator 函数
+
+```javascript
+function* generator() {
+  yield 1
+  yield 2
+  yield 3
+}
+
+const gen = generator()
+gen.next() // { value: 1, done: false }
+gen.next() // { value: 2, done: false }
+gen.next() // { value: 3, done: false }
+gen.next() // { value: undefined, done: true }
+
+for (const value of generator()) {
+  console.log(value) // 1, 2, 3
+}
+```
+
+---
+
+## 二十八、实验性语法
+
+### 28.1 装饰器 (Decorators) - Stage 3
+
+```javascript
+// 类装饰器
+function logged(target) {
+  console.log(`Class ${target.name} is being instantiated`)
+  return target
+}
+
+@logged
+class UserService {
+  constructor(name) {
+    this.name = name
+  }
+}
+
+// 方法装饰器
+function deprecated(target, context) {
+  if (context.kind === 'method') {
+    return function (...args) {
+      console.warn(`Method ${String(context.name)} is deprecated`)
+      return target.call(this, ...args)
+    }
+  }
+}
+
+class ApiClient {
+  @deprecated
+  oldMethod() {
+    return 'old implementation'
+  }
+
+  newMethod() {
+    return 'new implementation'
+  }
+}
+```
+
+### 28.2 Array Grouping - ECMAScript 2024
+
+```javascript
+const people = [
+  { name: 'Alice', age: 25 },
+  { name: 'Bob', age: 30 },
+  { name: 'Charlie', age: 25 },
+  { name: 'David', age: 30 },
+]
+
+// Object.groupBy
+const groupedByAge = Object.groupBy(people, (person) => person.age)
+// {
+//   25: [{name: 'Alice', age: 25}, {name: 'Charlie', age: 25}],
+//   30: [{name: 'Bob', age: 30}, {name: 'David', age: 30}]
+// }
+
+// Map.groupBy
+const groupedMap = Map.groupBy(people, (person) => person.age)
+```
+
+### 28.3 Change Array by Copy - ECMAScript 2023
+
+```javascript
+const original = [3, 1, 4, 1, 5, 9, 2, 6]
+
+// 排序（不修改原数组）
+const sorted = original.toSorted((a, b) => a - b)
+// [1, 1, 2, 3, 4, 5, 6, 9]
+
+// 反转（不修改原数组）
+const reversed = original.toReversed()
+// [6, 2, 9, 5, 1, 4, 1, 3]
+
+// 拼接（不修改原数组）
+const spliced = original.toSpliced(2, 3, 10, 20)
+// [3, 1, 10, 20, 9, 2, 6]
+
+// 替换元素（不修改原数组）
+const replaced = original.with(0, 100)
+// [100, 1, 4, 1, 5, 9, 2, 6]
+```
+
+### 28.4 Private Field Checks - ECMAScript 2022
+
+```javascript
+class SafeUser {
+  #password
+
+  constructor(password) {
+    this.#password = password
+  }
+
+  // 检查对象是否有某个私有字段
+  static isSafeUser(obj) {
+    return #password in obj
+  }
+
+  verifyPassword(pwd) {
+    if (!(#password in this)) {
+      throw new Error('Invalid object')
+    }
+    return this.#password === pwd
+  }
+}
+
+const user = new SafeUser('secret123')
+SafeUser.isSafeUser(user) // true
+SafeUser.isSafeUser({}) // false
+```
+
+### 28.5 Static Class Fields - ECMAScript 2022
+
+```javascript
+class MathUtils {
+  // 静态字段
+  static PI = 3.141592653589793
+  static VERSION = '1.0.0'
+
+  // 静态块 - 初始化静态字段
+  static {
+    console.log(`Initializing MathUtils v${this.VERSION}`)
+    this.E = Math.E
+  }
+
+  // 静态方法
+  static circleArea(radius) {
+    return this.PI * radius ** 2
+  }
+
+  // 私有静态字段
+  static #cache = new Map()
+
+  static cachedCompute(key, fn) {
+    if (!this.#cache.has(key)) {
+      this.#cache.set(key, fn())
+    }
+    return this.#cache.get(key)
+  }
+}
+
+MathUtils.circleArea(5) // 78.53981633974483
+```
+
+### 其他实验性特性
+
+- **Pipeline 操作符 (`|>`)** - Stage 2
+- **Partial Application Syntax** - Stage 2
+- **Record & Tuple** - Stage 2
+- **Temporal API** - Stage 3
+- **Import Attributes** - Stage 3
+- **Top-level Await** - ECMAScript 2022
+
+---
+
+## 二十九、性能优化
 
 ### 17.1 防抖和节流
 
@@ -1498,7 +2099,7 @@ button.addEventListener('click', async () => {
 
 ---
 
-## 十八、调试技巧
+## 三十、调试技巧
 
 ### 18.1 Console 调试
 
@@ -1568,7 +2169,7 @@ console.log(`Elapsed: ${end - start}ms`)
 
 ---
 
-## 十九、设计模式
+## 三十一、设计模式
 
 ### 19.1 单例模式
 
@@ -1683,7 +2284,7 @@ class PubSub {
 
 ---
 
-## 二十、最佳实践
+## 三十二、最佳实践
 
 ### 20.1 代码规范
 
@@ -1799,7 +2400,7 @@ worker.onmessage = (event) => {
 }
 ```
 
-### 20.5 安全建议
+### 32.5 安全建议
 
 ```javascript
 // 避免 eval
@@ -1820,6 +2421,283 @@ function escapeHtml(text) {
 // 验证输入
 // 使用 Content Security Policy
 // 避免暴露敏感信息
+```
+
+---
+
+## 三十三、实用工具函数
+
+### 33.1 深拷贝
+
+```javascript
+function deepClone(obj) {
+  if (obj === null || typeof obj !== 'object') return obj
+  if (obj instanceof Date) return new Date(obj.getTime())
+  if (obj instanceof Array) {
+    const arr = []
+    for (let i = 0; i < obj.length; i++) {
+      arr[i] = deepClone(obj[i])
+    }
+    return arr
+  }
+  if (obj instanceof Object) {
+    const clonedObj = {}
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        clonedObj[key] = deepClone(obj[key])
+      }
+    }
+    return clonedObj
+  }
+}
+```
+
+### 33.2 数组去重
+
+```javascript
+const removeDuplicates = (arr) => [...new Set(arr)]
+```
+
+### 33.3 数组扁平化
+
+```javascript
+const flatten = (arr) => arr.flat(Infinity)
+```
+
+### 33.4 嵌套属性访问
+
+```javascript
+const getNestedValue = (obj, path, defaultValue = null) => {
+  const value = path.split('.').reduce((acc, part) => acc?.[part], obj)
+  return value ?? defaultValue
+}
+
+// 使用示例
+getNestedValue(user, 'address.city', 'Unknown')
+```
+
+### 33.5 延迟执行
+
+```javascript
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+// 使用示例
+await delay(1000) // 等待 1 秒
+```
+
+### 33.6 重试函数
+
+```javascript
+async function retry(fn, maxAttempts = 3, delayMs = 1000) {
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await fn()
+    } catch (error) {
+      if (attempt === maxAttempts) throw error
+      await delay(delayMs * attempt)
+    }
+  }
+}
+
+// 使用示例
+const result = await retry(() => fetchData(), 3, 1000)
+```
+
+### 33.7 链式 Promise
+
+```javascript
+function chain(...fns) {
+  return (value) => fns.reduce((p, fn) => p.then(fn), Promise.resolve(value))
+}
+
+// 使用示例
+const process = chain(
+  (data) => data * 2,
+  (data) => data + 10,
+  (data) => Math.sqrt(data),
+)
+process(5) // Promise
+```
+
+### 33.8 管道组合
+
+```javascript
+function pipe(...fns) {
+  return (x) => fns.reduce((v, f) => f(v), x)
+}
+
+// 使用示例
+const transform = pipe(
+  (x) => x * 2,
+  (x) => x + 10,
+  (x) => x.toString(),
+)
+transform(5) // "20"
+```
+
+### 33.9 组合函数
+
+```javascript
+function compose(...fns) {
+  return (x) => fns.reduceRight((v, f) => f(v), x)
+}
+
+// 使用示例
+const transform = compose(
+  (x) => x.toString(),
+  (x) => x + 10,
+  (x) => x * 2,
+)
+transform(5) // "20"
+```
+
+### 33.10 类型守卫
+
+```javascript
+function isString(value) {
+  return typeof value === 'string'
+}
+
+function isNumber(value) {
+  return typeof value === 'number' && !isNaN(value)
+}
+
+function isArray(value) {
+  return Array.isArray(value)
+}
+
+function isObject(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value)
+}
+```
+
+### 33.11 非空断言
+
+```javascript
+function nonNull(value, message = 'Value cannot be null or undefined') {
+  if (value == null) {
+    throw new Error(message)
+  }
+  return value
+}
+
+// 使用示例
+const safeValue = nonNull(maybeNull, 'Value is required')
+```
+
+### 33.12 防抖 (Debounce)
+
+```javascript
+function debounce(func, delay) {
+  let timeoutId
+  return function (...args) {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => func(...args), delay)
+  }
+}
+
+// 使用示例
+window.addEventListener('resize', debounce(handleResize, 250))
+```
+
+### 33.13 节流 (Throttle)
+
+```javascript
+function throttle(func, limit) {
+  let inThrottle
+  return function (...args) {
+    if (!inThrottle) {
+      func(...args)
+      inThrottle = true
+      setTimeout(() => (inThrottle = false), limit)
+    }
+  }
+}
+
+// 使用示例
+window.addEventListener('scroll', throttle(handleScroll, 100))
+```
+
+### 33.14 批量更新 DOM
+
+```javascript
+function batchUpdateDOM(updates) {
+  requestAnimationFrame(() => {
+    updates.forEach((update) => update())
+  })
+}
+```
+
+### 33.15 惰性求值
+
+```javascript
+function lazy(fn) {
+  let evaluated = false
+  let value
+  return () => {
+    if (!evaluated) {
+      value = fn()
+      evaluated = true
+    }
+    return value
+  }
+}
+```
+
+### 33.16 缓存装饰器
+
+```javascript
+function cacheable(ttl = 60000) {
+  const cache = new Map()
+  return function (target, context) {
+    if (context.kind === 'method') {
+      return function (...args) {
+        const key = JSON.stringify(args)
+        const cached = cache.get(key)
+        if (cached && Date.now() - cached.timestamp < ttl) {
+          return cached.value
+        }
+        const result = target.call(this, ...args)
+        cache.set(key, { value: result, timestamp: Date.now() })
+        return result
+      }
+    }
+  }
+}
+```
+
+### 33.17 柯里化函数
+
+```javascript
+const curry = (fn) => {
+  return function curried(...args) {
+    if (args.length >= fn.length) {
+      return fn(...args)
+    } else {
+      return (...nextArgs) => curried(...args, ...nextArgs)
+    }
+  }
+}
+
+const curriedAdd = curry((a, b, c) => a + b + c)
+curriedAdd(1)(2)(3) // 6
+```
+
+### 33.18 记忆化（缓存结果）
+
+```javascript
+function memoize(fn) {
+  const cache = {}
+  return function (...args) {
+    const key = JSON.stringify(args)
+    if (key in cache) {
+      return cache[key]
+    }
+    const result = fn(...args)
+    cache[key] = result
+    return result
+  }
+}
 ```
 
 ---

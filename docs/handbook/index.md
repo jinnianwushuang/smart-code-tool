@@ -27,7 +27,6 @@
 | --------------------------------------------------------- | ------------------------------------------- |
 | [TypeScript 手册](/handbook/frontend/typescript-handbook) | TypeScript 类型系统、高级类型、泛型编程指南 |
 | [JavaScript 手册](/handbook/frontend/javascript-handbook) | JavaScript 核心语法、异步编程、模块化开发   |
-| [JS 手册](/handbook/frontend/js-handbook)                 | JavaScript 快速参考与常用技巧               |
 | [正则速查](/handbook/frontend/regex-handbook)             | 正则表达式语法、常用模式、实战示例          |
 
 ### 样式相关
