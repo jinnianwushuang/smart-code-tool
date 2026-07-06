@@ -29,7 +29,13 @@ export default defineConfig({
   },
 
   // 核心:利用 vite 的 define 配置注入全局变量
-  vite,
+  vite: {
+    ...vite,
+    server: {
+      host: '0.0.0.0',
+      port: 23340,
+    },
+  },
   markdown: {
     // Shiki 语法高亮配置
     theme: 'github-dark',

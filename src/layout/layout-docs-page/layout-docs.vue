@@ -7,7 +7,7 @@
     <a-layout>
       <!-- 内容区 -->
       <a-layout-content ref="scrollContainer" class="layout-content dark" @scroll="handle_scroll">
-        <iframe ref="docsIframe" src="./docs/index.html" class="iframe-container"></iframe>
+        <iframe ref="docsIframe" :src="iframeSrc" class="iframe-container"></iframe>
 
         <!-- 滚动到顶部按钮 -->
         <transition name="fade">
@@ -38,6 +38,11 @@ const scroll_container_ref = useTemplateRef('scrollContainer')
 const iframe_ref = useTemplateRef('docsIframe')
 
 const router = useRouter()
+
+// 根据环境设置 iframe 源地址
+const iframeSrc = import.meta.env.DEV
+  ? 'http://localhost:23340/smart-code-tool/docs/'
+  : './docs/index.html'
 
 onMounted(() => {
   // iframe 加载完成后发送初始主题
