@@ -411,6 +411,9 @@ const lastName = ref('Doe')
 const fullName = computed(() => {
   return `${firstName.value} ${lastName.value}`
 })
+//computed 返回的是ref 需要 .value
+//它是一个 ComputedRefImpl 对象： computed 返回的其实是一个只读的响应式引用（Ref）。
+console.log(fullName.value)
 
 // 可写计算属性
 const fullNameWritable = computed({
