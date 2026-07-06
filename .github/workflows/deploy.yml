@@ -42,12 +42,22 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Vue
+      - name: Build project
         run: pnpm run build
+
+      - name: Verify build output
+        run: |
+          echo "=== Dist directory structure ==="
+          ls -la ./dist/
+          echo "=== Docs directory structure ==="
+          ls -la ./dist/docs/ || echo "docs directory not found"
+          echo "=== Total files count ==="
+          find ./dist -type f | wc -l
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
+          # 上传整个 dist 目录，包含 Vue 应用 (根目录) 和 VitePress 文档 (docs/ 子目录)
           path: ./dist
 
   deploy:
@@ -60,3 +70,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+      - name: Print deployment URL
+        run: echo "Deployment URL: ${{ steps.deployment.outputs.page_url }}"
