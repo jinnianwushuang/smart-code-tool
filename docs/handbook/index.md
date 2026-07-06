@@ -15,11 +15,13 @@
 
 ### 前端框架
 
-| 手册                                                 | 描述                                           |
-| ---------------------------------------------------- | ---------------------------------------------- |
-| [Vue 3 手册](/handbook/frontend/vue3-handbook)       | Vue 3 组合式 API、响应式系统、组件开发最佳实践 |
-| [React 19 手册](/handbook/frontend/react19-handbook) | React 19 新特性、Hooks、性能优化指南           |
-| [Next.js 手册](/handbook/frontend/nextjs-handbook)   | Next.js 服务端渲染、静态生成、路由系统详解     |
+| 手册                                                            | 描述                                           |
+| --------------------------------------------------------------- | ---------------------------------------------- |
+| [Vue 3 手册](/handbook/frontend/vue3-handbook)                  | Vue 3 组合式 API、响应式系统、组件开发最佳实践 |
+| [Vue 3 核心原理](/handbook/frontend/vue3-core-principles)       | Vue 3 响应式系统、虚拟 DOM、编译优化底层实现   |
+| [React 19 手册](/handbook/frontend/react19-handbook)            | React 19 新特性、Hooks、性能优化指南           |
+| [React 19 核心原理](/handbook/frontend/react19-core-principles) | React Fiber 架构、协调算法、并发渲染底层实现   |
+| [Next.js 手册](/handbook/frontend/nextjs-handbook)              | Next.js 服务端渲染、静态生成、路由系统详解     |
 
 ### JavaScript & TypeScript
 

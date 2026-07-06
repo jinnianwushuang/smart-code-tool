@@ -25,6 +25,7 @@
 - [玩游戏与学习的差异](./cognition-learning/games-and-learning) - 游戏化学习的启示
 - [个人成长顺序](./cognition-learning/sequence-of-personal-growth) - 成长的正确路径
 - [一天彻底改变人生](./cognition-learning/how-to-fix-your-entire-life-in-1-day) - 快速行动的力量
+- [人生感悟：活在当下](./cognition-learning/living-in-the-moment) - 活在当下，重在体验，不慌不忙，珍惜拥有
 
 ### 🌍 世界规律
 
