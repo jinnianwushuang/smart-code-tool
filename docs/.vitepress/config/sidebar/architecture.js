@@ -428,5 +428,57 @@ export const architectureSidebar = {
         },
       ],
     },
+    {
+      text: '数据结构',
+      collapsed: false,
+      items: [
+        {
+          text: '基础概念',
+          link: '/architecture-document/data-structure/basic-concepts',
+        },
+        {
+          text: '线性结构',
+          link: '/architecture-document/data-structure/linear-structures',
+        },
+        {
+          text: '树形结构',
+          link: '/architecture-document/data-structure/tree-structures',
+        },
+        {
+          text: '图结构',
+          link: '/architecture-document/data-structure/graph-structures',
+        },
+        {
+          text: '哈希表与集合',
+          link: '/architecture-document/data-structure/hash-structures',
+        },
+        {
+          text: '高级数据结构',
+          link: '/architecture-document/data-structure/advanced-structures',
+        },
+      ],
+    },
+    {
+      text: '设计模式',
+      collapsed: false,
+      items: [
+        {
+          text: '概述',
+          link: '/architecture-document/design-patterns/overview',
+        },
+        {
+          text: '创建型模式',
+          link: '/architecture-document/design-patterns/creational',
+        },
+        {
+          text: '结构型模式',
+          link: '/architecture-document/design-patterns/structural',
+        },
+        {
+          text: '行为型模式',
+          link: '/architecture-document/design-patterns/behavioral',
+        },
+      ],
+    },
   ],
 }

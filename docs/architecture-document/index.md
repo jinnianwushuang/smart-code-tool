@@ -49,6 +49,22 @@
 - [前端脚手架背后的脚本语言解析](./engineering/job/frontend-scaffold-scripts)
 - [Docker 镜像构建脚本对比](./engineering/job/docker-image-build-script-comparison)
 
+### 📊 编程中的数据结构
+
+- [基础概念](./data-structure/basic-concepts) - 数据结构概述与选择原则
+- [线性结构](./data-structure/linear-structures) - 数组、链表、栈、队列
+- [树形结构](./data-structure/tree-structures) - 二叉树、平衡树、堆、Trie
+- [图结构](./data-structure/graph-structures) - 图的表示、遍历、最短路径
+- [哈希表与集合](./data-structure/hash-structures) - 高效的键值存储
+- [高级数据结构](./data-structure/advanced-structures) - 并查集、跳表、线段树
+
+### 🎨 设计模式
+
+- [概述](./design-patterns/overview) - SOLID 原则与设计模式分类
+- [创建型模式](./design-patterns/creational) - 单例、工厂、建造者、原型
+- [结构型模式](./design-patterns/structural) - 适配器、装饰器、代理、组合
+- [行为型模式](./design-patterns/behavioral) - 观察者、策略、命令、状态
+
 ## 🎯 快速开始
 
 根据你的技术栈选择对应的架构文档:
