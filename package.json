@@ -6,14 +6,14 @@
   "packageManager": "pnpm@11.3.0",
   "scripts": {
     "dev-2": "vite",
-    "dev-1": "run-s create-entry dev-2",
-    "dev": "run-p dev-1 docs:dev",
+    "dev-1": "zx dev.mjs",
+    "dev": "zx dev.mjs",
     "build-2": "vite build",
     "preview": "vite preview",
     "clear-cache": "node ./job/cache/clear-cache.js",
     "create-entry": "node ./job/entry/index.js",
-    "build-1": "run-s clear-cache create-entry build-2",
-    "build": "run-s build-1  docs:build",
+    "build-1": "zx build.mjs",
+    "build": "zx build.mjs",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
@@ -68,13 +68,13 @@
     "@types/lodash-es": "^4.17.12",
     "@vitejs/plugin-vue": "^6.0.4",
     "gray-matter": "^4.0.3",
-    "npm-run-all": "^4.1.5",
     "prettier": "3.8.1",
     "sass-embedded": "^1.97.3",
     "unplugin-vue-markdown": "^30.0.0",
     "vite": "^7.3.1",
     "vite-plugin-vue-devtools": "^8.0.6",
-    "vitepress": "^1.6.3"
+    "vitepress": "^1.6.3",
+    "zx": "^8.7.1"
   },
   "engines": {
     "node": "^24.14.0"
