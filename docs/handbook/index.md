@@ -46,11 +46,13 @@
 
 ### 后端框架
 
-| 手册                                               | 描述                                               |
-| -------------------------------------------------- | -------------------------------------------------- |
-| [NestJS 手册](/handbook/backend/nestjs-handbook)   | NestJS 模块化架构、依赖注入、中间件、守卫          |
-| [FastAPI 手册](/handbook/backend/fastapi-handbook) | FastAPI 高性能 Python Web 框架、自动文档、依赖注入 |
-| [Django 手册](/handbook/backend/django-handbook)   | Django 全栈框架、ORM、认证系统、REST API           |
+| 手册                                                  | 描述                                               |
+| ----------------------------------------------------- | -------------------------------------------------- |
+| [NestJS 手册](/handbook/backend/nestjs-handbook)      | NestJS 模块化架构、依赖注入、中间件、守卫          |
+| [FastAPI 手册](/handbook/backend/fastapi-handbook)    | FastAPI 高性能 Python Web 框架、自动文档、依赖注入 |
+| [Django 手册](/handbook/backend/django-handbook)      | Django 全栈框架、ORM、认证系统、REST API           |
+| [Egg.js V3 手册](/handbook/backend/eggjs-handbook)    | Egg.js V3 企业级 Node.js 框架、插件机制、多进程    |
+| [Egg.js V4 手册](/handbook/backend/eggjs-v4-handbook) | Egg.js V4 全面 ESM、装饰器编程、依赖注入、Koa 3    |
 
 ---
 
@@ -66,11 +68,12 @@
 
 ### 数据库系统
 
-| 手册                                                      | 描述                                              |
-| --------------------------------------------------------- | ------------------------------------------------- |
-| [MySQL 手册](/handbook/database/mysql-handbook)           | MySQL 关系型数据库、SQL 语法、索引优化、事务处理  |
-| [MongoDB 手册](/handbook/database/mongodb-handbook)       | MongoDB 文档数据库、CRUD 操作、聚合框架、索引策略 |
-| [PostgreSQL 速查](/handbook/database/postgresql-handbook) | PostgreSQL 高级特性、JSONB、窗口函数、性能调优    |
+| 手册                                                      | 描述                                                  |
+| --------------------------------------------------------- | ----------------------------------------------------- |
+| [MySQL 手册](/handbook/database/mysql-handbook)           | MySQL 关系型数据库、SQL 语法、索引优化、事务处理      |
+| [MongoDB 手册](/handbook/database/mongodb-handbook)       | MongoDB 文档数据库、CRUD 操作、聚合框架、索引策略     |
+| [PostgreSQL 速查](/handbook/database/postgresql-handbook) | PostgreSQL 高级特性、JSONB、窗口函数、性能调优        |
+| [Redis 手册](/handbook/database/redis-handbook)           | Redis 数据结构、持久化、集群、ioredis/redis-py 客户端 |
 
 ---
 

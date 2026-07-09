@@ -31,6 +31,8 @@ export const handbookSidebar = {
         { text: 'NestJS 手册', link: '/handbook/backend/nestjs-handbook' },
         { text: 'FastAPI 手册', link: '/handbook/backend/fastapi-handbook' },
         { text: 'Django 手册', link: '/handbook/backend/django-handbook' },
+        { text: 'Egg.js V3 手册', link: '/handbook/backend/eggjs-handbook' },
+        { text: 'Egg.js V4 手册', link: '/handbook/backend/eggjs-v4-handbook' },
       ],
     },
     {
@@ -39,7 +41,10 @@ export const handbookSidebar = {
         { text: 'MySQL 手册', link: '/handbook/database/mysql-handbook' },
         { text: 'PostgreSQL 速查', link: '/handbook/database/postgresql-handbook' },
         { text: 'MongoDB 手册', link: '/handbook/database/mongodb-handbook' },
+        { text: 'Redis 手册', link: '/handbook/database/redis-handbook' },
         { text: 'Prisma 手册', link: '/handbook/database/prisma-handbook' },
+        { text: 'Sequelize 手册', link: '/handbook/database/sequelize-handbook' },
+        { text: 'Mongoose 手册', link: '/handbook/database/mongoose-handbook' },
       ],
     },
     {
