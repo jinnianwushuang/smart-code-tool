@@ -801,18 +801,68 @@ module.exports = {
 
 ### 8.4 运行迁移
 
+#### 执行迁移
+
 ```bash
 # 执行所有待处理的迁移
 npx sequelize-cli db:migrate
 
+# 查看迁移状态（已执行 / 待执行）
+npx sequelize-cli db:migrate:status
+
+# 指定环境执行迁移
+npx sequelize-cli db:migrate --env production
+
+# 使用自定义配置文件执行迁移
+npx sequelize-cli db:migrate --config config/database.js
+
+# 指定 migrations 目录执行迁移
+npx sequelize-cli db:migrate --migrations-path ./db/migrations
+```
+
+#### 回滚迁移
+
+```bash
 # 回滚最后一次迁移
 npx sequelize-cli db:migrate:undo
+
+# 回滚最近 N 次迁移
+npx sequelize-cli db:migrate:undo --step 3
+
+# 回滚到特定迁移（保留该迁移，回滚其后的所有迁移）
+npx sequelize-cli db:migrate:undo --to 20230101000000-create-users.js
 
 # 回滚所有迁移
 npx sequelize-cli db:migrate:undo:all
 
-# 回滚到特定迁移
-npx sequelize-cli db:migrate:undo --to 20230101000000-create-users.js
+# 回滚到指定环境的初始状态
+npx sequelize-cli db:migrate:undo:all --env production
+```
+
+#### 生成迁移文件
+
+```bash
+# 生成迁移文件
+npx sequelize-cli migration:generate --name add-posts-table
+
+# 生成包含具体字段的迁移文件
+npx sequelize-cli migration:generate --name add-email-to-users
+
+# 查看待生成的迁移 SQL（不实际执行）
+npx sequelize-cli db:migrate --dry-run
+```
+
+#### 数据库管理
+
+```bash
+# 创建数据库
+npx sequelize-cli db:create
+
+# 删除数据库（谨慎使用）
+npx sequelize-cli db:drop
+
+# 重新执行所有迁移（先 undo:all 再 migrate）
+npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate
 ```
 
 ### 8.5 种子数据
@@ -1066,18 +1116,39 @@ const sequelize = new Sequelize(database, username, password, {
 ### A. 常用命令
 
 ```bash
-# 迁移
-npx sequelize-cli db:migrate
-npx sequelize-cli db:migrate:undo
-npx sequelize-cli db:migrate:status
+# ──── 数据库管理 ────
+npx sequelize-cli db:create                    # 创建数据库
+npx sequelize-cli db:drop                      # 删除数据库
 
-# 种子
-npx sequelize-cli db:seed:all
-npx sequelize-cli db:seed:undo:all
+# ──── 迁移 ────
+npx sequelize-cli db:migrate                   # 执行所有待处理迁移
+npx sequelize-cli db:migrate:status            # 查看迁移状态
+npx sequelize-cli db:migrate:undo              # 回滚最后一次迁移
+npx sequelize-cli db:migrate:undo --step N     # 回滚最近 N 次迁移
+npx sequelize-cli db:migrate:undo:all          # 回滚所有迁移
+npx sequelize-cli db:migrate --env production  # 指定环境执行迁移
+npx sequelize-cli db:migrate --dry-run         # 预览迁移 SQL（不实际执行）
 
-# 生成
-npx sequelize-cli migration:generate --name migration-name
-npx sequelize-cli seed:generate --name seed-name
+# ──── 种子数据 ────
+npx sequelize-cli db:seed:all                  # 执行所有种子数据
+npx sequelize-cli db:seed:undo                 # 回滚最后一次种子
+npx sequelize-cli db:seed:undo --step N        # 回滚最近 N 次种子
+npx sequelize-cli db:seed:undo:all             # 回滚所有种子数据
+npx sequelize-cli db:seed --seed <seed-file>   # 执行指定种子文件
+
+# ──── 代码生成 ────
+npx sequelize-cli model:generate --name User --attributes name:string,email:string       # 生成模型 + 迁移
+npx sequelize-cli migration:generate --name migration-name                               # 仅生成迁移文件
+npx sequelize-cli seed:generate --name seed-name                                         # 仅生成种子文件
+
+# ──── 配置与诊断 ────
+npx sequelize-cli db:migrate --config config/database.js                                 # 使用自定义配置文件
+npx sequelize-cli db:migrate --migrations-path ./db/migrations                           # 指定迁移目录
+npx sequelize-cli init                           # 初始化 Sequelize 项目目录结构
+npx sequelize-cli init:config                    # 仅初始化配置文件
+npx sequelize-cli init:migrations                # 仅初始化 migrations 目录
+npx sequelize-cli init:seeders                   # 仅初始化 seeders 目录
+npx sequelize-cli init:models                    # 仅初始化 models 目录
 ```
 
 ### B. 有用的资源

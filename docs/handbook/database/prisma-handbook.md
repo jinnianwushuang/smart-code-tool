@@ -692,6 +692,21 @@ npx prisma migrate deploy
 
 # 重置数据库
 npx prisma migrate reset
+
+# 创建迁移并跳过种子数据执行
+npx prisma migrate dev --name add_post_model --skip-seed
+
+# 创建迁移但不自动应用（仅生成 SQL 文件）
+npx prisma migrate dev --name add_comment_model --create-only
+
+# 指定 Schema 文件路径创建迁移
+npx prisma migrate dev --name init --schema ./prisma/schema.prisma
+
+# 强制重置数据库（跳过确认提示）
+npx prisma migrate reset --force
+
+# 基线已有数据库（将现有 Schema 标记为已迁移）
+npx prisma migrate diff --from-empty --to-schema-datamodel ./prisma/schema.prisma --script > baseline.sql
 ```
 
 ### 8.2 迁移历史
@@ -705,6 +720,22 @@ npx prisma migrate resolve --rolled-back "migration_name"
 
 # 标记迁移为已应用
 npx prisma migrate resolve --applied "migration_name"
+
+# 查看所有迁移历史记录（含时间戳和状态）
+npx prisma migrate status --verbose
+
+# 生成两个 Schema 之间的迁移 SQL（不执行）
+npx prisma migrate diff --from-schema-datasource ./prisma/schema.prisma --to-schema-datamodel ./prisma/schema.prisma
+
+# 从迁移目录生成 SQL 脚本
+npx prisma migrate diff --from-migrations ./prisma/migrations --to-schema-datamodel ./prisma/schema.prisma --script
+
+# 查看某次迁移的 SQL 内容
+cat prisma/migrations/<migration_folder_name>/migration.sql
+
+# 清理已失败的迁移记录（开发环境）
+npx prisma migrate resolve --rolled-back "failed_migration_name"
+npx prisma migrate dev --name retry_migration
 ```
 
 ### 8.3 种子数据
@@ -973,6 +1004,30 @@ npx prisma validate        # 验证 Schema
 npx prisma format          # 格式化 Schema
 npx prisma db pull         # 从数据库拉取 Schema
 npx prisma db push         # 推送 Schema 到数据库
+
+# Schema  introspection（数据库反向生成 Schema）
+npx prisma db pull --schema ./prisma/schema.prisma
+
+# 数据浏览与编辑
+npx prisma studio --port 5556        # 指定端口启动 Studio
+npx prisma studio --browser none     # 启动 Studio 但不自动打开浏览器
+
+# 迁移辅助
+npx prisma migrate status                              # 查看迁移状态
+npx prisma migrate diff --from-schema-datamodel ./prisma/schema.prisma --to-schema-datasource ./prisma/schema.prisma  # 对比 Schema 与数据库差异
+npx prisma migrate reset --force                       # 强制重置数据库
+npx prisma migrate resolve --rolled-back "migration"   # 回滚指定迁移
+
+# 生成与初始化
+npx prisma generate --schema ./prisma/schema.prisma    # 指定 Schema 路径生成 Client
+npx prisma generate --watch                            # 监听 Schema 变化自动生成 Client
+npx prisma init                                        # 初始化 Prisma 项目
+npx prisma init --datasource-provider sqlite             # 初始化并指定 SQLite 数据源
+npx prisma init --datasource-provider postgresql         # 初始化并指定 PostgreSQL 数据源
+
+# 版本与诊断
+npx prisma --version         # 查看 Prisma CLI 版本
+npx prisma debug             # 输出调试信息（用于排查问题）
 ```
 
 ### B. 有用的资源
