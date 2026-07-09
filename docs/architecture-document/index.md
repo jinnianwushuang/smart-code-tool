@@ -65,6 +65,11 @@
 - [结构型模式](./design-patterns/structural) - 适配器、装饰器、代理、组合
 - [行为型模式](./design-patterns/behavioral) - 观察者、策略、命令、状态
 
+### 📡 通用知识
+
+- [前端渲染模式全解](./general-knowledge/frontend-rendering-modes) - CSR、SSR、SSG、ISR、Streaming SSR、RSC 等模式详解
+- [网络通用知识](./general-knowledge/network-fundamentals) - TCP/IP、HTTP、HTTPS、DNS、CORS、缓存策略等
+
 ## 🎯 快速开始
 
 根据你的技术栈选择对应的架构文档:

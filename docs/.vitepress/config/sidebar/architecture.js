@@ -429,6 +429,20 @@ export const architectureSidebar = {
       ],
     },
     {
+      text: '通用知识',
+      collapsed: false,
+      items: [
+        {
+          text: '前端渲染模式全解',
+          link: '/architecture-document/general-knowledge/frontend-rendering-modes',
+        },
+        {
+          text: '网络通用知识',
+          link: '/architecture-document/general-knowledge/network-fundamentals',
+        },
+      ],
+    },
+    {
       text: '数据结构',
       collapsed: false,
       items: [
@@ -458,6 +472,7 @@ export const architectureSidebar = {
         },
       ],
     },
+
     {
       text: '设计模式',
       collapsed: false,

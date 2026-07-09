@@ -83,7 +83,7 @@ docker run -d --name redis -p 6379:6379 redis:7-alpine \
 
 ### 2.2 基础配置
 
-```conf
+```ini
 # redis.conf
 
 # 网络
@@ -742,7 +742,7 @@ INFO replication
 
 ### 13.2 哨兵模式 (Sentinel)
 
-```conf
+```ini
 # sentinel.conf
 sentinel monitor mymaster 127.0.0.1 6379 2   # 监控主节点, 需要 2 票同意
 sentinel down-after-milliseconds mymaster 5000 # 5 秒无响应视为下线
