@@ -18,6 +18,7 @@ export const handbookSidebar = {
         { text: 'React 19 手册', link: '/handbook/frontend/react19-handbook' },
         { text: 'React 19 核心原理', link: '/handbook/frontend/react19-core-principles' },
         { text: 'Next.js 手册', link: '/handbook/frontend/nextjs-handbook' },
+        { text: 'Next.js 核心原理', link: '/handbook/frontend/nextjs-core-principles' },
         { text: 'TypeScript 手册', link: '/handbook/frontend/typescript-handbook' },
         { text: 'JavaScript 手册', link: '/handbook/frontend/javascript-handbook' },
         { text: 'CSS 手册', link: '/handbook/frontend/css-handbook' },

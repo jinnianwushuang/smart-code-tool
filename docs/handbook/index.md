@@ -22,6 +22,7 @@
 | [React 19 手册](/handbook/frontend/react19-handbook)            | React 19 新特性、Hooks、性能优化指南           |
 | [React 19 核心原理](/handbook/frontend/react19-core-principles) | React Fiber 架构、协调算法、并发渲染底层实现   |
 | [Next.js 手册](/handbook/frontend/nextjs-handbook)              | Next.js 服务端渲染、静态生成、路由系统详解     |
+| [Next.js 核心原理](/handbook/frontend/nextjs-core-principles)   | Next.js 核心底层原理深度解析                   |
 
 ### JavaScript & TypeScript
 
