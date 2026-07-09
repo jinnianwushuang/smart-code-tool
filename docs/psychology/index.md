@@ -16,6 +16,7 @@
 - [米哈里·契克森米哈赖名言](./philosophy/mihaly-csikszentmihalyi) - 1934年出生,积极心理学与心流之父
 - [乔丹·彼得森名言](./philosophy/jordan-b-peterson) - 1962年出生,当代临床心理学家
 - [纳瓦尔·拉维康特的名言](./philosophy/naval-ravikant) - 1974年出生,当代硅谷现代思想家、投资人
+- [全球50位顶级富豪的宝贵箴言](./philosophy/priceless-advice) - 50位世界顶级企业家的创业与人生忠告
 
 ### 🎓 认知与学习
 

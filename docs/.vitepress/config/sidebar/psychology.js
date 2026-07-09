@@ -38,6 +38,10 @@ export const psychologySidebar = {
           text: '纳瓦尔·拉维康特的名言',
           link: '/psychology/philosophy/naval-ravikant', // 1974年出生，当代硅谷现代思想家、投资人
         },
+        {
+          text: '全球50位顶级富豪的宝贵箴言',
+          link: '/psychology/philosophy/priceless-advice', // 50位世界顶级企业家的创业与人生忠告
+        },
       ],
     },
     {
