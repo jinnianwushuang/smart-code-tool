@@ -54,7 +54,147 @@ order: 194
     - Capacitor: 配合 Capacitor Live Updates。
 - **CI/CD**: 利用 GitHub Actions 结合各大平台的云构建服务。
 
-## 8. 架构师选型建议
+## 8. 项目技术选型 `package.json` 样板
+
+以下提供两套生产可用的 `package.json` 样板，分别对应不同选型方案，可直接用于项目初始化。
+
+### 方案 A：uni-app + Vant + Pinia（多端覆盖方案）
+
+> 适用于：需要同时覆盖 iOS/Android App 和 微信/支付宝小程序的国内业务项目。
+
+```json
+{
+  "name": "vue-uniapp-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:h5": "uni",
+    "dev:mp-weixin": "uni -p mp-weixin",
+    "dev:mp-alipay": "uni -p mp-alipay",
+    "dev:app": "uni -p app",
+    "build:h5": "uni build",
+    "build:mp-weixin": "uni build -p mp-weixin",
+    "build:mp-alipay": "uni build -p mp-alipay",
+    "build:app": "uni build -p app",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "pinia": "^2.3.1",
+    "pinia-plugin-persistedstate": "^4.2.0",
+    "@tanstack/vue-query": "^5.62.0",
+    "vant": "^4.9.0",
+    "axios": "^1.7.9",
+    "dayjs": "^1.11.13"
+  },
+  "devDependencies": {
+    "@dcloudio/types": "^3.4.14",
+    "@dcloudio/uni-app": "^3.0.0-alpha-4060620250520001",
+    "@dcloudio/uni-app-harmony": "^3.0.0-alpha-4060620250520001",
+    "@dcloudio/uni-components": "^3.0.0-alpha-4060620250520001",
+    "@dcloudio/uni-h5": "^3.0.0-alpha-4060620250520001",
+    "@dcloudio/uni-mp-weixin": "^3.0.0-alpha-4060620250520001",
+    "@dcloudio/uni-mp-alipay": "^3.0.0-alpha-4060620250520001",
+    "@dcloudio/vite-plugin-uni": "^3.0.0-alpha-4060620250520001",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.0",
+    "vue-tsc": "^2.1.10",
+    "@vant/auto-import-resolver": "^1.2.1",
+    "unplugin-vue-components": "^0.27.5",
+    "unplugin-auto-import": "^0.18.6",
+    "weapp-tailwindcss": "^3.7.0",
+    "tailwindcss": "^3.4.17",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "@vue/eslint-config-typescript": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
+```
+
+**关键说明：**
+- `@dcloudio/*` 版本号需根据 [uni-app 官方](https://uniapp.dcloud.net.cn/) 最新发布调整
+- `weapp-tailwindcss` 用于在小程序环境中使用 Tailwind CSS
+- `@vant/auto-import-resolver` 配合 `unplugin-vue-components` 实现 Vant 组件按需自动导入
+
+### 方案 B：Capacitor + Vue 3 + Vant（纯 App 体验方案）
+
+> 适用于：只关注 iOS/Android App，追求现代 Web 开发体验，已有成熟 Vue 移动端项目的移植。
+
+```json
+{
+  "name": "vue-capacitor-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "cap:sync": "cap sync",
+    "cap:open:ios": "cap open ios",
+    "cap:open:android": "cap open android",
+    "cap:run:ios": "cap run ios --external",
+    "cap:run:android": "cap run android --external",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "pinia": "^2.3.1",
+    "pinia-plugin-persistedstate": "^4.2.0",
+    "@tanstack/vue-query": "^5.62.0",
+    "vant": "^4.9.0",
+    "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
+    "@capacitor/core": "^6.2.0",
+    "@capacitor/app": "^6.0.2",
+    "@capacitor/haptics": "^6.0.2",
+    "@capacitor/keyboard": "^6.0.3",
+    "@capacitor/status-bar": "^6.0.2",
+    "@capacitor/camera": "^6.1.1",
+    "@capacitor/geolocation": "^6.1.0",
+    "@capacitor/preferences": "^6.0.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.0",
+    "vue-tsc": "^2.1.10",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vant/auto-import-resolver": "^1.2.1",
+    "unplugin-vue-components": "^0.27.5",
+    "unplugin-auto-import": "^0.18.6",
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "@vue/eslint-config-typescript": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
+```
+
+**关键说明：**
+- `@capacitor/cli` 用于管理原生项目配置，`cap sync` 同步 Web 资源到原生层
+- `@capacitor/preferences` 是官方推荐的键值存储插件，替代 `localStorage` 在原生环境中的使用
+- 构建流程：先 `vite build` 生成 Web 产物，再 `cap sync` 同步到 iOS/Android 原生工程
+
+## 9. 架构师选型建议
 
 1. **多端优先方案**：如果业务需要同时在 iOS/Android App 和 微信/支付宝小程序运行，**uni-app + Vant + Pinia** 是目前国内最稳健的路径。
 2. **纯 App 体验优先**：如果只关注移动 App 且追求现代 Web 体验，推荐 **Capacitor + Vue 3 + Tailwind CSS + Vant**。

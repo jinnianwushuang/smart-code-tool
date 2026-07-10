@@ -66,7 +66,175 @@ React 生态在原生 APP 开发领域主要通过 **React Native** 实现跨平
 - **错误监控**: Sentry - 实时捕获原生和 JS 错误。
 - **热更新**: CodePush (CLI) / Expo EAS Update。
 
-## 9. 架构师选型建议
+## 9. 项目技术选型 `package.json` 样板
+
+以下提供两套生产可用的 `package.json` 样板，分别对应 Expo 和 React Native CLI 方案，可直接用于项目初始化。
+
+### 方案 A：Expo (Managed Workflow) + Zustand + NativeWind（快速迭代方案）
+
+> 适用于：追求快速迭代、开发效率，且对原生定制需求不高的中小型应用。
+
+```json
+{
+  "name": "react-expo-starter",
+  "version": "1.0.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "dev": "expo start",
+    "dev:android": "expo start --android",
+    "dev:ios": "expo start --ios",
+    "build:android": "eas build --platform android",
+    "build:ios": "eas build --platform ios",
+    "submit:android": "eas submit --platform android",
+    "submit:ios": "eas submit --platform ios",
+    "update": "eas update",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-native": "0.76.6",
+    "expo": "~52.0.0",
+    "expo-router": "~4.0.0",
+    "expo-status-bar": "~2.0.1",
+    "expo-image-picker": "~16.0.4",
+    "expo-location": "~18.0.4",
+    "expo-file-system": "~18.0.8",
+    "expo-camera": "~16.0.14",
+    "expo-constants": "~17.0.4",
+    "expo-linking": "~7.0.4",
+    "expo-splash-screen": "~0.29.21",
+    "expo-updates": "~0.27.4",
+    "@react-navigation/native": "^7.0.14",
+    "nativewind": "^4.1.23",
+    "zustand": "^5.0.3",
+    "@tanstack/react-query": "^5.62.0",
+    "react-hook-form": "^7.54.2",
+    "@hookform/resolvers": "^3.10.0",
+    "zod": "^3.24.1",
+    "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
+    "@react-native-async-storage/async-storage": "2.1.0",
+    "react-native-reanimated": "~3.16.5",
+    "react-native-safe-area-context": "4.14.1",
+    "react-native-screens": "~4.4.0",
+    "react-native-gesture-handler": "~2.20.2",
+    "react-native-vector-icons": "^10.2.0",
+    "@expo/vector-icons": "^14.0.4"
+  },
+  "devDependencies": {
+    "typescript": "~5.6.3",
+    "@types/react": "~18.3.12",
+    "@types/react-native": "^0.73.0",
+    "tailwindcss": "^3.4.17",
+    "jest": "^29.7.0",
+    "jest-expo": "~52.0.3",
+    "@testing-library/react-native": "^12.9.0",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "eslint-plugin-react": "^7.37.3",
+    "eslint-plugin-react-hooks": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
+```
+
+**关键说明：**
+- `expo-router` 是 Expo 官方文件系统路由方案，类似 Next.js 的 `app/` 目录结构
+- `nativewind` 将 Tailwind CSS 带入 React Native，支持原子化 CSS 开发
+- `eas build` 和 `eas update` 是 Expo 的云构建和 OTA 热更新服务
+- `@react-native-async-storage/async-storage` 是 React Native 官方的键值存储方案
+
+### 方案 B：React Native CLI + TypeScript + NativeBase（深度定制方案）
+
+> 适用于：需要极致原生性能、深度定制原生模块的复杂应用。
+
+```json
+{
+  "name": "react-native-cli-starter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "build:android:release": "cd android && ./gradlew assembleRelease",
+    "build:ios:release": "react-native run-ios --configuration Release",
+    "pod:install": "cd ios && pod install && cd ..",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "type-check": "tsc --noEmit",
+    "test:e2e": "detox test --configuration ios.sim.debug"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-native": "0.76.6",
+    "@react-navigation/native": "^7.0.14",
+    "@react-navigation/native-stack": "^7.2.0",
+    "@react-navigation/bottom-tabs": "^7.2.0",
+    "native-base": "^3.4.28",
+    "zustand": "^5.0.3",
+    "@tanstack/react-query": "^5.62.0",
+    "react-hook-form": "^7.54.2",
+    "@hookform/resolvers": "^3.10.0",
+    "zod": "^3.24.1",
+    "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
+    "@react-native-async-storage/async-storage": "^2.1.0",
+    "realm": "^12.13.2",
+    "react-native-reanimated": "^3.16.5",
+    "react-native-safe-area-context": "^4.14.1",
+    "react-native-screens": "^4.4.0",
+    "react-native-gesture-handler": "^2.20.2",
+    "react-native-vector-icons": "^10.2.0",
+    "react-native-fs": "^2.20.0",
+    "react-native-ble-plx": "^3.2.1",
+    "@react-native-camera-roll/camera-roll": "^7.8.3",
+    "react-native-code-push": "^10.1.1",
+    "@sentry/react-native": "^6.5.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.6.3",
+    "@types/react": "~18.3.12",
+    "@types/react-native": "^0.73.0",
+    "jest": "^29.7.0",
+    "@testing-library/react-native": "^12.9.0",
+    "detox": "^20.33.0",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "eslint-plugin-react": "^7.37.3",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "@react-native/babel-preset": "0.76.6",
+    "@react-native/eslint-config": "0.76.6",
+    "@react-native/metro-config": "0.76.6",
+    "@react-native/typescript-config": "0.76.6"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
+```
+
+**关键说明：**
+- `react-native-code-push` 实现 OTA 热更新，无需经过应用商店审核即可推送 JS Bundle 更新
+- `realm` 是移动端优先的数据库，支持离线优先和实时同步，适合复杂数据场景
+- `detox` 是 React Native 专用的 E2E 测试框架，模拟真实用户交互
+- `@sentry/react-native` 实时捕获原生和 JS 层错误，是生产环境监控的标配
+- `react-native-ble-plx` 和 `react-native-fs` 是 CLI 方案下接入蓝牙和文件系统的常用方案
+
+## 10. 架构师选型建议
 
 - **如果是需要极致原生性能、深度定制原生模块的复杂应用**: 优先选择 **React Native CLI + TypeScript + NativeBase + Realm**。
 - **如果是追求快速迭代、开发效率，且对原生定制需求不高的应用**: 推荐 **Expo (Managed Workflow) + React Native + Tailwind CSS + Zustand**。

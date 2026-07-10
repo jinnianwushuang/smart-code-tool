@@ -15,11 +15,11 @@ order: 115
 
 ## 2. UI 框架选型 (UI Frameworks)
 
-| 方案 | 特点 | 适用场景 |
-| :--- | :--- | :--- |
-| **Element Plus** | 社区生态最广，中文资源极度丰富，组件涵盖各种边缘场景。 | 快速交付、通用型企业后台、传统 ERP 系统。 |
-| **Ant Design Vue** | 遵循 Ant Design 视觉规范，提供强大的 ProComponents 业务组件。 | 中后台管理系统，追求极致交互规范与严谨视觉。 |
-| **shadcn-vue** | 基于 Radix Vue + Tailwind，代码拷贝模式，极致的自定义自由度。 | 需要高度定制化视觉风格、追求现代化交互感的创新后台项目。 |
+| 方案               | 特点                                                          | 适用场景                                                 |
+| :----------------- | :------------------------------------------------------------ | :------------------------------------------------------- |
+| **Element Plus**   | 社区生态最广，中文资源极度丰富，组件涵盖各种边缘场景。        | 快速交付、通用型企业后台、传统 ERP 系统。                |
+| **Ant Design Vue** | 遵循 Ant Design 视觉规范，提供强大的 ProComponents 业务组件。 | 中后台管理系统，追求极致交互规范与严谨视觉。             |
+| **shadcn-vue**     | 基于 Radix Vue + Tailwind，代码拷贝模式，极致的自定义自由度。 | 需要高度定制化视觉风格、追求现代化交互感的创新后台项目。 |
 
 ## 3. 样式与布局 (Styling & Layout)
 
@@ -60,7 +60,134 @@ order: 115
 2. **Vue Pure Admin**: 代码整洁，设计精美，适合追求开发体验与高性能的项目。
 3. **Vue Element Admin (Vue3 版)**: 延续经典的布局逻辑，上手成本极低。
 
-## 9. 架构师选型建议
+## 9. 项目初始化 package.json 参考
+
+以下提供两套生产可用的 `package.json` 模板，可根据实际选型方案选择使用。
+
+### 方案 A：Element Plus + VueUse + Pinia（快速敏捷迭代）
+
+适用于快速交付的通用型企业后台、ERP 系统。
+
+```json
+{
+  "name": "vue-admin-element-plus",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "pinia": "^2.3.0",
+    "element-plus": "^2.9.1",
+    "@element-plus/icons-vue": "^2.3.1",
+    "axios": "^1.7.9",
+    "@tanstack/vue-query": "^5.62.0",
+    "@vueuse/core": "^12.4.0",
+    "vue-i18n": "^10.0.5",
+    "echarts": "^5.5.1",
+    "vue-echarts": "^7.0.3",
+    "dayjs": "^1.11.13",
+    "nprogress": "^0.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.7",
+    "vue-tsc": "^2.2.0",
+    "typescript": "^5.7.3",
+    "@types/node": "^22.10.5",
+    "unplugin-auto-import": "^0.18.6",
+    "unplugin-vue-components": "^0.27.5",
+    "sass": "^1.83.0",
+    "eslint": "^9.17.0",
+    "@eslint/js": "^9.17.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "prettier": "^3.4.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "vitest": "^2.1.8",
+    "@vue/test-utils": "^2.4.6"
+  },
+  "lint-staged": {
+    "*.{vue,js,ts,tsx}": ["eslint --fix", "prettier --write"]
+  }
+}
+```
+
+### 方案 B：Ant Design Vue + TanStack Query + Pinia（企业级大型项目）
+
+适用于大型 ERP、复杂中后台管理系统，追求严谨的交互规范。
+
+```json
+{
+  "name": "vue-admin-ant-design",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "pinia": "^2.3.0",
+    "ant-design-vue": "^4.2.6",
+    "@ant-design/icons-vue": "^7.0.1",
+    "axios": "^1.7.9",
+    "@tanstack/vue-query": "^5.62.0",
+    "@vueuse/core": "^12.4.0",
+    "vue-i18n": "^10.0.5",
+    "echarts": "^5.5.1",
+    "vue-echarts": "^7.0.3",
+    "dayjs": "^1.11.13",
+    "nprogress": "^0.2.0",
+    "vee-validate": "^4.15.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.7",
+    "vue-tsc": "^2.2.0",
+    "typescript": "^5.7.3",
+    "@types/node": "^22.10.5",
+    "unplugin-auto-import": "^0.18.6",
+    "unplugin-vue-components": "^0.27.5",
+    "less": "^4.2.1",
+    "eslint": "^9.17.0",
+    "@eslint/js": "^9.17.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "prettier": "^3.4.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "vitest": "^2.1.8",
+    "@vue/test-utils": "^2.4.6"
+  },
+  "lint-staged": {
+    "*.{vue,js,ts,tsx}": ["eslint --fix", "prettier --write"]
+  }
+}
+```
+
+> **使用说明**：
+>
+> - 安装前确保使用 `pnpm`（推荐）或 `npm` / `yarn`。
+> - `unplugin-auto-import` 和 `unplugin-vue-components` 需在 `vite.config.ts` 中配置自动导入，避免手动 import 组件。
+> - 生产构建前务必执行 `vue-tsc -b` 进行类型检查。
+> - 版本号以发布时的最新稳定版为准，建议定期通过 `npx npm-check-updates` 检查更新。
+
+## 10. 架构师选型建议
 
 - **如果是极大规模的企业级应用**: 推荐 **Ant Design Vue + Pinia + TanStack Query + Monorepo (pnpm)**。
 - **如果是追求快速敏捷迭代**: 推荐 **Element Plus + VueUse + Axios**。

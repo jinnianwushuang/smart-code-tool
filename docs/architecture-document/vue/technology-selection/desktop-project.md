@@ -57,7 +57,159 @@ order: 204
 - **端到端测试 (E2E)**: Playwright - 模拟真实用户在客户端内的交互。
 - **监控**: Sentry - 收集客户端运行时的错误日志。
 
-## 8. 选型建议
+## 8. 项目技术选型 `package.json` 样板
+
+以下提供两套生产可用的 `package.json` 样板，分别对应 Tauri 和 Electron 方案，可直接用于项目初始化。
+
+### 方案 A：Tauri + Vue 3 + shadcn-vue（轻量化工具方案）
+
+> 适用于：菜单栏应用、性能监控、个人助手等轻量化工具类应用。包体积极小 (几MB)，内存占用低。
+
+```json
+{
+  "name": "vue-tauri-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "tauri:info": "tauri info",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "pinia": "^2.3.1",
+    "pinia-plugin-persistedstate": "^4.2.0",
+    "@tanstack/vue-query": "^5.62.0",
+    "@tauri-apps/api": "^2.2.0",
+    "@tauri-apps/plugin-shell": "^2.2.0",
+    "@tauri-apps/plugin-dialog": "^2.2.0",
+    "@tauri-apps/plugin-fs": "^2.2.0",
+    "@tauri-apps/plugin-store": "^2.2.0",
+    "@tauri-apps/plugin-notification": "^2.2.0",
+    "@vueuse/core": "^12.4.0",
+    "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
+    "lucide-vue-next": "^0.468.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0",
+    "radix-vue": "^1.9.12"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.2.0",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.0",
+    "vue-tsc": "^2.1.10",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "vitest": "^2.1.8",
+    "@vue/test-utils": "^2.4.6",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "@vue/eslint-config-typescript": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
+```
+
+**关键说明：**
+- `@tauri-apps/cli` 是 Tauri 的命令行工具，用于构建和管理原生项目
+- `@tauri-apps/plugin-*` 是 Tauri v2 的插件系统，每个原生能力对应一个独立插件
+- `radix-vue` + `class-variance-authority` + `clsx` + `tailwind-merge` 是 shadcn-vue 的底层依赖组合
+- Tauri v2 后端使用 Rust 编写，前端通过 `@tauri-apps/api` 的 `invoke` 调用 Rust 命令
+
+### 方案 B：Electron + Vue 3 + PrimeVue（生产力工具方案）
+
+> 适用于：IDE、音乐播放器、重度 IM 软件等功能复杂的生产力工具。生态最成熟，API 极度丰富。
+
+```json
+{
+  "name": "vue-electron-starter",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist-electron/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build && electron-builder",
+    "preview": "vite preview",
+    "electron:dev": "vite",
+    "electron:build": "vite build && electron-builder",
+    "electron:build:win": "vite build && electron-builder --win",
+    "electron:build:mac": "vite build && electron-builder --mac",
+    "electron:build:linux": "vite build && electron-builder --linux",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/",
+    "test": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "pinia": "^2.3.1",
+    "pinia-plugin-persistedstate": "^4.2.0",
+    "@tanstack/vue-query": "^5.62.0",
+    "@vueuse/core": "^12.4.0",
+    "primevue": "^4.2.5",
+    "axios": "^1.7.9",
+    "socket.io-client": "^4.8.1",
+    "dayjs": "^1.11.13",
+    "lucide-vue-next": "^0.468.0",
+    "electron-store": "^10.0.0",
+    "electron-updater": "^6.3.9"
+  },
+  "devDependencies": {
+    "electron": "^33.3.0",
+    "electron-builder": "^25.1.8",
+    "vite-plugin-electron": "^0.28.8",
+    "vite-plugin-electron-renderer": "^0.14.6",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.0",
+    "vue-tsc": "^2.1.10",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "vitest": "^2.1.8",
+    "@vue/test-utils": "^2.4.6",
+    "@playwright/test": "^1.49.1",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "@vue/eslint-config-typescript": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
+```
+
+**关键说明：**
+- `vite-plugin-electron` 实现 Vite 与 Electron 的无缝集成，支持主进程和渲染进程的统一构建
+- `electron-builder` 负责打包分发，支持 Windows/macOS/Linux 三平台
+- `electron-store` 是 Electron 环境下的持久化存储方案，替代 `localStorage`
+- `electron-updater` 实现应用内自动更新，是桌面端运维的标配能力
+- `socket.io-client` 用于实时通讯场景，如 IM 聊天、协作编辑等
+
+## 9. 选型建议
 
 1. **如果是轻量化的工具**（如：菜单栏应用、性能监控、个人助手）：优先选择 **Tauri + Vue 3 + Tailwind CSS + shadcn-vue**。
 2. **如果是功能复杂的生产力工具**（如：IDE、音乐播放器、重度 IM 软件）：优先选择 **Electron + Vue 3 + Pinia + PrimeVue**。
