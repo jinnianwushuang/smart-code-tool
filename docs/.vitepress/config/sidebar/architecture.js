@@ -426,6 +426,10 @@ export const architectureSidebar = {
           text: 'Docker 镜像构建脚本对比',
           link: '/architecture-document/engineering/job/docker-image-build-script-comparison',
         },
+        {
+          text: '包管理与 Monorepo 工具链',
+          link: '/architecture-document/engineering/job/npm-pnpm-monorepo-toolchain',
+        },
       ],
     },
     {

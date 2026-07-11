@@ -48,6 +48,7 @@
 
 - [前端脚手架背后的脚本语言解析](./engineering/job/frontend-scaffold-scripts)
 - [Docker 镜像构建脚本对比](./engineering/job/docker-image-build-script-comparison)
+- [包管理与 Monorepo 工具链](./engineering/job/npm-pnpm-monorepo-toolchain) - npm/pnpm/Yarn、Nx、Turborepo、Changesets
 
 ### 📊 编程中的数据结构
 
