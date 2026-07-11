@@ -85,116 +85,320 @@ const user = new User({ name: 'John', email: 'john@example.com' })
 
 ---
 
-## 二、Schema 定义
+# 二、Schema 定义
+
+> Schema 是 Mongoose 的核心概念，它定义了文档的数据结构、字段类型、验证规则、默认值等。
+> 可以理解为数据库表的「蓝图」或「模板」。
 
 ### 2.1 基本 Schema
 
 ```javascript
 const userSchema = new mongoose.Schema({
+  // ---- 字符串类型 ----
   name: {
     type: String,
-    required: true,
-    trim: true,
+    required: true, // 必填字段，插入时如果不提供会抛出 ValidationError
+    trim: true, // 自动去除首尾空格
   },
   email: {
     type: String,
     required: true,
-    unique: true,
-    lowercase: true,
+    unique: true, // 创建唯一索引，保证该字段值不重复
+    lowercase: true, // 存储前自动转为小写
   },
+
+  // ---- 数字类型 ----
   age: {
     type: Number,
-    min: 0,
-    max: 150,
+    min: 0, // 最小值限制
+    max: 150, // 最大值限制
   },
+  score: {
+    type: Number,
+    default: 0, // 默认值，插入时如果不提供则自动填充
+  },
+
+  // ---- 布尔类型 ----
   isActive: {
     type: Boolean,
-    default: true,
+    default: true, // 默认激活
   },
+
+  // ---- 日期类型 ----
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now, // 默认值为当前时间（注意：传入函数引用，不是函数调用结果）
+  },
+  birthday: {
+    type: Date, // 存储标准 JavaScript Date 对象
   },
 })
 ```
 
-### 2.2 数据类型
+### 2.2 完整数据类型一览
 
 ```javascript
-String
-Number
-Date
-Buffer
-Boolean
-Mixed // 混合类型
-ObjectId // MongoDB ObjectId
-Array
-Decimal128 // mongoose.Schema.Types.Decimal128
-Map // mongoose.Schema.Types.Map
-UUID // mongoose.Schema.Types.UUID
+// ========== Mongoose 支持的所有 Schema 类型 ==========
+
+const allTypesSchema = new mongoose.Schema({
+  // ---- 基础类型 ----
+  str: String, // 字符串
+  num: Number, // 数字（整数或浮点数）
+  bool: Boolean, // 布尔值
+  date: Date, // 日期
+  buf: Buffer, // 二进制数据（存储文件、图片等）
+
+  // ---- 特殊类型 ----
+  mixed: mongoose.Schema.Types.Mixed, // 混合类型，可以存储任意数据结构（不推荐滥用）
+  objectId: mongoose.Schema.Types.ObjectId, // MongoDB ObjectId，常用于关联引用
+  decimal: mongoose.Schema.Types.Decimal128, // 高精度小数（金融计算等场景）
+  uuid: mongoose.Schema.Types.UUID, // UUID 字符串
+
+  // ---- 集合类型 ----
+  tags: [String], // 字符串数组，如 ['tag1', 'tag2']
+  scores: [Number], // 数字数组，如 [90, 85, 78]
+  items: [{ name: String, qty: Number }], // 对象数组（内嵌子文档）
+
+  // ---- Map 类型 ----
+  // 键为字符串，值为指定类型，适合存储动态键值对
+  metadata: {
+    type: Map,
+    of: String, // Map 的值类型
+  },
+  // 示例: { theme: 'dark', language: 'zh-CN' }
+})
 ```
 
-### 2.3 Schema 选项
+### 2.3 SchemaType 常用配置项
+
+每个 SchemaType（字段定义）都可以配置以下选项：
+
+```javascript
+const demoSchema = new mongoose.Schema({
+  // ---- String 专属配置 ----
+  username: {
+    type: String,
+    required: true, // 必填。可传数组自定义错误信息: [true, '用户名不能为空']
+    trim: true, // 去除首尾空白
+    lowercase: true, // 存储前转小写
+    uppercase: false, // 存储前转大写（与 lowercase 二选一）
+    minlength: [2, '用户名至少2个字符'], // 最小长度 + 自定义错误信息
+    maxlength: [30, '用户名最多30个字符'], // 最大长度 + 自定义错误信息
+    match: [/^[a-zA-Z0-9_]+$/, '用户名只能包含字母、数字和下划线'], // 正则匹配
+    enum: ['alice', 'bob'], // 枚举限制，只允许指定的字符串值
+    default: 'anonymous', // 默认值
+    index: true, // 为该字段创建索引
+    unique: true, // 创建唯一索引
+    sparse: true, // 稀疏索引，允许字段不存在时不参与唯一约束
+    select: false, // 查询时默认不返回该字段（常用于 password）
+    immutable: false, // 设为 true 后字段值不可修改
+    get: (v) => v, // 自定义 getter，读取时转换值
+    set: (v) => v, // 自定义 setter，写入时转换值
+    alias: 'userName', // 字段别名，可以用别名访问
+  },
+
+  // ---- Number 专属配置 ----
+  price: {
+    type: Number,
+    min: [0, '价格不能为负数'], // 最小值
+    max: [999999, '价格超出范围'], // 最大值
+    default: 0, // 默认值
+  },
+
+  // ---- Date 配置 ----
+  expireAt: {
+    type: Date,
+    expires: 3600, // TTL 索引，文档在该时间后自动删除（单位：秒）
+  },
+
+  // ---- ObjectId 引用配置 ----
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // 关联的模型名称，配合 populate() 使用
+  },
+
+  // ---- Array 配置 ----
+  hobbies: {
+    type: [String],
+    default: [], // 默认空数组
+  },
+})
+```
+
+### 2.4 Schema 全局选项
+
+Schema 的第二个参数用于配置全局行为：
 
 ```javascript
 const schema = new mongoose.Schema(
   {
-    // 字段定义
+    // 字段定义...
   },
   {
-    timestamps: true, // 自动添加 createdAt 和 updatedAt
-    toJSON: { virtuals: true }, // toJSON 包含虚拟字段
-    toObject: { virtuals: true }, // toObject 包含虚拟字段
-    versionKey: '__v', // 版本键
-    minimize: true, // 移除空对象
-    strict: true, // 严格模式
-    strictQuery: true, // 查询严格模式
-    _id: true, // 自动添加 _id
-    id: true, // 自动添加 id getter
+    // ---- 时间戳 ----
+    timestamps: true, // 自动添加 createdAt 和 updatedAt 字段
+    // 也可以自定义字段名:
+    // timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+
+    // ---- 序列化 ----
+    toJSON: {
+      virtuals: true, // toJSON 时包含虚拟字段
+      transform: (doc, ret) => {
+        // 序列化时自定义转换（如删除密码字段）
+        delete ret.password
+        return ret
+      },
+    },
+    toObject: { virtuals: true }, // toObject 时包含虚拟字段
+
+    // ---- 版本控制 ----
+    versionKey: '__v', // 文档版本号字段名，设为 false 可禁用
+    optimisticConcurrency: true, // 乐观并发控制，防止并发更新冲突
+
+    // ---- 严格模式 ----
+    strict: true, // 严格模式：不允许保存 Schema 未定义的字段（默认 true）
+    strictQuery: true, // 查询严格模式：忽略 Schema 未定义的查询条件
+
+    // ---- ID 相关 ----
+    _id: true, // 是否自动添加 _id 字段（默认 true）
+    id: true, // 是否添加 id 虚拟 getter（返回 _id 的字符串形式）
+
+    // ---- 其他 ----
+    minimize: true, // 自动移除空对象（如 { address: {} } → {}）
+    collection: 'my_collection', // 指定集合名称（默认取模型名的复数形式）
+    autoIndex: true, // 自动创建索引（生产环境建议关闭，手动管理）
+    capped: { size: 1024, max: 100 }, // 固定大小集合（限制大小和文档数）
   },
 )
 ```
 
-### 2.4 嵌套 Schema
+### 2.5 嵌套 Schema（子文档）
 
 ```javascript
+// ---- 定义地址子 Schema ----
 const addressSchema = new mongoose.Schema({
-  street: String,
-  city: String,
-  country: String,
-  zipCode: String,
+  street: { type: String, required: true }, // 街道
+  city: { type: String, required: true }, // 城市
+  province: { type: String, default: '' }, // 省份
+  country: { type: String, default: 'China' }, // 国家
+  zipCode: { type: String, match: /^\d{6}$/ }, // 邮编，正则校验6位数字
 })
 
+// ---- 在父 Schema 中使用 ----
 const userSchema = new mongoose.Schema({
   name: String,
+
+  // 单个嵌套文档（一对一）
   address: addressSchema,
+
+  // 嵌套文档数组（一对多）
   addresses: [addressSchema],
+
+  // 也可以直接内联定义（不推荐用于复杂结构，不易复用）
+  profile: {
+    avatar: { type: String, default: '' }, // 头像 URL
+    bio: { type: String, maxlength: 200 }, // 个人简介
+    website: String, // 个人网站
+  },
 })
+
+// 访问嵌套字段
+const user = new User({
+  name: '张三',
+  address: { street: '中山路1号', city: '深圳', zipCode: '518000' },
+})
+console.log(user.address.city) // "深圳"
+
+// 嵌套文档也有 _id，可以通过 id() 方法查找
+const addr = user.addresses.id('507f191e810c19729de860ea')
 ```
 
-### 2.5 虚拟字段
+### 2.6 虚拟字段（Virtuals）
+
+虚拟字段不会存储到数据库中，而是在读取/写入时动态计算：
 
 ```javascript
 const userSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  birthDate: Date, // 出生日期
 })
 
-// 虚拟 getter
+// ---- 虚拟 getter：读取时自动计算 ----
 userSchema.virtual('fullName').get(function () {
   return `${this.firstName} ${this.lastName}`
 })
 
-// 虚拟 setter
+// ---- 虚拟 setter：写入时自动拆分 ----
 userSchema.virtual('fullName').set(function (name) {
   const parts = name.split(' ')
   this.firstName = parts[0]
   this.lastName = parts[1]
 })
 
-// 使用
+// ---- 计算年龄的虚拟字段 ----
+userSchema.virtual('age').get(function () {
+  if (!this.birthDate) return null
+  const diff = Date.now() - this.birthDate.getTime()
+  return Math.floor(diff / (365.25 * 24 * 60 * 60 * 1000))
+})
+
+// 使用示例
 const user = new User({ firstName: 'John', lastName: 'Doe' })
 console.log(user.fullName) // "John Doe"
+
+user.fullName = 'Jane Smith' // 触发 setter
+console.log(user.firstName) // "Jane"
+
+// ⚠️ 注意：虚拟字段默认不包含在 JSON 输出中
+// 需要在 Schema 选项中开启:
+// { toJSON: { virtuals: true }, toObject: { virtuals: true } }
+```
+
+### 2.7 实例方法、静态方法与查询助手
+
+```javascript
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: { type: String, select: false }, // 查询时默认不返回
+  role: { type: String, enum: ['user', 'admin'], default: 'user' },
+})
+
+// ---- 实例方法：每个文档实例都可以调用 ----
+userSchema.methods.checkPassword = function (password) {
+  // this 指向当前文档实例
+  return this.password === password // 实际项目中应使用 bcrypt 等加密库
+}
+
+userSchema.methods.toJSON = function () {
+  const obj = this.toObject()
+  delete obj.password // 序列化时隐藏密码
+  return obj
+}
+
+// ---- 静态方法：直接通过 Model 调用 ----
+userSchema.statics.findByEmail = function (email) {
+  return this.findOne({ email }) // this 指向 Model
+}
+
+userSchema.statics.findActiveAdmins = function () {
+  return this.find({ role: 'admin', isActive: true })
+}
+
+// ---- 查询助手：链式调用 ----
+userSchema.query.byRole = function (role) {
+  return this.where({ role }) // this 指向 Query
+}
+
+userSchema.query.active = function () {
+  return this.where({ isActive: true })
+}
+
+// 使用示例
+// 实例方法: const user = await User.findById(id); await user.checkPassword('123')
+// 静态方法: const user = await User.findByEmail('test@example.com')
+// 查询助手: const admins = await User.find().byRole('admin').active()
 ```
 
 ---

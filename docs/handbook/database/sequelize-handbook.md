@@ -83,56 +83,80 @@ try {
 
 ## 二、模型定义
 
-### 2.1 基本模型
+> 模型（Model）是 Sequelize 的核心，它映射数据库中的一张表，定义了表的字段、数据类型、约束、验证规则等。
+> Sequelize 提供两种定义模型的方式：`Model.init()`（推荐）和 `sequelize.define()`。
+
+### 2.1 基本模型（Model.init 语法）
+
+这是官方推荐的定义方式，更清晰、更符合 ES6 类语法：
 
 ```javascript
 const { Model, DataTypes } = require('sequelize')
 
+// ---- 定义模型类 ----
 class User extends Model {}
 
+// ---- 初始化模型 ----
 User.init(
   {
+    // ========== 主键字段 ==========
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
+      type: DataTypes.INTEGER, // 整数类型
+      autoIncrement: true, // 自增（每次插入自动 +1）
+      primaryKey: true, // 标记为主键
     },
+
+    // ========== 字符串字段 ==========
     username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      type: DataTypes.STRING, // VARCHAR(255)
+      allowNull: false, // 不允许为 null
+      unique: true, // 唯一约束，数据库层面保证不重复
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isEmail: true,
+        isEmail: true, // 内置验证器：必须是合法的邮箱格式
       },
     },
+
+    // ========== 数字字段 ==========
     age: {
       type: DataTypes.INTEGER,
-      defaultValue: 0,
+      defaultValue: 0, // 默认值，插入时不提供则自动填充
     },
+
+    // ========== 布尔字段 ==========
     isActive: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true,
+      defaultValue: true, // 默认激活
+    },
+
+    // ========== 日期字段 ==========
+    lastLoginAt: {
+      type: DataTypes.DATE, // DATETIME 类型（包含时间）
+      allowNull: true, // 允许为空
     },
   },
   {
-    sequelize,
-    modelName: 'User',
-    tableName: 'users',
-    timestamps: true, // 自动添加 createdAt 和 updatedAt
+    // ========== 模型配置选项 ==========
+    sequelize, // 传入 Sequelize 实例（必需）
+    modelName: 'User', // 模型名称（单数，用于代码中引用）
+    tableName: 'users', // 数据库表名（复数，实际创建的表名）
+    timestamps: true, // 自动添加 createdAt 和 updatedAt 字段
   },
 )
 ```
 
 ### 2.2 define 语法
 
+另一种定义方式，功能与 `Model.init()` 等价，写法更紧凑：
+
 ```javascript
 const User = sequelize.define(
-  'User',
+  'User', // 模型名称
   {
+    // ---- 字段定义（与 Model.init 第一个参数相同） ----
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -142,66 +166,389 @@ const User = sequelize.define(
     },
   },
   {
-    timestamps: true,
-    paranoid: true, // 软删除
-    underscored: true, // 使用下划线命名
+    // ---- 模型选项（与 Model.init 第二个参数相同） ----
+    timestamps: true, // 自动添加 createdAt / updatedAt
+    paranoid: true, // 开启软删除，添加 deletedAt 字段（删除时不真正删除，而是设置时间戳）
+    underscored: true, // 字段名使用下划线风格（如 created_at 而非 createdAt）
+    freezeTableName: true, // 冻结表名，不自动转复数（模型名 = 表名）
+    createdAt: 'created_at', // 自定义 createdAt 字段名
+    updatedAt: 'updated_at', // 自定义 updatedAt 字段名
+    deletedAt: 'deleted_at', // 自定义 deletedAt 字段名（需配合 paranoid: true）
   },
 )
 ```
 
-### 2.3 数据类型
+### 2.3 完整数据类型一览
 
 ```javascript
-DataTypes.STRING // VARCHAR(255)
-DataTypes.TEXT // TEXT
-DataTypes.INTEGER // INTEGER
-DataTypes.BIGINT // BIGINT
-DataTypes.FLOAT // FLOAT
-DataTypes.DOUBLE // DOUBLE
-DataTypes.DECIMAL(10, 2) // DECIMAL
-DataTypes.BOOLEAN // BOOLEAN
-DataTypes.DATE // DATETIME
-DataTypes.DATEONLY // DATE
-DataTypes.UUID // UUID
-DataTypes.JSON // JSON
-DataTypes.JSONB // JSONB (PostgreSQL)
-DataTypes.BLOB // BLOB
-DataTypes.ENUM('value1', 'value2') // ENUM
+const { DataTypes } = require('sequelize')
+
+// ========== Sequelize 支持的所有数据类型 ==========
+
+// ---- 字符串类型 ----
+DataTypes.STRING // VARCHAR(255)         — 默认最大255字符
+DataTypes.STRING(128) // VARCHAR(128)        — 指定最大长度
+DataTypes.TEXT // TEXT                 — 不限长度，适合存储长文本（文章、描述等）
+DataTypes.TEXT('tiny') // TINYTEXT            — MySQL 专属，最大255字节
+DataTypes.TEXT('medium') // MEDIUMTEXT          — MySQL 专属，最大16MB
+DataTypes.TEXT('long') // LONGTEXT            — MySQL 专属，最大4GB
+DataTypes.CITEXT // CITEXT              — 不区分大小写的 TEXT（PostgreSQL）
+
+// ---- 数字类型 ----
+DataTypes.INTEGER // INTEGER              — 32位整数
+DataTypes.BIGINT // BIGINT               — 64位整数（超出 JS 安全范围时返回字符串）
+DataTypes.FLOAT // FLOAT                — 单精度浮点数
+DataTypes.DOUBLE // DOUBLE               — 双精度浮点数
+DataTypes.DECIMAL(10, 2) // DECIMAL(10,2)       — 精确小数，适合金额计算（如 99999999.99）
+DataTypes.DECIMAL(10, 2).UNSIGNED // UNSIGNED DECIMAL   — 无符号精确小数
+
+// ---- 布尔类型 ----
+DataTypes.BOOLEAN // BOOLEAN / TINYINT(1)
+
+// ---- 日期类型 ----
+DataTypes.DATE // DATETIME / TIMESTAMP  — 包含日期和时间
+DataTypes.DATE(6) // DATETIME(6)           — 毫秒精度
+DataTypes.DATEONLY // DATE                — 仅日期，不含时间
+
+// ---- 二进制类型 ----
+DataTypes.BLOB // BLOB                — 二进制大对象（文件、图片等）
+DataTypes.BLOB('tiny') // TINYBLOB            — MySQL 专属
+DataTypes.BLOB('long') // LONGBLOB            — MySQL 专属
+
+// ---- 唯一标识 ----
+DataTypes.UUID // UUID 字符串（如 '6f74a084-...'）
+DataTypes.UUIDV1 // UUIDv1 默认值生成器
+DataTypes.UUIDV4 // UUIDv4 默认值生成器（随机）
+
+// ---- JSON 类型 ----
+DataTypes.JSON // JSON                — 存储 JSON 数据（MySQL/PostgreSQL/SQLite）
+DataTypes.JSONB // JSONB               — PostgreSQL 专属，支持索引和高效查询
+
+// ---- 枚举类型 ----
+DataTypes.ENUM('value1', 'value2') // ENUM — 只允许指定的值
+
+// ---- 数组类型（PostgreSQL 专属） ----
+DataTypes.ARRAY(DataTypes.STRING) // TEXT[]             — 字符串数组
+DataTypes.ARRAY(DataTypes.INTEGER) // INTEGER[]          — 整数数组
+
+// ---- 虚拟字段 ----
+DataTypes.VIRTUAL // 不会存储到数据库，适合计算字段
 ```
 
-### 2.4 字段选项
+### 2.4 字段选项详解
+
+每个字段都可以配置以下选项，用于控制约束、默认值、验证等行为：
+
+```javascript
+const demoSchema = {
+  // ========== 字符串字段示例 ==========
+  username: {
+    type: DataTypes.STRING(50), // VARCHAR(50)，指定最大长度50
+    allowNull: false, // 不允许为 null（数据库 NOT NULL 约束）
+    unique: true, // 唯一约束（数据库层面保证不重复）
+    defaultValue: 'anonymous', // 默认值
+    comment: '用户名', // 字段注释（会同步到数据库表结构中）
+    field: 'user_name', // 指定数据库中的实际列名（与代码中的属性名不同）
+    validate: {
+      // ---- 内置验证器 ----
+      notEmpty: { msg: '用户名不能为空' }, // 不允许空字符串
+      len: { args: [4, 30], msg: '用户名长度必须在4-30之间' }, // 长度限制
+      isAlphanumeric: { msg: '用户名只能包含字母和数字' }, // 只允许字母数字
+      is: /^[a-zA-Z0-9_]+$/i, // 自定义正则匹配
+      notIn: [['admin', 'root']], // 排除特定值
+    },
+  },
+
+  // ========== 邮箱字段示例 ==========
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: {
+      name: 'unique_email', // 自定义唯一约束名称
+      msg: '该邮箱已被注册', // 违反唯一约束时的错误信息
+    },
+    validate: {
+      isEmail: { msg: '请输入合法的邮箱地址' }, // 内置邮箱验证
+      isLowercase: true, // 要求小写（配合 setter 使用更佳）
+    },
+    set(value) {
+      // 自定义 setter：存储前自动转小写
+      this.setDataValue('email', value.toLowerCase())
+    },
+  },
+
+  // ========== 密码字段示例 ==========
+  password: {
+    type: DataTypes.STRING(255), // 存储哈希后的密码
+    allowNull: false,
+    validate: {
+      len: { args: [8, 100], msg: '密码至少8位' },
+      isValidPassword(value) {
+        // 自定义验证器
+        if (!/[A-Z]/.test(value)) {
+          throw new Error('密码必须包含大写字母')
+        }
+        if (!/[0-9]/.test(value)) {
+          throw new Error('密码必须包含数字')
+        }
+      },
+    },
+  },
+
+  // ========== 数字字段示例 ==========
+  age: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0, // 默认值
+    validate: {
+      min: { args: [0], msg: '年龄不能为负数' }, // 最小值
+      max: { args: [150], msg: '年龄不能超过150' }, // 最大值
+      isInt: { msg: '年龄必须为整数' }, // 必须是整数
+    },
+  },
+  price: {
+    type: DataTypes.DECIMAL(10, 2), // DECIMAL(10,2)，精确小数，适合金额
+    defaultValue: 0.0,
+    validate: {
+      min: { args: [0], msg: '价格不能为负数' },
+      isDecimal: { msg: '价格必须为小数' },
+    },
+  },
+
+  // ========== 枚举字段示例 ==========
+  role: {
+    type: DataTypes.ENUM('user', 'admin', 'moderator'), // 只允许指定的值
+    defaultValue: 'user', // 默认角色
+    validate: {
+      isIn: {
+        args: [['user', 'admin', 'moderator']], // 再次验证（双重保障）
+        msg: '无效的角色类型',
+      },
+    },
+  },
+  status: {
+    type: DataTypes.ENUM('active', 'inactive', 'banned'),
+    defaultValue: 'active',
+  },
+
+  // ========== 日期字段示例 ==========
+  birthday: {
+    type: DataTypes.DATEONLY, // 仅存储日期（YYYY-MM-DD），不含时间
+    allowNull: true,
+  },
+  lastLoginAt: {
+    type: DataTypes.DATE, // 存储完整日期时间
+    allowNull: true,
+  },
+
+  // ========== 布尔字段示例 ==========
+  isActive: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
+  isVerified: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false, // 默认未验证
+  },
+
+  // ========== JSON 字段示例 ==========
+  preferences: {
+    type: DataTypes.JSON, // 存储 JSON 对象
+    defaultValue: {}, // 默认空对象
+    // 示例值: { theme: 'dark', language: 'zh-CN', notifications: true }
+  },
+
+  // ========== UUID 字段示例 ==========
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4, // 自动生成 UUIDv4
+    unique: true,
+  },
+
+  // ========== 虚拟字段示例 ==========
+  fullName: {
+    type: DataTypes.VIRTUAL, // 不会存入数据库
+    get() {
+      // 读取时动态计算
+      return `${this.firstName} ${this.lastName}`
+    },
+    set(value) {
+      throw new Error('Do not try to set the `fullName` value!') // 禁止写入
+    },
+  },
+}
+```
+
+### 2.5 模型全局选项
+
+模型的第三个参数（`define` 语法）或 `Model.init` 的第二个参数，用于配置模型级行为：
 
 ```javascript
 {
-  type: DataTypes.STRING,
-  allowNull: false,           // 是否允许 null
-  defaultValue: 'default',    // 默认值
-  unique: true,               // 唯一约束
-  primaryKey: true,           // 主键
-  autoIncrement: true,        // 自增
-  comment: '字段说明',         // 注释
-  field: 'db_column_name',    // 数据库列名
-  validate: {                 // 验证规则
-    notEmpty: true,
-    len: [4, 10],
-    isEmail: true,
-    isUrl: true,
-    isIP: true,
-    isAlpha: true,
-    isAlphanumeric: true,
-    isNumeric: true,
-    min: 10,
-    max: 100,
-    isIn: [['en', 'zh']],
-    notIn: [['admin']],
-    isDate: true,
-    customValidator(value) {
-      if (value < 18) {
-        throw new Error('Must be 18 or older');
+  sequelize,               // Sequelize 实例（必需）
+  modelName: 'User',       // 模型名称
+  tableName: 'users',      // 数据库表名（不指定则默认取 modelName 的复数小写形式）
+
+  // ---- 时间戳 ----
+  timestamps: true,        // 自动添加 createdAt 和 updatedAt（默认 true）
+  createdAt: 'created_at', // 自定义 createdAt 字段名（默认 'createdAt'）
+  updatedAt: 'updated_at', // 自定义 updatedAt 字段名（默认 'updatedAt'）
+
+  // ---- 软删除 ----
+  paranoid: true,          // 开启软删除，自动添加 deletedAt 字段
+  deletedAt: 'deleted_at', // 自定义 deletedAt 字段名
+
+  // ---- 命名风格 ----
+  underscored: true,       // 所有字段使用下划线命名（如 first_name 而非 firstName）
+  freezeTableName: true,   // 冻结表名，不自动转复数
+
+  // ---- 版本控制 ----
+  version: true,           // 添加 version 字段，每次更新自动 +1（乐观锁）
+
+  // ---- 默认作用域 ----
+  defaultScope: {
+    attributes: { exclude: ['password'] }, // 查询时默认排除密码字段
+  },
+
+  // ---- 命名作用域（可复用的查询条件） ----
+  scopes: {
+    active: { where: { isActive: true } }, // User.scope('active').findAll()
+    admins: { where: { role: 'admin' } }, // User.scope('admins').findAll()
+    recent: { order: [['createdAt', 'DESC']], limit: 10 }, // 最近10条
+    withPosts: { include: [{ model: Post }] }, // 包含关联数据
+  },
+
+  // ---- 索引 ----
+  indexes: [
+    { fields: ['email'], unique: true }, // 唯一索引
+    { fields: ['lastName', 'firstName'] }, // 复合索引
+    { fields: ['createdAt'], name: 'idx_created_at' }, // 命名索引
+  ],
+
+  // ---- 引擎与字符集（MySQL） ----
+  engine: 'InnoDB', // 存储引擎
+  charset: 'utf8mb4', // 字符集（支持 emoji）
+  collate: 'utf8mb4_unicode_ci', // 排序规则
+
+  // ---- 模型级别验证 ----
+  validate: {
+    // 跨字段验证（this 指向模型实例）
+    eitherNameOrEmail() {
+      if (!this.username && !this.email) {
+        throw new Error('用户名或邮箱至少提供一个')
       }
-    }
-  }
+    },
+  },
+
+  // ---- Hooks ----
+  hooks: {
+    beforeCreate: async (user) => {
+      // 创建前自动加密密码
+      if (user.password) {
+        user.password = await hashPassword(user.password)
+      }
+    },
+  },
 }
+```
+
+### 2.6 Getter 与 Setter
+
+可以在字段级别定义自定义的读取/写入逻辑：
+
+```javascript
+const User = sequelize.define('User', {
+  // ---- getter：读取时自动转换 ----
+  firstName: {
+    type: DataTypes.STRING,
+    get() {
+      // this.getDataValue() 获取原始值
+      const raw = this.getDataValue('firstName')
+      return raw ? raw.charAt(0).toUpperCase() + raw.slice(1) : raw
+    },
+  },
+  lastName: {
+    type: DataTypes.STRING,
+  },
+
+  // ---- setter：写入时自动转换 ----
+  email: {
+    type: DataTypes.STRING,
+    set(value) {
+      // this.setDataValue() 设置实际存储值
+      this.setDataValue('email', value.toLowerCase().trim())
+    },
+  },
+
+  // ---- 虚拟字段：不存储，动态计算 ----
+  fullName: {
+    type: DataTypes.VIRTUAL,
+    get() {
+      return `${this.firstName} ${this.lastName}`
+    },
+    set(value) {
+      const [first, ...rest] = value.split(' ')
+      this.setDataValue('firstName', first)
+      this.setDataValue('lastName', rest.join(' '))
+    },
+  },
+
+  // ---- 标签数组：存储为 JSON，代码中操作为数组 ----
+  tags: {
+    type: DataTypes.JSON,
+    defaultValue: [],
+    get() {
+      const raw = this.getDataValue('tags')
+      return Array.isArray(raw) ? raw : []
+    },
+  },
+})
+
+// 使用示例
+const user = User.build({ firstName: 'john', lastName: 'doe', email: 'John@Example.COM' })
+console.log(user.firstName) // "John"  （getter 自动首字母大写）
+console.log(user.email) // "john@example.com"  （setter 自动转小写）
+console.log(user.fullName) // "John Doe"  （虚拟字段动态计算）
+```
+
+### 2.7 实例方法、静态方法与类方法
+
+```javascript
+class User extends Model {}
+
+User.init(
+  {
+    username: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    role: { type: DataTypes.ENUM('user', 'admin'), default: 'user' },
+  },
+  { sequelize, modelName: 'User' },
+)
+
+// ---- 实例方法：每个模型实例都可以调用 ----
+User.prototype.checkPassword = async function (password) {
+  // this 指向当前实例
+  return await bcrypt.compare(password, this.password)
+}
+
+User.prototype.toJSON = function () {
+  const values = { ...this.get() }
+  delete values.password // 序列化时隐藏密码
+  return values
+}
+
+// ---- 静态方法 / 类方法：直接通过 Model 调用 ----
+User.findByEmail = async function (email) {
+  return await User.findOne({ where: { email } })
+}
+
+User.findActiveAdmins = async function () {
+  return await User.findAll({ where: { role: 'admin', isActive: true } })
+}
+
+// 使用示例
+// 实例方法: const user = await User.findByPk(1); await user.checkPassword('123')
+// 静态方法: const user = await User.findByEmail('test@example.com')
 ```
 
 ---
