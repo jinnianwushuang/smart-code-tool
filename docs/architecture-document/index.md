@@ -70,6 +70,7 @@
 
 - [前端渲染模式全解](./general-knowledge/frontend-rendering-modes) - CSR、SSR、SSG、ISR、Streaming SSR、RSC 等模式详解
 - [网络通用知识](./general-knowledge/network-fundamentals) - TCP/IP、HTTP、HTTPS、DNS、CORS、缓存策略等
+- [Chrome 开发者工具全解](./general-knowledge/chrome-devtools) - Elements、Console、Sources、Network、Performance 等面板详解
 
 ## 🎯 快速开始
 

@@ -444,6 +444,10 @@ export const architectureSidebar = {
           text: '网络通用知识',
           link: '/architecture-document/general-knowledge/network-fundamentals',
         },
+        {
+          text: 'Chrome 开发者工具全解',
+          link: '/architecture-document/general-knowledge/chrome-devtools',
+        },
       ],
     },
     {
