@@ -409,6 +409,10 @@ export const architectureSidebar = {
               text: '桌面端项目',
               link: '/architecture-document/vue/technology-selection/desktop-project',
             },
+            {
+              text: '业务组件 SDK 打包',
+              link: '/architecture-document/vue/technology-selection/sdk-project',
+            },
           ],
         },
       ],

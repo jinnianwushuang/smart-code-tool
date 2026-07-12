@@ -43,6 +43,7 @@
 - [通用工具](./vue/general-tools/axios-suit) - 常用工具封装
 - [标准化模板](./vue/standardized-template-cn/architecture-overview-cn) - 项目模板规范
 - [技术选型](./vue/technology-selection/app-project)
+- [业务组件 SDK 打包](./vue/technology-selection/sdk-project) - 将业务组件封装为独立 SDK 供外部项目使用
 
 ### 🔧 工程化
 
