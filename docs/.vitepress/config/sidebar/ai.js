@@ -18,6 +18,14 @@ export const aiSidebar = {
           text: 'M4 Max 新电脑整备指南',
           link: '/ai/idea/new-mac-setup-guide',
         },
+
+        {
+          text: 'Ollama 自定义模型笔记',
+          link: '/ai/ollama/ollama-custom-model-file',
+        },
+
+
+
       ],
     },
 
