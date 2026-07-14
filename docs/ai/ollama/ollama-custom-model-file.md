@@ -6,15 +6,15 @@
 
 ## 一、模型概览
 
-| 项目 | 代码专用模型 | 日常通用模型 |
-|------|-------------|-------------|
-| 基础模型 | `qwen3-coder:30b` | `qwen3.5:27b` |
-| 自定义名称 | `qwen3-coder-custom` | `qwen3.5-custom` |
-| Modelfile | `Qwen3-Coder.Modelfile` | `Qwen3-16k.Modelfile` |
-| 用途 | 编程、调试、架构设计 | 问答、写作、分析、推理 |
-| 温度 | 0.3（低，确定性高） | 0.7（中，兼顾创造性） |
-| 上下文窗口 | 32k | 16k |
-| 最大输出 | 8192 tokens | 4096 tokens |
+| 项目       | 代码专用模型            | 日常通用模型           |
+| ---------- | ----------------------- | ---------------------- |
+| 基础模型   | `qwen3-coder:30b`       | `qwen3.5:27b`          |
+| 自定义名称 | `qwen3-coder-custom`    | `qwen3.5-custom`       |
+| Modelfile  | `Qwen3-Coder.Modelfile` | `Qwen3-16k.Modelfile`  |
+| 用途       | 编程、调试、架构设计    | 问答、写作、分析、推理 |
+| 温度       | 0.3（低，确定性高）     | 0.7（中，兼顾创造性）  |
+| 上下文窗口 | 32k                     | 16k                    |
+| 最大输出   | 8192 tokens             | 4096 tokens            |
 
 ## 二、构建命令
 
@@ -28,16 +28,16 @@ ollama create qwen3.5-custom -f Qwen3-16k.Modelfile
 
 ## 三、参数对比说明
 
-| 参数 | 代码模型 | 通用模型 | 说明 |
-|------|---------|---------|------|
-| `temperature` | 0.3 | 0.7 | 代码场景偏低保证确定性，通用场景兼顾创造性 |
-| `num_ctx` | 32768 | 16384 | 代码需要更大上下文窗口 |
-| `num_predict` | 8192 | 4096 | 代码输出通常更长 |
-| `top_p` | 0.85 | 0.9 | 核采样范围 |
-| `top_k` | 30 | 40 | 每步候选 token 数 |
-| `repeat_penalty` | 1.15 | 1.1 | 代码场景稍强抑制重复 |
-| `presence_penalty` | 0.2 | 0.3 | 鼓励通用模型话题多样性 |
-| `frequency_penalty` | 0.2 | 0.3 | 降低高频词重复 |
+| 参数                | 代码模型 | 通用模型 | 说明                                       |
+| ------------------- | -------- | -------- | ------------------------------------------ |
+| `temperature`       | 0.3      | 0.7      | 代码场景偏低保证确定性，通用场景兼顾创造性 |
+| `num_ctx`           | 32768    | 16384    | 代码需要更大上下文窗口                     |
+| `num_predict`       | 8192     | 4096     | 代码输出通常更长                           |
+| `top_p`             | 0.85     | 0.9      | 核采样范围                                 |
+| `top_k`             | 30       | 40       | 每步候选 token 数                          |
+| `repeat_penalty`    | 1.15     | 1.1      | 代码场景稍强抑制重复                       |
+| `presence_penalty`  | 0.2      | 0.3      | 鼓励通用模型话题多样性                     |
+| `frequency_penalty` | 0.2      | 0.3      | 降低高频词重复                             |
 
 ---
 
@@ -81,10 +81,12 @@ PARAMETER frequency_penalty 0.2
 # 随机种子（-1 为随机）
 PARAMETER seed -1
 
-# 停止词
-PARAMETER stop """
-PARAMETER stop """
-PARAMETER stop """
+# 停止词（Qwen3 思考标签，阻止输出内部推理过程）
+# 注入工具调用的关键截断词（Stop Tokens）
+PARAMETER stop "</parameter>"
+PARAMETER stop "</function>"
+PARAMETER stop "<|im_end|>"
+
 
 # ---------- 系统提示词 ----------
 
@@ -149,10 +151,12 @@ PARAMETER frequency_penalty 0.3
 # 随机种子（-1 为随机）
 PARAMETER seed -1
 
-# 停止词
-PARAMETER stop """
-PARAMETER stop """
-PARAMETER stop """
+# 停止词（Qwen3 思考标签，阻止输出内部推理过程）
+# 注入工具调用的关键截断词（Stop Tokens）
+PARAMETER stop "</parameter>"
+PARAMETER stop "</function>"
+PARAMETER stop "<|im_end|>"
+
 
 # ---------- 系统提示词 ----------
 

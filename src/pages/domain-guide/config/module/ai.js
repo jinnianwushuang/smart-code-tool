@@ -231,6 +231,66 @@ export const docs = [
     ],
   },
   {
+    category: 'AI 提示词资源',
+    color: 'amber',
+    items: [
+      {
+        name: 'Prompt Engineering Guide',
+        url: 'https://www.promptingguide.ai/zh',
+        tag: 'Guide',
+        desc: '系统全面的提示词工程指南,涵盖各类提示技巧与最佳实践,支持中文。',
+      },
+      {
+        name: 'Awesome ChatGPT Prompts',
+        url: 'https://github.com/f/awesome-chatgpt-prompts',
+        tag: 'Collection',
+        desc: 'GitHub 上最热门的 ChatGPT 提示词合集,涵盖写作、编程、学习等多种场景。',
+      },
+      {
+        name: 'OpenAI Prompt Library',
+        url: 'https://platform.openai.com/docs/guides/prompt-engineering',
+        tag: 'Official',
+        desc: 'OpenAI 官方提示词工程文档,介绍 GPT 系列模型的最佳提示实践。',
+      },
+      {
+        name: 'LangGPT 结构化提示词',
+        url: 'https://github.com/langgptai/LangGPT',
+        tag: 'Structured',
+        desc: '结构化提示词框架,通过模板化方式编写高质量、可复用的系统提示词。',
+      },
+      {
+        name: 'DeepSeek 官方提示词库',
+        url: 'https://api-docs.deepseek.com/zh-cn/prompt-library/',
+        tag: 'Official',
+        desc: 'DeepSeek 官方提示词库,提供针对 DeepSeek 模型优化的系统提示词模板与最佳实践。',
+      },
+      {
+        name: '通义千问 Prompt Best Practices',
+        url: 'https://help.aliyun.com/zh/model-studio/use-qwen-by-calling-api/prompt-best-practices',
+        tag: 'Official',
+        desc: '阿里云通义千问官方提示词最佳实践指南,针对 Qwen 模型的提示词设计建议与技巧。',
+      },
+      {
+        name: 'PromptPerfect',
+        url: 'https://promptperfect.jina.ai/',
+        tag: 'Optimizer',
+        desc: 'AI 提示词优化工具,自动改进和增强提示词质量,提升模型输出效果。',
+      },
+      {
+        name: 'FlowGPT',
+        url: 'https://flowgpt.com/',
+        tag: 'Community',
+        desc: '活跃的 AI 提示词分享社区,可发现、分享和投票优质提示词模板。',
+      },
+      {
+        name: 'Snack Prompt',
+        url: 'https://snackprompt.com/',
+        tag: 'Marketplace',
+        desc: '提示词市场,提供分类整理的优质提示词,支持购买和分享。',
+      },
+    ],
+  },
+  {
     category: 'AI 应用与 UI 参考',
     color: 'green',
     items: [
