@@ -1,0 +1,73 @@
+# ============================================================
+# Ollama + Open WebUI 本地大模型一体化部署
+# 启动命令：docker compose -f docker-compose-ollama-webui.yml up -d
+# 停止命令：docker compose -f docker-compose-ollama-webui.yml down
+# 访问地址：
+#   Open WebUI：http://localhost:3000
+#   Ollama API：http://localhost:11434
+# ============================================================
+
+services:
+  # ---- Ollama 大模型运行服务 ----
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-server
+    restart: unless-stopped
+    ports:
+      - '11434:11434'
+    volumes:
+      # 持久化模型数据（下载的模型保存在宿主机）
+      - ollama-data:/root/.ollama
+    environment:
+      # 允许跨域访问（Open WebUI 前端调用需要）
+      - OLLAMA_ORIGINS=*
+      # 模型空闲超时时间（秒），超时后自动卸载显存
+      - OLLAMA_KEEP_ALIVE=30m
+      # 最大并发请求数
+      - OLLAMA_NUM_PARALLEL=2
+    # ---- NVIDIA GPU 支持（有独显时取消注释） ----
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    networks:
+      - ollama-network
+
+  # ---- Open WebUI 前端交互界面 ----
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: unless-stopped
+    ports:
+      - '3000:8080'
+    volumes:
+      # 持久化 WebUI 数据（用户、对话记录、配置等）
+      - open-webui-data:/app/backend/data
+    environment:
+      # 连接 Ollama 服务地址（容器内网络通信）
+      - OLLAMA_BASE_URL=http://ollama:11434
+      # 是否启用 OpenAI API 兼容（可选，接入外部模型时用）
+      - ENABLE_OPENAI_API=false
+      # 默认模型（首次进入时选中的模型）
+      - DEFAULT_MODELS=qwen3-coder:30b
+      # WebUI 监听端口
+      - WEBUI_AUTH=true
+      # 自动注册：首个用户自动成为管理员
+      - ENABLE_SIGNUP=true
+    depends_on:
+      - ollama
+    networks:
+      - ollama-network
+
+volumes:
+  ollama-data:
+    driver: local
+  open-webui-data:
+    driver: local
+
+networks:
+  ollama-network:
+    driver: bridge

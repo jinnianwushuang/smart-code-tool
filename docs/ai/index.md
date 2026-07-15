@@ -21,11 +21,12 @@
 
 ### 💡 创意与指南
 
-| 文档                                                | 描述                                               |
-| --------------------------------------------------- | -------------------------------------------------- |
-| [AI 知识库](./idea/kbs)                             | 本地知识库建设指南，包括 RAG、向量数据库等核心技术 |
-| [M4 Max 新电脑整备指南](./idea/new-mac-setup-guide) | Mac 电脑 AI 开发环境配置与工具链搭建               |
-| [Ollama 自定义模型笔记](./ollama/ollama-custom-model-file) |Ollama 自定义模型 Modelfile 笔记            |
+| 文档                                                                   | 描述                                               |
+| ---------------------------------------------------------------------- | -------------------------------------------------- |
+| [AI 知识库](./idea/kbs)                                                | 本地知识库建设指南，包括 RAG、向量数据库等核心技术 |
+| [M4 Max 新电脑整备指南](./idea/new-mac-setup-guide)                    | Mac 电脑 AI 开发环境配置与工具链搭建               |
+| [Ollama 自定义模型笔记](./ollama/ollama-custom-model-file)             | Ollama 自定义模型 Modelfile 笔记                   |
+| [Python 本地智能体最佳实践](./ollama/python-local-agent-best-practice) | 基于 Ollama + Qwen 的 Python 本地智能体开发实践    |
 
 ### 🔤 句子组装
 

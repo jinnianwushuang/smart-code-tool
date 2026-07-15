@@ -28,6 +28,7 @@ export const handbookSidebar = {
     {
       text: '后端开发',
       items: [
+        { text: 'Python 手册', link: '/handbook/tools/python-handbook' },
         { text: 'NestJS 手册', link: '/handbook/backend/nestjs-handbook' },
         { text: 'FastAPI 手册', link: '/handbook/backend/fastapi-handbook' },
         { text: 'Django 手册', link: '/handbook/backend/django-handbook' },
@@ -67,9 +68,8 @@ export const handbookSidebar = {
       ],
     },
     {
-      text: '开发工具',
+      text: '其他手册',
       items: [
-        { text: 'Python 手册', link: '/handbook/tools/python-handbook' },
         { text: 'VBA 手册', link: '/handbook/tools/vba-handbook' },
         { text: 'Excel 公式手册', link: '/handbook/tools/excel-formulas-handbook' },
         { text: 'Vim 手册', link: '/handbook/tools/vim-handbook' },

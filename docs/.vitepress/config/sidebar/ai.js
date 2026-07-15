@@ -23,9 +23,10 @@ export const aiSidebar = {
           text: 'Ollama 自定义模型笔记',
           link: '/ai/ollama/ollama-custom-model-file',
         },
-
-
-
+        {
+          text: 'Python 本地智能体最佳实践',
+          link: '/ai/ollama/python-local-agent-best-practice',
+        },
       ],
     },
 
