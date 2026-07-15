@@ -69,13 +69,14 @@
 
 ### 数据库系统
 
-| 手册                                                      | 描述                                                  |
-| --------------------------------------------------------- | ----------------------------------------------------- |
-| [MySQL 手册](/handbook/database/mysql-handbook)           | MySQL 关系型数据库、SQL 语法、索引优化、事务处理      |
-| [MongoDB 手册](/handbook/database/mongodb-handbook)       | MongoDB 文档数据库、CRUD 操作、聚合框架、索引策略     |
-| [PostgreSQL 速查](/handbook/database/postgresql-handbook) | PostgreSQL 高级特性、JSONB、窗口函数、性能调优        |
-| [Redis 手册](/handbook/database/redis-handbook)           | Redis 数据结构、持久化、集群、ioredis/redis-py 客户端 |
-| [Chroma 手册](/handbook/database/chroma-handbook)         | Chroma 向量数据库、语义搜索、RAG 集成、元数据过滤     |
+| 手册                                                      | 描述                                                    |
+| --------------------------------------------------------- | ------------------------------------------------------- |
+| [MySQL 手册](/handbook/database/mysql-handbook)           | MySQL 关系型数据库、SQL 语法、索引优化、事务处理        |
+| [MongoDB 手册](/handbook/database/mongodb-handbook)       | MongoDB 文档数据库、CRUD 操作、聚合框架、索引策略       |
+| [PostgreSQL 速查](/handbook/database/postgresql-handbook) | PostgreSQL 高级特性、JSONB、窗口函数、性能调优          |
+| [Redis 手册](/handbook/database/redis-handbook)           | Redis 数据结构、持久化、集群、ioredis/redis-py 客户端   |
+| [Chroma 手册](/handbook/database/chroma-handbook)         | Chroma 向量数据库、语义搜索、RAG 集成、元数据过滤       |
+| [Milvus 手册](/handbook/database/milvus-handbook)         | Milvus 高性能向量数据库、万亿级检索、混合搜索、集群部署 |
 
 ---
 

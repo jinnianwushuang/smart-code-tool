@@ -47,6 +47,7 @@ export const handbookSidebar = {
         { text: 'Sequelize 手册', link: '/handbook/database/sequelize-handbook' },
         { text: 'Mongoose 手册', link: '/handbook/database/mongoose-handbook' },
         { text: 'Chroma 手册', link: '/handbook/database/chroma-handbook' },
+        { text: 'Milvus 手册', link: '/handbook/database/milvus-handbook' },
       ],
     },
     {
