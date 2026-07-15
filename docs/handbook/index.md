@@ -75,6 +75,7 @@
 | [MongoDB 手册](/handbook/database/mongodb-handbook)       | MongoDB 文档数据库、CRUD 操作、聚合框架、索引策略     |
 | [PostgreSQL 速查](/handbook/database/postgresql-handbook) | PostgreSQL 高级特性、JSONB、窗口函数、性能调优        |
 | [Redis 手册](/handbook/database/redis-handbook)           | Redis 数据结构、持久化、集群、ioredis/redis-py 客户端 |
+| [Chroma 手册](/handbook/database/chroma-handbook)         | Chroma 向量数据库、语义搜索、RAG 集成、元数据过滤     |
 
 ---
 
