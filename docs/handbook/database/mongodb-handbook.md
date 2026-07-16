@@ -23,6 +23,103 @@
 
 ---
 
+## 🐳 Docker Compose 快速启动
+
+### 单机模式（开发/测试环境）
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - '8081:8081'
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_URL: mongodb://admin:password@mongodb:27017
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
+```
+
+### 副本集模式（生产环境）
+
+```yaml
+# docker-compose-replicaset.yml
+version: '3.8'
+
+services:
+  mongo-rs0:
+    image: mongo:7
+    container_name: mongo-rs0
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_rs0_data:/data/db
+    command: mongod --replSet rs0 --bind_ip_all
+    restart: unless-stopped
+
+  mongo-rs1:
+    image: mongo:7
+    container_name: mongo-rs1
+    ports:
+      - '27018:27017'
+    volumes:
+      - mongo_rs1_data:/data/db
+    command: mongod --replSet rs0 --bind_ip_all
+    restart: unless-stopped
+
+  mongo-rs2:
+    image: mongo:7
+    container_name: mongo-rs2
+    ports:
+      - '27019:27017'
+    volumes:
+      - mongo_rs2_data:/data/db
+    command: mongod --replSet rs0 --bind_ip_all
+    restart: unless-stopped
+
+volumes:
+  mongo_rs0_data:
+  mongo_rs1_data:
+  mongo_rs2_data:
+```
+
+```bash
+# 启动
+docker-compose up -d
+
+# 连接字符串
+# mongodb://admin:password@localhost:27017/?authSource=admin
+```
+
+---
+
 ## 一、基础概念
 
 ### 1.1 什么是 MongoDB

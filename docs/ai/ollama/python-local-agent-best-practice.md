@@ -442,7 +442,7 @@ if __name__ == "__main__":
 
 ### 4.10 环境变量 `.env`
 
-```env
+```text
 # Ollama 服务地址
 OLLAMA_BASE_URL=http://localhost:11434
 
@@ -706,7 +706,7 @@ services:
 
 Ollama Docker 服务同时暴露 `11434` 端口，Python Agent 可直接连接：
 
-```env
+```text
 # .env 文件无需修改，Docker 部署和原生安装端口相同
 OLLAMA_BASE_URL=http://localhost:11434
 ```

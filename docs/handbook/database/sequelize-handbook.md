@@ -21,6 +21,94 @@
 
 ---
 
+## 🐳 Docker Compose 快速启动
+
+> Sequelize 支持多种数据库，以下提供常用的数据库 Docker Compose 模板。
+
+### PostgreSQL
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: sequelize-postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: sequelize_db
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+```
+
+```bash
+# 启动
+docker-compose up -d
+
+# Sequelize 连接配置
+# dialect: 'postgres'
+# host: 'localhost'
+# port: 5432
+# username: 'postgres'
+# password: 'postgres_password'
+# database: 'sequelize_db'
+```
+
+### MySQL
+
+```yaml
+# docker-compose-mysql.yml
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: sequelize-mysql
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: sequelize_db
+      MYSQL_USER: sequelize_user
+      MYSQL_PASSWORD: sequelize_password
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:
+```
+
+```bash
+# Sequelize 连接配置
+# dialect: 'mysql'
+# host: 'localhost'
+# port: 3306
+# username: 'sequelize_user'
+# password: 'sequelize_password'
+# database: 'sequelize_db'
+```
+
+---
+
 ## 一、基础概念
 
 ### 1.1 什么是 Sequelize

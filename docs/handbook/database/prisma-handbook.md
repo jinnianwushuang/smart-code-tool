@@ -21,6 +21,84 @@
 
 ---
 
+## 🐳 Docker Compose 快速启动
+
+> Prisma 支持多种数据库，以下提供常用的数据库 Docker Compose 模板。
+
+### PostgreSQL（推荐）
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: prisma-postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: prisma_db
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+```
+
+```bash
+# 启动
+docker-compose up -d
+
+# Prisma 连接字符串 (.env)
+# DATABASE_URL="postgresql://postgres:postgres_password@localhost:5432/prisma_db?schema=public"
+```
+
+### MySQL
+
+```yaml
+# docker-compose-mysql.yml
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: prisma-mysql
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: prisma_db
+      MYSQL_USER: prisma_user
+      MYSQL_PASSWORD: prisma_password
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:
+```
+
+```bash
+# Prisma 连接字符串 (.env)
+# DATABASE_URL="mysql://prisma_user:prisma_password@localhost:3306/prisma_db"
+```
+
+---
+
 ## 一、基础概念
 
 ### 1.1 什么是 Prisma

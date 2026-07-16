@@ -23,6 +23,112 @@
 
 ---
 
+## 🐳 Docker Compose 快速启动
+
+### 单机模式（开发/测试环境）
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: app_password
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root_password
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+```
+
+### 主从复制模式（生产环境）
+
+```yaml
+# docker-compose-replication.yml
+version: '3.8'
+
+services:
+  mysql-master:
+    image: mysql:8
+    container_name: mysql-master
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_master_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: repl_user
+      MYSQL_PASSWORD: repl_password
+    command:
+      - --server-id=1
+      - --log-bin=mysql-bin
+      - --binlog-format=ROW
+    restart: unless-stopped
+
+  mysql-slave:
+    image: mysql:8
+    container_name: mysql-slave
+    ports:
+      - '3307:3306'
+    volumes:
+      - mysql_slave_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+    command:
+      - --server-id=2
+      - --relay-log=relay-bin
+      - --read-only=1
+    depends_on:
+      - mysql-master
+    restart: unless-stopped
+
+volumes:
+  mysql_master_data:
+  mysql_slave_data:
+```
+
+```bash
+# 启动
+docker-compose up -d
+
+# 连接信息
+# Host: localhost:3306
+# Root: root / root_password
+# User: app_user / app_password
+# Database: app_db
+```
+
+---
+
 ## 一、基础概念
 
 ### 1.1 什么是 MySQL

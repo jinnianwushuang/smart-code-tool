@@ -25,6 +25,114 @@
 
 ---
 
+## 🐳 Docker Compose 快速启动
+
+### 单机模式（开发/测试环境）
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: app_db
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    ports:
+      - '5050:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin_password
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+```
+
+### 主从复制模式（生产环境）
+
+```yaml
+# docker-compose-replication.yml
+version: '3.8'
+
+services:
+  postgres-primary:
+    image: postgres:16-alpine
+    container_name: postgres-primary
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_primary_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: app_db
+      POSTGRES_REPLICATION_USER: repl_user
+      POSTGRES_REPLICATION_PASSWORD: repl_password
+    command:
+      - postgres
+      - -c
+      - wal_level=replica
+      - -c
+      - max_wal_senders=5
+      - -c
+      - max_replication_slots=5
+    restart: unless-stopped
+
+  postgres-replica:
+    image: postgres:16-alpine
+    container_name: postgres-replica
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres_replica_data:/var/lib/postgresql/data
+    environment:
+      PGUSER: postgres
+      PGPASSWORD: postgres_password
+      PG_PRIMARY_HOST: postgres-primary
+      PG_PRIMARY_PORT: 5432
+    depends_on:
+      - postgres-primary
+    restart: unless-stopped
+
+volumes:
+  postgres_primary_data:
+  postgres_replica_data:
+```
+
+```bash
+# 启动
+docker-compose up -d
+
+# 连接信息
+# Host: localhost:5432
+# User: postgres / postgres_password
+# Database: app_db
+# pgAdmin: http://localhost:5050
+```
+
+---
+
 ## 一、基础概念
 
 ### 1.1 PostgreSQL 简介

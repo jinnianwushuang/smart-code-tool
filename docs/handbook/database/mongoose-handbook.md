@@ -21,6 +21,63 @@
 
 ---
 
+## 🐳 Docker Compose 快速启动
+
+> Mongoose 是 MongoDB 的 ODM，需要先启动 MongoDB 实例。
+
+### 单机 MongoDB + Mongo Express
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: app
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - '8081:8081'
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_URL: mongodb://admin:password@mongodb:27017
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
+```
+
+```bash
+# 启动
+docker-compose up -d
+
+# Mongoose 连接字符串
+# mongodb://admin:password@localhost:27017/app?authSource=admin
+```
+
+---
+
 ## 一、基础概念
 
 ### 1.1 什么是 Mongoose
