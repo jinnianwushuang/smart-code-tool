@@ -11,6 +11,10 @@ export const aiSidebar = {
           link: '/ai/base-knowledge/ai-industry-concepts',
         },
         {
+          text: 'AI应用开发者知识清单',
+          link: '/ai/base-knowledge/ai-developer-knowledge-checklist',
+        },
+        {
           text: '本地知识库',
           link: '/ai/idea/kbs',
         },
