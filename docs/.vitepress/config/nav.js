@@ -5,7 +5,7 @@
 const isDev = process.env.NODE_ENV !== 'production'
 const toolLink = isDev
   ? 'http://localhost:23330/smart-code-tool/tool/index.html'
-  : '/smart-code-tool/tool/index.html'
+  : location.origin + '/smart-code-tool/tool/index.html'
 
 export const nav = [
   { text: '首页', link: '/' },
