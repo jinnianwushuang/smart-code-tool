@@ -25,6 +25,7 @@ export const nav = [
   {
     text: '工具库',
     link: toolLink,
+    openInNewWindow: true,
   },
   // { text: 'GitHub', link: 'https://github.com/jinnianwushuang/smart-code-tool' },
 ]
