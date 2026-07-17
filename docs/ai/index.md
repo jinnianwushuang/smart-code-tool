@@ -10,6 +10,7 @@
 | ---------------------------------------------------------------------- | ----------------------------------------- |
 | [AI 行业核心概念与术语](./base-knowledge/ai-industry-concepts) | AI 行业的基础概念、核心术语和技术背景介绍 |
 | [AI 应用开发者知识清单](./base-knowledge/ai-developer-knowledge-checklist) | AI 应用开发者完整知识体系梳理，涵盖从理论到工程实践的核心技能 |
+| [智能体（AI Agent）发展历程](./base-knowledge/ai-agent-evolution) | 从规则驱动到自主 Agent 的完整演进脉络，涵盖各阶段核心技术与前沿探索 |
 
 ### 🤖 AI 开发
 
@@ -50,6 +51,7 @@
 
 - **了解 AI 基础**: 阅读 [AI 行业核心概念](./base-knowledge/ai-industry-concepts)
 - **梳理知识体系**: 查看 [AI 应用开发者知识清单](./base-knowledge/ai-developer-knowledge-checklist)
+- **了解智能体演进**: 阅读 [智能体发展历程](./base-knowledge/ai-agent-evolution)
 - **构建知识库**: 查看 [AI 知识库建设指南](./idea/kbs)
 - **配置开发环境**: 参考 [新电脑整备指南](./idea/new-mac-setup-guide)
 - **AI 辅助编码**: 学习 [句子组装](./sentence_assembly/base-sentence) 和 [Vue AI 开发](./vue/base-sentence-vue)

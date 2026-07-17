@@ -107,15 +107,16 @@ const handle_click_menu = ({ key }) => {
   // 如果是文档菜单,区分开发环境和生产环境
   if (key === 'docs') {
     // 检查是否为开发环境
-    // const isDev = import.meta.env.DEV
+    const isDev = import.meta.env.DEV
 
-    // if (isDev) {
-    //   // 开发环境:直接打开 VitePress 开发服务器
-    //   window.open('http://localhost:23340/smart-code-tool/docs/', '_blank')
-    // } else {
+    if (isDev) {
+      // 开发环境:直接打开 VitePress 开发服务器
+      window.open('http://localhost:23340/smart-code-tool/', '_blank')
+    } else {
     // 生产环境:使用内部路由(iframe 方式)
-    router.push({ name: 'docs' })
-    // }
+    // router.push({ name: 'docs' })
+     window.open('/smart-code-tool/', '_blank')
+    }
   } else {
     router.push({ name: key })
   }

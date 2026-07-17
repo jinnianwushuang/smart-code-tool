@@ -49,7 +49,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          # 上传整个 dist 目录，包含 Vue 应用 (根目录) 和 VitePress 文档 (docs/ 子目录)
+          # 上传整个 dist 目录，包含 VitePress 文档 (根目录) 和 Vue 应用 (tool/ 子目录)
           path: ./dist
 
   deploy:

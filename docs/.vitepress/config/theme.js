@@ -3,7 +3,7 @@
 
 export const themeConfig = {
   // Logo 和标题
-  logo: '/logo/icons8-light-on-100.png',
+  logo: '/logo/icons8-light-on-96.png',
 
   // 上一页/下一页导航
   docFooter: {

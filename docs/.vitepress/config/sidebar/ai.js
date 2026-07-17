@@ -15,6 +15,10 @@ export const aiSidebar = {
           link: '/ai/base-knowledge/ai-developer-knowledge-checklist',
         },
         {
+          text: '智能体发展历程',
+          link: '/ai/base-knowledge/ai-agent-evolution',
+        },
+        {
           text: '本地知识库',
           link: '/ai/idea/kbs',
         },

@@ -13,8 +13,8 @@ try {
 
   // Step 2: 并行启动 Vue 和 VitePress 开发服务器
   console.log(chalk.yellow('🔧 Step 2: Starting development servers...'))
-  console.log(chalk.gray('   - Vue app: http://localhost:23330'))
-  console.log(chalk.gray('   - Docs: http://localhost:23340/smart-code-tool/docs/\n'))
+  console.log(chalk.gray('   - Docs (main): http://localhost:23340/smart-code-tool/'))
+  console.log(chalk.gray('   - Vue app: http://localhost:23330/smart-code-tool/tool/\n'))
 
   // 使用 Promise.all 并行启动两个开发服务器
   const vueDev = $`vite`

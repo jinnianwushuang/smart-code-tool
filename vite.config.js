@@ -17,8 +17,11 @@ dayjs.extend(timezone)
 // https://vite.dev/config/
 export default defineConfig(async () => {
   return {
-    base: '/smart-code-tool/',
+    base: '/smart-code-tool/tool/',
     // base: '/',
+    build: {
+      outDir: 'dist/tool',
+    },
 
     define: {
       // 注入全局变量

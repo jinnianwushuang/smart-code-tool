@@ -12,10 +12,10 @@ export default defineConfig({
 
   // 必须设置 base。如果你的 GitHub 仓库名是 'my-project',
   // 那么基础路径必须包含仓库名,格式为:/仓库名/docs/
-  base: '/smart-code-tool/docs/',
+  base: '/smart-code-tool/',
 
-  // 让 VitePress 打包出来的文件,直接塞进主应用的打包目录内
-  outDir: '../dist/docs',
+  // 文档项目为主项目，直接输出到 dist 根目录
+  outDir: '../dist',
 
   // 忽略死链接检查(允许 localhost 等本地开发链接)
   ignoreDeadLinks: [/^https?:\/\/localhost/, /^https?:\/\/127.0.0.1/],

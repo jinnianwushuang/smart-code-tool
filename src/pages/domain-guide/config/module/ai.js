@@ -198,6 +198,18 @@ export const docs = [
         tag: 'Platform',
         desc: '阿里巴巴推出的一站式大模型应用开发平台,提供模型调用、微调和应用部署能力。',
       },
+      {
+        name: 'MCP.so',
+        url: 'https://mcp.so/',
+        tag: 'MCP',
+        desc: 'MCP（Model Context Protocol）服务器目录,发现和浏览各类 MCP 服务器资源与工具。',
+      },
+      {
+        name: 'DeepAgent (Abacus.AI)',
+        url: 'https://deepagent.abacus.ai/',
+        tag: 'Agent',
+        desc: 'Abacus.AI 推出的全能通用 Agent,支持自主执行复杂任务、生成应用与深度研究。',
+      },
     ],
   },
   {
