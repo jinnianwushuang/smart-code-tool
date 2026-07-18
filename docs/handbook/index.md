@@ -23,6 +23,9 @@
 | [React 19 核心原理](/handbook/frontend/react19-core-principles) | React Fiber 架构、协调算法、并发渲染底层实现   |
 | [Next.js 手册](/handbook/frontend/nextjs-handbook)              | Next.js 服务端渲染、静态生成、路由系统详解     |
 | [Next.js 核心原理](/handbook/frontend/nextjs-core-principles)   | Next.js 核心底层原理深度解析                   |
+| [Electron 手册](/handbook/electron/electron-handbook)            | Electron 桌面应用开发、进程模型、IPC 通信、打包发布 |
+| [Electron + Vue 3 技术选型](/handbook/electron/electron-vue3-technology-selection) | Electron + Vue 3 技术栈选型与最佳实践 |
+| [Electron + React 技术选型](/handbook/electron/electron-react-technology-selection) | Electron + React 技术栈选型与最佳实践 |
 
 ### JavaScript & TypeScript
 
