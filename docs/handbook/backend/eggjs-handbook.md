@@ -297,6 +297,103 @@ module.exports = (app) => {
 }
 ```
 
+### 4.5 嵌套路由
+
+Egg.js 本身不内置嵌套路由语法，但可以通过 `router.prefix()` 或手动拆分文件来实现嵌套路由的组织。
+
+#### 方式一：使用 `router.prefix()` 实现路径嵌套
+
+```javascript
+// app/router.js
+module.exports = (app) => {
+  const { router, controller } = app
+
+  // 外层前缀 /api/v1
+  router.prefix('/api/v1')
+
+  // → /api/v1/users
+  router.get('/users', controller.user.list)
+  router.get('/users/:id', controller.user.show)
+
+  // 嵌套子资源 → /api/v1/users/:userId/posts
+  router.get('/users/:userId/posts', controller.userPost.list)
+  router.post('/users/:userId/posts', controller.userPost.create)
+
+  // 更深嵌套 → /api/v1/users/:userId/posts/:postId/comments
+  router.get('/users/:userId/posts/:postId/comments', controller.comment.list)
+}
+```
+
+#### 方式二：拆分路由文件实现模块化嵌套
+
+```javascript
+// app/router.js — 主路由入口
+module.exports = (app) => {
+  // 加载子路由
+  require('./router/api')(app)
+  require('./router/admin')(app)
+}
+
+// app/router/api.js — API 子路由
+module.exports = (app) => {
+  const { router, controller } = app
+
+  router.prefix('/api/v1')
+
+  // 用户资源
+  router.resources('users', '/users', controller.users)
+
+  // 嵌套资源: 用户的文章
+  router.resources('posts', '/users/:userId/posts', controller.userPosts)
+
+  // 嵌套资源: 文章的评论
+  router.resources('comments', '/users/:userId/posts/:postId/comments', controller.comments)
+}
+
+// app/router/admin.js — 管理后台子路由
+module.exports = (app) => {
+  const { router, controller, middleware } = app
+  const admin = middleware.admin()
+
+  router.prefix('/admin')
+
+  router.get('/dashboard', admin, controller.admin.dashboard)
+  router.get('/users', admin, controller.admin.users)
+  router.get('/settings', admin, controller.admin.settings)
+}
+```
+
+#### 嵌套路由 Controller 示例
+
+```javascript
+// app/controller/userPost.js
+const { Controller } = require('egg')
+
+class UserPostController extends Controller {
+  // GET /api/v1/users/:userId/posts
+  async list() {
+    const { ctx, service } = this
+    const { userId } = ctx.params
+    const posts = await service.post.listByUser(userId)
+    ctx.body = { code: 0, data: posts }
+  }
+
+  // POST /api/v1/users/:userId/posts
+  async create() {
+    const { ctx, service } = this
+    const { userId } = ctx.params
+    const post = await service.post.create({
+      ...ctx.request.body,
+      userId,
+    })
+    ctx.status = 201
+    ctx.body = { code: 0, data: post }
+  }
+}
+
+module.exports = UserPostController
+```
+
 ---
 
 ## 五、控制器 (Controller)

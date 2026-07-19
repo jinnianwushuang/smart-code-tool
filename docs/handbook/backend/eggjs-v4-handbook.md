@@ -330,6 +330,186 @@ export default (app: Application) => {
 }
 ```
 
+### 4.4 嵌套路由
+
+V4 装饰器模式下，嵌套路由通过 Controller 路径前缀 + 方法路径的组合自然实现，也可以将路由拆分到多个文件中。
+
+#### 方式一：装饰器路径组合实现嵌套
+
+```typescript
+// src/app/controller/UserPostController.ts
+import { Controller, Get, Post, Inject } from '@eggjs/tegg'
+import { Context } from 'egg'
+import { PostService } from '../service/PostService.js'
+
+// 基础路径包含父资源 ID，形成嵌套
+@Controller('/api/users/:userId/posts')
+export class UserPostController {
+  @Inject()
+  ctx: Context
+
+  @Inject()
+  postService: PostService
+
+  // GET /api/users/:userId/posts
+  @Get('/')
+  async list() {
+    const { userId } = this.ctx.params
+    const posts = await this.postService.listByUser(userId)
+    return { code: 0, data: posts }
+  }
+
+  // GET /api/users/:userId/posts/:id
+  @Get('/:id')
+  async show() {
+    const { userId, id } = this.ctx.params
+    const post = await this.postService.findOneByUser(userId, id)
+    if (!post) {
+      this.ctx.status = 404
+      return { code: 404, message: '文章不存在' }
+    }
+    return { code: 0, data: post }
+  }
+
+  // POST /api/users/:userId/posts
+  @Post('/')
+  async create() {
+    const { userId } = this.ctx.params
+    const post = await this.postService.create({
+      ...this.ctx.request.body,
+      userId,
+    })
+    this.ctx.status = 201
+    return { code: 0, data: post }
+  }
+}
+```
+
+#### 方式二：多层嵌套 — 文章的评论
+
+```typescript
+// src/app/controller/CommentController.ts
+import { Controller, Get, Post, Delete, Inject } from '@eggjs/tegg'
+import { Context } from 'egg'
+import { CommentService } from '../service/CommentService.js'
+
+// 三层嵌套: users → posts → comments
+@Controller('/api/users/:userId/posts/:postId/comments')
+export class CommentController {
+  @Inject()
+  ctx: Context
+
+  @Inject()
+  commentService: CommentService
+
+  // GET /api/users/:userId/posts/:postId/comments
+  @Get('/')
+  async list() {
+    const { postId } = this.ctx.params
+    const comments = await this.commentService.listByPost(postId)
+    return { code: 0, data: comments }
+  }
+
+  // POST /api/users/:userId/posts/:postId/comments
+  @Post('/')
+  async create() {
+    const { userId, postId } = this.ctx.params
+    const comment = await this.commentService.create({
+      ...this.ctx.request.body,
+      userId,
+      postId,
+    })
+    this.ctx.status = 201
+    return { code: 0, data: comment }
+  }
+
+  // DELETE /api/users/:userId/posts/:postId/comments/:id
+  @Delete('/:id')
+  async destroy() {
+    const { id } = this.ctx.params
+    await this.commentService.destroy(id)
+    this.ctx.status = 204
+  }
+}
+```
+
+#### 方式三：拆分路由文件 (兼容模式)
+
+```typescript
+// src/app/router.ts — 兼容模式下的路由拆分
+import { Application } from 'egg'
+import apiRouter from './router/api.js'
+import adminRouter from './router/admin.js'
+
+export default (app: Application) => {
+  apiRouter(app)
+  adminRouter(app)
+}
+
+// src/app/router/api.ts
+import { Application } from 'egg'
+
+export default (app: Application) => {
+  const { router, controller } = app
+
+  router.prefix('/api/v1')
+
+  // 用户资源
+  router.resources('users', '/users', controller.users)
+
+  // 嵌套资源: 用户的文章
+  router.resources('posts', '/users/:userId/posts', controller.userPosts)
+
+  // 嵌套资源: 文章的评论
+  router.resources('comments', '/users/:userId/posts/:postId/comments', controller.comments)
+}
+
+// src/app/router/admin.ts
+import { Application } from 'egg'
+
+export default (app: Application) => {
+  const { router, controller, middleware } = app
+  const admin = middleware.admin()
+
+  router.prefix('/admin')
+
+  router.get('/dashboard', admin, controller.admin.dashboard)
+  router.get('/users', admin, controller.admin.users)
+  router.get('/settings', admin, controller.admin.settings)
+}
+```
+
+#### 嵌套路由的 Service 示例
+
+```typescript
+// src/app/service/PostService.ts
+import { AccessLevel, ContextProto, Inject } from '@eggjs/tegg'
+import { Context } from 'egg'
+
+@ContextProto({ accessLevel: AccessLevel.PUBLIC })
+export class PostService {
+  @Inject()
+  ctx: Context
+
+  async listByUser(userId: string) {
+    return await this.ctx.model.Post.findAll({
+      where: { userId },
+      order: [['createdAt', 'DESC']],
+    })
+  }
+
+  async findOneByUser(userId: string, id: string) {
+    return await this.ctx.model.Post.findOne({
+      where: { userId, id },
+    })
+  }
+
+  async create(data: { title: string; content: string; userId: string }) {
+    return await this.ctx.model.Post.create(data)
+  }
+}
+```
+
 ---
 
 ## 五、控制器与装饰器
