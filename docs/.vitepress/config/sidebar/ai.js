@@ -3,6 +3,15 @@ export const aiSidebar = {
   // text: '🤖 AI',
   collapsed: false,
   items: [
+       {
+      text: '零散思考',
+      items: [
+        {
+          text: 'AI时代大前端工程师的生存与出路',
+          link: '/ai/thinking/frontend-engineer-survival-in-ai-era',
+        },
+      ],
+    },
     {
       text: 'AI知识库',
       items: [
@@ -70,5 +79,6 @@ export const aiSidebar = {
         },
       ],
     },
+ 
   ],
 }

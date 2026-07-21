@@ -374,6 +374,10 @@ const engineering = {
       text: '全栈基座项目（Vue）',
       link: '/architecture-document/engineering/job/fullstack-base-project-vue',
     },
+    {
+      text: 'PostgreSQL vs MySQL + MongoDB',
+      link: '/architecture-document/engineering/job/postgresql-vs-mysql-mongodb',
+    },
   ],
 }
 
