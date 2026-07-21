@@ -8,12 +8,7 @@
 
 - [架构愿景](./architectural-vision/architectural-vision-1) - 整体架构设计
 
-### 💻 代码分析工具
-
-- [代码分析思路](./code-analysis/idea-doc/idea) - 代码分析方法论
-- [技术选型](./code-analysis/idea-doc/technology-selection)
-- [依赖分析](./code-analysis/idea-doc/yilai)
-
+ 
 ### 🎨 Flutter 架构
 
 - [Dart 基础命令](./flutter/reference-code/dart-base-cmd)
@@ -32,9 +27,7 @@
 - [useEffect 原理](./react/principle/use-effect)
 - [技术选型](./react/technology-selection/app-project)
 
-### 🦀 Rust 架构
 
-- [Rust 学习指南](./rust/begin/rust-study)
 
 ### 💚 Vue 架构
 
@@ -80,4 +73,4 @@
 - **前端开发**: 查看 [Vue 架构](./vue/architecture/core-principle) 或 [React 架构](./react/idea-doc/idea1)
 - **移动开发**: 查看 [Flutter 架构](./flutter/reference-code/flutter-base-cmd)
 - **后端开发**: 查看 [Python 架构](./python/reference-code/python-base-cmd)
-- **系统编程**: 查看 [Rust 架构](./rust/begin/rust-study)
+

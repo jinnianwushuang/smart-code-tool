@@ -18,22 +18,7 @@ const architecturalVision = {
   ],
 }
 
-// ── 代码分析工具 ──
-const codeAnalysis = {
-  text: '代码分析工具',
-  collapsed: true,
-  items: [
-    { text: '代码分析思路', link: '/architecture-document/code-analysis/idea-doc/idea' },
-    { text: '代码分析思路 2', link: '/architecture-document/code-analysis/idea-doc/idea2' },
-    { text: '代码分析思路 4', link: '/architecture-document/code-analysis/idea-doc/idea4' },
-    {
-      text: '技术选型',
-      link: '/architecture-document/code-analysis/idea-doc/technology-selection',
-    },
-    { text: '依赖分析', link: '/architecture-document/code-analysis/idea-doc/yilai' },
-    { text: '拓扑结构', link: '/architecture-document/code-analysis/fragment/topo' },
-  ],
-}
+ 
 
 // ── Flutter 架构 ──
 const flutter = {
@@ -122,12 +107,7 @@ const react = {
   ],
 }
 
-// ── Rust 架构 ──
-const rust = {
-  text: 'Rust 架构',
-  collapsed: true,
-  items: [{ text: 'Rust 学习指南', link: '/architecture-document/rust/begin/rust-study' }],
-}
+ 
 
 // ── Vue 架构 ──
 const vue = {
@@ -430,15 +410,17 @@ export const architectureSidebar = {
   collapsed: false,
   items: [
     architecturalVision,
-    codeAnalysis,
-    flutter,
+   
+   
     python,
     react,
-    rust,
+    
     vue,
+     flutter,
     engineering,
     generalKnowledge,
     dataStructure,
     designPatterns,
+     
   ],
 }
