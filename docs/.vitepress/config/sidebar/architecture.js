@@ -360,6 +360,20 @@ const engineering = {
       text: '单仓 vs 多仓的选择',
       link: '/architecture-document/engineering/job/monorepo-vs-polyrepo',
     },
+    {
+      text: '常见 SaaS 平台功能',
+      link: '/architecture-document/engineering/job/common-saas-platform-features',
+    },
+    
+    {
+      text: '全栈基座项目（React）',
+      link: '/architecture-document/engineering/job/fullstack-base-project-react',
+    },
+   
+    {
+      text: '全栈基座项目（Vue）',
+      link: '/architecture-document/engineering/job/fullstack-base-project-vue',
+    },
   ],
 }
 
