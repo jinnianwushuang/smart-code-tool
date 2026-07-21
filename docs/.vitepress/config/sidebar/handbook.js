@@ -24,6 +24,7 @@ export const handbookSidebar = {
         { text: 'Electron + React 技术选型', link: '/handbook/electron/electron-react-technology-selection' },
         { text: 'TypeScript 手册', link: '/handbook/frontend/typescript-handbook' },
         { text: 'JavaScript 手册', link: '/handbook/frontend/javascript-handbook' },
+        { text: 'JavaScript 高阶API原理', link: '/handbook/frontend/javascript-advanced-principles' },
         { text: 'CSS 手册', link: '/handbook/frontend/css-handbook' },
         { text: 'Tailwind CSS 手册', link: '/handbook/frontend/tailwind-css-handbook' },
       ],
@@ -33,6 +34,7 @@ export const handbookSidebar = {
       items: [
         { text: 'Python 手册', link: '/handbook/tools/python-handbook' },
         { text: 'NestJS 手册', link: '/handbook/backend/nestjs-handbook' },
+        { text: 'NestJS 核心原理', link: '/handbook/backend/nestjs-core-principles' },
         { text: 'FastAPI 手册', link: '/handbook/backend/fastapi-handbook' },
         { text: 'Django 手册', link: '/handbook/backend/django-handbook' },
         { text: 'Egg.js V3 手册', link: '/handbook/backend/eggjs-handbook' },

@@ -7,8 +7,8 @@ import { themeConfig } from './config/theme'
 import { vite } from './config/vite'
 
 export default defineConfig({
-  title: 'Smart Code Tool',
-  description: 'Smart Code Tool 文档中心',
+  title: 'YOLO',
+  description: 'YOLO 文档中心',
 
   // 必须设置 base。如果你的 GitHub 仓库名是 'my-project',
   // 那么基础路径必须包含仓库名,格式为:/仓库名/docs/
@@ -19,7 +19,8 @@ export default defineConfig({
 
   // 忽略死链接检查(允许 localhost 等本地开发链接)
   ignoreDeadLinks: [/^https?:\/\/localhost/, /^https?:\/\/127.0.0.1/],
-
+  // 头信息
+  head: [['link', { rel: 'icon', href: 'doc-assets/logo/icons8-light-on-96.png' }]],
   // 自定义主题配置
   themeConfig: {
     ...themeConfig,

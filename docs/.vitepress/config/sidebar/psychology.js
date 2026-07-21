@@ -3,6 +3,15 @@ export const psychologySidebar = {
   // text: '🧠 心理认知',
   collapsed: false,
   items: [
+       {
+      text: '世界规律',
+      items: [
+        {
+          text: '十大世界运转法则',
+          link: '/psychology/world-laws/world-operation',
+        },
+      ],
+    },
     {
       text: '人生哲学',
       items: [
@@ -69,15 +78,7 @@ export const psychologySidebar = {
         },
       ],
     },
-    {
-      text: '世界规律',
-      items: [
-        {
-          text: '十大世界运转法则',
-          link: '/psychology/world-laws/world-operation',
-        },
-      ],
-    },
+ 
     {
       text: '心理健康',
       items: [

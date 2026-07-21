@@ -379,6 +379,14 @@ const generalKnowledge = {
       text: '系统内核与 CPU 架构',
       link: '/architecture-document/general-knowledge/os-kernel-cpu-architecture',
     },
+    {
+      text: 'Linux 目录结构',
+      link: '/architecture-document/general-knowledge/linux-directory-structure',
+    },
+    {
+      text: '国内开发镜像设置与还原',
+      link: '/architecture-document/general-knowledge/dev-mirror-setup',
+    },
   ],
 }
 

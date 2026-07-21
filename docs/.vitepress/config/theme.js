@@ -3,7 +3,8 @@
 
 export const themeConfig = {
   // Logo 和标题
-  logo: '/tool/logo/icons8-light-on-96.png',
+  logo: '/doc-assets/logo/icons8-light-on-96.png',
+ 
 
   // 上一页/下一页导航
   docFooter: {
@@ -12,10 +13,10 @@ export const themeConfig = {
   },
 
   // 编辑链接配置
-  editLink: {
-    pattern: 'https://github.com/jinnianwushuang/smart-code-tool/edit/main/docs/:path',
-    text: '在 GitHub 上编辑此页',
-  },
+  // editLink: {
+  //   pattern: 'https://github.com/jinnianwushuang/smart-code-tool/edit/main/docs/:path',
+  //   text: '在 GitHub 上编辑此页',
+  // },
 
   // 最后更新时间
   lastUpdated: {
