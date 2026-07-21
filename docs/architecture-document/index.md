@@ -44,6 +44,10 @@
 - [Docker 镜像构建脚本对比](./engineering/job/docker-image-build-script-comparison)
 - [包管理与 Monorepo 工具链](./engineering/job/npm-pnpm-monorepo-toolchain) - npm/pnpm/Yarn、Nx、Turborepo、Changesets
 
+### 🗄️ 数据库
+
+- [PostgreSQL vs MySQL + MongoDB](./database/postgresql-vs-mysql-mongodb) - 数据库选型对比与架构设计
+
 ### 📊 编程中的数据结构
 
 - [基础概念](./data-structure/basic-concepts) - 数据结构概述与选择原则

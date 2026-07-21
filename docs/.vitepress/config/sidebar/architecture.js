@@ -35,6 +35,14 @@ const flutter = {
       text: 'Flutter 基础代码',
       link: '/architecture-document/flutter/reference-code/flutter-base-code',
     },
+    {
+      text: 'Retrofit 原理与工作流',
+      link: '/architecture-document/flutter/reference-code/flutter-retrofit',
+    },
+    {
+      text: 'GetX 原理与工作流',
+      link: '/architecture-document/flutter/reference-code/flutter-getx',
+    },
   ],
 }
 
@@ -354,9 +362,17 @@ const engineering = {
       text: '全栈基座项目（Vue）',
       link: '/architecture-document/engineering/job/fullstack-base-project-vue',
     },
+  ],
+}
+
+// ── 数据库 ──
+const database = {
+  text: '数据库',
+  collapsed: true,
+  items: [
     {
       text: 'PostgreSQL vs MySQL + MongoDB',
-      link: '/architecture-document/engineering/job/postgresql-vs-mysql-mongodb',
+      link: '/architecture-document/database/postgresql-vs-mysql-mongodb',
     },
   ],
 }
@@ -430,6 +446,7 @@ export const architectureSidebar = {
     vue,
      flutter,
     engineering,
+    database,
     generalKnowledge,
     dataStructure,
     designPatterns,

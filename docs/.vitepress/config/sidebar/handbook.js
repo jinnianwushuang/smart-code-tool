@@ -59,6 +59,7 @@ export const handbookSidebar = {
       text: '移动开发',
       items: [
         { text: 'Flutter 手册', link: '/handbook/mobile/flutter-handbook' },
+        { text: 'Flutter 企业级项目手册', link: '/handbook/mobile/flutter-enterprise-handbook' },
         { text: 'Dart 手册', link: '/handbook/mobile/dart-handbook' },
       ],
     },

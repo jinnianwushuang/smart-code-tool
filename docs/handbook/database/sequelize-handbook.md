@@ -18,6 +18,7 @@
 - [八、迁移管理](#八迁移管理)
 - [九、Hooks](#九hooks)
 - [十、最佳实践](#十最佳实践)
+- [十一、开发工作流](#十一开发工作流)
 
 ---
 
@@ -1543,6 +1544,351 @@ const sequelize = new Sequelize(database, username, password, {
   benchmark: true,
 })
 ```
+
+---
+
+## 十一、开发工作流
+
+### 11.1 开发流程总览
+
+> Sequelize 采用 **Migration-First** 的开发模式：先定义模型，再通过 sequelize-cli 生成迁移文件，确保数据库结构与代码同步。
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                  Sequelize 开发工作流总览                        │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ① 定义/修改 Model（models/*.js）                               │
+│       ↓                                                         │
+│  ② 生成迁移文件（sequelize-cli migration:generate）              │
+│       ↓                                                         │
+│  ③ 编写迁移 up/down 逻辑                                        │
+│       ↓                                                         │
+│  ④ 执行迁移（sequelize-cli db:migrate）                          │
+│       ↓                                                         │
+│  ⑤ 编写业务代码（Service / Controller）                          │
+│       ↓                                                         │
+│  ⑥ 提交 Model + migrations/ + seeders/ 到 Git                   │
+│       ↓                                                         │
+│  ⑦ 生产环境: db:migrate --env production                         │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 11.2 日常开发工作流
+
+```bash
+# ===== 第一步：初始化项目（仅首次） =====
+mkdir my-app && cd my-app
+npm init -y
+npm install sequelize pg pg-hstore   # PostgreSQL
+npm install -D sequelize-cli nodemon dotenv
+
+# ===== 第二步：初始化 Sequelize 目录结构 =====
+npx sequelize-cli init
+# 生成：config/ models/ migrations/ seeders/
+
+# ===== 第三步：配置数据库连接 =====
+# 编辑 config/config.json 或使用环境变量
+
+# ===== 第四步：启动本地数据库 =====
+docker-compose up -d
+
+# ===== 第五步：创建数据库 =====
+npx sequelize-cli db:create
+
+# ===== 第六步：生成模型 + 迁移文件 =====
+npx sequelize-cli model:generate --name User --attributes username:string,email:string,age:integer
+# 自动生成：
+#   models/user.js          → 模型定义
+#   migrations/xxx-create-user.js → 迁移文件
+
+# ===== 第七步：执行迁移 =====
+npx sequelize-cli db:migrate
+
+# ===== 第八步：填充种子数据（可选） =====
+npx sequelize-cli seed:generate --name demo-users
+npx sequelize-cli db:seed:all
+
+# ===== 第九步：开发调试 =====
+npx nodemon src/app.js
+
+# ===== 第十步：提交到版本控制 =====
+git add models/ migrations/ seeders/ config/
+git commit -m "feat: add user model with migration"
+```
+
+### 11.3 迁移工作流详解
+
+```bash
+# ===== 新增表 =====
+npx sequelize-cli migration:generate --name create-posts-table
+# 编辑迁移文件，编写 createTable 逻辑
+npx sequelize-cli db:migrate
+
+# ===== 修改表（添加字段） =====
+npx sequelize-cli migration:generate --name add-avatar-to-users
+# 编辑迁移文件：
+#   up:   queryInterface.addColumn('Users', 'avatar', { type: Sequelize.STRING })
+#   down: queryInterface.removeColumn('Users', 'avatar')
+npx sequelize-cli db:migrate
+
+# ===== 修改表（修改字段类型） =====
+npx sequelize-cli migration:generate --name change-bio-to-text
+# 编辑迁移文件：
+#   up:   queryInterface.changeColumn('Users', 'bio', { type: Sequelize.TEXT })
+#   down: queryInterface.changeColumn('Users', 'bio', { type: Sequelize.STRING })
+npx sequelize-cli db:migrate
+
+# ===== 添加索引 =====
+npx sequelize-cli migration:generate --name add-index-users-email
+# 编辑迁移文件：
+#   up:   queryInterface.addIndex('Users', ['email'], { unique: true })
+#   down: queryInterface.removeIndex('Users', ['email'])
+npx sequelize-cli db:migrate
+
+# ===== 回滚操作 =====
+npx sequelize-cli db:migrate:undo              # 回滚最近一次
+npx sequelize-cli db:migrate:undo --step 3     # 回滚最近 3 次
+npx sequelize-cli db:migrate:undo:all          # 回滚所有（仅开发环境）
+
+# ===== 查看迁移状态 =====
+npx sequelize-cli db:migrate:status
+```
+
+### 11.4 生产部署工作流
+
+```bash
+# ===== 生产环境部署步骤 =====
+
+# 1. 安装依赖
+npm ci --only=production
+
+# 2. 执行迁移（指定生产环境配置）
+npx sequelize-cli db:migrate --env production
+
+# 3. 启动应用
+node src/app.js
+```
+
+```javascript
+// config/config.js（推荐用 JS 替代 JSON，支持环境变量）
+require('dotenv').config()
+
+module.exports = {
+  development: {
+    username: process.env.DB_USER || 'postgres',
+    password: process.env.DB_PASS || 'postgres_password',
+    database: process.env.DB_NAME || 'sequelize_db',
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || 5432,
+    dialect: 'postgres',
+    logging: console.log,
+  },
+  test: {
+    username: process.env.DB_USER || 'postgres',
+    password: process.env.DB_PASS || 'postgres_password',
+    database: 'sequelize_db_test',
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || 5432,
+    dialect: 'postgres',
+    logging: false,
+  },
+  production: {
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT || 5432,
+    dialect: 'postgres',
+    logging: false,
+    pool: {
+      max: 20,
+      min: 5,
+      acquire: 60000,
+      idle: 10000,
+    },
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  },
+}
+```
+
+```dockerfile
+# Dockerfile 示例
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+
+FROM node:20-alpine AS runner
+WORKDIR /app
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/models ./models
+COPY --from=builder /app/config ./config
+COPY --from=builder /app/migrations ./migrations
+
+# 启动时执行迁移
+CMD ["sh", "-c", "npx sequelize-cli db:migrate --env production && node src/app.js"]
+```
+
+### 11.5 团队协作工作流
+
+```bash
+# ===== 场景 A：拉取同事的迁移 =====
+git pull origin main
+npm install
+npx sequelize-cli db:migrate
+# 自动检测并执行新的迁移文件
+
+# ===== 场景 B：迁移冲突解决 =====
+# 1. 解决 migrations/ 目录的 Git 冲突（迁移文件不应修改，只应新增）
+# 2. 如果本地已执行了冲突迁移：
+npx sequelize-cli db:migrate:undo --step 1   # 回滚本地迁移
+git pull origin main                          # 拉取正确版本
+npx sequelize-cli db:migrate                  # 重新执行
+
+# ===== 场景 C：新成员加入项目 =====
+git clone <repo>
+npm install
+# 配置 .env 或 config/config.js 中的数据库连接
+docker-compose up -d                          # 启动本地数据库
+npx sequelize-cli db:create                   # 创建数据库
+npx sequelize-cli db:migrate                  # 执行所有历史迁移
+npx sequelize-cli db:seed:all                 # 填充种子数据
+npx nodemon src/app.js                        # 启动开发服务器
+
+# ===== 场景 D：重置开发数据库 =====
+npx sequelize-cli db:migrate:undo:all         # 回滚所有迁移
+npx sequelize-cli db:migrate                  # 重新执行所有迁移
+npx sequelize-cli db:seed:all                 # 重新填充种子
+# 或更彻底：
+npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate
+```
+
+### 11.6 CI/CD 集成工作流
+
+```yaml
+# .github/workflows/sequelize.yml
+name: Sequelize CI
+
+on:
+  pull_request:
+    paths:
+      - 'models/**'
+      - 'migrations/**'
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres_password
+          POSTGRES_DB: sequelize_db_test
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - name: Run Migrations
+        run: npx sequelize-cli db:migrate --env test
+        env:
+          DB_HOST: localhost
+          DB_USER: postgres
+          DB_PASS: postgres_password
+      - name: Run Tests
+        run: npm test
+        env:
+          NODE_ENV: test
+          DB_HOST: localhost
+          DB_USER: postgres
+          DB_PASS: postgres_password
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci --only=production
+      - name: Run Migrations
+        run: npx sequelize-cli db:migrate --env production
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+```
+
+### 11.7 迁移故障排查
+
+```bash
+# ===== 迁移失败后的恢复流程 =====
+
+# 1. 查看迁移状态
+npx sequelize-cli db:migrate:status
+
+# 2. 开发环境：回滚后重试
+npx sequelize-cli db:migrate:undo --step 1
+# 修复迁移文件后重新执行
+npx sequelize-cli db:migrate
+
+# 3. 生产环境：手动修复
+#    a) 查看失败的迁移 SQL
+#    b) 手动在数据库执行修复 SQL
+#    c) 创建新迁移修复（不要修改已执行的迁移文件）
+npx sequelize-cli migration:generate --name fix-broken-migration
+npx sequelize-cli db:migrate
+
+# ===== 常见问题速查 =====
+# SequelizeDatabaseError        → SQL 语法错误或表/字段不存在
+# SequelizeUniqueConstraintError → 唯一约束冲突，检查重复数据
+# SequelizeValidationError      → 模型验证失败，检查字段规则
+# SequelizeConnectionError      → 数据库连接失败，检查配置和网络
+# SequelizeTimeoutError         → 查询超时，检查慢查询或连接池
+# Migration overlap conflict    → 迁移时间戳冲突，重命名迁移文件时间戳
+```
+
+### 11.8 工作流命令速查表
+
+| 阶段 | 命令 | 说明 |
+|------|------|------|
+| 初始化 | `npx sequelize-cli init` | 创建目录结构 |
+| 创建数据库 | `npx sequelize-cli db:create` | 创建数据库 |
+| 生成模型+迁移 | `npx sequelize-cli model:generate --name X --attributes ...` | 一键生成模型和迁移 |
+| 生成迁移 | `npx sequelize-cli migration:generate --name X` | 仅生成迁移文件 |
+| 执行迁移 | `npx sequelize-cli db:migrate` | 应用所有待执行迁移 |
+| 迁移状态 | `npx sequelize-cli db:migrate:status` | 查看已执行/待执行 |
+| 回滚迁移 | `npx sequelize-cli db:migrate:undo` | 回滚最近一次 |
+| 回滚 N 次 | `npx sequelize-cli db:migrate:undo --step N` | 回滚最近 N 次 |
+| 回滚所有 | `npx sequelize-cli db:migrate:undo:all` | 全部回滚（仅开发） |
+| 种子数据 | `npx sequelize-cli db:seed:all` | 执行所有种子 |
+| 回滚种子 | `npx sequelize-cli db:seed:undo:all` | 回滚所有种子 |
+| 生产迁移 | `npx sequelize-cli db:migrate --env production` | 生产环境执行迁移 |
+| 预览 SQL | `npx sequelize-cli db:migrate --dry-run` | 预览不执行 |
+| 重置数据库 | `db:drop → db:create → db:migrate → db:seed:all` | 完全重建（仅开发） |
 
 ---
 

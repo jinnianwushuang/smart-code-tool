@@ -18,6 +18,7 @@
 - [八、迁移管理](#八迁移管理)
 - [九、高级特性](#九高级特性)
 - [十、最佳实践](#十最佳实践)
+- [十一、开发工作流](#十一开发工作流)
 
 ---
 
@@ -1060,6 +1061,247 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 ```
+
+---
+
+## 十一、开发工作流
+
+### 11.1 Schema-First 开发流程
+
+> Prisma 推荐 **Schema-First** 的开发模式：先定义/修改 Schema，再生成迁移和 Client。
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Prisma 开发工作流总览                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ① 修改 schema.prisma                                          │
+│       ↓                                                         │
+│  ② npx prisma migrate dev --name <描述>                         │
+│       ↓                                                         │
+│  ③ 自动生成迁移 SQL + 应用到本地数据库 + 重新生成 Client          │
+│       ↓                                                         │
+│  ④ 编写业务代码（类型安全）                                       │
+│       ↓                                                         │
+│  ⑤ 提交 schema.prisma + migrations/ 到 Git                      │
+│       ↓                                                         │
+│  ⑥ 生产环境: npx prisma migrate deploy                          │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 11.2 日常开发工作流
+
+```bash
+# ===== 第一步：初始化项目（仅首次） =====
+npm install prisma --save-dev
+npm install @prisma/client
+npx prisma init --datasource-provider postgresql
+
+# ===== 第二步：定义/修改数据模型 =====
+# 编辑 prisma/schema.prisma，添加或修改 model
+
+# ===== 第三步：创建并应用迁移 =====
+npx prisma migrate dev --name add_user_table
+# 该命令会：
+#   1. 对比 schema.prisma 与当前数据库
+#   2. 生成 SQL 迁移文件 → prisma/migrations/<timestamp>_add_user_table/migration.sql
+#   3. 应用迁移到本地数据库
+#   4. 重新生成 Prisma Client
+
+# ===== 第四步：验证 Schema 合法性 =====
+npx prisma validate
+
+# ===== 第五步：格式化 Schema（可选） =====
+npx prisma format
+
+# ===== 第六步：使用 Prisma Studio 查看数据（可选） =====
+npx prisma studio
+
+# ===== 第七步：提交到版本控制 =====
+git add prisma/schema.prisma prisma/migrations/
+git commit -m "feat: add user table"
+```
+
+### 11.3 仅修改 Schema 不生成迁移（原型阶段）
+
+```bash
+# db push 直接将 Schema 同步到数据库，不生成迁移文件
+# 适用于：快速原型、本地实验、不需要迁移历史的场景
+npx prisma db push
+
+# 强制覆盖（数据可能丢失）
+npx prisma db push --force-reset
+
+# 预览将要执行的变更
+npx prisma db push --dry-run
+```
+
+> ⚠️ **注意**：`db push` 不会生成迁移记录，**不要在生产环境使用**。正式项目应始终使用 `migrate dev`。
+
+### 11.4 生产部署工作流
+
+```bash
+# ===== 生产环境部署步骤 =====
+
+# 1. 生成 Prisma Client（构建阶段）
+npx prisma generate
+
+# 2. 应用所有待执行的迁移
+npx prisma migrate deploy
+# 该命令会：
+#   - 读取 prisma/migrations/ 目录
+#   - 对比 _prisma_migrations 表
+#   - 按顺序执行未应用的迁移
+#   - 不会创建新迁移、不会重置数据库
+
+# 3. 执行种子数据（可选）
+npx prisma db seed
+```
+
+```dockerfile
+# Dockerfile 示例
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY prisma ./prisma/
+RUN npx prisma generate
+COPY . .
+RUN npm run build
+
+FROM node:20-alpine AS runner
+WORKDIR /app
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/prisma ./prisma
+
+# 启动时执行迁移
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main.js"]
+```
+
+### 11.5 团队协作工作流
+
+```bash
+# ===== 场景 A：拉取同事的迁移 =====
+git pull origin main
+npx prisma migrate dev
+# 自动检测并应用新的迁移文件，重新生成 Client
+
+# ===== 场景 B：Schema 冲突解决 =====
+# 1. 解决 schema.prisma 的 Git 冲突
+# 2. 删除冲突产生的迁移文件夹（如果尚未应用到共享数据库）
+# 3. 重新生成迁移
+npx prisma migrate dev --name resolve_conflict
+
+# ===== 场景 C：从已有数据库反向生成 Schema =====
+npx prisma db pull
+# 将现有数据库结构导入 schema.prisma
+# 注意：db pull 不会生成迁移文件，后续需手动创建基线迁移
+
+# ===== 场景 D：新成员加入项目 =====
+git clone <repo>
+npm install
+# 配置 .env 中的 DATABASE_URL
+npx prisma migrate dev
+# 自动应用所有历史迁移 + 生成 Client + 执行 seed
+```
+
+### 11.6 CI/CD 集成工作流
+
+```yaml
+# .github/workflows/prisma.yml
+name: Prisma CI
+
+on:
+  pull_request:
+    paths:
+      - 'prisma/**'
+  push:
+    branches: [main]
+    paths:
+      - 'prisma/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - name: Validate Schema
+        run: npx prisma validate
+      - name: Generate Client
+        run: npx prisma generate
+      - name: Check Migration Status
+        run: npx prisma migrate diff --exit-code --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+  deploy:
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - name: Deploy Migrations
+        run: npx prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+```
+
+### 11.7 迁移故障排查
+
+```bash
+# ===== 迁移失败后的恢复流程 =====
+
+# 1. 查看当前迁移状态
+npx prisma migrate status
+
+# 2. 如果迁移部分应用导致数据库不一致
+#    开发环境：直接重置
+npx prisma migrate reset --force
+
+# 3. 生产环境：手动修复
+#    a) 查看失败的迁移 SQL
+cat prisma/migrations/<failed_migration>/migration.sql
+#    b) 手动在数据库执行修复 SQL
+#    c) 标记迁移为已应用
+npx prisma migrate resolve --applied "<migration_name>"
+
+# 4. 回滚迁移（仅标记，不自动执行反向 SQL）
+npx prisma migrate resolve --rolled-back "<migration_name>"
+# 然后手动执行反向 SQL 或创建新迁移修复
+
+# ===== 常见问题速查 =====
+# P3005: 数据库 Schema 不为空 → 使用 db pull 或 migrate reset
+# P3006: 迁移历史不一致 → migrate resolve 修复
+# P3009: 生产环境禁止 migrate dev → 使用 migrate deploy
+# P3018: 迁移执行失败 → 检查 SQL 语法或权限
+```
+
+### 11.8 工作流命令速查表
+
+| 阶段 | 命令 | 说明 |
+|------|------|------|
+| 初始化 | `npx prisma init` | 创建 prisma/ 目录和 .env |
+| 开发迁移 | `npx prisma migrate dev --name <name>` | 创建+应用迁移+生成 Client |
+| 快速同步 | `npx prisma db push` | 跳过迁移直接同步（仅开发） |
+| 生成 Client | `npx prisma generate` | 根据 Schema 生成类型安全 Client |
+| 验证 | `npx prisma validate` | 检查 Schema 语法 |
+| 格式化 | `npx prisma format` | 格式化 schema.prisma |
+| 可视化 | `npx prisma studio` | 打开数据库 GUI |
+| 生产部署 | `npx prisma migrate deploy` | 应用待执行迁移（生产安全） |
+| 反向工程 | `npx prisma db pull` | 从数据库导入 Schema |
+| 种子数据 | `npx prisma db seed` | 执行 seed 脚本 |
+| 状态检查 | `npx prisma migrate status` | 查看迁移应用状态 |
+| 重置 | `npx prisma migrate reset --force` | 清空数据库重新迁移（仅开发） |
 
 ---
 
