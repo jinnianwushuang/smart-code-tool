@@ -375,6 +375,10 @@ const generalKnowledge = {
       text: 'Chrome 开发者工具全解',
       link: '/architecture-document/general-knowledge/chrome-devtools',
     },
+    {
+      text: '系统内核与 CPU 架构',
+      link: '/architecture-document/general-knowledge/os-kernel-cpu-architecture',
+    },
   ],
 }
 
