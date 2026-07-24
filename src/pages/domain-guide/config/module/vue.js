@@ -77,6 +77,12 @@ export const docs = [
         tag: 'Components',
         desc: '基于 Material Design 的 Vue 组件库,功能丰富且美观。',
       },
+      {
+        name: 'Vant',
+        url: 'https://vant-ui.github.io/vant/',
+        tag: 'Mobile',
+        desc: '轻量、可定制的移动端 Vue 组件库,国内主流移动端 UI 方案。',
+      },
     ],
   },
   {
