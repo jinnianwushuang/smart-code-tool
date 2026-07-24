@@ -35,14 +35,6 @@ const flutter = {
       text: 'Flutter 基础代码',
       link: '/architecture-document/flutter/reference-code/flutter-base-code',
     },
-    {
-      text: 'Retrofit 原理与工作流',
-      link: '/architecture-document/flutter/reference-code/flutter-retrofit',
-    },
-    {
-      text: 'GetX 原理与工作流',
-      link: '/architecture-document/flutter/reference-code/flutter-getx',
-    },
   ],
 }
 
@@ -335,6 +327,10 @@ const engineering = {
     {
       text: '前端脚手架背后的脚本语言解析',
       link: '/architecture-document/engineering/job/frontend-scaffold-scripts',
+    },
+    {
+      text: '项目根目录配置文件解析',
+      link: '/architecture-document/engineering/job/frontend-project-config-files',
     },
     {
       text: 'Docker 镜像构建脚本对比',

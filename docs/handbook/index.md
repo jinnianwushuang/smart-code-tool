@@ -23,6 +23,7 @@
 | [React 19 核心原理](/handbook/frontend/react19-core-principles) | React Fiber 架构、协调算法、并发渲染底层实现   |
 | [Next.js 手册](/handbook/frontend/nextjs-handbook)              | Next.js 服务端渲染、静态生成、路由系统详解     |
 | [Next.js 核心原理](/handbook/frontend/nextjs-core-principles)   | Next.js 核心底层原理深度解析                   |
+| [Vite 核心原理](/handbook/frontend/vite-core-principles)        | Vite 脚手架架构、依赖预构建、HMR 热更新底层实现 |
 | [Electron 手册](/handbook/electron/electron-handbook)            | Electron 桌面应用开发、进程模型、IPC 通信、打包发布 |
 | [Electron + Vue 3 技术选型](/handbook/electron/electron-vue3-technology-selection) | Electron + Vue 3 技术栈选型与最佳实践 |
 | [Electron + React 技术选型](/handbook/electron/electron-react-technology-selection) | Electron + React 技术栈选型与最佳实践 |
@@ -32,6 +33,7 @@
 | 手册                                                      | 描述                                        |
 | --------------------------------------------------------- | ------------------------------------------- |
 | [TypeScript 手册](/handbook/frontend/typescript-handbook) | TypeScript 类型系统、高级类型、泛型编程指南 |
+| [TypeScript 核心原理](/handbook/frontend/typescript-core-principles) | 编译器架构、类型系统、控制流分析、泛型推断底层实现 |
 | [JavaScript 手册](/handbook/frontend/javascript-handbook) | JavaScript 核心语法、异步编程、模块化开发   |
 | [JavaScript 高阶与实验性 API](/handbook/frontend/javascript-advanced-principles) | 语法糖本质拆解、高阶 API 深度解析、TC39 实验性提案 |
 | [正则速查](/handbook/frontend/regex-handbook)             | 正则表达式语法、常用模式、实战示例          |
@@ -52,8 +54,9 @@
 
 | 手册                                                  | 描述                                               |
 | ----------------------------------------------------- | -------------------------------------------------- |
-| [Python 手册](/handbook/tools/python-handbook)        | Python 编程基础、标准库、虚拟环境管理              |
+| [Python 手册](/handbook/backend/python-handbook)        | Python 编程基础、标准库、虚拟环境管理              |
 | [NestJS 手册](/handbook/backend/nestjs-handbook)      | NestJS 模块化架构、依赖注入、中间件、守卫          |
+| [NestJS 核心原理](/handbook/backend/nestjs-core-principles) | NestJS 依赖注入容器、元编程、模块系统底层实现 |
 | [FastAPI 手册](/handbook/backend/fastapi-handbook)    | FastAPI 高性能 Python Web 框架、自动文档、依赖注入 |
 | [Django 手册](/handbook/backend/django-handbook)      | Django 全栈框架、ORM、认证系统、REST API           |
 | [Egg.js V3 手册](/handbook/backend/eggjs-handbook)    | Egg.js V3 企业级 Node.js 框架、插件机制、多进程    |
@@ -91,6 +94,9 @@
 | 手册                                              | 描述                                          |
 | ------------------------------------------------- | --------------------------------------------- |
 | [Flutter 手册](/handbook/mobile/flutter-handbook) | Flutter 跨平台 UI 框架、Widget 系统、状态管理 |
+| [Flutter 企业级项目手册](/handbook/mobile/flutter-enterprise-handbook) | Flutter 企业级项目架构、工程化实践参考手册 |
+| [Retrofit 原理与工作流](/handbook/mobile/flutter-retrofit) | 声明式 HTTP 客户端、注解 + 代码生成、Dio 集成原理 |
+| [GetX 原理与工作流](/handbook/mobile/flutter-getx) | 状态管理、路由导航、依赖注入一体化框架原理 |
 | [Dart 手册](/handbook/mobile/dart-handbook)       | Dart 编程语言、异步编程、类型系统             |
 
 ---
@@ -118,7 +124,7 @@
 | ---- | ---- |
 | [VBA 手册](/handbook/tools/vba-handbook) | Excel VBA 自动化、批量报表生成、数据处理 |
 | [Excel 公式手册](/handbook/tools/excel-formulas-handbook) | Excel 常用公式、函数详解、实用案例 |
-| [Docker 手册](/handbook/tools/docker-handbook) | Docker 容器化、镜像构建、容器编排、多阶段构建 |
+| [Docker 手册](/handbook/devops/docker-handbook) | Docker 容器化、镜像构建、容器编排、多阶段构建 |
 | [Vim 手册](/handbook/tools/vim-handbook) | Vim 编辑器快捷键、配置、插件管理 |
 
 ---
