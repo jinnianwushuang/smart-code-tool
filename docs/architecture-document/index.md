@@ -15,6 +15,18 @@
 - [Flutter 基础命令](./flutter/reference-code/flutter-base-cmd)
 - [Dart 基础代码](./flutter/reference-code/dart-base-code)
 - [Flutter 基础代码](./flutter/reference-code/flutter-base-code)
+- [原生开发主流语言对比](./flutter/thinking/native-languages-comparison) - Kotlin/Swift/Dart/TS/C++ 等主流语言说明与选型对比
+- [iOS 与 Android 必备知识](./flutter/thinking/flutter-ios-android-knowledge) - Flutter 开发者必须掌握的平台知识梳理
+- [APP 启动与屏幕渲染原理](./flutter/thinking/app-launch-and-rendering-pipeline) - 从点击图标到像素点亮的全链路与图形管线解析
+- [系统内核与平台差异适配](./flutter/thinking/os-kernel-platform-differences) - Linux/XNU 内核差异、Android 碎片化与 Flutter 分层适配策略
+- [网络层与弱网优化](./flutter/thinking/mobile-network-layer) - HTTPS 全链路、连接优化、DNS 防劫持与弱网对抗
+- [内存管理与性能调优](./flutter/thinking/memory-management-performance) - 三层内存模型、OOM 归因、泄漏检测与 APM 体系
+- [音视频与相机管线](./flutter/thinking/audio-video-camera) - 相机管线、编解码、播放管线、WebRTC 与直播架构
+- [存储与数据同步](./flutter/thinking/storage-data-sync) - SQLite/KV 选型、离线优先架构与冲突解决
+- [安全攻防基础](./flutter/thinking/mobile-security) - 逆向防护、安全存储、证书固定与 API 安全
+- [混合栈与模块化架构](./flutter/thinking/hybrid-stack-modularization) - 引擎管理、混合路由与大型项目模块化
+- [CI/CD 与发布工程化](./flutter/thinking/cicd-release-engineering) - 双平台流水线、签名自动化与灰度发布
+- [测试体系](./flutter/thinking/testing-system) - 测试金字塔、Widget/集成/Golden 测试与 CI 质量门禁
 
 ### 🐍 Python 架构
 

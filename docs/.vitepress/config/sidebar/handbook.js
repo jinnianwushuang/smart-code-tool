@@ -63,6 +63,7 @@ export const handbookSidebar = {
       text: '移动开发',
       items: [
         { text: 'Flutter 手册', link: '/handbook/mobile/flutter-handbook' },
+        { text: 'Flutter 核心原理', link: '/handbook/mobile/flutter-core-principles' },
         { text: 'Flutter 企业级项目手册', link: '/handbook/mobile/flutter-enterprise-handbook' },
         { text: 'Retrofit 原理与工作流', link: '/handbook/mobile/flutter-retrofit' },
         { text: 'GetX 原理与工作流', link: '/handbook/mobile/flutter-getx' },

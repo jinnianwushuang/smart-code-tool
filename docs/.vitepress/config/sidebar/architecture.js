@@ -25,15 +25,93 @@ const flutter = {
   text: 'Flutter 架构',
   collapsed: true,
   items: [
-    { text: 'Dart 基础命令', link: '/architecture-document/flutter/reference-code/dart-base-cmd' },
-    { text: 'Dart 基础代码', link: '/architecture-document/flutter/reference-code/dart-base-code' },
     {
-      text: 'Flutter 基础命令',
-      link: '/architecture-document/flutter/reference-code/flutter-base-cmd',
+      text: '参考代码',
+      items: [
+        { text: 'Dart 基础命令', link: '/architecture-document/flutter/reference-code/dart-base-cmd' },
+        { text: 'Dart 基础代码', link: '/architecture-document/flutter/reference-code/dart-base-code' },
+        {
+          text: 'Flutter 基础命令',
+          link: '/architecture-document/flutter/reference-code/flutter-base-cmd',
+        },
+        {
+          text: 'Flutter 基础代码',
+          link: '/architecture-document/flutter/reference-code/flutter-base-code',
+        },
+      ],
     },
     {
-      text: 'Flutter 基础代码',
-      link: '/architecture-document/flutter/reference-code/flutter-base-code',
+      text: '思考文档',
+      items: [
+        {
+          text: '平台认知',
+          items: [
+            {
+              text: '原生开发主流语言对比',
+              link: '/architecture-document/flutter/thinking/native-languages-comparison',
+            },
+            {
+              text: 'iOS 与 Android 必备知识',
+              link: '/architecture-document/flutter/thinking/flutter-ios-android-knowledge',
+            },
+            {
+              text: 'APP 启动与屏幕渲染原理',
+              link: '/architecture-document/flutter/thinking/app-launch-and-rendering-pipeline',
+            },
+            {
+              text: '系统内核与平台差异适配',
+              link: '/architecture-document/flutter/thinking/os-kernel-platform-differences',
+            },
+          ],
+        },
+        {
+          text: '核心原理',
+          items: [
+            {
+              text: '网络层与弱网优化',
+              link: '/architecture-document/flutter/thinking/mobile-network-layer',
+            },
+            {
+              text: '内存管理与性能调优',
+              link: '/architecture-document/flutter/thinking/memory-management-performance',
+            },
+            {
+              text: '音视频与相机管线',
+              link: '/architecture-document/flutter/thinking/audio-video-camera',
+            },
+          ],
+        },
+        {
+          text: '数据与安全',
+          items: [
+            {
+              text: '存储与数据同步',
+              link: '/architecture-document/flutter/thinking/storage-data-sync',
+            },
+            {
+              text: '安全攻防基础',
+              link: '/architecture-document/flutter/thinking/mobile-security',
+            },
+          ],
+        },
+        {
+          text: '工程实践',
+          items: [
+            {
+              text: '混合栈与模块化架构',
+              link: '/architecture-document/flutter/thinking/hybrid-stack-modularization',
+            },
+            {
+              text: 'CI/CD 与发布工程化',
+              link: '/architecture-document/flutter/thinking/cicd-release-engineering',
+            },
+            {
+              text: '测试体系',
+              link: '/architecture-document/flutter/thinking/testing-system',
+            },
+          ],
+        },
+      ],
     },
   ],
 }

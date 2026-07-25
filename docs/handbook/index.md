@@ -94,6 +94,7 @@
 | 手册                                              | 描述                                          |
 | ------------------------------------------------- | --------------------------------------------- |
 | [Flutter 手册](/handbook/mobile/flutter-handbook) | Flutter 跨平台 UI 框架、Widget 系统、状态管理 |
+| [Flutter 核心原理](/handbook/mobile/flutter-core-principles) | 三棵树、渲染管线、Hot Reload、Platform Channel 底层实现 |
 | [Flutter 企业级项目手册](/handbook/mobile/flutter-enterprise-handbook) | Flutter 企业级项目架构、工程化实践参考手册 |
 | [Retrofit 原理与工作流](/handbook/mobile/flutter-retrofit) | 声明式 HTTP 客户端、注解 + 代码生成、Dio 集成原理 |
 | [GetX 原理与工作流](/handbook/mobile/flutter-getx) | 状态管理、路由导航、依赖注入一体化框架原理 |
