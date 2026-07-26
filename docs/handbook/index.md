@@ -22,10 +22,12 @@
 | [React 19 手册](/handbook/frontend/react19-handbook)            | React 19 新特性、Hooks、性能优化指南           |
 | [React 19 核心原理](/handbook/frontend/react19-core-principles) | React Fiber 架构、协调算法、并发渲染底层实现   |
 | [React Native 手册](/handbook/frontend/react-native-handbook) | React Native 跨平台移动开发、核心组件、导航与性能优化 |
+| [React Native 核心原理](/handbook/frontend/react-native-core-principles) | Bridge/JSI 架构、Fabric 渲染器、Yoga 布局、Hermes 引擎底层实现 |
 | [Next.js 手册](/handbook/frontend/nextjs-handbook)              | Next.js 服务端渲染、静态生成、路由系统详解     |
 | [Next.js 核心原理](/handbook/frontend/nextjs-core-principles)   | Next.js 核心底层原理深度解析                   |
 | [Vite 核心原理](/handbook/frontend/vite-core-principles)        | Vite 脚手架架构、依赖预构建、HMR 热更新底层实现 |
 | [Electron 手册](/handbook/electron/electron-handbook)            | Electron 桌面应用开发、进程模型、IPC 通信、打包发布 |
+| [Electron 核心原理](/handbook/electron/electron-core-principles) | 多进程架构、IPC 机制、上下文隔离、渲染管线、安全模型与自动更新原理 |
 | [Electron + Vue 3 技术选型](/handbook/electron/electron-vue3-technology-selection) | Electron + Vue 3 技术栈选型与最佳实践 |
 | [Electron + React 技术选型](/handbook/electron/electron-react-technology-selection) | Electron + React 技术栈选型与最佳实践 |
 
