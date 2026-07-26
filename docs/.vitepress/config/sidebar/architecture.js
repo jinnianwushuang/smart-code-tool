@@ -271,7 +271,7 @@ const vue = {
       ],
     },
     {
-      text: '标准化模板（中文）',
+      text: '标准化模板',
       items: [
         {
           text: 'API 请求与模块',
@@ -286,7 +286,7 @@ const vue = {
           link: '/architecture-document/vue/standardized-template-cn/architecture-overview-cn',
         },
         {
-          text: '架构概览（英文）',
+          text: '架构概览',
           link: '/architecture-document/vue/standardized-template-cn/architecture-overview',
         },
         {
@@ -331,47 +331,7 @@ const vue = {
         },
       ],
     },
-    {
-      text: '标准化模板（英文）',
-      items: [
-        {
-          text: 'API 请求处理',
-          link: '/architecture-document/vue/standardized-template-en/api-request-handling',
-        },
-        {
-          text: '架构概览',
-          link: '/architecture-document/vue/standardized-template-en/architecture-overview',
-        },
-        {
-          text: 'Assembler 模式',
-          link: '/architecture-document/vue/standardized-template-en/assembler-pattern',
-        },
-        {
-          text: '组件系统',
-          link: '/architecture-document/vue/standardized-template-en/component-system',
-        },
-        {
-          text: '配置指南',
-          link: '/architecture-document/vue/standardized-template-en/configuration-guide',
-        },
-        {
-          text: '事件 Pipeline 系统',
-          link: '/architecture-document/vue/standardized-template-en/event-pipeline-system',
-        },
-        {
-          text: '扩展模板',
-          link: '/architecture-document/vue/standardized-template-en/extending-the-template',
-        },
-        {
-          text: '生命周期与副作用',
-          link: '/architecture-document/vue/standardized-template-en/lifecycle-and-effects',
-        },
-        {
-          text: '状态管理',
-          link: '/architecture-document/vue/standardized-template-en/state-management',
-        },
-      ],
-    },
+   
     {
       text: '技术选型',
       items: [

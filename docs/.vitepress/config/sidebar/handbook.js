@@ -17,6 +17,7 @@ export const handbookSidebar = {
         { text: 'Vue 3 核心原理', link: '/handbook/frontend/vue3-core-principles' },
         { text: 'React 19 手册', link: '/handbook/frontend/react19-handbook' },
         { text: 'React 19 核心原理', link: '/handbook/frontend/react19-core-principles' },
+        { text: 'React Native 手册', link: '/handbook/frontend/react-native-handbook' },
         { text: 'Next.js 手册', link: '/handbook/frontend/nextjs-handbook' },
         { text: 'Next.js 核心原理', link: '/handbook/frontend/nextjs-core-principles' },
         { text: 'Vite 核心原理', link: '/handbook/frontend/vite-core-principles' },
