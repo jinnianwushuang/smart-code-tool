@@ -9,20 +9,20 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 
-import JsonExcelConverter from './components/json-excel-converter/json-excel-converter.vue'
-import ExcelJsonConverter from './components/excel-json-converter/excel-json-converter.vue'
-import TimestampTimestr from './components/timestamp-timestr/timestamp-timestr.vue'
-import RandomSelection from './components/random-selection/random-selection.vue'
-import RandomValues from 'src/pages/common-tool/components/random-values/random-values.vue'
-import TextSegmentation from 'src/pages/common-tool/components/text-segmentation/text-segmentation.vue'
-import Base64Tool from 'src/pages/common-tool/components/base64-tool/base64-tool.vue'
-import UrlAdvancedParser from 'src/pages/common-tool/components/url-advanced-parser/url-advanced-parser.vue'
-import IdGenerator from 'src/pages/common-tool/components/id-generator/id-generator.vue'
-import HttpStatusManual from 'src/pages/common-tool/components/http-status-manual/http-status-manual.vue'
-import ColorConverter from 'src/pages/common-tool/components/color-converter/color-converter.vue'
-import RegexTester from 'src/pages/common-tool/components/regex-tester/regex-tester.vue'
+const JsonExcelConverter = defineAsyncComponent(() => import('src/pages/common-tool/components/json-excel-converter/json-excel-converter.vue'))
+const ExcelJsonConverter = defineAsyncComponent(() => import('src/pages/common-tool/components/excel-json-converter/excel-json-converter.vue'))
+const TimestampTimestr = defineAsyncComponent(() => import('src/pages/common-tool/components/timestamp-timestr/timestamp-timestr.vue'))
+const RandomSelection = defineAsyncComponent(() => import('src/pages/common-tool/components/random-selection/random-selection.vue'))
+const RandomValues = defineAsyncComponent(() => import('src/pages/common-tool/components/random-values/random-values.vue'))
+const TextSegmentation = defineAsyncComponent(() => import('src/pages/common-tool/components/text-segmentation/text-segmentation.vue'))
+const Base64Tool = defineAsyncComponent(() => import('src/pages/common-tool/components/base64-tool/base64-tool.vue'))
+const UrlAdvancedParser = defineAsyncComponent(() => import('src/pages/common-tool/components/url-advanced-parser/url-advanced-parser.vue'))
+const IdGenerator = defineAsyncComponent(() => import('src/pages/common-tool/components/id-generator/id-generator.vue'))
+const HttpStatusManual = defineAsyncComponent(() => import('src/pages/common-tool/components/http-status-manual/http-status-manual.vue'))
+const ColorConverter = defineAsyncComponent(() => import('src/pages/common-tool/components/color-converter/color-converter.vue'))
+const RegexTester = defineAsyncComponent(() => import('src/pages/common-tool/components/regex-tester/regex-tester.vue'))
 
 const current_tab_name = ref('JsonExcelConverter')
 const all_tabs = [
