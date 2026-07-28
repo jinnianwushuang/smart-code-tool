@@ -3,6 +3,8 @@ title: 基础AI提问语句
 order: 12
 ---
 
+# 基础AI提问语句
+
 ## 一、 基础AI提问语句
 
 一份好的 AI 提问模板能直接帮你省掉 50% 的代码调试时间。前端开发中，高质量的 Prompt（提示词）应包含 **上下文（Context）、具体任务（Task）、技术栈约束（Constraints）以及输出期望（Expectations）**。

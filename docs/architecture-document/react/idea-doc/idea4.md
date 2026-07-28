@@ -3,6 +3,8 @@ title: 代码转换
 order: 44
 ---
 
+# 代码转换
+
 将 Vue 3 代码转换为最新的 React 代码（React 18/19），核心是将 Vue 的**响应式系统**和**模板语法**映射到 React 的 **Hooks** 和 **JSX** 上。
 
 如果你不想手动重写，可以使用 [VuReact](https://juejin.cn/post/7628206582480371721) 这种自动编译器，它能将 Vue 3 代码编译为标准 React 代码，并自动处理 `watchEffect` 和依赖数组。

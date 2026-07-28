@@ -3,6 +3,8 @@ title: useEffect
 order: 14
 ---
 
+# useEffect
+
 对于资深开发者，理解 `useEffect` 不能停留在“生命周期替代品”，而应从 **“同步（Synchronization）”** 和 **“闭包快照（Closure Snapshot）”** 的底层视角来剖析。
 
 其核心原理可以拆解为以下三个层面：

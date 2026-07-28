@@ -3,6 +3,8 @@ title: TanStack-Query 封装
 order: 101
 ---
 
+# TanStack-Query 封装
+
 ## 工业级 TanStack-Query 封装
 
 在大型项目中，直接在组件（View 层）里写 `useQuery` 会导致逻辑混淆、难以复用且主组件臃肿。

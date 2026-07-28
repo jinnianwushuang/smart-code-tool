@@ -3,7 +3,7 @@ title: DART 基础令
 order: 44
 ---
 
-## DART 基础令
+# DART 基础令
 
 这份文档重点介绍 Dart SDK 自带的命令行工具。由于 Flutter 已经内置了 Dart，如果你已经安装了 Flutter，可以直接在终端使用 dart 命令。
 
