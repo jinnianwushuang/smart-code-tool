@@ -9,7 +9,7 @@ import { theme } from 'ant-design-vue'
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import enUS from 'ant-design-vue/es/locale/en_US'
 import { useQuasar } from 'quasar'
-import { dayjs, isDarkTheme, antTheme } from 'src/output/common/project-common.js'
+import { dayjs, isDarkTheme, antTheme, initTheme } from 'src/output/common/project-common.js'
 const $q = useQuasar()
 
 // --- 2. 国际化切换逻辑 ---
@@ -28,7 +28,7 @@ const toggleLanguage = () => {
 }
 
 onBeforeMount(() => {
-  isDarkTheme.value = true
+  initTheme()
 })
 </script>
 <style lang="scss">

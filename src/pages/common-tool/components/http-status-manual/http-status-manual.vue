@@ -1,151 +1,19 @@
 <script setup>
-import { ref, computed } from 'vue'
 import {
   SearchOutlined,
-  FilePdfOutlined,
   CopyOutlined,
   BugOutlined,
-  ThunderboltOutlined,
-  InfoCircleOutlined,
 } from '@ant-design/icons-vue'
-import { message } from 'ant-design-vue'
-import Fuse from 'fuse.js'
-import html2canvas from 'html2canvas'
-import jsPDF from 'jspdf'
+import { useHttpStatus } from './composables/use-http-status.js'
 
-// --- 1. 核心数据库：状态码、含义及开发场景 ---
-const httpStatusDb = [
-  {
-    code: 200,
-    title: 'OK',
-    desc: '请求成功',
-    color: '#52c41a',
-    scenario: 'Axios: response.status === 200。数据正常返回，业务逻辑正常。',
-  },
-  {
-    code: 201,
-    title: 'Created',
-    desc: '已创建',
-    color: '#52c41a',
-    scenario: 'RESTful: POST 请求成功创建资源（如注册、新增条目）。',
-  },
-  {
-    code: 400,
-    title: 'Bad Request',
-    desc: '请求参数错误',
-    color: '#faad14',
-    scenario: '前端传参类型不符或缺少必填项。检查 Axios 传的 params 或 data。',
-  },
-  {
-    code: 401,
-    title: 'Unauthorized',
-    desc: '未授权',
-    color: '#ff4d4f',
-    scenario: 'Vue 拦截器: Token 过期或 Header 缺少 Authorization。需跳转登录页。',
-  },
-  {
-    code: 403,
-    title: 'Forbidden',
-    desc: '禁止访问',
-    color: '#ff4d4f',
-    scenario: '权限系统: 已登录但无此操作权限（RBAC 权限不足）。',
-  },
-  {
-    code: 404,
-    title: 'Not Found',
-    desc: '资源不存在',
-    color: '#ff4d4f',
-    scenario: '路径错误: 检查请求 URL 是否拼写错误，或后端路由未定义。',
-  },
-  {
-    code: 405,
-    title: 'Method Not Allowed',
-    desc: '方法不允许',
-    color: '#faad14',
-    scenario: '开发错误: 接口要求 POST，你用了 GET。',
-  },
-  {
-    code: 422,
-    title: 'Unprocessable Entity',
-    desc: '语义错误/验证失败',
-    color: '#faad14',
-    scenario: '表单校验: 后端返回的具体字段验证失败提示。',
-  },
-  {
-    code: 500,
-    title: 'Internal Error',
-    desc: '服务器内部错误',
-    color: '#722ed1',
-    scenario: '后端崩溃: 后端代码报错（空指针、数据库异常等）。',
-  },
-  {
-    code: 502,
-    title: 'Bad Gateway',
-    desc: '网关错误',
-    color: '#722ed1',
-    scenario: '运维问题: Nginx 找不到后端服务，或服务程序已挂。',
-  },
-  {
-    code: 503,
-    title: 'Service Unavailable',
-    desc: '服务过载/维护',
-    color: '#722ed1',
-    scenario: '系统限流或临时停机维护。',
-  },
-  {
-    code: 504,
-    title: 'Gateway Timeout',
-    desc: '网关超时',
-    color: '#722ed1',
-    scenario: '性能问题: 后端查询太慢，超过了代理服务器的超时限制。',
-  },
-]
-
-// --- 2. 搜索逻辑 (Fuse.js) ---
-const searchText = ref('')
-const pdfArea = ref(null)
-const isExporting = ref(false)
-
-const fuse = new Fuse(httpStatusDb, {
-  keys: ['code', 'title', 'desc'],
-  threshold: 0.3,
-})
-
-const filteredStatus = computed(() => {
-  if (!searchText.value) return httpStatusDb
-  return fuse.search(searchText.value).map((r) => r.item)
-})
-
-// --- 3. 操作方法 ---
-const copyCode = (code) => {
-  navigator.clipboard.writeText(code.toString())
-  message.success(`状态码 ${code} 已复制`)
-}
-
-const downloadPdf = async () => {
-  if (filteredStatus.value.length === 0) return
-  isExporting.value = true
-  const hide = message.loading('正在生成 PDF...', 0)
-
-  try {
-    const element = pdfArea.value
-    const canvas = await html2canvas(element, { scale: 2, useCORS: true })
-    const imgData = canvas.toDataURL('image/png')
-    const pdf = new jsPDF('p', 'mm', 'a4')
-    const imgWidth = 190
-    const imgHeight = (canvas.height * imgWidth) / canvas.width
-
-    pdf.text('HTTP Status Manual - DevTools', 10, 10)
-    pdf.addImage(imgData, 'PNG', 10, 20, imgWidth, imgHeight)
-    pdf.save(`HTTP_Manual_${new Date().getTime()}.pdf`)
-    message.success('PDF 导出成功')
-  } catch (err) {
-    message.error('导出失败')
-  } finally {
-    isExporting.value = false
-    hide()
-  }
-}
+const {
+  searchText,
+  pdfArea,
+  isExporting,
+  filteredStatus,
+  copyCode,
+  downloadPdf,
+} = useHttpStatus()
 </script>
 
 <template>
@@ -326,15 +194,6 @@ const downloadPdf = async () => {
   font-size: 13px;
   line-height: 1.6;
   margin: 0;
-}
-
-.footer-note {
-  margin-top: 32px;
-  padding: 12px;
-  background: #e6f7ff;
-  border: 1px solid #91d5ff;
-  border-radius: 6px;
-  color: #0050b3;
 }
 
 code {

@@ -9,25 +9,52 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
-import PropertyToVariable from './components/property-to-variable/property-to-variable.vue'
-import VariableNameExtraction from './components/variable-name-extraction/variable-name-extraction.vue'
-import MethodNameToArrowFunction from './components/method-name-to-arrow-function/method-name-to-arrow-function.vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import StringChangeCase from './components/string-change-case/string-change-case.vue'
-import ConvertToTemplateRef from './components/convert-to-template-ref/convert-to-template-ref.vue'
-import TextDeduplication from './components/text-deduplication/text-deduplication.vue'
-import FunctionCodeCorrection from './components/function-code-correction/function-code-correction.vue'
-import WebCharacterEscape from 'src/pages/code-tool/components/web-character-escape/web-character-escape.vue'
 
-import TemplateUnifiedExtractor from './components/template-unified-extractor/template-unified-extractor.vue'
-
-import ComposableCodeGennerater from './components/composable-code-gennerater/composable-code-gennerater.vue'
-import SvgBatchConverter from 'src/pages/code-tool/components/svg-batch-converter/svg-batch-converter.vue'
-import I18nEditorWithDiff from 'src/pages/code-tool/components/i18n-editor-with-diff/i18n-editor-with-diff.vue'
-import PathCalculation from 'src/pages/code-tool/components/path-calculation/path-calculation.vue'
-import TreeFolderEditer from 'src/pages/code-tool/components/tree-folder-editer/tree-folder-editer.vue'
-
-import RefVariableToAssignmentStatement from 'src/pages/code-tool/components/ref-variable-to-assignment-statement/ref-variable-to-assignment-statement.vue'
+const PropertyToVariable = defineAsyncComponent(
+  () => import('./components/property-to-variable/property-to-variable.vue'),
+)
+const VariableNameExtraction = defineAsyncComponent(
+  () => import('./components/variable-name-extraction/variable-name-extraction.vue'),
+)
+const MethodNameToArrowFunction = defineAsyncComponent(
+  () => import('./components/method-name-to-arrow-function/method-name-to-arrow-function.vue'),
+)
+const ConvertToTemplateRef = defineAsyncComponent(
+  () => import('./components/convert-to-template-ref/convert-to-template-ref.vue'),
+)
+const TextDeduplication = defineAsyncComponent(
+  () => import('./components/text-deduplication/text-deduplication.vue'),
+)
+const FunctionCodeCorrection = defineAsyncComponent(
+  () => import('./components/function-code-correction/function-code-correction.vue'),
+)
+const WebCharacterEscape = defineAsyncComponent(
+  () => import('src/pages/code-tool/components/web-character-escape/web-character-escape.vue'),
+)
+const TemplateUnifiedExtractor = defineAsyncComponent(
+  () => import('./components/template-unified-extractor/template-unified-extractor.vue'),
+)
+const ComposableCodeGennerater = defineAsyncComponent(
+  () => import('./components/composable-code-gennerater/composable-code-gennerater.vue'),
+)
+const SvgBatchConverter = defineAsyncComponent(
+  () => import('src/pages/code-tool/components/svg-batch-converter/svg-batch-converter.vue'),
+)
+const I18nEditorWithDiff = defineAsyncComponent(
+  () => import('src/pages/code-tool/components/i18n-editor-with-diff/i18n-editor-with-diff.vue'),
+)
+const PathCalculation = defineAsyncComponent(
+  () => import('src/pages/code-tool/components/path-calculation/path-calculation.vue'),
+)
+const TreeFolderEditer = defineAsyncComponent(
+  () => import('src/pages/code-tool/components/tree-folder-editer/tree-folder-editer.vue'),
+)
+const RefVariableToAssignmentStatement = defineAsyncComponent(
+  () =>
+    import('src/pages/code-tool/components/ref-variable-to-assignment-statement/ref-variable-to-assignment-statement.vue'),
+)
 
 const current_tab_name = ref('StringChangeCase')
 const all_tabs = [

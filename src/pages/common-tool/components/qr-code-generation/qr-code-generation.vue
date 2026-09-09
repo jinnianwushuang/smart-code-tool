@@ -3,6 +3,172 @@
     <div class="row q-col-gutter-md justify-center">
       <div class="col-12 col-md-11">
         <q-card flat bordered class="shadow-4 transition-base max-w-1200 q-mx-auto">
+          <q-tabs
+            v-model="activeTab"
+            dense
+            class="bg-indigo-8 text-white"
+            active-color="cyan-3"
+            indicator-color="cyan-3"
+            align="justify"
+          >
+            <q-tab name="single" icon="brush" label="单项美化设计" />
+            <q-tab name="batch" icon="picture_as_pdf" label="批量名片 & PDF" />
+            <q-tab name="scan" icon="qr_code_scanner" label="扫码与识别" />
+          </q-tabs>
+
+          <q-tab-panels v-model="activeTab" animated class="bg-transparent">
+            <SingleQrPanel
+              :singleText="singleText"
+              :size="size"
+              :level="level"
+              :foreground="foreground"
+              :background="background"
+              :logoFile="logoFile"
+              :qrcodeRef="qrcodeRef"
+              :mainCanvas="mainCanvas"
+              :refreshCanvas="refreshCanvas"
+              :handleLogoUpload="handleLogoUpload"
+              :clearLogo="clearLogo"
+              :downloadQR="downloadQR"
+              :copyQRImage="copyQRImage"
+            />
+            <BatchQrPanel
+              :batchInput="batchInput"
+              :batchCards="batchCards"
+              :foreground="foreground"
+              :generateBatch="generateBatch"
+              :exportBatchPDF="exportBatchPDF"
+            />
+            <QrScannerPanel
+              :videoRef="videoRef"
+              :isScanning="isScanning"
+              :scanResult="scanResult"
+              :scanFile="scanFile"
+              :imgScanCanvas="imgScanCanvas"
+              :startScanner="startScanner"
+              :stopScanner="stopScanner"
+              :scanFromImage="scanFromImage"
+              :copyText="copyText"
+            />
+          </q-tab-panels>
+        </q-card>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { useQrGenerator } from './composables/use-qr-generator.js'
+import SingleQrPanel from './components/single-qr-panel.vue'
+import BatchQrPanel from './components/batch-qr-panel.vue'
+import QrScannerPanel from './components/qr-scanner-panel.vue'
+
+const {
+  activeTab,
+  singleText,
+  size,
+  level,
+  foreground,
+  background,
+  logoFile,
+  logoImage,
+  qrcodeRef,
+  mainCanvas,
+  refreshCanvas,
+  handleLogoUpload,
+  clearLogo,
+  downloadQR,
+  copyQRImage,
+  batchInput,
+  batchCards,
+  generateBatch,
+  exportBatchPDF,
+  videoRef,
+  isScanning,
+  scanResult,
+  scanFile,
+  imgScanCanvas,
+  startScanner,
+  stopScanner,
+  scanFromImage,
+  copyText,
+} = useQrGenerator()
+</script>
+
+<style scoped>
+.responsive-canvas {
+  max-width: 100%;
+  height: auto !important;
+  border-radius: 8px;
+}
+.qr-preview-box {
+  background: rgba(128, 128, 128, 0.03);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+  line-height: 0;
+}
+.video-box {
+  width: 100%;
+  height: 350px;
+  background: #000;
+}
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 255, 255, 0.7);
+  box-shadow: 0 0 15px cyan;
+  animation: scanning 2.5s infinite;
+}
+@keyframes scanning {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+.border-dashed {
+  border: 1.5px dashed rgba(128, 128, 128, 0.3);
+}
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
+.transition-base {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+.max-w-1200 {
+  max-width: 1200px;
+}
+#pdf-content {
+  background: rgba(128, 128, 128, 0.03);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+.font-mono {
+  font-family: 'Fira Code', monospace;
+}
+.text-break {
+  word-break: break-all;
+}
+.object-cover {
+  object-fit: cover;
+}
+.min-height-400 {
+  min-height: 400px;
+}
+</style>
+<template>
+  <div class="q-pa-md generator-wrapper">
+    <div class="row q-col-gutter-md justify-center">
+      <div class="col-12 col-md-11">
+        <q-card flat bordered class="shadow-4 transition-base max-w-1200 q-mx-auto">
           <!-- 顶部导航 -->
           <q-tabs
             v-model="activeTab"

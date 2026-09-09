@@ -9,20 +9,48 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 
 import JsonExcelConverter from './components/json-excel-converter/json-excel-converter.vue'
-import ExcelJsonConverter from './components/excel-json-converter/excel-json-converter.vue'
-import TimestampTimestr from './components/timestamp-timestr/timestamp-timestr.vue'
-import RandomSelection from './components/random-selection/random-selection.vue'
-import RandomValues from 'src/pages/common-tool/components/random-values/random-values.vue'
-import TextSegmentation from 'src/pages/common-tool/components/text-segmentation/text-segmentation.vue'
-import Base64Tool from 'src/pages/common-tool/components/base64-tool/base64-tool.vue'
-import UrlAdvancedParser from 'src/pages/common-tool/components/url-advanced-parser/url-advanced-parser.vue'
-import IdGenerator from 'src/pages/common-tool/components/id-generator/id-generator.vue'
-import HttpStatusManual from 'src/pages/common-tool/components/http-status-manual/http-status-manual.vue'
-import ColorConverter from 'src/pages/common-tool/components/color-converter/color-converter.vue'
-import RegexTester from 'src/pages/common-tool/components/regex-tester/regex-tester.vue'
+const ExcelJsonConverter = defineAsyncComponent(
+  () => import('./components/excel-json-converter/excel-json-converter.vue'),
+)
+const TimestampTimestr = defineAsyncComponent(
+  () => import('./components/timestamp-timestr/timestamp-timestr.vue'),
+)
+const RandomSelection = defineAsyncComponent(
+  () => import('./components/random-selection/random-selection.vue'),
+)
+const RandomValues = defineAsyncComponent(
+  () => import('src/pages/common-tool/components/random-values/random-values.vue'),
+)
+const TextSegmentation = defineAsyncComponent(
+  () => import('src/pages/common-tool/components/text-segmentation/text-segmentation.vue'),
+)
+const Base64Tool = defineAsyncComponent(
+  () => import('src/pages/common-tool/components/base64-tool/base64-tool.vue'),
+)
+const UrlAdvancedParser = defineAsyncComponent(
+  () => import('src/pages/common-tool/components/url-advanced-parser/url-advanced-parser.vue'),
+)
+const IdGenerator = defineAsyncComponent(
+  () => import('src/pages/common-tool/components/id-generator/id-generator.vue'),
+)
+const HttpStatusManual = defineAsyncComponent(
+  () => import('src/pages/common-tool/components/http-status-manual/http-status-manual.vue'),
+)
+const ColorConverter = defineAsyncComponent(
+  () => import('src/pages/common-tool/components/color-converter/color-converter.vue'),
+)
+const RegexTester = defineAsyncComponent(
+  () => import('src/pages/common-tool/components/regex-tester/regex-tester.vue'),
+)
+const ExcelStatsAnalyzer = defineAsyncComponent(
+  () => import('src/pages/common-tool/components/excel-stats-analyzer/excel-stats-analyzer.vue'),
+)
+const TextExtractStats = defineAsyncComponent(
+  () => import('src/pages/common-tool/components/text-extract-stats/text-extract-stats.vue'),
+)
 
 const current_tab_name = ref('JsonExcelConverter')
 const all_tabs = [
@@ -38,6 +66,8 @@ const all_tabs = [
   { name: 'IdGenerator', label: 'UUID / NanoID 生成器', component: IdGenerator },
   { name: 'ColorConverter', label: '颜色转换器', component: ColorConverter },
   { name: 'RegexTester', label: '正则表达式测试器', component: RegexTester },
+  { name: 'ExcelStatsAnalyzer', label: 'Excel 表格统计分析', component: ExcelStatsAnalyzer },
+  { name: 'TextExtractStats', label: '文本提取与模板替换', component: TextExtractStats },
 ]
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)

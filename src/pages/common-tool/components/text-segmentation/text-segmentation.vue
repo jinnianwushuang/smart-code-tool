@@ -95,153 +95,36 @@
           开始处理并生成预览
         </a-button>
 
-        <!-- 结果控制与展示 -->
-        <div v-if="results.length > 0">
-          <div
-            class="row items-center justify-between q-mb-md results-header q-pa-sm rounded-borders"
-          >
-            <div class="text-subtitle2">
-              生成了 <span class="font-bold text-blue-600">{{ results.length }}</span> 个片段
-            </div>
-            <a-space>
-              <a-button size="small" @click="downloadAsTxt">合并导出 (.txt)</a-button>
-              <a-button type="primary" @click="downloadAsZip">打包下载 (.zip)</a-button>
-            </a-space>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-96 overflow-y-auto pr-2">
-            <q-card
-              v-for="(item, index) in results"
-              :key="index"
-              flat
-              bordered
-              class="segment-card transition-base"
-            >
-              <q-card-section
-                class="q-py-xs row items-center justify-between bg-grey-1 transition-base card-header"
-              >
-                <span class="text-caption text-weight-bold">#{{ index + 1 }}</span>
-                <q-btn
-                  flat
-                  round
-                  dense
-                  icon="content_copy"
-                  size="xs"
-                  color="primary"
-                  @click="copyToClipboard(item)"
-                >
-                  <q-tooltip>复制此段</q-tooltip>
-                </q-btn>
-              </q-card-section>
-              <q-separator />
-              <q-card-section class="text-xs text-grey-8 line-clamp-4 leading-relaxed font-mono">
-                {{ item }}
-              </q-card-section>
-              <q-card-section class="q-pt-none row justify-end">
-                <div class="text-[10px] text-grey-5">{{ item.length }} chars</div>
-              </q-card-section>
-            </q-card>
-          </div>
-        </div>
+        <!-- 结果展示 -->
+        <ResultDisplay
+          v-if="results.length > 0"
+          :results="results"
+          :downloadAsTxt="downloadAsTxt"
+          :downloadAsZip="downloadAsZip"
+          :copyToClipboard="copyToClipboard"
+        />
       </q-card-section>
     </q-card>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
-import { message } from 'ant-design-vue'
 import { ThunderboltOutlined } from '@ant-design/icons-vue'
-import { saveAs } from 'file-saver'
-import JSZip from 'jszip'
-import { copyText as projectCopyText } from 'src/output/common/project-common.js'
+import ResultDisplay from './components/result-display.vue'
+import { useTextSegmentation } from './composables/use-text-segmentation.js'
 
-const inputText = ref('')
-const loading = ref(false)
-const results = ref([])
-
-const config = reactive({
-  type: 'length',
-  length: 5000,
-  count: 5,
-  regexPreset: '\\n\\n+',
-  regexStr: '',
-})
-
-// 1. 处理大文件导入
-const handleFileUpload = (file) => {
-  const reader = new FileReader()
-  reader.onload = (e) => {
-    inputText.value = e.target.result
-    message.success('文件读取成功')
-  }
-  reader.readAsText(file)
-  return false // 阻止自动上传
-}
-
-// 2. 预设正则切换
-const applyPreset = (val) => {
-  if (val !== 'custom') config.regexStr = val
-}
-
-// 3. 核心切割逻辑
-const handleSplit = () => {
-  if (!inputText.value) return message.error('请提供文本内容')
-  loading.value = true
-
-  // 使用 setTimeout 模拟微任务，防止 UI 瞬间死掉
-  setTimeout(() => {
-    const text = inputText.value
-    let res = []
-
-    try {
-      if (config.type === 'length') {
-        for (let i = 0; i < text.length; i += config.length) {
-          res.push(text.substring(i, i + config.length))
-        }
-      } else if (config.type === 'count') {
-        const size = Math.ceil(text.length / config.count)
-        for (let i = 0; i < text.length; i += size) {
-          res.push(text.substring(i, i + size))
-        }
-      } else if (config.type === 'regex') {
-        const pattern = new RegExp(config.regexStr || config.regexPreset, 'g')
-        // 按正则分割并过滤掉空项
-        res = text.split(pattern).filter((s) => s.trim().length > 0)
-      }
-
-      results.value = res
-      message.success(`切割完成，共 ${res.length} 段`)
-    } catch (e) {
-      message.error('正则语法错误，请检查')
-    } finally {
-      loading.value = false
-    }
-  }, 100)
-}
-
-// 4. 打包导出为 ZIP
-const downloadAsZip = async () => {
-  const zip = new JSZip()
-  const folder = zip.folder('split_results')
-
-  results.value.forEach((content, index) => {
-    folder.file(`part_${index + 1}.txt`, content)
-  })
-
-  const blob = await zip.generateAsync({ type: 'blob' })
-  saveAs(blob, `text_parts_${Date.now()}.zip`)
-  message.success('ZIP 打包导出成功')
-}
-
-const downloadAsTxt = () => {
-  const blob = new Blob([results.value.join('\n\n---NEXT_PART---\n\n')], { type: 'text/plain' })
-  saveAs(blob, 'combined_parts.txt')
-}
-
-const copyToClipboard = (text) => {
-  projectCopyText(text)
-}
+const {
+  inputText,
+  loading,
+  results,
+  config,
+  handleFileUpload,
+  applyPreset,
+  handleSplit,
+  downloadAsZip,
+  downloadAsTxt,
+  copyToClipboard,
+} = useTextSegmentation()
 </script>
 
 <style scoped>
@@ -266,24 +149,6 @@ const copyToClipboard = (text) => {
   border: 1px solid rgba(128, 128, 128, 0.1);
 }
 
-.results-header {
-  background-color: rgba(33, 150, 243, 0.08);
-  border: 1px solid rgba(33, 150, 243, 0.2);
-}
-
-.segment-card {
-  background: rgba(128, 128, 128, 0.02);
-}
-
-.segment-card:hover {
-  border-color: var(--q-primary);
-  transform: translateY(-2px);
-}
-
-.card-header {
-  background: rgba(128, 128, 128, 0.05) !important;
-}
-
 .font-mono {
   font-family: 'Fira Code', 'Monaco', 'Courier New', monospace;
 }
@@ -292,13 +157,6 @@ const copyToClipboard = (text) => {
   height: 48px;
   font-weight: 600;
   border-radius: 8px;
-}
-
-.line-clamp-4 {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .rounded-borders {

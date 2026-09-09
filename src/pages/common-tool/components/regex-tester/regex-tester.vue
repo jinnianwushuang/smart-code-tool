@@ -101,93 +101,20 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
 import { InfoCircleOutlined } from '@ant-design/icons-vue'
-import { copyText as projectCopyText } from 'src/output/common/project-common.js'
+import { useRegexTester } from './composables/use-regex-tester.js'
 
-// 1. 正则解释映射表
-const SCHEMA = [
-  { re: /\\d/, desc: '匹配一个数字字符 (0-9)' },
-  { re: /\\w/, desc: '匹配字母、数字或下划线' },
-  { re: /\\s/, desc: '匹配任意空白符 (空格、制表符)' },
-  { re: /\^/, desc: '匹配字符串的开始位置' },
-  { re: /\$/, desc: '匹配字符串的结束位置' },
-  { re: /\.\*/, desc: '匹配任意字符 (零个或多个)' },
-  { re: /\+/, desc: '匹配前面的子表达式一次或多次' },
-  { re: /\*/, desc: '匹配前面的子表达式零次或多次' },
-  { re: /\?/, desc: '匹配前面的子表达式零次或一次 (或开启非贪婪模式)' },
-  { re: /\[.*\]/, desc: '字符集合，匹配方括号内的任意字符' },
-  { re: /\(.*\)/, desc: '捕获分组，记忆匹配到的内容' },
-  { re: /\{(\d+),?(\d+)?\}/, desc: '限定符，匹配前面的元素指定次数' },
-  { re: /\\b/, desc: '匹配一个单词边界' },
-  { re: /\|/, desc: '指明两项之间的一个选择 (或)' },
-]
-
-const regexStr = ref('^1[3-9]\\d{9}$')
-const flags = ref(['g'])
-const testText = ref('我的电话是 13800138000，他的电话是 19912345678')
-
-// 2. 计算语义解释
-const explanations = computed(() => {
-  if (!regexStr.value) return []
-  const result = []
-
-  // 简单的 Token 扫描逻辑
-  // 实际项目中可使用更复杂的正则解析器如 'regjsparser'
-  SCHEMA.forEach((item) => {
-    if (item.re.test(regexStr.value)) {
-      // 提取实际匹配到的字符
-      const matches = regexStr.value.match(new RegExp(item.re.source, 'g'))
-      if (matches) {
-        result.push({ token: matches[0], desc: item.desc })
-      }
-    }
-  })
-
-  // 处理普通文字
-  if (/[a-zA-Z0-9]/.test(regexStr.value.replace(/\\[dws]/g, ''))) {
-    result.push({ token: 'abc', desc: '匹配字面量字符 (精确匹配)' })
-  }
-
-  return result
-})
-
-// 3. 基础逻辑 (复用之前优化版本)
-const highlightedHtml = computed(() => {
-  if (!testText.value || !regexStr.value) return testText.value
-  try {
-    const re = new RegExp(regexStr.value, flags.value.join(''))
-    return testText.value
-      .replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' })[c])
-      .replace(re, (m) => `<span class="regex-match">${m}</span>`)
-  } catch {
-    return '<span class="text-negative">正则表达式语法有误，请检查</span>'
-  }
-})
-
-const jsSnippet = computed(
-  () => `const re = /${regexStr.value}/${flags.value.join('')};\nconsole.log(re.test(text));`,
-)
-
-const regexLib = [
-  { name: '手机号', pattern: '^1[3-9]\\d{9}$', flags: ['g'], test: '13800138000' },
-  {
-    name: '邮箱',
-    pattern: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$',
-    flags: ['g'],
-    test: 'admin@vue.js',
-  },
-]
-
-const applyLibrary = (item) => {
-  regexStr.value = item.pattern
-  flags.value = [...item.flags]
-  testText.value = item.test
-}
-
-const copy = (t) => {
-  projectCopyText(t)
-}
+const {
+  regexStr,
+  flags,
+  testText,
+  explanations,
+  highlightedHtml,
+  jsSnippet,
+  regexLib,
+  applyLibrary,
+  copy,
+} = useRegexTester()
 </script>
 
 <style scoped>
