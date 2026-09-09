@@ -11,7 +11,7 @@
         :trigger="null"
         collapsible
         width="200"
-        theme="light"
+        :theme="isDarkTheme ? 'dark' : 'light'"
         breakpoint="lg"
       >
         <a-menu
@@ -24,7 +24,12 @@
       </a-layout-sider>
 
       <!-- 内容区 -->
-      <a-layout-content ref="scrollContainer" class="layout-content dark" @scroll="handle_scroll">
+      <a-layout-content
+        ref="scrollContainer"
+        class="layout-content"
+        :class="{ dark: isDarkTheme }"
+        @scroll="handle_scroll"
+      >
         <router-view />
 
         <!-- 滚动到顶部按钮 -->
@@ -47,6 +52,7 @@ import { RouterView, useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { useStorage } from '@vueuse/core'
 import LayoutHeader from 'src/layout/compoent/layout-header/layout-header.vue'
+import { isDarkTheme } from 'src/output/common/project-common.js'
 import { menu_routes_tool } from 'src/router/routes/module/tool.js'
 const menuList = menu_routes_tool[0].children
 const $q = useQuasar()
@@ -56,15 +62,33 @@ const show_back_top = ref(false)
 const scroll_container_ref = useTemplateRef('scrollContainer')
 
 // const selectedKeys = useStorage('src_layout_layout1', menuList[0])
+const STORAGE_KEY = 'tool_last_route'
 const router = useRouter()
-const selectedKeys = ref([[menuList[0].key]])
+const selectedKeys = ref([menuList[0].key])
+
+// 从 localStorage 恢复上次的路由，不匹配则使用当前路由或默认路由
 onMounted(() => {
-  selectedKeys.value = [menuList[0].key]
-  handle_click_menu({ key: menuList[0].key })
+  const validNames = new Set(menuList.map((m) => m.key))
+  const stored = localStorage.getItem(STORAGE_KEY)
+  const currentName = router.currentRoute.value.name
+
+  // 优先级: 存储的路由 > 当前路由(刷新时URL保留) > 默认第一个
+  let targetName = menuList[0].key
+  if (stored && validNames.has(stored)) {
+    targetName = stored
+  } else if (currentName && validNames.has(currentName)) {
+    targetName = currentName
+  }
+
+  selectedKeys.value = [targetName]
+  if (currentName !== targetName) {
+    router.push({ name: targetName })
+  }
 })
+
 const handle_click_menu = ({ key }) => {
-  // console.log('handle_click_menu---layout-tool-', key)
-  // console.log('handle_click_menu---layout-tool-selectedKeys--', selectedKeys)
+  localStorage.setItem(STORAGE_KEY, key)
+  selectedKeys.value = [key]
   router.push({ name: key })
 }
 

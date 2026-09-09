@@ -6,7 +6,12 @@
 
     <a-layout>
       <!-- 内容区 -->
-      <a-layout-content ref="scrollContainer" class="layout-content dark" @scroll="handle_scroll">
+      <a-layout-content
+        ref="scrollContainer"
+        class="layout-content"
+        :class="{ dark: isDarkTheme }"
+        @scroll="handle_scroll"
+      >
         <iframe ref="docsIframe" :src="iframeSrc" class="iframe-container"></iframe>
 
         <!-- 滚动到顶部按钮 -->

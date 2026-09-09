@@ -21,17 +21,37 @@ export default {
 }
 
 /**
- * 从 URL 参数中读取主题状态并应用
+ * 从 localStorage 或 URL 参数中读取主题状态并应用
+ * 优先级：URL 参数 > localStorage > 主应用 localStorage > 系统偏好
  */
 function syncThemeFromURL() {
   if (typeof window === 'undefined') return
 
+  // 1. 优先读 URL 参数（iframe postMessage 场景）
   const urlParams = new URLSearchParams(window.location.search)
-  const theme = urlParams.get('theme')
-
-  if (theme === 'dark' || theme === 'light') {
-    applyTheme(theme)
+  const urlTheme = urlParams.get('theme')
+  if (urlTheme === 'dark' || urlTheme === 'light') {
+    applyTheme(urlTheme)
+    return
   }
+
+  // 2. 读 VitePress 自身的 localStorage
+  const vpSaved = localStorage.getItem('vitepress-theme-appearance')
+  if (vpSaved === 'dark' || vpSaved === 'light') {
+    applyTheme(vpSaved)
+    return
+  }
+
+  // 3. 读主应用的 localStorage（跨应用同步）
+  const appSaved = localStorage.getItem('app-theme-mode')
+  if (appSaved === 'dark' || appSaved === 'light') {
+    applyTheme(appSaved)
+    return
+  }
+
+  // 4. 回退到系统偏好
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  applyTheme(prefersDark ? 'dark' : 'light')
 }
 
 /**

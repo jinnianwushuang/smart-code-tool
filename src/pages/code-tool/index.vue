@@ -9,10 +9,11 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { codeToolTabs, codeToolDefaultTab } from './tool-registry.js'
+import { usePersistentTab } from 'src/pages/use-persistent-tab.js'
 
-const current_tab_name = ref(codeToolDefaultTab)
+const current_tab_name = usePersistentTab(codeToolTabs, codeToolDefaultTab, 'code')
 const all_tabs = codeToolTabs
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)

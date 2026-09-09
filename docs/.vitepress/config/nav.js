@@ -5,7 +5,7 @@
 const isDev = process.env.NODE_ENV !== 'production'
 const toolLink = isDev
   ? 'http://localhost:23330/smart-code-tool/tool/index.html'
-  :   'https://jinnianwushuang.github.io/smart-code-tool/tool/index.html'
+  : 'https://jinnianwushuang.github.io/smart-code-tool/tool/index.html'
 
 export const nav = [
   { text: '首页', link: '/' },
@@ -23,10 +23,13 @@ export const nav = [
     link: '/handbook',
   },
   {
+    text: '面试',
+    link: '/interview/',
+  },
+  {
     text: '工具库',
     link: toolLink,
     openInNewWindow: true,
-    
   },
   // { text: 'GitHub', link: 'https://github.com/jinnianwushuang/smart-code-tool' },
 ]

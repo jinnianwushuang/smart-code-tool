@@ -16,7 +16,8 @@
     "pdf:export:ai": "node scripts/pdf-export.mjs --group ai",
     "pdf:export:psychology": "node scripts/pdf-export.mjs --group psychology",
     "pdf:export:architecture": "node scripts/pdf-export.mjs --group architecture",
-    "pdf": "zx scripts/pdf-export-all.mjs"
+    "pdf": "zx scripts/pdf-export-all.mjs",
+    "clean:ports": "kill -9 $(lsof -ti :23330 -ti :23340) 2>/dev/null; echo '✅ Ports 23330 & 23340 cleared'"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",

@@ -104,21 +104,22 @@ const syncThemeToDocs = () => {
 const handle_click_menu = ({ key }) => {
   console.log('handle_click_menu----layout-header---', key)
 
-  // 如果是文档菜单,区分开发环境和生产环境
-  if (key === 'docs') {
-    // 检查是否为开发环境
-    const isDev = import.meta.env.DEV
+  const isDev = import.meta.env.DEV
 
+  if (key === 'docs') {
+    // 文档：新标签页打开
     if (isDev) {
-      // 开发环境:直接打开 VitePress 开发服务器
       window.open('http://localhost:23340/smart-code-tool/', '_blank')
     } else {
-    // 生产环境:使用内部路由(iframe 方式)
-    // router.push({ name: 'docs' })
-     window.open('/smart-code-tool/', '_blank')
+      window.open('/smart-code-tool/', '_blank')
     }
   } else {
-    router.push({ name: key })
+    // 工具库等主应用路由：新标签页打开
+    if (isDev) {
+      window.open('http://localhost:23330/smart-code-tool/tool/', '_blank')
+    } else {
+      window.open('/smart-code-tool/tool/', '_blank')
+    }
   }
 }
 </script>

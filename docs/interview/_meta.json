@@ -1,0 +1,1098 @@
+{
+  "version": "1.0",
+  "updated": "2026-09-10",
+  "description": "大前端面试知识体系 - 全局元数据索引",
+  "levels": {
+    "junior": "初级工程师（P4-P5）",
+    "intermediate": "中级工程师（P5-P6）",
+    "senior": "高级/资深工程师（P6-P7）",
+    "architect": "架构师（P8）",
+    "manager": "技术主管/TL"
+  },
+  "modules": {
+    "javascript": {
+      "label": "JavaScript & Node.js 深度",
+      "docs": {
+        "engine-and-runtime": {
+          "title": "V8 引擎与 JavaScript 运行时",
+          "level": "senior",
+          "tags": ["JavaScript", "V8", "引擎原理"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "nodejs-runtime": {
+          "title": "Node.js 运行时：libuv、Stream、Worker Threads",
+          "level": "senior",
+          "tags": ["Node.js", "libuv", "并发"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "type-system-deep": {
+          "title": "JavaScript 类型系统深层",
+          "level": "senior",
+          "tags": ["JavaScript", "类型系统", " coercion"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "async-model": {
+          "title": "异步编程模型演进",
+          "level": "senior",
+          "tags": ["JavaScript", "异步", "Promise", "Async Iterator"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "gc-and-memory": {
+          "title": "GC 算法与内存管理",
+          "level": "senior",
+          "tags": ["JavaScript", "GC", "内存泄漏"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "prototype-and-oop": {
+          "title": "原型链本质与元编程",
+          "level": "senior",
+          "tags": ["JavaScript", "原型链", "class", "Proxy"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "es2025-2026-and-web-apis": {
+          "title": "ES2025/2026 新特性与现代 Web APIs",
+          "level": "senior",
+          "tags": [
+            "ES2025",
+            "ES2026",
+            "Temporal",
+            "Decorators",
+            "View Transitions",
+            "Scroll-driven Animations"
+          ],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "typescript": {
+      "label": "TypeScript 高阶",
+      "docs": {
+        "type-challenges": {
+          "title": "高级类型体操",
+          "level": "senior",
+          "tags": ["TypeScript", "条件类型", "模板字面量类型"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "compiler-internals": {
+          "title": "TypeScript 编译器架构",
+          "level": "architect",
+          "tags": ["TypeScript", "编译器", "AST"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "type-system-design": {
+          "title": "类型系统设计哲学",
+          "level": "architect",
+          "tags": ["TypeScript", "HKT", "brand 模式"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "ts5-new-features": {
+          "title": "TypeScript 5.x 新特性",
+          "level": "senior",
+          "tags": ["TypeScript 5", "satisfies", "isolatedDeclarations", "using", "const 类型参数"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "vue": {
+      "label": "Vue 深度",
+      "docs": {
+        "reactivity-deep": {
+          "title": "Vue 响应式系统底层",
+          "level": "senior",
+          "tags": ["Vue", "Proxy", "依赖收集", "调度器"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "compiler-optimization": {
+          "title": "Vue 编译器优化",
+          "level": "senior",
+          "tags": ["Vue", "编译器", "静态提升", "补丁标记"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "vapor-mode": {
+          "title": "Vapor Mode 原理",
+          "level": "senior",
+          "tags": ["Vue", "Vapor Mode", "无虚拟DOM"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "renderer-patch-flow": {
+          "title": "渲染器 Patch 流程与 Diff 算法",
+          "level": "senior",
+          "tags": ["Vue", "渲染器", "diff", "调度更新"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "vue-3.5-new-features": {
+          "title": "Vue 3.5+ 新特性与响应式重构",
+          "level": "senior",
+          "tags": ["Vue 3.5", "useTemplateRef", "useId", "defineModel", "响应式重构"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "pinia-deep": {
+          "title": "Pinia 状态管理原理与实战",
+          "level": "senior",
+          "tags": ["Pinia", "Vue 3", "状态管理", "Plugin", "持久化"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "vue-router-4": {
+          "title": "Vue Router 4 路由系统深度",
+          "level": "senior",
+          "tags": ["Vue Router", "路由", "导航守卫", "动态路由"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "nuxt-3-fullstack": {
+          "title": "Nuxt 3 全栈框架原理与实战",
+          "level": "architect",
+          "tags": ["Nuxt 3", "SSR", "SSG", "Nitro"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "vitest-and-vue-testing": {
+          "title": "Vitest + Vue 测试体系",
+          "level": "senior",
+          "tags": ["Vitest", "Vue Test Utils", "测试", "Playwright"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "vue-ecosystem-patterns": {
+          "title": "Vue 3 生态实战模式",
+          "level": "senior",
+          "tags": ["Vue 3", "组合式 API", "Suspense", "Teleport", "KeepAlive"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "react": {
+      "label": "React 深度",
+      "docs": {
+        "fiber-architecture": {
+          "title": "Fiber 架构与优先级调度",
+          "level": "senior",
+          "tags": ["React", "Fiber", "时间切片"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "concurrent-rendering": {
+          "title": "并发渲染与 Suspense",
+          "level": "senior",
+          "tags": ["React", "并发", "Suspense", "Transitions"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "server-components": {
+          "title": "React Server Components 原理",
+          "level": "senior",
+          "tags": ["React", "RSC", "流式渲染"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "state-machine": {
+          "title": "状态管理本质与有限状态机",
+          "level": "senior",
+          "tags": ["React", "状态管理", "信号", "有限状态机"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "react-19-features": {
+          "title": "React 19 新特性深度解析",
+          "level": "senior",
+          "tags": ["React 19", "use hook", "Actions", "useOptimistic", "useFormStatus"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "react-compiler": {
+          "title": "React Compiler 原理与实践",
+          "level": "architect",
+          "tags": ["React Compiler", "自动 Memo", "编译时优化"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "zustand-and-jotai": {
+          "title": "Zustand/Jotai 状态管理深度",
+          "level": "senior",
+          "tags": ["Zustand", "Jotai", "React", "状态管理"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "tanstack-query": {
+          "title": "TanStack Query 数据获取与缓存",
+          "level": "senior",
+          "tags": ["TanStack Query", "React Query", "数据获取", "缓存"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "nextjs-15": {
+          "title": "Next.js 15 全栈框架原理",
+          "level": "architect",
+          "tags": ["Next.js 15", "App Router", "Server Actions", "缓存"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "react-hook-form-and-zod": {
+          "title": "React Hook Form + Zod 表单体系",
+          "level": "senior",
+          "tags": ["React Hook Form", "Zod", "表单", "验证"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "react-testing-library": {
+          "title": "Testing Library + MSW 测试体系",
+          "level": "senior",
+          "tags": ["Testing Library", "MSW", "React", "测试"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "react-architecture-patterns": {
+          "title": "React 生态架构模式",
+          "level": "architect",
+          "tags": ["React", "架构", "项目结构", "状态分层"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "flutter": {
+      "label": "Flutter 高级与架构",
+      "docs": {
+        "rendering-engine": {
+          "title": "Flutter 渲染引擎：Impeller/Skia 与三棵树",
+          "level": "senior",
+          "tags": ["Flutter", "Impeller", "Skia", "三棵树"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "dart-advanced": {
+          "title": "Dart 语言深度：Isolate、Mixin、元编程",
+          "level": "senior",
+          "tags": ["Dart", "Isolate", "AOT", "JIT"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "architecture-patterns": {
+          "title": "Flutter 状态管理架构与 Clean Architecture",
+          "level": "architect",
+          "tags": ["Flutter", "Riverpod", "BLoC", "DI"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "platform-interop": {
+          "title": "Flutter 与原生交互",
+          "level": "architect",
+          "tags": ["Flutter", "Platform Channel", "FFI", "混合栈"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "performance-engineering": {
+          "title": "Flutter 性能优化与工程化",
+          "level": "architect",
+          "tags": ["Flutter", "性能优化", "内存治理", "灰度发布"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "riverpod-deep": {
+          "title": "Riverpod 状态管理深度",
+          "level": "senior",
+          "tags": ["Riverpod", "Flutter", "状态管理", "Codegen"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "bloc-cubit-architecture": {
+          "title": "BLoC/Cubit 架构模式与大规模实践",
+          "level": "senior",
+          "tags": ["BLoC", "Cubit", "Flutter", "事件驱动"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "getx-ecosystem": {
+          "title": "GetX 生态体系",
+          "level": "senior",
+          "tags": ["GetX", "Flutter", "状态管理", "路由", "依赖注入"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "go-router-deep": {
+          "title": "GoRouter 路由管理深度",
+          "level": "senior",
+          "tags": ["GoRouter", "Flutter", "路由", "Deep Link"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "dio-and-networking": {
+          "title": "Dio 网络层与 HTTP 客户端体系",
+          "level": "senior",
+          "tags": ["Dio", "Flutter", "网络", "拦截器"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "flutter-local-storage": {
+          "title": "Flutter 本地存储与持久化",
+          "level": "senior",
+          "tags": ["Flutter", "本地存储", "Hive", "Isar", "SQLite"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "api-architecture": {
+      "label": "API 架构体系",
+      "docs": {
+        "api-design-patterns": {
+          "title": "API 设计模式：RESTful/GraphQL/tRPC/gRPC-Web",
+          "level": "architect",
+          "tags": ["API", "GraphQL", "tRPC", "gRPC-Web"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "bff-and-gateway": {
+          "title": "BFF 模式与 API 网关",
+          "level": "architect",
+          "tags": ["BFF", "API 网关", "OpenAPI", "契约设计"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "cross-platform": {
+      "label": "跨平台架构",
+      "docs": {
+        "cross-platform-selection": {
+          "title": "跨端技术选型矩阵",
+          "level": "architect",
+          "tags": ["跨平台", "React Native", "Flutter", "Tauri", "Electron"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "multi-platform-consistency": {
+          "title": "多端一致性方案与共享代码策略",
+          "level": "architect",
+          "tags": ["跨平台", "Design Token", "共享代码", "平台抽象层"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "framework-comparison": {
+      "label": "框架对比与选型",
+      "docs": {
+        "signal-vs-vdom": {
+          "title": "Signals vs Virtual DOM：技术路线之争",
+          "level": "senior",
+          "tags": ["Signals", "Virtual DOM", "响应式"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "ssr-fullstack-comparison": {
+          "title": "SSR/SSG/ISR 全栈方案对比",
+          "level": "senior",
+          "tags": ["SSR", "SSG", "ISR", "Next.js", "Nuxt"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "meta-framework-trends": {
+          "title": "2026 元框架趋势",
+          "level": "architect",
+          "tags": ["Turbopack", "Rust", "Edge Runtime"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "engineering": {
+      "label": "工程化与全栈",
+      "docs": {
+        "build-toolchain": {
+          "title": "构建工具链演进",
+          "level": "senior",
+          "tags": ["Webpack", "Vite", "Turbopack", "Rspack", "Oxc"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "monorepo-architecture": {
+          "title": "Monorepo 架构设计",
+          "level": "architect",
+          "tags": ["Monorepo", "pnpm", "Turborepo", "Nx"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "micro-frontend": {
+          "title": "微前端方案对比",
+          "level": "architect",
+          "tags": ["微前端", "Module Federation", "qiankun"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "design-system": {
+          "title": "设计系统与组件库架构",
+          "level": "architect",
+          "tags": ["设计系统", "headless UI", "design token"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "performance-budget": {
+          "title": "性能预算体系",
+          "level": "senior",
+          "tags": ["性能", "Core Web Vitals", "INP"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "testing-strategy": {
+          "title": "测试金字塔实战",
+          "level": "senior",
+          "tags": ["测试", "E2E", "视觉回归", "性能测试"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "frontend-devops": {
+          "title": "前端 DevOps 与发布体系",
+          "level": "architect",
+          "tags": ["CI/CD", "Feature Flag", "金丝雀发布", "Preview Environment"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "nodejs-web-framework": {
+          "title": "Node.js Web 框架对比与 API 设计",
+          "level": "senior",
+          "tags": ["Node.js", "Express", "Koa", "NestJS", "Fastify"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "nodejs-database-orm": {
+          "title": "Node.js 数据库与 ORM 实战",
+          "level": "senior",
+          "tags": ["Node.js", "MySQL", "PostgreSQL", "MongoDB", "Redis", "ORM"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "nodejs-deploy-ops": {
+          "title": "Node.js 部署与运维",
+          "level": "senior",
+          "tags": ["Node.js", "Docker", "PM2", "BFF", "监控"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "architecture": {
+      "label": "架构设计",
+      "docs": {
+        "frontend-architecture-patterns": {
+          "title": "前端架构模式",
+          "level": "architect",
+          "tags": ["Clean Architecture", "Hexagonal", "DDD"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "state-architecture": {
+          "title": "大型应用状态架构",
+          "level": "architect",
+          "tags": ["状态机", "事件溯源", "CQRS"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "module-federation-v2": {
+          "title": "模块联邦 V2 与去中心化微前端",
+          "level": "architect",
+          "tags": ["Module Federation", "微前端"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "ai-integration-architecture": {
+          "title": "AI 能力集成架构",
+          "level": "architect",
+          "tags": ["AI", "Agent", "流式协议"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "client-data-architecture": {
+          "title": "客户端数据架构",
+          "level": "architect",
+          "tags": ["离线优先", "IndexedDB", "SQLite WASM", "数据同步"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "browser-and-network": {
+      "label": "浏览器与网络",
+      "docs": {
+        "rendering-pipeline": {
+          "title": "浏览器渲染管线",
+          "level": "senior",
+          "tags": ["浏览器", "渲染", "合成", "布局"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "http3-and-webtransport": {
+          "title": "HTTP/3、WebTransport 与 QUIC",
+          "level": "senior",
+          "tags": ["HTTP/3", "QUIC", "WebTransport"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "wasm-frontend": {
+          "title": "WebAssembly 在前端的实际应用",
+          "level": "senior",
+          "tags": ["WASM", "WebAssembly", "图像处理"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "security-model": {
+          "title": "浏览器安全模型",
+          "level": "senior",
+          "tags": ["CSP", "COOP", "COEP", "SRI"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "ai-and-new-tech": {
+      "label": "AI 与新技术",
+      "docs": {
+        "ai-assisted-development": {
+          "title": "AI 辅助开发工程化",
+          "level": "senior",
+          "tags": ["AI", "Copilot", "Prompt 工程"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "llm-frontend-integration": {
+          "title": "LLM 前端集成",
+          "level": "senior",
+          "tags": ["LLM", "流式输出", "Tokenizer"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "mcp-and-tool-use": {
+          "title": "MCP 协议与 Tool Use 前端实践",
+          "level": "senior",
+          "tags": ["MCP", "Tool Use", "AI Agent"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "edge-computing": {
+          "title": "Edge Computing 前端场景",
+          "level": "architect",
+          "tags": ["Edge", "Deno Deploy", "Cloudflare Workers"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "management": {
+      "label": "技术管理（主管级）",
+      "docs": {
+        "tech-leadership": {
+          "title": "技术领导力",
+          "level": "manager",
+          "tags": ["技术决策", "RFC", "技术债务"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "team-building": {
+          "title": "团队建设方法论",
+          "level": "manager",
+          "tags": ["招聘", "成长体系", "1on1"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "project-delivery": {
+          "title": "项目交付管理",
+          "level": "manager",
+          "tags": ["估时", "风险管理", "质量门禁"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "cross-team-collaboration": {
+          "title": "跨团队协作",
+          "level": "manager",
+          "tags": ["接口契约", "联调", "SLA"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "tech-radar-and-innovation": {
+          "title": "技术雷达与创新落地",
+          "level": "manager",
+          "tags": ["技术选型", "PoC", "创新"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "system-design": {
+      "label": "系统设计（架构师级）",
+      "docs": {
+        "real-time-collaboration": {
+          "title": "实时协作系统设计",
+          "level": "architect",
+          "tags": ["CRDT", "OT", "WebSocket"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "low-code-platform": {
+          "title": "低代码平台架构",
+          "level": "architect",
+          "tags": ["低代码", "DSL", "渲染引擎"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "design-token-system": {
+          "title": "Design Token 体系",
+          "level": "architect",
+          "tags": ["Design Token", "多品牌", "跨平台"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "frontend-observability": {
+          "title": "前端可观测性",
+          "level": "architect",
+          "tags": ["埋点", "性能监控", "错误追踪"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "junior": {
+      "label": "初级工程师（P4-P5）",
+      "docs": {
+        "html-semantics": {
+          "title": "HTML5 语义化与文档结构",
+          "level": "junior",
+          "tags": ["HTML5", "语义化", "SEO"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "css-layout": {
+          "title": "CSS 布局：Flexbox 与 Grid",
+          "level": "junior",
+          "tags": ["CSS", "Flexbox", "Grid"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "responsive-design": {
+          "title": "响应式设计与移动端适配",
+          "level": "junior",
+          "tags": ["响应式", "媒体查询", "rem", "vw"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "css-modern-features": {
+          "title": "CSS 新特性：变量、动画、过渡",
+          "level": "junior",
+          "tags": ["CSS 变量", "transition", "animation"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "js-basics": {
+          "title": "JavaScript 基础：变量、类型、运算",
+          "level": "junior",
+          "tags": ["JavaScript", "数据类型", "类型转换"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "functions-and-scope": {
+          "title": "函数与作用域基础",
+          "level": "junior",
+          "tags": ["JavaScript", "函数", "作用域", "this"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "objects-and-classes": {
+          "title": "对象与类基础",
+          "level": "junior",
+          "tags": ["JavaScript", "对象", "class", "原型"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "dom-and-events": {
+          "title": "DOM 操作与事件处理",
+          "level": "junior",
+          "tags": ["JavaScript", "DOM", "事件", "事件委托"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "browser-basics": {
+          "title": "浏览器基础：结构与开发者工具",
+          "level": "junior",
+          "tags": ["浏览器", "Chrome", "DevTools"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "http-basics": {
+          "title": "HTTP 协议基础",
+          "level": "junior",
+          "tags": ["HTTP", "HTTPS", "状态码"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "storage-and-cookie": {
+          "title": "本地存储与 Cookie 基础",
+          "level": "junior",
+          "tags": ["localStorage", "sessionStorage", "Cookie"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "vue-basics": {
+          "title": "Vue 3 入门：模板、组件、生命周期",
+          "level": "junior",
+          "tags": ["Vue 3", "模板语法", "组件", "生命周期"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "vue-component-patterns": {
+          "title": "Vue 组件模式：Props、Emit、Slots",
+          "level": "junior",
+          "tags": ["Vue 3", "Props", "Emit", "Slots"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "typescript-basics": {
+          "title": "TypeScript 入门：类型注解与基础类型",
+          "level": "junior",
+          "tags": ["TypeScript", "类型注解", "接口"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "git-basics": {
+          "title": "Git 基础：分支策略与协作流程",
+          "level": "junior",
+          "tags": ["Git", "分支", "合并"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "npm-pnpm-basics": {
+          "title": "npm/pnpm 包管理入门",
+          "level": "junior",
+          "tags": ["npm", "pnpm", "包管理"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "devtools-basics": {
+          "title": "Chrome DevTools 实战",
+          "level": "junior",
+          "tags": ["DevTools", "Chrome", "调试"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "debugging-basics": {
+          "title": "前端调试基础",
+          "level": "junior",
+          "tags": ["调试", "debugger", "断点"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "web-security-basics": {
+          "title": "Web 安全入门：XSS/CSRF",
+          "level": "junior",
+          "tags": ["XSS", "CSRF", "安全"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "spa-deploy-basics": {
+          "title": "SPA 部署基础（Nginx 配置）",
+          "level": "junior",
+          "tags": ["部署", "Nginx", "SPA"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "form-validation-basics": {
+          "title": "表单与验证基础",
+          "level": "junior",
+          "tags": ["表单", "验证", "正则"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "intermediate": {
+      "label": "中级工程师（P5-P6）",
+      "docs": {
+        "css-architecture": {
+          "title": "CSS 架构：BEM/CSS Modules/Tailwind",
+          "level": "intermediate",
+          "tags": ["CSS", "BEM", "Tailwind"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "css-preprocessors": {
+          "title": "CSS 预处理器：Sass/Less/PostCSS",
+          "level": "intermediate",
+          "tags": ["CSS", "Sass", "Less", "PostCSS"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "js-closures-context": {
+          "title": "闭包、作用域链与执行上下文",
+          "level": "intermediate",
+          "tags": ["JavaScript", "闭包", "作用域", "this"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "async-deep-dive": {
+          "title": "异步编程深入：Promise/async/await",
+          "level": "intermediate",
+          "tags": ["JavaScript", "Promise", "async", "await"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "es6-modules": {
+          "title": "ES6+ 模块系统与工程化",
+          "level": "intermediate",
+          "tags": ["JavaScript", "ESM", "CJS", "tree-shaking"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "js-design-patterns": {
+          "title": "JavaScript 常用设计模式",
+          "level": "intermediate",
+          "tags": ["JavaScript", "设计模式", "观察者", "工厂"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "rendering-mechanism": {
+          "title": "浏览器渲染机制：重排/重绘/合成",
+          "level": "intermediate",
+          "tags": ["浏览器", "重排", "重绘", "GPU 加速"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "http-caching": {
+          "title": "HTTP 缓存策略：强缓存/协商缓存",
+          "level": "intermediate",
+          "tags": ["HTTP", "缓存", "Cache-Control", "ETag"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "network-optimization": {
+          "title": "前端网络优化：预加载/懒加载/压缩",
+          "level": "intermediate",
+          "tags": ["网络优化", "预加载", "懒加载", "CDN"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "vue-reactivity-basics": {
+          "title": "Vue 3 响应式原理入门",
+          "level": "intermediate",
+          "tags": ["Vue 3", "响应式", "Proxy", "reactive"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "vue-lifecycle": {
+          "title": "Vue 3 生命周期深入",
+          "level": "intermediate",
+          "tags": ["Vue 3", "生命周期", "组合式 API"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "vue-communication": {
+          "title": "Vue 组件通信方式全景",
+          "level": "intermediate",
+          "tags": ["Vue 3", "组件通信", "Props", "Provide/Inject"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "vue-router-basics": {
+          "title": "Vue Router 路由实战",
+          "level": "intermediate",
+          "tags": ["Vue Router", "路由", "导航守卫"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "ts-types-practice": {
+          "title": "TypeScript 类型体操入门",
+          "level": "intermediate",
+          "tags": ["TypeScript", "泛型", "条件类型", "工具类型"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "ts-engineering": {
+          "title": "TypeScript 工程化实践",
+          "level": "intermediate",
+          "tags": ["TypeScript", "tsconfig", "声明文件"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "react-basics": {
+          "title": "React 入门：JSX、Hooks、组件模式",
+          "level": "intermediate",
+          "tags": ["React", "JSX", "Hooks", "useState"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "performance-basics": {
+          "title": "前端性能优化基础",
+          "level": "intermediate",
+          "tags": ["性能优化", "Core Web Vitals", "图片优化"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "testing-basics": {
+          "title": "前端测试基础：Jest/Vitest",
+          "level": "intermediate",
+          "tags": ["测试", "Jest", "Vitest", "单元测试"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "build-tools-basics": {
+          "title": "构建工具入门：Vite 配置与使用",
+          "level": "intermediate",
+          "tags": ["构建工具", "Vite", "配置"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "error-handling": {
+          "title": "前端错误处理与监控入门",
+          "level": "intermediate",
+          "tags": ["错误处理", "ErrorBoundary", "监控"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "web-security-practice": {
+          "title": "Web 安全实战：CSP/SRI/依赖检查",
+          "level": "intermediate",
+          "tags": ["安全", "CSP", "SRI"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "docker-basics": {
+          "title": "Docker 容器化基础与前端部署",
+          "level": "intermediate",
+          "tags": ["Docker", "容器化", "部署"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "flutter-dart-basics": {
+          "title": "Dart 语言基础与核心特性",
+          "level": "intermediate",
+          "tags": ["Dart", "Flutter", "空安全", "OOP"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "flutter-widget-and-layout": {
+          "title": "Flutter Widget 体系与布局系统",
+          "level": "intermediate",
+          "tags": ["Flutter", "Widget", "布局", "StatelessWidget"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "flutter-state-management-basics": {
+          "title": "Flutter 状态管理基础：setState/Provider/Bloc",
+          "level": "intermediate",
+          "tags": ["Flutter", "状态管理", "Provider", "Bloc"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "flutter-navigation-and-routing": {
+          "title": "Flutter 导航与路由实战",
+          "level": "intermediate",
+          "tags": ["Flutter", "导航", "路由", "GoRouter"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "build-tools": {
+      "label": "构建工具生态",
+      "docs": {
+        "vite-internals": {
+          "title": "Vite 核心原理与插件开发",
+          "level": "senior",
+          "tags": ["Vite", "ESM", "HMR", "Rollup"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "build-tool-deep-comparison": {
+          "title": "构建工具深度对比",
+          "level": "architect",
+          "tags": ["Vite", "Turbopack", "Rspack", "Webpack"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "vite-plugin-development": {
+          "title": "Vite 插件开发实战",
+          "level": "senior",
+          "tags": ["Vite", "插件", "Rollup", "虚拟模块"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "monorepo-build-optimization": {
+          "title": "Monorepo 构建优化",
+          "level": "architect",
+          "tags": ["Monorepo", "Turborepo", "Nx", "pnpm"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        },
+        "rolldown-and-future": {
+          "title": "Rolldown 与构建工具未来",
+          "level": "architect",
+          "tags": ["Rolldown", "Oxc", "Vite 6", "Rust"],
+          "difficulty": "expert",
+          "updated": "2026-09-10"
+        }
+      }
+    },
+    "levels": {
+      "label": "学习路径导航",
+      "docs": {
+        "junior": {
+          "title": "初级工程师（P4-P5）学习路径",
+          "level": "junior",
+          "tags": ["初级", "P4", "P5", "学习路径"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        },
+        "intermediate": {
+          "title": "中级工程师（P5-P6）学习路径",
+          "level": "intermediate",
+          "tags": ["中级", "P5", "P6", "学习路径"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "senior": {
+          "title": "高级工程师（P6-P7）学习路径",
+          "level": "senior",
+          "tags": ["高级", "P6", "P7", "学习路径"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "architect": {
+          "title": "架构师（P8）学习路径",
+          "level": "architect",
+          "tags": ["架构师", "P8", "学习路径"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "manager": {
+          "title": "技术主管（TL）学习路径",
+          "level": "manager",
+          "tags": ["技术主管", "TL", "管理", "学习路径"],
+          "difficulty": "hard",
+          "updated": "2026-09-10"
+        },
+        "flutter": {
+          "title": "Flutter 学习路径",
+          "level": "all",
+          "tags": ["Flutter", "Dart", "跨端", "学习路径"],
+          "difficulty": "medium",
+          "updated": "2026-09-10"
+        }
+      }
+    }
+  }
+}

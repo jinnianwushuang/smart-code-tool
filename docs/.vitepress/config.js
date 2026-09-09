@@ -21,6 +21,10 @@ export default defineConfig({
   ignoreDeadLinks: [/^https?:\/\/localhost/, /^https?:\/\/127.0.0.1/],
   // 头信息
   head: [['link', { rel: 'icon', href: 'doc-assets/logo/icons8-light-on-96.png' }]],
+
+  // 启用 VitePress 内置暗色模式切换（导航栏太阳/月亮按钮），默认暗色
+  appearance: 'dark',
+
   // 自定义主题配置
   themeConfig: {
     ...themeConfig,
@@ -38,8 +42,10 @@ export default defineConfig({
     },
   },
   markdown: {
-    // Shiki 语法高亮配置
-    theme: 'github-dark',
-    // languages: ['excel'],
+    // Shiki 语法高亮配置 - 明暗双主题
+    themes: {
+      light: 'github-light',
+      dark: 'github-dark',
+    },
   },
 })

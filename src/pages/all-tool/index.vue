@@ -9,13 +9,14 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { codeToolTabs, codeToolDefaultTab } from 'src/pages/code-tool/tool-registry.js'
 import { commonToolTabs } from 'src/pages/common-tool/tool-registry.js'
+import { usePersistentTab } from 'src/pages/use-persistent-tab.js'
 
 // 自动聚合所有模块的工具
 const all_tabs = [...codeToolTabs, ...commonToolTabs]
-const current_tab_name = ref(codeToolDefaultTab)
+const current_tab_name = usePersistentTab(all_tabs, codeToolDefaultTab, 'all')
 const current_component = computed(() => {
   const current_tab = all_tabs.find((t) => t.name === current_tab_name.value)
   return current_tab ? current_tab.component : null

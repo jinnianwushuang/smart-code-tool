@@ -2,7 +2,7 @@
   <a-layout style="height: 100vh">
     <LayoutHeader />
     <a-layout>
-      <a-layout-sider width="200" style="background: #fff">
+      <a-layout-sider width="200" :style="{ background: isDarkTheme ? undefined : '#fff' }">
         <a-menu
           v-model:selectedKeys="selectedKeys2"
           v-model:openKeys="openKeys"
@@ -17,7 +17,12 @@
         <a-breadcrumb style="margin: 16px 0">
           <a-breadcrumb-item v-for="item in title_arr" :key="item">{{ item }}</a-breadcrumb-item>
         </a-breadcrumb>
-        <a-layout-content ref="scrollContainer" class="layout-content" @scroll="handle_scroll">
+        <a-layout-content
+          ref="scrollContainer"
+          class="layout-content"
+          :class="{ dark: isDarkTheme }"
+          @scroll="handle_scroll"
+        >
           <router-view></router-view>
 
           <!-- 滚动到顶部按钮 -->
@@ -38,6 +43,7 @@ import { ref, onMounted, watch, useTemplateRef } from 'vue'
 import { VerticalAlignTopOutlined } from '@ant-design/icons-vue'
 // import { sideMenuList } from './config/config.js'
 import LayoutHeader from 'src/layout/compoent/layout-header/layout-header.vue'
+import { isDarkTheme } from 'src/output/common/project-common.js'
 
 import { useGlobalState } from 'src/output/common/composable-common.js'
 import { menu_vue_test } from 'src/router/routes/module/vue-test.js'
