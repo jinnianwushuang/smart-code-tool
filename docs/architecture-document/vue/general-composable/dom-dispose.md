@@ -3,7 +3,7 @@ title: DOM引用清理
 order: 11
 ---
 
-## DOM引用清理
+# DOM引用清理
 
 这份笔记整理了 Vue 3.5+ 推出的 `useTemplateRef` 与传统 `ref` 在 DOM 引用管理上的核心差异，以及在面对第三方库（如 ECharts, Swiper）时的副作用销毁最佳实践。
 

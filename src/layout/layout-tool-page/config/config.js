@@ -14,7 +14,12 @@ export const menuList = [
     label: '技术导航',
     separator: false,
   },
-
+  {
+    icon: () => h(CodeOutlined),
+    key: 'all-tool',
+    label: '所有工具',
+    separator: true,
+  },
   {
     icon: () => h(CodeOutlined),
     key: 'code-tool',

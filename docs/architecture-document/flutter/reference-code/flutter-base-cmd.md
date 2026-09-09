@@ -3,7 +3,7 @@ title: Flutter 基础命令
 order: 144
 ---
 
-## Flutter 基础命令
+# Flutter 基础命令
 
 这份文档涵盖了 **Flutter** 开发中最常用的 CLI 命令，以及针对 Android 和 iOS 平台的**打包发布**流程。
 

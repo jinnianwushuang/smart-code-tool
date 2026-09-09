@@ -8,8 +8,8 @@
 
 ### 1. 新增文件
 
-- **`build.mjs`** - 生产环境构建脚本
-- **`dev.mjs`** - 开发环境启动脚本
+- **`scripts/build.mjs`** - 生产环境构建脚本
+- **`scripts/dev.mjs`** - 开发环境启动脚本
 
 ### 2. 依赖变更
 
@@ -39,10 +39,10 @@ devDependencies:
 ```json
 {
   "scripts": {
-    "dev-1": "zx dev.mjs",
-    "dev": "zx dev.mjs",
-    "build-1": "zx build.mjs",
-    "build": "zx build.mjs"
+    "dev-1": "zx scripts/dev.mjs",
+    "dev": "zx scripts/dev.mjs",
+    "build-1": "zx scripts/build.mjs",
+    "build": "zx scripts/build.mjs"
   }
 }
 ```
@@ -149,11 +149,11 @@ GitHub Actions 会自动使用新的构建命令，无需修改工作流配置�
   run: pnpm run build
 ```
 
-这会自动执行 `zx build.mjs` 脚本。
+这会自动执行 `zx scripts/build.mjs` 脚本。
 
 ## 📝 自定义构建脚本
 
-如果需要添加新的构建步骤，只需编辑 `build.mjs`：
+如果需要添加新的构建步骤，只需编辑 `scripts/build.mjs`：
 
 ```javascript
 #!/usr/bin/env zx
@@ -193,8 +193,8 @@ pnpm add -g zx
 
 ```bash
 # 赋予执行权限
-chmod +x build.mjs
-chmod +x dev.mjs
+chmod +x scripts/build.mjs
+chmod +x scripts/dev.mjs
 ```
 
 ## 📚 参考资源

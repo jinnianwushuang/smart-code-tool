@@ -24,6 +24,12 @@ export const docs = [
         desc: '专注于 Web 标准和现代 HTTP 策略的全栈 UI 框架。',
       },
       {
+        name: 'Expo',
+        url: 'https://expo.dev',
+        tag: 'React Native',
+        desc: 'React Native 官方推荐的应用开发平台,提供开箱即用的工具链与构建服务。',
+      },
+      {
         name: 'React Router',
         url: 'https://reactrouter.com',
         tag: 'Router',

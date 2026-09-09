@@ -42,3 +42,6 @@ src/output
 # VitePress
 docs/.vitepress/cache
 docs/.vitepress/dist
+
+# PDF export output
+pdf-output

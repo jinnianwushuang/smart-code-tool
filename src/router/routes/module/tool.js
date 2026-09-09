@@ -22,6 +22,12 @@ export const routes_tool = [
         meta: { title: '技术导航', icon: () => h(HomeOutlined) },
         component: () => import('src/pages/domain-guide/domain-guide.vue'),
       },
+       {
+        path: 'all-tool',
+        name: 'all-tool',
+        meta: { title: '所有工具', icon: () => h(FileTextOutlined) },
+        component: () => import('src/pages/all-tool/index.vue'),
+      },
       {
         path: 'code-tool',
         name: 'code-tool',

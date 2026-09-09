@@ -3,7 +3,7 @@ title: VITE import.meta.glob 封装
 order: 2
 ---
 
-## VITE import.meta.glob 封装
+# VITE import.meta.glob 封装
 
 在 Vite 中，`import.meta.glob` 是一个极其强大的功能，它允许你从文件系统中导入多个模块。在应用开发中，通过对其进行封装，可以实现诸如**自动注册路由**、**全局组件加载**、**国际化配置自动化**等功能，极大地提升开发效率。
 
