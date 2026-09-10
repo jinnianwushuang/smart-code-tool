@@ -11,6 +11,8 @@
         collapsible
         width="200"
         :theme="isDarkTheme ? 'dark' : 'light'"
+        class="app-sider"
+        :class="{ dark: isDarkTheme }"
         breakpoint="lg"
       >
         <a-menu
@@ -121,6 +123,69 @@ const scroll_to_top = () => {
 }
 </script>
 <style lang="scss" scoped>
+/* 侧边栏主题适配：覆盖 Ant Design 默认色，跟随应用暗/亮模式 */
+.app-sider {
+  transition: background-color 0.3s ease;
+
+  /* 亮色模式 */
+  :deep(.ant-layout-sider-children) {
+    background: #fff;
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  :deep(.ant-menu) {
+    background: transparent;
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  :deep(.ant-menu-item) {
+    color: rgba(0, 0, 0, 0.65);
+
+    &:hover {
+      color: var(--q-primary, #1976d2);
+      background: rgba(25, 118, 210, 0.06);
+    }
+  }
+
+  :deep(.ant-menu-item-selected) {
+    color: var(--q-primary, #1976d2);
+    background: rgba(25, 118, 210, 0.1);
+  }
+
+  /* 暗色模式 */
+  &.dark {
+    :deep(.ant-layout-sider-children) {
+      background: #141414;
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    :deep(.ant-menu) {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    :deep(.ant-menu-item) {
+      color: rgba(255, 255, 255, 0.65);
+
+      &:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    :deep(.ant-menu-item-selected) {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* 折叠触发器 */
+    :deep(.ant-layout-sider-trigger) {
+      background: #1f1f1f;
+      color: rgba(255, 255, 255, 0.65);
+    }
+  }
+}
+
 .layout-content {
   padding: 24px;
   margin: 0;
