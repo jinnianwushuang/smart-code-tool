@@ -6,13 +6,18 @@ console.log(chalk.blue('\n🚀 Smart Code Tool Development Mode\n'))
 console.log(chalk.gray('Starting development servers...\n'))
 
 try {
-  // Step 1: 创建入口文件
-  console.log(chalk.yellow('📝 Step 1: Creating entry files...'))
+  // Step 1: 清理残留端口占用
+  console.log(chalk.yellow('🧹 Step 1: Cleaning ports...'))
+  await $`kill -9 $(lsof -ti :23330 -ti :23000 -ti :23350) 2>/dev/null || true`
+  console.log(chalk.green('✓ Ports 23330 & 23000 & 23350 cleared\n'))
+
+  // Step 2: 创建入口文件
+  console.log(chalk.yellow('📝 Step 2: Creating entry files...'))
   await $`node ./job/entry/index.js`
   console.log(chalk.green('✓ Entry files created\n'))
 
-  // Step 2: 并行启动三个开发服务器
-  console.log(chalk.yellow('🔧 Step 2: Starting development servers...'))
+  // Step 3: 并行启动三个开发服务器
+  console.log(chalk.yellow('🔧 Step 3: Starting development servers...'))
   console.log(chalk.gray('   - Docs (main): http://localhost:23000/smart-code-tool/'))
   console.log(
     chalk.gray(
