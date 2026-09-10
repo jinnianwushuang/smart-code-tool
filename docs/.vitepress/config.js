@@ -17,8 +17,13 @@ export default defineConfig({
   // 文档项目为主项目，直接输出到 dist 根目录
   outDir: '../dist',
 
-  // 忽略死链接检查(允许 localhost 等本地开发链接)
-  ignoreDeadLinks: [/^https?:\/\/localhost/, /^https?:\/\/127.0.0.1/],
+  // 忽略死链接检查(允许 localhost 等本地开发链接，以及子应用 iframe 路径)
+  ignoreDeadLinks: [
+    /^https?:\/\/localhost/,
+    /^https?:\/\/127\.0\.0\.1/,
+    '/smart-code-tool/vue-test-app/',
+    '/smart-code-tool/code-tool-app/',
+  ],
   // 头信息
   head: [['link', { rel: 'icon', href: 'doc-assets/logo/icons8-light-on-96.png' }]],
 
@@ -37,8 +42,9 @@ export default defineConfig({
   vite: {
     ...vite,
     server: {
+      ...vite.server,
       host: '0.0.0.0',
-      port: 23340,
+      port: 23000,
     },
   },
   markdown: {

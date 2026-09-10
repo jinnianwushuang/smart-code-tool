@@ -17,7 +17,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
 
 // ─── 配置 ───────────────────────────────────────────────────────────────────────
-const VITEPRESS_PORT = 23340
+const VITEPRESS_PORT = 23000
 const BASE_PATH = '/smart-code-tool' // 与 docs/.vitepress/config.js 中 base 保持一致
 const BASE_URL = `http://localhost:${VITEPRESS_PORT}${BASE_PATH}`
 const OUTPUT_DIR = resolve(ROOT, 'pdf-output')
@@ -192,7 +192,12 @@ async function renderPages(pages, browser) {
         return Promise.all(
           Array.from(document.images)
             .filter((img) => !img.complete)
-            .map((img) => new Promise((res) => { img.onload = img.onerror = res }))
+            .map(
+              (img) =>
+                new Promise((res) => {
+                  img.onload = img.onerror = res
+                }),
+            ),
         )
       })
 
@@ -202,7 +207,8 @@ async function renderPages(pages, browser) {
         margin: { top: '20mm', bottom: '20mm', left: '15mm', right: '15mm' },
         displayHeaderFooter: true,
         headerTemplate: `<div style="width:100%;text-align:center;font-size:9px;color:#999;">${title}</div>`,
-        footerTemplate: '<div style="width:100%;text-align:center;font-size:9px;color:#999;"><span class="pageNumber"></span> / <span class="totalPages"></span></div>',
+        footerTemplate:
+          '<div style="width:100%;text-align:center;font-size:9px;color:#999;"><span class="pageNumber"></span> / <span class="totalPages"></span></div>',
       })
 
       pdfBuffers.push({ title, group, link, label, buffer: pdfBuffer })

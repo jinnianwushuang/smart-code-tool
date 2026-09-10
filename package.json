@@ -17,7 +17,7 @@
     "pdf:export:psychology": "node scripts/pdf-export.mjs --group psychology",
     "pdf:export:architecture": "node scripts/pdf-export.mjs --group architecture",
     "pdf": "zx scripts/pdf-export-all.mjs",
-    "clean:ports": "kill -9 $(lsof -ti :23330 -ti :23340) 2>/dev/null; echo '✅ Ports 23330 & 23340 cleared'"
+    "clean:ports": "kill -9 $(lsof -ti :23330 -ti :23000 -ti :23350) 2>/dev/null; echo '✅ Ports 23330 & 23000 & 23350 cleared'"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",

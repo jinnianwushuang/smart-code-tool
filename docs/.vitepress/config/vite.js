@@ -28,4 +28,23 @@ export const vite = {
   define: {
     __APP_BUILD_TIME__: JSON.stringify(formatBuildTime()),
   },
+  server: {
+    // 开发环境代理子应用到各自的开发服务器，实现统一入口
+    proxy: {
+      '/smart-code-tool/code-tool-app/': {
+        target: 'http://localhost:23330',
+        changeOrigin: true,
+      },
+      '/smart-code-tool/vue-test-app/': {
+        target: 'http://localhost:23350',
+        changeOrigin: true,
+        bypass(req) {
+          // 不代理 .md 文件和 Vite 内部请求（?import、?direct、HMR 等）
+          const url = req.url || ''
+          if (url.includes('.md')) return false
+          if (url.includes('?import') || url.includes('?direct')) return false
+        },
+      },
+    },
+  },
 }
