@@ -107,6 +107,14 @@ export const writeJson = async (filePath, data, options = { space: 2 }) => {
   log('success', `Wrote JSON file: ${fullPath}`, options.log)
 }
 
+export const copyFile = async (srcPath, destPath, options = {}) => {
+  const fullSrc = getFullPath(srcPath)
+  const fullDest = getFullPath(destPath)
+  await fs.ensureDir(path.dirname(fullDest))
+  await fs.copy(fullSrc, fullDest)
+  log('success', `Copied: ${fullSrc} -> ${fullDest}`, options.log)
+}
+
 export const remove = async (targetPath, options = {}) => {
   const fullPath = getFullPath(targetPath)
   await fs.remove(fullPath)

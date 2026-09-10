@@ -10,7 +10,7 @@ import timezone from 'dayjs/plugin/timezone'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-// 项目根目录（配置文件在 entries/vue-test/ 下，回退两级）
+// 项目根目录（配置文件在 entries/vue-test-app/ 下，回退两级）
 const projectRoot = fileURLToPath(new URL('../..', import.meta.url))
 
 // VUE 架构验证 - 独立项目 Vite 配置
@@ -21,7 +21,7 @@ export default defineConfig(async () => {
     build: {
       outDir: `${projectRoot}/dist/vue-test-app`,
       rollupOptions: {
-        input: `${projectRoot}/index-vue-test.html`,
+        input: `${projectRoot}/entries/vue-test-app/index.html`,
       },
     },
     define: {
@@ -40,11 +40,11 @@ export default defineConfig(async () => {
     resolve: {
       alias: {
         src: `${projectRoot}/src`,
-        project: `${projectRoot}/project/vue-test`,
+        project: `${projectRoot}/project/vue-test-app`,
       },
     },
     server: {
-      host: '0.0.0.0',
+      host: '127.0.0.1',
       port: 23350,
     },
   }

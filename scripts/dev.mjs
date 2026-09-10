@@ -15,15 +15,19 @@ try {
   console.log(chalk.yellow('🔧 Step 2: Starting development servers...'))
   console.log(chalk.gray('   - Docs (main): http://localhost:23000/smart-code-tool/'))
   console.log(
-    chalk.gray('   - Code-Tool app: http://localhost:23330/smart-code-tool/code-tool-app/'),
+    chalk.gray(
+      '   - Code-Tool app: http://localhost:23330/smart-code-tool/code-tool-app/entries/code-tool-app/',
+    ),
   )
   console.log(
-    chalk.gray('   - Vue-Test app: http://localhost:23350/smart-code-tool/vue-test-app/\n'),
+    chalk.gray(
+      '   - Vue-Test app: http://localhost:23350/smart-code-tool/vue-test-app/entries/vue-test-app/',
+    ),
   )
-
+  console.log('\n')
   // 使用 Promise.all 并行启动三个开发服务器
-  const vueDev = $`vite --config entries/code-tool/vite.config.js`
-  const vueTestDev = $`vite --config entries/vue-test/vite.config.js`
+  const vueDev = $`vite --config entries/code-tool-app/vite.config.js`
+  const vueTestDev = $`vite --config entries/vue-test-app/vite.config.js`
   const docsDev = $`vitepress dev docs`
 
   // 等待三个进程（它们会持续运行）

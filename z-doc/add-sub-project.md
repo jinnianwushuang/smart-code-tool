@@ -31,27 +31,30 @@ smart-code-tool/
 │   ├── output/                       # barrel export 层
 │   └── standardization/              # 标准化模板
 │
-├── project/<项目名>/                  # 子项目特有代码（标准 Vue3 src 结构）
+├── project/<项目名>-app/              # 子项目特有代码（标准 Vue3 src 结构）
 │   ├── main.js                       # 应用入口
 │   ├── router/index.js               # 路由入口
 │   ├── router/routes/<路由文件>       # 路由定义
 │   ├── layout/layout.vue             # 布局组件
 │   └── pages/                        # 页面组件
 │
-├── entries/<项目名>/vite.config.js    # Vite 配置
-├── index-<项目名>.html                # HTML 入口（项目根目录）
+├── entries/<项目名>-app/              # Vite 配置 + HTML 入口
+│   ├── vite.config.js                # Vite 配置
+│   └── index.html                    # HTML 入口
 ├── docs/app-iframe/<项目名>/index.md  # VitePress iframe 嵌入页
 │
 ├── scripts/dev.mjs                    # 开发脚本
 ├── scripts/build.mjs                  # 构建脚本
-└── dist/<项目名>/                     # 构建输出
+├── job/post-build/move-entry-html.js  # 构建后处理（移动入口 HTML）
+└── dist/<项目名>-app/                 # 构建输出
 ```
 
 ### 核心机制
 
 - **双 alias**：Vite 配置中 `src` → 共享内核，`project` → 当前子项目目录
 - **Vite root**：统一指向 `projectRoot`（项目根目录）
-- **HTML 入口**：在项目根目录，命名 `index-<项目名>.html`，构建输出保持源文件名不变
+- **HTML 入口**：在 `entries/<项目名>-app/index.html`，构建后由 post-build 脚本移到 dist 根目录
+- **构建后处理**：`job/post-build/move-entry-html.js` 将嵌套路径的 HTML 移到 dist 输出根目录
 - **iframe 嵌入**：子应用通过 VitePress 的 iframe 页面展示，布局组件需检测 iframe 并隐藏头部
 
 ---
@@ -61,7 +64,7 @@ smart-code-tool/
 创建以下目录和文件：
 
 ```
-project/<项目名>/
+project/<项目名>-app/
 ├── main.js
 ├── router/
 │   ├── index.js
@@ -114,7 +117,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { routes_<项目名变量> } from './routes/<路由文件>'
 
 const router = createRouter({
-  history: createWebHistory('/smart-code-tool/<项目名>/'),
+  history: createWebHistory('/smart-code-tool/<项目名>-app/'),
   routes: [
     { path: '/', redirect: '/<项目名>' },
     ...routes_<项目名变量>,
@@ -175,7 +178,7 @@ onMounted(() => {
 
 ## 步骤 2：创建 HTML 入口
 
-在项目根目录创建 `index-<项目名>.html`：
+在 `entries/<项目名>-app/` 目录下创建 `index.html`：
 
 ```html
 <!doctype html>
@@ -188,18 +191,18 @@ onMounted(() => {
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="./project/<项目名>/main.js"></script>
+    <script type="module" src="../../project/<项目名>-app/main.js"></script>
   </body>
 </html>
 ```
 
-> `src` 路径相对于项目根目录（即 Vite root）。
+> `src` 路径相对于项目根目录（即 Vite root），从 `entries/<项目名>-app/` 回退两级。
 
 ---
 
 ## 步骤 3：创建 Vite 配置
 
-创建 `entries/<项目名>/vite.config.js`：
+创建 `entries/<项目名>-app/vite.config.js`：
 
 ```js
 import { fileURLToPath, URL } from 'node:url'
@@ -213,17 +216,17 @@ import timezone from 'dayjs/plugin/timezone'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-// 项目根目录（配置文件在 entries/<项目名>/ 下，回退两级）
+// 项目根目录（配置文件在 entries/<项目名>-app/ 下，回退两级）
 const projectRoot = fileURLToPath(new URL('../..', import.meta.url))
 
 export default defineConfig(async () => {
   return {
     root: projectRoot,
-    base: '/smart-code-tool/<项目名>/',
+    base: '/smart-code-tool/<项目名>-app/',
     build: {
-      outDir: `${projectRoot}/dist/<项目名>`,
+      outDir: `${projectRoot}/dist/<项目名>-app`,
       rollupOptions: {
-        input: `${projectRoot}/index-<项目名>.html`,
+        input: `${projectRoot}/entries/<项目名>-app/index.html`,
       },
     },
     define: {
@@ -240,11 +243,11 @@ export default defineConfig(async () => {
     resolve: {
       alias: {
         src: `${projectRoot}/src`,
-        project: `${projectRoot}/project/<项目名>`,
+        project: `${projectRoot}/project/<项目名>-app`,
       },
     },
     server: {
-      host: '0.0.0.0',
+      host: '127.0.0.1',
       port: <端口>,
     },
   }
@@ -253,16 +256,16 @@ export default defineConfig(async () => {
 
 ### 关键配置项
 
-| 配置项                      | 值                           | 说明                            |
-| --------------------------- | ---------------------------- | ------------------------------- |
-| `root`                      | `projectRoot`                | 固定，指向项目根目录            |
-| `base`                      | `/smart-code-tool/<项目名>/` | 子应用的基础路径                |
-| `build.outDir`              | `dist/<项目名>`              | 构建输出目录                    |
-| `build.rollupOptions.input` | `index-<项目名>.html`        | HTML 入口（构建后保持源文件名） |
-| `resolve.alias.src`         | `src`                        | 指向共享内核                    |
-| `resolve.alias.project`     | `project/<项目名>`           | 指向子项目目录                  |
-| `server.host`               | `0.0.0.0`                    | 必须，确保 IPv4+IPv6 都可访问   |
-| `server.port`               | `<端口>`                     | 分配不冲突的端口                |
+| 配置项                      | 值                                | 说明                        |
+| --------------------------- | --------------------------------- | --------------------------- |
+| `root`                      | `projectRoot`                     | 固定，指向项目根目录        |
+| `base`                      | `/smart-code-tool/<项目名>-app/`  | 子应用的基础路径            |
+| `build.outDir`              | `dist/<项目名>-app`               | 构建输出目录                |
+| `build.rollupOptions.input` | `entries/<项目名>-app/index.html` | HTML 入口（entries 目录下） |
+| `resolve.alias.src`         | `src`                             | 指向共享内核                |
+| `resolve.alias.project`     | `project/<项目名>-app`            | 指向子项目目录              |
+| `server.host`               | `127.0.0.1`                       | 本地回环地址                |
+| `server.port`               | `<端口>`                          | 分配不冲突的端口            |
 
 ---
 
@@ -311,11 +314,9 @@ function onIframeLoad() {
 
 onMounted(() => {
   const isDev = import.meta.env.DEV
-  // dev 指向子项目 dev server，prod 指向同域构建产物
-  // 构建输出保持源文件名不变，dev/prod 文件名一致
   iframeSrc.value = isDev
-    ? 'http://localhost:<端口>/smart-code-tool/<项目名>/index-<项目名>.html'
-    : '/smart-code-tool/<项目名>/index-<项目名>.html'
+    ? 'http://localhost:<端口>/smart-code-tool/<项目名>-app/entries/<项目名>-app/index.html'
+    : '/smart-code-tool/<项目名>-app/index.html'
 
   // 页面重新可见时，重置状态让 iframe 重新同步主题后再显示
   document.addEventListener('visibilitychange', () => {
@@ -335,7 +336,7 @@ onMounted(() => {
 编辑 `docs/.vitepress/config/vite.js`，在 `proxy` 对象中新增：
 
 ```js
-'/smart-code-tool/<项目名>/': {
+'/smart-code-tool/<项目名>-app/': {
   target: 'http://localhost:<端口>',
   changeOrigin: true,
 },
@@ -350,13 +351,17 @@ onMounted(() => {
 1. 新增 Vite 启动命令：
 
    ```js
-   const <项目名变量>Dev = $`vite --config entries/<项目名>/vite.config.js`
+   const <项目名变量>Dev = $`vite --config entries/<项目名>-app/vite.config.js`
    ```
 
 2. 新增 console 输出：
 
    ```js
-   console.log(chalk.gray('   - <项目标题>: http://localhost:<端口>/smart-code-tool/<项目名>/'))
+   console.log(
+     chalk.gray(
+       '   - <项目标题>: http://localhost:<端口>/smart-code-tool/<项目名>-app/entries/<项目名>/',
+     ),
+   )
    ```
 
 3. 加入 `Promise.all` 数组：
@@ -368,11 +373,11 @@ onMounted(() => {
 
 ## 步骤 7：更新构建脚本
 
-编辑 `scripts/build.mjs`，在 VitePress 构建步骤之后新增：
+编辑 `scripts/build.mjs`，在已有构建步骤之后新增：
 
 ```js
-console.log(chalk.yellow('🔨 Step N: Building <项目名> application → dist/<项目名>/...'))
-await $`vite build --config entries/<项目名>/vite.config.js`
+console.log(chalk.yellow('🔨 Step N: Building <项目名> application → dist/<项目名>-app/...'))
+await $`vite build --config entries/<项目名>-app/vite.config.js`
 console.log(chalk.green('✓ <项目标题> application built\n'))
 ```
 
@@ -380,7 +385,20 @@ console.log(chalk.green('✓ <项目标题> application built\n'))
 
 ---
 
-## 步骤 8：更新 VitePress 导航（可选）
+## 步骤 8：更新构建后处理脚本
+
+编辑 `job/post-build/move-entry-html.js`，新增入口 HTML 的移动和清理：
+
+```js
+await copyFile('dist/<项目名>-app/entries/<项目名>-app/index.html', 'dist/<项目名>-app/index.html')
+await remove('dist/<项目名>-app/entries/<项目名>-app/index.html')
+```
+
+> 构建后 Vite 会将 `entries/<项目名>-app/index.html` 输出到 `dist/<项目名>-app/entries/<项目名>-app/index.html`，此脚本将其移到 dist 根目录并清理原文件。
+
+---
+
+## 步骤 9：更新 VitePress 导航（可选）
 
 如需在导航栏添加入口，编辑 `docs/.vitepress/config/nav.js`。
 
@@ -388,28 +406,29 @@ console.log(chalk.green('✓ <项目标题> application built\n'))
 
 ## 命名规范速查
 
-| 产物        | 命名规则                            | 示例                              |
-| ----------- | ----------------------------------- | --------------------------------- |
-| 子项目目录  | `project/<项目名>/`                 | `project/my-app/`                 |
-| Vite 配置   | `entries/<项目名>/vite.config.js`   | `entries/my-app/vite.config.js`   |
-| HTML 入口   | `index-<项目名>.html`（项目根目录） | `index-my-app.html`               |
-| base 路径   | `/smart-code-tool/<项目名>/`        | `/smart-code-tool/my-app/`        |
-| 构建输出    | `dist/<项目名>/`                    | `dist/my-app/`                    |
-| iframe 页面 | `docs/app-iframe/<项目名>/index.md` | `docs/app-iframe/my-app/index.md` |
-| 开发端口    | 不冲突的端口                        | `23360`                           |
+| 产物        | 命名规则                              | 示例                                |
+| ----------- | ------------------------------------- | ----------------------------------- |
+| 子项目目录  | `project/<项目名>-app/`               | `project/my-app-app/`               |
+| Vite 配置   | `entries/<项目名>-app/vite.config.js` | `entries/my-app-app/vite.config.js` |
+| HTML 入口   | `entries/<项目名>-app/index.html`     | `entries/my-app-app/index.html`     |
+| base 路径   | `/smart-code-tool/<项目名>-app/`      | `/smart-code-tool/my-app-app/`      |
+| 构建输出    | `dist/<项目名>-app/`                  | `dist/my-app-app/`                  |
+| iframe 页面 | `docs/app-iframe/<项目名>/index.md`   | `docs/app-iframe/my-app/index.md`   |
+| 开发端口    | 不冲突的端口                          | `23360`                             |
 
 ---
 
 ## Checklist
 
-- [ ] `project/<项目名>/` 目录创建（含 main.js、router/、layout/、pages/）
+- [ ] `project/<项目名>-app/` 目录创建（含 main.js、router/、layout/、pages/）
 - [ ] layout 组件添加 iframe 检测（`v-if="!isInIframe"` 隐藏头部）
-- [ ] `index-<项目名>.html` 创建在项目根目录
-- [ ] `entries/<项目名>/vite.config.js` 创建
+- [ ] `entries/<项目名>-app/index.html` 创建（HTML 入口）
+- [ ] `entries/<项目名>-app/vite.config.js` 创建
 - [ ] `docs/app-iframe/<项目名>/index.md` 创建
 - [ ] `docs/.vitepress/config/vite.js` 新增代理
 - [ ] `scripts/dev.mjs` 新增启动命令
 - [ ] `scripts/build.mjs` 新增构建步骤
+- [ ] `job/post-build/move-entry-html.js` 新增入口 HTML 移动/清理
 - [ ] 端口不冲突（现有：23000/23330/23350）
 - [ ] `pnpm dev` 验证开发环境
 - [ ] `pnpm build` 验证构建产物

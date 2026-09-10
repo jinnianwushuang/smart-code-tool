@@ -12,7 +12,7 @@ import timezone from 'dayjs/plugin/timezone'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-// 项目根目录（配置文件在 entries/code-tool/ 下，回退两级）
+// 项目根目录（配置文件在 entries/code-tool-app/ 下，回退两级）
 const projectRoot = fileURLToPath(new URL('../..', import.meta.url))
 
 // https://quasar.dev/start/vite-plugin
@@ -25,7 +25,7 @@ export default defineConfig(async () => {
     build: {
       outDir: `${projectRoot}/dist/code-tool-app`,
       rollupOptions: {
-        input: `${projectRoot}/index-code-tool.html`,
+        input: `${projectRoot}/entries/code-tool-app/index.html`,
       },
     },
 
@@ -48,11 +48,11 @@ export default defineConfig(async () => {
     resolve: {
       alias: {
         src: `${projectRoot}/src`,
-        project: `${projectRoot}/project/code-tool`,
+        project: `${projectRoot}/project/code-tool-app`,
       },
     },
     server: {
-      host: '0.0.0.0',
+      host: '127.0.0.1',
       port: 23330,
     },
   }
