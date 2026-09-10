@@ -143,11 +143,20 @@ export default router
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { isDarkTheme } from 'src/output/common/project-common.js'
 
-// iframe 检测：嵌入 VitePress 时隐藏自身头部，避免双重导航栏
-const isInIframe = ref(false)
+// 同步检测 iframe 嵌入，避免 onMounted 时才隐藏头部导致的闪烁
+const isInIframe = ref(window.self !== window.top)
+
 onMounted(() => {
-  isInIframe.value = window.self !== window.top
+  // 监听 VitePress 父页面的主题切换消息，无需重载即可同步主题
+  if (isInIframe.value) {
+    window.addEventListener('message', (event) => {
+      if (event.data?.type === 'theme-change') {
+        isDarkTheme.value = event.data.theme === 'dark'
+      }
+    })
+  }
 })
 </script>
 
@@ -282,6 +291,15 @@ import { ref, onMounted } from 'vue'
 
 const iframeSrc = ref('')
 
+// 向 iframe 推送当前主题，解决页面缓存后主题不同步的问题
+function syncThemeToIframe() {
+  const iframe = document.querySelector('iframe')
+  if (iframe?.contentWindow) {
+    const theme = localStorage.getItem('app-theme-mode') || 'dark'
+    iframe.contentWindow.postMessage({ type: 'theme-change', theme }, '*')
+  }
+}
+
 onMounted(() => {
   const isDev = import.meta.env.DEV
   // dev 指向子项目 dev server，prod 指向同域构建产物
@@ -289,6 +307,11 @@ onMounted(() => {
   iframeSrc.value = isDev
     ? 'http://localhost:<端口>/smart-code-tool/<项目名>/index-<项目名>.html'
     : '/smart-code-tool/<项目名>/index-<项目名>.html'
+
+  // 页面可见时同步主题（处理 VitePress 页面缓存场景）
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) syncThemeToIframe()
+  })
 })
 </script>
 ```

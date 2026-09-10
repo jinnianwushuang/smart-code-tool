@@ -27,8 +27,11 @@ export default defineConfig({
   // 头信息
   head: [['link', { rel: 'icon', href: 'doc-assets/logo/icons8-light-on-96.png' }]],
 
-  // 启用 VitePress 内置暗色模式切换（导航栏太阳/月亮按钮），默认暗色
-  appearance: 'dark',
+  // 启用 VitePress 内置暗色模式切换（导航栏太阳/月亮按钮），统一使用 app-theme-mode 键
+  appearance: {
+    key: 'app-theme-mode',
+    default: 'dark',
+  },
 
   // 自定义主题配置
   themeConfig: {

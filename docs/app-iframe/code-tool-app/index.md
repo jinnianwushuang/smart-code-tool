@@ -17,12 +17,26 @@ aside: false
 import { ref, onMounted } from 'vue'
 
 const toolSrc = ref('')
+const iframeRef = ref(null)
+
+// 向 iframe 推送当前主题，解决页面缓存后主题不同步的问题
+function syncThemeToIframe() {
+  const iframe = document.querySelector('iframe')
+  if (iframe?.contentWindow) {
+    const theme = localStorage.getItem('app-theme-mode') || 'dark'
+    iframe.contentWindow.postMessage({ type: 'theme-change', theme }, '*')
+  }
+}
 
 onMounted(() => {
-  // 开发环境指向 Vue 开发服务器，生产环境使用相对路径（同域部署）
   const isDev = import.meta.env.DEV
   toolSrc.value = isDev
     ? 'http://localhost:23330/smart-code-tool/code-tool-app/index-code-tool.html'
     : '/smart-code-tool/code-tool-app/index-code-tool.html'
+
+  // 页面可见时同步主题（处理 VitePress 页面缓存场景）
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) syncThemeToIframe()
+  })
 })
 </script>

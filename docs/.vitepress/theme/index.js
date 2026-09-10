@@ -10,19 +10,31 @@ export default {
     // 在应用启动时同步主题
     syncThemeFromURL()
 
-    // 监听路由变化，确保主题同步
     if (typeof window !== 'undefined') {
       window.addEventListener('popstate', syncThemeFromURL)
 
       // 监听来自主应用的主题变更消息
       window.addEventListener('message', handleThemeMessage)
+
+      // 监听 VitePress 自身主题变化，广播给 iframe 子应用
+      const observer = new MutationObserver(() => {
+        const isDark = document.documentElement.classList.contains('dark')
+        const themeMsg = { type: 'theme-change', theme: isDark ? 'dark' : 'light' }
+        document.querySelectorAll('iframe').forEach((iframe) => {
+          iframe.contentWindow?.postMessage(themeMsg, '*')
+        })
+      })
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class'],
+      })
     }
   },
 }
 
 /**
  * 从 localStorage 或 URL 参数中读取主题状态并应用
- * 优先级：URL 参数 > localStorage > 主应用 localStorage > 系统偏好
+ * 优先级：URL 参数 > 统一 localStorage > 系统偏好
  */
 function syncThemeFromURL() {
   if (typeof window === 'undefined') return
@@ -35,24 +47,20 @@ function syncThemeFromURL() {
     return
   }
 
-  // 2. 读 VitePress 自身的 localStorage
-  const vpSaved = localStorage.getItem('vitepress-theme-appearance')
-  if (vpSaved === 'dark' || vpSaved === 'light') {
-    applyTheme(vpSaved)
+  // 2. 读统一的主题存储键
+  const saved = localStorage.getItem(THEME_KEY)
+  if (saved === 'dark' || saved === 'light') {
+    applyTheme(saved)
     return
   }
 
-  // 3. 读主应用的 localStorage（跨应用同步）
-  const appSaved = localStorage.getItem('app-theme-mode')
-  if (appSaved === 'dark' || appSaved === 'light') {
-    applyTheme(appSaved)
-    return
-  }
-
-  // 4. 回退到系统偏好
+  // 3. 回退到系统偏好
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
   applyTheme(prefersDark ? 'dark' : 'light')
 }
+
+// 统一主题存储键，所有应用共用
+const THEME_KEY = 'app-theme-mode'
 
 /**
  * 应用主题到 VitePress
@@ -65,10 +73,10 @@ function applyTheme(theme) {
 
   if (theme === 'dark') {
     html.classList.add('dark')
-    localStorage.setItem('vitepress-theme-appearance', 'dark')
+    localStorage.setItem(THEME_KEY, 'dark')
   } else {
     html.classList.remove('dark')
-    localStorage.setItem('vitepress-theme-appearance', 'light')
+    localStorage.setItem(THEME_KEY, 'light')
   }
 
   // 触发自定义事件，通知其他组件主题已更改

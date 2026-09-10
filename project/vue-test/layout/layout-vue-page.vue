@@ -92,11 +92,20 @@ const scroll_to_top = () => {
   el?.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-const isInIframe = ref(false)
+// 同步检测 iframe 嵌入，避免 onMounted 时才隐藏头部导致的闪烁
+const isInIframe = ref(window.self !== window.top)
 
 onMounted(() => {
-  isInIframe.value = window.self !== window.top
   check_route()
+
+  // 监听 VitePress 父页面的主题切换消息，无需重载即可同步主题
+  if (isInIframe.value) {
+    window.addEventListener('message', (event) => {
+      if (event.data?.type === 'theme-change') {
+        isDarkTheme.value = event.data.theme === 'dark'
+      }
+    })
+  }
 })
 
 const check_route = () => {

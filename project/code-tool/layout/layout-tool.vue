@@ -93,6 +93,15 @@ onMounted(() => {
   if (currentName !== targetName) {
     router.push({ name: targetName })
   }
+
+  // 监听 VitePress 父页面的主题切换消息，无需重载即可同步主题
+  if (isInIframe.value) {
+    window.addEventListener('message', (event) => {
+      if (event.data?.type === 'theme-change') {
+        isDarkTheme.value = event.data.theme === 'dark'
+      }
+    })
+  }
 })
 
 const handle_click_menu = ({ key }) => {
