@@ -32,7 +32,7 @@
 
 ---
 
-## 初级工程师（P4-P5）
+## 初级工程师 [P4-P5]
 
 | 文档                                                                                 | 层级   | 描述                               |
 | ------------------------------------------------------------------------------------ | ------ | ---------------------------------- |
@@ -60,7 +60,7 @@
 
 ---
 
-## 中级工程师（P5-P6）
+## 中级工程师 [P5-P6]
 
 | 文档                                                                                       | 层级         | 描述                                     |
 | ------------------------------------------------------------------------------------------ | ------------ | ---------------------------------------- |
@@ -118,6 +118,17 @@
 
 ---
 
+## 浏览器与网络 [P6-P7]
+
+| 文档                                                                                          | 层级   | 描述                            |
+| --------------------------------------------------------------------------------------------- | ------ | ------------------------------- |
+| [浏览器渲染管线 [P6-P7]](/interview/browser-and-network/rendering-pipeline)                   | senior | 样式计算→布局→分层→绘制→合成    |
+| [HTTP/3、WebTransport 与 QUIC [P6-P7]](/interview/browser-and-network/http3-and-webtransport) | senior | HTTP/3、WebTransport、QUIC 影响 |
+| [WebAssembly 在前端的应用 [P6-P7]](/interview/browser-and-network/wasm-frontend)              | senior | 图像处理、编解码、游戏引擎      |
+| [浏览器安全模型 [P6-P7]](/interview/browser-and-network/security-model)                       | senior | CSP、COOP/COEP、SRI、沙箱机制   |
+
+---
+
 ## Vue 深度 [P6-P7/P8]
 
 | 文档                                                                        | 层级      | 描述                               |
@@ -172,6 +183,38 @@
 
 ---
 
+## 框架对比与选型 [P6-P7/P8]
+
+| 文档                                                                                         | 层级      | 描述                               |
+| -------------------------------------------------------------------------------------------- | --------- | ---------------------------------- |
+| [Signals vs Virtual DOM [P6-P7]](/interview/framework-comparison/signal-vs-vdom)             | senior    | 技术路线之争                       |
+| [SSR/SSG/ISR 全栈方案对比 [P6-P7]](/interview/framework-comparison/ssr-fullstack-comparison) | senior    | Next/Nuxt/Astro/SvelteKit          |
+| [2026 元框架趋势 [P8]](/interview/framework-comparison/meta-framework-trends)                | architect | Turbopack、Rust 编译、Edge Runtime |
+
+---
+
+## 工程化与全栈 [P6-P7/P8]
+
+| 文档                                                                         | 层级      | 描述                                   |
+| ---------------------------------------------------------------------------- | --------- | -------------------------------------- |
+| [Vite 核心原理与插件开发 [P6-P7]](/interview/build-tools/vite-internals)     | senior    | ESM 原生、HMR、Rollup 集成             |
+| [构建工具深度对比 [P8]](/interview/build-tools/build-tool-deep-comparison)   | architect | Vite vs Turbopack vs Rspack vs Webpack |
+| [Vite 插件开发实战 [P6-P7]](/interview/build-tools/vite-plugin-development)  | senior    | Rollup 兼容、虚拟模块、自动导入插件    |
+| [Monorepo 构建优化 [P8]](/interview/build-tools/monorepo-build-optimization) | architect | Turborepo 缓存、Nx 计算图、增量构建    |
+| [Rolldown 与构建工具未来 [P8]](/interview/build-tools/rolldown-and-future)   | architect | Rolldown、Oxc 工具链、Rust 化趋势      |
+| [构建工具链演进 [P6-P7]](/interview/engineering/build-toolchain)             | senior    | Webpack→Vite→Turbopack→Rspack→Oxc      |
+| [Monorepo 架构设计 [P8]](/interview/engineering/monorepo-architecture)       | architect | pnpm workspace、Turborepo、Nx          |
+| [微前端方案对比 [P8]](/interview/engineering/micro-frontend)                 | architect | Module Federation、qiankun、WASM 隔离  |
+| [设计系统与组件库架构 [P8]](/interview/engineering/design-system)            | architect | headless UI、design token、主题引擎    |
+| [性能预算体系 [P6-P7]](/interview/engineering/performance-budget)            | senior    | Core Web Vitals、INP、优化策略         |
+| [测试金字塔实战 [P6-P7]](/interview/engineering/testing-strategy)            | senior    | 单元/集成/E2E/视觉回归/性能测试        |
+| [前端 DevOps 与发布体系 [P8]](/interview/engineering/frontend-devops)        | architect | CI/CD、Feature Flag、金丝雀发布        |
+| [Node.js Web 框架对比 [P6-P7]](/interview/engineering/nodejs-web-framework)  | senior    | Express/Koa/Fastify/NestJS 对比        |
+| [Node.js 数据库与 ORM [P6-P7]](/interview/engineering/nodejs-database-orm)   | senior    | MySQL/PostgreSQL/MongoDB/Redis 集成    |
+| [Node.js 部署与运维 [P6-P7]](/interview/engineering/nodejs-deploy-ops)       | senior    | Docker、PM2、BFF、监控告警             |
+
+---
+
 ## API 架构体系 [P8]
 
 | 文档                                                                    | 层级      | 描述                                   |
@@ -190,33 +233,6 @@
 
 ---
 
-## 框架对比与选型 [P6-P7/P8]
-
-| 文档                                                                                         | 层级      | 描述                               |
-| -------------------------------------------------------------------------------------------- | --------- | ---------------------------------- |
-| [Signals vs Virtual DOM [P6-P7]](/interview/framework-comparison/signal-vs-vdom)             | senior    | 技术路线之争                       |
-| [SSR/SSG/ISR 全栈方案对比 [P6-P7]](/interview/framework-comparison/ssr-fullstack-comparison) | senior    | Next/Nuxt/Astro/SvelteKit          |
-| [2026 元框架趋势 [P8]](/interview/framework-comparison/meta-framework-trends)                | architect | Turbopack、Rust 编译、Edge Runtime |
-
----
-
-## 工程化与全栈 [P6-P7/P8]
-
-| 文档                                                                        | 层级      | 描述                                  |
-| --------------------------------------------------------------------------- | --------- | ------------------------------------- |
-| [构建工具链演进 [P6-P7]](/interview/engineering/build-toolchain)            | senior    | Webpack→Vite→Turbopack→Rspack→Oxc     |
-| [Monorepo 架构设计 [P8]](/interview/engineering/monorepo-architecture)      | architect | pnpm workspace、Turborepo、Nx         |
-| [微前端方案对比 [P8]](/interview/engineering/micro-frontend)                | architect | Module Federation、qiankun、WASM 隔离 |
-| [设计系统与组件库架构 [P8]](/interview/engineering/design-system)           | architect | headless UI、design token、主题引擎   |
-| [性能预算体系 [P6-P7]](/interview/engineering/performance-budget)           | senior    | Core Web Vitals、INP、优化策略        |
-| [测试金字塔实战 [P6-P7]](/interview/engineering/testing-strategy)           | senior    | 单元/集成/E2E/视觉回归/性能测试       |
-| [前端 DevOps 与发布体系 [P8]](/interview/engineering/frontend-devops)       | architect | CI/CD、Feature Flag、金丝雀发布       |
-| [Node.js Web 框架对比 [P6-P7]](/interview/engineering/nodejs-web-framework) | senior    | Express/Koa/Fastify/NestJS 对比       |
-| [Node.js 数据库与 ORM [P6-P7]](/interview/engineering/nodejs-database-orm)  | senior    | MySQL/PostgreSQL/MongoDB/Redis 集成   |
-| [Node.js 部署与运维 [P6-P7]](/interview/engineering/nodejs-deploy-ops)      | senior    | Docker、PM2、BFF、监控告警            |
-
----
-
 ## 架构设计 [P8]
 
 | 文档                                                                        | 层级      | 描述                                        |
@@ -229,14 +245,14 @@
 
 ---
 
-## 浏览器与网络 [P6-P7]
+## 系统设计 [P8]
 
-| 文档                                                                                          | 层级   | 描述                            |
-| --------------------------------------------------------------------------------------------- | ------ | ------------------------------- |
-| [浏览器渲染管线 [P6-P7]](/interview/browser-and-network/rendering-pipeline)                   | senior | 样式计算→布局→分层→绘制→合成    |
-| [HTTP/3、WebTransport 与 QUIC [P6-P7]](/interview/browser-and-network/http3-and-webtransport) | senior | HTTP/3、WebTransport、QUIC 影响 |
-| [WebAssembly 在前端的应用 [P6-P7]](/interview/browser-and-network/wasm-frontend)              | senior | 图像处理、编解码、游戏引擎      |
-| [浏览器安全模型 [P6-P7]](/interview/browser-and-network/security-model)                       | senior | CSP、COOP/COEP、SRI、沙箱机制   |
+| 文档                                                                      | 层级      | 描述                            |
+| ------------------------------------------------------------------------- | --------- | ------------------------------- |
+| [实时协作系统设计 [P8]](/interview/system-design/real-time-collaboration) | architect | CRDT、OT、WebSocket 架构        |
+| [低代码平台架构 [P8]](/interview/system-design/low-code-platform)         | architect | DSL 设计、渲染引擎、扩展机制    |
+| [Design Token 体系 [P8]](/interview/system-design/design-token-system)    | architect | 多品牌/多主题/跨平台 Token 流转 |
+| [前端可观测性 [P8]](/interview/system-design/frontend-observability)      | architect | 埋点体系、性能监控、错误追踪    |
 
 ---
 
@@ -251,7 +267,7 @@
 
 ---
 
-## 技术管理（主管级）
+## 技术管理 [TL]
 
 | 文档                                                                       | 层级    | 描述                             |
 | -------------------------------------------------------------------------- | ------- | -------------------------------- |
@@ -260,29 +276,6 @@
 | [项目交付管理 [TL]](/interview/management/project-delivery)                | manager | 估时方法、风险管理、质量门禁     |
 | [跨团队协作 [TL]](/interview/management/cross-team-collaboration)          | manager | 接口契约、联调流程、SLA 约定     |
 | [技术雷达与创新落地 [TL]](/interview/management/tech-radar-and-innovation) | manager | 技术选型评估框架、PoC 流程       |
-
----
-
-## 系统设计（架构师级）
-
-| 文档                                                                      | 层级      | 描述                            |
-| ------------------------------------------------------------------------- | --------- | ------------------------------- |
-| [实时协作系统设计 [P8]](/interview/system-design/real-time-collaboration) | architect | CRDT、OT、WebSocket 架构        |
-| [低代码平台架构 [P8]](/interview/system-design/low-code-platform)         | architect | DSL 设计、渲染引擎、扩展机制    |
-| [Design Token 体系 [P8]](/interview/system-design/design-token-system)    | architect | 多品牌/多主题/跨平台 Token 流转 |
-| [前端可观测性 [P8]](/interview/system-design/frontend-observability)      | architect | 埋点体系、性能监控、错误追踪    |
-
----
-
-## 构建工具生态 [P6-P7/P8]
-
-| 文档                                                                         | 层级      | 描述                                   |
-| ---------------------------------------------------------------------------- | --------- | -------------------------------------- |
-| [Vite 核心原理与插件开发 [P6-P7]](/interview/build-tools/vite-internals)     | senior    | ESM 原生、HMR、Rollup 集成             |
-| [构建工具深度对比 [P8]](/interview/build-tools/build-tool-deep-comparison)   | architect | Vite vs Turbopack vs Rspack vs Webpack |
-| [Vite 插件开发实战 [P6-P7]](/interview/build-tools/vite-plugin-development)  | senior    | Rollup 兼容、虚拟模块、自动导入插件    |
-| [Monorepo 构建优化 [P8]](/interview/build-tools/monorepo-build-optimization) | architect | Turborepo 缓存、Nx 计算图、增量构建    |
-| [Rolldown 与构建工具未来 [P8]](/interview/build-tools/rolldown-and-future)   | architect | Rolldown、Oxc 工具链、Rust 化趋势      |
 
 ---
 
