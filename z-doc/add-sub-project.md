@@ -218,12 +218,10 @@ onMounted(() => {
   const isDev = import.meta.env.DEV
   iframeSrc.value = isDev
     ? 'http://localhost:<端口>/smart-code-tool/my-app/index-my-app.html'
-    : '/smart-code-tool/my-app/index.html'
+    : '/smart-code-tool/my-app/index-my-app.html'
 })
 </script>
 ```
-
-> **注意**：dev 环境指向 `index-my-app.html`（源文件名），prod 环境指向 `index.html`（构建输出默认名）。
 
 ### 5. 添加 VitePress 代理
 

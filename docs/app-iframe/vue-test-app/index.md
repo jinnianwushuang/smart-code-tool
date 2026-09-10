@@ -23,6 +23,6 @@ onMounted(() => {
   // 开发环境指向 vue-test 独立开发服务器，生产环境使用相对路径（同域部署）
   iframeSrc.value = isDev
     ? 'http://localhost:23350/smart-code-tool/vue-test-app/index-vue-test.html'
-    : '/smart-code-tool/vue-test-app/index.html'
+    : '/smart-code-tool/vue-test-app/index-vue-test.html'
 })
 </script>

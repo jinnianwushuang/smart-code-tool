@@ -23,6 +23,6 @@ onMounted(() => {
   const isDev = import.meta.env.DEV
   toolSrc.value = isDev
     ? 'http://localhost:23330/smart-code-tool/code-tool-app/index-code-tool.html'
-    : '/smart-code-tool/code-tool-app/index.html'
+    : '/smart-code-tool/code-tool-app/index-code-tool.html'
 })
 </script>
