@@ -1,7 +1,7 @@
 <template>
   <a-layout style="height: 100vh">
-    <!-- 顶部导航栏 -->
-    <a-layout-header class="header">
+    <!-- 顶部导航栏（iframe 嵌入时隐藏） -->
+    <a-layout-header v-if="!isInIframe" class="header">
       <q-toolbar>
         <div class="logo" style="width: 80px">
           <img src="logo/icons8-light-on-96.png" alt="logo" width="40px" height="40px" />
@@ -92,7 +92,10 @@ const scroll_to_top = () => {
   el?.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
+const isInIframe = ref(false)
+
 onMounted(() => {
+  isInIframe.value = window.self !== window.top
   check_route()
 })
 
@@ -137,7 +140,7 @@ const handle_click_menu = ({ key }) => {
   padding: 24px;
   margin: 0;
   min-height: 680px;
-  height: calc(100vh - 64px);
+  height: calc(100vh - var(--header-height, 64px));
   overflow-y: auto;
   position: relative;
   transition: background-color 0.3s ease;

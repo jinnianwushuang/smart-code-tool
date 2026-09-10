@@ -1,75 +1,80 @@
 # 新增子项目指南
 
+> **本文档面向 AI 助手**：按步骤执行即可创建完整子项目。所有占位变量在下方「变量替换表」中定义。
+
+---
+
+## 变量替换表
+
+本文档中所有 `<变量>` 均按下表替换（以 `my-app` 为示例）：
+
+| 占位变量     | 含义                               | 示例值             |
+| ------------ | ---------------------------------- | ------------------ |
+| `<项目名>`   | 子项目标识名（小写、连字符分隔）   | `my-app`           |
+| `<项目标题>` | 显示名称                           | `我的应用`         |
+| `<端口>`     | 开发服务器端口（不与现有端口冲突） | `23360`            |
+| `<路由文件>` | 路由定义文件名                     | `my-app-routes.js` |
+
+**现有端口分配**：23000（Docs）、23330（code-tool）、23350（vue-test）
+
+---
+
 ## 架构概览
 
 ```
 smart-code-tool/
-├── src/                          # 共享内核（多项目共用，不要放子项目特有代码）
-│   ├── App.vue                   # 根组件（各子项目共用）
-│   ├── assets/                   # 静态资源
-│   ├── boot/                     # 启动引导（组件注册等）
-│   ├── common/                   # 公共模块
-│   ├── components/               # 公共组件
-│   ├── composable/               # 公共 composable
-│   ├── css/                      # 公共样式
-│   ├── i18n/                     # 国际化
-│   ├── output/                   # barrel export 层（聚合模块统一入口）
-│   └── standardization/          # 标准化模板
+├── src/                              # 共享内核（多项目共用）
+│   ├── App.vue                       # 根组件（各子项目共用）
+│   ├── assets/ boot/ common/         # 公共模块
+│   ├── components/ composable/       # 公共组件/composable
+│   ├── css/ i18n/                    # 公共样式/国际化
+│   ├── output/                       # barrel export 层
+│   └── standardization/              # 标准化模板
 │
-├── project/                      # 子项目目录（每个子项目独立目录）
-│   ├── code-tool/                # 示例：工具库
-│   └── vue-test/                 # 示例：架构验证
+├── project/<项目名>/                  # 子项目特有代码（标准 Vue3 src 结构）
+│   ├── main.js                       # 应用入口
+│   ├── router/index.js               # 路由入口
+│   ├── router/routes/<路由文件>       # 路由定义
+│   ├── layout/layout.vue             # 布局组件
+│   └── pages/                        # 页面组件
 │
-├── entries/                      # Vite 配置（每个子项目一个子目录）
-│   ├── code-tool/vite.config.js
-│   └── vue-test/vite.config.js
+├── entries/<项目名>/vite.config.js    # Vite 配置
+├── index-<项目名>.html                # HTML 入口（项目根目录）
+├── docs/app-iframe/<项目名>/index.md  # VitePress iframe 嵌入页
 │
-├── index-code-tool.html          # HTML 入口（命名规则：index-<项目名>.html）
-├── index-vue-test.html
-│
-├── docs/app-iframe/              # VitePress iframe 嵌入页（每个子项目一个）
-│   ├── code-tool-app/index.md
-│   └── vue-test-app/index.md
-│
-├── scripts/
-│   ├── dev.mjs                   # 开发服务器启动脚本
-│   └── build.mjs                 # 构建脚本
-│
-└── dist/                         # 构建输出
-    ├── (VitePress 文档 → 根目录)
-    ├── code-tool-app/
-    └── vue-test-app/
+├── scripts/dev.mjs                    # 开发脚本
+├── scripts/build.mjs                  # 构建脚本
+└── dist/<项目名>/                     # 构建输出
 ```
 
-### 核心设计原则
+### 核心机制
 
-- **`src/`** = 共享内核，所有子项目通过 `src` alias 引用
-- **`project/<子项目>/`** = 子项目特有代码，遵循标准 Vue3 src 目录结构
-- **Vite 双 alias**：`src` → 共享内核，`project` → 当前子项目目录
-- **`root: projectRoot`**：Vite root 统一指向项目根目录
-- **HTML 入口在项目根**：命名 `index-<项目名>.html`，通过 `rollupOptions.input` 指定构建入口
+- **双 alias**：Vite 配置中 `src` → 共享内核，`project` → 当前子项目目录
+- **Vite root**：统一指向 `projectRoot`（项目根目录）
+- **HTML 入口**：在项目根目录，命名 `index-<项目名>.html`，构建输出保持源文件名不变
+- **iframe 嵌入**：子应用通过 VitePress 的 iframe 页面展示，布局组件需检测 iframe 并隐藏头部
 
 ---
 
-## 新增子项目步骤（以 `my-app` 为例）
+## 步骤 1：创建子项目目录结构
 
-### 1. 创建子项目目录
+创建以下目录和文件：
 
 ```
-project/my-app/
-├── main.js           # 应用入口
+project/<项目名>/
+├── main.js
 ├── router/
-│   ├── index.js      # 路由入口
+│   ├── index.js
 │   └── routes/
-│       └── my-app-routes.js   # 路由定义
+│       └── <路由文件>
 ├── layout/
-│   └── layout.vue    # 布局组件
+│   └── layout.vue
 └── pages/
-    └── my-app/
-        └── index.vue # 首页
+    └── <项目名>/
+        └── index.vue
 ```
 
-**main.js 模板**（参照现有子项目）：
+### main.js 模板
 
 ```js
 import { createApp } from 'vue'
@@ -102,9 +107,66 @@ app.use(head)
 app.mount('#app')
 ```
 
-### 2. 创建 HTML 入口
+### router/index.js 模板
 
-在项目根目录创建 `index-my-app.html`：
+```js
+import { createRouter, createWebHistory } from 'vue-router'
+import { routes_<项目名变量> } from './routes/<路由文件>'
+
+const router = createRouter({
+  history: createWebHistory('/smart-code-tool/<项目名>/'),
+  routes: [
+    { path: '/', redirect: '/<项目名>' },
+    ...routes_<项目名变量>,
+  ],
+})
+
+export default router
+```
+
+### layout/layout.vue 模板（含 iframe 头部隐藏）
+
+子应用通过 VitePress iframe 嵌入时，VitePress 已有顶部导航栏，子应用自身的头部需隐藏。
+
+```vue
+<template>
+  <a-layout style="height: 100vh">
+    <!-- 关键：v-if="!isInIframe" 在 iframe 嵌入时隐藏头部 -->
+    <a-layout-header v-if="!isInIframe" class="header">
+      <!-- 头部内容 -->
+    </a-layout-header>
+    <a-layout>
+      <!-- 侧边栏 + 内容区 -->
+    </a-layout>
+  </a-layout>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+
+// iframe 检测：嵌入 VitePress 时隐藏自身头部，避免双重导航栏
+const isInIframe = ref(false)
+onMounted(() => {
+  isInIframe.value = window.self !== window.top
+})
+</script>
+
+<style lang="scss" scoped>
+/* 头部隐藏后，内容区高度自动撑满 100vh */
+.header {
+  height: 64px;
+  line-height: 64px;
+}
+</style>
+```
+
+> **实现原理**：`window.self !== window.top` 判断当前页面是否在 iframe 中。`v-if` 移除头部 DOM，内容区自动占满全高。
+
+---
+
+## 步骤 2：创建 HTML 入口
+
+在项目根目录创建 `index-<项目名>.html`：
 
 ```html
 <!doctype html>
@@ -113,20 +175,22 @@ app.mount('#app')
     <meta charset="UTF-8" />
     <link rel="icon" href="/logo/icons8-light-on-96.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>我的应用</title>
+    <title><项目标题></title>
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="./project/my-app/main.js"></script>
+    <script type="module" src="./project/<项目名>/main.js"></script>
   </body>
 </html>
 ```
 
-> 脚本路径 `./project/my-app/main.js` 是相对于项目根目录（即 Vite root）。
+> `src` 路径相对于项目根目录（即 Vite root）。
 
-### 3. 创建 Vite 配置
+---
 
-创建 `entries/my-app/vite.config.js`：
+## 步骤 3：创建 Vite 配置
+
+创建 `entries/<项目名>/vite.config.js`：
 
 ```js
 import { fileURLToPath, URL } from 'node:url'
@@ -140,16 +204,17 @@ import timezone from 'dayjs/plugin/timezone'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
+// 项目根目录（配置文件在 entries/<项目名>/ 下，回退两级）
 const projectRoot = fileURLToPath(new URL('../..', import.meta.url))
 
 export default defineConfig(async () => {
   return {
     root: projectRoot,
-    base: '/smart-code-tool/my-app/',
+    base: '/smart-code-tool/<项目名>/',
     build: {
-      outDir: `${projectRoot}/dist/my-app`,
+      outDir: `${projectRoot}/dist/<项目名>`,
       rollupOptions: {
-        input: `${projectRoot}/index-my-app.html`,
+        input: `${projectRoot}/index-<项目名>.html`,
       },
     },
     define: {
@@ -166,37 +231,40 @@ export default defineConfig(async () => {
     resolve: {
       alias: {
         src: `${projectRoot}/src`,
-        project: `${projectRoot}/project/my-app`,
+        project: `${projectRoot}/project/<项目名>`,
       },
     },
     server: {
       host: '0.0.0.0',
-      port: 23360, // 分配新端口，注意不要与现有端口冲突
+      port: <端口>,
     },
   }
 })
 ```
 
-**关键配置项说明**：
+### 关键配置项
 
-| 配置项                      | 规则                           | 示例                       |
-| --------------------------- | ------------------------------ | -------------------------- |
-| `root`                      | 固定为 `projectRoot`           | `projectRoot`              |
-| `base`                      | `/smart-code-tool/<项目名>/`   | `/smart-code-tool/my-app/` |
-| `build.outDir`              | `${projectRoot}/dist/<项目名>` | `dist/my-app`              |
-| `build.rollupOptions.input` | 指向根目录的 HTML 入口         | `index-my-app.html`        |
-| `resolve.alias.project`     | 指向子项目目录                 | `project/my-app`           |
-| `server.port`               | 分配不冲突的端口               | `23360`                    |
-| `server.host`               | 固定 `0.0.0.0`                 | 确保 IPv4+IPv6 都可访问    |
+| 配置项                      | 值                           | 说明                            |
+| --------------------------- | ---------------------------- | ------------------------------- |
+| `root`                      | `projectRoot`                | 固定，指向项目根目录            |
+| `base`                      | `/smart-code-tool/<项目名>/` | 子应用的基础路径                |
+| `build.outDir`              | `dist/<项目名>`              | 构建输出目录                    |
+| `build.rollupOptions.input` | `index-<项目名>.html`        | HTML 入口（构建后保持源文件名） |
+| `resolve.alias.src`         | `src`                        | 指向共享内核                    |
+| `resolve.alias.project`     | `project/<项目名>`           | 指向子项目目录                  |
+| `server.host`               | `0.0.0.0`                    | 必须，确保 IPv4+IPv6 都可访问   |
+| `server.port`               | `<端口>`                     | 分配不冲突的端口                |
 
-### 4. 创建 VitePress iframe 嵌入页
+---
 
-创建 `docs/app-iframe/my-app/index.md`：
+## 步骤 4：创建 VitePress iframe 嵌入页
+
+创建 `docs/app-iframe/<项目名>/index.md`：
 
 ```markdown
 ---
 layout: page
-title: 我的应用
+title: <项目标题>
 sidebar: false
 aside: false
 ---
@@ -216,52 +284,68 @@ const iframeSrc = ref('')
 
 onMounted(() => {
   const isDev = import.meta.env.DEV
+  // dev 指向子项目 dev server，prod 指向同域构建产物
+  // 构建输出保持源文件名不变，dev/prod 文件名一致
   iframeSrc.value = isDev
-    ? 'http://localhost:<端口>/smart-code-tool/my-app/index-my-app.html'
-    : '/smart-code-tool/my-app/index-my-app.html'
+    ? 'http://localhost:<端口>/smart-code-tool/<项目名>/index-<项目名>.html'
+    : '/smart-code-tool/<项目名>/index-<项目名>.html'
 })
 </script>
 ```
 
-### 5. 添加 VitePress 代理
+---
 
-编辑 `docs/.vitepress/config/vite.js`，在 `proxy` 中新增：
+## 步骤 5：添加 VitePress 代理
+
+编辑 `docs/.vitepress/config/vite.js`，在 `proxy` 对象中新增：
 
 ```js
-'/smart-code-tool/my-app/': {
+'/smart-code-tool/<项目名>/': {
   target: 'http://localhost:<端口>',
   changeOrigin: true,
 },
 ```
 
-### 6. 更新开发脚本
+---
+
+## 步骤 6：更新开发脚本
 
 编辑 `scripts/dev.mjs`：
 
+1. 新增 Vite 启动命令：
+
+   ```js
+   const <项目名变量>Dev = $`vite --config entries/<项目名>/vite.config.js`
+   ```
+
+2. 新增 console 输出：
+
+   ```js
+   console.log(chalk.gray('   - <项目标题>: http://localhost:<端口>/smart-code-tool/<项目名>/'))
+   ```
+
+3. 加入 `Promise.all` 数组：
+   ```js
+   await Promise.all([vueDev, vueTestDev, <项目名变量>Dev, docsDev])
+   ```
+
+---
+
+## 步骤 7：更新构建脚本
+
+编辑 `scripts/build.mjs`，在 VitePress 构建步骤之后新增：
+
 ```js
-// 新增启动命令
-const myAppDev = $`vite --config entries/my-app/vite.config.js`
-
-// 更新 console 输出
-console.log(chalk.gray('   - My-app: http://localhost:<端口>/smart-code-tool/my-app/'))
-
-// 加入 Promise.all
-await Promise.all([vueDev, vueTestDev, myAppDev, docsDev])
-```
-
-### 7. 更新构建脚本
-
-编辑 `scripts/build.mjs`，在 VitePress 构建之后新增步骤：
-
-```js
-console.log(chalk.yellow('🔨 Step N: Building my-app application → dist/my-app/...'))
-await $`vite build --config entries/my-app/vite.config.js`
-console.log(chalk.green('✓ My-app application built\n'))
+console.log(chalk.yellow('🔨 Step N: Building <项目名> application → dist/<项目名>/...'))
+await $`vite build --config entries/<项目名>/vite.config.js`
+console.log(chalk.green('✓ <项目标题> application built\n'))
 ```
 
 > **构建顺序**：VitePress 必须第一个构建（它会清空 `dist/`），子项目在其后顺序构建。
 
-### 8. 更新 VitePress 导航（可选）
+---
+
+## 步骤 8：更新 VitePress 导航（可选）
 
 如需在导航栏添加入口，编辑 `docs/.vitepress/config/nav.js`。
 
@@ -269,27 +353,28 @@ console.log(chalk.green('✓ My-app application built\n'))
 
 ## 命名规范速查
 
-| 项目        | 命名规则                                  | 示例                              |
-| ----------- | ----------------------------------------- | --------------------------------- |
-| 子项目目录  | `project/<项目名>/`                       | `project/my-app/`                 |
-| Vite 配置   | `entries/<项目名>/vite.config.js`         | `entries/my-app/vite.config.js`   |
-| HTML 入口   | `index-<项目名>.html`（项目根目录）       | `index-my-app.html`               |
-| base 路径   | `/smart-code-tool/<项目名>/`              | `/smart-code-tool/my-app/`        |
-| 构建输出    | `dist/<项目名>/`                          | `dist/my-app/`                    |
-| iframe 页面 | `docs/app-iframe/<项目名>/index.md`       | `docs/app-iframe/my-app/index.md` |
-| 开发端口    | 分配不冲突端口（现有：23000/23330/23350） | `23360`                           |
+| 产物        | 命名规则                            | 示例                              |
+| ----------- | ----------------------------------- | --------------------------------- |
+| 子项目目录  | `project/<项目名>/`                 | `project/my-app/`                 |
+| Vite 配置   | `entries/<项目名>/vite.config.js`   | `entries/my-app/vite.config.js`   |
+| HTML 入口   | `index-<项目名>.html`（项目根目录） | `index-my-app.html`               |
+| base 路径   | `/smart-code-tool/<项目名>/`        | `/smart-code-tool/my-app/`        |
+| 构建输出    | `dist/<项目名>/`                    | `dist/my-app/`                    |
+| iframe 页面 | `docs/app-iframe/<项目名>/index.md` | `docs/app-iframe/my-app/index.md` |
+| 开发端口    | 不冲突的端口                        | `23360`                           |
 
 ---
 
 ## Checklist
 
 - [ ] `project/<项目名>/` 目录创建（含 main.js、router/、layout/、pages/）
+- [ ] layout 组件添加 iframe 检测（`v-if="!isInIframe"` 隐藏头部）
 - [ ] `index-<项目名>.html` 创建在项目根目录
 - [ ] `entries/<项目名>/vite.config.js` 创建
 - [ ] `docs/app-iframe/<项目名>/index.md` 创建
 - [ ] `docs/.vitepress/config/vite.js` 新增代理
 - [ ] `scripts/dev.mjs` 新增启动命令
 - [ ] `scripts/build.mjs` 新增构建步骤
-- [ ] 端口不冲突
+- [ ] 端口不冲突（现有：23000/23330/23350）
 - [ ] `pnpm dev` 验证开发环境
 - [ ] `pnpm build` 验证构建产物
