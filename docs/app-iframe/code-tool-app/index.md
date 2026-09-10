@@ -7,9 +7,12 @@ aside: false
 
 <div style="position: fixed; top: var(--vp-nav-height); left: 0; right: 0; bottom: 0;">
   <iframe
+    v-show="iframeReady"
+    ref="iframeEl"
     :src="toolSrc"
     style="width: 100%; height: 100%; border: none;"
     allow="fullscreen; clipboard-read; clipboard-write"
+    @load="onIframeLoad"
   ></iframe>
 </div>
 
@@ -17,15 +20,20 @@ aside: false
 import { ref, onMounted } from 'vue'
 
 const toolSrc = ref('')
-const iframeRef = ref(null)
+const iframeReady = ref(false)
+const iframeEl = ref(null)
 
-// 向 iframe 推送当前主题，解决页面缓存后主题不同步的问题
-function syncThemeToIframe() {
-  const iframe = document.querySelector('iframe')
+function syncTheme() {
+  const iframe = iframeEl.value
   if (iframe?.contentWindow) {
     const theme = localStorage.getItem('app-theme-mode') || 'dark'
     iframe.contentWindow.postMessage({ type: 'theme-change', theme }, '*')
   }
+}
+
+function onIframeLoad() {
+  syncTheme()
+  iframeReady.value = true
 }
 
 onMounted(() => {
@@ -34,9 +42,12 @@ onMounted(() => {
     ? 'http://localhost:23330/smart-code-tool/code-tool-app/index-code-tool.html'
     : '/smart-code-tool/code-tool-app/index-code-tool.html'
 
-  // 页面可见时同步主题（处理 VitePress 页面缓存场景）
+  // 页面重新可见时，重置状态让 iframe 重新同步主题后再显示
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) syncThemeToIframe()
+    if (!document.hidden && iframeEl.value) {
+      iframeReady.value = false
+      iframeEl.value.src = iframeEl.value.src
+    }
   })
 })
 </script>
