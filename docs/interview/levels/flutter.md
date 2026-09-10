@@ -1,10 +1,10 @@
 ---
-title: "Flutter 学习路径"
-level: "all"
-tags: ["Flutter", "Dart", "跨端", "学习路径"]
-difficulty: "medium"
-updated: "2026-09-10"
-target: "Flutter 开发者"
+title: 'Flutter 学习路径'
+level: 'all'
+tags: ['Flutter', 'Dart', '跨端', '学习路径']
+difficulty: 'medium'
+updated: '2026-09-10'
+target: 'Flutter 开发者'
 ---
 
 # Flutter 学习路径
@@ -36,31 +36,43 @@ target: "Flutter 开发者"
 
 ---
 
-## 学习文档（10 篇）
+## 学习文档（15 篇）
 
 ### 入门（中级 P5-P6）— 4 篇
 
 > 适合有 Web 前端基础，想快速上手 Flutter 的开发者。
 
-| 文档 | 描述 |
-| --- | --- |
-| [Dart 语言基础与核心特性 [P5-P6]](/interview/intermediate/flutter-dart-basics) | Dart 语法、空安全、异步、OOP |
+| 文档                                                                                       | 描述                                |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- |
+| [Dart 语言基础与核心特性 [P5-P6]](/interview/intermediate/flutter-dart-basics)             | Dart 语法、空安全、异步、OOP        |
 | [Flutter Widget 体系与布局系统 [P5-P6]](/interview/intermediate/flutter-widget-and-layout) | Widget 生命周期、布局约束、常用组件 |
-| [Flutter 状态管理基础 [P5-P6]](/interview/intermediate/flutter-state-management-basics) | setState、Provider、Bloc 入门 |
-| [Flutter 导航与路由实战 [P5-P6]](/interview/intermediate/flutter-navigation-and-routing) | Navigator、命名路由、GoRouter |
+| [Flutter 状态管理基础 [P5-P6]](/interview/intermediate/flutter-state-management-basics)    | setState、Provider、Bloc 入门       |
+| [Flutter 导航与路由实战 [P5-P6]](/interview/intermediate/flutter-navigation-and-routing)   | Navigator、命名路由、GoRouter       |
 
-### 进阶（高级 P6-P7）— 6 篇
+### 进阶（高级 P6-P7）— 8 篇
 
 > 深入 Flutter 原理与高级特性，能独立设计大型 Flutter 应用。
 
-| 文档 | 描述 |
-| --- | --- |
-| [Flutter 渲染引擎与 Skia/Impeller [P6-P7]](/interview/flutter/rendering-engine) | 渲染管线、Impeller、Material 3 |
-| [Dart 高级特性与元编程 [P6-P7]](/interview/flutter/dart-advanced) | 元编程、代码生成、宏 |
-| [Flutter 架构模式：Clean/MVVM [P8]](/interview/flutter/architecture-patterns) | 分层架构、依赖注入 |
-| [Flutter 平台交互与原生通信 [P8]](/interview/flutter/platform-interop) | Platform Channel、FFI |
-| [Flutter 性能优化深入 [P8]](/interview/flutter/performance-engineering) | DevTools、性能分析、优化策略 |
-| [Flutter 状态管理深入：Riverpod [P6-P7]](/interview/flutter/riverpod-deep) | Riverpod 原理、代码生成 |
+| 文档                                                                                  | 描述                                   |
+| ------------------------------------------------------------------------------------- | -------------------------------------- |
+| [Flutter 渲染引擎 [P6-P7]](/interview/flutter/rendering-engine)                       | Impeller/Skia、三棵树机制              |
+| [Dart 语言深度 [P6-P7]](/interview/flutter/dart-advanced)                             | Isolate 并发、Mixin 线性化、AOT/JIT    |
+| [Riverpod 状态管理深度 [P6-P7]](/interview/flutter/riverpod-deep)                     | Codegen、AsyncValue、Provider 依赖图   |
+| [BLoC/Cubit 架构模式与大规模实践 [P6-P7]](/interview/flutter/bloc-cubit-architecture) | 事件驱动、bloc_test、分层架构          |
+| [GetX 生态体系 [P6-P7]](/interview/flutter/getx-ecosystem)                            | 状态/路由/DI 三合一、GetBuilder vs Obx |
+| [GoRouter 路由管理深度 [P6-P7]](/interview/flutter/go-router-deep)                    | ShellRoute、Deep Link、路由守卫        |
+| [Dio 网络层与 HTTP 客户端体系 [P6-P7]](/interview/flutter/dio-and-networking)         | 拦截器链、Transformer、取消请求        |
+| [Flutter 本地存储与持久化 [P6-P7]](/interview/flutter/flutter-local-storage)          | Isar/Hive/SQLite/drift、加密存储       |
+
+### 专家（P8）— 3 篇
+
+> 掌握 Flutter 底层原理与工程化能力，能主导大型跨端应用架构设计与性能治理。
+
+| 文档                                                                        | 描述                                         |
+| --------------------------------------------------------------------------- | -------------------------------------------- |
+| [Flutter 状态管理架构 [P8]](/interview/flutter/architecture-patterns)       | Riverpod/BLoC 大规模、Clean Architecture、DI |
+| [Flutter 与原生交互 [P8]](/interview/flutter/platform-interop)              | Platform Channel、FFI、混合栈架构            |
+| [Flutter 性能优化与工程化 [P8]](/interview/flutter/performance-engineering) | 启动优化、内存治理、包体积、灰度发布         |
 
 ---
 

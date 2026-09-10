@@ -5,6 +5,18 @@
 
 ---
 
+## 层级说明
+
+| 层级             | 适用人群                 | 核心能力要求                           |
+| ---------------- | ------------------------ | -------------------------------------- |
+| **junior**       | 初级工程师（P4-P5）      | 基础概念、常用 API、能独立完成开发任务 |
+| **intermediate** | 中级工程师（P5-P6）      | 原理理解、实战经验、能解决复杂问题     |
+| **senior**       | 高级/资深工程师（P6-P7） | 深度原理、源码级理解、复杂问题排查     |
+| **architect**    | 前端架构师（P8）         | 系统设计、技术选型决策、跨团队方案推动 |
+| **manager**      | 技术主管/TL              | 团队管理、项目交付、技术战略规划       |
+
+---
+
 ## 学习路径导航
 
 > 按工程师层级组织的学习路径，每篇文档包含级别特征、相关文档链接、建议学习顺序。
@@ -17,6 +29,67 @@
 | [架构师（P8）](/interview/levels/architect)           | architect    | 12 篇架构文档，系统设计/技术选型/影响力     |
 | [技术主管（TL）](/interview/levels/manager)           | manager      | 8 篇管理文档，团队管理/项目管理/沟通协作    |
 | [Flutter 学习路径](/interview/levels/flutter)         | all          | 10 篇 Flutter 文档，从入门到进阶            |
+
+---
+
+## 初级工程师（P4-P5）
+
+| 文档                                                                                 | 层级   | 描述                               |
+| ------------------------------------------------------------------------------------ | ------ | ---------------------------------- |
+| [HTML5 语义化与文档结构 [P4-P5]](/interview/junior/html-semantics)                   | junior | 语义标签、SEO、无障碍              |
+| [CSS 布局：Flexbox 与 Grid [P4-P5]](/interview/junior/css-layout)                    | junior | Flexbox 属性、Grid 布局、居中方案  |
+| [响应式设计与移动端适配 [P4-P5]](/interview/junior/responsive-design)                | junior | 媒体查询、移动优先、rem/vw         |
+| [CSS 新特性：变量、动画、过渡 [P4-P5]](/interview/junior/css-modern-features)        | junior | CSS 变量、transition、animation    |
+| [JavaScript 基础：变量、类型、运算 [P4-P5]](/interview/junior/js-basics)             | junior | 数据类型、类型转换、运算符         |
+| [函数与作用域基础 [P4-P5]](/interview/junior/functions-and-scope)                    | junior | 函数声明、箭头函数、作用域         |
+| [对象与类基础 [P4-P5]](/interview/junior/objects-and-classes)                        | junior | 对象字面量、class、继承            |
+| [DOM 操作与事件处理 [P4-P5]](/interview/junior/dom-and-events)                       | junior | querySelector、事件监听、事件委托  |
+| [浏览器基础：结构与开发者工具 [P4-P5]](/interview/junior/browser-basics)             | junior | 浏览器结构、URL→渲染、DevTools     |
+| [HTTP 协议基础 [P4-P5]](/interview/junior/http-basics)                               | junior | HTTP 方法、状态码、HTTPS           |
+| [本地存储与 Cookie 基础 [P4-P5]](/interview/junior/storage-and-cookie)               | junior | localStorage/sessionStorage/Cookie |
+| [Vue 3 入门：模板、组件、生命周期 [P4-P5]](/interview/junior/vue-basics)             | junior | 模板语法、组件注册、生命周期       |
+| [Vue 组件模式：Props、Emit、Slots [P4-P5]](/interview/junior/vue-component-patterns) | junior | Props/Emit/Slots/provide-inject    |
+| [TypeScript 入门：类型注解与基础类型 [P4-P5]](/interview/junior/typescript-basics)   | junior | 基础类型、接口、枚举               |
+| [Git 基础：分支策略与协作流程 [P4-P5]](/interview/junior/git-basics)                 | junior | add/commit/push、分支、合并        |
+| [npm/pnpm 包管理入门 [P4-P5]](/interview/junior/npm-pnpm-basics)                     | junior | package.json、依赖管理、scripts    |
+| [Chrome DevTools 实战 [P4-P5]](/interview/junior/devtools-basics)                    | junior | Elements/Console/Network/Sources   |
+| [前端调试基础 [P4-P5]](/interview/junior/debugging-basics)                           | junior | debugger、断点、条件断点           |
+| [Web 安全入门：XSS/CSRF [P4-P5]](/interview/junior/web-security-basics)              | junior | XSS 类型与防范、CSRF 原理          |
+| [SPA 部署基础（Nginx 配置） [P4-P5]](/interview/junior/spa-deploy-basics)            | junior | Nginx try_files、History 模式      |
+| [表单与验证基础 [P4-P5]](/interview/junior/form-validation-basics)                   | junior | 表单控件、验证规则、正则           |
+
+---
+
+## 中级工程师（P5-P6）
+
+| 文档                                                                                       | 层级         | 描述                                     |
+| ------------------------------------------------------------------------------------------ | ------------ | ---------------------------------------- |
+| [CSS 架构：BEM/CSS Modules/Tailwind [P5-P6]](/interview/intermediate/css-architecture)     | intermediate | BEM 命名、CSS Modules、Tailwind          |
+| [CSS 预处理器：Sass/Less/PostCSS [P5-P6]](/interview/intermediate/css-preprocessors)       | intermediate | Sass 变量/嵌套/mixin、PostCSS            |
+| [闭包、作用域链与执行上下文 [P5-P6]](/interview/intermediate/js-closures-context)          | intermediate | 执行上下文、闭包应用、this               |
+| [异步编程深入：Promise/async/await [P5-P6]](/interview/intermediate/async-deep-dive)       | intermediate | Promise 链、并发控制、错误处理           |
+| [ES6+ 模块系统与工程化 [P5-P6]](/interview/intermediate/es6-modules)                       | intermediate | ESM vs CJS、tree-shaking、动态 import    |
+| [JavaScript 常用设计模式 [P5-P6]](/interview/intermediate/js-design-patterns)              | intermediate | 观察者/策略/工厂/单例/装饰器             |
+| [浏览器渲染机制：重排/重绘/合成 [P5-P6]](/interview/intermediate/rendering-mechanism)      | intermediate | 重排/重绘/合成、GPU 加速                 |
+| [HTTP 缓存策略：强缓存/协商缓存 [P5-P6]](/interview/intermediate/http-caching)             | intermediate | Cache-Control/ETag、缓存策略设计         |
+| [前端网络优化：预加载/懒加载/压缩 [P5-P6]](/interview/intermediate/network-optimization)   | intermediate | preload/prefetch、懒加载、CDN            |
+| [Vue 3 响应式原理入门 [P5-P6]](/interview/intermediate/vue-reactivity-basics)              | intermediate | reactive/ref 原理、依赖收集/派发         |
+| [Vue 3 生命周期深入 [P5-P6]](/interview/intermediate/vue-lifecycle)                        | intermediate | 完整生命周期、组合式 API 钩子            |
+| [Vue 组件通信方式全景 [P5-P6]](/interview/intermediate/vue-communication)                  | intermediate | props/emit/provide-inject/v-model        |
+| [Vue Router 路由实战 [P5-P6]](/interview/intermediate/vue-router-basics)                   | intermediate | 路由配置、导航守卫、路由懒加载           |
+| [TypeScript 类型体操入门 [P5-P6]](/interview/intermediate/ts-types-practice)               | intermediate | 泛型、条件类型、映射类型、工具类型       |
+| [TypeScript 工程化实践 [P5-P6]](/interview/intermediate/ts-engineering)                    | intermediate | tsconfig 配置、声明文件、框架集成        |
+| [React 入门：JSX、Hooks、组件模式 [P5-P6]](/interview/intermediate/react-basics)           | intermediate | JSX、useState/useEffect、组件模式        |
+| [前端性能优化基础 [P5-P6]](/interview/intermediate/performance-basics)                     | intermediate | Core Web Vitals、图片优化、代码分割      |
+| [前端测试基础：Jest/Vitest [P5-P6]](/interview/intermediate/testing-basics)                | intermediate | 测试金字塔、Vitest/Jest、组件测试        |
+| [构建工具入门：Vite 配置与使用 [P5-P6]](/interview/intermediate/build-tools-basics)        | intermediate | Vite 配置、环境变量、代理                |
+| [前端错误处理与监控入门 [P5-P6]](/interview/intermediate/error-handling)                   | intermediate | ErrorBoundary、全局错误捕获、上报        |
+| [Web 安全实战：CSP/SRI/依赖检查 [P5-P6]](/interview/intermediate/web-security-practice)    | intermediate | CSP 策略、SRI、依赖安全检查              |
+| [Docker 容器化基础与前端部署 [P5-P6]](/interview/intermediate/docker-basics)               | intermediate | Dockerfile、docker-compose、容器化部署   |
+| [Dart 语言基础与核心特性 [P5-P6]](/interview/intermediate/flutter-dart-basics)             | intermediate | 空安全、异步编程、OOP、Mixin             |
+| [Flutter Widget 体系与布局系统 [P5-P6]](/interview/intermediate/flutter-widget-and-layout) | intermediate | Widget 生命周期、布局约束、常用布局组件  |
+| [Flutter 状态管理基础 [P5-P6]](/interview/intermediate/flutter-state-management-basics)    | intermediate | setState、Provider、Bloc 入门            |
+| [Flutter 导航与路由实战 [P5-P6]](/interview/intermediate/flutter-navigation-and-routing)   | intermediate | Navigator、命名路由、GoRouter、Deep Link |
 
 ---
 
@@ -210,79 +283,6 @@
 | [Vite 插件开发实战 [P6-P7]](/interview/build-tools/vite-plugin-development)  | senior    | Rollup 兼容、虚拟模块、自动导入插件    |
 | [Monorepo 构建优化 [P8]](/interview/build-tools/monorepo-build-optimization) | architect | Turborepo 缓存、Nx 计算图、增量构建    |
 | [Rolldown 与构建工具未来 [P8]](/interview/build-tools/rolldown-and-future)   | architect | Rolldown、Oxc 工具链、Rust 化趋势      |
-
----
-
-## 初级工程师（P4-P5）
-
-| 文档                                                                                 | 层级   | 描述                               |
-| ------------------------------------------------------------------------------------ | ------ | ---------------------------------- |
-| [HTML5 语义化与文档结构 [P4-P5]](/interview/junior/html-semantics)                   | junior | 语义标签、SEO、无障碍              |
-| [CSS 布局：Flexbox 与 Grid [P4-P5]](/interview/junior/css-layout)                    | junior | Flexbox 属性、Grid 布局、居中方案  |
-| [响应式设计与移动端适配 [P4-P5]](/interview/junior/responsive-design)                | junior | 媒体查询、移动优先、rem/vw         |
-| [CSS 新特性：变量、动画、过渡 [P4-P5]](/interview/junior/css-modern-features)        | junior | CSS 变量、transition、animation    |
-| [JavaScript 基础：变量、类型、运算 [P4-P5]](/interview/junior/js-basics)             | junior | 数据类型、类型转换、运算符         |
-| [函数与作用域基础 [P4-P5]](/interview/junior/functions-and-scope)                    | junior | 函数声明、箭头函数、作用域         |
-| [对象与类基础 [P4-P5]](/interview/junior/objects-and-classes)                        | junior | 对象字面量、class、继承            |
-| [DOM 操作与事件处理 [P4-P5]](/interview/junior/dom-and-events)                       | junior | querySelector、事件监听、事件委托  |
-| [浏览器基础：结构与开发者工具 [P4-P5]](/interview/junior/browser-basics)             | junior | 浏览器结构、URL→渲染、DevTools     |
-| [HTTP 协议基础 [P4-P5]](/interview/junior/http-basics)                               | junior | HTTP 方法、状态码、HTTPS           |
-| [本地存储与 Cookie 基础 [P4-P5]](/interview/junior/storage-and-cookie)               | junior | localStorage/sessionStorage/Cookie |
-| [Vue 3 入门：模板、组件、生命周期 [P4-P5]](/interview/junior/vue-basics)             | junior | 模板语法、组件注册、生命周期       |
-| [Vue 组件模式：Props、Emit、Slots [P4-P5]](/interview/junior/vue-component-patterns) | junior | Props/Emit/Slots/provide-inject    |
-| [TypeScript 入门：类型注解与基础类型 [P4-P5]](/interview/junior/typescript-basics)   | junior | 基础类型、接口、枚举               |
-| [Git 基础：分支策略与协作流程 [P4-P5]](/interview/junior/git-basics)                 | junior | add/commit/push、分支、合并        |
-| [npm/pnpm 包管理入门 [P4-P5]](/interview/junior/npm-pnpm-basics)                     | junior | package.json、依赖管理、scripts    |
-| [Chrome DevTools 实战 [P4-P5]](/interview/junior/devtools-basics)                    | junior | Elements/Console/Network/Sources   |
-| [前端调试基础 [P4-P5]](/interview/junior/debugging-basics)                           | junior | debugger、断点、条件断点           |
-| [Web 安全入门：XSS/CSRF [P4-P5]](/interview/junior/web-security-basics)              | junior | XSS 类型与防范、CSRF 原理          |
-| [SPA 部署基础（Nginx 配置） [P4-P5]](/interview/junior/spa-deploy-basics)            | junior | Nginx try_files、History 模式      |
-| [表单与验证基础 [P4-P5]](/interview/junior/form-validation-basics)                   | junior | 表单控件、验证规则、正则           |
-
----
-
-## 中级工程师（P5-P6）
-
-| 文档                                                                                       | 层级         | 描述                                     |
-| ------------------------------------------------------------------------------------------ | ------------ | ---------------------------------------- |
-| [CSS 架构：BEM/CSS Modules/Tailwind [P5-P6]](/interview/intermediate/css-architecture)     | intermediate | BEM 命名、CSS Modules、Tailwind          |
-| [CSS 预处理器：Sass/Less/PostCSS [P5-P6]](/interview/intermediate/css-preprocessors)       | intermediate | Sass 变量/嵌套/mixin、PostCSS            |
-| [闭包、作用域链与执行上下文 [P5-P6]](/interview/intermediate/js-closures-context)          | intermediate | 执行上下文、闭包应用、this               |
-| [异步编程深入：Promise/async/await [P5-P6]](/interview/intermediate/async-deep-dive)       | intermediate | Promise 链、并发控制、错误处理           |
-| [ES6+ 模块系统与工程化 [P5-P6]](/interview/intermediate/es6-modules)                       | intermediate | ESM vs CJS、tree-shaking、动态 import    |
-| [JavaScript 常用设计模式 [P5-P6]](/interview/intermediate/js-design-patterns)              | intermediate | 观察者/策略/工厂/单例/装饰器             |
-| [浏览器渲染机制：重排/重绘/合成 [P5-P6]](/interview/intermediate/rendering-mechanism)      | intermediate | 重排/重绘/合成、GPU 加速                 |
-| [HTTP 缓存策略：强缓存/协商缓存 [P5-P6]](/interview/intermediate/http-caching)             | intermediate | Cache-Control/ETag、缓存策略设计         |
-| [前端网络优化：预加载/懒加载/压缩 [P5-P6]](/interview/intermediate/network-optimization)   | intermediate | preload/prefetch、懒加载、CDN            |
-| [Vue 3 响应式原理入门 [P5-P6]](/interview/intermediate/vue-reactivity-basics)              | intermediate | reactive/ref 原理、依赖收集/派发         |
-| [Vue 3 生命周期深入 [P5-P6]](/interview/intermediate/vue-lifecycle)                        | intermediate | 完整生命周期、组合式 API 钩子            |
-| [Vue 组件通信方式全景 [P5-P6]](/interview/intermediate/vue-communication)                  | intermediate | props/emit/provide-inject/v-model        |
-| [Vue Router 路由实战 [P5-P6]](/interview/intermediate/vue-router-basics)                   | intermediate | 路由配置、导航守卫、路由懒加载           |
-| [TypeScript 类型体操入门 [P5-P6]](/interview/intermediate/ts-types-practice)               | intermediate | 泛型、条件类型、映射类型、工具类型       |
-| [TypeScript 工程化实践 [P5-P6]](/interview/intermediate/ts-engineering)                    | intermediate | tsconfig 配置、声明文件、框架集成        |
-| [React 入门：JSX、Hooks、组件模式 [P5-P6]](/interview/intermediate/react-basics)           | intermediate | JSX、useState/useEffect、组件模式        |
-| [前端性能优化基础 [P5-P6]](/interview/intermediate/performance-basics)                     | intermediate | Core Web Vitals、图片优化、代码分割      |
-| [前端测试基础：Jest/Vitest [P5-P6]](/interview/intermediate/testing-basics)                | intermediate | 测试金字塔、Vitest/Jest、组件测试        |
-| [构建工具入门：Vite 配置与使用 [P5-P6]](/interview/intermediate/build-tools-basics)        | intermediate | Vite 配置、环境变量、代理                |
-| [前端错误处理与监控入门 [P5-P6]](/interview/intermediate/error-handling)                   | intermediate | ErrorBoundary、全局错误捕获、上报        |
-| [Web 安全实战：CSP/SRI/依赖检查 [P5-P6]](/interview/intermediate/web-security-practice)    | intermediate | CSP 策略、SRI、依赖安全检查              |
-| [Docker 容器化基础与前端部署 [P5-P6]](/interview/intermediate/docker-basics)               | intermediate | Dockerfile、docker-compose、容器化部署   |
-| [Dart 语言基础与核心特性 [P5-P6]](/interview/intermediate/flutter-dart-basics)             | intermediate | 空安全、异步编程、OOP、Mixin             |
-| [Flutter Widget 体系与布局系统 [P5-P6]](/interview/intermediate/flutter-widget-and-layout) | intermediate | Widget 生命周期、布局约束、常用布局组件  |
-| [Flutter 状态管理基础 [P5-P6]](/interview/intermediate/flutter-state-management-basics)    | intermediate | setState、Provider、Bloc 入门            |
-| [Flutter 导航与路由实战 [P5-P6]](/interview/intermediate/flutter-navigation-and-routing)   | intermediate | Navigator、命名路由、GoRouter、Deep Link |
-
----
-
-## 层级说明
-
-| 层级             | 适用人群                 | 核心能力要求                           |
-| ---------------- | ------------------------ | -------------------------------------- |
-| **junior**       | 初级工程师（P4-P5）      | 基础概念、常用 API、能独立完成开发任务 |
-| **intermediate** | 中级工程师（P5-P6）      | 原理理解、实战经验、能解决复杂问题     |
-| **senior**       | 高级/资深工程师（P6-P7） | 深度原理、源码级理解、复杂问题排查     |
-| **architect**    | 前端架构师（P8）         | 系统设计、技术选型决策、跨团队方案推动 |
-| **manager**      | 技术主管/TL              | 团队管理、项目交付、技术战略规划       |
 
 ---
 
