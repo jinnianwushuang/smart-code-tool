@@ -1,28 +1,35 @@
 <script setup>
-import {
-  SearchOutlined,
-  CopyOutlined,
-  BugOutlined,
-} from '@ant-design/icons-vue'
+import { computed } from 'vue'
+import { SearchOutlined, CopyOutlined } from '@ant-design/icons-vue'
 import { useHttpStatus } from './composables/use-http-status.js'
 
-const {
-  searchText,
-  pdfArea,
-  isExporting,
-  filteredStatus,
-  copyCode,
-  downloadPdf,
-} = useHttpStatus()
+const { searchText, pdfArea, isExporting, filteredStatus, copyCode, downloadPdf } = useHttpStatus()
+
+// 按类别分组
+const CATEGORY_META = {
+  '2xx': { label: '2xx 成功', color: '#52c41a', icon: '✅' },
+  '4xx': { label: '4xx 客户端错误', color: '#faad14', icon: '⚠️' },
+  '5xx': { label: '5xx 服务端错误', color: '#722ed1', icon: '🔥' },
+}
+
+const groupedStatus = computed(() => {
+  const groups = {}
+  filteredStatus.value.forEach((item) => {
+    const cat = String(item.code)[0] + 'xx'
+    if (!groups[cat]) groups[cat] = []
+    groups[cat].push(item)
+  })
+  return groups
+})
 </script>
 
 <template>
   <div class="q-pa-md generator-wrapper">
-    <q-card flat bordered class="q-mx-auto max-w-900 transition-base">
+    <q-card flat bordered class="q-mx-auto max-w-1000 transition-base">
       <!-- 头部 -->
       <q-card-section class="bg-indigo-8 text-white row items-center">
         <q-icon name="info_outline" size="sm" class="q-mr-sm" />
-        <div class="text-h6 text-weight-bold">HTTP 状态码开发手册</div>
+        <div class="text-h6 text-weight-bold">HTTP 状态码速查手册</div>
         <q-space />
         <div class="row items-center q-gutter-x-md">
           <a
@@ -44,52 +51,51 @@ const {
         </div>
       </q-card-section>
 
-      <q-card-section class="q-gutter-y-md">
+      <q-card-section class="q-gutter-y-sm">
         <!-- 搜索栏 -->
-        <div class="search-bar">
-          <a-input-search
-            v-model:value="searchText"
-            placeholder="搜索代码(如404)或关键词(如'权限')..."
-            size="large"
-            allow-clear
-          >
-            <template #prefix><SearchOutlined style="color: #bfbfbf" /></template>
-          </a-input-search>
-        </div>
+        <a-input-search
+          v-model:value="searchText"
+          placeholder="搜索代码(如404)或关键词(如'权限')..."
+          allow-clear
+          size="small"
+          style="max-width: 400px"
+        >
+          <template #prefix><SearchOutlined style="color: #bfbfbf" /></template>
+        </a-input-search>
 
-        <!-- 列表区域 (PDF 导出引用此 DOM) -->
-        <div ref="pdfArea" class="status-list">
+        <!-- 分组列表 (PDF 导出区域) -->
+        <div ref="pdfArea" class="status-groups">
           <div v-if="filteredStatus.length === 0" class="empty-box">
             <a-empty description="未找到相关状态码" />
           </div>
 
-          <div
-            v-for="item in filteredStatus"
-            :key="item.code"
-            class="status-item transition-base"
-            :style="{ borderLeftColor: item.color }"
-          >
-            <div class="item-main">
-              <div class="code-badge font-mono" :style="{ backgroundColor: item.color }">
-                {{ item.code }}
-              </div>
-              <div class="info-zone">
-                <div class="name-row">
-                  <span class="status-name">{{ item.title }}</span>
-                  <span class="status-desc">{{ item.desc }}</span>
+          <template v-for="(items, catKey) in groupedStatus" :key="catKey">
+            <!-- 分组标题 -->
+            <div class="group-header" :style="{ borderLeftColor: CATEGORY_META[catKey]?.color }">
+              <span class="group-icon">{{ CATEGORY_META[catKey]?.icon }}</span>
+              <span class="group-label">{{ CATEGORY_META[catKey]?.label }}</span>
+              <span class="group-count">{{ items.length }}</span>
+            </div>
+
+            <!-- 紧凑表格 -->
+            <div class="compact-table">
+              <div v-for="item in items" :key="item.code" class="table-row">
+                <div class="row-code font-mono" :style="{ color: item.color }">
+                  {{ item.code }}
                 </div>
-                <div class="scenario-card">
-                  <div class="scenario-tag"><BugOutlined /> 开发实战场景:</div>
-                  <div class="scenario-text">{{ item.scenario }}</div>
+                <div class="row-title">{{ item.title }}</div>
+                <div class="row-desc">{{ item.desc }}</div>
+                <div class="row-scenario">
+                  <span class="scenario-text">{{ item.scenario }}</span>
+                </div>
+                <div class="row-action">
+                  <a-button type="text" size="small" @click="copyCode(item.code)">
+                    <template #icon><CopyOutlined /></template>
+                  </a-button>
                 </div>
               </div>
             </div>
-            <div class="item-actions">
-              <a-button type="text" @click="copyCode(item.code)">
-                <template #icon><CopyOutlined /></template>
-              </a-button>
-            </div>
-          </div>
+          </template>
         </div>
       </q-card-section>
     </q-card>
@@ -100,106 +106,102 @@ const {
 .generator-wrapper {
   transition: background-color 0.3s;
 }
-
 .transition-base {
   transition:
     background-color 0.3s,
     border-color 0.3s,
-    box-shadow 0.3s,
-    transform 0.3s;
+    box-shadow 0.3s;
 }
-
-.max-w-900 {
-  max-width: 900px;
+.max-w-1000 {
+  max-width: 1000px;
 }
-
-.search-bar {
-  margin-bottom: 16px;
-}
-
-.status-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.status-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px;
-  background: rgba(128, 128, 128, 0.03);
-  border: 1px solid rgba(128, 128, 128, 0.1);
-  border-left-width: 5px;
-  border-radius: 4px 8px 8px 4px;
-}
-
-.status-item:hover {
-  transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.item-main {
-  display: flex;
-  gap: 20px;
-  flex: 1;
-}
-
-.code-badge {
-  color: #fff;
-  font-size: 22px;
-  font-weight: bold;
-  height: fit-content;
-  padding: 4px 12px;
-  border-radius: 6px;
-  min-width: 70px;
-  text-align: center;
-}
-
-.name-row {
-  margin-bottom: 10px;
-}
-.status-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin-right: 12px;
-}
-.status-desc {
-  color: rgba(128, 128, 128, 0.7);
-  font-size: 14px;
-}
-
-.scenario-card {
-  background: rgba(128, 128, 128, 0.05);
-  padding: 10px 14px;
-  border-radius: 6px;
-  border: 1px dashed rgba(128, 128, 128, 0.2);
-}
-
 .font-mono {
   font-family: 'Fira Code', 'Monaco', monospace;
 }
 
-.scenario-tag {
-  font-size: 12px;
-  color: #595959;
-  font-weight: 600;
-  margin-bottom: 4px;
+/* 分组标题 */
+.group-header {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  padding: 6px 12px;
+  margin-top: 12px;
+  border-left: 4px solid;
+  background: rgba(128, 128, 128, 0.06);
+  border-radius: 0 6px 6px 0;
 }
-
-.scenario-text {
-  color: #434343;
+.group-header:first-child {
+  margin-top: 0;
+}
+.group-icon {
+  font-size: 14px;
+}
+.group-label {
   font-size: 13px;
-  line-height: 1.6;
-  margin: 0;
+  font-weight: 600;
+  color: #434343;
+}
+.group-count {
+  font-size: 11px;
+  color: #888;
+  background: rgba(128, 128, 128, 0.12);
+  padding: 0 6px;
+  border-radius: 8px;
 }
 
-code {
-  background: rgba(0, 0, 0, 0.05);
-  padding: 2px 4px;
-  border-radius: 3px;
+/* 紧凑表格 */
+.compact-table {
+  border: 1px solid rgba(128, 128, 128, 0.12);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.table-row {
+  display: grid;
+  grid-template-columns: 56px 140px 110px 1fr 32px;
+  align-items: center;
+  padding: 6px 12px;
+  gap: 8px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.08);
+  font-size: 13px;
+  transition: background-color 0.15s;
+}
+.table-row:last-child {
+  border-bottom: none;
+}
+.table-row:hover {
+  background: rgba(128, 128, 128, 0.06);
+}
+.row-code {
+  font-weight: 700;
+  font-size: 14px;
+}
+.row-title {
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.row-desc {
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.row-scenario {
+  overflow: hidden;
+}
+.scenario-text {
+  color: #888;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.row-action {
+  display: flex;
+  justify-content: center;
 }
 
 .empty-box {

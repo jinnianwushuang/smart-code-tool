@@ -39,6 +39,10 @@
               <a-checkbox v-model:checked="config.uppercase">强制全大写 (UPPERCASE)</a-checkbox>
             </a-form-item>
 
+            <a-form-item v-if="config.type === 'uuid'">
+              <a-checkbox v-model:checked="config.noHyphen">去掉中横线 (无 -)</a-checkbox>
+            </a-form-item>
+
             <div class="actions">
               <a-button type="primary" block size="large" @click="generateIds" class="btn-generate">
                 <template #icon><ThunderboltOutlined /></template>
@@ -117,6 +121,7 @@ const config = reactive({
   length: 21, // nanoid 专属长度
   prefix: '', // 自定义前缀
   uppercase: false, // 是否大写
+  noHyphen: false, // 是否去掉中横线
 })
 
 const generatedList = ref([])
@@ -129,6 +134,10 @@ const generateIds = () => {
 
     if (config.type === 'uuid') {
       id = uuidv4()
+      // 去掉中横线
+      if (config.noHyphen) {
+        id = id.replace(/-/g, '')
+      }
     } else {
       // nanoid 支持自定义长度
       id = nanoid(config.length)

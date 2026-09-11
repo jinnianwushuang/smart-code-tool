@@ -91,6 +91,20 @@ export const commonToolTabs = [
       () => import('./components/text-extract-stats/text-extract-stats.vue'),
     ),
   },
+  {
+    name: 'DateIntervalCalculator',
+    label: '日期间隔计算器',
+    component: defineAsyncComponent(
+      () => import('./components/date-interval-calculator/date-interval-calculator.vue'),
+    ),
+  },
+  {
+    name: 'FestivalCalculator',
+    label: '中国传统节日计算器',
+    component: defineAsyncComponent(
+      () => import('./components/festival-calculator/festival-calculator.vue'),
+    ),
+  },
 ]
 
 export const commonToolDefaultTab = 'JsonExcelConverter'
