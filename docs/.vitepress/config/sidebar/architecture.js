@@ -18,8 +18,6 @@ const architecturalVision = {
   ],
 }
 
- 
-
 // ── Flutter 架构 ──
 const flutter = {
   text: 'Flutter 架构',
@@ -28,8 +26,14 @@ const flutter = {
     {
       text: '参考代码',
       items: [
-        { text: 'Dart 基础命令', link: '/architecture-document/flutter/reference-code/dart-base-cmd' },
-        { text: 'Dart 基础代码', link: '/architecture-document/flutter/reference-code/dart-base-code' },
+        {
+          text: 'Dart 基础命令',
+          link: '/architecture-document/flutter/reference-code/dart-base-cmd',
+        },
+        {
+          text: 'Dart 基础代码',
+          link: '/architecture-document/flutter/reference-code/dart-base-code',
+        },
         {
           text: 'Flutter 基础命令',
           link: '/architecture-document/flutter/reference-code/flutter-base-cmd',
@@ -180,12 +184,14 @@ const react = {
           text: '桌面端项目',
           link: '/architecture-document/react/technology-selection/desktop-project',
         },
+        {
+          text: 'Electron + React 技术选型',
+          link: '/architecture-document/react/technology-selection/electron-react-technology-selection',
+        },
       ],
     },
   ],
 }
-
- 
 
 // ── Vue 架构 ──
 const vue = {
@@ -331,7 +337,7 @@ const vue = {
         },
       ],
     },
-   
+
     {
       text: '技术选型',
       items: [
@@ -351,6 +357,10 @@ const vue = {
         {
           text: '业务组件 SDK 打包',
           link: '/architecture-document/vue/technology-selection/sdk-project',
+        },
+        {
+          text: 'Electron + Vue 3 技术选型',
+          link: '/architecture-document/vue/technology-selection/electron-vue3-technology-selection',
         },
       ],
     },
@@ -386,12 +396,12 @@ const engineering = {
       text: '常见 SaaS 平台功能',
       link: '/architecture-document/engineering/job/common-saas-platform-features',
     },
-    
+
     {
       text: '全栈基座项目（React）',
       link: '/architecture-document/engineering/job/fullstack-base-project-react',
     },
-   
+
     {
       text: '全栈基座项目（Vue）',
       link: '/architecture-document/engineering/job/fullstack-base-project-vue',
@@ -472,18 +482,16 @@ export const architectureSidebar = {
   collapsed: false,
   items: [
     architecturalVision,
-   
-   
+
     python,
     react,
-    
+
     vue,
-     flutter,
+    flutter,
     engineering,
     database,
     generalKnowledge,
     dataStructure,
     designPatterns,
-     
   ],
 }

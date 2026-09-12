@@ -4,6 +4,13 @@ export const handbookSidebar = {
   collapsed: false,
   items: [
     {
+      text: '速查索引',
+      items: [
+        { text: '技术术语速查索引', link: '/handbook/tech-glossary-index/' },
+        { text: '知识体系导航', link: '/handbook/tech-glossary-index/knowledge-map' },
+      ],
+    },
+    {
       text: 'AI 开发',
       items: [
         { text: 'LangChain 手册', link: '/handbook/ai/langchain-handbook' },
@@ -24,12 +31,13 @@ export const handbookSidebar = {
         { text: 'Vite 核心原理', link: '/handbook/frontend/vite-core-principles' },
         { text: 'Electron 手册', link: '/handbook/electron/electron-handbook' },
         { text: 'Electron 核心原理', link: '/handbook/electron/electron-core-principles' },
-        { text: 'Electron + Vue 3 技术选型', link: '/handbook/electron/electron-vue3-technology-selection' },
-        { text: 'Electron + React 技术选型', link: '/handbook/electron/electron-react-technology-selection' },
         { text: 'TypeScript 手册', link: '/handbook/frontend/typescript-handbook' },
         { text: 'TypeScript 核心原理', link: '/handbook/frontend/typescript-core-principles' },
         { text: 'JavaScript 手册', link: '/handbook/frontend/javascript-handbook' },
-        { text: 'JavaScript 高阶API原理', link: '/handbook/frontend/javascript-advanced-principles' },
+        {
+          text: 'JavaScript 高阶API原理',
+          link: '/handbook/frontend/javascript-advanced-principles',
+        },
         { text: 'CSS 手册', link: '/handbook/frontend/css-handbook' },
         { text: 'SCSS 手册', link: '/handbook/frontend/scss-handbook' },
         { text: 'Tailwind CSS 手册', link: '/handbook/frontend/tailwind-css-handbook' },
