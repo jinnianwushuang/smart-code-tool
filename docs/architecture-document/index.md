@@ -8,7 +8,6 @@
 
 - [架构愿景](./architectural-vision/architectural-vision-1) - 整体架构设计
 
- 
 ### 🎨 Flutter 架构
 
 - [Dart 基础命令](./flutter/reference-code/dart-base-cmd)
@@ -38,8 +37,6 @@
 - [Vue to React](./react/idea-doc/idea1) - 框架迁移指南
 - [useEffect 原理](./react/principle/use-effect)
 - [技术选型](./react/technology-selection/app-project)
-
-
 
 ### 💚 Vue 架构
 
@@ -82,6 +79,11 @@
 - [网络通用知识](./general-knowledge/network-fundamentals) - TCP/IP、HTTP、HTTPS、DNS、CORS、缓存策略等
 - [Chrome 开发者工具全解](./general-knowledge/chrome-devtools) - Elements、Console、Sources、Network、Performance 等面板详解
 
+### 💭 研发思维
+
+- [BUG 修复思维对比](./thinking/bug-fixing-thinking) - 工程师/架构师/主管三种视角的 BUG 修复思维差异与协同模式
+- [技术迭代与学习疲态](./thinking/tech-iteration-and-learning-fatigue) - 技术快速迭代下的学习疲态本质、三种视角应对策略与协同模型
+
 ## 🎯 快速开始
 
 根据你的技术栈选择对应的架构文档:
@@ -89,4 +91,3 @@
 - **前端开发**: 查看 [Vue 架构](./vue/architecture/core-principle) 或 [React 架构](./react/idea-doc/idea1)
 - **移动开发**: 查看 [Flutter 架构](./flutter/reference-code/flutter-base-cmd)
 - **后端开发**: 查看 [Python 架构](./python/reference-code/python-base-cmd)
-

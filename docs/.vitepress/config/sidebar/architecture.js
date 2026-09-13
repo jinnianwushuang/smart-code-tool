@@ -476,6 +476,19 @@ const designPatterns = {
   ],
 }
 
+// ── 研发思维 ──
+const thinking = {
+  text: '研发思维',
+  collapsed: true,
+  items: [
+    { text: 'BUG 修复思维对比', link: '/architecture-document/thinking/bug-fixing-thinking' },
+    {
+      text: '技术迭代与学习疲态',
+      link: '/architecture-document/thinking/tech-iteration-and-learning-fatigue',
+    },
+  ],
+}
+
 // ── 组装侧边栏 ──
 export const architectureSidebar = {
   // text: '🏗️ 架构',
@@ -493,5 +506,6 @@ export const architectureSidebar = {
     generalKnowledge,
     dataStructure,
     designPatterns,
+    thinking,
   ],
 }
