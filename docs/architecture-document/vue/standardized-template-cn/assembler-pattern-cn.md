@@ -1,6 +1,6 @@
 ---
 title: 装配器模式
-order: 32
+order: 3
 ---
 
 # 装配器模式
@@ -57,27 +57,19 @@ Component Logic
 ```javascript
 import { atoms_assembler } from 'src/output/common/project-common.js'
 
-// 1. Public external modules (from composable_common)
-// 1. 公共外部模块（来自 composable_common）
+// 公共的外部模块
 const public_assembler = ['useGlobalState']
-
-// 2. Manual assembler modules not in composable_common
-// 2. composable_common 中没有的手动装配器模块
+// 手动引入的外部模块，不在 composable_common 中的模块
 const manual_assembler = []
-
-// 3. Current file path for relative imports
-// 3. 当前文件路径用于相对导入
+// 当前文件路径
 const current_file_path = import.meta.url
 
-// 4. Module discovery via glob
-// 4. 通过全局模式进行模块发现
+// 模块扫描 — Vite import.meta.glob 自动发现
 const modules = import.meta.glob(['../module/**/*.js', '../state/*.js'], {
-  eager: true, // Synchronous loading
-  // 同步加载
+  eager: true,
 })
 
-// 5. Assemble and export
-// 5. 装配并导出
+// 聚合装配并导出
 export const all_atoms_assembler = () => {
   return atoms_assembler({
     public_assembler,
@@ -95,14 +87,11 @@ export const all_atoms_assembler = () => {
 ```javascript
 const modules = import.meta.glob(
   [
-    '../module/**/*.js', // Find all module JS files
-    // 查找所有模块 JS 文件
-    '../state/*.js', // Find all state files
-    // 查找所有状态文件
+    '../module/**/*.js', // 扫描所有模块 JS 文件
+    '../state/*.js', // 扫描所有状态文件
   ],
   {
-    eager: true, // Load synchronously
-    // 同步加载
+    eager: true, // 同步加载
   },
 )
 ```
@@ -134,31 +123,25 @@ const modules = import.meta.glob(
 
 ```javascript
 {
-  // State (from state/singleton.js)
-  // 状态（来自 state/singleton.js）
+  // 单例状态（来自 state/singleton/*.js）
   user_info,
   table_data,
   pagination,
 
-  // Computed properties (from state/computed.js)
   // 计算属性（来自 state/computed.js）
   visible_row_count,
 
-  // Lifecycle hooks (from module/lifecycle/lifecycle.js)
   // 生命周期钩子（来自 module/lifecycle/lifecycle.js）
   lifecycle_onBeforeMount,
   lifecycle_onMounted,
 
-  // Emit functions (from module/emit/emit.js)
   // 发射函数（来自 module/emit/emit.js）
   btn_a_click,
 
-  // Exposed methods
-  // 公开方法
+  // 暴露方法（来自 module/exposed-method/）
   handle_xxx_demo,
   handle_query_demo,
 
-  // Event pipeline (dynamically created)
   // 事件管道（动态创建）
   ALL_EVENT_PIPELINE: {
     dialog: { handle_dialog_copy_use_confirm_click, ... },
@@ -194,9 +177,8 @@ const { user_info, btn_a_click, handle_query_demo } = useContextAssembler(
 const public_assembler = ['useGlobalState']
 ```
 
-- 列出来自 `composable_common` 的模块
-- 这些在所有页面间共享
-- 减少重复
+- 声明公共外部模块（来自 `composable_common`）
+- 这些在所有页面间共享，减少重复
 
 ### manual_assembler
 
@@ -204,8 +186,7 @@ const public_assembler = ['useGlobalState']
 const manual_assembler = ['custom_module_path']
 ```
 
-- composable_common 中没有的模块
-- 明确列出
+- 声明不在 `composable_common` 中的手动模块
 - 允许对约定的例外
 
 ### current_file_path
@@ -214,9 +195,8 @@ const manual_assembler = ['custom_module_path']
 const current_file_path = import.meta.url
 ```
 
-- assembler.js 的位置
-- 用于相对路径解析
-- 确保正确的模块发现
+- `import.meta.url` 获取当前文件路径
+- 用于模块扫描的相对路径解析
 
 ## 模块类型
 
@@ -310,13 +290,11 @@ const custom_assembler = () => {
   return {
     ...base_context,
 
-    // Add custom derived context
     // 添加自定义派生上下文
     custom_computed: computed(() => {
       return base_context.table_data.value.length > 0
     }),
 
-    // Override behavior
     // 覆盖行为
     handle_custom_action: (payload) => {
       console.log('Custom override')
@@ -405,7 +383,6 @@ const modules = import.meta.glob(
   [
     '../module/**/*.js',
     '../state/*.js',
-    // Load environment-specific configs
     // 加载环境特定配置
     ...(isAdminMode ? ['../admin-module/**/*.js'] : []),
   ],

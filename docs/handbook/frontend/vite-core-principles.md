@@ -18,6 +18,7 @@
 - [八、CSS 处理管线](#八css-处理管线)
 - [九、环境变量与模式](#九环境变量与模式)
 - [十、性能优化机制](#十性能优化机制)
+- [十一、常用命令](#十一常用命令)
 
 ---
 
@@ -176,8 +177,12 @@ server.watcher.on('change', async (file) => {
   updateModules(file, timestamp)
 })
 
-server.watcher.on('add', (file) => { /* 新文件: 触发 full-reload 检查 */ })
-server.watcher.on('unlink', (file) => { /* 删除: 清理模块图 + reload */ })
+server.watcher.on('add', (file) => {
+  /* 新文件: 触发 full-reload 检查 */
+})
+server.watcher.on('unlink', (file) => {
+  /* 删除: 清理模块图 + reload */
+})
 
 // 性能细节:
 // - 使用原生 fs.watch (通过 chokidar 封装)
@@ -343,9 +348,9 @@ export default defineConfig({
         ↓
 4. 计算更新边界 (propagateUpdate):
    从变化模块向上遍历 importers 链:
-   
+
    App.vue ← main.js ← index.html
-   
+
    规则: 向上查找最近的"热边界" (Hot Boundary)
    - Vue SFC: 组件自身就是热边界 ✅ (可局部更新)
    - 无 hot API 的普通 JS: 继续向上冒泡
@@ -531,18 +536,18 @@ WebSocket: { type: 'update', updates: [{ type: 'css-update', path: '/src/style.c
 // 记录所有模块及其依赖关系
 
 class ModuleNode {
-  url: string                    // 浏览器请求的 URL
-  id: string | null              // 文件系统绝对路径
-  file: string | null            // 文件路径 (无查询参数)
-  type: 'js' | 'css'             // 模块类型
-  info: ModuleInfo               // Rollup 兼容的模块信息
-  meta: Record<string, any>      // 插件自定义元数据
-  importers: Set<ModuleNode>     // 谁引用了我 (反向依赖)
+  url: string // 浏览器请求的 URL
+  id: string | null // 文件系统绝对路径
+  file: string | null // 文件路径 (无查询参数)
+  type: 'js' | 'css' // 模块类型
+  info: ModuleInfo // Rollup 兼容的模块信息
+  meta: Record<string, any> // 插件自定义元数据
+  importers: Set<ModuleNode> // 谁引用了我 (反向依赖)
   importedModules: Set<ModuleNode> // 我引用了谁 (正向依赖)
   acceptedHmrDeps: Set<ModuleNode> // accept() 声明的依赖
-  isSelfAccepting: boolean       // 是否 accept 自身
-  transformResult: TransformResult | null  // 转换结果缓存
-  lastHMRTimestamp: number       // 最近一次 HMR 时间戳
+  isSelfAccepting: boolean // 是否 accept 自身
+  transformResult: TransformResult | null // 转换结果缓存
+  lastHMRTimestamp: number // 最近一次 HMR 时间戳
 }
 
 // 模块图示意:
@@ -625,23 +630,23 @@ export default function myPlugin(): Plugin {
     name: 'my-plugin',
 
     // ─── Vite 独有钩子 ───
-    enforce: 'pre' | 'post',     // 执行顺序 (pre 在内置插件前)
-    apply: 'serve' | 'build',    // 仅开发 / 仅构建时生效
-    config(config, env) {},      // 修改/扩展配置 (最早执行)
-    configResolved(config) {},   // 配置确定后 (只读)
-    configureServer(server) {},  // 访问 Dev Server (添加中间件)
+    enforce: 'pre' | 'post', // 执行顺序 (pre 在内置插件前)
+    apply: 'serve' | 'build', // 仅开发 / 仅构建时生效
+    config(config, env) {}, // 修改/扩展配置 (最早执行)
+    configResolved(config) {}, // 配置确定后 (只读)
+    configureServer(server) {}, // 访问 Dev Server (添加中间件)
     transformIndexHtml(html) {}, // 转换 index.html
-    handleHotUpdate(ctx) {},     // 自定义 HMR 处理
-    buildStart() {},             // 构建开始
+    handleHotUpdate(ctx) {}, // 自定义 HMR 处理
+    buildStart() {}, // 构建开始
 
     // ─── Rollup 兼容钩子 ───
-    options(options) {},         // 修改 Rollup 选项
-    buildEnd() {},               // 构建结束
-    resolveId(id, importer) {},  // 自定义模块解析
-    load(id) {},                 // 自定义模块加载
-    transform(code, id) {},      // 自定义模块转换
-    generateBundle() {},         // 输出产物操作
-    closeBundle() {},            // Bundle 完成后
+    options(options) {}, // 修改 Rollup 选项
+    buildEnd() {}, // 构建结束
+    resolveId(id, importer) {}, // 自定义模块解析
+    load(id) {}, // 自定义模块加载
+    transform(code, id) {}, // 自定义模块转换
+    generateBundle() {}, // 输出产物操作
+    closeBundle() {}, // Bundle 完成后
   }
 }
 ```
@@ -682,7 +687,7 @@ export default function myHmrPlugin(): Plugin {
       // 场景: JSON 配置文件变化时只更新特定模块
       if (file.endsWith('config.json')) {
         // 返回需要更新的模块子集 (缩小更新范围)
-        return modules.filter(m => m.url.includes('config'))
+        return modules.filter((m) => m.url.includes('config'))
       }
 
       // 场景: 向客户端发送自定义事件
@@ -690,12 +695,12 @@ export default function myHmrPlugin(): Plugin {
         server.ws.send({
           type: 'custom',
           event: 'markdown-updated',
-          data: { file, timestamp }
+          data: { file, timestamp },
         })
         // 返回空数组 → 阻止默认 HMR 行为
         return []
       }
-    }
+    },
   }
 }
 
@@ -716,7 +721,7 @@ export default function virtualPlugin(): Plugin {
     name: 'virtual-config',
     resolveId(id) {
       if (id === virtualModuleId) {
-        return resolvedVirtualModuleId  // 拦截解析
+        return resolvedVirtualModuleId // 拦截解析
       }
     },
     load(id) {
@@ -724,7 +729,7 @@ export default function virtualPlugin(): Plugin {
         // 返回动态生成的模块内容
         return `export default ${JSON.stringify(generateConfig())}`
       }
-    }
+    },
   }
 }
 
@@ -800,8 +805,8 @@ export default defineConfig({
       output: {
         // 手动分包
         manualChunks: {
-          'vendor': ['vue', 'vue-router', 'pinia'],
-          'utils': ['lodash-es', 'dayjs'],
+          vendor: ['vue', 'vue-router', 'pinia'],
+          utils: ['lodash-es', 'dayjs'],
         },
         // 或函数形式 (更灵活)
         manualChunks(id) {
@@ -817,9 +822,9 @@ export default defineConfig({
       },
     },
     // 分包阈值
-    chunkSizeWarningLimit: 500,  // kB
+    chunkSizeWarningLimit: 500, // kB
     // 小资源内联阈值
-    assetsInlineLimit: 4096,     // 4kB 以下 → base64
+    assetsInlineLimit: 4096, // 4kB 以下 → base64
   },
 })
 
@@ -895,9 +900,9 @@ SECRET_KEY=abc123                        # ❌ 仅服务端 (vite.config.js)
 ```typescript
 // 客户端使用:
 console.log(import.meta.env.VITE_API_BASE)
-console.log(import.meta.env.MODE)    // 'development' | 'production'
-console.log(import.meta.env.DEV)     // boolean
-console.log(import.meta.env.PROD)    // boolean
+console.log(import.meta.env.MODE) // 'development' | 'production'
+console.log(import.meta.env.DEV) // boolean
+console.log(import.meta.env.PROD) // boolean
 console.log(import.meta.env.BASE_URL) // 部署基础路径
 
 // 注入原理 (静态替换):
@@ -906,9 +911,9 @@ console.log(import.meta.env.BASE_URL) // 部署基础路径
 
 // vite.config.js 中读取:
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '')  // '' = 不过滤前缀
+  const env = loadEnv(mode, process.cwd(), '') // '' = 不过滤前缀
   return {
-    server: { proxy: { '/api': env.API_BACKEND } }  // 无 VITE_ 前缀也可用
+    server: { proxy: { '/api': env.API_BACKEND } }, // 无 VITE_ 前缀也可用
   }
 })
 ```
@@ -1031,10 +1036,10 @@ export default defineConfig({
 
 // 概念模型:
 interface ViteEnvironment {
-  name: string              // 'client' | 'ssr' | 'worker'
+  name: string // 'client' | 'ssr' | 'worker'
   moduleGraph: ModuleGraph
   transformRequest(url): Promise<TransformResult>
-  hot: HotChannel           // 独立的 HMR 通道
+  hot: HotChannel // 独立的 HMR 通道
 }
 
 // 意义:
@@ -1043,3 +1048,59 @@ interface ViteEnvironment {
 // 3. 为 Rolldown (Rust 版 Rollup) 统一铺路
 ```
 
+---
+
+## 十一、常用命令
+
+### 11.1 Vite CLI
+
+```bash
+# 创建项目
+npm create vite@latest my-app
+cd my-app && npm install
+
+# 开发
+npm run dev                        # 启动开发服务器
+npm run dev -- --port 3000         # 指定端口
+npm run dev -- --host              # 暴露主机
+npm run dev -- --open              # 自动打开浏览器
+npm run dev -- --force             # 强制依赖预构建
+npm run dev -- --mode staging      # 指定模式
+npm run dev -- --debug             # 详细调试日志
+
+# 构建
+npm run build                      # 生产构建
+npm run build -- --mode development  # 开发模式构建
+npm run preview                    # 预览构建结果
+npm run preview -- --port 4173     # 指定预览端口
+```
+
+### 11.2 插件安装
+
+```bash
+# 框架插件
+npm install -D @vitejs/plugin-vue       # Vue
+npm install -D @vitejs/plugin-react     # React
+npm install -D @vitejs/plugin-legacy    # 旧浏览器支持
+
+# 功能插件
+npm install -D vite-plugin-pwa          # PWA
+npm install -D vite-plugin-inspect      # 插件检查
+npm install -D vite-plugin-compression  # Gzip 压缩
+npm install -D rollup-plugin-visualizer # 包分析
+npm install -D vite-plugin-html         # HTML 模板
+```
+
+### 11.3 包分析
+
+```bash
+# rollup-plugin-visualizer
+# vite.config.ts: plugins: [visualizer({ open: true })]
+npm run build  # 自动打开分析图
+
+# vite-bundle-visualizer
+npx vite-bundle-visualizer
+
+# 构建性能分析
+npm run build -- --profile  # 生成 CPU profile
+```

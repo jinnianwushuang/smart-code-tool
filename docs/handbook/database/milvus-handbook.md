@@ -1383,6 +1383,60 @@ client.release_collection("unused_collection")
 
 ---
 
+---
+
+## 常用命令
+
+### Docker 部署
+
+```bash
+# 单机部署（Docker Compose）
+wget https://github.com/milvus-io/milvus/releases/download/v2.4.0/milvus-standalone-docker-compose.yml -O docker-compose.yml
+docker-compose up -d                 # 启动
+docker-compose down                  # 停止
+docker-compose ps                    # 查看状态
+
+# Attu 管理界面
+docker run -d --name attu -p 8080:3000 -e MILVUS_URL=host.docker.internal:19530 zilliz/attu:latest
+```
+
+### Python 客户端
+
+```bash
+# 安装
+pip install pymilvus                 # Python SDK
+
+# 连接
+from pymilvus import connections
+connections.connect("default", host="localhost", port="19530")
+```
+
+### 实用命令
+
+```bash
+# 版本
+docker exec milvus-standalone milvus --version
+
+# 日志
+docker logs milvus-standalone
+docker logs milvus-standalone --tail 100
+
+# 数据目录
+ls -la volumes/                      # 查看数据卷
+
+# 备份
+# 1. 停止服务
+# 2. 备份 volumes/ 目录
+docker-compose down
+cp -r volumes/ volumes_backup/
+docker-compose up -d
+
+# 健康检查
+curl http://localhost:9091/healthz
+```
+
+---
+
 ## 参考资源
 
 - [Milvus 官方文档](https://milvus.io/docs)

@@ -20,6 +20,7 @@
 - [十、性能优化](#十性能优化)
 - [十一、备份恢复](#十一备份恢复)
 - [十二、最佳实践](#十二最佳实践)
+- [十三、常用命令](#十三常用命令)
 
 ---
 
@@ -1489,6 +1490,102 @@ LINES TERMINATED BY '\n';
    - 规划分库分表方案
    - 定期清理历史数据
    - 归档冷数据
+
+---
+
+## 十三、常用命令
+
+### 13.1 服务管理
+
+```bash
+# macOS (Homebrew)
+brew services start mysql          # 启动
+brew services stop mysql           # 停止
+brew services restart mysql        # 重启
+
+# Linux (systemd)
+sudo systemctl start mysql
+sudo systemctl stop mysql
+sudo systemctl restart mysql
+sudo systemctl status mysql
+
+# Docker
+docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:8
+docker start mysql
+docker stop mysql
+```
+
+### 13.2 连接与登录
+
+```bash
+# 本地连接
+mysql -u root -p
+mysql -u root -p database_name
+
+# 远程连接
+mysql -h host -P 3306 -u user -p
+
+# 执行 SQL 文件
+mysql -u root -p < backup.sql
+mysql -u root -p database_name < script.sql
+
+# 执行单条 SQL
+mysql -u root -p -e "SELECT VERSION();"
+```
+
+### 13.3 备份与恢复
+
+```bash
+# 备份
+mysqldump -u root -p database_name > backup.sql
+mysqldump -u root -p --all-databases > all_backup.sql
+mysqldump -u root -p --single-transaction database_name > backup.sql  # InnoDB 安全备份
+
+# 恢复
+mysql -u root -p new_database < backup.sql
+mysql -u root -p -e "CREATE DATABASE new_database"
+mysql -u root -p new_database < backup.sql
+
+# 压缩备份
+mysqldump -u root -p database_name | gzip > backup.sql.gz
+gunzip < backup.sql.gz | mysql -u root -p database_name
+```
+
+### 13.4 用户与权限
+
+```bash
+# 创建用户
+mysql -u root -p -e "CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';"
+mysql -u root -p -e "GRANT ALL ON database_name.* TO 'user'@'localhost';"
+
+# 查看权限
+mysql -u root -p -e "SHOW GRANTS FOR 'user'@'localhost';"
+
+# 撤销权限
+mysql -u root -p -e "REVOKE ALL ON database_name.* FROM 'user'@'localhost';"
+```
+
+### 13.5 实用命令
+
+```bash
+# 查看版本
+mysql --version
+mysqldump --version
+
+# 查看状态
+mysql -u root -p -e "SHOW STATUS;"
+mysql -u root -p -e "SHOW PROCESSLIST;"
+mysql -u root -p -e "SHOW VARIABLES LIKE 'max_connections';"
+
+# 导入 CSV
+mysql -u root -p -e "LOAD DATA INFILE '/path/to/data.csv' INTO TABLE mytable FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;"
+
+# 优化表
+mysql -u root -p -e "OPTIMIZE TABLE mytable;" database_name
+
+# 查看表大小
+mysql -u root -p -e "SELECT table_name, ROUND((data_length + index_length) / 1024 / 1024, 2) AS 'Size (MB)' FROM information_schema.tables WHERE table_schema = 'database_name' ORDER BY (data_length + index_length) DESC;"
+```
 
 ---
 

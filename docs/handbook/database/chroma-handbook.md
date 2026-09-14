@@ -1254,6 +1254,56 @@ results = collection.query(
 
 ---
 
+---
+
+## 常用命令
+
+### 安装
+
+```bash
+# Python
+pip install chromadb                 # 安装 Chroma
+pip install chromadb-client          # 仅客户端
+
+# Docker
+docker pull chromadb/chroma
+docker run -p 8000:8000 chromadb/chroma
+```
+
+### 服务管理
+
+```bash
+# 启动服务
+chroma run --path ./chroma_data      # 启动本地服务
+chroma run --host 0.0.0.0 --port 8000  # 指定地址
+
+# 使用 Docker
+docker run -p 8000:8000 -v ./data:/chroma/chroma chromadb/chroma
+
+# 客户端连接
+# Python: chromadb.HttpClient(host='localhost', port=8000)
+# JS: new ChromaClient({path: 'http://localhost:8000'})
+```
+
+### 实用命令
+
+```bash
+# 版本
+chroma version
+python -c "import chromadb; print(chromadb.__version__)"
+
+# 数据目录
+ls -la ./chroma_data/                # 查看数据文件
+
+# 备份
+cp -r ./chroma_data ./chroma_backup
+
+# 重置
+rm -rf ./chroma_data                 # 清除所有数据
+```
+
+---
+
 ## 参考资源
 
 - [Chroma 官方文档](https://docs.trychroma.com/)

@@ -105,33 +105,33 @@ class _UserApi implements UserApi {
 
 ### 2.1 类级注解
 
-| 注解 | 作用 | 示例 |
-|------|------|------|
+| 注解         | 作用                 | 示例                           |
+| ------------ | -------------------- | ------------------------------ |
 | `@RestApi()` | 标记为 Retrofit 接口 | `@RestApi(baseUrl: '/api/v1')` |
 
 ### 2.2 方法级注解（HTTP 方法）
 
-| 注解 | HTTP 方法 | 典型场景 |
-|------|-----------|----------|
-| `@GET('/path')` | GET | 查询资源 |
-| `@POST('/path')` | POST | 创建资源 |
-| `@PUT('/path')` | PUT | 全量更新 |
-| `@PATCH('/path')` | PATCH | 部分更新 |
-| `@DELETE('/path')` | DELETE | 删除资源 |
-| `@HEAD('/path')` | HEAD | 获取响应头 |
-| `@OPTIONS('/path')` | OPTIONS | 预检请求 |
+| 注解                | HTTP 方法 | 典型场景   |
+| ------------------- | --------- | ---------- |
+| `@GET('/path')`     | GET       | 查询资源   |
+| `@POST('/path')`    | POST      | 创建资源   |
+| `@PUT('/path')`     | PUT       | 全量更新   |
+| `@PATCH('/path')`   | PATCH     | 部分更新   |
+| `@DELETE('/path')`  | DELETE    | 删除资源   |
+| `@HEAD('/path')`    | HEAD      | 获取响应头 |
+| `@OPTIONS('/path')` | OPTIONS   | 预检请求   |
 
 ### 2.3 参数级注解
 
-| 注解 | 作用 | 示例 |
-|------|------|------|
-| `@Path('key')` | 路径参数替换 | `@GET('/users/{id}')` + `@Path('id') int id` |
-| `@Query('key')` | URL 查询参数 | `@Query('page') int page` |
-| `@Queries()` | 整个 Map 作为查询参数 | `@Queries() Map<String, dynamic> params` |
-| `@Body()` | 请求体（JSON） | `@Body() CreateUserDto dto` |
-| `@Field('key')` | 表单字段 | `@Field('name') String name` |
-| `@Header('key')` | 请求头 | `@Header('Authorization') String token` |
-| `@Part()` | Multipart 文件上传 | `@Part() File file` |
+| 注解             | 作用                  | 示例                                         |
+| ---------------- | --------------------- | -------------------------------------------- |
+| `@Path('key')`   | 路径参数替换          | `@GET('/users/{id}')` + `@Path('id') int id` |
+| `@Query('key')`  | URL 查询参数          | `@Query('page') int page`                    |
+| `@Queries()`     | 整个 Map 作为查询参数 | `@Queries() Map<String, dynamic> params`     |
+| `@Body()`        | 请求体（JSON）        | `@Body() CreateUserDto dto`                  |
+| `@Field('key')`  | 表单字段              | `@Field('name') String name`                 |
+| `@Header('key')` | 请求头                | `@Header('Authorization') String token`      |
+| `@Part()`        | Multipart 文件上传    | `@Part() File file`                          |
 
 ---
 
@@ -408,14 +408,14 @@ Future<Data> getSecureData({
 
 ## 六、与其他方案对比
 
-| 维度 | Retrofit + Dio | 原生 Dio | GetConnect | http 包 |
-|------|---------------|----------|------------|---------|
-| 类型安全 | ✅ 编译期检查 | ❌ 手动拼 URL | ❌ 弱类型 | ❌ 手动 |
-| 代码生成 | ✅ 自动生成 | ❌ | ❌ | ❌ |
-| 拦截器 | ✅ Dio 全套 | ✅ | 有限 | ❌ |
-| 可测试性 | ✅ Mock 抽象类 | 一般 | 一般 | 一般 |
-| 学习成本 | 中（需理解注解） | 低 | 低 | 低 |
-| 适用规模 | 中大型项目 | 任意 | 小型/GetX 项目 | 简单脚本 |
+| 维度     | Retrofit + Dio   | 原生 Dio      | GetConnect     | http 包  |
+| -------- | ---------------- | ------------- | -------------- | -------- |
+| 类型安全 | ✅ 编译期检查    | ❌ 手动拼 URL | ❌ 弱类型      | ❌ 手动  |
+| 代码生成 | ✅ 自动生成      | ❌            | ❌             | ❌       |
+| 拦截器   | ✅ Dio 全套      | ✅            | 有限           | ❌       |
+| 可测试性 | ✅ Mock 抽象类   | 一般          | 一般           | 一般     |
+| 学习成本 | 中（需理解注解） | 低            | 低             | 低       |
+| 适用规模 | 中大型项目       | 任意          | 小型/GetX 项目 | 简单脚本 |
 
 ---
 
@@ -440,3 +440,73 @@ dart run build_runner build --verbose
 4. **泛型序列化**：使用 `genericArgumentFactories: true` 处理 `ApiResponse<T>` 嵌套。
 5. **避免在生成文件中手动修改**：`.g.dart` 文件每次 build 都会覆盖。
 6. **CI 中执行生成**：在 CI 流水线中加入 `build_runner build` 步骤，确保生成代码最新。
+
+---
+
+## 八、常用命令
+
+### 8.1 安装与初始化
+
+```bash
+# 添加依赖
+flutter pub add retrofit
+flutter pub add dio
+flutter pub add json_annotation
+
+# 添加开发依赖
+flutter pub add -d build_runner
+flutter pub add -d retrofit_generator
+flutter pub add -d json_serializable
+```
+
+### 8.2 代码生成
+
+```bash
+# build_runner（Retrofit 核心命令）
+dart run build_runner build                    # 执行代码生成
+dart run build_runner build --delete-conflicting-outputs  # 清理后生成
+dart run build_runner watch                    # 监听模式（自动重新生成）
+dart run build_runner clean                    # 清理生成文件
+
+# 单文件生成
+dart run build_runner build --build-filter="lib/api/*.dart"
+```
+
+### 8.3 构建与测试
+
+```bash
+# 标准 Flutter 命令
+flutter pub get                     # 获取依赖
+flutter run                         # 运行
+flutter build apk                   # 构建
+flutter test                        # 测试
+flutter analyze                     # 静态分析
+```
+
+### 8.4 常用 API 速查
+
+```dart
+// Retrofit 定义
+@RestApi(baseUrl: "https://api.example.com")
+abstract class ApiService {
+  @GET("/users/{id}")
+  Future<User> getUser(@Path("id") int id);
+
+  @POST("/users")
+  Future<User> createUser(@Body() User user);
+
+  @PUT("/users/{id}")
+  Future<User> updateUser(@Path("id") int id, @Body() User user);
+
+  @DELETE("/users/{id}")
+  Future<void> deleteUser(@Path("id") int id);
+
+  @GET("/users")
+  Future<List<User>> getUsers(@Query("page") int page);
+}
+
+// 工厂创建
+final apiService = ApiService(
+  Dio(BaseOptions(baseUrl: "https://api.example.com")),
+);
+```

@@ -24,23 +24,38 @@ const flutter = {
   collapsed: true,
   items: [
     {
-      text: '参考代码',
+      text: '状态管理架构',
       items: [
         {
-          text: 'Dart 基础命令',
-          link: '/architecture-document/flutter/reference-code/dart-base-cmd',
+          text: 'Flutter 状态管理架构选型',
+          link: '/architecture-document/flutter/state-management/flutter-state-management-architecture',
         },
+      ],
+    },
+    {
+      text: '路由架构设计',
+      items: [
         {
-          text: 'Dart 基础代码',
-          link: '/architecture-document/flutter/reference-code/dart-base-code',
+          text: 'Flutter 路由架构设计',
+          link: '/architecture-document/flutter/routing/flutter-routing-architecture',
         },
+      ],
+    },
+    {
+      text: '网络层架构',
+      items: [
         {
-          text: 'Flutter 基础命令',
-          link: '/architecture-document/flutter/reference-code/flutter-base-cmd',
+          text: 'Flutter 网络层架构设计',
+          link: '/architecture-document/flutter/networking/flutter-network-architecture',
         },
+      ],
+    },
+    {
+      text: '项目结构规范',
+      items: [
         {
-          text: 'Flutter 基础代码',
-          link: '/architecture-document/flutter/reference-code/flutter-base-code',
+          text: 'Flutter 项目结构与分层规范',
+          link: '/architecture-document/flutter/project-structure/flutter-project-structure',
         },
       ],
     },
@@ -126,12 +141,66 @@ const python = {
   collapsed: true,
   items: [
     {
-      text: 'Python 基础命令',
-      link: '/architecture-document/python/reference-code/python-base-cmd',
+      text: '工程化实践',
+      items: [
+        {
+          text: 'Python 项目工程化实践',
+          link: '/architecture-document/python/engineering/python-engineering-practices',
+        },
+      ],
     },
     {
-      text: 'Python 基础代码',
-      link: '/architecture-document/python/reference-code/python-base-code',
+      text: '技术选型',
+      items: [
+        {
+          text: 'Python 后端框架技术选型',
+          link: '/architecture-document/python/technology-selection/python-backend-framework-selection',
+        },
+      ],
+    },
+    {
+      text: 'AI 开发架构',
+      items: [
+        {
+          text: 'Python AI 开发架构指南',
+          link: '/architecture-document/python/ai-architecture/python-ai-development-guide',
+        },
+      ],
+    },
+  ],
+}
+
+// ── Node.js 架构 ──
+const nodejs = {
+  text: 'Node.js 架构',
+  collapsed: true,
+  items: [
+    {
+      text: '项目架构',
+      items: [
+        {
+          text: 'Node.js 项目架构与分层规范',
+          link: '/architecture-document/nodejs/project-architecture/nodejs-project-architecture',
+        },
+      ],
+    },
+    {
+      text: '框架选型',
+      items: [
+        {
+          text: 'Node.js 框架架构选型',
+          link: '/architecture-document/nodejs/framework-selection/nodejs-framework-selection',
+        },
+      ],
+    },
+    {
+      text: '中间件架构',
+      items: [
+        {
+          text: 'Node.js 中间件与管道架构',
+          link: '/architecture-document/nodejs/middleware-patterns/nodejs-middleware-patterns',
+        },
+      ],
     },
   ],
 }
@@ -142,30 +211,45 @@ const react = {
   collapsed: true,
   items: [
     {
-      text: 'Vue to React',
+      text: '组件设计模式',
       items: [
-        { text: 'Vue vs React', link: '/architecture-document/react/idea-doc/idea1' },
-        { text: 'Vue to React 原因', link: '/architecture-document/react/idea-doc/idea2' },
-        { text: 'Vue to React 路径图', link: '/architecture-document/react/idea-doc/idea3' },
-        { text: 'Vue to React 代码', link: '/architecture-document/react/idea-doc/idea4' },
-        { text: 'React 神库', link: '/architecture-document/react/idea-doc/idea6' },
+        {
+          text: 'React 组件设计模式',
+          link: '/architecture-document/react/component-patterns/react-component-design-patterns',
+        },
+      ],
+    },
+    {
+      text: 'Hooks 架构模式',
+      items: [
+        {
+          text: 'React Hooks 架构模式',
+          link: '/architecture-document/react/hooks-patterns/react-hooks-architecture',
+        },
+      ],
+    },
+    {
+      text: '状态管理架构',
+      items: [
+        {
+          text: 'React 状态管理架构',
+          link: '/architecture-document/react/state-management/react-state-management-architecture',
+        },
       ],
     },
     {
       text: '性能思考',
-      items: [{ text: '大型单例设计', link: '/architecture-document/react/other-idea/idea1' }],
+      items: [
+        {
+          text: '大型单例对象高性能消费',
+          link: '/architecture-document/react/performance/large-object-consumption',
+        },
+      ],
     },
     {
       text: '原理说明',
       items: [
         { text: 'useEffect 原理', link: '/architecture-document/react/principle/use-effect' },
-      ],
-    },
-    {
-      text: '参考代码',
-      items: [
-        { text: '基础命令', link: '/architecture-document/react/reference-code/base-cmd' },
-        { text: '基础代码', link: '/architecture-document/react/reference-code/base-code' },
       ],
     },
     {
@@ -199,48 +283,9 @@ const vue = {
   collapsed: true,
   items: [
     {
-      text: '架构设计',
-      items: [
-        {
-          text: 'Assembler 组装器',
-          link: '/architecture-document/vue/architecture/assemble_assembler',
-        },
-        { text: '核心原则', link: '/architecture-document/vue/architecture/core-principle' },
-        {
-          text: '目录结构规范',
-          link: '/architecture-document/vue/architecture/directory-structure-max',
-        },
-        {
-          text: 'Pipeline 组装器',
-          link: '/architecture-document/vue/architecture/pipeline-assembler',
-        },
-        { text: '单例合并', link: '/architecture-document/vue/architecture/singleton-merge' },
-      ],
-    },
-    {
-      text: '通用 Composable',
-      items: [
-        { text: 'DOM 清理', link: '/architecture-document/vue/general-composable/dom-dispose' },
-        {
-          text: '事件监听清理',
-          link: '/architecture-document/vue/general-composable/event-listener-dispose',
-        },
-        { text: 'Mitt 清理', link: '/architecture-document/vue/general-composable/mitt-dispose' },
-        { text: '超级清理器', link: '/architecture-document/vue/general-composable/super-dispose' },
-        { text: '定时器清理', link: '/architecture-document/vue/general-composable/timer-dispose' },
-        { text: 'Watch 清理', link: '/architecture-document/vue/general-composable/watch-dispose' },
-      ],
-    },
-    {
       text: '通用工具',
       items: [
-        { text: 'TanStack Query', link: '/architecture-document/vue/general-tools/TanStack-Query' },
-        { text: 'Axios 封装', link: '/architecture-document/vue/general-tools/axios-suit' },
         { text: '模块加载器', link: '/architecture-document/vue/general-tools/module-loader' },
-        {
-          text: 'API 重试机制',
-          link: '/architecture-document/vue/general-tools/re-try-api-request',
-        },
         {
           text: 'Payload 包装器',
           link: '/architecture-document/vue/general-tools/wrap-with-payload',
@@ -248,92 +293,39 @@ const vue = {
       ],
     },
     {
-      text: '参考代码',
-      items: [
-        {
-          text: 'Pipeline + Mitt + Proxy',
-          link: '/architecture-document/vue/reference-code/pipeline-assembler-mitt-proxy',
-        },
-        {
-          text: 'Pipeline + Mitt',
-          link: '/architecture-document/vue/reference-code/pipeline-assembler-mitt',
-        },
-        {
-          text: 'Pipeline + Proxy 同步',
-          link: '/architecture-document/vue/reference-code/pipeline-assembler-proxy-sync',
-        },
-        { text: 'Vite Glob 导入', link: '/architecture-document/vue/reference-code/vite-glob' },
-      ],
-    },
-    {
-      text: '标准代码',
-      items: [
-        {
-          text: 'Assembler 新模式',
-          link: '/architecture-document/vue/standard-code/assembler-new',
-        },
-        { text: '方法规范', link: '/architecture-document/vue/standard-code/method' },
-        { text: '状态规范', link: '/architecture-document/vue/standard-code/state' },
-      ],
-    },
-    {
       text: '标准化模板',
       items: [
         {
-          text: 'API 请求与模块',
-          link: '/architecture-document/vue/standardized-template-cn/api-request-and-module',
-        },
-        {
-          text: 'API 请求处理',
-          link: '/architecture-document/vue/standardized-template-cn/api-request-handling-cn',
-        },
-        {
-          text: '架构概览',
+          text: '架构概述',
           link: '/architecture-document/vue/standardized-template-cn/architecture-overview-cn',
         },
         {
-          text: '架构概览',
-          link: '/architecture-document/vue/standardized-template-cn/architecture-overview',
+          text: 'LV1-LV5 架构演进',
+          link: '/architecture-document/vue/standardized-template-cn/architecture-evolution-cn',
         },
         {
-          text: 'Assembler 模式',
+          text: '装配器模式',
           link: '/architecture-document/vue/standardized-template-cn/assembler-pattern-cn',
         },
         {
-          text: '组件系统',
-          link: '/architecture-document/vue/standardized-template-cn/component-system-cn',
-        },
-        {
-          text: '组件使用',
-          link: '/architecture-document/vue/standardized-template-cn/component-usage',
-        },
-        {
-          text: '配置指南',
-          link: '/architecture-document/vue/standardized-template-cn/configuration-guide-cn',
-        },
-        {
-          text: '事件 Pipeline 系统',
-          link: '/architecture-document/vue/standardized-template-cn/event-pipeline-system-cn',
-        },
-        {
-          text: '扩展模板',
-          link: '/architecture-document/vue/standardized-template-cn/extending-the-template-cn',
+          text: '状态管理',
+          link: '/architecture-document/vue/standardized-template-cn/state-management-cn',
         },
         {
           text: '生命周期与副作用',
           link: '/architecture-document/vue/standardized-template-cn/lifecycle-and-effects-cn',
         },
         {
-          text: '生命周期事件效果',
-          link: '/architecture-document/vue/standardized-template-cn/lifecycle-event-effect',
+          text: '事件管道系统',
+          link: '/architecture-document/vue/standardized-template-cn/event-pipeline-system-cn',
         },
         {
-          text: '状态与 Assembler',
-          link: '/architecture-document/vue/standardized-template-cn/state-and-assembler',
+          text: '组件系统',
+          link: '/architecture-document/vue/standardized-template-cn/component-system-cn',
         },
         {
-          text: '状态管理',
-          link: '/architecture-document/vue/standardized-template-cn/state-management-cn',
+          text: 'API 请求与模块调用说明',
+          link: '/architecture-document/vue/standardized-template-cn/api-request-and-module',
         },
       ],
     },
@@ -497,6 +489,7 @@ export const architectureSidebar = {
     architecturalVision,
 
     python,
+    nodejs,
     react,
 
     vue,

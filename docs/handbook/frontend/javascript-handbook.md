@@ -41,6 +41,7 @@
 - [三十一、设计模式](#三十一设计模式)
 - [三十二、最佳实践](#三十二最佳实践)
 - [三十三、实用工具函数](#三十三实用工具函数)
+- [三十四、常用命令](#三十四常用命令)
 
 ---
 
@@ -2176,9 +2177,7 @@ clearTimeout(timeoutId)
 
 // 3. 避免闭包引用大对象
 function createHandler() {
-  const largeObject = {
-    /* ... */
-  }
+  const largeObject = {/* ... */}
   return function () {
     // 只使用需要的数据
     console.log(largeObject.key)
@@ -2818,6 +2817,130 @@ function memoize(fn) {
     return result
   }
 }
+```
+
+---
+
+## 三十四、常用命令
+
+### 34.1 Node.js 运行
+
+```bash
+# 执行脚本
+node script.js
+node --version
+
+# 执行单行命令
+node -e "console.log('hello')"
+node -e "console.log(process.version)"
+
+# 调试模式
+node --inspect script.js          # Chrome DevTools 调试
+node --inspect-brk script.js      # 首行断点
+
+# 环境变量
+NODE_ENV=production node app.js
+node --max-old-space-size=4096 app.js  # 调整内存限制
+```
+
+### 34.2 npm / pnpm
+
+```bash
+# 初始化
+npm init -y
+pnpm init
+
+# 安装依赖
+npm install
+npm install <package>
+npm install -D <package>          # 开发依赖
+npm install -g <package>           # 全局安装
+
+# pnpm（推荐）
+pnpm install
+pnpm add <package>
+pnpm add -D <package>
+pnpm remove <package>
+
+# 脚本执行
+npm run dev
+npm run build
+npm run test
+npm run lint
+pnpm dev
+pnpm build
+
+# 其他
+npm outdated                       # 查看过期依赖
+npm update                         # 更新依赖
+npm ls --depth=0                   # 查看已安装包
+npm cache clean --force            # 清除缓存
+npx create-react-app my-app        # npx 执行包
+```
+
+### 34.3 ESLint & Prettier
+
+```bash
+# ESLint
+npx eslint .                       # 检查所有文件
+npx eslint src/                    # 检查指定目录
+npx eslint --fix .                 # 自动修复
+npx eslint --init                  # 初始化配置
+
+# Prettier
+npx prettier --write .             # 格式化所有文件
+npx prettier --check .             # 仅检查不修改
+npx prettier --write "src/**/*.js" # 格式化指定模式
+
+# 组合使用
+npx eslint . --fix && npx prettier --write .
+```
+
+### 34.4 测试工具
+
+```bash
+# Jest
+npx jest                           # 运行所有测试
+npx jest --watch                   # 监听模式
+npx jest --coverage                # 覆盖率报告
+npx jest --verbose                 # 详细输出
+npx jest test/app.test.js          # 运行指定文件
+npx jest -t "should login"         # 按名称过滤
+
+# Vitest
+npx vitest                         # 运行测试
+npx vitest --ui                    # 打开 UI
+npx vitest --coverage              # 覆盖率
+npx vitest run                     # 单次运行
+
+# Mocha
+npx mocha                          # 运行测试
+npx mocha --watch                  # 监听模式
+npx mocha --reporter spec          # 指定报告器
+```
+
+### 34.5 构建工具
+
+```bash
+# Webpack
+npx webpack                        # 默认构建
+npx webpack --mode production      # 生产模式
+npx webpack --mode development     # 开发模式
+npx webpack serve                  # 开发服务器
+npx webpack --analyze              # 包分析（需 webpack-bundle-analyzer）
+
+# Vite
+npx vite                           # 开发服务器
+npx vite build                     # 生产构建
+npx vite preview                   # 预览构建结果
+
+# Babel
+npx babel src --out-dir lib        # 编译目录
+npx babel src/index.js             # 编译单文件
+
+# Parcel
+npx parcel index.html              # 开发服务器
+npx parcel build index.html        # 生产构建
 ```
 
 ---

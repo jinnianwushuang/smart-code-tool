@@ -18,6 +18,7 @@
 - [八、模块化](#八模块化)
 - [九、内置模块](#九内置模块)
 - [十、最佳实践](#十最佳实践)
+- [十一、常用命令](#十一常用命令)
 
 ---
 
@@ -870,6 +871,80 @@ $breakpoints: (
     width: 960px;
   }
 }
+```
+
+---
+
+## 十一、常用命令
+
+### 11.1 Sass CLI
+
+```bash
+# 安装
+npm install -g sass
+npm install -D sass                # 项目局部安装
+
+# 编译
+sass input.scss output.css         # 编译单文件
+sass input.scss output.css --style=compressed  # 压缩输出
+sass input.scss output.css --style=expanded    # 展开输出
+sass input.scss output.css --sourcemap         # 生成 sourcemap
+
+# 监听模式
+sass --watch input.scss:output.css
+sass --watch src:dist              # 监听整个目录
+
+# 批量编译
+sass src:dist                      # 编译目录
+sass src:dist --style=compressed   # 压缩输出
+sass src:dist --no-source-map      # 不生成 sourcemap
+```
+
+### 11.2 构建工具集成
+
+```bash
+# Vite（内置支持，无需额外配置）
+npm install -D sass
+# 直接在代码中 @import 'xxx.scss'
+
+# Webpack
+npm install -D sass sass-loader
+# webpack.config.js 中配置 rule
+
+# Vue CLI
+npm install -D sass                # 自动支持 .scss 文件
+
+# Angular
+ng add @angular/material           # 自动配置 SCSS
+```
+
+### 11.3 代码质量
+
+```bash
+# Stylelint（CSS/SCSS 检查）
+npm install -D stylelint stylelint-config-standard-scss
+npx stylelint "**/*.scss"          # 检查
+npx stylelint "**/*.scss" --fix    # 自动修复
+
+# Prettier + SCSS
+npx prettier --write "**/*.scss"
+
+# PostCSS
+npm install -D postcss postcss-cli autoprefixer
+npx postcss input.css -o output.css --use autoprefixer
+```
+
+### 11.4 实用工具
+
+```bash
+# 查看 Sass 版本
+sass --version
+
+# 交互式 REPL
+sass --interactive
+
+# 验证语法
+sass --check input.scss
 ```
 
 ---

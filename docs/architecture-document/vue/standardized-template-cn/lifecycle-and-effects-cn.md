@@ -1,6 +1,6 @@
 ---
 title: 生命周期和副作用管理
-order: 80
+order: 5
 ---
 
 # 生命周期和副作用管理
@@ -45,14 +45,14 @@ export const lifecycle_onDeactivated = (payload) => {
 
 ### 可用的生命周期钩子
 
-| 钩子 | 时机 | 用例 |
-|------|------|------|
-| `lifecycle_onBeforeMount` | 组件挂载前 | 准备状态/验证 |
-| `lifecycle_onMounted` | 组件挂载后 | 获取初始数据、启动定时器 |
-| `lifecycle_onBeforeUnmount` | 组件卸载前 | 保存状态、取消待处理请求 |
-| `lifecycle_onUnmounted` | 组件卸载后 | 最终清理 |
-| `lifecycle_onActivated` | 组件重新激活（KeepAlive） | 恢复定时器、刷新状态 |
-| `lifecycle_onDeactivated` | 组件停用（KeepAlive） | 暂停定时器、缓存状态 |
+| 钩子                        | 时机                      | 用例                     |
+| --------------------------- | ------------------------- | ------------------------ |
+| `lifecycle_onBeforeMount`   | 组件挂载前                | 准备状态/验证            |
+| `lifecycle_onMounted`       | 组件挂载后                | 获取初始数据、启动定时器 |
+| `lifecycle_onBeforeUnmount` | 组件卸载前                | 保存状态、取消待处理请求 |
+| `lifecycle_onUnmounted`     | 组件卸载后                | 最终清理                 |
+| `lifecycle_onActivated`     | 组件重新激活（KeepAlive） | 恢复定时器、刷新状态     |
+| `lifecycle_onDeactivated`   | 组件停用（KeepAlive）     | 暂停定时器、缓存状态     |
 
 ### 生命周期执行流程
 
@@ -91,11 +91,10 @@ Component destroyed
 import { useContextAssembler } from 'src/output/common/composable-common.js'
 import { all_atoms_assembler } from './assembler/module/assembler.js'
 
-const {
-  user_info,
-  lifecycle_onBeforeMount,
-  lifecycle_onMounted,
-} = useContextAssembler(base_payload, all_atoms_assembler())
+const { user_info, lifecycle_onBeforeMount, lifecycle_onMounted } = useContextAssembler(
+  base_payload,
+  all_atoms_assembler(),
+)
 
 // Hooks automatically called by useContextAssembler
 // 钩子由 useContextAssembler 自动调用
@@ -132,12 +131,13 @@ module/effect/
 ```javascript
 export const cleanup_effect_dom = (payload) => {
   const { form_ref } = payload
-  return [form_ref]  // References to clean up
-                          // 要清理的引用
+  return [form_ref] // References to clean up
+  // 要清理的引用
 }
 ```
 
 **用例**:
+
 - 表单引用
 - 组件引用
 - 应使之无效的 DOM 查询
@@ -165,6 +165,7 @@ export const cleanup_effect_listener = (payload) => {
 ```
 
 **生命周期**:
+
 1. 组件挂载时注册监听器
 2. 事件触发时调用处理程序
 3. 组件卸载时取消注册监听器
@@ -206,21 +207,23 @@ export const cleanup_effect_listener = (payload) => {
 管理具有自动清理的 Vue 观察器：
 
 ```javascript
-import { watch } from "vue"
+import { watch } from 'vue'
 
 export const cleanup_effect_watcher = (payload) => {
   const { current_time } = payload
 
-  return [watch(current_time, (new_time) => {
-    console.log('Time changed:', new_time)
-  })]
+  return [
+    watch(current_time, (new_time) => {
+      console.log('Time changed:', new_time)
+    }),
+  ]
 }
 ```
 
 **高级示例**:
 
 ```javascript
-import { watch, computed } from "vue"
+import { watch, computed } from 'vue'
 
 export const cleanup_effect_watcher = (payload) => {
   const { table_data, pagination, query_form } = payload
@@ -234,15 +237,22 @@ export const cleanup_effect_watcher = (payload) => {
 
     // Watch pagination changes
     // 观察分页更改
-    watch(() => pagination.value.current, (newPage) => {
-      console.log('Page changed to:', newPage)
-    }),
+    watch(
+      () => pagination.value.current,
+      (newPage) => {
+        console.log('Page changed to:', newPage)
+      },
+    ),
 
     // Deep watch for query form changes
     // 深度观察查询表单更改
-    watch(query_form, (newForm) => {
-      console.log('Query form:', newForm)
-    }, { deep: true }),
+    watch(
+      query_form,
+      (newForm) => {
+        console.log('Query form:', newForm)
+      },
+      { deep: true },
+    ),
 
     // Computed watches
     // 计算观察
@@ -252,7 +262,7 @@ export const cleanup_effect_watcher = (payload) => {
         if (newLength === 0) {
           console.log('No data')
         }
-      }
+      },
     ),
   ]
 }
@@ -268,8 +278,8 @@ export const cleanup_effect_watcher = (payload) => {
 export const cleanup_effect_timer = (payload) => {
   const { timer1, timer_obj } = payload
 
-  return [timer1, timer_obj]  // Timer IDs/objects to clean up
-                              // 要清理的定时器 ID/对象
+  return [timer1, timer_obj] // Timer IDs/objects to clean up
+  // 要清理的定时器 ID/对象
 }
 ```
 
@@ -304,14 +314,16 @@ export const cleanup_effect_timer = (payload) => {
 管理自定义事件发射器订阅：
 
 ```javascript
-import { EMITTER } from "src/output/common/project-common.js"
+import { EMITTER } from 'src/output/common/project-common.js'
 
 export const cleanup_effect_mitter = (payload) => {
   const { current_time } = payload
 
-  return [EMITTER.on("custom-event", () => {
-    console.log("Event received at", current_time.value)
-  })]
+  return [
+    EMITTER.on('custom-event', () => {
+      console.log('Event received at', current_time.value)
+    }),
+  ]
 }
 ```
 
@@ -326,21 +338,21 @@ export const cleanup_effect_mitter = (payload) => {
   // Subscribe to dialog open events
   // 订阅对话框打开事件
   subscriptions.push(
-    EMITTER.on("dialog:open", (dialogData) => {
+    EMITTER.on('dialog:open', (dialogData) => {
       // Handle dialog opening
       // 处理对话框打开
       all_dialog_state.value = dialogData
-    })
+    }),
   )
 
   // Subscribe to data refresh events
   // 订阅数据刷新事件
   subscriptions.push(
-    EMITTER.on("data:refresh", () => {
+    EMITTER.on('data:refresh', () => {
       // Trigger data reload
       // 触发数据重新加载
       console.log('Refreshing data')
-    })
+    }),
   )
 
   return subscriptions
@@ -355,7 +367,7 @@ export const cleanup_effect_mitter = (payload) => {
 
 ```javascript
 export const cleanup_effect_other = (payload) => {
-  const { } = payload
+  const {} = payload
 
   // Example: ResizeObserver
   // 示例：ResizeObserver
@@ -368,8 +380,8 @@ export const cleanup_effect_other = (payload) => {
     observer.observe(containerRef.value)
   }
 
-  return [observer]  // Disconnect called on cleanup
-                   // 清理时调用断开连接
+  return [observer] // Disconnect called on cleanup
+  // 清理时调用断开连接
 }
 ```
 
@@ -382,16 +394,16 @@ export const cleanup_effect_other = (payload) => {
 // 1. 挂载前 - 准备
 export const lifecycle_onBeforeMount = (payload) => {
   const { init_singleton } = payload
-  init_singleton()  // Reset state
-                   // 重置状态
+  init_singleton() // Reset state
+  // 重置状态
 }
 
 // 2. After mount - load data and setup effects
 // 2. 挂载后 - 加载数据并设置效果
 export const lifecycle_onMounted = (payload) => {
   const { handle_init_table_data } = payload
-  handle_init_table_data(payload)  // Fetch initial data
-                                     // 获取初始数据
+  handle_init_table_data(payload) // Fetch initial data
+  // 获取初始数据
 }
 
 // 3. On unmount - cleanup happens automatically via effects
@@ -400,10 +412,13 @@ export const lifecycle_onBeforeUnmount = (payload) => {
   const { table_data, pagination } = payload
   // Optional: save state before unmount
   // 可选：在卸载前保存状态
-  localStorage.setItem('table_state', JSON.stringify({
-    data: table_data.value,
-    pagination: pagination.value,
-  }))
+  localStorage.setItem(
+    'table_state',
+    JSON.stringify({
+      data: table_data.value,
+      pagination: pagination.value,
+    }),
+  )
 }
 ```
 
@@ -456,20 +471,21 @@ export const lifecycle_onActivated = (payload) => {
 // ✅ 自动清理模式
 export const cleanup_effect_listener = (payload) => {
   return [
-    { target, type, handler }  // Registered and cleaned up
-                               // 已注册并清理
+    { target, type, handler }, // Registered and cleaned up
+    // 已注册并清理
   ]
 }
 
 // ❌ Manual cleanup outside framework
 // ❌ 框架外部的手动清理
-window.addEventListener('resize', () => {})  // Danger! No cleanup
-                                             // 危险！无清理
+window.addEventListener('resize', () => {}) // Danger! No cleanup
+// 危险！无清理
 ```
 
 ## 最佳实践
 
 ### ✅ 应该做
+
 - 在清理模块中注册所有效果
 - 保持生命周期钩子专注
 - 使用适当的效果类型
@@ -477,6 +493,7 @@ window.addEventListener('resize', () => {})  // Danger! No cleanup
 - 测试清理是否发生
 
 ### ❌ 不应该做
+
 - 在清理系统外部创建监听器
 - 忘记返回清理处理程序
 - 创建循环清理依赖
@@ -487,7 +504,7 @@ window.addEventListener('resize', () => {})  // Danger! No cleanup
 
 ```javascript
 test('component initializes onMounted', () => {
-  const payload = { /* mock payload */ }
+  const payload = {/* mock payload */}
 
   lifecycle_onMounted(payload)
 
@@ -495,12 +512,12 @@ test('component initializes onMounted', () => {
 })
 
 test('watchers cleanup on unmount', () => {
-  const payload = { /* mock payload */ }
+  const payload = {/* mock payload */}
   const cleanupFns = cleanup_effect_watcher(payload)
 
   // Call cleanup
   // 调用清理
-  cleanupFns.forEach(fn => fn())
+  cleanupFns.forEach((fn) => fn())
 
   // Verify watchers stopped
   // 验证观察器已停止

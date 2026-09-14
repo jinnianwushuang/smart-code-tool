@@ -22,6 +22,7 @@
 - [十二、性能优化](#十二性能优化)
 - [十三、部署发布](#十三部署发布)
 - [十四、最佳实践](#十四最佳实践)
+- [十五、常用命令](#十五常用命令)
 
 ---
 
@@ -1688,6 +1689,81 @@ describe('Page', () => {
    - README.md
    - API 文档
    - 组件文档(Storybook)
+
+---
+
+## 十五、常用命令
+
+### 15.1 项目创建
+
+```bash
+# create-next-app
+npx create-next-app@latest my-app
+npx create-next-app@latest my-app --typescript
+npx create-next-app@latest my-app --app --tailwind --eslint
+npx create-next-app@latest my-app --src-dir --import-alias "@/*"
+```
+
+### 15.2 开发服务器
+
+```bash
+npm run dev                        # 启动开发服务器
+npm run dev -- -p 3000             # 指定端口
+npm run dev -- -H 0.0.0.0          # 暴露主机
+npm run dev -- --turbo             # Turbopack（更快）
+```
+
+### 15.3 构建与发布
+
+```bash
+# 构建
+npm run build                      # 生产构建
+npm start                          # 启动生产服务器
+
+# 导出静态站点
+# next.config.js: output: 'export'
+npm run build                      # 生成 out/ 目录
+
+# Vercel 部署
+npm i -g vercel
+vercel                             # 部署预览
+vercel --prod                      # 部署生产
+```
+
+### 15.4 代码生成
+
+```bash
+# 路由生成
+# App Router: 文件系统自动生成
+# app/page.tsx → /
+# app/about/page.tsx → /about
+# app/blog/[slug]/page.tsx → /blog/:slug
+
+# API 路由
+# app/api/hello/route.ts → /api/hello
+
+# 中间件
+# middleware.ts（根目录）
+```
+
+### 15.5 测试与质量
+
+```bash
+# Jest + React Testing Library
+npx jest                           # 运行测试
+npx jest --coverage                # 覆盖率
+
+# Playwright（E2E）
+npx playwright test
+npx playwright test --ui
+
+# ESLint
+npx next lint                      # Next.js 内置 ESLint
+npx next lint --fix                # 自动修复
+
+# TypeScript
+npx tsc --noEmit                   # 类型检查
+```
 
 ---
 

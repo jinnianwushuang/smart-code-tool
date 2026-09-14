@@ -10,10 +10,10 @@
 
 ### 🎨 Flutter 架构
 
-- [Dart 基础命令](./flutter/reference-code/dart-base-cmd)
-- [Flutter 基础命令](./flutter/reference-code/flutter-base-cmd)
-- [Dart 基础代码](./flutter/reference-code/dart-base-code)
-- [Flutter 基础代码](./flutter/reference-code/flutter-base-code)
+- [状态管理架构选型](./flutter/state-management/flutter-state-management-architecture) - BLoC/Riverpod/GetX 选型决策矩阵与 Clean Architecture 集成
+- [路由架构设计](./flutter/routing/flutter-routing-architecture) - GoRouter 路由树设计、深度链接、守卫模式与导航抽象
+- [网络层架构设计](./flutter/networking/flutter-network-architecture) - Dio 拦截器链、Repository 模式、错误处理统一与缓存策略
+- [项目结构与分层规范](./flutter/project-structure/flutter-project-structure) - Feature-first 目录结构、分层架构、依赖注入与模块化实践
 - [原生开发主流语言对比](./flutter/thinking/native-languages-comparison) - Kotlin/Swift/Dart/TS/C++ 等主流语言说明与选型对比
 - [iOS 与 Android 必备知识](./flutter/thinking/flutter-ios-android-knowledge) - Flutter 开发者必须掌握的平台知识梳理
 - [APP 启动与屏幕渲染原理](./flutter/thinking/app-launch-and-rendering-pipeline) - 从点击图标到像素点亮的全链路与图形管线解析
@@ -29,21 +29,29 @@
 
 ### 🐍 Python 架构
 
-- [Python 基础命令](./python/reference-code/python-base-cmd)
-- [Python 基础代码](./python/reference-code/python-base-code)
+- [项目工程化实践](./python/engineering/python-engineering-practices) - 虚拟环境、uv 包管理、Ruff 代码工具、CLI 脚本开发
+- [后端框架技术选型](./python/technology-selection/python-backend-framework-selection) - FastAPI/Django/Flask 选型决策与工程化集成
+- [AI 开发架构指南](./python/ai-architecture/python-ai-development-guide) - LangChain/LangGraph、RAG、Agent 模式与前端集成
+
+### 🟢 Node.js 架构
+
+- [项目架构与分层规范](./nodejs/project-architecture/nodejs-project-architecture) - 分层架构、依赖注入、模块化设计、错误处理
+- [框架架构选型](./nodejs/framework-selection/nodejs-framework-selection) - Express/Koa/Fastify/NestJS/Hono 选型决策与全栈框架
+- [中间件与管道架构](./nodejs/middleware-patterns/nodejs-middleware-patterns) - 中间件模型演进、认证/限流/校验管道、NestJS 管道架构
 
 ### ⚛️ React 架构
 
-- [Vue to React](./react/idea-doc/idea1) - 框架迁移指南
-- [useEffect 原理](./react/principle/use-effect)
+- [组件设计模式](./react/component-patterns/react-component-design-patterns) - 容器/展示、HOC、复合组件、受控/非受控等模式
+- [Hooks 架构模式](./react/hooks-patterns/react-hooks-architecture) - 自定义 Hook 设计原则、分层体系、副作用管理
+- [状态管理架构](./react/state-management/react-state-management-architecture) - 状态分类、Zustand/Redux Toolkit/Jotai 选型与工程化实践
+- [useEffect 原理](./react/principle/use-effect) - 同步机制与 Fiber 源码深度解析
 - [技术选型](./react/technology-selection/app-project)
 
 ### 💚 Vue 架构
 
-- [架构设计](./vue/architecture/core-principle) - 核心原则与设计模式
-- [通用 Composable](./vue/general-composable/super-dispose) - 可复用组合式函数
-- [通用工具](./vue/general-tools/axios-suit) - 常用工具封装
-- [标准化模板](./vue/standardized-template-cn/architecture-overview-cn) - 项目模板规范
+- [架构概述](./vue/standardized-template-cn/architecture-overview-cn) - Vue 标准化装配架构总览
+- [LV1-LV5 架构演进](./vue/standardized-template-cn/architecture-evolution-cn) - 从单文件到装配器的渐进式演进
+- [通用工具](./vue/general-tools/module-loader) - 模块加载器与函数包装器
 - [技术选型](./vue/technology-selection/app-project)
 - [业务组件 SDK 打包](./vue/technology-selection/sdk-project) - 将业务组件封装为独立 SDK 供外部项目使用
 
@@ -88,6 +96,6 @@
 
 根据你的技术栈选择对应的架构文档:
 
-- **前端开发**: 查看 [Vue 架构](./vue/architecture/core-principle) 或 [React 架构](./react/idea-doc/idea1)
-- **移动开发**: 查看 [Flutter 架构](./flutter/reference-code/flutter-base-cmd)
-- **后端开发**: 查看 [Python 架构](./python/reference-code/python-base-cmd)
+- **前端开发**: 查看 [Vue 架构](./vue/standardized-template-cn/architecture-overview-cn) 或 [React 架构](./react/component-patterns/react-component-design-patterns)
+- **移动开发**: 查看 [Flutter 架构](./flutter/project-structure/flutter-project-structure)
+- **后端开发**: 查看 [Python 架构](./python/technology-selection/python-backend-framework-selection)

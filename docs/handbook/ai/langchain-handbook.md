@@ -1882,6 +1882,79 @@ agent = create_react_agent(llm, tools=[], checkpointer=memory)
 - **Spring AI Alibaba**: Java 生态的 AI 集成
 - **ModelScope**: 阿里魔搭社区(开源模型平台)
 
+---
+
+## 常用命令
+
+### 环境安装
+
+```bash
+# Python 版本
+pip install langchain
+pip install langchain-openai           # OpenAI 集成
+pip install langchain-community        # 社区集成
+pip install langchain-anthropic        # Anthropic 集成
+pip install langchain-google-genai     # Google AI 集成
+pip install langgraph                  # LangGraph（智能体）
+pip install langserve                  # LangServe（部署）
+pip install langsmith                  # LangSmith（监控）
+
+# 向量数据库
+pip install chromadb                   # Chroma
+pip install faiss-cpu                  # FAISS
+pip install pinecone-client            # Pinecone
+
+# 文档加载器
+pip install unstructured               # 文档解析
+pip install pypdf                      # PDF 解析
+pip install beautifulsoup4             # HTML 解析
+```
+
+### Ollama 本地模型
+
+```bash
+# 安装 Ollama
+curl -fsSL https://ollama.com/install.sh | sh
+brew install ollama                    # macOS
+
+# 拉取模型
+ollama pull llama3.1                   # Llama 3.1
+ollama pull qwen2.5:7b                 # 通义千问
+ollama pull nomic-embed-text           # Embedding 模型
+
+# 运行
+ollama run llama3.1                    # 交互式运行
+ollama list                            # 查看已下载模型
+ollama serve                           # 启动服务（默认 11434 端口）
+```
+
+### LangSmith 监控
+
+```bash
+# 设置环境变量
+export LANGCHAIN_TRACING_V2=true
+export LANGCHAIN_API_KEY="your-api-key"
+export LANGCHAIN_PROJECT="my-project"
+
+# Python 代码中
+import os
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_API_KEY"] = "your-api-key"
+```
+
+### LangServe 部署
+
+```bash
+# 安装
+pip install langserve[all]
+
+# 启动服务
+langchain serve                        # 启动 LangServe
+uvicorn server:app --host 0.0.0.0 --port 8000  # 自定义启动
+```
+
+---
+
 ## 学习资源
 
 ### 官方文档

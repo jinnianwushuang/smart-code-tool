@@ -1,6 +1,6 @@
 ---
 title: 事件管道系统
-order: 11121
+order: 6
 ---
 
 # 事件管道系统
@@ -108,7 +108,7 @@ export const on_table_change = (payload, { pagination, filters, sorter }) => {
 ### 其他事件 (`module/event-pipeline/module/other.js`)
 
 ```javascript
-import { handle_init_table_data } from 'src/standardization/backend-page-template/api-request/index.js'
+import { handle_init_table_data } from 'src/standardization/singleton-template/api-request/index.js'
 
 export { handle_init_table_data }
 
@@ -128,7 +128,7 @@ export const handle_query_click = (payload) => {
 <q-btn label="查询" @click="ALL_EVENT_PIPELINE.other.handle_query_click" />
 
 import { ALL_EVENT_PIPELINE } from
-'src/standardization/backend-page-template/module/event-pipeline/event-pipeline.js'
+'src/standardization/multiton-template/module/event-pipeline/event-pipeline.js'
 ```
 
 ### 直接调用与有效载荷
@@ -246,9 +246,7 @@ ALL_EVENT_PIPELINE.dialog.handle_dialog_copy_use_confirm_click()
 
 ```javascript
 const { all_dialog_state } = payload
-all_dialog_state.value = {
-  /* new state */
-}
+all_dialog_state.value = {/* new state */}
 ```
 
 ### 4. 响应式被触发

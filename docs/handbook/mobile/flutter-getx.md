@@ -206,34 +206,34 @@ class GetInstance {
 
 ### 2.1 状态管理
 
-| 模式 | 适用场景 | 触发重建方式 | 性能 |
-|------|----------|-------------|------|
-| `Obx()` | 细粒度响应式 | `.value` 变化自动触发 | 最高（精准重建） |
-| `GetX<Controller>` | 需要生命周期 + 响应式 | 同 Obx + 自动创建 Controller | 高 |
-| `GetBuilder` | 手动控制刷新时机 | `update()` 手动调用 | 高（可控） |
+| 模式               | 适用场景              | 触发重建方式                 | 性能             |
+| ------------------ | --------------------- | ---------------------------- | ---------------- |
+| `Obx()`            | 细粒度响应式          | `.value` 变化自动触发        | 最高（精准重建） |
+| `GetX<Controller>` | 需要生命周期 + 响应式 | 同 Obx + 自动创建 Controller | 高               |
+| `GetBuilder`       | 手动控制刷新时机      | `update()` 手动调用          | 高（可控）       |
 
 ### 2.2 路由管理
 
-| API | 作用 |
-|-----|------|
-| `Get.to(page)` | 前进（push） |
-| `Get.off(page)` | 替换当前页（pushReplacement） |
-| `Get.offAll(page)` | 清空栈并跳转（pushAndRemoveUntil） |
-| `Get.back()` | 返回（pop） |
-| `Get.toNamed('/route')` | 命名路由跳转 |
-| `Get.defaultDialog()` | 弹窗（无需 Context） |
-| `Get.snackbar()` | 通知条（无需 Context） |
+| API                     | 作用                               |
+| ----------------------- | ---------------------------------- |
+| `Get.to(page)`          | 前进（push）                       |
+| `Get.off(page)`         | 替换当前页（pushReplacement）      |
+| `Get.offAll(page)`      | 清空栈并跳转（pushAndRemoveUntil） |
+| `Get.back()`            | 返回（pop）                        |
+| `Get.toNamed('/route')` | 命名路由跳转                       |
+| `Get.defaultDialog()`   | 弹窗（无需 Context）               |
+| `Get.snackbar()`        | 通知条（无需 Context）             |
 
 ### 2.3 依赖注入
 
-| API | 作用 | 生命周期 |
-|-----|------|----------|
-| `Get.put(Controller())` | 立即注册单例 | App 级 |
-| `Get.lazyPut(() => Controller())` | 懒加载注册 | 路由级（默认） |
-| `Get.putAsync<Controller>()` | 异步初始化注册 | App 级 |
-| `Get.create(() => Controller())` | 每次 find 都新建 | 手动管理 |
-| `Get.find<Controller>()` | 获取已注册实例 | — |
-| `Get.delete<Controller>()` | 销毁并移除 | 触发 onClose |
+| API                               | 作用             | 生命周期       |
+| --------------------------------- | ---------------- | -------------- |
+| `Get.put(Controller())`           | 立即注册单例     | App 级         |
+| `Get.lazyPut(() => Controller())` | 懒加载注册       | 路由级（默认） |
+| `Get.putAsync<Controller>()`      | 异步初始化注册   | App 级         |
+| `Get.create(() => Controller())`  | 每次 find 都新建 | 手动管理       |
+| `Get.find<Controller>()`          | 获取已注册实例   | —              |
+| `Get.delete<Controller>()`        | 销毁并移除       | 触发 onClose   |
 
 ---
 
@@ -542,11 +542,11 @@ Get.lazyPut / Get.put
 
 ### 4.2 内存管理策略（SmartManagement）
 
-| 策略 | 行为 | 适用场景 |
-|------|------|----------|
-| `full`（默认） | 路由销毁时释放所有非 permanent 的 Controller | 大多数项目 |
-| `onlyBuilder` | 仅释放通过 Binding 注册的 Controller | 精细控制 |
-| `keepFactory` | 释放实例但保留工厂函数 | 频繁创建的页面 |
+| 策略           | 行为                                         | 适用场景       |
+| -------------- | -------------------------------------------- | -------------- |
+| `full`（默认） | 路由销毁时释放所有非 permanent 的 Controller | 大多数项目     |
+| `onlyBuilder`  | 仅释放通过 Binding 注册的 Controller         | 精细控制       |
+| `keepFactory`  | 释放实例但保留工厂函数                       | 频繁创建的页面 |
 
 ```dart
 GetMaterialApp(
@@ -678,17 +678,17 @@ Get.changeThemeMode(ThemeMode.dark);
 
 ## 六、GetX vs 其他方案对比
 
-| 维度 | GetX | Provider | Riverpod | Bloc |
-|------|------|----------|----------|------|
-| 样板代码 | 极少 | 中等 | 中等 | 多 |
-| 学习曲线 | 低 | 中 | 中高 | 高 |
-| Context 依赖 | ❌ 无需 | ✅ 需要 | ❌ 无需 | ✅ 需要 |
-| 路由管理 | ✅ 内置 | ❌ | ❌ | ❌ |
-| 依赖注入 | ✅ 内置 | ❌ | ✅ 内置 | ❌ |
-| 国际化 | ✅ 内置 | ❌ | ❌ | ❌ |
-| 性能 | 高（精准重建） | 中 | 高 | 高 |
-| 适用规模 | 中小型 / 快速迭代 | 中型 | 中大型 | 大型 |
-| 可测试性 | 良好 | 良好 | 优秀 | 优秀 |
+| 维度         | GetX              | Provider | Riverpod | Bloc    |
+| ------------ | ----------------- | -------- | -------- | ------- |
+| 样板代码     | 极少              | 中等     | 中等     | 多      |
+| 学习曲线     | 低                | 中       | 中高     | 高      |
+| Context 依赖 | ❌ 无需           | ✅ 需要  | ❌ 无需  | ✅ 需要 |
+| 路由管理     | ✅ 内置           | ❌       | ❌       | ❌      |
+| 依赖注入     | ✅ 内置           | ❌       | ✅ 内置  | ❌      |
+| 国际化       | ✅ 内置           | ❌       | ❌       | ❌      |
+| 性能         | 高（精准重建）    | 中       | 高       | 高      |
+| 适用规模     | 中小型 / 快速迭代 | 中型     | 中大型   | 大型    |
+| 可测试性     | 良好              | 良好     | 优秀     | 优秀    |
 
 ---
 
@@ -705,13 +705,13 @@ Get.changeThemeMode(ThemeMode.dark);
 
 ### 7.2 常见坑点
 
-| 问题 | 原因 | 解决方案 |
-|------|------|----------|
-| `Controller not found` | 未注册就 find | 确保 Binding 已执行或先 put |
-| Obx 不刷新 | 读取的不是 `.value` | 确保在 Obx 内通过 `.value` 访问 |
-| 内存泄漏 | 未使用 Binding + SmartManagement | 使用 GetPage + Binding 标准模式 |
-| 列表不更新 | 直接 `list.add()` 而非 `.add()` | 使用 `.obs` 列表的响应式方法 |
-| Get.dialog 报错 | 在非 GetMaterialApp 下使用 | 确保根 Widget 是 GetMaterialApp |
+| 问题                   | 原因                             | 解决方案                        |
+| ---------------------- | -------------------------------- | ------------------------------- |
+| `Controller not found` | 未注册就 find                    | 确保 Binding 已执行或先 put     |
+| Obx 不刷新             | 读取的不是 `.value`              | 确保在 Obx 内通过 `.value` 访问 |
+| 内存泄漏               | 未使用 Binding + SmartManagement | 使用 GetPage + Binding 标准模式 |
+| 列表不更新             | 直接 `list.add()` 而非 `.add()`  | 使用 `.obs` 列表的响应式方法    |
+| Get.dialog 报错        | 在非 GetMaterialApp 下使用       | 确保根 Widget 是 GetMaterialApp |
 
 ### 7.3 推荐项目结构口诀
 
@@ -722,4 +722,79 @@ Get.changeThemeMode(ThemeMode.dark);
 UI 展示在 View，
 数据模型在 Model，
 网络请求 Service 层。
+```
+
+---
+
+## 八、常用命令
+
+### 8.1 安装与初始化
+
+```bash
+# 添加 GetX
+flutter pub add get
+
+# 安装路由 CLI（可选）
+flutter pub global activate get_cli
+```
+
+### 8.2 GetX CLI
+
+```bash
+# 创建页面
+get create page:login               # 创建 login 页面（Controller + View + Binding）
+get create page:home                # 创建 home 页面
+
+# 创建组件
+get create controller:auth          # 单独创建 Controller
+get create view:auth                # 单独创建 View
+get create binding:auth             # 单独创建 Binding
+get create model:user               # 创建 Model
+
+# 生成路由
+get generate routes                 # 生成路由文件
+
+# 国际化
+get create locale                   # 生成国际化文件
+get generate locales                # 生成翻译
+```
+
+### 8.3 构建与测试
+
+```bash
+# 标准 Flutter 命令
+flutter pub get                     # 获取依赖
+flutter run                         # 运行
+flutter build apk                   # 构建 APK
+flutter test                        # 测试
+flutter analyze                     # 静态分析
+
+# GetX 测试
+# 在测试中模拟 Controller
+flutter test --coverage             # 覆盖率
+```
+
+### 8.4 常用 API 速查
+
+```dart
+// 状态管理
+var count = 0.obs;                  // 响应式变量
+Obx(() => Text('${count.value}'));  // 监听渲染
+count++;                            // 自动更新
+
+// 路由
+Get.to(NextPage());                 // 跳转
+Get.off(NextPage());                // 替换
+Get.offAll(NextPage());             // 清空栈
+Get.back();                         // 返回
+Get.toNamed('/home');               // 命名路由
+
+// 依赖注入
+Get.put<Controller>(Controller());  // 注册
+Get.find<Controller>();             // 查找
+Get.lazyPut(() => Controller());    // 懒加载
+
+// 存储
+GetStorage().write('key', 'value'); // 写入
+GetStorage().read('key');           // 读取
 ```

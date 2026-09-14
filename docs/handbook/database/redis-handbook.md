@@ -27,6 +27,7 @@
 - [十六、常见应用场景](#十六常见应用场景)
 - [十七、性能优化](#十七性能优化)
 - [十八、运维与监控](#十八运维与监控)
+- [十九、常用命令](#十九常用命令)
 
 ---
 
@@ -1371,6 +1372,119 @@ services:
 
 volumes:
   redis_data:
+```
+
+---
+
+## 十九、常用命令
+
+### 19.1 服务管理
+
+```bash
+# macOS (Homebrew)
+brew services start redis          # 启动
+brew services stop redis           # 停止
+brew services restart redis        # 重启
+
+# Linux (systemd)
+sudo systemctl start redis
+sudo systemctl stop redis
+sudo systemctl restart redis
+
+# Docker
+docker run -d --name redis -p 6379:6379 redis:7
+docker start redis
+docker stop redis
+
+# 前台运行（调试用）
+redis-server
+redis-server --port 6380           # 指定端口
+redis-server /etc/redis/redis.conf # 指定配置
+```
+
+### 19.2 连接与登录
+
+```bash
+# 本地连接
+redis-cli
+redis-cli -p 6380                  # 指定端口
+
+# 远程连接
+redis-cli -h host -p 6379
+redis-cli -h host -p 6379 -a password  # 带密码
+
+# 执行命令
+redis-cli SET key value
+redis-cli GET key
+redis-cli INFO server              # 服务器信息
+redis-cli PING                     # 测试连接
+```
+
+### 19.3 备份与恢复
+
+```bash
+# RDB 快照
+redis-cli BGSAVE                   # 后台保存 RDB
+redis-cli LASTSAVE                 # 查看最后保存时间
+
+# AOF 重写
+redis-cli BGREWRITEAOF             # 重写 AOF
+
+# 复制 RDB 文件
+cp /var/lib/redis/dump.rdb /backup/
+
+# 恢复
+cp dump.rdb /var/lib/redis/
+redis-cli shutdown
+redis-server
+```
+
+### 19.4 监控与调试
+
+```bash
+# 实时监控
+redis-cli MONITOR                  # 监控所有命令（性能影响大）
+redis-cli --latency                # 延迟测试
+redis-cli --latency-history        # 延迟历史
+
+# 慢查询
+redis-cli SLOWLOG GET 10           # 查看慢查询
+redis-cli SLOWLOG LEN              # 慢查询数量
+redis-cli SLOWLOG RESET            # 重置
+
+# 内存分析
+redis-cli INFO memory              # 内存信息
+redis-cli MEMORY USAGE key         # 键内存占用
+redis-cli MEMORY DOCTOR            # 内存诊断
+
+# 大键扫描
+redis-cli --bigkeys                # 扫描大键
+redis-cli --memkeys                # 内存占用最大的键
+
+# 客户端管理
+redis-cli CLIENT LIST              # 客户端列表
+redis-cli CLIENT COUNT             # 客户端数量
+```
+
+### 19.5 实用命令
+
+```bash
+# 版本
+redis-server --version
+redis-cli --version
+
+# 数据库操作
+redis-cli DBSIZE                   # 键数量
+redis-cli FLUSHDB                  # 清空当前库
+redis-cli FLUSHALL                 # 清空所有库
+
+# 键查找
+redis-cli KEYS "pattern*"          # 查找键（生产环境慎用）
+redis-cli SCAN 0 MATCH "pattern*" COUNT 100  # 安全迭代
+
+# 发布订阅
+redis-cli SUBSCRIBE channel
+redis-cli PUBLISH channel "message"
 ```
 
 ---

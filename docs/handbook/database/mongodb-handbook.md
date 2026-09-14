@@ -20,6 +20,7 @@
 - [十、复制集](#十复制集)
 - [十一、分片集群](#十一分片集群)
 - [十二、最佳实践](#十二最佳实践)
+- [十三、常用命令](#十三常用命令)
 
 ---
 
@@ -1435,6 +1436,119 @@ sh.status()
    - 避免N+1查询问题
    - 合理使用缓存
    - 编写单元测试
+
+---
+
+## 十三、常用命令
+
+### 13.1 服务管理
+
+```bash
+# macOS (Homebrew)
+brew services start mongodb-community
+brew services stop mongodb-community
+brew services restart mongodb-community
+
+# Linux (systemd)
+sudo systemctl start mongod
+sudo systemctl stop mongod
+sudo systemctl restart mongod
+
+# Docker
+docker run -d --name mongo -p 27017:27017 mongo:7
+docker start mongo
+docker stop mongo
+```
+
+### 13.2 连接与登录
+
+```bash
+# 本地连接
+mongosh
+mongosh "mongodb://localhost:27017"
+mongosh "mongodb://localhost:27017/mydb"
+
+# 远程连接
+mongosh "mongodb://host:27017"
+mongosh "mongodb+srv://cluster.mongodb.net/mydb"
+
+# 带认证
+mongosh -u username -p password --authenticationDatabase admin
+
+# 执行 JS 文件
+mongosh script.js
+mongosh --eval "db.version()"
+```
+
+### 13.3 备份与恢复
+
+```bash
+# 备份
+mongodump --db mydb --out /backup/
+mongodump --uri "mongodb://host:27017/mydb" --out /backup/
+mongodump --db mydb --collection users --out /backup/
+
+# 恢复
+mongorestore --db mydb /backup/mydb/
+mongorestore --uri "mongodb://host:27017/mydb" /backup/mydb/
+
+# JSON 导出/导入
+mongoexport --db mydb --collection users --out users.json
+mongoimport --db mydb --collection users --file users.json
+
+# CSV 导出
+mongoexport --db mydb --collection users --type=csv --fields name,email --out users.csv
+```
+
+### 13.4 用户与权限
+
+```bash
+# 创建用户
+mongosh --eval "db.createUser({user:'appuser',pwd:'password',roles:[{role:'readWrite',db:'mydb'}]})"
+
+# 查看用户
+mongosh --eval "db.getUsers()"
+
+# 修改密码
+mongosh --eval "db.changeUserPassword('appuser', 'newpassword')"
+```
+
+### 13.5 监控与诊断
+
+```bash
+# 服务器状态
+mongosh --eval "db.serverStatus()"
+mongosh --eval "db.serverStatus().connections"
+
+# 数据库统计
+mongosh --eval "db.stats()"
+mongosh --eval "db.collection.stats()"
+
+# 性能分析
+mongosh --eval "db.setProfilingLevel(1)"  # 开启慢查询
+mongosh --eval "db.system.profile.find().sort({millis:-1}).limit(5)"
+
+# 当前操作
+mongosh --eval "db.currentOp()"
+```
+
+### 13.6 实用命令
+
+```bash
+# 版本
+mongod --version
+mongosh --version
+
+# 压缩备份
+mongodump --db mydb --out /backup/ && tar -czf backup.tar.gz /backup/mydb/
+
+# 修复数据库
+mongod --repair --dbpath /data/db
+
+# 查看副本集状态
+mongosh --eval "rs.status()"
+mongosh --eval "rs.conf()"
+```
 
 ---
 

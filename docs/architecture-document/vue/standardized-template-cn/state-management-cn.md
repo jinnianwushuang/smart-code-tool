@@ -1,6 +1,6 @@
 ---
 title: 状态管理系统
-order: 99
+order: 4
 ---
 
 # 状态管理系统
@@ -61,7 +61,7 @@ order: 99
 **singleton.js** - 聚合所有单例模块：
 
 ```javascript
-import { common_assemble_singleton } from 'src/output/common/project-common.js'
+import { common_assemble_singleton } from 'src/output/common/project_common.js'
 import * as dialog_copy_use_singleton from 'src/components/dialog/dialog-copy-use/state/singleton.js'
 
 const modules = import.meta.glob('./singleton/*.js', { eager: true })
@@ -129,7 +129,7 @@ export const init_singleton = () => {
 在组件中：
 
 ```javascript
-import { all_singleton } from "src/standardization/backend-page-template/state/singleton.js"
+import { all_singleton } from 'src/standardization/singleton-template/state/singleton.js'
 
 const { table_data, pagination, user_info } = all_singleton
 
@@ -265,7 +265,6 @@ export const create_computed_variable = (payload) => {
 
 - **响应式跟踪** - 依赖更改时自动更新
 - **记忆化** - 仅在依赖更改时计算
-- **类型安全** - 清晰的输入/输出契约
 - **可测试** - 纯函数
 
 ## 配置状态
@@ -457,3 +456,12 @@ export const handle_reset_form = (payload) => {
 - 创建读取兄弟计算的计算（创建合并计算）
 - 在不重新分配的情况下深度变更数组/对象
 - 创建紧密耦合的状态依赖
+
+## 多例与单例模板的状态差异
+
+| 特性      | 多例模板                                                | 单例模板                                                |
+| --------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| 状态入口  | `state/multiton.js` 直接导出 `create_multiton_variable` | `state/singleton.js` 聚合 `singleton/*.js` 模块         |
+| 状态共享  | 每实例独立                                              | 跨实例共享                                              |
+| 重置机制  | 每次创建新实例                                          | `init_singleton()` 重置所有单例状态                     |
+| expose.js | 无                                                      | 提供 `ALL_CONTEXT_STATE` 和 `ALL_EVENT_PIPELINE` 挂载点 |

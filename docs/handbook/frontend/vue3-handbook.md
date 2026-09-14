@@ -25,6 +25,7 @@
 - [十五、状态管理](#十五状态管理)
 - [十六、路由](#十六路由)
 - [十七、最佳实践](#十七最佳实践)
+- [十八、常用命令](#十八常用命令)
 
 ---
 
@@ -1028,9 +1029,7 @@ const theme = inject('theme')
 const user = inject('user', { name: 'Guest' })
 
 // 注入工厂函数
-const config = inject('config', () => ({
-  /* default */
-}))
+const config = inject('config', () => ({/* default */}))
 ```
 
 ---
@@ -1306,6 +1305,91 @@ module.exports = {
 // Composables: useXxx
 // Stores: useXxxStore
 // 常量: UPPER_SNAKE_CASE
+```
+
+---
+
+## 十八、常用命令
+
+### 18.1 项目创建
+
+```bash
+# create-vue（官方推荐）
+npm create vue@latest my-vue-app
+npm create vue@latest my-vue-app -- --typescript
+npm create vue@latest my-vue-app -- --router --pinia --vitest
+
+# Vue CLI（旧版）
+npm install -g @vue/cli
+vue create my-app
+vue ui                             # 图形化界面
+```
+
+### 18.2 开发服务器
+
+```bash
+# Vite（Vue 3 默认）
+npm run dev                        # 启动开发服务器
+npm run dev -- --port 3000         # 指定端口
+npm run dev -- --host              # 暴露主机
+npm run dev -- --open              # 自动打开浏览器
+
+# Vue CLI
+npm run serve
+npm run serve -- --port 8080
+```
+
+### 18.3 构建与发布
+
+```bash
+# 构建
+npm run build                      # 生产构建
+npm run build -- --mode staging    # 指定模式
+
+# 预览
+npm run preview                    # 预览构建结果
+
+# 分析包大小
+npx vite-bundle-analyzer           # Vite 包分析
+npm run build -- --report          # Vue CLI 包分析
+```
+
+### 18.4 测试与质量
+
+```bash
+# Vitest
+npx vitest                         # 运行测试
+npx vitest --ui                    # UI 模式
+npx vitest --coverage              # 覆盖率
+
+# Vue Test Utils
+# 在测试文件中使用
+import { mount } from '@vue/test-utils'
+
+# ESLint
+npx eslint src/ --fix
+npx eslint "src/**/*.{vue,ts,js}" --fix
+
+# TypeScript 检查
+npx vue-tsc --noEmit               # Vue + TS 类型检查
+```
+
+### 18.5 Vue DevTools
+
+```bash
+# 安装
+# Chrome/Firefox 扩展商店搜索 "Vue.js devtools"
+
+# 独立应用（推荐 for Vite）
+npm add -D @vue/devtools
+npx vue-devtools                   # 启动独立 DevTools
+
+# 功能
+# - Components: 组件树查看
+# - Pinia/Vuex: 状态管理调试
+# - Router: 路由查看
+# - Timeline: 性能时间线
+# - Performance: 性能分析
 ```
 
 ---

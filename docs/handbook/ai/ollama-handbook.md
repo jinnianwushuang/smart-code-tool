@@ -1891,6 +1891,99 @@ docker run -d -p 3000:8080 \
 - [Hugging Face](https://huggingface.co/models)
 - [GGUF Models](https://huggingface.co/TheBloke)
 
+---
+
+## 常用命令
+
+### 服务管理
+
+```bash
+# macOS
+brew install ollama                  # 安装
+ollama serve                         # 启动服务
+brew services start ollama           # 后台启动
+brew services stop ollama            # 停止
+
+# Linux
+curl -fsSL https://ollama.com/install.sh | sh  # 安装
+sudo systemctl start ollama          # systemd 启动
+sudo systemctl enable ollama         # 开机自启
+
+# Docker
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+```
+
+### 模型管理
+
+```bash
+# 拉取模型
+ollama pull llama3.1                 # Llama 3.1
+ollama pull llama3.1:70b             # 指定参数规模
+ollama pull qwen2.5:7b              # 通义千问
+ollama pull codellama                 # 代码模型
+ollama pull nomic-embed-text         # Embedding 模型
+
+# 查看模型
+ollama list                          # 已下载模型
+ollama show llama3.1                 # 模型详情
+
+# 删除模型
+ollama rm model-name
+
+# 复制模型
+ollama cp llama3.1 my-llama
+```
+
+### 运行与交互
+
+```bash
+# 交互式运行
+ollama run llama3.1
+ollama run llama3.1 "explain quantum computing"
+
+# API 调用
+curl http://localhost:11434/api/generate -d '{"model": "llama3.1", "prompt": "Hello"}'
+curl http://localhost:11434/api/chat -d '{"model": "llama3.1", "messages": [{"role": "user", "content": "Hello"}]}'
+
+# 生成 Embedding
+curl http://localhost:11434/api/embeddings -d '{"model": "nomic-embed-text", "prompt": "Hello"}'
+```
+
+### Modelfile 自定义
+
+```bash
+# 创建自定义模型
+ollama create my-model -f Modelfile
+
+# Modelfile 示例:
+# FROM llama3.1
+# PARAMETER temperature 0.7
+# SYSTEM "You are a helpful assistant."
+
+# 查看 Modelfile
+ollama show llama3.1 --modelfile
+```
+
+### 实用命令
+
+```bash
+# 版本
+ollama --version
+
+# 日志
+ollama help                          # 查看帮助
+
+# GPU 状态
+ollama ps                            # 查看运行中的模型
+
+# 环境变量
+OLLAMA_HOST=0.0.0.0 ollama serve     # 监听所有接口
+OLLAMA_NUM_PARALLEL=4 ollama serve   # 并行请求数
+OLLAMA_MAX_LOADED_MODELS=2 ollama serve  # 最大加载模型数
+```
+
+---
+
 ## 学习资源
 
 ### 官方文档

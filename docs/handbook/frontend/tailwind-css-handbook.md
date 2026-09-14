@@ -51,9 +51,7 @@ npx tailwindcss init -p
 ```javascript
 // tailwind.config.js
 module.exports = {
-  content: [
-    "./src/**/*.{html,js,jsx,ts,tsx,vue}",
-  ],
+  content: ['./src/**/*.{html,js,jsx,ts,tsx,vue}'],
   theme: {
     extend: {},
   },
@@ -106,9 +104,7 @@ npx tailwindcss init -p
 function App() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-3xl font-bold text-blue-600">
-        Hello Tailwind!
-      </h1>
+      <h1 className="text-3xl font-bold text-blue-600">Hello Tailwind!</h1>
     </div>
   )
 }
@@ -129,9 +125,7 @@ npx tailwindcss init -p
 <!-- src/App.vue -->
 <template>
   <div class="min-h-screen bg-gray-100 flex items-center justify-center">
-    <h1 class="text-3xl font-bold text-blue-600">
-      Hello Tailwind!
-    </h1>
+    <h1 class="text-3xl font-bold text-blue-600">Hello Tailwind!</h1>
   </div>
 </template>
 ```
@@ -141,13 +135,13 @@ npx tailwindcss init -p
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-  <h1 class="text-3xl font-bold underline">Hello world!</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  </body>
 </html>
 ```
 
@@ -464,12 +458,8 @@ Tailwind 提供完整的调色板：gray, red, orange, yellow, green, blue, indi
 ### 8.2 Gradient Backgrounds
 
 ```html
-<div class="bg-gradient-to-r from-blue-500 to-purple-500">
-  Horizontal gradient
-</div>
-<div class="bg-gradient-to-b from-red-500 to-yellow-500">
-  Vertical gradient
-</div>
+<div class="bg-gradient-to-r from-blue-500 to-purple-500">Horizontal gradient</div>
+<div class="bg-gradient-to-b from-red-500 to-yellow-500">Vertical gradient</div>
 ```
 
 ### 8.3 Border Radius
@@ -566,9 +556,7 @@ Tailwind 提供完整的调色板：gray, red, orange, yellow, green, blue, indi
 
 ```html
 <div class="group">
-  <div class="text-gray-500 group-hover:text-blue-500">
-    Child changes on parent hover
-  </div>
+  <div class="text-gray-500 group-hover:text-blue-500">Child changes on parent hover</div>
 </div>
 ```
 
@@ -597,20 +585,24 @@ xl: 1280px  → @media (min-width: 1280px)
 ### 11.2 移动优先
 
 ```html
-<div class="
+<div
+  class="
   w-full           <!-- Mobile -->
   sm:w-1/2         <!-- Small -->
   md:w-1/3         <!-- Medium -->
   lg:w-1/4         <!-- Large -->
-">
+"
+>
   Responsive width
 </div>
 
-<h1 class="
+<h1
+  class="
   text-xl          <!-- Mobile -->
   md:text-2xl      <!-- Medium -->
   lg:text-3xl      <!-- Large -->
-">
+"
+>
   Responsive heading
 </h1>
 ```
@@ -642,9 +634,7 @@ module.exports = {
 
 ```html
 <div class="bg-white dark:bg-gray-900">
-  <p class="text-gray-900 dark:text-white">
-    Adaptive text
-  </p>
+  <p class="text-gray-900 dark:text-white">Adaptive text</p>
 </div>
 ```
 
@@ -684,7 +674,7 @@ module.exports = {
         sans: ['Inter', 'sans-serif'],
       },
       spacing: {
-        '18': '4.5rem',
+        18: '4.5rem',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in',
@@ -709,10 +699,7 @@ npm install -D @tailwindcss/forms @tailwindcss/typography
 ```javascript
 // tailwind.config.js
 module.exports = {
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }
 ```
 
@@ -742,15 +729,15 @@ module.exports = {
   .btn {
     @apply px-4 py-2 rounded-md font-semibold transition-colors;
   }
-  
+
   .btn-primary {
     @apply bg-blue-500 text-white hover:bg-blue-600;
   }
-  
+
   .card {
     @apply bg-white rounded-lg shadow-md p-6;
   }
-  
+
   .input {
     @apply w-full px-3 py-2 border border-gray-300 rounded-md 
            focus:outline-none focus:ring-2 focus:ring-blue-500;
@@ -787,9 +774,7 @@ module.exports = {
 ```html
 <!-- Input -->
 <div class="mb-4">
-  <label class="block text-sm font-medium text-gray-700 mb-1">
-    Email
-  </label>
+  <label class="block text-sm font-medium text-gray-700 mb-1"> Email </label>
   <input type="email" class="input" placeholder="you@example.com" />
 </div>
 
@@ -823,28 +808,20 @@ module.exports = {
 ### 15.3 状态变体
 
 ```html
-<div class="hover:bg-blue-500 focus:ring-2 active:scale-95">
-  Multiple states
-</div>
+<div class="hover:bg-blue-500 focus:ring-2 active:scale-95">Multiple states</div>
 ```
 
 ### 15.4 组合变体
 
 ```html
-<div class="md:hover:bg-blue-500 dark:focus:ring-blue-300">
-  Combined variants
-</div>
+<div class="md:hover:bg-blue-500 dark:focus:ring-blue-300">Combined variants</div>
 ```
 
 ### 15.5 伪元素
 
 ```html
-<div class="before:content-['•'] before:mr-2">
-  Before pseudo-element
-</div>
-<div class="after:content-['*'] after:text-red-500">
-  After pseudo-element
-</div>
+<div class="before:content-['•'] before:mr-2">Before pseudo-element</div>
+<div class="after:content-['*'] after:text-red-500">After pseudo-element</div>
 ```
 
 ---
@@ -856,9 +833,7 @@ module.exports = {
 ```javascript
 // tailwind.config.js
 module.exports = {
-  content: [
-    "./src/**/*.{html,js,jsx,ts,tsx,vue}",
-  ],
+  content: ['./src/**/*.{html,js,jsx,ts,tsx,vue}'],
   // Only purge in production
 }
 ```
@@ -897,6 +872,7 @@ const Component = lazy(() => import('./Component'))
 **问题**: 添加的类名没有效果
 
 **解决**:
+
 1. 检查 `content` 配置是否包含文件路径
 2. 重启开发服务器
 3. 清除浏览器缓存
@@ -906,6 +882,7 @@ const Component = lazy(() => import('./Component'))
 **问题**: Tailwind 样式与其他 CSS 冲突
 
 **解决**:
+
 ```javascript
 // tailwind.config.js
 module.exports = {
@@ -920,6 +897,7 @@ module.exports = {
 **问题**: 生成的 CSS 文件太大
 
 **解决**:
+
 1. 确保正确配置 `content`
 2. 使用生产构建（自动 PurgeCSS）
 3. 启用压缩
@@ -927,6 +905,7 @@ module.exports = {
 ### 17.4 IntelliSense 不工作
 
 **解决**:
+
 1. 安装 Tailwind CSS IntelliSense 扩展
 2. 重启 VS Code
 3. 检查 `tailwind.config.js` 是否正确
@@ -939,9 +918,7 @@ module.exports = {
 
 ```html
 <!-- Center content -->
-<div class="flex items-center justify-center min-h-screen">
-  Content
-</div>
+<div class="flex items-center justify-center min-h-screen">Content</div>
 
 <!-- Sticky footer -->
 <div class="flex flex-col min-h-screen">
@@ -961,19 +938,21 @@ module.exports = {
 
 ```html
 <!-- Badge -->
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+<span
+  class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+>
   New
 </span>
 
 <!-- Alert -->
-<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
-  Error message
-</div>
+<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4">Error message</div>
 
 <!-- Tooltip -->
 <div class="relative group">
   <button>Hover me</button>
-  <div class="absolute hidden group-hover:block bg-black text-white text-xs rounded py-1 px-2 -top-8 left-1/2 transform -translate-x-1/2">
+  <div
+    class="absolute hidden group-hover:block bg-black text-white text-xs rounded py-1 px-2 -top-8 left-1/2 transform -translate-x-1/2"
+  >
     Tooltip
   </div>
 </div>
@@ -1005,6 +984,69 @@ Browser DevTools:
 - F12: Open DevTools
 - Ctrl+Shift+C: Inspect element
 - Ctrl+Shift+I: Console
+```
+
+---
+
+## 19. 常用命令
+
+### 19.1 安装与初始化
+
+```bash
+# 安装（Vite 项目）
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p          # 初始化配置文件
+
+# 安装（Next.js）
+npx tailwindcss init -p
+
+# CDN（仅开发用）
+# <script src="https://cdn.tailwindcss.com"></script>
+```
+
+### 19.2 Tailwind CLI
+
+```bash
+# 独立 CLI
+npm install -D @tailwindcss/cli
+
+# 监听模式
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify
+
+# 初始化配置
+npx tailwindcss init             # 生成 tailwind.config.js
+npx tailwindcss init -p          # 含 postcss.config.js
+npx tailwindcss init --ts        # TypeScript 配置
+```
+
+### 19.3 构建与优化
+
+```bash
+# 生产构建
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify
+
+# 分析使用的类
+npx tailwindcss --help
+
+# PurgeCSS（自动清除未用样式）
+# tailwind.config.js 中配置 content 字段即可
+```
+
+### 19.4 插件
+
+```bash
+# 官方插件
+npm install -D @tailwindcss/forms          # 表单样式
+npm install -D @tailwindcss/typography     # 排版插件（prose）
+npm install -D @tailwindcss/aspect-ratio   # 宽高比
+npm install -D @tailwindcss/line-clamp     # 行截断
+npm install -D @tailwindcss/container-queries  # 容器查询
+
+# 社区插件
+npm install -D tailwindcss-scrollbar       # 滚动条
+npm install -D daisyui                     # 组件库
+npm install -D flowbite                    # 组件库
 ```
 
 ---

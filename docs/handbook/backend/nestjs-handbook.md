@@ -24,6 +24,7 @@
 - [十四、认证和授权](#十四认证和授权)
 - [十五、测试](#十五测试)
 - [十六、最佳实践](#十六最佳实践)
+- [十七、常用命令](#十七常用命令)
 
 ---
 
@@ -1762,6 +1763,84 @@ name: string;
 
 @ApiProperty({ example: 'john@example.com' })
 email: string;
+```
+
+---
+
+## 十七、常用命令
+
+### 17.1 NestJS CLI
+
+```bash
+# 安装
+npm i -g @nestjs/cli
+
+# 项目创建
+nest new project-name
+nest new project-name --package-manager pnpm
+nest new project-name --skip-git
+
+# 生成代码
+nest generate controller users         # 生成 Controller
+nest generate service users            # 生成 Service
+nest generate module users             # 生成 Module
+nest generate resource users           # 生成完整资源（CRUD）
+nest generate middleware logger        # 生成中间件
+nest generate guard auth               # 生成 Guard
+nest generate pipe validation          # 生成 Pipe
+nest generate interceptor logging      # 生成 Interceptor
+nest generate filter http-exception    # 生成 Filter
+nest generate interface user           # 生成接口
+nest generate class dto                # 生成类
+
+# 缩写
+nest g co users       # controller
+nest g s users        # service
+nest g mo users       # module
+nest g r users        # resource
+```
+
+### 17.2 开发与构建
+
+```bash
+# 开发
+npm run start                        # 启动
+npm run start:dev                    # 开发模式（监听重启）
+npm run start:debug                  # 调试模式
+npm run start:prod                   # 生产模式
+
+# 构建
+npm run build                        # 构建
+npm run build -- --webpack            # 使用 Webpack 构建
+
+# 监听模式
+npm run start:dev                    # 监听文件变化
+```
+
+### 17.3 测试
+
+```bash
+npm run test                         # 单元测试
+npm run test:watch                   # 监听模式
+npm run test:cov                     # 覆盖率
+npm run test:debug                   # 调试模式
+npm run test:e2e                     # E2E 测试
+npm run test:e2e -- --config jest-e2e.config.ts  # 指定配置
+```
+
+### 17.4 数据库与迁移
+
+```bash
+# TypeORM
+npm run typeorm migration:generate -- -n Init
+npm run typeorm migration:run
+npm run typeorm migration:revert
+
+# Prisma
+npx prisma generate                  # 生成客户端
+npx prisma migrate dev               # 开发迁移
+npx prisma migrate deploy            # 生产迁移
+npx prisma studio                    # 数据浏览器
 ```
 
 ---

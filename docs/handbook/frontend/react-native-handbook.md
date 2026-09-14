@@ -23,6 +23,7 @@
 - [十三、设备能力](#十三设备能力)
 - [十四、性能优化](#十四性能优化)
 - [十五、调试与发布](#十五调试与发布)
+- [十六、常用命令](#十六常用命令)
 
 ---
 
@@ -95,14 +96,14 @@ export default App
 
 ### 1.4 RN 与 Web React 的差异
 
-| 维度 | Web React | React Native |
-| ---- | --------- | ------------ |
-| 渲染目标 | DOM（浏览器） | 原生视图（iOS/Android） |
-| 标签 | div/span/h1 | View/Text/Image |
-| 样式 | CSS（级联） | StyleSheet（Flexbox，无级联） |
-| 事件 | 合成事件 | 触摸手势系统 |
-| 路由 | react-router | React Navigation |
-| 桥接 | 无 | JSI / TurboModules |
+| 维度     | Web React     | React Native                  |
+| -------- | ------------- | ----------------------------- |
+| 渲染目标 | DOM（浏览器） | 原生视图（iOS/Android）       |
+| 标签     | div/span/h1   | View/Text/Image               |
+| 样式     | CSS（级联）   | StyleSheet（Flexbox，无级联） |
+| 事件     | 合成事件      | 触摸手势系统                  |
+| 路由     | react-router  | React Navigation              |
+| 桥接     | 无            | JSI / TurboModules            |
 
 ---
 
@@ -112,17 +113,17 @@ export default App
 
 ```tsx
 import {
-  View,        // 容器（≈ div）
-  Text,        // 文本（≈ span，必须包裹文本）
-  Image,       // 图片（≈ img）
-  TextInput,   // 输入框（≈ input）
-  ScrollView,  // 滚动容器
-  Pressable,   // 可按压交互（推荐）
+  View, // 容器（≈ div）
+  Text, // 文本（≈ span，必须包裹文本）
+  Image, // 图片（≈ img）
+  TextInput, // 输入框（≈ input）
+  ScrollView, // 滚动容器
+  Pressable, // 可按压交互（推荐）
   TouchableOpacity, // 带透明度过渡的按压
-  Switch,      // 开关
-  Modal,       // 模态框
+  Switch, // 开关
+  Modal, // 模态框
   ActivityIndicator, // 加载指示器
-  FlatList,    // 高性能列表
+  FlatList, // 高性能列表
 } from 'react-native'
 ```
 
@@ -179,10 +180,10 @@ const [text, setText] = useState('')
 <Pressable
   onPress={() => console.log('点击')}
   onLongPress={() => console.log('长按')}
-  android_ripple={{ color: '#ccc' }}   // Android 水波纹
+  android_ripple={{ color: '#ccc' }} // Android 水波纹
   style={({ pressed }) => [
     styles.button,
-    pressed && styles.buttonPressed,   // 按压态样式
+    pressed && styles.buttonPressed, // 按压态样式
   ]}
 >
   <Text>点我</Text>
@@ -193,9 +194,10 @@ const [text, setText] = useState('')
 
 ```tsx
 <ScrollView
-  horizontal={false}          // 横向滚动
+  horizontal={false} // 横向滚动
   showsVerticalScrollIndicator={false}
-  refreshControl={            // 下拉刷新
+  refreshControl={
+    // 下拉刷新
     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
   }
   onScrollEndDrag={(e) => console.log(e.nativeEvent.contentOffset.y)}
@@ -209,7 +211,7 @@ const [text, setText] = useState('')
 ### 2.7 Modal 与 ActivityIndicator
 
 ```tsx
-<Modal visible={visible} transparent animationType="fade">
+;<Modal visible={visible} transparent animationType="fade">
   <View style={styles.overlay}>
     <View style={styles.dialog}>
       <Text>确认操作？</Text>
@@ -218,7 +220,9 @@ const [text, setText] = useState('')
   </View>
 </Modal>
 
-{loading && <ActivityIndicator size="large" color="#007AFF" />}
+{
+  loading && <ActivityIndicator size="large" color="#007AFF" />
+}
 ```
 
 ---
@@ -267,12 +271,12 @@ const styles = StyleSheet.create({
   // 水平排列
   row: {
     flexDirection: 'row',
-    alignItems: 'center',       // 交叉轴居中
+    alignItems: 'center', // 交叉轴居中
     justifyContent: 'space-between', // 主轴两端对齐
-    gap: 8,                     // 0.71+ 支持 gap
+    gap: 8, // 0.71+ 支持 gap
   },
   // 弹性伸缩
-  flex1: { flex: 1 },           // 占据剩余空间
+  flex1: { flex: 1 }, // 占据剩余空间
   // 绝对定位
   badge: {
     position: 'absolute',
@@ -307,7 +311,7 @@ const dp = PixelRatio.getPixelSizeForLayoutSize(100) // 逻辑像素 → 物理�
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 
 // 组件方式
-<SafeAreaView style={{ flex: 1 }}>...</SafeAreaView>
+;<SafeAreaView style={{ flex: 1 }}>...</SafeAreaView>
 
 // Hook 方式（更灵活）
 function Screen() {
@@ -328,12 +332,15 @@ function Screen() {
   keyExtractor={(item) => item.id}
   renderItem={({ item, index }) => <Row item={item} index={index} />}
   // 性能关键配置
-  initialNumToRender={10}        // 首屏渲染数量
-  windowSize={5}                 // 可视窗口倍数
-  maxToRenderPerBatch={10}       // 每批渲染数
-  removeClippedSubviews={true}   // 裁剪屏外视图（Android）
-  getItemLayout={(data, index) => ({  // 固定行高时提供，跳过测量
-    length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index,
+  initialNumToRender={10} // 首屏渲染数量
+  windowSize={5} // 可视窗口倍数
+  maxToRenderPerBatch={10} // 每批渲染数
+  removeClippedSubviews={true} // 裁剪屏外视图（Android）
+  getItemLayout={(data, index) => ({
+    // 固定行高时提供，跳过测量
+    length: ITEM_HEIGHT,
+    offset: ITEM_HEIGHT * index,
+    index,
   })}
   // 分页加载
   onEndReached={loadMore}
@@ -359,18 +366,18 @@ function Screen() {
   keyExtractor={(item, index) => item + index}
   renderItem={({ item }) => <Row text={item} />}
   renderSectionHeader={({ section }) => <Header title={section.title} />}
-  stickySectionHeadersEnabled  // iOS 吸顶
+  stickySectionHeadersEnabled // iOS 吸顶
 />
 ```
 
 ### 4.3 列表选型
 
-| 组件 | 场景 | 虚拟化 |
-| ---- | ---- | ------ |
-| ScrollView | 少量内容、不定高 | ❌ 全量渲染 |
-| FlatList | 长列表、同构数据 | ✅ |
-| SectionList | 分组列表 | ✅ |
-| FlashList（Shopify） | 超高性能列表 | ✅ 回收复用 |
+| 组件                 | 场景             | 虚拟化      |
+| -------------------- | ---------------- | ----------- |
+| ScrollView           | 少量内容、不定高 | ❌ 全量渲染 |
+| FlatList             | 长列表、同构数据 | ✅          |
+| SectionList          | 分组列表         | ✅          |
+| FlashList（Shopify） | 超高性能列表     | ✅ 回收复用 |
 
 ---
 
@@ -395,11 +402,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: '首页' }}
-        />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: '首页' }} />
         <Stack.Screen name="Detail" component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -408,12 +411,7 @@ function App() {
 
 // 页面内跳转
 function HomeScreen({ navigation }) {
-  return (
-    <Button
-      title="去详情"
-      onPress={() => navigation.navigate('Detail', { id: 42 })}
-    />
-  )
+  return <Button title="去详情" onPress={() => navigation.navigate('Detail', { id: 42 })} />
 }
 
 // 接收参数
@@ -444,13 +442,13 @@ const Tab = createBottomTabNavigator()
 ### 5.4 常用导航 API
 
 ```tsx
-navigation.navigate('Detail', params)  // 跳转（存在则复用）
-navigation.push('Detail', params)      // 强制入栈
-navigation.goBack()                    // 返回
-navigation.popToTop()                  // 回到栈底
-navigation.replace('Login')            // 替换当前页
+navigation.navigate('Detail', params) // 跳转（存在则复用）
+navigation.push('Detail', params) // 强制入栈
+navigation.goBack() // 返回
+navigation.popToTop() // 回到栈底
+navigation.replace('Login') // 替换当前页
 navigation.reset({ index: 0, routes: [{ name: 'Home' }] }) // 重置栈
-navigation.setParams({ id: 1 })        // 更新参数
+navigation.setParams({ id: 1 }) // 更新参数
 ```
 
 ---
@@ -506,13 +504,13 @@ function Profile() {
 
 ### 6.4 方案选型
 
-| 方案 | 适用场景 | 特点 |
-| ---- | -------- | ---- |
-| useState/useReducer | 组件局部 | 内置，零依赖 |
-| Context | 低频全局（主题/语言） | 内置，更新粒度粗 |
-| Zustand | 中大型全局状态 | 轻量、精准订阅 |
-| Redux Toolkit | 大型复杂应用 | 生态成熟、规范严格 |
-| Jotai / Recoil | 原子化状态 | 细粒度、派生简单 |
+| 方案                | 适用场景              | 特点               |
+| ------------------- | --------------------- | ------------------ |
+| useState/useReducer | 组件局部              | 内置，零依赖       |
+| Context             | 低频全局（主题/语言） | 内置，更新粒度粗   |
+| Zustand             | 中大型全局状态        | 轻量、精准订阅     |
+| Redux Toolkit       | 大型复杂应用          | 生态成熟、规范严格 |
+| Jotai / Recoil      | 原子化状态            | 细粒度、派生简单   |
 
 ---
 
@@ -609,16 +607,17 @@ function UserList() {
 import { Platform } from 'react-native'
 
 // 条件判断
-const shadow = Platform.OS === 'ios'
-  ? { shadowColor: '#000', shadowOpacity: 0.1 }
-  : { elevation: 4 }
+const shadow =
+  Platform.OS === 'ios' ? { shadowColor: '#000', shadowOpacity: 0.1 } : { elevation: 4 }
 
 // 平台文件（自动按平台选择）
 // api.ios.js / api.android.js
 import { doSomething } from './api'
 
 // 版本判断
-if (Platform.Version >= 33) { /* Android 13+ */ }
+if (Platform.Version >= 33) {
+  /* Android 13+ */
+}
 ```
 
 ### 8.2 平台样式分离
@@ -706,14 +705,14 @@ const level = await NativeModules.BatteryModule.getLevel()
 
 ### 9.3 常用原生能力库
 
-| 能力 | 推荐库 |
-| ---- | ------ |
+| 能力      | 推荐库                                         |
+| --------- | ---------------------------------------------- |
 | 相机/相册 | react-native-vision-camera / expo-image-picker |
-| 定位 | react-native-geolocation / expo-location |
-| 推送 | @react-native-firebase/messaging |
-| 生物识别 | react-native-biometrics |
-| 文件 | react-native-fs / expo-file-system |
-| 分享 | react-native-share |
+| 定位      | react-native-geolocation / expo-location       |
+| 推送      | @react-native-firebase/messaging               |
+| 生物识别  | react-native-biometrics                        |
+| 文件      | react-native-fs / expo-file-system             |
+| 分享      | react-native-share                             |
 
 ---
 
@@ -732,7 +731,7 @@ function FadeIn() {
       toValue: 1,
       duration: 500,
       easing: Easing.ease,
-      useNativeDriver: true,  // 关键：原生线程执行
+      useNativeDriver: true, // 关键：原生线程执行
     }).start()
   }, [])
 
@@ -740,9 +739,9 @@ function FadeIn() {
 }
 
 // 组合动画
-Animated.parallel([fadeIn, slideUp]).start()   // 并行
-Animated.sequence([step1, step2]).start()      // 串行
-Animated.loop(spin).start()                    // 循环
+Animated.parallel([fadeIn, slideUp]).start() // 并行
+Animated.sequence([step1, step2]).start() // 串行
+Animated.loop(spin).start() // 循环
 ```
 
 ### 10.2 插值
@@ -763,7 +762,10 @@ npm install react-native-reanimated
 
 ```tsx
 import Animated, {
-  useSharedValue, useAnimatedStyle, withSpring, withTiming,
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
 } from 'react-native-reanimated'
 
 function ScaleButton() {
@@ -805,7 +807,7 @@ function Draggable() {
       offset.value = { x: e.translationX, y: e.translationY }
     })
     .onEnd(() => {
-      offset.value = withSpring({ x: 0, y: 0 })  // 回弹
+      offset.value = withSpring({ x: 0, y: 0 }) // 回弹
     })
 
   return (
@@ -819,17 +821,17 @@ function Draggable() {
 ### 11.2 常用手势类型
 
 ```tsx
-Gesture.Tap()        // 点击
-Gesture.LongPress()  // 长按
-Gesture.Pan()        // 拖拽
-Gesture.Pinch()      // 捏合缩放
-Gesture.Rotation()   // 旋转
-Gesture.Fling()      // 轻扫
+Gesture.Tap() // 点击
+Gesture.LongPress() // 长按
+Gesture.Pan() // 拖拽
+Gesture.Pinch() // 捏合缩放
+Gesture.Rotation() // 旋转
+Gesture.Fling() // 轻扫
 
 // 手势组合
-Gesture.Exclusive(pan, tap)   // 互斥
-Gesture.Simultaneous(pinch, rotate)  // 同时
-Gesture.Race(swipeLeft, swipeRight)  // 竞争
+Gesture.Exclusive(pan, tap) // 互斥
+Gesture.Simultaneous(pinch, rotate) // 同时
+Gesture.Race(swipeLeft, swipeRight) // 竞争
 ```
 
 ---
@@ -869,20 +871,20 @@ import { MMKV } from 'react-native-mmkv'
 
 const storage = new MMKV()
 
-storage.set('token', 'abc123')        // 同步写入，比 AsyncStorage 快 30 倍
+storage.set('token', 'abc123') // 同步写入，比 AsyncStorage 快 30 倍
 const token = storage.getString('token')
-storage.set('user', { name: 'Tom' })  // 直接存对象
+storage.set('user', { name: 'Tom' }) // 直接存对象
 storage.delete('token')
 storage.contains('user')
 ```
 
 ### 12.3 存储选型
 
-| 方案 | 特点 | 场景 |
-| ---- | ---- | ---- |
-| AsyncStorage | 异步、简单 | 少量配置 |
-| MMKV | 同步、极快、加密 | Token/用户态 |
-| SQLite | 关系型、事务 | 结构化离线数据 |
+| 方案         | 特点               | 场景             |
+| ------------ | ------------------ | ---------------- |
+| AsyncStorage | 异步、简单         | 少量配置         |
+| MMKV         | 同步、极快、加密   | Token/用户态     |
+| SQLite       | 关系型、事务       | 结构化离线数据   |
 | WatermelonDB | 高性能 ORM、懒加载 | 大型离线优先应用 |
 
 ---
@@ -893,15 +895,15 @@ storage.contains('user')
 
 ```tsx
 import {
-  Dimensions,      // 屏幕尺寸
-  PixelRatio,      // 像素密度
-  StatusBar,       // 状态栏
-  Keyboard,        // 键盘控制
-  Linking,         // 深链/外部跳转
-  Alert,           // 系统弹窗
-  AppState,        // 前后台状态
-  Vibration,       // 震动
-  Appearance,      // 深色模式
+  Dimensions, // 屏幕尺寸
+  PixelRatio, // 像素密度
+  StatusBar, // 状态栏
+  Keyboard, // 键盘控制
+  Linking, // 深链/外部跳转
+  Alert, // 系统弹窗
+  AppState, // 前后台状态
+  Vibration, // 震动
+  Appearance, // 深色模式
 } from 'react-native'
 
 // 打开链接
@@ -925,7 +927,7 @@ AppState.addEventListener('change', (state) => {
 import { useColorScheme } from 'react-native'
 
 function Themed() {
-  const scheme = useColorScheme()  // 'light' | 'dark'
+  const scheme = useColorScheme() // 'light' | 'dark'
   const colors = scheme === 'dark' ? DarkTheme : LightTheme
   return <View style={{ backgroundColor: colors.bg }} />
 }
@@ -948,7 +950,7 @@ const onPress = useCallback(() => navigate('Detail'), [navigate])
 // ④ 避免在 renderItem 中创建新对象/函数
 // ⑤ 图片用 FastImage 缓存
 import FastImage from 'react-native-fast-image'
-<FastImage source={{ uri, priority: FastImage.priority.high }} />
+;<FastImage source={{ uri, priority: FastImage.priority.high }} />
 ```
 
 ### 14.2 包体积与启动
@@ -973,14 +975,14 @@ project.ext.react = [
 
 ### 14.3 性能检测工具
 
-| 工具 | 用途 |
-| ---- | ---- |
-| React DevTools Profiler | 组件重渲染分析 |
-| Flipper | RN 官方调试套件 |
-| why-did-you-render | 检测无效渲染 |
-| Performance Monitor | 内置 FPS 监视器 |
-| Systrace / Perfetto | Android 帧分析 |
-| Instruments | iOS 帧/内存分析 |
+| 工具                    | 用途            |
+| ----------------------- | --------------- |
+| React DevTools Profiler | 组件重渲染分析  |
+| Flipper                 | RN 官方调试套件 |
+| why-did-you-render      | 检测无效渲染    |
+| Performance Monitor     | 内置 FPS 监视器 |
+| Systrace / Perfetto     | Android 帧分析  |
+| Instruments             | iOS 帧/内存分析 |
 
 ---
 
@@ -1031,14 +1033,122 @@ useEffect(() => {
 
 ### 15.4 Expo vs 裸 RN 选型
 
-| 维度 | Expo | 裸 RN（CLI） |
-| ---- | ---- | ------------ |
-| 上手难度 | 极低 | 中 |
-| 原生定制 | 受限（可用 Dev Client） | 完全自由 |
-| 构建 | EAS 云构建 | 本地/CI |
-| 热更新 | EAS Update | CodePush |
-| 包体积 | 略大 | 可控 |
-| 适用 | 快速迭代/中小应用 | 深度定制/大型应用 |
+| 维度     | Expo                    | 裸 RN（CLI）      |
+| -------- | ----------------------- | ----------------- |
+| 上手难度 | 极低                    | 中                |
+| 原生定制 | 受限（可用 Dev Client） | 完全自由          |
+| 构建     | EAS 云构建              | 本地/CI           |
+| 热更新   | EAS Update              | CodePush          |
+| 包体积   | 略大                    | 可控              |
+| 适用     | 快速迭代/中小应用       | 深度定制/大型应用 |
+
+---
+
+## 十六、常用命令
+
+### 16.1 项目创建
+
+```bash
+# Expo（推荐）
+npx create-expo-app my-app
+npx create-expo-app my-app --template blank-typescript
+
+# React Native CLI
+npx react-native@latest init my-app
+npx react-native@latest init my-app --version 0.74
+
+# 升级现有项目
+npx expo install expo@latest
+npx @react-native-community/cli upgrade
+```
+
+### 16.2 开发服务器
+
+```bash
+# Expo
+npx expo start                       # 启动开发服务器
+npx expo start --clear               # 清除缓存
+npx expo start --tunnel              # 使用隧道（远程访问）
+npx expo start --ios                 # 直接打开 iOS
+npx expo start --android             # 直接打开 Android
+
+# React Native CLI
+npx react-native start               # 启动 Metro
+npx react-native start --reset-cache # 清除缓存
+```
+
+### 16.3 运行与构建
+
+```bash
+# Expo
+npx expo run:ios                     # 运行 iOS
+npx expo run:android                 # 运行 Android
+npx expo run:ios --device            # 运行到真机
+
+# React Native CLI
+npx react-native run-ios             # 运行 iOS
+npx react-native run-android         # 运行 Android
+npx react-native run-ios --simulator="iPhone 15"  # 指定模拟器
+
+# EAS Build（Expo 云构建）
+eas build --platform ios             # iOS 构建
+eas build --platform android         # Android 构建
+eas build --platform all             # 全平台构建
+eas build --profile preview          # 预览构建
+```
+
+### 16.4 发布
+
+```bash
+# Expo
+npx expo export --platform ios       # 导出
+npx expo publish                     # 发布 OTA 更新
+
+# EAS Submit
+eas submit --platform ios            # 提交 App Store
+eas submit --platform android        # 提交 Google Play
+
+# EAS Update（OTA）
+eas update --branch production --message "fix bug"
+```
+
+### 16.5 调试与测试
+
+```bash
+# 调试
+npx expo start --dev-client          # 开发客户端
+npx react-native log-ios             # iOS 日志
+npx react-native log-android         # Android 日志
+
+# 测试
+npx jest                             # 运行测试
+npx jest --coverage                  # 覆盖率
+npx jest --watch                     # 监听模式
+
+# TypeScript
+npx tsc --noEmit                     # 类型检查
+```
+
+### 16.6 实用命令
+
+```bash
+# 清除缓存
+npx expo start --clear
+npx react-native start --reset-cache
+
+# 安装原生依赖
+npx expo install <package>           # Expo 兼容版本
+npx expo install react-native-reanimated  # 示例
+
+# 预构建
+npx expo prebuild                    # 生成原生项目
+npx expo prebuild --platform ios     # 仅 iOS
+npx expo prebuild --clean            # 清理后重建
+
+# 设备管理
+xcrun simctl list devices            # 列出 iOS 模拟器
+adb devices                          # 列出 Android 设备
+```
 
 ---
 

@@ -22,6 +22,7 @@
 - [十二、调试与性能优化](#十二调试与性能优化)
 - [十三、原生功能集成](#十三原生功能集成)
 - [十四、常见问题与解决方案](#十四常见问题与解决方案)
+- [十五、常用命令](#十五常用命令)
 
 ---
 
@@ -47,10 +48,10 @@ Electron 是一个使用 JavaScript、HTML 和 CSS 构建跨平台桌面应用�
 
 ### 1.2 核心架构
 
-| 组件 | 说明 |
-|------|------|
-| **Chromium** | 提供渲染引擎，负责显示 Web 页面 |
-| **Node.js** | 提供系统级 API 访问能力 |
+| 组件            | 说明                                            |
+| --------------- | ----------------------------------------------- |
+| **Chromium**    | 提供渲染引擎，负责显示 Web 页面                 |
+| **Node.js**     | 提供系统级 API 访问能力                         |
 | **Native APIs** | 提供跨平台原生 GUI 能力（菜单、对话框、通知等） |
 
 ### 1.3 版本对应关系
@@ -173,18 +174,18 @@ contextBridge.exposeInMainWorld('electronAPI', {
 ```javascript
 // 主进程可用的模块
 const {
-  app,              // 应用生命周期
-  BrowserWindow,    // 窗口管理
-  Menu,             // 原生菜单
-  Tray,             // 系统托盘
-  dialog,           // 原生对话框
-  Notification,     // 系统通知
-  globalShortcut,   // 全局快捷键
-  clipboard,        // 剪贴板
-  shell,            // 系统 Shell 操作
-  powerMonitor,     // 电源状态监控
-  session,          // 会话管理
-  net,              // HTTP 请求
+  app, // 应用生命周期
+  BrowserWindow, // 窗口管理
+  Menu, // 原生菜单
+  Tray, // 系统托盘
+  dialog, // 原生对话框
+  Notification, // 系统通知
+  globalShortcut, // 全局快捷键
+  clipboard, // 剪贴板
+  shell, // 系统 Shell 操作
+  powerMonitor, // 电源状态监控
+  session, // 会话管理
+  net, // HTTP 请求
 } = require('electron')
 ```
 
@@ -195,7 +196,7 @@ const {
 // ❌ 不要直接 require electron 模块
 // ✅ 使用 contextBridge 暴露的安全 API
 
-window.electronAPI.invoke('get-app-version').then(version => {
+window.electronAPI.invoke('get-app-version').then((version) => {
   console.log('App version:', version)
 })
 ```
@@ -564,7 +565,7 @@ console.log(app.getPath('userData'))
 
 console.log(app.getPath('documents')) // 用户文档目录
 console.log(app.getPath('downloads')) // 下载目录
-console.log(app.getPath('temp'))      // 临时目录
+console.log(app.getPath('temp')) // 临时目录
 ```
 
 ---
@@ -582,7 +583,9 @@ ipcMain.handle('net:request', async (event, url) => {
     let body = ''
 
     request.on('response', (response) => {
-      response.on('data', (chunk) => { body += chunk })
+      response.on('data', (chunk) => {
+        body += chunk
+      })
       response.on('end', () => {
         resolve({ status: response.statusCode, body })
       })
@@ -629,10 +632,10 @@ protocol.registerStreamProtocol('media', (request, callback) => {
 // ✅ 推荐配置
 const win = new BrowserWindow({
   webPreferences: {
-    contextIsolation: true,    // 隔离上下文
-    nodeIntegration: false,    // 禁用 Node.js 集成
-    sandbox: true,             // 启用沙箱
-    webSecurity: true,         // 启用 Web 安全策略
+    contextIsolation: true, // 隔离上下文
+    nodeIntegration: false, // 禁用 Node.js 集成
+    sandbox: true, // 启用沙箱
+    webSecurity: true, // 启用 Web 安全策略
     allowRunningInsecureContent: false,
   },
 })
@@ -643,7 +646,7 @@ session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     responseHeaders: {
       ...details.responseHeaders,
       'Content-Security-Policy': [
-        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'",
       ],
     },
   })
@@ -760,11 +763,7 @@ ipcMain.on('update:install', () => {
     "directories": {
       "output": "release"
     },
-    "files": [
-      "dist/**/*",
-      "main.js",
-      "preload.js"
-    ],
+    "files": ["dist/**/*", "main.js", "preload.js"],
     "mac": {
       "category": "public.app-category.developer-tools",
       "target": ["dmg", "zip"],
@@ -992,14 +991,14 @@ powerMonitor.on('on-battery', () => {
 
 ### 14.1 常见问题速查
 
-| 问题 | 原因 | 解决方案 |
-|------|------|----------|
-| 白屏闪烁 | 窗口未准备好就显示 | 使用 `show: false` + `ready-to-show` |
-| IPC 通信失败 | 通道名不匹配 | 统一使用常量管理通道名 |
-| 打包后白屏 | 路径问题 | 使用 `__dirname` + `path.join` |
-| 模块找不到 | 原生模块未重编译 | `electron-rebuild` |
-| macOS 权限拒绝 | 未配置 entitlements | 添加 `entitlements.mac.plist` |
-| 自动更新失败 | 签名或发布配置错误 | 检查 `publish` 配置和代码签名 |
+| 问题           | 原因                | 解决方案                             |
+| -------------- | ------------------- | ------------------------------------ |
+| 白屏闪烁       | 窗口未准备好就显示  | 使用 `show: false` + `ready-to-show` |
+| IPC 通信失败   | 通道名不匹配        | 统一使用常量管理通道名               |
+| 打包后白屏     | 路径问题            | 使用 `__dirname` + `path.join`       |
+| 模块找不到     | 原生模块未重编译    | `electron-rebuild`                   |
+| macOS 权限拒绝 | 未配置 entitlements | 添加 `entitlements.mac.plist`        |
+| 自动更新失败   | 签名或发布配置错误  | 检查 `publish` 配置和代码签名        |
 
 ### 14.2 打包后路径问题
 
@@ -1031,6 +1030,94 @@ npx electron-rebuild
     "postinstall": "electron-rebuild"
   }
 }
+```
+
+---
+
+## 十五、常用命令
+
+### 15.1 项目创建
+
+```bash
+# 使用 electron-forge（推荐）
+npm create electron-app@latest my-app
+cd my-app
+
+# 使用 electron-quick-start
+npx degit electron/electron-quick-start my-app
+cd my-app && npm install
+```
+
+### 15.2 开发与构建
+
+```bash
+# 开发
+npm start                            # 启动开发
+npm run start                        # 启动
+
+# Electron Forge
+npm run make                         # 打包（生成可分发文件）
+npm run package                      # 打包（不生成安装包）
+
+# electron-builder
+npx electron-builder build           # 构建
+npx electron-builder build --win     # 仅 Windows
+npx electron-builder build --mac     # 仅 macOS
+npx electron-builder build --linux   # 仅 Linux
+```
+
+### 15.3 调试
+
+```bash
+# 主进程调试
+npm start -- --inspect               # 开启调试端口
+npm start -- --inspect-brk           # 首行断点
+
+# 渲染进程调试
+# 在渲染进程代码中:
+# require('electron').debug.openDevTools()
+
+# 远程调试
+# Chrome 访问 chrome://inspect
+
+# 日志
+npm start -- --enable-logging        # 启用日志
+npm start -- --log-level=3           # 详细日志
+```
+
+### 15.4 打包与发布
+
+```bash
+# Electron Forge 打包
+npm run make                         # 生成可分发文件
+# 输出在 out/ 目录
+
+# electron-builder 打包
+npx electron-builder --publish always  # 打包并发布
+
+# 代码签名
+# macOS: 需要 Apple Developer 证书
+# Windows: 需要代码签名证书
+
+# 自动更新
+# electron-updater 配合 GitHub Releases
+```
+
+### 15.5 实用工具
+
+```bash
+# Electron Fiddle（交互式实验）
+npx electron-fiddle                  # 启动 Fiddle
+
+# 版本查看
+npx electron --version
+
+# 清除缓存
+rm -rf node_modules/.cache
+rm -rf ~/.electron
+
+# 重新编译原生模块
+npx electron-rebuild
 ```
 
 ---

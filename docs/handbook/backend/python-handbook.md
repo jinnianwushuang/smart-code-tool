@@ -28,6 +28,7 @@
 18. [代码规范](#18-代码规范)
 19. [调试技巧](#19-调试技巧)
 20. [性能优化](#20-性能优化)
+21. [常用命令](#21-常用命令)
 
 ---
 
@@ -487,7 +488,7 @@ global_var = "global"
 def my_func():
     # 局部变量
     local_var = "local"
-    
+
     # 修改全局变量
     global global_var
     global_var = "modified"
@@ -523,24 +524,24 @@ add.__annotations__
 ```python
 class Person:
     """Person class."""
-    
+
     # 类变量
     species = "Homo sapiens"
-    
+
     # 构造函数
     def __init__(self, name, age):
         # 实例变量
         self.name = name
         self.age = age
-    
+
     # 实例方法
     def greet(self):
         return f"Hi, I'm {self.name}"
-    
+
     # 字符串表示
     def __str__(self):
         return f"Person({self.name}, {self.age})"
-    
+
     def __repr__(self):
         return f"Person('{self.name}', {self.age})"
 
@@ -556,7 +557,7 @@ class Student(Person):
     def __init__(self, name, age, student_id):
         super().__init__(name, age)
         self.student_id = student_id
-    
+
     def study(self):
         return f"{self.name} is studying"
 
@@ -590,19 +591,19 @@ animal_sound(Cat())         # Meow!
 class Circle:
     def __init__(self, radius):
         self._radius = radius
-    
+
     @property
     def radius(self):
         """Getter"""
         return self._radius
-    
+
     @radius.setter
     def radius(self, value):
         """Setter"""
         if value < 0:
             raise ValueError("Radius cannot be negative")
         self._radius = value
-    
+
     @property
     def area(self):
         """Computed property"""
@@ -623,22 +624,22 @@ class Vector:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-    
+
     def __add__(self, other):
         return Vector(self.x + other.x, self.y + other.y)
-    
+
     def __sub__(self, other):
         return Vector(self.x - other.x, self.y - other.y)
-    
+
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
-    
+
     def __len__(self):
         return 2
-    
+
     def __getitem__(self, index):
         return [self.x, self.y][index]
-    
+
     def __iter__(self):
         yield self.x
         yield self.y
@@ -657,7 +658,7 @@ class Shape(ABC):
     @abstractmethod
     def area(self):
         pass
-    
+
     @abstractmethod
     def perimeter(self):
         pass
@@ -666,10 +667,10 @@ class Rectangle(Shape):
     def __init__(self, width, height):
         self.width = width
         self.height = height
-    
+
     def area(self):
         return self.width * self.height
-    
+
     def perimeter(self):
         return 2 * (self.width + self.height)
 
@@ -1098,7 +1099,7 @@ class Singleton:
     def __init__(self, cls):
         self.cls = cls
         self.instance = None
-    
+
     def __call__(self, *args, **kwargs):
         if self.instance is None:
             self.instance = self.cls(*args, **kwargs)
@@ -1201,7 +1202,7 @@ class MyContext:
     def __enter__(self):
         print("Entering")
         return self
-    
+
     def __exit__(self, exc_type, exc_val, exc_tb):
         print("Exiting")
         if exc_type:
@@ -1846,16 +1847,16 @@ def process_any(data: Any) -> Any:
 ```python
 def calculate_area(radius: float) -> float:
     """Calculate the area of a circle.
-    
+
     Args:
         radius: The radius of the circle. Must be positive.
-    
+
     Returns:
         The area of the circle.
-    
+
     Raises:
         ValueError: If radius is negative.
-    
+
     Example:
         >>> calculate_area(5)
         78.53981633974483
@@ -2123,6 +2124,263 @@ print(f"Average: {time_taken/1000:.6f}s")
 # IPython magic
 # %timeit sum(range(1000))
 # %time sum(range(1000))
+```
+
+---
+
+## 21. 常用命令
+
+### 21.1 Python 解释器
+
+```bash
+# 查看版本
+python --version
+python3 --version
+python -V
+
+# 交互式 REPL
+python                          # 进入 REPL
+python -i script.py             # 执行脚本后进入 REPL
+python -c "print('hello')"      # 执行单行命令
+
+# 退出 REPL
+exit()
+quit()                          # Ctrl+D 也可退出
+
+# 查看模块路径
+python -c "import sys; print(sys.path)"
+
+# 查看模块位置
+python -c "import os; print(os.__file__)"
+```
+
+### 21.2 脚本执行
+
+```bash
+# 执行脚本
+python script.py
+python3 script.py
+python path/to/script.py
+
+# 带参数执行
+python script.py arg1 arg2 --flag
+
+# 以模块方式运行
+python -m http.server 8000      # 启动 HTTP 服务器
+python -m json.tool data.json   # 格式化 JSON
+python -m pip install requests  # 运行 pip
+python -m venv myenv            # 创建虚拟环境
+
+# 调试模式运行
+python -m pdb script.py         # 使用 pdb 调试
+```
+
+### 21.3 pip 包管理
+
+```bash
+# 安装包
+pip install requests
+pip install requests==2.31.0    # 指定版本
+pip install "requests>=2.28"    # 版本范围
+pip install -r requirements.txt # 从文件安装
+
+# 卸载包
+pip uninstall requests
+pip uninstall requests -y       # 跳过确认
+
+# 查看已安装
+pip list                        # 列出所有包
+pip list --outdated             # 查看可升级的包
+pip show requests               # 查看包详情
+pip freeze                      # 输出已安装包（requirements 格式）
+
+# 升级包
+pip install --upgrade requests
+pip install --upgrade pip       # 升级 pip 自身
+
+# 导出依赖
+pip freeze > requirements.txt
+
+# 使用镜像源
+pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 缓存管理
+pip cache dir                   # 查看缓存目录
+pip cache purge                 # 清除缓存
+pip cache info                  # 缓存信息
+```
+
+### 21.4 uv 包管理（现代替代）
+
+```bash
+# 安装 uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+brew install uv                 # macOS
+
+# 创建项目
+uv init my-project
+cd my-project
+
+# 添加依赖
+uv add requests
+uv add "flask>=3.0" --dev
+
+# 移除依赖
+uv remove requests
+
+# 同步依赖
+uv sync                         # 根据 pyproject.toml 同步
+uv lock                         # 锁定依赖版本
+
+# 运行命令
+uv run python script.py
+uv run flask run
+
+# 创建虚拟环境
+uv venv
+uv venv .venv                   # 指定目录
+
+# Python 版本管理
+uv python install 3.12          # 安装指定 Python 版本
+uv python list                  # 列出可用版本
+uv python pin 3.12              # 固定项目 Python 版本
+```
+
+### 21.5 虚拟环境
+
+```bash
+# 创建虚拟环境
+python -m venv .venv
+python3 -m venv .venv
+
+# 激活虚拟环境
+source .venv/bin/activate       # macOS/Linux
+.venv\Scripts\activate          # Windows (CMD)
+.venv\Scripts\Activate.ps1      # Windows (PowerShell)
+
+# 退出虚拟环境
+deactivate
+
+# 查看虚拟环境信息
+which python                    # 当前 Python 路径
+pip list                        # 当前环境已安装包
+```
+
+### 21.6 代码质量工具
+
+```bash
+# Ruff（推荐，替代 flake8 + isort + black formatter）
+pip install ruff
+ruff check .                    # 代码检查
+ruff check --fix .              # 自动修复
+ruff format .                   # 代码格式化
+ruff check --select E,W,F .     # 指定规则
+
+# Black（代码格式化）
+pip install black
+black .                         # 格式化整个项目
+black script.py                 # 格式化单个文件
+black --check .                 # 仅检查不修改
+black --line-length 120 .       # 自定义行宽
+
+# mypy（类型检查）
+pip install mypy
+mypy script.py
+mypy .                          # 检查整个项目
+mypy --strict .                 # 严格模式
+
+# isort（导入排序）
+pip install isort
+isort .                         # 排序导入
+isort --check .                 # 仅检查
+
+# flake8（代码风格检查）
+pip install flake8
+flake8 .                        # 检查项目
+flake8 --max-line-length 120 .  # 自定义行宽
+```
+
+### 21.7 测试命令
+
+```bash
+# pytest（推荐）
+pip install pytest
+pytest                          # 运行所有测试
+pytest tests/                   # 运行指定目录
+pytest test_app.py              # 运行指定文件
+pytest test_app.py::test_func   # 运行指定函数
+pytest -v                       # 详细输出
+pytest -x                       # 遇到失败即停止
+pytest -k "test_login"          # 按关键字过滤
+pytest --tb=short               # 简短错误追踪
+pytest -s                       # 显示 print 输出
+pytest --cov=. --cov-report=term  # 覆盖率报告
+pytest --cov=. --cov-report=html  # HTML 覆盖率报告
+
+# unittest（内置）
+python -m unittest              # 发现并运行所有测试
+python -m unittest tests.py     # 运行指定文件
+python -m unittest -v           # 详细输出
+```
+
+### 21.8 实用单行命令
+
+```bash
+# 启动 HTTP 文件服务器
+python -m http.server 8000
+
+# 格式化 JSON 文件
+python -m json.tool data.json
+python -m json.tool data.json output.json  # 输出到文件
+
+# 比较两个文件
+python -m difflib file1.txt file2.txt
+
+# 快速计算
+python -c "print(sum(range(1, 101)))"
+
+# Base64 编解码
+echo -n "hello" | python -c "import sys,base64; print(base64.b64encode(sys.stdin.buffer.read()).decode())"
+
+# 生成随机密码
+python -c "import secrets,string; print(''.join(secrets.choice(string.ascii_letters+string.digits) for _ in range(16)))"
+
+# 批量重命名文件
+python -c "import os,glob; [os.rename(f, f.replace(' ','_')) for f in glob.glob('* *')]"
+
+# 统计目录文件大小
+python -c "import os; print(sum(os.path.getsize(f) for d,_,fs in os.walk('.') for f in fs))"
+```
+
+### 21.9 Docker 常用命令
+
+```bash
+# 镜像
+docker build -t myapp .         # 构建镜像
+docker images                   # 列出镜像
+docker pull python:3.12         # 拉取镜像
+docker rmi myapp                # 删除镜像
+
+# 容器
+docker run -d -p 8000:80 myapp  # 后台运行
+docker run -it python:3.12 bash # 交互式运行
+docker ps                       # 列出运行中容器
+docker ps -a                    # 列出所有容器
+docker stop <id>                # 停止容器
+docker rm <id>                  # 删除容器
+docker logs <id>                # 查看日志
+docker exec -it <id> bash       # 进入容器
+
+# Docker Compose
+docker-compose up -d            # 后台启动
+docker-compose down             # 停止并删除
+docker-compose logs -f          # 查看日志
+docker-compose ps               # 列出服务状态
+
+# 清理
+docker system prune -f          # 清理未使用资源
+docker volume prune -f          # 清理未使用卷
 ```
 
 ---

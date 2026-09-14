@@ -11,7 +11,11 @@ order: 31
 2. **自定义过滤规则**：通过回调函数决定哪些文件要排除。
 3. **支持递归（可选）**：通过路径参数灵活配置。
 
-## 1. 封装通用工具类 `moduleLoader.js`
+## 1. 实际源码位置
+
+`src/common/scan-module/map_glob_modules.js`
+
+## 2. 封装通用工具类 `map_glob_modules.js`
 
 ```javascript
 import { snakeCase } from 'change-case'
@@ -54,40 +58,36 @@ export const map_glob_modules = (
 }
 ```
 
-## 2. 在业务中实际应用
+## 3. 在业务中实际应用
 
-## 场景 A：同级目录自动导出 (API 模块)
+### 场景 A：同级目录自动导出 (工具模块注册)
 
-在 `src/api/index.js` 中：
+在 `project/code-tool/pages/domain-guide/config/config.js` 中：
 
 ```javascript
-import { map_glob_modules } from '@/utils/moduleLoader'
+import { map_glob_modules } from 'src/output/common/project-common.js'
 
 // 扫描同级 JS
-const files = import.meta.glob('./*.js', { eager: true })
-
-// 一键转换并导出
-export default map_glob_modules(files)
+const raw_modules = import.meta.glob('./*.js', { eager: true })
+const modules = map_glob_modules(raw_modules)
 ```
 
-## 场景 B：递归扫描子目录 (Store/Vuex 模块)
-
-如果你想把 `modules/user/info.js` 也扫描进来，可以使用递归模式：
+### 场景 B：递归扫描子目录
 
 ```javascript
-import { map_glob_modules } from '@/utils/moduleLoader'
+import { map_glob_modules } from 'src/output/common/project-common.js'
 import { camelCase } from 'change-case'
 
 // 扫描所有子目录下的 js
 const files = import.meta.glob('./**/*.js', { eager: true })
 
 export const stores = map_glob_modules(files, {
-  transformKey: camelCase, // 状态管理通常习惯小驼峰
-  exclude: 'main', // 假设入口叫 main.js
+  transformKey: camelCase,
+  exclude: 'main',
 })
 ```
 
-## 3. 进阶：处理多层级路径名（可选）
+## 4. 进阶：处理多层级路径名（可选）
 
 如果你希望生成的 Key 包含文件夹路径（如 `user_list` 而不仅仅是 `list`），可以微调工具函数：
 

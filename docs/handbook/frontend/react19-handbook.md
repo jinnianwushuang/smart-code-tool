@@ -22,6 +22,7 @@
 - [十二、Suspense](#十二suspense)
 - [十三、React 19 新特性](#十三react-19-新特性)
 - [十四、最佳实践](#十四最佳实践)
+- [十五、常用命令](#十五常用命令)
 
 ---
 
@@ -1054,6 +1055,95 @@ test('handles click', () => {
   fireEvent.click(screen.getByRole('button'))
   expect(mockHandler).toHaveBeenCalled()
 })
+```
+
+---
+
+## 十五、常用命令
+
+### 15.1 项目创建
+
+```bash
+# Vite（推荐）
+npm create vite@latest my-react-app -- --template react-ts
+npm create vite@latest my-react-app -- --template react-swc-ts
+
+# Create React App（旧版）
+npx create-react-app my-app --template typescript
+
+# Next.js
+npx create-next-app@latest my-app
+```
+
+### 15.2 开发与构建
+
+```bash
+# Vite
+npm run dev                        # 开发服务器
+npm run build                      # 生产构建
+npm run preview                    # 预览构建
+
+# CRA
+npm start                          # 开发服务器
+npm run build                      # 生产构建
+npm test                           # 运行测试
+
+# 包分析
+npx source-map-explorer build/static/js/*.js  # CRA 包分析
+npx rollup-plugin-visualizer       # Vite 包分析
+```
+
+### 15.3 测试
+
+```bash
+# Vitest + React Testing Library
+npx vitest                         # 运行测试
+npx vitest --ui                    # UI 模式
+npx vitest --coverage              # 覆盖率
+
+# Jest
+npx jest                           # 运行测试
+npx jest --watch                   # 监听模式
+npx jest --coverage                # 覆盖率
+
+# Playwright（E2E）
+npx playwright test                # 运行 E2E 测试
+npx playwright test --ui           # UI 模式
+npx playwright codegen             # 录制测试
+```
+
+### 15.4 代码质量
+
+```bash
+# ESLint
+npx eslint src/ --fix
+npx eslint "src/**/*.{ts,tsx}" --fix
+
+# Prettier
+npx prettier --write "src/**/*.{ts,tsx}"
+
+# TypeScript 检查
+npx tsc --noEmit
+
+# Storybook
+npx storybook init                 # 初始化
+npm run storybook                  # 启动 Storybook
+npm run build-storybook            # 构建 Storybook
+```
+
+### 15.5 React DevTools
+
+```bash
+# 安装
+# Chrome/Firefox 扩展商店搜索 "React Developer Tools"
+
+# 独立应用
+npx react-devtools
+
+# 功能
+# - Components: 组件树查看
+# - Profiler: 性能分析
+# - Suspense: 高亮渲染期间触发的挂起
 ```
 
 ---

@@ -18,6 +18,7 @@
 - [八、异常处理](#八异常处理)
 - [九、库和包](#九库和包)
 - [十、最佳实践](#十最佳实践)
+- [十一、常用命令](#十一常用命令)
 
 ---
 
@@ -771,6 +772,235 @@ void main() {
     expect(() => divide(1, 0), throwsA(isA<Exception>()));
   });
 }
+```
+
+---
+
+## 十一、常用命令
+
+### 11.1 Dart SDK 命令
+
+```bash
+# 版本查看
+dart --version
+
+# 运行脚本
+dart run bin/main.dart
+dart run                    # 运行默认入口
+
+# 直接执行 Dart 文件
+dart script.dart
+
+# 交互式 REPL
+dart
+
+# 代码分析
+dart analyze                # 分析当前项目
+dart analyze lib/           # 分析指定目录
+dart analyze --fatal-infos  # 包含 info 级别
+
+# 代码格式化
+dart format .               # 格式化整个项目
+dart format lib/            # 格式化指定目录
+dart format --line-length 120 .  # 自定义行宽
+dart format --output=none --set-exit-if-changed .  # CI 检查
+
+# 修复建议
+dart fix                    # 显示可修复项
+dart fix --apply            # 自动修复
+
+# 编译
+dart compile exe bin/main.dart         # 编译为原生可执行文件
+dart compile exe bin/main.dart -o app  # 指定输出文件名
+dart compile js bin/main.dart          # 编译为 JavaScript
+dart compile aot-snapshot bin/main.dart  # AOT 编译
+
+# 创建项目
+dart create my_project                # 创建 Dart 项目
+dart create -t server-shelf my_server # 服务端模板
+dart create -t package my_package     # 包模板
+dart create -t console my_cli         # 命令行模板
+```
+
+### 11.2 Flutter 命令
+
+```bash
+# 版本与环境
+flutter --version
+flutter doctor                # 检查环境配置
+flutter doctor -v             # 详细检查
+flutter doctor --android-licenses  # 接受 Android 许可
+
+# 创建项目
+flutter create my_app                    # 创建 Flutter 项目
+flutter create --org com.example my_app  # 指定包名
+flutter create --platforms=ios,android my_app  # 指定平台
+flutter create --template=package my_pkg # 创建包
+flutter create --template=plugin my_plugin  # 创建插件
+
+# 运行
+flutter run                 # 运行到默认设备
+flutter run -d chrome       # 运行到 Chrome
+flutter run -d ios          # 运行到 iOS 模拟器
+flutter run -d android      # 运行到 Android
+flutter run --release       # Release 模式运行
+flutter run --profile       # Profile 模式运行
+
+# 热重载
+# 在 run 中按 r 键：热重载
+# 在 run 中按 R 键：热重启
+# 在 run 中按 q 键：退出
+
+# 设备管理
+flutter devices             # 列出可用设备
+flutter emulators           # 列出可用模拟器
+flutter emulators --create  # 创建新模拟器
+```
+
+### 11.3 Pub 包管理
+
+```bash
+# 安装依赖
+flutter pub get             # Flutter 项目
+dart pub get                # 纯 Dart 项目
+
+# 添加依赖
+flutter pub add http                    # 添加依赖
+flutter pub add dev:build_runner        # 添加开发依赖
+flutter pub add 'provider:^6.0.0'       # 指定版本
+
+# 移除依赖
+flutter pub remove http
+
+# 升级依赖
+flutter pub upgrade                     # 升级所有
+flutter pub upgrade http                # 升级指定包
+flutter pub upgrade --major-versions    # 允许大版本升级
+
+# 查看依赖
+flutter pub deps          # 依赖树
+flutter pub outdated      # 查看过期依赖
+
+# 清理缓存
+flutter pub cache repair  # 修复缓存
+flutter pub cache clean   # 清除缓存
+
+# 发布包
+dart pub publish           # 发布到 pub.dev
+dart pub publish --dry-run # 模拟发布
+
+# 全局激活
+dart pub global activate <package>
+dart pub global list
+dart pub global deactivate <package>
+```
+
+### 11.4 构建与发布
+
+```bash
+# Android
+flutter build apk                     # 构建 APK
+flutter build apk --release           # Release APK
+flutter build apk --debug             # Debug APK
+flutter build appbundle               # 构建 AAB（Google Play）
+flutter build apk --split-per-abi     # 按 ABI 分包
+
+# iOS
+flutter build ios                     # 构建 iOS
+flutter build ios --release           # Release iOS
+flutter build ios --no-codesign       # 不签名构建
+
+# Web
+flutter build web                     # 构建 Web
+flutter build web --release
+
+# macOS / Windows / Linux
+flutter build macos
+flutter build windows
+flutter build linux
+
+# 安装到设备
+flutter install                       # 安装到连接设备
+
+# 清理
+flutter clean                         # 清理构建产物
+flutter pub get                       # 清理后重新获取依赖
+```
+
+### 11.5 测试命令
+
+```bash
+# Flutter 测试
+flutter test                          # 运行所有测试
+flutter test test/widget_test.dart    # 运行指定文件
+flutter test --coverage               # 生成覆盖率报告
+flutter test --update-goldens         # 更新 Golden 测试图片
+flutter test --plain-name "login"     # 按名称过滤
+
+# Dart 测试
+dart test                             # 运行所有测试
+dart test --coverage=coverage         # 覆盖率
+dart test --platform chrome           # 指定平台
+
+# 集成测试
+flutter test integration_test/app_test.dart
+flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart
+
+# 性能测试
+flutter run --profile --trace-skia    # Skia 性能追踪
+flutter run --profile --trace-widget-rebuilds  # Widget 重建追踪
+```
+
+### 11.6 代码生成
+
+```bash
+# build_runner（代码生成工具）
+dart run build_runner build           # 执行代码生成
+dart run build_runner watch           # 监听模式（自动重新生成）
+dart run build_runner build --delete-conflicting-outputs  # 清理后生成
+
+# 常用生成器
+# build_runner + json_serializable → JSON 序列化
+# build_runner + freezed → 不可变数据类
+# build_runner + built_value → 值类型
+# build_runner + retrofit → API 客户端
+
+# 单个文件生成
+dart run build_runner build --build-filter="lib/models/*.dart"
+```
+
+### 11.7 实用技巧
+
+```bash
+# 查看 Flutter 日志（带颜色）
+flutter run --verbose
+
+# 查看 Widget 树
+flutter inspect                 # 打开 DevTools
+
+# 生成应用图标
+flutter pub add flutter_launcher_icons
+# 配置 pubspec.yaml 后运行:
+flutter pub run flutter_launcher_icons
+
+# 生成启动页
+flutter pub add flutter_native_splash
+# 配置 pubspec.yaml 后运行:
+flutter pub run flutter_native_splash:create
+
+# 查看应用大小
+flutter build apk --analyze-size
+flutter build ios --analyze-size
+
+# Fuchsia 相关
+flutter config --enable-fuchsia=true
+
+# 渠道切换
+flutter channel stable          # 稳定版
+flutter channel beta            # Beta 版
+flutter channel dev             # 开发版
+flutter channel master          # 最新代码
+flutter upgrade                 # 升级 Flutter SDK
 ```
 
 ---

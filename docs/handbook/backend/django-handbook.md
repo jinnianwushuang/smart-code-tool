@@ -1228,6 +1228,74 @@ django-redis
 - **django-debug-toolbar**: 调试工具栏
 - **drf-yasg**: API 文档生成
 
+---
+
+## 常用命令
+
+### Django 项目管理
+
+```bash
+# 安装与创建
+pip install django
+django-admin startproject myproject
+cd myproject
+python manage.py startapp myapp
+
+# 开发服务器
+python manage.py runserver
+python manage.py runserver 8080           # 指定端口
+python manage.py runserver 0.0.0.0:8000   # 监听所有
+
+# 数据库迁移
+python manage.py makemigrations           # 生成迁移
+python manage.py migrate                  # 执行迁移
+python manage.py migrate --run-syncdb     # 同步未迁移的表
+python manage.py showmigrations           # 查看迁移状态
+
+# 模型操作
+python manage.py shell                    # 交互式 Shell
+python manage.py dbshell                  # 数据库 Shell
+```
+
+### 用户与权限
+
+```bash
+python manage.py createsuperuser          # 创建管理员
+python manage.py changepassword           # 修改密码
+python manage.py check                    # 检查项目问题
+```
+
+### 静态文件与资源
+
+```bash
+python manage.py collectstatic            # 收集静态文件
+python manage.py findstatic <file>        # 查找静态文件
+```
+
+### 测试
+
+```bash
+python manage.py test                     # 运行所有测试
+python manage.py test myapp               # 运行指定应用
+python manage.py test myapp.tests.TestClass  # 运行指定类
+python manage.py test --verbosity=2       # 详细输出
+python manage.py test --keepdb            # 保留测试数据库
+```
+
+### 实用工具
+
+```bash
+python manage.py shell_plus               # 增强 Shell（django-extensions）
+python manage.py show_urls                # 显示所有 URL
+python manage.py graph_models -a -o graph.png  # 模型关系图
+
+# 数据导出
+python manage.py dumpdata > data.json
+python manage.py loaddata data.json
+```
+
+---
+
 ## 学习资源
 
 ### 官方文档

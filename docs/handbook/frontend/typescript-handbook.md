@@ -24,6 +24,7 @@
 - [十四、条件类型](#十四条件类型)
 - [十五、实用技巧](#十五实用技巧)
 - [十六、最佳实践](#十六最佳实践)
+- [十七、常用命令](#十七常用命令)
 
 ---
 
@@ -1630,6 +1631,70 @@ const userTests: TestSuite = {
   'should create user': () => {},
   'should update user': () => {},
 }
+```
+
+---
+
+## 十七、常用命令
+
+### 17.1 tsc 编译器
+
+```bash
+# 版本
+tsc --version
+
+# 编译
+tsc                              # 根据 tsconfig.json 编译
+tsc --init                       # 初始化 tsconfig.json
+tsc index.ts                     # 编译单文件
+tsc --watch                      # 监听模式
+tsc --noEmit                     # 仅类型检查不输出
+tsc --strict                     # 严格模式编译
+tsc --project tsconfig.build.json  # 指定配置文件
+
+# 类型检查
+npx tsc --noEmit                 # 检查类型错误
+npx tsc --noEmit --pretty        # 彩色输出
+```
+
+### 17.2 ts-node / tsx
+
+```bash
+# ts-node（直接运行 TS）
+npx ts-node script.ts
+npx ts-node --transpile-only script.ts  # 跳过类型检查（更快）
+npx ts-node-dev --respawn script.ts     # 监听重启
+
+# tsx（现代替代，推荐）
+npx tsx script.ts
+npx tsx watch script.ts                 # 监听模式
+```
+
+### 17.3 类型工具
+
+```bash
+# 类型定义安装
+npm install -D @types/node          # Node.js 类型
+npm install -D @types/react         # React 类型
+npm install -D @types/express       # Express 类型
+
+# 类型检查工具
+npx tsc --noEmit                    # 项目类型检查
+npx madge --extensions ts src/      # 依赖关系图
+
+# 类型生成
+typesync                            # 自动安装缺失的 @types
+```
+
+### 17.4 ESLint TypeScript
+
+```bash
+# ESLint + TypeScript
+npx eslint "src/**/*.ts" --fix
+npx eslint "src/**/*.ts" --max-warnings 0
+
+# 结合 Prettier
+npx eslint "src/**/*.ts" --fix && npx prettier --write "src/**/*.ts"
 ```
 
 ---
