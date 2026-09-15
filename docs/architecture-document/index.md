@@ -64,6 +64,15 @@
 - [Docker 镜像构建脚本对比](./engineering/job/docker-image-build-script-comparison)
 - [包管理与 Monorepo 工具链](./engineering/job/npm-pnpm-monorepo-toolchain) - npm/pnpm/Yarn、Nx、Turborepo、Changesets
 
+### 🤖 AI 代码检查
+
+- [架构概述](./ai-code-inspection/architecture-overview) - 五层管线架构、与传统 Lint 的互补关系、大型项目特殊挑战
+- [Prompt 工程策略](./ai-code-inspection/prompt-engineering) - 四要素框架、场景模板、版本管理、多模型适配
+- [代码上下文采集与组装](./ai-code-inspection/code-context-pipeline) - Diff 采集、依赖签名摘要、Token 预算、大文件切片
+- [检查规则体系设计](./ai-code-inspection/rule-system-design) - 规则数据结构、五大分类、优先级、误报管理
+- [CI/CD 集成方案](./ai-code-inspection/ci-integration) - PR 触发/定时扫描/发布门禁、成本控制、渐进式引入
+- [扩展性与自定义机制](./ai-code-inspection/extensibility-and-customization) - 插件化架构、分层配置、四阶段演进路线
+
 ### 🗄️ 数据库
 
 - [PostgreSQL vs MySQL + MongoDB](./database/postgresql-vs-mysql-mongodb) - 数据库选型对比与架构设计
