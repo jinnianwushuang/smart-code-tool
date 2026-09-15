@@ -59,28 +59,26 @@ const { execSync } = require('child_process')
  */
 function collectDiffFiles(baseBranch, headBranch, options = {}) {
   // 1. 获取变更文件列表
-  const diffOutput = execSync(
-    `git diff --name-status ${baseBranch}...${headBranch}`
-  ).toString()
+  const diffOutput = execSync(`git diff --name-status ${baseBranch}...${headBranch}`).toString()
 
   const files = parseDiffOutput(diffOutput)
 
   // 2. 过滤：只保留目标文件类型
-  const targetFiles = files.filter(file => {
-    if (file.status === 'D') return false  // 删除的文件不检查
+  const targetFiles = files.filter((file) => {
+    if (file.status === 'D') return false // 删除的文件不检查
     return matchesTargetExtensions(file.path, options.extensions)
   })
 
   // 3. 过滤：排除策略
-  const includedFiles = targetFiles.filter(file => {
+  const includedFiles = targetFiles.filter((file) => {
     return !matchesExcludePatterns(file.path, options.exclude)
   })
 
   // 4. 读取文件内容
-  return includedFiles.map(file => ({
+  return includedFiles.map((file) => ({
     path: file.path,
     content: execSync(`git show ${headBranch}:${file.path}`).toString(),
-    status: file.status,  // A(新增) / M(修改)
+    status: file.status, // A(新增) / M(修改)
   }))
 }
 
@@ -109,22 +107,24 @@ const DEFAULT_OPTIONS = {
  * 解析文件的直接依赖，提取关键上下文
  */
 function resolveImportContext(filePath, fileContent, projectRoot) {
-  const imports = parseImports(fileContent)  // 解析 import 语句
+  const imports = parseImports(fileContent) // 解析 import 语句
 
-  return imports.map(imp => {
-    const resolvedPath = resolveImportPath(imp.source, filePath, projectRoot)
-    if (!resolvedPath) return null
+  return imports
+    .map((imp) => {
+      const resolvedPath = resolveImportPath(imp.source, filePath, projectRoot)
+      if (!resolvedPath) return null
 
-    const depContent = readFile(resolvedPath)
+      const depContent = readFile(resolvedPath)
 
-    return {
-      importStatement: imp.statement,          // import { fetchUsers } from '@/api/user-api'
-      resolvedPath: resolvedPath,              // src/api/user-api.js
-      layer: detectLayer(resolvedPath),        // 'api' | 'transform' | 'composable' | 'component'
-      // 只导出签名，不导出完整实现（节省 Token）
-      exports: extractExports(depContent),     // ['fetchUsers', 'updateUser']
-    }
-  }).filter(Boolean)
+      return {
+        importStatement: imp.statement, // import { fetchUsers } from '@/api/user-api'
+        resolvedPath: resolvedPath, // src/api/user-api.js
+        layer: detectLayer(resolvedPath), // 'api' | 'transform' | 'composable' | 'component'
+        // 只导出签名，不导出完整实现（节省 Token）
+        exports: extractExports(depContent), // ['fetchUsers', 'updateUser']
+      }
+    })
+    .filter(Boolean)
 }
 
 /**
@@ -217,10 +217,7 @@ function extractExports(fileContent) {
 // scripts/assembler.js
 
 function assemblePrompt(file, options) {
-  const {
-    maxTokens = 8000,
-    projectRoot = process.cwd(),
-  } = options
+  const { maxTokens = 8000, projectRoot = process.cwd() } = options
 
   // 1. 解析依赖上下文
   const importContext = resolveImportContext(file.path, file.content, projectRoot)
@@ -229,7 +226,7 @@ function assemblePrompt(file, options) {
   const rules = loadRulesForFile(file.path)
 
   // 3. 加载相关规范
-  const spec = loadRelevantSpec(file.path)  // 只加载与当前文件类型相关的规范
+  const spec = loadRelevantSpec(file.path) // 只加载与当前文件类型相关的规范
 
   // 4. 计算 Token 预算
   const budget = {
@@ -237,7 +234,7 @@ function assemblePrompt(file, options) {
     spec: estimateTokens(spec),
     context: estimateTokens(formatImportContext(importContext)),
     code: estimateTokens(file.content),
-    output: 1500,  // 预留输出空间
+    output: 1500, // 预留输出空间
   }
 
   const total = Object.values(budget).reduce((a, b) => a + b, 0)
@@ -246,7 +243,10 @@ function assemblePrompt(file, options) {
   let finalContext = formatImportContext(importContext)
   if (total > maxTokens) {
     // 优先级：系统指令 > 代码 > 规范 > 依赖上下文
-    finalContext = truncateToFit(importContext, maxTokens - budget.system - budget.code - budget.spec - budget.output)
+    finalContext = truncateToFit(
+      importContext,
+      maxTokens - budget.system - budget.code - budget.spec - budget.output,
+    )
   }
 
   // 6. 组装最终 Prompt
@@ -311,7 +311,10 @@ function sliceByFunctions(filePath, content, maxLinesPerChunk = 200) {
   let inImportSection = true
 
   for (const line of lines) {
-    if (inImportSection && (line.startsWith('import ') || line.startsWith('const {') || line.trim() === '')) {
+    if (
+      inImportSection &&
+      (line.startsWith('import ') || line.startsWith('const {') || line.trim() === '')
+    ) {
       importLines.push(line)
     } else {
       inImportSection = false
@@ -359,14 +362,14 @@ function sliceByFunctions(filePath, content, maxLinesPerChunk = 200) {
 
 ### 5.1 对比
 
-| 维度 | 增量模式（PR） | 全量模式（定时扫描） |
-|------|--------------|-------------------|
-| **触发时机** | PR 创建/更新 | 每日/每周定时任务 |
-| **采集范围** | `git diff` 变更文件 | 项目所有目标文件 |
-| **Token 消耗** | 低（只处理变更） | 高（但有缓存优化） |
-| **延迟** | 几分钟 | 数十分钟到数小时 |
-| **发现能力** | 只发现新引入的问题 | 能发现历史存量问题 |
-| **适用场景** | 日常开发，每次提交 | 质量基线建立、发布前检查 |
+| 维度           | 增量模式（PR）      | 全量模式（定时扫描）     |
+| -------------- | ------------------- | ------------------------ |
+| **触发时机**   | PR 创建/更新        | 每日/每周定时任务        |
+| **采集范围**   | `git diff` 变更文件 | 项目所有目标文件         |
+| **Token 消耗** | 低（只处理变更）    | 高（但有缓存优化）       |
+| **延迟**       | 几分钟              | 数十分钟到数小时         |
+| **发现能力**   | 只发现新引入的问题  | 能发现历史存量问题       |
+| **适用场景**   | 日常开发，每次提交  | 质量基线建立、发布前检查 |
 
 ### 5.2 全量扫描的缓存优化
 
@@ -417,12 +420,12 @@ class CheckCache {
    * 全量扫描时，跳过缓存命中的文件
    */
   async scanAll(files, checkFn) {
-    const toCheck = files.filter(f => this.needsCheck(f.path))
-    const cached = files.filter(f => !this.needsCheck(f.path))
+    const toCheck = files.filter((f) => this.needsCheck(f.path))
+    const cached = files.filter((f) => !this.needsCheck(f.path))
 
     console.log(`全量扫描：${toCheck.length} 个文件需要检查，${cached.length} 个文件命中缓存跳过`)
 
-    const results = await Promise.all(toCheck.map(f => checkFn(f)))
+    const results = await Promise.all(toCheck.map((f) => checkFn(f)))
 
     // 合并缓存结果
     for (const f of cached) {

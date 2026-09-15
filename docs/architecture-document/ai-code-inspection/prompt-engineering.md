@@ -40,12 +40,13 @@ order: 2
 
 ### 1.2 原则 1：输出格式必须强约束
 
-```markdown
+````markdown
 <!-- ✅ 正确：强制 JSON Schema 输出 -->
 
 你必须严格按照以下 JSON 格式输出检查结果。不要输出任何 JSON 之外的内容。
 
 输出格式：
+
 ```json
 {
   "issues": [
@@ -66,9 +67,11 @@ order: 2
   }
 }
 ```
+````
 
 如果没有发现任何问题，输出 `{"issues": [], "summary": {"totalIssues": 0, "errors": 0, "warnings": 0}}`
-```
+
+````
 
 ```markdown
 <!-- ❌ 反模式：开放式输出 -->
@@ -76,11 +79,11 @@ order: 2
 请检查以下代码是否有问题，给出你的分析。
 
 <!-- 问题：输出格式不确定，无法程序化解析 -->
-```
+````
 
 ### 1.3 原则 2：规则描述必须具体可判断
 
-```markdown
+````markdown
 <!-- ✅ 正确：具体、可判断 -->
 
 规则 [arch-layer-violation]：
@@ -88,17 +91,21 @@ order: 2
 组件应该通过 composable/ 目录下的组合函数间接获取数据。
 
 违规示例：
+
 ```javascript
 // src/components/UserList.vue
-import { fetchUsers } from '@/api/user-api'  // ❌ 违规：组件直接调用 API 层
+import { fetchUsers } from '@/api/user-api' // ❌ 违规：组件直接调用 API 层
 ```
+````
 
 合规示例：
+
 ```javascript
 // src/components/UserList.vue
-import { useUserList } from '@/composables/useUserList'  // ✅ 合规：通过 composable 间接调用
+import { useUserList } from '@/composables/useUserList' // ✅ 合规：通过 composable 间接调用
 ```
-```
+
+````
 
 ```markdown
 <!-- ❌ 反模式：模糊、不可判断 -->
@@ -106,17 +113,19 @@ import { useUserList } from '@/composables/useUserList'  // ✅ 合规：通过 
 请检查代码是否遵循了良好的架构设计。
 
 <!-- 问题："良好的架构设计"太模糊，AI 会按自己的理解随意判断 -->
-```
+````
 
 ### 1.4 原则 3：Few-shot 示例是准确率的倍增器
 
-```markdown
+````markdown
 <!-- 在 Prompt 中提供 2-3 个示例，显著提升准确率 -->
 
 ## 检查示例
 
 ### 示例 1：架构违规
+
 输入代码：
+
 ```javascript
 // src/components/OrderTable.vue
 <script setup>
@@ -125,22 +134,29 @@ const orders = ref([])
 onMounted(async () => { orders.value = await fetchOrders() })
 </script>
 ```
+````
+
 期望输出：
+
 ```json
 {
-  "issues": [{
-    "ruleId": "arch-layer-violation",
-    "severity": "error",
-    "line": 2,
-    "message": "组件直接 import 了 api/order-api，违反分层架构。应通过 composable 间接调用。",
-    "suggestion": "创建 composable/useOrderList.js，在其中调用 fetchOrders()，组件只消费 composable 返回的数据。",
-    "confidence": 0.95
-  }]
+  "issues": [
+    {
+      "ruleId": "arch-layer-violation",
+      "severity": "error",
+      "line": 2,
+      "message": "组件直接 import 了 api/order-api，违反分层架构。应通过 composable 间接调用。",
+      "suggestion": "创建 composable/useOrderList.js，在其中调用 fetchOrders()，组件只消费 composable 返回的数据。",
+      "confidence": 0.95
+    }
+  ]
 }
 ```
 
 ### 示例 2：合规代码
+
 输入代码：
+
 ```javascript
 // src/components/OrderTable.vue
 <script setup>
@@ -148,11 +164,14 @@ import { useOrderList } from '@/composables/useOrderList'
 const { orders, loading } = useOrderList()
 </script>
 ```
+
 期望输出：
+
 ```json
-{"issues": [], "summary": {"totalIssues": 0, "errors": 0, "warnings": 0}}
+{ "issues": [], "summary": { "totalIssues": 0, "errors": 0, "warnings": 0 } }
 ```
-```
+
+````
 
 ---
 
@@ -179,15 +198,17 @@ const { orders, loading } = useOrderList()
 
 # 待检查代码
 {{code}}
-```
+````
 
 ### 2.2 安全漏洞检查
 
 ```markdown
 # 角色
+
 你是一位应用安全专家，专注于前端代码中的安全漏洞检测。
 
 # 检查规则
+
 请检查以下代码是否存在以下安全问题：
 
 1. [硬编码密钥] 代码中直接写了 API Key、Token、密码等敏感信息
@@ -198,14 +219,17 @@ const { orders, loading } = useOrderList()
 6. [敏感数据暴露] 在 console.log 中输出了敏感信息（token、密码等）
 
 # 严重级别定义
+
 - error：可被直接利用的安全漏洞
 - warning：存在潜在安全风险
 - info：安全最佳实践建议
 
 # 输出格式
+
 [JSON Schema 约束]
 
 # 待检查代码
+
 {{code}}
 ```
 
@@ -213,29 +237,36 @@ const { orders, loading } = useOrderList()
 
 ```markdown
 # 角色
+
 你是一位前端架构师，专注于项目架构规范的执行。
 
 # 项目架构规范
+
 本项目采用以下分层架构：
+
 - api/：接口请求层，只负责发 HTTP 请求，返回原始数据
 - transforms/：算法层，纯函数，不 import 框架 API
 - composables/：组合层，连接数据层和 UI 层
 - components/：显示层，只负责 UI 渲染
 
 # 依赖方向规则（只能向下依赖）
+
 components → composables → transforms → api
 不允许反向依赖，不允许跨层依赖
 
 # 检查规则
+
 1. [反向依赖] 下层 import 了上层模块
 2. [跨层调用] 组件直接调用 api/ 函数
 3. [框架污染] transforms/ 中的纯函数 import 了 vue/react
 4. [循环依赖] A import B，B 又 import A
 
 # 输出格式
+
 [JSON Schema 约束]
 
 # 待检查代码
+
 文件路径：{{filePath}}
 文件内容：
 {{code}}
@@ -248,9 +279,11 @@ components → composables → transforms → api
 
 ```markdown
 # 角色
+
 你是一位前端性能优化专家。
 
 # 检查规则
+
 请检查以下代码是否存在以下性能问题：
 
 1. [大组件未拆分] 单文件组件超过 400 行，应考虑拆分
@@ -261,9 +294,11 @@ components → composables → transforms → api
 6. [图片未优化] 大图未使用懒加载、格式未优化
 
 # 输出格式
+
 [JSON Schema 约束]
 
 # 待检查代码
+
 {{code}}
 ```
 
@@ -311,7 +346,7 @@ prompts/
 module.exports = [
   {
     name: '函数过长应报警',
-    input: generateLongFunction(60),  // 60 行函数
+    input: generateLongFunction(60), // 60 行函数
     expected: {
       ruleId: 'func-too-long',
       severity: 'warning',
@@ -368,7 +403,7 @@ const MODEL_CONFIGS = {
     provider: 'openai',
     model: 'gpt-4o-mini',
     maxTokens: 4096,
-    temperature: 0,  // 代码检查需要确定性，不用创造性
+    temperature: 0, // 代码检查需要确定性，不用创造性
   },
   'gpt-4o': {
     provider: 'openai',
@@ -393,9 +428,9 @@ const MODEL_CONFIGS = {
 
 // 规则与模型的绑定
 const RULE_MODEL_MAP = {
-  'naming-check': 'gpt-4o-mini',       // 简单规则用小模型
-  'arch-compliance': 'gpt-4o',         // 中等规则用中模型
-  'security-audit': 'claude-sonnet',   // 复杂规则用强模型
+  'naming-check': 'gpt-4o-mini', // 简单规则用小模型
+  'arch-compliance': 'gpt-4o', // 中等规则用中模型
+  'security-audit': 'claude-sonnet', // 复杂规则用强模型
 }
 
 async function executeCheck(rule, prompt, code) {
@@ -409,12 +444,12 @@ async function executeCheck(rule, prompt, code) {
 
 ```javascript
 async function callWithFallback(prompt, code, maxRetries = 2) {
-  const models = ['gpt-4o', 'claude-sonnet', 'local-qwen']  // 降级链
+  const models = ['gpt-4o', 'claude-sonnet', 'local-qwen'] // 降级链
 
   for (const modelId of models) {
     try {
       const result = await callLLM(MODEL_CONFIGS[modelId], prompt, code)
-      const parsed = validateOutput(result)  // 校验输出格式
+      const parsed = validateOutput(result) // 校验输出格式
       if (parsed.valid) return { ...parsed, model: modelId }
     } catch (error) {
       console.warn(`模型 ${modelId} 失败: ${error.message}，尝试下一个`)
@@ -431,21 +466,21 @@ async function callWithFallback(prompt, code, maxRetries = 2) {
 
 ### 5.1 降低误报的常用技巧
 
-| 技巧 | 说明 | 示例 |
-|------|------|------|
-| **明确排除条件** | 告诉 AI 什么不算违规 | "以下情况不算违规：测试文件中的硬编码、注释中的示例代码" |
-| **提高置信度阈值** | 只报告高置信度的问题 | "confidence < 0.7 的问题不要报告" |
-| **增加正例** | 给 AI 看"看起来像违规但实际合规"的代码 | "这个写法虽然直接调用了 API，但在 composable 内部是允许的" |
-| **分步检查** | 让 AI 先分析再判断 | "第一步：列出代码中的所有 import。第二步：检查每个 import 的来源目录。第三步：判断是否违反依赖方向规则。" |
+| 技巧               | 说明                                   | 示例                                                                                                      |
+| ------------------ | -------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| **明确排除条件**   | 告诉 AI 什么不算违规                   | "以下情况不算违规：测试文件中的硬编码、注释中的示例代码"                                                  |
+| **提高置信度阈值** | 只报告高置信度的问题                   | "confidence < 0.7 的问题不要报告"                                                                         |
+| **增加正例**       | 给 AI 看"看起来像违规但实际合规"的代码 | "这个写法虽然直接调用了 API，但在 composable 内部是允许的"                                                |
+| **分步检查**       | 让 AI 先分析再判断                     | "第一步：列出代码中的所有 import。第二步：检查每个 import 的来源目录。第三步：判断是否违反依赖方向规则。" |
 
 ### 5.2 提升召回率的常用技巧
 
-| 技巧 | 说明 |
-|------|------|
-| **细化规则描述** | 越具体的描述，AI 越容易匹配到问题 |
-| **增加反例数量** | 3-5 个反例比 1 个反例效果好得多 |
+| 技巧                 | 说明                                           |
+| -------------------- | ---------------------------------------------- |
+| **细化规则描述**     | 越具体的描述，AI 越容易匹配到问题              |
+| **增加反例数量**     | 3-5 个反例比 1 个反例效果好得多                |
 | **要求 AI 逐行检查** | "请逐行检查以下代码，对每一行判断是否违反规则" |
-| **分解复杂规则** | 一条大规则拆成多条小规则，分别检查 |
+| **分解复杂规则**     | 一条大规则拆成多条小规则，分别检查             |
 
 ---
 

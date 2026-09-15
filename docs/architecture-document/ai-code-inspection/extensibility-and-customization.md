@@ -23,24 +23,32 @@ class InspectorInterface {
   /**
    * @returns {string} 检查器唯一 ID
    */
-  get id() { throw new Error('必须实现 id getter') }
+  get id() {
+    throw new Error('必须实现 id getter')
+  }
 
   /**
    * @returns {string} 检查器名称
    */
-  get name() { throw new Error('必须实现 name getter') }
+  get name() {
+    throw new Error('必须实现 name getter')
+  }
 
   /**
    * @returns {string} 检查器版本
    */
-  get version() { return '1.0.0' }
+  get version() {
+    return '1.0.0'
+  }
 
   /**
    * 判断是否应该检查该文件
    * @param {string} filePath
    * @returns {boolean}
    */
-  shouldInspect(filePath) { throw new Error('必须实现 shouldInspect') }
+  shouldInspect(filePath) {
+    throw new Error('必须实现 shouldInspect')
+  }
 
   /**
    * 执行检查
@@ -51,7 +59,9 @@ class InspectorInterface {
    * @param {Object} context.config - 规则配置
    * @returns {Promise<Object[]>} 检查结果数组
    */
-  async inspect(context) { throw new Error('必须实现 inspect') }
+  async inspect(context) {
+    throw new Error('必须实现 inspect')
+  }
 }
 ```
 
@@ -61,8 +71,12 @@ class InspectorInterface {
 // scripts/inspectors/ai-inspector.js
 
 class AIInspector extends InspectorInterface {
-  get id() { return 'ai-inspector' }
-  get name() { return 'AI 语义检查器' }
+  get id() {
+    return 'ai-inspector'
+  }
+  get name() {
+    return 'AI 语义检查器'
+  }
 
   shouldInspect(filePath) {
     return /\.(vue|ts|tsx|js|jsx|dart|py)$/.test(filePath)
@@ -100,8 +114,12 @@ module.exports = AIInspector
 
 // custom-inspectors/business-rule-checker.js
 class BusinessRuleInspector extends InspectorInterface {
-  get id() { return 'business-rule' }
-  get name() { return '业务规则检查器' }
+  get id() {
+    return 'business-rule'
+  }
+  get name() {
+    return '业务规则检查器'
+  }
 
   shouldInspect(filePath) {
     // 只检查业务模块
@@ -185,7 +203,7 @@ class InspectorRegistry {
    * 获取适用于指定文件的检查器
    */
   getApplicableInspectors(filePath) {
-    return [...this.inspectors.values()].filter(i => i.shouldInspect(filePath))
+    return [...this.inspectors.values()].filter((i) => i.shouldInspect(filePath))
   }
 }
 ```
@@ -265,13 +283,7 @@ class InspectorRegistry {
   // ── 采集配置 ──
   "collector": {
     "extensions": [".vue", ".ts", ".tsx", ".js", ".jsx"],
-    "exclude": [
-      "node_modules/**",
-      "dist/**",
-      "src/legacy/**",
-      "**/*.generated.*",
-      "**/*.test.*"
-    ]
+    "exclude": ["node_modules/**", "dist/**", "src/legacy/**", "**/*.generated.*", "**/*.test.*"]
   },
 
   // ── 上下文配置 ──
@@ -279,10 +291,7 @@ class InspectorRegistry {
     "maxTokens": 8000,
     "includeImportContext": true,
     "importContextMode": "signature",
-    "specFiles": [
-      ".ai-inspection/specs/general.md",
-      ".ai-inspection/specs/vue-component.md"
-    ]
+    "specFiles": [".ai-inspection/specs/general.md", ".ai-inspection/specs/vue-component.md"]
   },
 
   // ── 缓存配置 ──
@@ -336,34 +345,43 @@ module.exports = {
 
 ### 3.1 模板变量系统
 
-```markdown
+````markdown
 <!-- .ai-inspection/prompts/custom-architecture.md -->
 
 # 角色
+
 你是一位熟悉 {{projectName}} 项目的架构师。
 
 # 项目架构
+
 {{projectArchitecture}}
 
 # 检查规则
+
 {{rules}}
 
 # 编码规范
+
 {{relevantSpec}}
 
 # 依赖上下文
+
 {{importContext}}
 
 # 待检查代码
+
 文件：{{filePath}}
 
 ```{{language}}
 {{code}}
 ```
+````
 
 # 输出要求
+
 严格按 JSON 格式输出，不要输出 JSON 之外的内容。
-```
+
+````
 
 ### 3.2 变量解析
 
@@ -390,7 +408,7 @@ function renderTemplate(templatePath, context) {
 
   return template
 }
-```
+````
 
 ---
 
@@ -465,30 +483,30 @@ function renderTemplate(templatePath, context) {
 
 ### 5.1 规则设计
 
-| 实践 | 说明 |
-|------|------|
-| **从少到多** | 先写 3-5 条高价值规则，验证效果后再扩展 |
-| **从严格到宽松** | 先确保高优先级规则准确率，再添加低优先级规则 |
-| **每条规则有测试** | 为正例和反例各写 2-3 个测试用例 |
-| **定期 Review** | 每月检查一次规则的有效性，删除低价值规则 |
+| 实践               | 说明                                         |
+| ------------------ | -------------------------------------------- |
+| **从少到多**       | 先写 3-5 条高价值规则，验证效果后再扩展      |
+| **从严格到宽松**   | 先确保高优先级规则准确率，再添加低优先级规则 |
+| **每条规则有测试** | 为正例和反例各写 2-3 个测试用例              |
+| **定期 Review**    | 每月检查一次规则的有效性，删除低价值规则     |
 
 ### 5.2 Prompt 管理
 
-| 实践 | 说明 |
-|------|------|
-| **版本化** | Prompt 文件纳入 Git 管理，变更有记录 |
-| **基线测试** | 每次修改 Prompt 后运行基线测试集 |
-| **A/B 对比** | 新 Prompt 与旧 Prompt 在相同代码上对比效果 |
+| 实践         | 说明                                         |
+| ------------ | -------------------------------------------- |
+| **版本化**   | Prompt 文件纳入 Git 管理，变更有记录         |
+| **基线测试** | 每次修改 Prompt 后运行基线测试集             |
+| **A/B 对比** | 新 Prompt 与旧 Prompt 在相同代码上对比效果   |
 | **模型锁定** | 配置中指定模型版本，避免模型升级导致结果波动 |
 
 ### 5.3 团队协作
 
-| 实践 | 说明 |
-|------|------|
-| **渐进式引入** | 只报告 → Warning → Error 阻断，逐步建立信任 |
+| 实践             | 说明                                           |
+| ---------------- | ---------------------------------------------- |
+| **渐进式引入**   | 只报告 → Warning → Error 阻断，逐步建立信任    |
 | **误报反馈闭环** | 开发者反馈误报 → 分析模式 → 调优 Prompt → 验证 |
-| **配置共享** | 团队级配置 npm 包分发，项目级可覆盖 |
-| **文档完善** | 每条规则都有说明文档，开发者知道"为什么" |
+| **配置共享**     | 团队级配置 npm 包分发，项目级可覆盖            |
+| **文档完善**     | 每条规则都有说明文档，开发者知道"为什么"       |
 
 ---
 

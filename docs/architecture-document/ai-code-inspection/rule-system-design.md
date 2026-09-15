@@ -41,10 +41,10 @@ const archLayerViolation = {
   description: '组件不允许直接调用 API 层函数，应通过 composable 间接调用',
   rationale: '直接调用会导致组件与数据源耦合，违反分层架构原则，降低可测试性和可维护性',
   options: {
-    allowedDirectImports: [],       // 允许组件直接 import 的模块白名单
-    checkLayers: ['api', 'transform'],  // 需要检查的目标层
+    allowedDirectImports: [], // 允许组件直接 import 的模块白名单
+    checkLayers: ['api', 'transform'], // 需要检查的目标层
   },
-  model: 'gpt-4o',  // 架构检查需要中等推理能力
+  model: 'gpt-4o', // 架构检查需要中等推理能力
 }
 ```
 
@@ -146,11 +146,11 @@ Composable              ✓           ✓           ✓              ✓        
 ```javascript
 // 规则执行优先级（从高到低）
 const PRIORITY = {
-  CRITICAL: 1,  // 安全漏洞、数据泄露风险 → 必须立即修复
-  HIGH: 2,      // 架构违规、分层违反 → 本次迭代必须修复
-  MEDIUM: 3,    // 代码质量问题 → 本次迭代建议修复
-  LOW: 4,       // 性能优化建议 → 下个迭代考虑
-  INFO: 5,      // 可维护性建议 → 有空再改
+  CRITICAL: 1, // 安全漏洞、数据泄露风险 → 必须立即修复
+  HIGH: 2, // 架构违规、分层违反 → 本次迭代必须修复
+  MEDIUM: 3, // 代码质量问题 → 本次迭代建议修复
+  LOW: 4, // 性能优化建议 → 下个迭代考虑
+  INFO: 5, // 可维护性建议 → 有空再改
 }
 
 // 规则与优先级的映射
@@ -174,19 +174,17 @@ const RULE_PRIORITY = {
  */
 function selectRulesForFile(filePath, options) {
   const {
-    maxRulesPerFile = 5,       // 单个文件最多检查几条规则
-    maxTotalTokens = 16000,    // 总 Token 预算
+    maxRulesPerFile = 5, // 单个文件最多检查几条规则
+    maxTotalTokens = 16000, // 总 Token 预算
   } = options
 
   // 1. 筛选适用当前文件的规则
-  const applicableRules = allRules.filter(rule =>
-    matchesFilePatterns(filePath, rule.filePatterns)
+  const applicableRules = allRules.filter((rule) =>
+    matchesFilePatterns(filePath, rule.filePatterns),
   )
 
   // 2. 按优先级排序
-  applicableRules.sort((a, b) =>
-    (RULE_PRIORITY[a.id] || 99) - (RULE_PRIORITY[b.id] || 99)
-  )
+  applicableRules.sort((a, b) => (RULE_PRIORITY[a.id] || 99) - (RULE_PRIORITY[b.id] || 99))
 
   // 3. 截断：不超过最大规则数
   return applicableRules.slice(0, maxRulesPerFile)
@@ -345,12 +343,7 @@ const CONFIDENCE_THRESHOLD = {
     "model": "gpt-4o",
     "fallbackModel": "claude-sonnet"
   },
-  "exclude": [
-    "node_modules/**",
-    "dist/**",
-    "src/legacy/**",
-    "**/*.generated.*"
-  ]
+  "exclude": ["node_modules/**", "dist/**", "src/legacy/**", "**/*.generated.*"]
 }
 ```
 

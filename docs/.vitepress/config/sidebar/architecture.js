@@ -486,12 +486,18 @@ const aiCodeInspection = {
   collapsed: true,
   items: [
     { text: '架构概述', link: '/architecture-document/ai-code-inspection/architecture-overview' },
-    { text: 'Prompt 工程策略', link: '/architecture-document/ai-code-inspection/prompt-engineering' },
+    {
+      text: 'Prompt 工程策略',
+      link: '/architecture-document/ai-code-inspection/prompt-engineering',
+    },
     {
       text: '代码上下文采集与组装',
       link: '/architecture-document/ai-code-inspection/code-context-pipeline',
     },
-    { text: '检查规则体系设计', link: '/architecture-document/ai-code-inspection/rule-system-design' },
+    {
+      text: '检查规则体系设计',
+      link: '/architecture-document/ai-code-inspection/rule-system-design',
+    },
     { text: 'CI/CD 集成方案', link: '/architecture-document/ai-code-inspection/ci-integration' },
     {
       text: '扩展性与自定义机制',

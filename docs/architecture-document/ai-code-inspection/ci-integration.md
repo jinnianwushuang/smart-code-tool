@@ -71,7 +71,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 需要完整历史来计算 diff
+          fetch-depth: 0 # 需要完整历史来计算 diff
 
       - uses: actions/setup-node@v4
         with:
@@ -149,6 +149,7 @@ jobs:
 
 ```markdown
 <!-- ai-inspection-report -->
+
 ## 🤖 AI 代码检查报告
 
 **检查范围**：本次 PR 变更的 12 个文件
@@ -156,27 +157,31 @@ jobs:
 
 ### 📊 结果摘要
 
-| 级别 | 数量 |
-|------|------|
-| 🔴 Error | 1 |
-| 🟡 Warning | 3 |
-| 🔵 Info | 2 |
+| 级别       | 数量 |
+| ---------- | ---- |
+| 🔴 Error   | 1    |
+| 🟡 Warning | 3    |
+| 🔵 Info    | 2    |
 
 ### 🔴 Error
 
 **[arch-layer-violation]** `src/components/UserTable.vue:42`
+
 > 组件直接 import 了 `@/api/user-api` 的 `fetchUsers`，违反分层架构。
 > 建议：通过 `composables/useUserList.js` 间接调用。
 
 ### 🟡 Warning
 
 **[func-too-long]** `src/composables/useOrderList.js:15-78`
+
 > 函数 `loadAndProcessOrders` 共 63 行，建议拆分为更小的函数。
 
 **[poor-naming]** `src/utils/helpers.js:23`
+
 > 变量名 `data` 不够明确，建议改为 `userProfileData`。
 
 ---
+
 <sub>由 AI Code Inspection 自动检查 | [误报？点击反馈](https://xxx) | [查看规则说明](https://xxx)</sub>
 ```
 
@@ -202,14 +207,14 @@ AI 检查成本 = 检查文件数 × 每文件平均 Token × 每 Token 单价
 
 ### 3.2 成本控制手段
 
-| 手段 | 节省比例 | 说明 |
-|------|---------|------|
-| **只检查 diff** | 节省 80%+ | 相比全量扫描，PR 模式只检查变更文件 |
-| **文件级缓存** | 节省 30-50% | 未修改文件跳过检查 |
-| **模型分级** | 节省 40-60% | 简单规则用小模型（GPT-4o-mini 便宜 15 倍） |
-| **规则合并** | 节省 50-70% | 3-5 条规则合一个 Prompt，减少重复的系统指令 |
-| **排除策略** | 节省 10-20% | 排除生成代码、测试文件、legacy 目录 |
-| **置信度阈值** | 间接节省 | 低置信度结果不报告，减少人工审核成本 |
+| 手段            | 节省比例    | 说明                                        |
+| --------------- | ----------- | ------------------------------------------- |
+| **只检查 diff** | 节省 80%+   | 相比全量扫描，PR 模式只检查变更文件         |
+| **文件级缓存**  | 节省 30-50% | 未修改文件跳过检查                          |
+| **模型分级**    | 节省 40-60% | 简单规则用小模型（GPT-4o-mini 便宜 15 倍）  |
+| **规则合并**    | 节省 50-70% | 3-5 条规则合一个 Prompt，减少重复的系统指令 |
+| **排除策略**    | 节省 10-20% | 排除生成代码、测试文件、legacy 目录         |
+| **置信度阈值**  | 间接节省    | 低置信度结果不报告，减少人工审核成本        |
 
 ### 3.3 成本监控
 
@@ -225,7 +230,7 @@ function recordCost(ruleId, model, inputTokens, outputTokens) {
     model,
     inputTokens,
     outputTokens,
-    expense,  // 美元
+    expense, // 美元
   })
 }
 
@@ -265,35 +270,40 @@ class Reporter {
   // SARIF 格式（GitHub Code Scanning 标准）
   toSARIF() {
     return {
-      $schema: 'https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json',
+      $schema:
+        'https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json',
       version: '2.1.0',
-      runs: [{
-        tool: {
-          driver: {
-            name: 'AI Code Inspection',
-            version: '1.0.0',
-            rules: this.results.rules.map(r => ({
-              id: r.id,
-              shortDescription: { text: r.description },
-              defaultConfiguration: { level: r.severity },
-            })),
-          },
-        },
-        results: this.results.issues.map(issue => ({
-          ruleId: issue.ruleId,
-          level: issue.severity === 'error' ? 'error' : 'warning',
-          message: { text: issue.message },
-          locations: [{
-            physicalLocation: {
-              artifactLocation: { uri: issue.file },
-              region: {
-                startLine: issue.line,
-                startColumn: issue.column,
-              },
+      runs: [
+        {
+          tool: {
+            driver: {
+              name: 'AI Code Inspection',
+              version: '1.0.0',
+              rules: this.results.rules.map((r) => ({
+                id: r.id,
+                shortDescription: { text: r.description },
+                defaultConfiguration: { level: r.severity },
+              })),
             },
-          }],
-        })),
-      }],
+          },
+          results: this.results.issues.map((issue) => ({
+            ruleId: issue.ruleId,
+            level: issue.severity === 'error' ? 'error' : 'warning',
+            message: { text: issue.message },
+            locations: [
+              {
+                physicalLocation: {
+                  artifactLocation: { uri: issue.file },
+                  region: {
+                    startLine: issue.line,
+                    startColumn: issue.column,
+                  },
+                },
+              },
+            ],
+          })),
+        },
+      ],
     }
   }
 
@@ -313,7 +323,7 @@ class Reporter {
 
     // 按严重级别分组输出
     for (const severity of ['error', 'warning', 'info']) {
-      const group = issues.filter(i => i.severity === severity)
+      const group = issues.filter((i) => i.severity === severity)
       if (group.length === 0) continue
       const icon = { error: '🔴', warning: '🟡', info: '🔵' }[severity]
       md += `### ${icon} ${severity.toUpperCase()}\n\n`
@@ -382,24 +392,29 @@ SARIF（Static Analysis Results Interchange Format）是微软主导的静态分
 ## 关于引入 AI 代码检查的说明
 
 ### 是什么
+
 在 CI 流程中新增一个 AI 代码检查步骤，自动审查 PR 中的代码变更。
 
 ### 不是什么
+
 - 不是替代人工 Code Review
 - 不是替代 ESLint / TypeScript
 - 是在人工 Review 之前先做一轮自动化预检
 
 ### 检查什么
+
 - 架构分层是否合规（组件是否直接调了 API）
 - 是否有安全隐患（硬编码密钥、XSS 风险）
 - 代码质量问题（函数过长、命名不清）
 
 ### 不会做什么
+
 - 不会阻断你的 PR（初期只报告不阻断）
 - 不会检查测试文件和生成代码
 - 不会发送大量误报骚扰你
 
 ### 如何反馈误报
+
 在 PR 评论中回复 "误报" 或在检查结果下方点击反馈链接。
 ```
 
