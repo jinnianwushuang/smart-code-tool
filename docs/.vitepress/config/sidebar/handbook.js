@@ -41,13 +41,14 @@ export const handbookSidebar = {
         { text: 'CSS 手册', link: '/handbook/frontend/css-handbook' },
         { text: 'SCSS 手册', link: '/handbook/frontend/scss-handbook' },
         { text: 'Tailwind CSS 手册', link: '/handbook/frontend/tailwind-css-handbook' },
-        { text: '正则速查', link: '/handbook/frontend/regex-handbook' },
+        { text: '正则 手册', link: '/handbook/frontend/regex-handbook' },
       ],
     },
     {
       text: '后端开发',
       items: [
         { text: 'Python 手册', link: '/handbook/backend/python-handbook' },
+        { text: 'Node.js 手册', link: '/handbook/backend/nodejs-handbook' },
         { text: 'NestJS 手册', link: '/handbook/backend/nestjs-handbook' },
         { text: 'NestJS 核心原理', link: '/handbook/backend/nestjs-core-principles' },
         { text: 'FastAPI 手册', link: '/handbook/backend/fastapi-handbook' },

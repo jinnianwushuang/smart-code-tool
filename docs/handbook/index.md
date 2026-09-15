@@ -62,15 +62,16 @@
 
 ### 后端框架
 
-| 手册                                                        | 描述                                               |
-| ----------------------------------------------------------- | -------------------------------------------------- |
-| [Python 手册](/handbook/backend/python-handbook)            | Python 编程基础、标准库、虚拟环境管理              |
-| [NestJS 手册](/handbook/backend/nestjs-handbook)            | NestJS 模块化架构、依赖注入、中间件、守卫          |
-| [NestJS 核心原理](/handbook/backend/nestjs-core-principles) | NestJS 依赖注入容器、元编程、模块系统底层实现      |
-| [FastAPI 手册](/handbook/backend/fastapi-handbook)          | FastAPI 高性能 Python Web 框架、自动文档、依赖注入 |
-| [Django 手册](/handbook/backend/django-handbook)            | Django 全栈框架、ORM、认证系统、REST API           |
-| [Egg.js V3 手册](/handbook/backend/eggjs-handbook)          | Egg.js V3 企业级 Node.js 框架、插件机制、多进程    |
-| [Egg.js V4 手册](/handbook/backend/eggjs-v4-handbook)       | Egg.js V4 全面 ESM、装饰器编程、依赖注入、Koa 3    |
+| 手册                                                        | 描述                                                            |
+| ----------------------------------------------------------- | --------------------------------------------------------------- |
+| [Python 手册](/handbook/backend/python-handbook)            | Python 编程基础、标准库、虚拟环境管理                           |
+| [Node.js 手册](/handbook/backend/nodejs-handbook)           | Node.js 24 LTS 核心 API、模块系统、异步编程、内置测试、常用命令 |
+| [NestJS 手册](/handbook/backend/nestjs-handbook)            | NestJS 模块化架构、依赖注入、中间件、守卫                       |
+| [NestJS 核心原理](/handbook/backend/nestjs-core-principles) | NestJS 依赖注入容器、元编程、模块系统底层实现                   |
+| [FastAPI 手册](/handbook/backend/fastapi-handbook)          | FastAPI 高性能 Python Web 框架、自动文档、依赖注入              |
+| [Django 手册](/handbook/backend/django-handbook)            | Django 全栈框架、ORM、认证系统、REST API                        |
+| [Egg.js V3 手册](/handbook/backend/eggjs-handbook)          | Egg.js V3 企业级 Node.js 框架、插件机制、多进程                 |
+| [Egg.js V4 手册](/handbook/backend/eggjs-v4-handbook)       | Egg.js V4 全面 ESM、装饰器编程、依赖注入、Koa 3                 |
 
 ---
 
