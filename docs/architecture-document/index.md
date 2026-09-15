@@ -21,6 +21,7 @@
 - [网络层与弱网优化](./flutter/thinking/mobile-network-layer) - HTTPS 全链路、连接优化、DNS 防劫持与弱网对抗
 - [内存管理与性能调优](./flutter/thinking/memory-management-performance) - 三层内存模型、OOM 归因、泄漏检测与 APM 体系
 - [音视频与相机管线](./flutter/thinking/audio-video-camera) - 相机管线、编解码、播放管线、WebRTC 与直播架构
+- [数据·算法·显示 三者分离](./flutter/thinking/data-algorithm-view-separation) - BLoC/Riverpod/Stream 架构下的三层分离与 Flutter 渲染管线同构
 - [存储与数据同步](./flutter/thinking/storage-data-sync) - SQLite/KV 选型、离线优先架构与冲突解决
 - [安全攻防基础](./flutter/thinking/mobile-security) - 逆向防护、安全存储、证书固定与 API 安全
 - [混合栈与模块化架构](./flutter/thinking/hybrid-stack-modularization) - 引擎管理、混合路由与大型项目模块化
@@ -43,6 +44,7 @@
 
 - [组件设计模式](./react/component-patterns/react-component-design-patterns) - 容器/展示、HOC、复合组件、受控/非受控等模式
 - [Hooks 架构模式](./react/hooks-patterns/react-hooks-architecture) - 自定义 Hook 设计原则、分层体系、副作用管理
+- [数据·算法·显示 三者分离](./react/hooks-patterns/data-algorithm-view-separation) - React Query + useMemo + JSX 的三层分离与 RSC 架构拓展
 - [状态管理架构](./react/state-management/react-state-management-architecture) - 状态分类、Zustand/Redux Toolkit/Jotai 选型与工程化实践
 - [useEffect 原理](./react/principle/use-effect) - 同步机制与 Fiber 源码深度解析
 - [技术选型](./react/technology-selection/app-project)
@@ -54,6 +56,7 @@
 - [通用工具](./vue/general-tools/module-loader) - 模块加载器与函数包装器
 - [技术选型](./vue/technology-selection/app-project)
 - [业务组件 SDK 打包](./vue/technology-selection/sdk-project) - 将业务组件封装为独立 SDK 供外部项目使用
+- [数据·算法·显示 三者分离](./vue/standardized-template-cn/data-algorithm-view-separation-cn) - Composition API + Composable + computed 的三层分离与装配架构融合
 
 ### 🔧 工程化
 
@@ -91,6 +94,7 @@
 
 - [BUG 修复思维对比](./thinking/bug-fixing-thinking) - 工程师/架构师/主管三种视角的 BUG 修复思维差异与协同模式
 - [技术迭代与学习疲态](./thinking/tech-iteration-and-learning-fatigue) - 技术快速迭代下的学习疲态本质、三种视角应对策略与协同模型
+- [数据·算法·显示 三者分离](./thinking/frontend-data-algorithm-view-separation) - 前端编程终极朴素思想：接口原始数据、算法处理、界面显示数据三层分离，与浏览器架构同构
 
 ## 🎯 快速开始
 

@@ -98,6 +98,10 @@ const flutter = {
               text: '音视频与相机管线',
               link: '/architecture-document/flutter/thinking/audio-video-camera',
             },
+            {
+              text: '数据·算法·显示 三者分离',
+              link: '/architecture-document/flutter/thinking/data-algorithm-view-separation',
+            },
           ],
         },
         {
@@ -226,6 +230,10 @@ const react = {
           text: 'React Hooks 架构模式',
           link: '/architecture-document/react/hooks-patterns/react-hooks-architecture',
         },
+        {
+          text: '数据·算法·显示 三者分离',
+          link: '/architecture-document/react/hooks-patterns/data-algorithm-view-separation',
+        },
       ],
     },
     {
@@ -326,6 +334,10 @@ const vue = {
         {
           text: 'API 请求与模块调用说明',
           link: '/architecture-document/vue/standardized-template-cn/api-request-and-module',
+        },
+        {
+          text: '数据·算法·显示 三者分离',
+          link: '/architecture-document/vue/standardized-template-cn/data-algorithm-view-separation-cn',
         },
       ],
     },
@@ -477,6 +489,10 @@ const thinking = {
     {
       text: '技术迭代与学习疲态',
       link: '/architecture-document/thinking/tech-iteration-and-learning-fatigue',
+    },
+    {
+      text: '数据·算法·显示 三者分离',
+      link: '/architecture-document/thinking/frontend-data-algorithm-view-separation',
     },
   ],
 }

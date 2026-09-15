@@ -742,11 +742,11 @@
           "updated": "2026-09-10"
         },
         "storage-and-cookie": {
-          "title": "本地存储与 Cookie 基础",
+          "title": "浏览器存储全景",
           "level": "junior",
-          "tags": ["localStorage", "sessionStorage", "Cookie"],
+          "tags": ["localStorage", "sessionStorage", "Cookie", "IndexedDB", "Cache API"],
           "difficulty": "medium",
-          "updated": "2026-09-10"
+          "updated": "2026-09-16"
         },
         "vue-basics": {
           "title": "Vue 3 入门：模板、组件、生命周期",

@@ -34,8 +34,8 @@ target: 'P4-P5 初级工程师'
 
 ### HTML/CSS 基础（4 篇）
 
-| 文档                                                                  | 描述                              |
-| --------------------------------------------------------------------- | --------------------------------- |
+| 文档                                                                          | 描述                              |
+| ----------------------------------------------------------------------------- | --------------------------------- |
 | [HTML5 语义化与文档结构 [P4-P5]](/interview/junior/html-semantics)            | 语义标签、SEO、无障碍             |
 | [CSS 布局：Flexbox 与 Grid [P4-P5]](/interview/junior/css-layout)             | Flexbox 属性、Grid 布局、居中方案 |
 | [响应式设计与移动端适配 [P4-P5]](/interview/junior/responsive-design)         | 媒体查询、移动优先、rem/vw        |
@@ -43,8 +43,8 @@ target: 'P4-P5 初级工程师'
 
 ### JavaScript 基础（4 篇）
 
-| 文档                                                             | 描述                              |
-| ---------------------------------------------------------------- | --------------------------------- |
+| 文档                                                                     | 描述                              |
+| ------------------------------------------------------------------------ | --------------------------------- |
 | [JavaScript 基础：变量、类型、运算 [P4-P5]](/interview/junior/js-basics) | 数据类型、类型转换、运算符        |
 | [函数与作用域基础 [P4-P5]](/interview/junior/functions-and-scope)        | 函数声明、箭头函数、作用域        |
 | [对象与类基础 [P4-P5]](/interview/junior/objects-and-classes)            | 对象字面量、class、继承           |
@@ -52,29 +52,29 @@ target: 'P4-P5 初级工程师'
 
 ### 浏览器/网络基础（3 篇）
 
-| 文档                                                             | 描述                               |
-| ---------------------------------------------------------------- | ---------------------------------- |
-| [浏览器基础：结构与开发者工具 [P4-P5]](/interview/junior/browser-basics) | 浏览器结构、URL→渲染、DevTools     |
-| [HTTP 协议基础 [P4-P5]](/interview/junior/http-basics)                   | HTTP 方法、状态码、HTTPS           |
-| [本地存储与 Cookie 基础 [P4-P5]](/interview/junior/storage-and-cookie)   | localStorage/sessionStorage/Cookie |
+| 文档                                                                     | 描述                                    |
+| ------------------------------------------------------------------------ | --------------------------------------- |
+| [浏览器基础：结构与开发者工具 [P4-P5]](/interview/junior/browser-basics) | 浏览器结构、URL→渲染、DevTools          |
+| [HTTP 协议基础 [P4-P5]](/interview/junior/http-basics)                   | HTTP 方法、状态码、HTTPS                |
+| [浏览器存储全景 [P4-P5]](/interview/junior/storage-and-cookie)           | localStorage/Cookie/IndexedDB/Cache API |
 
 ### Vue 入门（2 篇）
 
-| 文档                                                                         | 描述                            |
-| ---------------------------------------------------------------------------- | ------------------------------- |
+| 文档                                                                                 | 描述                            |
+| ------------------------------------------------------------------------------------ | ------------------------------- |
 | [Vue 3 入门：模板、组件、生命周期 [P4-P5]](/interview/junior/vue-basics)             | 模板语法、组件注册、生命周期    |
 | [Vue 组件模式：Props、Emit、Slots [P4-P5]](/interview/junior/vue-component-patterns) | Props/Emit/Slots/provide-inject |
 
 ### TypeScript 入门（1 篇）
 
-| 文档                                                                       | 描述                 |
-| -------------------------------------------------------------------------- | -------------------- |
+| 文档                                                                               | 描述                 |
+| ---------------------------------------------------------------------------------- | -------------------- |
 | [TypeScript 入门：类型注解与基础类型 [P4-P5]](/interview/junior/typescript-basics) | 基础类型、接口、枚举 |
 
 ### 工具链（4 篇）
 
-| 文档                                                         | 描述                             |
-| ------------------------------------------------------------ | -------------------------------- |
+| 文档                                                                 | 描述                             |
+| -------------------------------------------------------------------- | -------------------------------- |
 | [Git 基础：分支策略与协作流程 [P4-P5]](/interview/junior/git-basics) | add/commit/push、分支、合并      |
 | [npm/pnpm 包管理入门 [P4-P5]](/interview/junior/npm-pnpm-basics)     | package.json、依赖管理、scripts  |
 | [Chrome DevTools 实战 [P4-P5]](/interview/junior/devtools-basics)    | Elements/Console/Network/Sources |
@@ -82,8 +82,8 @@ target: 'P4-P5 初级工程师'
 
 ### 安全/部署/实战（3 篇）
 
-| 文档                                                              | 描述                          |
-| ----------------------------------------------------------------- | ----------------------------- |
+| 文档                                                                      | 描述                          |
+| ------------------------------------------------------------------------- | ----------------------------- |
 | [Web 安全入门：XSS/CSRF [P4-P5]](/interview/junior/web-security-basics)   | XSS 类型与防范、CSRF 原理     |
 | [SPA 部署基础（Nginx 配置） [P4-P5]](/interview/junior/spa-deploy-basics) | Nginx try_files、History 模式 |
 | [表单与验证基础 [P4-P5]](/interview/junior/form-validation-basics)        | 表单控件、验证规则、正则      |
