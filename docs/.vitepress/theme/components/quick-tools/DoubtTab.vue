@@ -58,6 +58,7 @@ defineExpose({ focusTextarea })
           <div class="qt-record-header">
             <span class="qt-record-title" :title="record.title">{{ record.title }}</span>
             <div class="qt-record-actions">
+              <a :href="record.url" class="qt-icon-btn nav" title="跳转到此页面">🔗</a>
               <button
                 v-if="!record.resolved"
                 class="qt-icon-btn success"
@@ -72,7 +73,9 @@ defineExpose({ focusTextarea })
             </div>
           </div>
           <div class="qt-record-meta">
-            <span class="qt-record-time">🕐 {{ dayjs(record.time).format('YYYY-MM-DD HH:mm:ss') }}</span>
+            <span class="qt-record-time"
+              >🕐 {{ dayjs(record.time).format('YYYY-MM-DD HH:mm:ss') }}</span
+            >
             <span class="qt-relative-time">{{ formatRelative(record.time) }}</span>
             <span v-if="record.resolved" class="qt-resolved-tag">
               ✅ 已解决 {{ formatRelative(record.resolvedTime) }}
