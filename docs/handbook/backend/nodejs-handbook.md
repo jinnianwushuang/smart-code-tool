@@ -562,6 +562,8 @@ emitter.eventNames() // 所有事件名
 emitter.setMaxListeners(20) // 设置最大监听器数（默认 10）
 ```
 
+> 📖 底层拆解（手写 EventEmitter、通配符、异步触发、安全触发）：[Node.js 事件调度拆解](/architecture-document/typical-analysis/nodejs-event-scheduling)
+
 ### 6.2 Stream 流
 
 ```javascript
@@ -597,6 +599,8 @@ writable.write('line 1\n')
 writable.write('line 2\n')
 writable.end('last line\n')
 ```
+
+> 📖 底层拆解（pipe 底层原理、背压控制、pipeline 安全组合）：[Node.js 事件调度拆解 — 流式管线](/architecture-document/typical-analysis/nodejs-event-scheduling#四-流式管线调度-可读-可写-转换流组合)
 
 ---
 

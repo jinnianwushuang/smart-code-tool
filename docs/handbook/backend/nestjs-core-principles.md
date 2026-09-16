@@ -375,6 +375,8 @@ class RouterExecutionContext {
   └─→ Exception Filters（仅异常时触发，就近匹配）
 ```
 
+> 📖 底层拆解（Koa 洋葱圈模型、next() 调用链、管线调度设计）：[Node.js 事件调度拆解 — 中间件管线](/architecture-document/typical-analysis/nodejs-event-scheduling#三-koa-洋葱圈模型)
+
 ### 4.3 响应处理机制
 
 ```typescript

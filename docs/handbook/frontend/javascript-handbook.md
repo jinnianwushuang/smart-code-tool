@@ -752,6 +752,8 @@ const dog = new Dog('Rex', 'Labrador')
 dog.speak() // "Rex barks"
 ```
 
+> 📖 底层拆解（new 操作符、原型链查找、继承方案演进）：[原型链与继承拆解](/architecture-document/typical-analysis/prototype-chain-and-inheritance)
+
 ### 9.4 Promise
 
 ```javascript
@@ -878,6 +880,8 @@ Promise.race([p1, p2, p3]) // 第一个完成
 Promise.any([p1, p2, p3]) // 第一个成功
 ```
 
+> 📖 底层拆解（状态机、then 链式调用、resolvePromise 递归解析）：[Promise/A+ 手写实现拆解](/architecture-document/typical-analysis/promise-implementation)
+
 ### 10.3 async/await
 
 ```javascript
@@ -971,6 +975,8 @@ console.log('Script end')
 // setTimeout
 ```
 
+> 📖 底层拆解（Event Loop 调度模型、高频面试题输出预测、并发调度器）：[浏览器端 JS 调度拆解](/architecture-document/typical-analysis/browser-js-scheduling)
+
 ---
 
 ## 十二、原型和继承
@@ -1011,6 +1017,8 @@ dog instanceof Dog // true
 dog instanceof Animal // true
 Object.getPrototypeOf(dog) === Dog.prototype // true
 ```
+
+> 📖 底层拆解（手写 new、instanceof、继承方案演进、class extends 底层原理）：[原型链与继承拆解](/architecture-document/typical-analysis/prototype-chain-and-inheritance)
 
 ---
 
@@ -2570,6 +2578,8 @@ function deepClone(obj) {
   }
 }
 ```
+
+> 📖 底层拆解（循环引用、Date/RegExp/Map/Set、Symbol 键、structuredClone 对比）：[深拷贝全场景拆解](/architecture-document/typical-analysis/deep-clone)
 
 ### 33.2 数组去重
 
