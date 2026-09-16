@@ -42,8 +42,8 @@ target: 'Flutter 开发者'
 
 > 适合有 Web 前端基础，想快速上手 Flutter 的开发者。
 
-| 文档                                                                                       | 描述                                |
-| ------------------------------------------------------------------------------------------ | ----------------------------------- |
+| 文档                                                                                               | 描述                                |
+| -------------------------------------------------------------------------------------------------- | ----------------------------------- |
 | [Dart 语言基础与核心特性 [P5-P6]](/interview/flutter-intermediate/flutter-dart-basics)             | Dart 语法、空安全、异步、OOP        |
 | [Flutter Widget 体系与布局系统 [P5-P6]](/interview/flutter-intermediate/flutter-widget-and-layout) | Widget 生命周期、布局约束、常用组件 |
 | [Flutter 状态管理基础 [P5-P6]](/interview/flutter-intermediate/flutter-state-management-basics)    | setState、Provider、Bloc 入门       |

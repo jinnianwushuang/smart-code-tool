@@ -35,15 +35,15 @@ target: 'P5-P6 中级工程师'
 
 ### CSS 进阶（2 篇）
 
-| 文档                                                                           | 描述                            |
-| ------------------------------------------------------------------------------ | ------------------------------- |
+| 文档                                                                                   | 描述                            |
+| -------------------------------------------------------------------------------------- | ------------------------------- |
 | [CSS 架构：BEM/CSS Modules/Tailwind [P5-P6]](/interview/intermediate/css-architecture) | BEM 命名、CSS Modules、Tailwind |
 | [CSS 预处理器：Sass/Less/PostCSS [P5-P6]](/interview/intermediate/css-preprocessors)   | Sass 变量/嵌套/mixin、PostCSS   |
 
 ### JavaScript 进阶（4 篇）
 
-| 文档                                                                         | 描述                           |
-| ---------------------------------------------------------------------------- | ------------------------------ |
+| 文档                                                                                 | 描述                           |
+| ------------------------------------------------------------------------------------ | ------------------------------ |
 | [闭包、作用域链与执行上下文 [P5-P6]](/interview/intermediate/js-closures-context)    | 执行上下文、闭包应用、this     |
 | [异步编程深入：Promise/async/await [P5-P6]](/interview/intermediate/async-deep-dive) | Promise 链、并发控制、错误处理 |
 | [ES6+ 模块系统与工程化 [P5-P6]](/interview/intermediate/es6-modules)                 | ESM vs CJS、tree-shaking       |
@@ -51,16 +51,16 @@ target: 'P5-P6 中级工程师'
 
 ### 浏览器/网络进阶（3 篇）
 
-| 文档                                                                             | 描述                     |
-| -------------------------------------------------------------------------------- | ------------------------ |
+| 文档                                                                                     | 描述                     |
+| ---------------------------------------------------------------------------------------- | ------------------------ |
 | [浏览器渲染机制：重排/重绘/合成 [P5-P6]](/interview/intermediate/rendering-mechanism)    | 重排/重绘/合成、GPU 加速 |
 | [HTTP 缓存策略：强缓存/协商缓存 [P5-P6]](/interview/intermediate/http-caching)           | Cache-Control/ETag       |
 | [前端网络优化：预加载/懒加载/压缩 [P5-P6]](/interview/intermediate/network-optimization) | preload、懒加载、CDN     |
 
 ### Vue 中级（4 篇）
 
-| 文档                                                                  | 描述                        |
-| --------------------------------------------------------------------- | --------------------------- |
+| 文档                                                                          | 描述                        |
+| ----------------------------------------------------------------------------- | --------------------------- |
 | [Vue 3 响应式原理入门 [P5-P6]](/interview/intermediate/vue-reactivity-basics) | reactive/ref 原理、依赖收集 |
 | [Vue 3 生命周期深入 [P5-P6]](/interview/intermediate/vue-lifecycle)           | 完整生命周期、组合式 API    |
 | [Vue 组件通信方式全景 [P5-P6]](/interview/intermediate/vue-communication)     | props/emit/provide-inject   |
@@ -68,23 +68,23 @@ target: 'P5-P6 中级工程师'
 
 ### TypeScript 中级（2 篇）
 
-| 文档                                                                 | 描述                         |
-| -------------------------------------------------------------------- | ---------------------------- |
+| 文档                                                                         | 描述                         |
+| ---------------------------------------------------------------------------- | ---------------------------- |
 | [TypeScript 类型体操入门 [P5-P6]](/interview/intermediate/ts-types-practice) | 泛型、条件类型、工具类型     |
 | [TypeScript 工程化实践 [P5-P6]](/interview/intermediate/ts-engineering)      | tsconfig、声明文件、框架集成 |
 
 ### React 入门（1 篇）
 
-| 文档                                                                     | 描述                    |
-| ------------------------------------------------------------------------ | ----------------------- |
+| 文档                                                                             | 描述                    |
+| -------------------------------------------------------------------------------- | ----------------------- |
 | [React 入门：JSX、Hooks、组件模式 [P5-P6]](/interview/intermediate/react-basics) | JSX、useState/useEffect |
 
 > 📌 Flutter/Dart 中级内容已迁移至独立目录：[Flutter 中级（P5-P6）](/interview/levels/flutter#入门中级-p5-p6-4-篇)
 
 ### 工程化/性能/测试/安全（6 篇）
 
-| 文档                                                                            | 描述                       |
-| ------------------------------------------------------------------------------- | -------------------------- |
+| 文档                                                                                    | 描述                       |
+| --------------------------------------------------------------------------------------- | -------------------------- |
 | [前端性能优化基础 [P5-P6]](/interview/intermediate/performance-basics)                  | Core Web Vitals、图片优化  |
 | [前端测试基础：Jest/Vitest [P5-P6]](/interview/intermediate/testing-basics)             | 测试金字塔、组件测试       |
 | [构建工具入门：Vite 配置与使用 [P5-P6]](/interview/intermediate/build-tools-basics)     | Vite 配置、环境变量、代理  |
