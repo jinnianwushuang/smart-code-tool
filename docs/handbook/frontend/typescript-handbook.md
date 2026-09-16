@@ -1301,37 +1301,11 @@ type A = IsString<string> // true
 type B = IsString<number> // false
 ```
 
-**核心语法解析：**
+条件类型语法：`A extends B ? X : Y` — 如果 `T` 可赋值给 `string` 返回 `true`，否则返回 `false`。
 
-- `T extends string ? true : false`：这是一个**条件类型**，语法形式为 `A extends B ? X : Y`
-- 含义：如果类型 `T` 可以赋值给 `string`，则返回 `true`；否则返回 `false`
-- `IsString<string>` → `string extends string` 成立 → 返回 `true`
-- `IsString<number>` → `number extends string` 不成立 → 返回 `false`
+内置工具类型 `Exclude<T, U>` 是条件类型最经典的应用，利用分发机制从联合类型中剔除指定类型。
 
-**实际应用 — 内置工具类型 `Exclude<T, U>`：**
-
-```typescript
-type Exclude<T, U> = T extends U ? never : T
-
-type Result = Exclude<'a' | 'b' | 'c', 'a'> // 'b' | 'c'
-```
-
-`Exclude` 用于从联合类型中**剔除**指定的类型，是条件类型最经典的应用。
-
-- `T extends U ? never : T`：如果 `T` 可以赋值给 `U`，返回 `never`（表示"移除"）；否则保留 `T`
-- `never` 在联合类型中代表"空集"，TypeScript 会自动过滤掉联合类型中的 `never`（如 `'b' | 'c' | never` → `'b' | 'c'`）
-
-**拆解执行过程：`Exclude<'a' | 'b' | 'c', 'a'>`**
-
-当泛型 `T` 是联合类型时，TypeScript 会触发**分发（Distributive）机制**，将联合类型拆开逐个计算：
-
-| 步骤    | 拆分计算                        | 结果    |
-| ------- | ------------------------------- | ------- |
-| ① `'a'` | `'a' extends 'a' ? never : 'a'` | `never` |
-| ② `'b'` | `'b' extends 'a' ? never : 'b'` | `'b'`   |
-| ③ `'c'` | `'c' extends 'a' ? never : 'c'` | `'c'`   |
-
-合并结果：`never | 'b' | 'c'` → 过滤 `never` → 最终类型 **`'b' | 'c'`**
+> 📖 详细拆解（含执行过程表格）：[TypeScript 类型拆解 — Exclude](/architecture-document/typical-analysis/typescript-type-analysis#一-exclude-分布式条件类型实现集合-差集)
 
 ### 14.2 分布式条件类型
 
@@ -1342,27 +1316,9 @@ type StrArrOrNumArr = ToArray<string | number>
 // string[] | number[]
 ```
 
-**分发机制详解：**
+当泛型参数是联合类型时，TypeScript 自动拆开逐个计算再合并，即**分布式条件类型**。用 `[T]` 包裹可阻止分发。
 
-当条件类型的泛型参数是**联合类型**时，TypeScript 会自动将联合类型拆开，对每个成员单独计算，最后再合并结果。这就是**分布式条件类型**。
-
-拆解 `ToArray<string | number>` 的执行：
-
-| 步骤       | 拆分计算                                | 结果       |
-| ---------- | --------------------------------------- | ---------- |
-| ① `string` | `string extends any ? string[] : never` | `string[]` |
-| ② `number` | `number extends any ? number[] : never` | `number[]` |
-
-合并结果：**`string[] | number[]`**
-
-> **对比非分发写法**：如果不想触发分发，可以用 `[T]` 包裹泛型来阻止分发：
->
-> ```typescript
-> type ToArrayNonDistrib<Type> = [Type] extends any ? Type[] : never
-> type Result = ToArrayNonDistrib<string | number> // (string | number)[]
-> ```
->
-> 包裹后 `Type` 不再被视为裸联合类型，分发机制不会触发，结果是单个数组类型而非联合类型。
+> 📖 详细拆解（含分发机制对比）：[TypeScript 类型拆解 — 分布式条件类型](/architecture-document/typical-analysis/typescript-type-analysis#_1-4-分布式条件类型详解)
 
 ### 14.3 infer 关键字
 
@@ -1382,59 +1338,13 @@ type Num = GetReturnType<() => number> // number
 type Str = GetReturnType<(x: string) => string> // string
 ```
 
-**`infer` 是什么？**
+`infer` 用于条件类型的 `extends` 子句中，声明临时类型变量，从匹配模式中自动推断类型（模式匹配 + 类型提取）。
 
-`infer` 用于条件类型的 `extends` 子句中，用来**声明一个临时类型变量**，让 TypeScript 自动从匹配模式中**推断**出该位置的具体类型。可以理解为“模式匹配 + 类型提取”。
+- `Flatten`：提取数组元素类型
+- `GetReturnType`：提取函数返回值类型
+- 核心规则：只能出现在 `extends` 子句中，同一子句可声明多个 `infer`
 
-**示例一：`Flatten<Type>` — 提取数组的元素类型**
-
-```typescript
-type Flatten<Type> = Type extends Array<infer Item> ? Item : Type
-```
-
-- `Type extends Array<infer Item>`：尝试将 `Type` 匹配为 `Array<某类型>`，如果匹配成功，`infer Item` 会自动捕获该数组的元素类型
-- 匹配成功 → 返回 `Item`（元素类型）；匹配失败 → 返回 `Type` 本身
-
-拆解执行过程：
-
-| 输入                | 匹配过程                                                     | 结果     |
-| ------------------- | ------------------------------------------------------------ | -------- |
-| `Flatten<string[]>` | `string[]` 匹配 `Array<infer Item>` → `Item` 推断为 `string` | `string` |
-| `Flatten<number>`   | `number` 不匹配 `Array<...>` → 走 else 分支                  | `number` |
-
-**示例二：`GetReturnType<Func>` — 提取函数的返回值类型**
-
-```typescript
-type GetReturnType<Func extends (...args: any[]) => any> = Func extends (
-  ...args: any[]
-) => infer Return
-  ? Return
-  : never
-```
-
-- `Func extends (...args: any[]) => any`：约束 `Func` 必须是函数类型
-- `(...args: any[]) => infer Return`：尝试将 `Func` 匹配为函数模式，`infer Return` 自动捕获返回值类型
-- 匹配成功 → 返回 `Return`；匹配失败 → 返回 `never`
-
-拆解执行过程：
-
-| 输入                                   | 匹配过程                                | 结果     |
-| -------------------------------------- | --------------------------------------- | -------- |
-| `GetReturnType<() => number>`          | 匹配函数模式 → `Return` 推断为 `number` | `number` |
-| `GetReturnType<(x: string) => string>` | 匹配函数模式 → `Return` 推断为 `string` | `string` |
-
-**`infer` 的核心规则：**
-
-- `infer` 只能出现在条件类型的 `extends` 子句中
-- 推断出的类型变量仅在条件类型的 `true` 分支中可用
-- 同一个 `extends` 子句中可以声明多个 `infer`，例如同时提取参数类型和返回类型：
-
-```typescript
-type GetParameters<Func> = Func extends (...args: infer P) => any ? P : never
-
-type Params = GetParameters<(a: string, b: number) => void>
-// [a: string, b: number]
-```
+> 📖 详细拆解（含 Flatten/GetReturnType 执行过程表格）：[TypeScript 类型拆解 — infer](/architecture-document/typical-analysis/typescript-type-analysis#二-infer-条件类型中的类型推断)
 
 ### 14.4 嵌套条件类型
 
