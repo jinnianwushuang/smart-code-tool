@@ -123,11 +123,11 @@ class NestContainer {
 // InstanceWrapper 是 Provider 的包装器
 interface InstanceWrapper<T = any> {
   token: string | symbol | Type
-  metatype: Type<T>         // 原始类
-  instance: T | null        // 实例化后的对象
-  isResolved: boolean       // 是否已完成实例化
-  scope: Scope              // 作用域
-  inject: Array<any>        // 依赖的 token 列表
+  metatype: Type<T> // 原始类
+  instance: T | null // 实例化后的对象
+  isResolved: boolean // 是否已完成实例化
+  scope: Scope // 作用域
+  inject: Array<any> // 依赖的 token 列表
 }
 ```
 
@@ -169,9 +169,9 @@ class Injector {
 ```typescript
 // 三种作用域的底层差异
 enum Scope {
-  DEFAULT,    // 单例：整个应用共享一个实例
-  TRANSIENT,  // 瞬态：每次注入创建新实例
-  REQUEST,    // 请求：每个 HTTP 请求创建新实例（含子依赖链）
+  DEFAULT, // 单例：整个应用共享一个实例
+  TRANSIENT, // 瞬态：每次注入创建新实例
+  REQUEST, // 请求：每个 HTTP 请求创建新实例（含子依赖链）
 }
 
 // REQUEST 作用域的实现原理：
@@ -196,7 +196,7 @@ class InstanceWrapper {
 // forwardRef：将 token 的解析推迟到实例化阶段
 
 export const forwardRef = (fn: () => any): ForwardReference => ({
-  forwardRef: fn,  // 存储一个返回类的函数
+  forwardRef: fn, // 存储一个返回类的函数
 })
 
 // 容器解析时：
@@ -283,12 +283,12 @@ class Injector {
 ```typescript
 // DynamicModule 的元数据合并逻辑
 interface DynamicModule {
-  module: Type<any>          // 模块类本身
-  imports?: any[]            // 额外导入
-  providers?: Provider[]     // 额外 Provider
-  exports?: any[]            // 额外导出
-  controllers?: Type<any>[]  // 额外控制器
-  global?: boolean           // 是否全局
+  module: Type<any> // 模块类本身
+  imports?: any[] // 额外导入
+  providers?: Provider[] // 额外 Provider
+  exports?: any[] // 额外导出
+  controllers?: Type<any>[] // 额外控制器
+  global?: boolean // 是否全局
 }
 
 // 合并规则：
@@ -330,10 +330,7 @@ class RouterExecutionContext {
           callback,
           async () => {
             // 4. 解析参数（执行 Pipes）
-            const args = await this.paramsFactory.exchangeKeyForValue(
-              context,
-              pipes,
-            )
+            const args = await this.paramsFactory.exchangeKeyForValue(context, pipes)
             // 5. 调用路由处理函数
             return callback.apply(instance, args)
           },
@@ -441,9 +438,7 @@ export function Get(path?: string): MethodDecorator {
 
 ```typescript
 // @Param('id') / @Body() / @Query() 的底层实现
-export function createParamDecorator(
-  factory: (data: any, ctx: ExecutionContext) => any,
-) {
+export function createParamDecorator(factory: (data: any, ctx: ExecutionContext) => any) {
   return (data?: any): ParameterDecorator =>
     (target, key, index) => {
       // 在方法上存储参数提取器
@@ -502,9 +497,9 @@ export class Reflector {
 // ExecutionContext 是 NestJS 对请求上下文的抽象封装
 class ExecutionContextHost extends ArgumentsHost {
   constructor(
-    private readonly args: any[],       // [req, res, next] 或 [rpc, context]
-    private readonly constructorRef: Type = null,  // Controller 类
-    private readonly handler: Function = null,     // 路由处理函数
+    private readonly args: any[], // [req, res, next] 或 [rpc, context]
+    private readonly constructorRef: Type = null, // Controller 类
+    private readonly handler: Function = null, // 路由处理函数
   ) {}
 
   // 获取当前 Controller 类
@@ -520,9 +515,9 @@ class ExecutionContextHost extends ArgumentsHost {
   // 切换为 HTTP 上下文
   switchToHttp(): HttpArgumentsHost {
     return {
-      getRequest: () => this.args[0],   // Express Request
-      getResponse: () => this.args[1],  // Express Response
-      getNext: () => this.args[2],      // next 函数
+      getRequest: () => this.args[0], // Express Request
+      getResponse: () => this.args[1], // Express Response
+      getNext: () => this.args[2], // next 函数
     }
   }
 
@@ -704,7 +699,7 @@ class InterceptorsConsumer {
     interceptors: NestInterceptor[],
     instance: Controller,
     callback: Function,
-    next: () => Promise<any>,  // 实际的路由处理函数
+    next: () => Promise<any>, // 实际的路由处理函数
   ): Promise<any> {
     // 无拦截器直接执行
     if (!interceptors || interceptors.length === 0) {
@@ -752,10 +747,11 @@ export class ExampleInterceptor implements NestInterceptor {
     // delay: 延迟
 
     return next.handle().pipe(
-      timeout(5000),                              // 超时 5s
-      tap((data) => this.logger.log(data)),       // 记录日志
-      map((data) => ({ code: 0, data })),         // 包装响应
-      catchError((err) => {                       // 异常转换
+      timeout(5000), // 超时 5s
+      tap((data) => this.logger.log(data)), // 记录日志
+      map((data) => ({ code: 0, data })), // 包装响应
+      catchError((err) => {
+        // 异常转换
         if (err instanceof TimeoutError) {
           return throwError(() => new RequestTimeoutException())
         }
@@ -798,9 +794,9 @@ export class ExampleInterceptor implements NestInterceptor {
 // 路由参数解析的完整流程
 class RouteParamsFactory {
   exchangeKeyForValue(
-    key: RouteParamtypes,  // 参数类型：BODY / QUERY / PARAM / HEADERS...
+    key: RouteParamtypes, // 参数类型：BODY / QUERY / PARAM / HEADERS...
     data: string | object, // 具体字段名或 Pipe 配置
-    args: any[],           // [req, res, next]
+    args: any[], // [req, res, next]
   ): any {
     const [req] = args
 
@@ -867,9 +863,9 @@ export class ValidationPipe implements PipeTransform {
 ```typescript
 // ArgumentMetadata 提供的上下文信息
 interface ArgumentMetadata {
-  type: 'body' | 'query' | 'param' | 'custom'  // 参数来源
-  metatype?: Type                               // 参数的 TypeScript 类型
-  data?: string                                 // 装饰器传入的字段名
+  type: 'body' | 'query' | 'param' | 'custom' // 参数来源
+  metatype?: Type // 参数的 TypeScript 类型
+  data?: string // 装饰器传入的字段名
 }
 
 // 利用 metatype 实现智能验证
@@ -925,7 +921,6 @@ class ExceptionsHandler {
     // 2. 控制器级过滤器（@UseFilters 在类上）
     // 3. 全局过滤器（app.useGlobalFilters）
     // 4. 默认 BaseExceptionFilter
-
     // @Catch() 装饰器决定过滤器能捕获哪些异常类型
     // @Catch(HttpException) → 仅捕获 HttpException 及其子类
     // @Catch() → 捕获所有异常
@@ -972,7 +967,7 @@ export class TypeOrmModule {
         },
       ],
       exports: [DataSource],
-      global: true,  // 全局可用
+      global: true, // 全局可用
     }
   }
 
@@ -1063,11 +1058,21 @@ abstract class Server {
 }
 
 // 传输层实现
-class ServerTCP extends Server { /* TCP 传输 */ }
-class ServerRedis extends Server { /* Redis 传输 */ }
-class ServerKafka extends Server { /* Kafka 传输 */ }
-class ServerGrpc extends Server { /* gRPC 传输 */ }
-class ServerRMQ extends Server { /* RabbitMQ 传输 */ }
+class ServerTCP extends Server {
+  /* TCP 传输 */
+}
+class ServerRedis extends Server {
+  /* Redis 传输 */
+}
+class ServerKafka extends Server {
+  /* Kafka 传输 */
+}
+class ServerGrpc extends Server {
+  /* gRPC 传输 */
+}
+class ServerRMQ extends Server {
+  /* RabbitMQ 传输 */
+}
 ```
 
 ### 13.2 消息模式
@@ -1158,7 +1163,7 @@ export class TaskService implements OnModuleDestroy {
   }
 
   onModuleDestroy() {
-    clearInterval(this.timer)  // 必须清理
+    clearInterval(this.timer) // 必须清理
   }
 }
 
