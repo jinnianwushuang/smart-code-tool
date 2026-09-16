@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import 'dayjs/locale/zh-cn'
@@ -64,15 +64,15 @@ const totalCount = computed(() => progressRecords.value.length + doubtRecords.va
 
 const unresolvedDoubtCount = computed(() => doubtRecords.value.filter((r) => !r.resolved).length)
 
-const currentUrl = computed(() => {
-  if (typeof window === 'undefined') return ''
-  return window.location.href
-})
+// ==================== 当前页面信息（响应式跟踪） ====================
+const currentUrl = ref('')
+const currentTitle = ref('')
 
-const currentTitle = computed(() => {
-  if (typeof document === 'undefined') return ''
-  return document.title || ''
-})
+const refreshCurrentPage = () => {
+  if (typeof window === 'undefined') return
+  currentUrl.value = window.location.href
+  currentTitle.value = document.title || ''
+}
 
 const sortedDoubtRecords = computed(() => {
   return [...doubtRecords.value].sort((a, b) => new Date(b.time) - new Date(a.time))
@@ -92,6 +92,7 @@ const closePanel = () => {
 
 // ==================== 记忆进度 ====================
 const addProgress = () => {
+  refreshCurrentPage()
   const record = {
     url: currentUrl.value,
     title: currentTitle.value,
@@ -112,6 +113,7 @@ const deleteProgress = (index) => {
 
 // ==================== 记忆疑惑 ====================
 const initDoubtForm = () => {
+  refreshCurrentPage()
   const existing = doubtRecords.value.find((r) => r.url === currentUrl.value)
   if (existing) {
     editingDoubtId.value = existing.id
@@ -136,6 +138,7 @@ const switchToDoubt = () => {
 
 const saveDoubt = () => {
   if (!doubtDraft.value.trim()) return
+  refreshCurrentPage()
 
   if (editingDoubtId.value) {
     const record = doubtRecords.value.find((r) => r.id === editingDoubtId.value)
@@ -210,20 +213,11 @@ const clearResolvedDoubts = () => {
   writeStorage(DOUBT_KEY, doubtRecords.value)
 }
 
-// ==================== 路由变化时刷新疑惑表单 ====================
-watch(
-  () => currentUrl.value,
-  () => {
-    if (isOpen.value && activeTab.value === 'doubt') {
-      initDoubtForm()
-    }
-  },
-)
-
 // ==================== 生命周期 ====================
 onMounted(() => {
   progressRecords.value = readStorage(PROGRESS_KEY)
   doubtRecords.value = readStorage(DOUBT_KEY)
+  refreshCurrentPage()
   // 每分钟刷新相对时间显示
   tickTimer = setInterval(() => {
     nowTick.value = Date.now()
