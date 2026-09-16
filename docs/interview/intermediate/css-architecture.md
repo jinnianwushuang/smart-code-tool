@@ -1,10 +1,10 @@
 ---
-title: "CSS 架构：BEM/CSS Modules/Tailwind [P5-P6]"
-level: "intermediate"
-tags: ["CSS", "BEM", "CSS Modules", "Tailwind", "架构"]
-difficulty: "hard"
-updated: "2026-09-10"
-target: "P5-P6 中级工程师"
+title: 'CSS 架构：BEM/CSS Modules/Tailwind [P5-P6]'
+level: 'intermediate'
+tags: ['CSS', 'BEM', 'CSS Modules', 'Tailwind', '架构', ':deep', 'scoped']
+difficulty: 'hard'
+updated: '2026-09-16'
+target: 'P5-P6 中级工程师'
 ---
 
 # CSS 架构：BEM/CSS Modules/Tailwind [P5-P6]
@@ -126,6 +126,67 @@ function Button() {
 ├── React → 原生支持
 ├── Vue → <style module>
 └── Vite → 自动支持 .module.css
+```
+
+### CSS Deep 穿透
+
+```
+问题：
+Vue <style scoped> 会给选择器自动加 data-v-xxxx 属性，
+导致父组件无法修改子组件内部样式。
+
+解决方案演进：
+├── Vue 2 → /deep/ 或 >>>
+├── Vue 2（预处理器）→ ::v-deep .selector
+└── Vue 3 → :deep(.selector)
+
+Vue 3 :deep() 语法：
+<style scoped>
+.parent {
+  color: red;
+}
+
+/* 穿透子组件内部样式 */
+:deep(.child-inner) {
+  color: blue;
+}
+</style>
+
+原理：
+├── scoped 样式编译后：.parent[data-v-xxxx]
+├── :deep() 编译后：.parent[data-v-xxxx] .child-inner
+├── data-v-xxxx 只加在父组件选择器上
+└── 子元素没有 data-v-xxxx 也能被匹配到
+
+对比其他穿透方式：
+┌────────────────┬──────────────┬──────────────┐
+│ 方式           │ 适用版本     │ 预处理器     │
+├────────────────┼──────────────┼──────────────┤
+│ >>>            │ Vue 2        │ 不支持       │
+│ /deep/         │ Vue 2        │ 不支持       │
+│ ::v-deep .sel  │ Vue 2        │ Sass/Less    │
+│ :deep(.sel)    │ Vue 3        │ Sass/Less    │
+└────────────────┴──────────────┴──────────────┘
+
+注意事项：
+├── 尽量少用（破坏作用域，增加耦合）
+├── 优先通过 props/emit 让子组件自己控制样式
+├── 第三方组件（如 Element Plus）常用 :deep() 覆盖
+└── :deep() 只影响当前 scoped 组件，不会全局污染
+
+实际场景：
+<!-- 覆盖 Element Plus 组件内部样式 -->
+<style scoped>
+:deep(.el-input__inner) {
+  border-color: #409eff;
+  border-radius: 8px;
+}
+
+:deep(.el-table__header th) {
+  background: #f5f7fa;
+  font-weight: bold;
+}
+</style>
 ```
 
 ### Tailwind CSS
@@ -278,11 +339,31 @@ module.exports = {
 └── 设计系统
 ```
 
+### Q4: Vue scoped 样式如何穿透子组件？
+
+```
+答案：
+Vue 3 使用 :deep(.selector) 穿透 scoped 作用域。
+
+原理：
+├── scoped 会给选择器加 data-v-xxxx 属性选择器
+├── 普通选择器：.parent[data-v-xxxx]
+├── :deep() 选择器：.parent[data-v-xxxx] .child-inner
+└── 子元素不需要有 data-v-xxxx 属性，所以能被匹配
+
+最佳实践：
+├── 优先让子组件通过 props/emit 自行控制样式
+├── 只在覆盖第三方组件（UI 库）时使用 :deep()
+├── 避免滥用，防止样式耦合
+└── Vue 2 用 ::v-deep，Vue 3 用 :deep()
+```
+
 ## 延伸思考
 
 1. 如何选择 CSS 架构方案？
 2. CSS-in-JS（styled-components）的优缺点？
 3. 如何在团队中推广 CSS 规范？
+4. :deep() 和全局样式（unscoped）的区别与取舍？
 
 ## 参考资料
 

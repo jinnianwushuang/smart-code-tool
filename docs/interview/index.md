@@ -1,7 +1,7 @@
 # 大前端面试知识体系
 
 > 面向 2026 年，覆盖初级（P4-P5）、中级（P5-P6）、高级工程师（P6-P7）、架构师（P8）、技术主管五个层级的系统化面试知识库。
-> 覆盖 Web 前端 + Node.js 全栈 + Flutter 跨端，共计 135 篇深度文档。
+> 覆盖 Web 前端 + Node.js 全栈 + Flutter 跨端，共计 134 篇深度文档。
 
 ---
 
@@ -23,7 +23,7 @@
 
 | 文档                                                  | 级别         | 描述                                        |
 | ----------------------------------------------------- | ------------ | ------------------------------------------- |
-| [初级工程师（P4-P5）](/interview/levels/junior)       | junior       | 21 篇基础文档，HTML/CSS/JS/Vue/TS/工具链    |
+| [初级工程师（P4-P5）](/interview/levels/junior)       | junior       | 20 篇基础文档，HTML/CSS/JS/Vue/TS/工具链    |
 | [中级工程师（P5-P6）](/interview/levels/intermediate) | intermediate | 26 篇进阶文档，JS/CSS/Vue/TS/Flutter/工程化 |
 | [高级工程师（P6-P7）](/interview/levels/senior)       | senior       | 41 篇深入文档，框架源码/架构设计/性能优化   |
 | [架构师（P8）](/interview/levels/architect)           | architect    | 12 篇架构文档，系统设计/技术选型/影响力     |
@@ -44,7 +44,7 @@
 | [函数与作用域基础 [P4-P5]](/interview/junior/functions-and-scope)                    | junior | 函数声明、箭头函数、作用域              |
 | [对象与类基础 [P4-P5]](/interview/junior/objects-and-classes)                        | junior | 对象字面量、class、继承                 |
 | [DOM 操作与事件处理 [P4-P5]](/interview/junior/dom-and-events)                       | junior | querySelector、事件监听、事件委托       |
-| [浏览器基础：结构与开发者工具 [P4-P5]](/interview/junior/browser-basics)             | junior | 浏览器结构、URL→渲染、DevTools          |
+| [浏览器基础与 DevTools 实战 [P4-P5]](/interview/junior/browser-basics)               | junior | 浏览器结构、URL→渲染、DevTools 实战     |
 | [HTTP 协议基础 [P4-P5]](/interview/junior/http-basics)                               | junior | HTTP 方法、状态码、HTTPS                |
 | [浏览器存储全景 [P4-P5]](/interview/junior/storage-and-cookie)                       | junior | localStorage/Cookie/IndexedDB/Cache API |
 | [Vue 3 入门：模板、组件、生命周期 [P4-P5]](/interview/junior/vue-basics)             | junior | 模板语法、组件注册、生命周期            |
@@ -52,7 +52,6 @@
 | [TypeScript 入门：类型注解与基础类型 [P4-P5]](/interview/junior/typescript-basics)   | junior | 基础类型、接口、枚举                    |
 | [Git 基础：分支策略与协作流程 [P4-P5]](/interview/junior/git-basics)                 | junior | add/commit/push、分支、合并             |
 | [npm/pnpm 包管理入门 [P4-P5]](/interview/junior/npm-pnpm-basics)                     | junior | package.json、依赖管理、scripts         |
-| [Chrome DevTools 实战 [P4-P5]](/interview/junior/devtools-basics)                    | junior | Elements/Console/Network/Sources        |
 | [前端调试基础 [P4-P5]](/interview/junior/debugging-basics)                           | junior | debugger、断点、条件断点                |
 | [Web 安全入门：XSS/CSRF [P4-P5]](/interview/junior/web-security-basics)              | junior | XSS 类型与防范、CSRF 原理               |
 | [SPA 部署基础（Nginx 配置） [P4-P5]](/interview/junior/spa-deploy-basics)            | junior | Nginx try_files、History 模式           |

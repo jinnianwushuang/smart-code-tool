@@ -30,7 +30,7 @@ target: 'P4-P5 初级工程师'
 
 ---
 
-## 学习文档（21 篇）
+## 学习文档（20 篇）
 
 ### HTML/CSS 基础（4 篇）
 
@@ -52,11 +52,11 @@ target: 'P4-P5 初级工程师'
 
 ### 浏览器/网络基础（3 篇）
 
-| 文档                                                                     | 描述                                    |
-| ------------------------------------------------------------------------ | --------------------------------------- |
-| [浏览器基础：结构与开发者工具 [P4-P5]](/interview/junior/browser-basics) | 浏览器结构、URL→渲染、DevTools          |
-| [HTTP 协议基础 [P4-P5]](/interview/junior/http-basics)                   | HTTP 方法、状态码、HTTPS                |
-| [浏览器存储全景 [P4-P5]](/interview/junior/storage-and-cookie)           | localStorage/Cookie/IndexedDB/Cache API |
+| 文档                                                                   | 描述                                    |
+| ---------------------------------------------------------------------- | --------------------------------------- |
+| [浏览器基础与 DevTools 实战 [P4-P5]](/interview/junior/browser-basics) | 浏览器结构、URL→渲染、DevTools 实战     |
+| [HTTP 协议基础 [P4-P5]](/interview/junior/http-basics)                 | HTTP 方法、状态码、HTTPS                |
+| [浏览器存储全景 [P4-P5]](/interview/junior/storage-and-cookie)         | localStorage/Cookie/IndexedDB/Cache API |
 
 ### Vue 入门（2 篇）
 
@@ -71,14 +71,13 @@ target: 'P4-P5 初级工程师'
 | ---------------------------------------------------------------------------------- | -------------------- |
 | [TypeScript 入门：类型注解与基础类型 [P4-P5]](/interview/junior/typescript-basics) | 基础类型、接口、枚举 |
 
-### 工具链（4 篇）
+### 工具链（3 篇）
 
-| 文档                                                                 | 描述                             |
-| -------------------------------------------------------------------- | -------------------------------- |
-| [Git 基础：分支策略与协作流程 [P4-P5]](/interview/junior/git-basics) | add/commit/push、分支、合并      |
-| [npm/pnpm 包管理入门 [P4-P5]](/interview/junior/npm-pnpm-basics)     | package.json、依赖管理、scripts  |
-| [Chrome DevTools 实战 [P4-P5]](/interview/junior/devtools-basics)    | Elements/Console/Network/Sources |
-| [前端调试基础 [P4-P5]](/interview/junior/debugging-basics)           | debugger、断点、条件断点         |
+| 文档                                                                 | 描述                            |
+| -------------------------------------------------------------------- | ------------------------------- |
+| [Git 基础：分支策略与协作流程 [P4-P5]](/interview/junior/git-basics) | add/commit/push、分支、合并     |
+| [npm/pnpm 包管理入门 [P4-P5]](/interview/junior/npm-pnpm-basics)     | package.json、依赖管理、scripts |
+| [前端调试基础 [P4-P5]](/interview/junior/debugging-basics)           | debugger、断点、条件断点        |
 
 ### 安全/部署/实战（3 篇）
 
@@ -97,7 +96,7 @@ target: 'P4-P5 初级工程师'
 第 2 周：JavaScript（4 篇）→ 能写交互逻辑
 第 3 周：浏览器/网络（3 篇）→ 理解运行环境
 第 4 周：Vue 入门（2 篇）→ 框架开发
-第 5 周：TypeScript + 工具链（5 篇）→ 工程化基础
+第 5 周：TypeScript + 工具链（4 篇）→ 工程化基础
 第 6 周：安全/部署/实战（3 篇）→ 完整项目
 ```
 

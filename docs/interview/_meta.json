@@ -728,11 +728,11 @@
           "updated": "2026-09-10"
         },
         "browser-basics": {
-          "title": "浏览器基础：结构与开发者工具",
+          "title": "浏览器基础与 DevTools 实战",
           "level": "junior",
-          "tags": ["浏览器", "Chrome", "DevTools"],
+          "tags": ["浏览器", "Chrome", "DevTools", "开发者工具"],
           "difficulty": "medium",
-          "updated": "2026-09-10"
+          "updated": "2026-09-16"
         },
         "http-basics": {
           "title": "HTTP 协议基础",
@@ -783,13 +783,6 @@
           "difficulty": "medium",
           "updated": "2026-09-10"
         },
-        "devtools-basics": {
-          "title": "Chrome DevTools 实战",
-          "level": "junior",
-          "tags": ["DevTools", "Chrome", "调试"],
-          "difficulty": "medium",
-          "updated": "2026-09-10"
-        },
         "debugging-basics": {
           "title": "前端调试基础",
           "level": "junior",
@@ -826,9 +819,9 @@
         "css-architecture": {
           "title": "CSS 架构：BEM/CSS Modules/Tailwind",
           "level": "intermediate",
-          "tags": ["CSS", "BEM", "Tailwind"],
+          "tags": ["CSS", "BEM", "Tailwind", ":deep", "scoped"],
           "difficulty": "hard",
-          "updated": "2026-09-10"
+          "updated": "2026-09-16"
         },
         "css-preprocessors": {
           "title": "CSS 预处理器：Sass/Less/PostCSS",
