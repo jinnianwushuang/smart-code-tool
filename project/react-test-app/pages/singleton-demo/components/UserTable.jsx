@@ -10,8 +10,15 @@ const { Text } = Typography
  * 通过 Context 消费表格数据和操作管道
  */
 export default function UserTable() {
-  const { tableData, filteredData, loading, pagination, handlePageChange, handleEdit, handleDelete } =
-    useUserContext()
+  const {
+    tableData,
+    filteredData,
+    loading,
+    pagination,
+    handlePageChange,
+    handleEdit,
+    handleDelete,
+  } = useUserContext()
 
   const columns = TABLE_COLUMNS.map((col) => {
     if (col.key === 'status') {
