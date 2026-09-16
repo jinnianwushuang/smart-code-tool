@@ -221,3 +221,9 @@ const copyToClipboard = async (content) => {
   border-color: #3f51b5;
 }
 </style>
+
+<style>
+body.body--dark .generator-wrapper .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
+  background: #1f1f1f;
+}
+</style>

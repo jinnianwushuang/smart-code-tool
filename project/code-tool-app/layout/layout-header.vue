@@ -135,7 +135,7 @@ const handle_click_menu = ({ key }) => {
 
     &:hover {
       color: var(--q-primary) !important;
-      background: rgba(25, 118, 210, 0.05); // 悬停时淡淡的背景色
+      background: var(--q-header-hover-bg);
     }
   }
 
@@ -152,6 +152,7 @@ body.body--light .header {
   --q-header-text-color: rgba(0, 0, 0, 0.85);
   --q-header-border-color: rgba(0, 0, 0, 0.1); /* 日间模式下使用浅色边框 */
   --q-primary: #1976d2;
+  --q-header-hover-bg: rgba(25, 118, 210, 0.05);
 }
 
 body.body--dark .header {
@@ -159,5 +160,6 @@ body.body--dark .header {
   --q-header-text-color: rgba(255, 255, 255, 0.85);
   --q-header-border-color: rgba(255, 255, 255, 0.1); /* 夜间模式下使用深色边框 */
   --q-primary: #2196f3;
+  --q-header-hover-bg: rgba(255, 255, 255, 0.08);
 }
 </style>

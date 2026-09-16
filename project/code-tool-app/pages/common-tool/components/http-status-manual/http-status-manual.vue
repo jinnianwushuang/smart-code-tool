@@ -207,4 +207,18 @@ const groupedStatus = computed(() => {
 .empty-box {
   padding: 40px 0;
 }
+
+/* 暗色模式 */
+</style>
+
+<style>
+body.body--dark .generator-wrapper .row-title {
+  color: #e0e0e0;
+}
+body.body--dark .generator-wrapper .row-desc {
+  color: #aaa;
+}
+body.body--dark .generator-wrapper .scenario-text {
+  color: #888;
+}
 </style>

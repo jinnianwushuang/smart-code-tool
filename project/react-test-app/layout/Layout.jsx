@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { Layout, Menu, Typography } from 'antd'
+import { Layout, Menu, Typography, theme } from 'antd'
 import {
   UnorderedListOutlined,
   AppstoreOutlined,
@@ -23,10 +23,11 @@ const MENU_ITEMS = [
   { key: '/react-test/controlled', icon: <FormOutlined />, label: '受控/非受控' },
 ]
 
-export default function AppLayout() {
+export default function AppLayout({ isDark }) {
   const location = useLocation()
   const navigate = useNavigate()
   const currentPath = location.pathname
+  const { token } = theme.useToken()
 
   const selectedKey = MENU_ITEMS.find((item) =>
     item.key === '/react-test'
@@ -36,14 +37,21 @@ export default function AppLayout() {
 
   return (
     <Layout style={{ height: '100vh', overflow: 'hidden' }}>
-      <Sider width={200} style={{ overflow: 'auto' }}>
+      <Sider
+        width={200}
+        style={{
+          background: token.colorBgContainer,
+          borderRight: `1px solid ${token.colorBorderSecondary}`,
+          overflow: 'auto',
+        }}
+      >
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: 10,
             padding: '18px 18px 14px',
-            borderBottom: '1px solid rgba(255,255,255,0.1)',
+            borderBottom: `1px solid ${token.colorBorderSecondary}`,
           }}
         >
           <div
@@ -51,7 +59,7 @@ export default function AppLayout() {
               width: 32,
               height: 32,
               borderRadius: 8,
-              background: '#1677ff',
+              background: token.colorPrimary,
               color: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -62,18 +70,21 @@ export default function AppLayout() {
           >
             R
           </div>
-          <Text strong style={{ color: 'rgba(255,255,255,0.9)', fontSize: 14 }}>
+          <Text strong style={{ fontSize: 14 }}>
             React 架构验证
           </Text>
         </div>
 
         <Menu
-          theme="dark"
           mode="inline"
           selectedKeys={[selectedKey]}
           items={MENU_ITEMS}
           onClick={({ key }) => navigate(key)}
-          style={{ borderRight: 0, marginTop: 8 }}
+          style={{
+            borderRight: 0,
+            marginTop: 8,
+            background: 'transparent',
+          }}
         />
 
         <div
@@ -82,10 +93,13 @@ export default function AppLayout() {
             bottom: 0,
             width: '100%',
             padding: '12px 18px',
-            borderTop: '1px solid rgba(255,255,255,0.1)',
+            borderTop: `1px solid ${token.colorBorderSecondary}`,
+            boxSizing: 'border-box',
           }}
         >
-          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)' }}>5 种核心范式</Text>
+          <Text type="secondary" style={{ fontSize: 11 }}>
+            5 种核心范式
+          </Text>
         </div>
       </Sider>
 
@@ -98,6 +112,8 @@ export default function AppLayout() {
               alignItems: 'center',
               height: 48,
               lineHeight: '48px',
+              background: token.colorBgContainer,
+              borderBottom: `1px solid ${token.colorBorderSecondary}`,
             }}
           >
             <Text type="secondary">React 架构验证</Text>

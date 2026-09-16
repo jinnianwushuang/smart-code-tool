@@ -98,6 +98,15 @@ onMounted(() => {
 
   // 监听 VitePress 父页面的主题切换消息，无需重载即可同步主题
   if (isInIframe.value) {
+    // 初始同步：读取父页面当前主题
+    try {
+      if (window.parent.document.documentElement.classList.contains('dark')) {
+        isDarkTheme.value = true
+      } else {
+        isDarkTheme.value = false
+      }
+    } catch (_) {}
+
     window.addEventListener('message', (event) => {
       if (event.data?.type === 'theme-change') {
         isDarkTheme.value = event.data.theme === 'dark'

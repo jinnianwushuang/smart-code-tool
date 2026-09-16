@@ -438,3 +438,9 @@ const copyToClipboard = (text) => {
   color: #ce9178;
 }
 </style>
+
+<style>
+body.body--dark .generator-wrapper .bottom-actions {
+  border-top-color: #333;
+}
+</style>
