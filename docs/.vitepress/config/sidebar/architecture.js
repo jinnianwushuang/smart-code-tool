@@ -506,6 +506,50 @@ const aiCodeInspection = {
   ],
 }
 
+// ── 典型拆解 ──
+const typicalAnalysis = {
+  text: '典型拆解',
+  collapsed: true,
+  items: [
+    {
+      text: 'TypeScript 类型拆解',
+      link: '/architecture-document/typical-analysis/typescript-type-analysis',
+    },
+    {
+      text: 'Node.js 事件调度拆解',
+      link: '/architecture-document/typical-analysis/nodejs-event-scheduling',
+    },
+    {
+      text: '浏览器端 JS 调度拆解',
+      link: '/architecture-document/typical-analysis/browser-js-scheduling',
+    },
+    {
+      text: 'Promise/A+ 手写实现拆解',
+      link: '/architecture-document/typical-analysis/promise-implementation',
+    },
+    {
+      text: '原型链与继承拆解',
+      link: '/architecture-document/typical-analysis/prototype-chain-and-inheritance',
+    },
+    {
+      text: '虚拟 DOM Diff 算法拆解',
+      link: '/architecture-document/typical-analysis/virtual-dom-diff',
+    },
+    {
+      text: '响应式系统核心原理拆解',
+      link: '/architecture-document/typical-analysis/reactive-system',
+    },
+    {
+      text: '深拷贝全场景拆解',
+      link: '/architecture-document/typical-analysis/deep-clone',
+    },
+    {
+      text: '前端路由系统实现拆解',
+      link: '/architecture-document/typical-analysis/frontend-router',
+    },
+  ],
+}
+
 // ── 研发思维 ──
 const thinking = {
   text: '研发思维',
@@ -542,6 +586,7 @@ export const architectureSidebar = {
     generalKnowledge,
     dataStructure,
     designPatterns,
+    typicalAnalysis,
     thinking,
   ],
 }

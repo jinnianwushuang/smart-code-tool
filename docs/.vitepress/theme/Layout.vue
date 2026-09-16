@@ -1,6 +1,7 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
 import BackToTop from './components/BackToTop.vue'
+import QuickTools from './components/QuickTools.vue'
 import dayjs from 'dayjs'
 
 const { Layout } = DefaultTheme
@@ -26,6 +27,7 @@ const build_time = dayjs(buildTime).format('HH:mm:ss Z')
     </template>
     <template #layout-bottom>
       <BackToTop />
+      <QuickTools />
     </template>
   </Layout>
 </template>

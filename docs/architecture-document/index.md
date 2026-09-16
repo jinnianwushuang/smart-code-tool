@@ -105,6 +105,18 @@
 - [技术迭代与学习疲态](./thinking/tech-iteration-and-learning-fatigue) - 技术快速迭代下的学习疲态本质、三种视角应对策略与协同模型
 - [数据·算法·显示 三者分离](./thinking/frontend-data-algorithm-view-separation) - 前端编程终极朴素思想：接口原始数据、算法处理、界面显示数据三层分离，与浏览器架构同构
 
+### 🔬 典型拆解
+
+- [TypeScript 类型拆解](./typical-analysis/typescript-type-analysis) - 内置工具类型底层实现逐行拆解：Exclude/infer/ReturnType/Awaited/Partial/Pick/Omit
+- [Node.js 事件调度拆解](./typical-analysis/nodejs-event-scheduling) - 手写 EventEmitter、通配符事件、Koa 洋葱模型中间件管道、流式管线背压控制
+- [浏览器端 JS 调度拆解](./typical-analysis/browser-js-scheduling) - Event Loop 宏/微任务调度、高频面试题输出预测、并发调度器、任务分片
+- [Promise/A+ 手写实现拆解](./typical-analysis/promise-implementation) - 状态机、then 链式调用、resolvePromise 递归解析、all/race/allSettled/any
+- [原型链与继承拆解](./typical-analysis/prototype-chain-and-inheritance) - 手写 new、原型链查找、继承方案演进、class extends 底层原理
+- [虚拟 DOM Diff 算法拆解](./typical-analysis/virtual-dom-diff) - 同层比较、Vue 2 双端 Diff、React key Map Diff、key 的作用
+- [响应式系统核心原理拆解](./typical-analysis/reactive-system) - Proxy + effect + track/trigger、computed 惰性计算、watch 侦听器
+- [深拷贝全场景拆解](./typical-analysis/deep-clone) - 循环引用、Date/RegExp/Map/Set、Symbol 键、structuredClone 对比
+- [前端路由系统实现拆解](./typical-analysis/frontend-router) - Hash/History 两种模式、动态路由匹配、懒加载、导航守卫
+
 ## 🎯 快速开始
 
 根据你的技术栈选择对应的架构文档:
