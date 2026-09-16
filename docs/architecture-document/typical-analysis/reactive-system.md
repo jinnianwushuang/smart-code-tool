@@ -153,11 +153,11 @@ targetMap (WeakMap):
         └── 'name'  → Set: [effect3]
 ```
 
-| 层级 | 数据结构 | 说明 |
-|---|---|---|
-| 第一层 | `WeakMap` | key 是原始对象，弱引用不阻止 GC |
-| 第二层 | `Map` | key 是属性名，value 是依赖集合 |
-| 第三层 | `Set` | 存储所有依赖该属性的 effect，自动去重 |
+| 层级   | 数据结构  | 说明                                  |
+| ------ | --------- | ------------------------------------- |
+| 第一层 | `WeakMap` | key 是原始对象，弱引用不阻止 GC       |
+| 第二层 | `Map`     | key 是属性名，value 是依赖集合        |
+| 第三层 | `Set`     | 存储所有依赖该属性的 effect，自动去重 |
 
 ---
 
@@ -203,10 +203,10 @@ const total = computed(() => state.price * state.quantity)
 // 关键：如果 price 没变，dirty 不会被标记，不会重复计算
 ```
 
-| 特性 | 实现方式 |
-|---|---|
-| 惰性计算 | `dirty` 标记，只在需要时重新计算 |
-| 缓存 | 依赖不变时直接返回缓存值 |
+| 特性     | 实现方式                                        |
+| -------- | ----------------------------------------------- |
+| 惰性计算 | `dirty` 标记，只在需要时重新计算                |
+| 缓存     | 依赖不变时直接返回缓存值                        |
 | 嵌套响应 | computed 本身也是响应式的，可被其他 effect 依赖 |
 
 ---
@@ -215,9 +215,7 @@ const total = computed(() => state.price * state.quantity)
 
 ```javascript
 function watch(source, cb, options = {}) {
-  const getter = typeof source === 'function'
-    ? source
-    : () => traverse(source) // 对象则递归读取所有属性（深度收集依赖）
+  const getter = typeof source === 'function' ? source : () => traverse(source) // 对象则递归读取所有属性（深度收集依赖）
 
   let oldValue
 
@@ -251,12 +249,12 @@ function traverse(value, seen = new Set()) {
 
 **watch vs computed 对比：**
 
-| 对比 | computed | watch |
-|---|---|---|
-| 用途 | 派生值（A → B） | 副作用（A → 执行操作） |
-| 返回值 | 有（计算结果） | 无 |
-| 缓存 | 有（dirty 标记） | 无 |
-| 执行时机 | 读取时惰性计算 | 依赖变化时主动执行 |
+| 对比     | computed         | watch                  |
+| -------- | ---------------- | ---------------------- |
+| 用途     | 派生值（A → B）  | 副作用（A → 执行操作） |
+| 返回值   | 有（计算结果）   | 无                     |
+| 缓存     | 有（dirty 标记） | 无                     |
+| 执行时机 | 读取时惰性计算   | 依赖变化时主动执行     |
 
 ---
 

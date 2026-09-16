@@ -7,14 +7,14 @@
 
 ## 一、两种路由模式对比
 
-| 对比项 | Hash 模式 | History 模式 |
-|---|---|---|
-| URL 格式 | `example.com/#/about` | `example.com/about` |
-| 核心 API | `hashchange` 事件 | `pushState` / `popstate` |
-| 服务端配置 | 不需要 | 需要 fallback 到 index.html |
-| SEO 友好 | 较差 | 较好 |
-| 兼容性 | IE8+ | IE10+ |
-| 刷新行为 | 不发送请求（`#` 后不发给服务端） | 发送请求（需服务端配合） |
+| 对比项     | Hash 模式                        | History 模式                |
+| ---------- | -------------------------------- | --------------------------- |
+| URL 格式   | `example.com/#/about`            | `example.com/about`         |
+| 核心 API   | `hashchange` 事件                | `pushState` / `popstate`    |
+| 服务端配置 | 不需要                           | 需要 fallback 到 index.html |
+| SEO 友好   | 较差                             | 较好                        |
+| 兼容性     | IE8+                             | IE10+                       |
+| 刷新行为   | 不发送请求（`#` 后不发给服务端） | 发送请求（需服务端配合）    |
 
 ---
 
@@ -25,8 +25,8 @@
 ```javascript
 class HashRouter {
   constructor() {
-    this.routes = {}        // 路由注册表：path → callback
-    this.currentPath = ''   // 当前路径
+    this.routes = {} // 路由注册表：path → callback
+    this.currentPath = '' // 当前路径
     this.beforeEachHook = null // 全局前置守卫
 
     // 监听 hash 变化
@@ -99,15 +99,21 @@ const router = new HashRouter()
 router.registerRoutes([
   {
     path: '/',
-    component: (el) => { el.innerHTML = '<h1>首页</h1>' },
+    component: (el) => {
+      el.innerHTML = '<h1>首页</h1>'
+    },
   },
   {
     path: '/about',
-    component: (el) => { el.innerHTML = '<h1>关于</h1>' },
+    component: (el) => {
+      el.innerHTML = '<h1>关于</h1>'
+    },
   },
   {
     path: '*',
-    component: (el) => { el.innerHTML = '<h1>404 页面未找到</h1>' },
+    component: (el) => {
+      el.innerHTML = '<h1>404 页面未找到</h1>'
+    },
   },
 ])
 
@@ -123,12 +129,12 @@ router.beforeEach(async (to) => {
 
 **Hash 路由执行流程拆解：**
 
-| 步骤 | 触发方式 | 事件 | 处理 |
-|---|---|---|---|
-| ① | 用户点击 `<a href="#/about">` | `hashchange` | `_onRouteChange()` |
-| ② | 编程式 `router.push('/about')` | 修改 `location.hash` → `hashchange` | `_onRouteChange()` |
-| ③ | 页面首次加载 | `load` | `_onRouteChange()` |
-| ④ | 浏览器前进/后退 | `popstate` → 触发 `hashchange` | `_onRouteChange()` |
+| 步骤 | 触发方式                       | 事件                                | 处理               |
+| ---- | ------------------------------ | ----------------------------------- | ------------------ |
+| ①    | 用户点击 `<a href="#/about">`  | `hashchange`                        | `_onRouteChange()` |
+| ②    | 编程式 `router.push('/about')` | 修改 `location.hash` → `hashchange` | `_onRouteChange()` |
+| ③    | 页面首次加载                   | `load`                              | `_onRouteChange()` |
+| ④    | 浏览器前进/后退                | `popstate` → 触发 `hashchange`      | `_onRouteChange()` |
 
 ---
 
@@ -205,22 +211,22 @@ class HistoryRouter {
 
 ### 3.2 关键 API 拆解
 
-| API | 作用 | 是否触发 popstate |
-|---|---|---|
-| `history.pushState(state, title, url)` | 添加历史记录，不刷新页面 | ❌ 不触发 |
-| `history.replaceState(state, title, url)` | 替换当前历史记录 | ❌ 不触发 |
-| `popstate` 事件 | 浏览器前进/后退时触发 | ✅ 触发 |
+| API                                       | 作用                     | 是否触发 popstate |
+| ----------------------------------------- | ------------------------ | ----------------- |
+| `history.pushState(state, title, url)`    | 添加历史记录，不刷新页面 | ❌ 不触发         |
+| `history.replaceState(state, title, url)` | 替换当前历史记录         | ❌ 不触发         |
+| `popstate` 事件                           | 浏览器前进/后退时触发    | ✅ 触发           |
 
 > **核心要点**：`pushState` 只改变 URL，不触发任何事件。所以调用 `pushState` 后必须**手动渲染**页面内容。
 
 **History 路由执行流程拆解：**
 
-| 步骤 | 触发方式 | 事件 | 处理 |
-|---|---|---|---|
-| ① | 用户点击 `<a data-link href="/about">` | `click` → `preventDefault` → `push()` | `pushState` + 手动渲染 |
-| ② | 编程式 `router.push('/about')` | 无事件 | `pushState` + 手动渲染 |
-| ③ | 浏览器前进/后退 | `popstate` | 读取 `location.pathname` + 渲染 |
-| ④ | 页面刷新 | 发送 HTTP 请求 | 需服务端返回 index.html |
+| 步骤 | 触发方式                               | 事件                                  | 处理                            |
+| ---- | -------------------------------------- | ------------------------------------- | ------------------------------- |
+| ①    | 用户点击 `<a data-link href="/about">` | `click` → `preventDefault` → `push()` | `pushState` + 手动渲染          |
+| ②    | 编程式 `router.push('/about')`         | 无事件                                | `pushState` + 手动渲染          |
+| ③    | 浏览器前进/后退                        | `popstate`                            | 读取 `location.pathname` + 渲染 |
+| ④    | 页面刷新                               | 发送 HTTP 请求                        | 需服务端返回 index.html         |
 
 ---
 
@@ -262,12 +268,12 @@ matchRoute('/about', '/user/123')
 
 **动态路由匹配拆解：**
 
-| 步骤 | 操作 | 结果 |
-|---|---|---|
-| ① | 按 `/` 拆分 pattern 和 path | `['', 'user', ':id']` vs `['', 'user', '123']` |
-| ② | 逐段比较 | `''` = `''` ✅，`'user'` = `'user'` ✅ |
-| ③ | 遇到 `:id` → 提取参数 | `params.id = '123'` |
-| ④ | 全部匹配 → 返回 params | `{ id: '123' }` |
+| 步骤 | 操作                        | 结果                                           |
+| ---- | --------------------------- | ---------------------------------------------- |
+| ①    | 按 `/` 拆分 pattern 和 path | `['', 'user', ':id']` vs `['', 'user', '123']` |
+| ②    | 逐段比较                    | `''` = `''` ✅，`'user'` = `'user'` ✅         |
+| ③    | 遇到 `:id` → 提取参数       | `params.id = '123'`                            |
+| ④    | 全部匹配 → 返回 params      | `{ id: '123' }`                                |
 
 ---
 
@@ -307,12 +313,12 @@ async function renderWithLazyLoad(path, routes, container) {
 
 **懒加载执行过程拆解：**
 
-| 步骤 | 事件 | 说明 |
-|---|---|---|
-| ① | 首次访问 `/dashboard` | `import()` 动态加载 JS 文件 |
-| ② | 显示加载状态 | `container.innerHTML = '加载中...'` |
-| ③ | 文件加载完成 | 缓存组件到 `componentCache` |
-| ④ | 再次访问 `/dashboard` | 直接从缓存取，不重新加载 |
+| 步骤 | 事件                  | 说明                                |
+| ---- | --------------------- | ----------------------------------- |
+| ①    | 首次访问 `/dashboard` | `import()` 动态加载 JS 文件         |
+| ②    | 显示加载状态          | `container.innerHTML = '加载中...'` |
+| ③    | 文件加载完成          | 缓存组件到 `componentCache`         |
+| ④    | 再次访问 `/dashboard` | 直接从缓存取，不重新加载            |
 
 ---
 
@@ -334,11 +340,11 @@ server {
 
 **为什么需要？**
 
-| 请求 | 无配置 | 有配置 |
-|---|---|---|
-| `GET /` | 返回 index.html ✅ | 返回 index.html ✅ |
-| `GET /about` | 404 ❌（服务器找不到 about 文件） | 返回 index.html ✅（由前端路由处理） |
-| `GET /assets/style.css` | 返回 CSS ✅ | 返回 CSS ✅（文件存在，不走 fallback） |
+| 请求                    | 无配置                            | 有配置                                 |
+| ----------------------- | --------------------------------- | -------------------------------------- |
+| `GET /`                 | 返回 index.html ✅                | 返回 index.html ✅                     |
+| `GET /about`            | 404 ❌（服务器找不到 about 文件） | 返回 index.html ✅（由前端路由处理）   |
+| `GET /assets/style.css` | 返回 CSS ✅                       | 返回 CSS ✅（文件存在，不走 fallback） |
 
 ---
 

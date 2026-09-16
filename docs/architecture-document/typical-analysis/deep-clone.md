@@ -21,12 +21,12 @@ deep.b.c = 999
 console.log(original.b.c) // 2 ← 完全独立 ✅
 ```
 
-| 方案 | 覆盖范围 | 循环引用 | 特殊类型 |
-|---|---|---|---|
-| `Object.assign` / 展开运算符 | 浅拷贝 | — | — |
-| `JSON.parse(JSON.stringify())` | 深拷贝 | ❌ 报错 | ❌ 丢失 |
-| `structuredClone` | 深拷贝 | ✅ | 大部分 ✅ |
-| 手写递归 | 深拷贝 | 需手动处理 | 需手动处理 |
+| 方案                           | 覆盖范围 | 循环引用   | 特殊类型   |
+| ------------------------------ | -------- | ---------- | ---------- |
+| `Object.assign` / 展开运算符   | 浅拷贝   | —          | —          |
+| `JSON.parse(JSON.stringify())` | 深拷贝   | ❌ 报错    | ❌ 丢失    |
+| `structuredClone`              | 深拷贝   | ✅         | 大部分 ✅  |
+| 手写递归                       | 深拷贝   | 需手动处理 | 需手动处理 |
 
 ---
 
@@ -44,16 +44,16 @@ const clone = JSON.parse(JSON.stringify(obj))
 
 **缺陷全拆解：**
 
-| 场景 | 代码 | 结果 |
-|---|---|---|
-| `undefined` | `{ a: undefined }` | 属性直接**消失** |
-| `Function` | `{ a: () => {} }` | 属性直接**消失** |
-| `Symbol` | `{ a: Symbol('x') }` | 属性直接**消失** |
-| `Date` | `{ a: new Date() }` | 变成**字符串** |
-| `RegExp` | `{ a: /abc/g }` | 变成**空对象** `{}` |
-| `Map / Set` | `{ a: new Map() }` | 变成**空对象** `{}` |
-| `循环引用` | `obj.self = obj` | 直接**报错** `TypeError` |
-| `NaN / Infinity` | `{ a: NaN }` | 变成 `null` |
+| 场景             | 代码                 | 结果                     |
+| ---------------- | -------------------- | ------------------------ |
+| `undefined`      | `{ a: undefined }`   | 属性直接**消失**         |
+| `Function`       | `{ a: () => {} }`    | 属性直接**消失**         |
+| `Symbol`         | `{ a: Symbol('x') }` | 属性直接**消失**         |
+| `Date`           | `{ a: new Date() }`  | 变成**字符串**           |
+| `RegExp`         | `{ a: /abc/g }`      | 变成**空对象** `{}`      |
+| `Map / Set`      | `{ a: new Map() }`   | 变成**空对象** `{}`      |
+| `循环引用`       | `obj.self = obj`     | 直接**报错** `TypeError` |
+| `NaN / Infinity` | `{ a: NaN }`         | 变成 `null`              |
 
 > 结论：`JSON.parse(JSON.stringify())` 只适用于**纯数据对象**（无函数、无特殊类型、无循环引用）。
 
@@ -114,10 +114,10 @@ obj.self = obj // 循环引用
 // ⑤ clone.self = clone ← 循环引用正确保持 ✅
 ```
 
-| 设计点 | 实现 | 原因 |
-|---|---|---|
-| `WeakMap` 做缓存 | key 是原对象，value 是克隆对象 | 弱引用不阻止 GC |
-| **先存后递归** | `map.set(obj, clone)` 在递归之前 | 防止循环引用导致无限递归 |
+| 设计点           | 实现                             | 原因                     |
+| ---------------- | -------------------------------- | ------------------------ |
+| `WeakMap` 做缓存 | key 是原对象，value 是克隆对象   | 弱引用不阻止 GC          |
+| **先存后递归**   | `map.set(obj, clone)` 在递归之前 | 防止循环引用导致无限递归 |
 
 ### 3.3 最终版：全类型支持
 
@@ -184,17 +184,17 @@ function deepClone(obj, map = new WeakMap()) {
 
 **全场景覆盖拆解：**
 
-| 场景 | 处理方式 | 代码 |
-|---|---|---|
-| 基本类型 | 直接返回 | `typeof !== 'object'` |
-| `null` | 直接返回 | `obj === null` |
-| `Date` | `new Date(obj.getTime())` | 创建新的日期对象 |
-| `RegExp` | `new RegExp(source, flags)` | 保留正则表达式完整信息 |
-| `Map` | 递归拷贝键值对 | 键和值都可能也是复杂对象 |
-| `Set` | 递归拷贝元素 | 每个元素独立克隆 |
-| 循环引用 | `WeakMap` 缓存 + 先存后递归 | 防止栈溢出 |
-| `Symbol` 键 | `Object.getOwnPropertySymbols` | 展开运算符不拷贝 Symbol |
-| 不可枚举属性 | `Reflect.ownKeys` | `for...in` 只遍历可枚举 |
+| 场景         | 处理方式                       | 代码                     |
+| ------------ | ------------------------------ | ------------------------ |
+| 基本类型     | 直接返回                       | `typeof !== 'object'`    |
+| `null`       | 直接返回                       | `obj === null`           |
+| `Date`       | `new Date(obj.getTime())`      | 创建新的日期对象         |
+| `RegExp`     | `new RegExp(source, flags)`    | 保留正则表达式完整信息   |
+| `Map`        | 递归拷贝键值对                 | 键和值都可能也是复杂对象 |
+| `Set`        | 递归拷贝元素                   | 每个元素独立克隆         |
+| 循环引用     | `WeakMap` 缓存 + 先存后递归    | 防止栈溢出               |
+| `Symbol` 键  | `Object.getOwnPropertySymbols` | 展开运算符不拷贝 Symbol  |
+| 不可枚举属性 | `Reflect.ownKeys`              | `for...in` 只遍历可枚举  |
 
 ---
 
@@ -215,18 +215,18 @@ const clone = structuredClone(obj)
 
 **与手写方案对比：**
 
-| 对比项 | `structuredClone` | 手写 `deepClone` |
-|---|---|---|
-| 循环引用 | ✅ 原生支持 | ✅ WeakMap 处理 |
-| `Date / RegExp` | ✅ | ✅ |
-| `Map / Set` | ✅ | ✅ |
-| `ArrayBuffer` | ✅ | ❌ 需额外处理 |
-| `Function` | ❌ 报错 | ❌ 函数无法克隆 |
-| `DOM 节点` | ❌ 报错 | ❌ |
-| `Symbol` 属性 | ✅ | ✅ |
-| 性能 | 更快（C++ 实现） | 较慢（JS 递归） |
-| 兼容性 | Chrome 98+ / FF 94+ | 全平台 |
-| 可定制性 | 不可定制 | 可自定义策略 |
+| 对比项          | `structuredClone`   | 手写 `deepClone` |
+| --------------- | ------------------- | ---------------- |
+| 循环引用        | ✅ 原生支持         | ✅ WeakMap 处理  |
+| `Date / RegExp` | ✅                  | ✅               |
+| `Map / Set`     | ✅                  | ✅               |
+| `ArrayBuffer`   | ✅                  | ❌ 需额外处理    |
+| `Function`      | ❌ 报错             | ❌ 函数无法克隆  |
+| `DOM 节点`      | ❌ 报错             | ❌               |
+| `Symbol` 属性   | ✅                  | ✅               |
+| 性能            | 更快（C++ 实现）    | 较慢（JS 递归）  |
+| 兼容性          | Chrome 98+ / FF 94+ | 全平台           |
+| 可定制性        | 不可定制            | 可自定义策略     |
 
 ---
 

@@ -31,11 +31,11 @@ const p = new Person('Alice')
 
 **原型链查找拆解：**
 
-| 步骤 | 查找过程 | 结果 |
-|---|---|---|
-| ① | `p.sayHi()` → 在 `p` 自身找 | 没找到 |
-| ② | 沿 `p.__proto__` → `Person.prototype` 找 | 找到 `sayHi` ✅ |
-| ③ | 若还没找到 → 继续到 `Object.prototype` | 再找不到 → `undefined` |
+| 步骤 | 查找过程                                 | 结果                   |
+| ---- | ---------------------------------------- | ---------------------- |
+| ①    | `p.sayHi()` → 在 `p` 自身找              | 没找到                 |
+| ②    | 沿 `p.__proto__` → `Person.prototype` 找 | 找到 `sayHi` ✅        |
+| ③    | 若还没找到 → 继续到 `Object.prototype`   | 再找不到 → `undefined` |
 
 ---
 
@@ -71,20 +71,20 @@ Person.prototype.sayHi = function () {
 const p = myNew(Person, 'Alice')
 ```
 
-| 步骤 | 操作 | 结果 |
-|---|---|---|
-| ① | `Object.create(Person.prototype)` | 创建空对象 `{}`，`__proto__` 指向 `Person.prototype` |
-| ② | `Person.apply(obj, ['Alice'])` | 在 `obj` 上执行 `this.name = 'Alice'` |
-| ③ | 构造函数无返回值（`undefined`） | 返回 `obj` |
-| ④ | 最终 | `p.name === 'Alice'`，`p.sayHi()` 可用 |
+| 步骤 | 操作                              | 结果                                                 |
+| ---- | --------------------------------- | ---------------------------------------------------- |
+| ①    | `Object.create(Person.prototype)` | 创建空对象 `{}`，`__proto__` 指向 `Person.prototype` |
+| ②    | `Person.apply(obj, ['Alice'])`    | 在 `obj` 上执行 `this.name = 'Alice'`                |
+| ③    | 构造函数无返回值（`undefined`）   | 返回 `obj`                                           |
+| ④    | 最终                              | `p.name === 'Alice'`，`p.sayHi()` 可用               |
 
 ### 2.3 关键设计点
 
-| 设计点 | 为什么 |
-|---|---|
-| `Object.create(Constructor.prototype)` | 让新对象的 `__proto__` 正确指向构造函数的原型 |
-| `Constructor.apply(obj, args)` | 让构造函数中的 `this` 指向新对象，完成属性初始化 |
-| 返回值判断 | 如果构造函数显式返回对象，`new` 的结果应该是那个对象而非新创建的对象 |
+| 设计点                                 | 为什么                                                               |
+| -------------------------------------- | -------------------------------------------------------------------- |
+| `Object.create(Constructor.prototype)` | 让新对象的 `__proto__` 正确指向构造函数的原型                        |
+| `Constructor.apply(obj, args)`         | 让构造函数中的 `this` 指向新对象，完成属性初始化                     |
+| 返回值判断                             | 如果构造函数显式返回对象，`new` 的结果应该是那个对象而非新创建的对象 |
 
 ---
 
@@ -109,10 +109,10 @@ d1.colors.push('green')
 console.log(d2.colors) // ['red', 'blue', 'green'] ← 问题：引用类型被共享！
 ```
 
-| 优点 | 缺点 |
-|---|---|
+| 优点               | 缺点                       |
+| ------------------ | -------------------------- |
 | 父类原型方法可复用 | 引用类型属性被所有实例共享 |
-| — | 无法向父类构造函数传参 |
+| —                  | 无法向父类构造函数传参     |
 
 ### 3.2 方案二：借用构造函数
 
@@ -145,17 +145,17 @@ Animal.prototype.eat = function () {
 }
 
 function Dog(name, breed) {
-  Animal.call(this, name)       // 第二次调用 Animal → 属性独立
+  Animal.call(this, name) // 第二次调用 Animal → 属性独立
   this.breed = breed
 }
-Dog.prototype = new Animal()    // 第一次调用 Animal → 继承原型方法
+Dog.prototype = new Animal() // 第一次调用 Animal → 继承原型方法
 Dog.prototype.constructor = Dog // 修复 constructor 指向
 Dog.prototype.bark = function () {
   console.log('woof!')
 }
 
 const d = new Dog('Buddy', 'Labrador')
-d.eat()  // "Buddy is eating" ✅
+d.eat() // "Buddy is eating" ✅
 d.bark() // "woof!" ✅
 ```
 
@@ -189,12 +189,12 @@ Dog.prototype.bark = function () {
 
 **对比组合继承：**
 
-| 对比项 | 组合继承 | 寄生组合继承 |
-|---|---|---|
-| 父类构造函数调用次数 | 2 次 | 1 次 |
-| 原型方法复用 | ✅ | ✅ |
-| 属性独立 | ✅ | ✅ |
-| 额外属性 | 原型上有重复的父类实例属性 | 无多余属性 |
+| 对比项               | 组合继承                   | 寄生组合继承 |
+| -------------------- | -------------------------- | ------------ |
+| 父类构造函数调用次数 | 2 次                       | 1 次         |
+| 原型方法复用         | ✅                         | ✅           |
+| 属性独立             | ✅                         | ✅           |
+| 额外属性             | 原型上有重复的父类实例属性 | 无多余属性   |
 
 ---
 
@@ -234,21 +234,21 @@ function Dog(name, breed) {
 }
 ```
 
-| 设计点 | 说明 |
-|---|---|
+| 设计点                    | 说明                                                               |
+| ------------------------- | ------------------------------------------------------------------ |
 | `super()` 必须先于 `this` | 子类实例由父类构造函数创建（`Reflect.construct`），`this` 来自父类 |
-| `new.target` | 确保创建的对象原型是**子类**的 `prototype`，而非父类 |
-| 底层机制 | 本质仍是寄生组合继承，只是语法糖 |
+| `new.target`              | 确保创建的对象原型是**子类**的 `prototype`，而非父类               |
+| 底层机制                  | 本质仍是寄生组合继承，只是语法糖                                   |
 
 ### 4.2 class vs 构造函数对比
 
-| 对比项 | 构造函数 | class |
-|---|---|---|
-| 调用方式 | 可当普通函数调用 | 必须 `new`，否则报错 |
-| 原型方法可枚举性 | 可枚举 | **不可枚举**（`enumerable: false`） |
-| 静态方法 | `Constructor.method` | `static method` |
-| 继承 | 手动设置原型链 | `extends` + `super` |
-| 私有成员 | 无原生支持 | `#field` 语法 |
+| 对比项           | 构造函数             | class                               |
+| ---------------- | -------------------- | ----------------------------------- |
+| 调用方式         | 可当普通函数调用     | 必须 `new`，否则报错                |
+| 原型方法可枚举性 | 可枚举               | **不可枚举**（`enumerable: false`） |
+| 静态方法         | `Constructor.method` | `static method`                     |
+| 继承             | 手动设置原型链       | `extends` + `super`                 |
+| 私有成员         | 无原生支持           | `#field` 语法                       |
 
 ---
 
@@ -288,9 +288,9 @@ function myCreate(proto) {
 const obj = { a: 1 }
 // obj.__proto__ = Object.prototype（有 toString）
 
-'a' in obj              // true  — 沿原型链查找
+'a' in obj // true  — 沿原型链查找
 obj.hasOwnProperty('a') // true  — 只查自身
-'toString' in obj              // true  — 在原型链上找到了
+'toString' in obj // true  — 在原型链上找到了
 obj.hasOwnProperty('toString') // false — 不是自身属性
 ```
 
