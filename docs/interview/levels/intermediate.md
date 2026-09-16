@@ -79,14 +79,7 @@ target: 'P5-P6 中级工程师'
 | ------------------------------------------------------------------------ | ----------------------- |
 | [React 入门：JSX、Hooks、组件模式 [P5-P6]](/interview/intermediate/react-basics) | JSX、useState/useEffect |
 
-### Flutter 入门（4 篇）
-
-| 文档                                                                               | 描述                           |
-| ---------------------------------------------------------------------------------- | ------------------------------ |
-| [Dart 语言基础与核心特性 [P5-P6]](/interview/intermediate/flutter-dart-basics)             | 空安全、异步、OOP、Mixin       |
-| [Flutter Widget 体系与布局系统 [P5-P6]](/interview/intermediate/flutter-widget-and-layout) | Widget、布局约束、常用组件     |
-| [Flutter 状态管理基础 [P5-P6]](/interview/intermediate/flutter-state-management-basics)    | setState、Provider、Bloc       |
-| [Flutter 导航与路由实战 [P5-P6]](/interview/intermediate/flutter-navigation-and-routing)   | Navigator、GoRouter、Deep Link |
+> 📌 Flutter/Dart 中级内容已迁移至独立目录：[Flutter 中级（P5-P6）](/interview/levels/flutter#入门中级-p5-p6-4-篇)
 
 ### 工程化/性能/测试/安全（6 篇）
 

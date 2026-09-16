@@ -105,22 +105,6 @@ export const interviewSidebar = {
           text: 'React 入门：JSX、Hooks、组件模式 [P5-P6]',
           link: '/interview/intermediate/react-basics',
         },
-        {
-          text: 'Dart 语言基础与核心特性 [P5-P6]',
-          link: '/interview/intermediate/flutter-dart-basics',
-        },
-        {
-          text: 'Flutter Widget 体系与布局系统 [P5-P6]',
-          link: '/interview/intermediate/flutter-widget-and-layout',
-        },
-        {
-          text: 'Flutter 状态管理基础：setState/Provider/Bloc [P5-P6]',
-          link: '/interview/intermediate/flutter-state-management-basics',
-        },
-        {
-          text: 'Flutter 导航与路由实战 [P5-P6]',
-          link: '/interview/intermediate/flutter-navigation-and-routing',
-        },
         { text: '前端性能优化基础 [P5-P6]', link: '/interview/intermediate/performance-basics' },
         {
           text: '前端测试基础：Jest/Vitest [P5-P6]',
@@ -138,6 +122,29 @@ export const interviewSidebar = {
         {
           text: 'Docker 容器化基础与前端部署 [P5-P6]',
           link: '/interview/intermediate/docker-basics',
+        },
+      ],
+    },
+    // ── Flutter 中级（P5-P6）──
+    {
+      text: 'Flutter 中级（P5-P6）',
+      collapsed: true,
+      items: [
+        {
+          text: 'Dart 语言基础与核心特性 [P5-P6]',
+          link: '/interview/flutter-intermediate/flutter-dart-basics',
+        },
+        {
+          text: 'Flutter Widget 体系与布局系统 [P5-P6]',
+          link: '/interview/flutter-intermediate/flutter-widget-and-layout',
+        },
+        {
+          text: 'Flutter 状态管理基础：setState/Provider/Bloc [P5-P6]',
+          link: '/interview/flutter-intermediate/flutter-state-management-basics',
+        },
+        {
+          text: 'Flutter 导航与路由实战 [P5-P6]',
+          link: '/interview/flutter-intermediate/flutter-navigation-and-routing',
         },
       ],
     },

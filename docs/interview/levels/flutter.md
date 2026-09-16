@@ -44,10 +44,10 @@ target: 'Flutter 开发者'
 
 | 文档                                                                                       | 描述                                |
 | ------------------------------------------------------------------------------------------ | ----------------------------------- |
-| [Dart 语言基础与核心特性 [P5-P6]](/interview/intermediate/flutter-dart-basics)             | Dart 语法、空安全、异步、OOP        |
-| [Flutter Widget 体系与布局系统 [P5-P6]](/interview/intermediate/flutter-widget-and-layout) | Widget 生命周期、布局约束、常用组件 |
-| [Flutter 状态管理基础 [P5-P6]](/interview/intermediate/flutter-state-management-basics)    | setState、Provider、Bloc 入门       |
-| [Flutter 导航与路由实战 [P5-P6]](/interview/intermediate/flutter-navigation-and-routing)   | Navigator、命名路由、GoRouter       |
+| [Dart 语言基础与核心特性 [P5-P6]](/interview/flutter-intermediate/flutter-dart-basics)             | Dart 语法、空安全、异步、OOP        |
+| [Flutter Widget 体系与布局系统 [P5-P6]](/interview/flutter-intermediate/flutter-widget-and-layout) | Widget 生命周期、布局约束、常用组件 |
+| [Flutter 状态管理基础 [P5-P6]](/interview/flutter-intermediate/flutter-state-management-basics)    | setState、Provider、Bloc 入门       |
+| [Flutter 导航与路由实战 [P5-P6]](/interview/flutter-intermediate/flutter-navigation-and-routing)   | Navigator、命名路由、GoRouter       |
 
 ### 进阶（高级 P6-P7）— 8 篇
 

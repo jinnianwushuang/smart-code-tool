@@ -969,7 +969,12 @@
           "tags": ["Docker", "容器化", "部署"],
           "difficulty": "hard",
           "updated": "2026-09-10"
-        },
+        }
+      }
+    },
+    "flutter-intermediate": {
+      "label": "Flutter 中级（P5-P6）",
+      "docs": {
         "flutter-dart-basics": {
           "title": "Dart 语言基础与核心特性",
           "level": "intermediate",

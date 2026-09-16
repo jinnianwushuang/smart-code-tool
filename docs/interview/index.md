@@ -24,7 +24,7 @@
 | 文档                                                  | 级别         | 描述                                        |
 | ----------------------------------------------------- | ------------ | ------------------------------------------- |
 | [初级工程师（P4-P5）](/interview/levels/junior)       | junior       | 20 篇基础文档，HTML/CSS/JS/Vue/TS/工具链    |
-| [中级工程师（P5-P6）](/interview/levels/intermediate) | intermediate | 26 篇进阶文档，JS/CSS/Vue/TS/Flutter/工程化 |
+| [中级工程师（P5-P6）](/interview/levels/intermediate) | intermediate | 22 篇进阶文档，JS/CSS/Vue/TS/React/工程化 |
 | [高级工程师（P6-P7）](/interview/levels/senior)       | senior       | 41 篇深入文档，框架源码/架构设计/性能优化   |
 | [架构师（P8）](/interview/levels/architect)           | architect    | 12 篇架构文档，系统设计/技术选型/影响力     |
 | [技术主管（TL）](/interview/levels/manager)           | manager      | 8 篇管理文档，团队管理/项目管理/沟通协作    |
@@ -85,10 +85,17 @@
 | [前端错误处理与监控入门 [P5-P6]](/interview/intermediate/error-handling)                   | intermediate | ErrorBoundary、全局错误捕获、上报        |
 | [Web 安全实战：CSP/SRI/依赖检查 [P5-P6]](/interview/intermediate/web-security-practice)    | intermediate | CSP 策略、SRI、依赖安全检查              |
 | [Docker 容器化基础与前端部署 [P5-P6]](/interview/intermediate/docker-basics)               | intermediate | Dockerfile、docker-compose、容器化部署   |
-| [Dart 语言基础与核心特性 [P5-P6]](/interview/intermediate/flutter-dart-basics)             | intermediate | 空安全、异步编程、OOP、Mixin             |
-| [Flutter Widget 体系与布局系统 [P5-P6]](/interview/intermediate/flutter-widget-and-layout) | intermediate | Widget 生命周期、布局约束、常用布局组件  |
-| [Flutter 状态管理基础 [P5-P6]](/interview/intermediate/flutter-state-management-basics)    | intermediate | setState、Provider、Bloc 入门            |
-| [Flutter 导航与路由实战 [P5-P6]](/interview/intermediate/flutter-navigation-and-routing)   | intermediate | Navigator、命名路由、GoRouter、Deep Link |
+
+---
+
+## Flutter 中级 [P5-P6]
+
+| 文档                                                                                              | 层级         | 描述                                     |
+| ------------------------------------------------------------------------------------------------- | ------------ | ---------------------------------------- |
+| [Dart 语言基础与核心特性 [P5-P6]](/interview/flutter-intermediate/flutter-dart-basics)             | intermediate | 空安全、异步编程、OOP、Mixin             |
+| [Flutter Widget 体系与布局系统 [P5-P6]](/interview/flutter-intermediate/flutter-widget-and-layout) | intermediate | Widget 生命周期、布局约束、常用布局组件  |
+| [Flutter 状态管理基础 [P5-P6]](/interview/flutter-intermediate/flutter-state-management-basics)    | intermediate | setState、Provider、Bloc 入门            |
+| [Flutter 导航与路由实战 [P5-P6]](/interview/flutter-intermediate/flutter-navigation-and-routing)   | intermediate | Navigator、命名路由、GoRouter、Deep Link |
 
 ---
 
