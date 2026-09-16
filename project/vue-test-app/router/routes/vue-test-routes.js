@@ -5,9 +5,9 @@ import {
   ShopOutlined,
   NotificationOutlined,
   ExperimentOutlined,
-  FileTextOutlined,
-  CopyOutlined,
-  SwitcherOutlined,
+  ApartmentOutlined,
+  BlockOutlined,
+  ThunderboltOutlined,
 } from '@ant-design/icons-vue'
 import { h } from 'vue'
 
@@ -15,10 +15,16 @@ export const routes_vue_test = [
   {
     path: '/',
     name: 'vue-test',
-    redirect: { name: 'singleton-demo' },
+    redirect: { name: 'vue-index' },
     meta: { title: 'VUE架构验证', icon: () => h(ExperimentOutlined), hidden: false },
     component: () => import('project/layout/layout-vue-page.vue'),
     children: [
+      {
+        path: 'index',
+        name: 'vue-index',
+        meta: { title: '架构总览', icon: () => h(HomeOutlined), hidden: false },
+        component: () => import('project/pages/vue-test/vue-index/vue-index.vue'),
+      },
       {
         path: 'verification-explanation',
         name: 'verification-explanation',
@@ -26,7 +32,24 @@ export const routes_vue_test = [
         component: () =>
           import('project/pages/vue-test/verification-explanation/verification-explanation.vue'),
       },
-
+      {
+        path: 'composable-chain',
+        name: 'composable-chain',
+        meta: { title: 'Composable组合链', icon: () => h(ApartmentOutlined), hidden: false },
+        component: () => import('project/pages/vue-test/composable-chain/composable-chain.vue'),
+      },
+      {
+        path: 'scoped-slot-demo',
+        name: 'scoped-slot-demo',
+        meta: { title: 'ScopedSlot插槽', icon: () => h(BlockOutlined), hidden: false },
+        component: () => import('project/pages/vue-test/scoped-slot-demo/scoped-slot-demo.vue'),
+      },
+      {
+        path: 'reactivity-depth',
+        name: 'reactivity-depth',
+        meta: { title: '响应式深度', icon: () => h(ThunderboltOutlined), hidden: false },
+        component: () => import('project/pages/vue-test/reactivity-depth/reactivity-depth.vue'),
+      },
       {
         path: 'multiton-demo',
         name: 'multiton-demo',

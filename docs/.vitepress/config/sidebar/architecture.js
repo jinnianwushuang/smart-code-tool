@@ -102,6 +102,10 @@ const flutter = {
               text: '数据·算法·显示 三者分离',
               link: '/architecture-document/flutter/thinking/data-algorithm-view-separation',
             },
+            {
+              text: '组件设计模式',
+              link: '/architecture-document/flutter/thinking/flutter-component-design-patterns',
+            },
           ],
         },
         {
@@ -338,6 +342,10 @@ const vue = {
         {
           text: '数据·算法·显示 三者分离',
           link: '/architecture-document/vue/standardized-template-cn/data-algorithm-view-separation-cn',
+        },
+        {
+          text: '组件设计模式',
+          link: '/architecture-document/vue/standardized-template-cn/vue-component-design-patterns',
         },
       ],
     },

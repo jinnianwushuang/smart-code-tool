@@ -27,7 +27,10 @@ export const nav = [
   },
   {
     text: '其他',
-    items: [{ text: 'VUE 架构验证', link: '/app-iframe/vue-test-app/' }],
+    items: [
+      { text: 'VUE 架构验证', link: '/app-iframe/vue-test-app/' },
+      { text: 'React 架构验证', link: '/app-iframe/react-test-app/' },
+    ],
   },
   // { text: 'GitHub', link: 'https://github.com/jinnianwushuang/smart-code-tool' },
 ]

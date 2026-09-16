@@ -22,6 +22,7 @@
 - [内存管理与性能调优](./flutter/thinking/memory-management-performance) - 三层内存模型、OOM 归因、泄漏检测与 APM 体系
 - [音视频与相机管线](./flutter/thinking/audio-video-camera) - 相机管线、编解码、播放管线、WebRTC 与直播架构
 - [数据·算法·显示 三者分离](./flutter/thinking/data-algorithm-view-separation) - BLoC/Riverpod/Stream 架构下的三层分离与 Flutter 渲染管线同构
+- [组件设计模式](./flutter/thinking/flutter-component-design-patterns) - Stateless/Stateful 分离、InheritedWidget、BLoC、Key 模式等
 - [存储与数据同步](./flutter/thinking/storage-data-sync) - SQLite/KV 选型、离线优先架构与冲突解决
 - [安全攻防基础](./flutter/thinking/mobile-security) - 逆向防护、安全存储、证书固定与 API 安全
 - [混合栈与模块化架构](./flutter/thinking/hybrid-stack-modularization) - 引擎管理、混合路由与大型项目模块化
@@ -57,6 +58,7 @@
 - [技术选型](./vue/technology-selection/app-project)
 - [业务组件 SDK 打包](./vue/technology-selection/sdk-project) - 将业务组件封装为独立 SDK 供外部项目使用
 - [数据·算法·显示 三者分离](./vue/standardized-template-cn/data-algorithm-view-separation-cn) - Composition API + Composable + computed 的三层分离与装配架构融合
+- [组件设计模式](./vue/standardized-template-cn/vue-component-design-patterns) - Composable、作用域插槽、装配器、v-model、provide/inject 等模式
 
 ### 🔧 工程化
 

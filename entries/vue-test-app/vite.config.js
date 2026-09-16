@@ -17,6 +17,7 @@ const projectRoot = fileURLToPath(new URL('../..', import.meta.url))
 export default defineConfig(async () => {
   return {
     root: projectRoot,
+    cacheDir: `${projectRoot}/node_modules/.vite-vue-test-app`,
     base: '/smart-code-tool/vue-test-app/',
     build: {
       outDir: `${projectRoot}/dist/vue-test-app`,

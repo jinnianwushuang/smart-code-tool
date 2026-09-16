@@ -39,7 +39,7 @@
         <template #icon><plus-outlined /></template>
         入驻新商户
       </a-button>
-      <span style="color: #999">当前共 {{ pagination.total }} 家商户</span>
+      <a-typography-text type="secondary">当前共 {{ pagination.total }} 家商户</a-typography-text>
     </div>
   </div>
 </template>

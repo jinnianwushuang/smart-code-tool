@@ -21,6 +21,7 @@ const projectRoot = fileURLToPath(new URL('../..', import.meta.url))
 export default defineConfig(async () => {
   return {
     root: projectRoot,
+    cacheDir: `${projectRoot}/node_modules/.vite-code-tool-app`,
     base: '/smart-code-tool/code-tool-app/',
     build: {
       outDir: `${projectRoot}/dist/code-tool-app`,

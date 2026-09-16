@@ -35,8 +35,13 @@ try {
   await $`vite build --config entries/vue-test-app/vite.config.js`
   console.log(chalk.green('✓ Vue-test application built\n'))
 
-  // Step 6: 后处理 — 移动入口 HTML 到正确位置
-  console.log(chalk.yellow('📂 Step 6: Moving entry HTML files...'))
+  // Step 6: 构建 React 架构验证应用（子项目 /react-test/）→ 输出到 dist/react-test-app/
+  console.log(chalk.yellow('🔨 Step 6: Building react-test application → dist/react-test-app/...'))
+  await $`vite build --config entries/react-test-app/vite.config.js`
+  console.log(chalk.green('✓ React-test application built\n'))
+
+  // Step 7: 后处理 — 移动入口 HTML 到正确位置
+  console.log(chalk.yellow('📂 Step 7: Moving entry HTML files...'))
   await $`node ./job/post-build/move-entry-html.js`
   console.log(chalk.green('✓ Entry HTML files moved\n'))
 
@@ -47,6 +52,7 @@ try {
   console.log(chalk.gray('   Documentation: ./dist (main)'))
   console.log(chalk.gray('   Code-Tool App: ./dist/code-tool-app'))
   console.log(chalk.gray('   Vue-Test App: ./dist/vue-test-app'))
+  console.log(chalk.gray('   React-Test App: ./dist/react-test-app'))
   console.log(chalk.green('========================================\n'))
 } catch (error) {
   console.error(chalk.red('\n❌ Build failed!'))

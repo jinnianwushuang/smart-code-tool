@@ -45,6 +45,10 @@ export const vite = {
           if (url.includes('?import') || url.includes('?direct')) return false
         },
       },
+      '/smart-code-tool/react-test-app/': {
+        target: 'http://localhost:23370',
+        changeOrigin: true,
+      },
     },
   },
 }
