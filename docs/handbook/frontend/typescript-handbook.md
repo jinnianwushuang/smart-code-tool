@@ -966,6 +966,8 @@ const todo2 = updateTodo(todo1, {
 })
 ```
 
+> 📖 底层实现拆解（`[K in keyof T]?` 修饰符变更）：[Partial / Required 拆解](/architecture-document/typical-analysis/typescript-type-analysis#五-partial-required-映射类型修饰符)
+
 ### 11.2 `Required<T>`
 
 ```typescript
@@ -979,6 +981,8 @@ const props: Required<Props> = {
   description: 'My Description',
 }
 ```
+
+> 📖 底层实现拆解（`-?` 移除可选修饰符）：[Partial / Required 拆解](/architecture-document/typical-analysis/typescript-type-analysis#五-partial-required-映射类型修饰符)
 
 ### 11.3 `Readonly<T>`
 
@@ -1028,6 +1032,8 @@ const todo: TodoPreview = {
 }
 ```
 
+> 📖 底层实现拆解（`keyof` + 映射遍历 + `Exclude` 组合）：[Pick / Omit 拆解](/architecture-document/typical-analysis/typescript-type-analysis#六-pick-omit-属性筛选)
+
 ### 11.6 Omit<T, K>
 
 ```typescript
@@ -1046,6 +1052,8 @@ const todo: TodoPreview = {
 }
 ```
 
+> 📖 底层实现拆解（内部复用 `Exclude` 剔除属性）：[Pick / Omit 拆解](/architecture-document/typical-analysis/typescript-type-analysis#六-pick-omit-属性筛选)
+
 ### 11.7 Exclude<T, U>
 
 ```typescript
@@ -1053,6 +1061,8 @@ type T0 = Exclude<'a' | 'b' | 'c', 'a'> // "b" | "c"
 type T1 = Exclude<'a' | 'b' | 'c', 'a' | 'b'> // "c"
 type T2 = Exclude<string | number | (() => void), Function> // string | number
 ```
+
+> 📖 底层实现拆解（分发机制 + never 过滤）：[Exclude 拆解](/architecture-document/typical-analysis/typescript-type-analysis#一-exclude-分布式条件类型实现集合-差集)
 
 ### 11.8 Extract<T, U>
 
@@ -1090,6 +1100,8 @@ type T2 = ReturnType<<T>() => T> // unknown
 type T3 = ReturnType<<T extends U, U extends number[]>() => T> // number[]
 type T4 = ReturnType<typeof f1> // { a: number; b: string }
 ```
+
+> 📖 底层实现拆解（`infer R` 提取返回值）：[ReturnType 拆解](/architecture-document/typical-analysis/typescript-type-analysis#三-returntype-infer-的经典应用)
 
 ### 11.12 `InstanceType<T>`
 
