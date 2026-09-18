@@ -22,6 +22,10 @@ export const nav = [
     link: '/interview/',
   },
   {
+    text: '指令集',
+    link: '/instructions/',
+  },
+  {
     text: '工具库',
     link: '/app-iframe/code-tool-app/',
   },

@@ -94,3 +94,32 @@
     max-width: 100% !important;
   }
 }
+
+/* 指令集下载按钮样式 */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  margin: 8px 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vp-c-white);
+  background: var(--vp-c-brand-2);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px var(--vp-c-brand-soft);
+}
+
+.download-btn:hover {
+  background: var(--vp-c-brand-1);
+  color: var(--vp-c-white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--vp-c-brand-soft);
+  opacity: 1;
+}
+
+.download-btn svg {
+  flex-shrink: 0;
+}

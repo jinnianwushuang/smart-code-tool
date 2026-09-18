@@ -8,6 +8,7 @@ import {
   handbookSidebar,
   homeSidebar,
   interviewSidebar,
+  instructionsSidebar,
 } from './sidebar/index.js'
 
 // 导出侧边栏配置函数,根据路径返回对应的侧边栏
@@ -24,6 +25,9 @@ export const sidebar = {
 
   // 面试知识库相关路径
   '/interview/': [interviewSidebar],
+
+  // 指令集相关路径
+  '/instructions/': [instructionsSidebar],
 
   // 默认侧边栏(首页等)
   // '/': [aiSidebar, psychologySidebar, architectureSidebar, handbookSidebar],

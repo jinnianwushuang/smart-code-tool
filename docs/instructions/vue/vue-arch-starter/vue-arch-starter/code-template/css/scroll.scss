@@ -1,0 +1,64 @@
+// ==========================================
+// 适配多主题的全局滚动条 (SCSS)
+// ==========================================
+
+// 1. 定义两套颜色配置
+$themes: (
+  'light': (
+    'track': #f1f1f1,
+    'thumb': #c1c1c1,
+    'hover': #a8a8a8,
+    'border': #f1f1f1, // 与轨道同色，营造间距感
+  ),
+  'dark': (
+    'track': #2c2c2c,
+    'thumb': #555555,
+    'hover': #777777,
+    'border': #2c2c2c,
+  ),
+);
+
+// 2. 通用尺寸定义
+$scroll-size: 10px;
+
+// 3. Webkit 内核全局设置 (Chrome/Edge/Safari)
+::-webkit-scrollbar {
+  width: $scroll-size;
+  height: $scroll-size;
+}
+
+// 4. 混合宏：根据主题渲染样式
+@mixin scrollbar-theme($conf) {
+  scrollbar-color: map-get($conf, 'thumb') map-get($conf, 'track'); // Firefox
+
+  &::-webkit-scrollbar-track {
+    background: map-get($conf, 'track');
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: map-get($conf, 'thumb');
+    border: 2px solid map-get($conf, 'border'); // 核心：让滑块变“瘦”变精致
+    border-radius: 10px;
+
+    &:hover {
+      background-color: map-get($conf, 'hover');
+    }
+  }
+}
+
+// 5. 绑定到 body 类名
+body {
+  &.body--light {
+    @include scrollbar-theme(map-get($themes, 'light'));
+  }
+
+  &.body--dark {
+    @include scrollbar-theme(map-get($themes, 'dark'));
+    background-color: #1a1a1a; // 顺便给暗色 body 加个底色以便观察
+  }
+}
+
+// 6. Firefox 兼容性 (针对全局)
+* {
+  scrollbar-width: thin;
+}

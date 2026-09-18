@@ -17,5 +17,9 @@ export const homeSidebar = {
       text: '开发手册',
       link: '/handbook',
     },
+    {
+      text: '指令集',
+      link: '/instructions/',
+    },
   ],
 }

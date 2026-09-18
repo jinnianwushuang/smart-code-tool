@@ -105,6 +105,13 @@ export const commonToolTabs = [
       () => import('./components/festival-calculator/festival-calculator.vue'),
     ),
   },
+  {
+    name: 'MarkdownPdfTool',
+    label: 'Markdown → PDF / 图片',
+    component: defineAsyncComponent(
+      () => import('./components/markdown-pdf-tool/markdown-pdf-tool.vue'),
+    ),
+  },
 ]
 
 export const commonToolDefaultTab = 'JsonExcelConverter'
