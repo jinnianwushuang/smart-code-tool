@@ -23,6 +23,8 @@
 - [音视频与相机管线](./flutter/thinking/audio-video-camera) - 相机管线、编解码、播放管线、WebRTC 与直播架构
 - [数据·算法·显示 三者分离](./flutter/thinking/data-algorithm-view-separation) - BLoC/Riverpod/Stream 架构下的三层分离与 Flutter 渲染管线同构
 - [组件设计模式](./flutter/thinking/flutter-component-design-patterns) - Stateless/Stateful 分离、InheritedWidget、BLoC、Key 模式等
+- [setState 滥用与 Widget 重建失控](./flutter/thinking/setstate-rebuild-chaos-root-cause) - Flutter 卡顿元凶：不必要重建的五大病灶与根治方案
+- [Widget × 帧调度 × 三层对象同步](./flutter/thinking/widget-frame-sync-formula) - Flutter 底层万用公式：Widget 不可变性、帧管线、三层对象同步
 - [存储与数据同步](./flutter/thinking/storage-data-sync) - SQLite/KV 选型、离线优先架构与冲突解决
 - [安全攻防基础](./flutter/thinking/mobile-security) - 逆向防护、安全存储、证书固定与 API 安全
 - [混合栈与模块化架构](./flutter/thinking/hybrid-stack-modularization) - 引擎管理、混合路由与大型项目模块化
@@ -48,6 +50,8 @@
 - [数据·算法·显示 三者分离](./react/hooks-patterns/data-algorithm-view-separation) - React Query + useMemo + JSX 的三层分离与 RSC 架构拓展
 - [状态管理架构](./react/state-management/react-state-management-architecture) - 状态分类、Zustand/Redux Toolkit/Jotai 选型与工程化实践
 - [useEffect 原理](./react/principle/use-effect) - 同步机制与 Fiber 源码深度解析
+- [不必要 Re-render 的元凶与根治](./react/thinking/unnecessary-rerender-root-cause) - React 卡顿元凶：不必要 Re-render 的五大病灶与根治方案
+- [Fiber × 并发调度 × 数据视图同步](./react/thinking/fiber-concurrent-sync-formula) - React 底层万用公式：Fiber 架构、并发调度、数据视图同步
 - [技术选型](./react/technology-selection/app-project)
 
 ### 💚 Vue 架构
@@ -57,8 +61,11 @@
 - [通用工具](./vue/general-tools/module-loader) - 模块加载器与函数包装器
 - [技术选型](./vue/technology-selection/app-project)
 - [业务组件 SDK 打包](./vue/technology-selection/sdk-project) - 将业务组件封装为独立 SDK 供外部项目使用
-- [数据·算法·显示 三者分离](./vue/standardized-template-cn/data-algorithm-view-separation-cn) - Composition API + Composable + computed 的三层分离与装配架构融合
+- [数据·算法·显示 三者分离](./vue/thinking/data-algorithm-view-separation-cn) - Composition API + Composable + computed 的三层分离与装配架构融合
 - [组件设计模式](./vue/standardized-template-cn/vue-component-design-patterns) - Composable、作用域插槽、装配器、v-model、provide/inject 等模式
+- [shallowRef 范式与高性能架构](./vue/thinking/shallowRef-paradigm-high-performance) - shallowRef 范式 + 纯粹算法转换 + 合理调度策略 = 完全可控的高性能项目
+- [无效渲染的元凶与根治方案](./vue/thinking/render-chaos-root-cause) - Vue 3 卡顿元凶：逻辑触发的混乱无序高频无效渲染
+- [渲染原理 × 事件调度 × 数据视图同步](./vue/thinking/rendering-scheduling-sync-formula) - 现代前端底层万用公式：渲染原理、事件调度、数据视图同步三柱合一
 
 ### 🔧 工程化
 
@@ -103,6 +110,7 @@
 
 ### 💭 研发思维
 
+- [跨框架研发思维对比（入口）](./thinking/cross-framework-thinking-comparison) - Vue·React·Flutter 三大框架在三个核心主题上的横向对比：三层分离、不必要渲染元凶、底层万用公式
 - [BUG 修复思维对比](./thinking/bug-fixing-thinking) - 工程师/架构师/主管三种视角的 BUG 修复思维差异与协同模式
 - [技术迭代与学习疲态](./thinking/tech-iteration-and-learning-fatigue) - 技术快速迭代下的学习疲态本质、三种视角应对策略与协同模型
 - [数据·算法·显示 三者分离](./thinking/frontend-data-algorithm-view-separation) - 前端编程终极朴素思想：接口原始数据、算法处理、界面显示数据三层分离，与浏览器架构同构

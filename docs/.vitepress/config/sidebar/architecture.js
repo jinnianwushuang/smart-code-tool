@@ -106,6 +106,14 @@ const flutter = {
               text: '组件设计模式',
               link: '/architecture-document/flutter/thinking/flutter-component-design-patterns',
             },
+            {
+              text: 'setState 滥用与 Widget 重建失控',
+              link: '/architecture-document/flutter/thinking/setstate-rebuild-chaos-root-cause',
+            },
+            {
+              text: 'Widget × 帧调度 × 三层对象同步',
+              link: '/architecture-document/flutter/thinking/widget-frame-sync-formula',
+            },
           ],
         },
         {
@@ -259,6 +267,19 @@ const react = {
       ],
     },
     {
+      text: '研发思维',
+      items: [
+        {
+          text: '不必要 Re-render 的元凶与根治',
+          link: '/architecture-document/react/thinking/unnecessary-rerender-root-cause',
+        },
+        {
+          text: 'Fiber × 并发调度 × 数据视图同步',
+          link: '/architecture-document/react/thinking/fiber-concurrent-sync-formula',
+        },
+      ],
+    },
+    {
       text: '原理说明',
       items: [
         { text: 'useEffect 原理', link: '/architecture-document/react/principle/use-effect' },
@@ -340,12 +361,30 @@ const vue = {
           link: '/architecture-document/vue/standardized-template-cn/api-request-and-module',
         },
         {
-          text: '数据·算法·显示 三者分离',
-          link: '/architecture-document/vue/standardized-template-cn/data-algorithm-view-separation-cn',
-        },
-        {
           text: '组件设计模式',
           link: '/architecture-document/vue/standardized-template-cn/vue-component-design-patterns',
+        },
+      ],
+    },
+
+    {
+      text: '研发思维',
+      items: [
+        {
+          text: '数据·算法·显示 三者分离',
+          link: '/architecture-document/vue/thinking/data-algorithm-view-separation-cn',
+        },
+        {
+          text: 'shallowRef 范式与高性能架构',
+          link: '/architecture-document/vue/thinking/shallowRef-paradigm-high-performance',
+        },
+        {
+          text: '无效渲染的元凶与根治方案',
+          link: '/architecture-document/vue/thinking/render-chaos-root-cause',
+        },
+        {
+          text: '渲染原理 × 事件调度 × 数据视图同步',
+          link: '/architecture-document/vue/thinking/rendering-scheduling-sync-formula',
         },
       ],
     },
@@ -563,6 +602,10 @@ const thinking = {
   text: '研发思维',
   collapsed: true,
   items: [
+    {
+      text: '跨框架研发思维对比（入口）',
+      link: '/architecture-document/thinking/cross-framework-thinking-comparison',
+    },
     { text: 'BUG 修复思维对比', link: '/architecture-document/thinking/bug-fixing-thinking' },
     {
       text: '技术迭代与学习疲态',
