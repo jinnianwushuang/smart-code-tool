@@ -11,6 +11,80 @@ export const instructionsSidebar = {
       ],
     },
     {
+      text: '指令集体系设计',
+      collapsed: true,
+      items: [
+        { text: '总览', link: '/instructions/instruction-architecture/' },
+        {
+          text: '设计文档',
+          collapsed: true,
+          items: [
+            {
+              text: '分层模型设计',
+              link: '/instructions/instruction-architecture/design/layered-model',
+            },
+            {
+              text: '参数管道设计',
+              link: '/instructions/instruction-architecture/design/parameter-pipeline',
+            },
+            {
+              text: '注解驱动文档生成',
+              link: '/instructions/instruction-architecture/design/annotation-driven-docs',
+            },
+            {
+              text: '执行模型与编排',
+              link: '/instructions/instruction-architecture/design/execution-model',
+            },
+          ],
+        },
+        {
+          text: '规范文件',
+          collapsed: true,
+          items: [
+            {
+              text: '术语表模板',
+              link: '/instructions/instruction-architecture/standards/glossary-template',
+            },
+            {
+              text: '约束规则规范',
+              link: '/instructions/instruction-architecture/standards/constraint-rules',
+            },
+            {
+              text: '注解格式规范',
+              link: '/instructions/instruction-architecture/standards/annotation-format',
+            },
+          ],
+        },
+        {
+          text: '实现示例',
+          collapsed: true,
+          items: [
+            {
+              text: '第 2 层示例',
+              link: '/instructions/instruction-architecture/examples/layer-2-example/entry',
+            },
+            {
+              text: '第 3 层示例',
+              link: '/instructions/instruction-architecture/examples/layer-3-example/entry',
+            },
+            {
+              text: '编排文件示例',
+              link: '/instructions/instruction-architecture/examples/pipeline-example/feature-complete',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      text: '提示词集',
+      collapsed: true,
+      items: [
+        { text: '总索引', link: '/instructions/prompts/' },
+        { text: '通用提示词', link: '/instructions/prompts/base-sentence' },
+        { text: 'Vue 提示词', link: '/instructions/prompts/vue/prompts' },
+      ],
+    },
+    {
       text: 'Vue',
       collapsed: false,
       items: [

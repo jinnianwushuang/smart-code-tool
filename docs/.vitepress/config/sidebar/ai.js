@@ -3,7 +3,7 @@ export const aiSidebar = {
   // text: '🤖 AI',
   collapsed: false,
   items: [
-       {
+    {
       text: '零散思考',
       items: [
         {
@@ -62,23 +62,12 @@ export const aiSidebar = {
     },
 
     {
-      text: 'Vue 句子组装',
+      text: 'AI 提示词集',
       items: [
-        { text: '管理端句子', link: '/ai/vue/admin-sentence' },
-        { text: 'Vue 基础句子', link: '/ai/vue/base-sentence-vue' },
-        { text: 'JS 句子', link: '/ai/vue/js-sentence' },
-        { text: 'Web 句子', link: '/ai/vue/web-sentence' },
+        { text: '提示词集总索引', link: '/instructions/prompts/' },
+        { text: '通用提示词', link: '/instructions/prompts/base-sentence' },
+        { text: 'Vue 提示词', link: '/instructions/prompts/vue/prompts' },
       ],
     },
-    {
-      text: '基础句子',
-      items: [
-        {
-          text: '基础句子模板',
-          link: '/ai/sentence_assembly/base-sentence',
-        },
-      ],
-    },
- 
   ],
 }
