@@ -4,7 +4,7 @@ import { Card, Table, Tag, Typography, Descriptions } from 'antd'
 const { Title, Text, Paragraph } = Typography
 
 /**
- * React 架构验证 - 首页（5 种范式总览）
+ * React 架构验证 - 首页（8 种范式总览）
  */
 
 const PATTERNS = [
@@ -78,6 +78,48 @@ const PATTERNS = [
     tags: ['表单处理', '性能取舍', 'React 独有'],
     when: '表单场景：需要实时验证选受控，大表单性能敏感选非受控',
   },
+  {
+    key: 'rsc',
+    path: '/react-test/rsc',
+    icon: 'S',
+    color: '#0958d9',
+    bgColor: '#e6f4ff',
+    title: 'Server / Client 边界',
+    subtitle: 'RSC — 服务端组件与客户端组件',
+    problem: '传统 React 所有组件都在浏览器执行，大量 JS 需下载解析才能看到内容',
+    solution: "默认即服务端组件，零 JS 发送；需要交互时用 'use client' 标记客户端组件",
+    vueMapping: 'Vue SSR/Nuxt 是整页服务端渲染，无按组件粒度划分',
+    tags: ['React 19', 'SSR', '架构变革'],
+    when: 'Next.js 应用：纯展示用 Server，交互用 Client',
+  },
+  {
+    key: 'zustand',
+    path: '/react-test/zustand',
+    icon: 'Z',
+    color: '#531dab',
+    bgColor: '#f9f0ff',
+    title: 'zustand + selector + Immer',
+    subtitle: '外部 Store — 精确订阅与不可变更新',
+    problem: 'Context 全量广播，大型深层对象的高频更新导致所有 Consumer 重渲染',
+    solution: 'zustand 外部 Store + selector 精确订阅 + Immer 不可变更新',
+    vueMapping: 'shallowRef + computed（Vue 自动依赖追踪）',
+    tags: ['状态管理', '性能优化', '大型对象'],
+    when: '全局状态是大型深层对象（仪表盘、实时数据面板）',
+  },
+  {
+    key: 'concurrent',
+    path: '/react-test/concurrent',
+    icon: 'T',
+    color: '#d4380d',
+    bgColor: '#fff2e8',
+    title: '并发渲染与优先级调度',
+    subtitle: 'useTransition + useDeferredValue',
+    problem: '用户输入触发大量计算时，计算阻塞输入框响应，感觉“打字卡顿”',
+    solution: '标记更新优先级：紧急更新（输入）立即处理，非紧急更新（搜索结果）可中断延迟',
+    vueMapping: 'Vue 无此概念——响应式系统天然精确更新，互不阻塞',
+    tags: ['并发模式', '优先级', 'React 独有'],
+    when: '搜索、大列表过滤、实时仪表盘等计算密集型场景',
+  },
 ]
 
 const TABLE_COLUMNS = [
@@ -137,15 +179,15 @@ export default function ReactTestHome() {
       {/* 标题区 */}
       <div style={{ marginBottom: 28 }}>
         <Title level={3} style={{ marginBottom: 8 }}>
-          React 架构验证 — 5 种核心范式
+          React 架构验证 — 8 种核心范式
         </Title>
         <Paragraph type="secondary" style={{ fontSize: 15, lineHeight: 1.7 }}>
-          每种范式解决不同的架构问题。从状态管理到组件设计到表单处理，覆盖 React
-          开发中最常见的架构决策。
+          5 种核心验证范式 + 3
+          种其他范式说明。覆盖状态管理、组件设计、表单处理、服务端架构、并发渲染等关键决策。
         </Paragraph>
       </div>
 
-      {/* 5 种范式卡片 */}
+      {/* 8 种范式卡片 */}
       <div
         style={{
           display: 'grid',
@@ -214,10 +256,10 @@ export default function ReactTestHome() {
       {/* 核心区别总览表 */}
       <Card>
         <Title level={5} style={{ marginBottom: 4 }}>
-          5 种范式的核心区别
+          8 种范式的核心区别
         </Title>
         <Paragraph type="secondary" style={{ marginBottom: 16 }}>
-          前两种（单例/多例）解决"状态放在哪里"的问题，后三种（复合组件/Hook管线/受控非受控）解决"如何组织代码"的问题。
+          前两种解决“状态放在哪里”，中间三种解决“如何组织代码”，后三种解决“架构级决策”。
         </Paragraph>
         <Table
           columns={TABLE_COLUMNS}

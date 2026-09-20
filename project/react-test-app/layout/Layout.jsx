@@ -7,6 +7,9 @@ import {
   FunctionOutlined,
   FormOutlined,
   HomeOutlined,
+  CloudServerOutlined,
+  DatabaseOutlined,
+  ThunderboltOutlined,
 } from '@ant-design/icons'
 
 const { Sider, Content, Header } = Layout
@@ -21,6 +24,10 @@ const MENU_ITEMS = [
   { key: '/react-test/compound', icon: <BlockOutlined />, label: '复合组件' },
   { key: '/react-test/hooks-pipeline', icon: <FunctionOutlined />, label: 'Hook 管线' },
   { key: '/react-test/controlled', icon: <FormOutlined />, label: '受控/非受控' },
+  { type: 'divider' },
+  { key: '/react-test/rsc', icon: <CloudServerOutlined />, label: 'Server/Client 边界' },
+  { key: '/react-test/zustand', icon: <DatabaseOutlined />, label: 'zustand+selector' },
+  { key: '/react-test/concurrent', icon: <ThunderboltOutlined />, label: '并发渲染' },
 ]
 
 export default function AppLayout({ isDark }) {
@@ -98,7 +105,7 @@ export default function AppLayout({ isDark }) {
           }}
         >
           <Text type="secondary" style={{ fontSize: 11 }}>
-            5 种核心范式
+            8 种范式（5 验证 + 3 说明）
           </Text>
         </div>
       </Sider>

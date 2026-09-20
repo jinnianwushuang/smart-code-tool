@@ -3,10 +3,10 @@
     <!-- 标题区 -->
     <div class="hero-section">
       <div class="hero-badge">Vue 3 · Composition API</div>
-      <h1 class="hero-title">Vue 架构验证 — 6 大核心范式</h1>
+      <h1 class="hero-title">Vue 架构验证 — 9 大核心范式</h1>
       <p class="hero-desc">
         从代码分级演进（LV1→LV5）到 Vue
-        独有响应式内核，覆盖状态管理、逻辑复用、组件通信、渲染委托等核心维度
+        独有响应式内核，覆盖状态管理、逻辑复用、组件通信、渲染委托、性能范式等核心维度
       </p>
     </div>
 
@@ -55,7 +55,7 @@
     <!-- 对比表格 -->
     <a-card :bordered="false" class="q-mt-xl comparison-card">
       <template #title>
-        <span class="card-title">6 种范式全维度对比</span>
+        <span class="card-title">9 种范式全维度对比</span>
       </template>
       <a-table
         :columns="tableColumns"
@@ -81,7 +81,8 @@
       <p>
         单例 / 多例 / 验证解释 采用 <strong>LV1→LV5 分级演进</strong> 模式，
         从最基础的代码堆砌逐步进化到框架级自研 DSL。 Composable 组合链 / ScopedSlot / 响应式深度
-        展示 Vue 3 独有的架构能力。
+        展示 Vue 3 独有的架构能力。 shallowRef 性能范式 / mitt 事件驱动 / Teleport+Suspense 展示 Vue
+        3 在其他编程范式上的实践。
       </p>
     </div>
   </div>
@@ -169,6 +170,42 @@ const patterns = [
     route: 'verification-explanation',
     gradient: 'linear-gradient(135deg, #52c41a, #73d13d)',
   },
+  {
+    name: 'shallowRef 性能范式',
+    icon: 'P',
+    brief: 'shallowRef + computed 切断深度追踪，掌控响应式边界',
+    solve: '大型深层对象的深度 Proxy 开销成为性能瓶颈',
+    mechanism: 'shallowRef 浅层响应式 + 纯函数算法 + 整体替换',
+    reactMapping: 'zustand + selector + Immer（外部 Store + 精确订阅）',
+    when: '大列表/表格、接口返回的复杂嵌套对象',
+    tags: ['性能优化', '大对象'],
+    route: 'shallow-ref-pattern',
+    gradient: 'linear-gradient(135deg, #2f54eb, #597ef7)',
+  },
+  {
+    name: 'mitt 事件驱动',
+    icon: 'E',
+    brief: 'mitt + 节流防抖 + 细项 ref + computed 终端消费',
+    solve: '高频实时数据（WebSocket）直接写响应式导致渲染风暴',
+    mechanism: '事件总线 → 节流层 → 细项 ref → computed 消费',
+    reactMapping: 'mitt + throttle + zustand selector（完全同构）',
+    when: '实时指标、流式数据、传感器推送',
+    tags: ['高频数据', '事件驱动'],
+    route: 'event-driven-pattern',
+    gradient: 'linear-gradient(135deg, #eb2f96, #ff85c0)',
+  },
+  {
+    name: 'Teleport + Suspense',
+    icon: 'T',
+    brief: 'DOM 位置解耦 + 异步组件声明式加载',
+    solve: '弹窗/通知需挂载到 body；异步组件加载时展示 fallback',
+    mechanism: '<Teleport to="body"> + <Suspense> #fallback',
+    reactMapping: 'createPortal + Suspense（功能等价）',
+    when: '弹窗、全局通知、异步组件懒加载',
+    tags: ['渲染控制', 'Vue 独有'],
+    route: 'teleport-suspense',
+    gradient: 'linear-gradient(135deg, #fa541c, #ff9c6e)',
+  },
 ]
 
 // ── 对比表格 ──
@@ -235,6 +272,33 @@ const tableData = [
     unique: false,
     reactMapping: 'React 侧为 5 种独立范式',
     scenario: '架构入门、理解演进路径',
+  },
+  {
+    name: 'shallowRef 范式',
+    color: 'geekblue',
+    mechanism: 'shallowRef + 纯函数',
+    stateOwnership: '浅层引用',
+    unique: false,
+    reactMapping: 'zustand + selector + Immer',
+    scenario: '大列表、复杂嵌套对象优化',
+  },
+  {
+    name: 'mitt 事件驱动',
+    color: 'magenta',
+    mechanism: 'mitt + 节流 + 细项 ref',
+    stateOwnership: '事件驱动',
+    unique: false,
+    reactMapping: 'mitt + throttle + selector',
+    scenario: '实时指标、WebSocket 推送',
+  },
+  {
+    name: 'Teleport+Suspense',
+    color: 'volcano',
+    mechanism: 'Teleport + Suspense',
+    stateOwnership: '渲染控制',
+    unique: true,
+    reactMapping: 'createPortal + Suspense',
+    scenario: '弹窗、通知、异步组件',
   },
 ]
 </script>

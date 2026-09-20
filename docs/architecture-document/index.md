@@ -52,6 +52,7 @@
 - [useEffect 原理](./react/principle/use-effect) - 同步机制与 Fiber 源码深度解析
 - [不必要 Re-render 的元凶与根治](./react/thinking/unnecessary-rerender-root-cause) - React 卡顿元凶：不必要 Re-render 的五大病灶与根治方案
 - [Fiber × 并发调度 × 数据视图同步](./react/thinking/fiber-concurrent-sync-formula) - React 底层万用公式：Fiber 架构、并发调度、数据视图同步
+- [大型深层对象的 zustand+selector+Immer 分频治理](./react/thinking/deep-object-frequency-governance-cn) - zustand 外部 Store + selector 精确订阅 + Immer 不可变更新，按频率分频治理
 - [技术选型](./react/technology-selection/app-project)
 
 ### 💚 Vue 架构
@@ -66,6 +67,7 @@
 - [shallowRef 范式与高性能架构](./vue/thinking/shallowRef-paradigm-high-performance) - shallowRef 范式 + 纯粹算法转换 + 合理调度策略 = 完全可控的高性能项目
 - [无效渲染的元凶与根治方案](./vue/thinking/render-chaos-root-cause) - Vue 3 卡顿元凶：逻辑触发的混乱无序高频无效渲染
 - [渲染原理 × 事件调度 × 数据视图同步](./vue/thinking/rendering-scheduling-sync-formula) - 现代前端底层万用公式：渲染原理、事件调度、数据视图同步三柱合一
+- [大型深层对象的按频率分频治理](./vue/thinking/deep-object-frequency-governance-cn) - 低频 shallowRef+computed / 高频 mitt+节流防抖+细项导出+computed 双管道协同
 
 ### 🔧 工程化
 

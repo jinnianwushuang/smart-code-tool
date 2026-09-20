@@ -8,6 +8,9 @@ import {
   ApartmentOutlined,
   BlockOutlined,
   ThunderboltOutlined,
+  DatabaseOutlined,
+  ApiOutlined,
+  SendOutlined,
 } from '@ant-design/icons-vue'
 import { h } from 'vue'
 
@@ -129,6 +132,27 @@ export const routes_vue_test = [
               import('project/pages/vue-test/singleton-demo/singleton-lv5/singleton-lv5.vue'),
           },
         ],
+      },
+      // ── 其他范式说明 ──
+      {
+        path: 'shallow-ref-pattern',
+        name: 'shallow-ref-pattern',
+        meta: { title: 'shallowRef 性能范式', icon: () => h(DatabaseOutlined), hidden: false },
+        component: () =>
+          import('project/pages/vue-test/shallow-ref-pattern/shallow-ref-pattern.vue'),
+      },
+      {
+        path: 'event-driven-pattern',
+        name: 'event-driven-pattern',
+        meta: { title: 'mitt 事件驱动', icon: () => h(ApiOutlined), hidden: false },
+        component: () =>
+          import('project/pages/vue-test/event-driven-pattern/event-driven-pattern.vue'),
+      },
+      {
+        path: 'teleport-suspense',
+        name: 'teleport-suspense',
+        meta: { title: 'Teleport+Suspense', icon: () => h(SendOutlined), hidden: false },
+        component: () => import('project/pages/vue-test/teleport-suspense/teleport-suspense.vue'),
       },
     ],
   },

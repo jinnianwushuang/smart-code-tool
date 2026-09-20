@@ -277,6 +277,10 @@ const react = {
           text: 'Fiber × 并发调度 × 数据视图同步',
           link: '/architecture-document/react/thinking/fiber-concurrent-sync-formula',
         },
+        {
+          text: '大型深层对象的 zustand+selector+Immer 分频治理',
+          link: '/architecture-document/react/thinking/deep-object-frequency-governance-cn',
+        },
       ],
     },
     {
@@ -385,6 +389,10 @@ const vue = {
         {
           text: '渲染原理 × 事件调度 × 数据视图同步',
           link: '/architecture-document/vue/thinking/rendering-scheduling-sync-formula',
+        },
+        {
+          text: '大型深层对象的按频率分频治理',
+          link: '/architecture-document/vue/thinking/deep-object-frequency-governance-cn',
         },
       ],
     },
