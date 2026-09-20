@@ -1,6 +1,6 @@
 <script setup>
 import { ref, nextTick } from 'vue'
-import { dayjs, formatRelative } from './utils'
+import { dayjs, formatRelative } from '../shared/utils'
 
 const props = defineProps({
   records: { type: Array, required: true },
@@ -16,6 +16,7 @@ const emit = defineEmits([
   'resolve',
   'delete',
   'clearResolved',
+  'clear-all',
   'export',
 ])
 
@@ -57,6 +58,14 @@ defineExpose({ focusTextarea })
           title="导出为 Markdown"
         >
           ⬇️ 导出
+        </button>
+        <button
+          v-if="records.length > 0"
+          class="qt-action-btn ghost danger"
+          @click="emit('clear-all')"
+          title="清空全部记录"
+        >
+          🧹 清空全部
         </button>
       </div>
     </div>
@@ -101,11 +110,11 @@ defineExpose({ focusTextarea })
             <div class="qt-doubt-text">{{ record.doubt }}</div>
           </div>
         </div>
-
-        <div v-if="records.some((r) => r.resolved)" class="qt-doubt-footer">
-          <button class="qt-text-btn" @click="emit('clearResolved')">🧹 清除已解决记录</button>
-        </div>
       </div>
+    </div>
+
+    <div v-if="records.some((r) => r.resolved)" class="qt-doubt-footer">
+      <button class="qt-text-btn" @click="emit('clearResolved')">🧹 清除已解决记录</button>
     </div>
   </div>
 </template>

@@ -38,16 +38,6 @@ export const formatRelative = (time) => {
   return d.format('YYYY-MM-DD')
 }
 
-/** 秒数格式化为可读时间 */
-export const formatSeconds = (seconds) => {
-  if (seconds < 60) return `${seconds}秒`
-  const m = Math.floor(seconds / 60)
-  if (m < 60) return `${m}分钟`
-  const h = Math.floor(m / 60)
-  const rm = m % 60
-  return `${h}小时${rm}分`
-}
-
 /** 生成导出文件名的时间戳后缀（YYYY-MM-DD_HHmm） */
 export const exportTimestamp = () => dayjs().format('YYYY-MM-DD_HHmm')
 

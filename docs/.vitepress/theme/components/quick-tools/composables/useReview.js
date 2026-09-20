@@ -1,6 +1,6 @@
 import { ref, computed, onMounted } from 'vue'
-import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from './utils'
-import { REVIEW_KEY } from './constants'
+import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from '../shared/utils'
+import { REVIEW_KEY } from '../shared/constants'
 
 /**
  * 复习记录：同链接唯一，记录当前页面 + 掌握程度（0-10），无条数上限

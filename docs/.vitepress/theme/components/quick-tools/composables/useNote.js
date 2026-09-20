@@ -1,6 +1,6 @@
 import { ref, computed, onMounted } from 'vue'
-import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from './utils'
-import { NOTE_KEY, NOTE_LIMIT } from './constants'
+import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from '../shared/utils'
+import { NOTE_KEY, NOTE_LIMIT } from '../shared/constants'
 
 /**
  * 页面笔记：同链接唯一，支持编辑/删除
@@ -81,6 +81,15 @@ export function useNote(getPage) {
     }
   }
 
+  const clearAll = () => {
+    if (!records.value.length) return
+    if (!confirm(`确定清空全部 ${records.value.length} 条笔记吗？`)) return
+    records.value = []
+    writeStorage(NOTE_KEY, records.value)
+    editingId.value = null
+    draft.value = ''
+  }
+
   onMounted(() => {
     records.value = readStorage(NOTE_KEY)
   })
@@ -109,5 +118,16 @@ export function useNote(getPage) {
     downloadText(`页面笔记_${exportTimestamp()}.md`, md)
   }
 
-  return { records, draft, editingId, sorted, initForm, save, edit, remove, exportRecords }
+  return {
+    records,
+    draft,
+    editingId,
+    sorted,
+    initForm,
+    save,
+    edit,
+    remove,
+    clearAll,
+    exportRecords,
+  }
 }

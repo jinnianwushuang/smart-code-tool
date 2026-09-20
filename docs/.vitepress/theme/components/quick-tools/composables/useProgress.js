@@ -1,6 +1,6 @@
 import { ref, onMounted } from 'vue'
-import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from './utils'
-import { PROGRESS_KEY, PROGRESS_LIMIT } from './constants'
+import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from '../shared/utils'
+import { PROGRESS_KEY, PROGRESS_LIMIT } from '../shared/constants'
 
 /**
  * 记忆进度：记录当前页面 URL + 标题 + 时间
@@ -23,6 +23,8 @@ export function useProgress(getPage) {
   }
 
   const clearAll = () => {
+    if (!records.value.length) return
+    if (!confirm(`确定清空全部 ${records.value.length} 条进度记录吗？`)) return
     records.value = []
     writeStorage(PROGRESS_KEY, records.value)
   }

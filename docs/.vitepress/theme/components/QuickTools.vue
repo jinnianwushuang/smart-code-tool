@@ -1,16 +1,15 @@
 <script setup>
 import { ref, computed, nextTick } from 'vue'
-import { useCurrentPage } from './quick-tools/useCurrentPage'
-import { useReadingTimer } from './quick-tools/useReadingTimer'
-import { useProgress } from './quick-tools/useProgress'
-import { useDoubt } from './quick-tools/useDoubt'
-import { useNote } from './quick-tools/useNote'
-import { useReview } from './quick-tools/useReview'
-import ProgressTab from './quick-tools/ProgressTab.vue'
-import DoubtTab from './quick-tools/DoubtTab.vue'
-import NoteTab from './quick-tools/NoteTab.vue'
-import ReviewTab from './quick-tools/ReviewTab.vue'
-import './quick-tools/quick-tools.css'
+import { useCurrentPage } from './quick-tools/composables/useCurrentPage'
+import { useProgress } from './quick-tools/composables/useProgress'
+import { useDoubt } from './quick-tools/composables/useDoubt'
+import { useNote } from './quick-tools/composables/useNote'
+import { useReview } from './quick-tools/composables/useReview'
+import ProgressTab from './quick-tools/tabs/ProgressTab.vue'
+import DoubtTab from './quick-tools/tabs/DoubtTab.vue'
+import NoteTab from './quick-tools/tabs/NoteTab.vue'
+import ReviewTab from './quick-tools/tabs/ReviewTab.vue'
+import './quick-tools/shared/quick-tools.css'
 
 // ==================== 页面信息 ====================
 const { currentUrl, currentTitle, refresh } = useCurrentPage()
@@ -20,9 +19,6 @@ const getPage = () => {
   refresh()
   return { url: currentUrl.value, title: currentTitle.value }
 }
-
-// ==================== 学习计时 ====================
-const { displayTime } = useReadingTimer()
 
 // ==================== 业务模块 ====================
 const progress = useProgress(getPage)
@@ -102,7 +98,6 @@ const switchToReview = () => {
           <!-- 头部 -->
           <div class="qt-panel-header">
             <h3 class="qt-panel-title">🧰 快捷工具</h3>
-            <span class="qt-reading-time" title="今日累计阅读时长">⏱️ {{ displayTime }}</span>
             <button class="qt-close-btn" @click="closePanel" title="关闭">✕</button>
           </div>
 
@@ -149,6 +144,7 @@ const switchToReview = () => {
               @resolve="doubt.resolve"
               @delete="doubt.remove"
               @clear-resolved="doubt.clearResolved"
+              @clear-all="doubt.clearAll"
               @export="doubt.exportRecords"
             />
 
@@ -163,6 +159,7 @@ const switchToReview = () => {
               @save="note.save"
               @edit="note.edit"
               @delete="note.remove"
+              @clear-all="note.clearAll"
               @export="note.exportRecords"
             />
 

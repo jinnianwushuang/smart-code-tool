@@ -1,6 +1,6 @@
 import { ref, computed, onMounted } from 'vue'
-import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from './utils'
-import { DOUBT_KEY, DOUBT_LIMIT } from './constants'
+import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from '../shared/utils'
+import { DOUBT_KEY, DOUBT_LIMIT } from '../shared/constants'
 
 /**
  * 记忆疑惑：同链接唯一，支持编辑/已解决/删除
@@ -95,6 +95,15 @@ export function useDoubt(getPage) {
     writeStorage(DOUBT_KEY, records.value)
   }
 
+  const clearAll = () => {
+    if (!records.value.length) return
+    if (!confirm(`确定清空全部 ${records.value.length} 条疑惑记录吗？`)) return
+    records.value = []
+    writeStorage(DOUBT_KEY, records.value)
+    editingId.value = null
+    draft.value = ''
+  }
+
   /** 导出为 Markdown（按时间倒序） */
   const exportRecords = () => {
     if (!records.value.length) return
@@ -137,6 +146,7 @@ export function useDoubt(getPage) {
     resolve,
     remove,
     clearResolved,
+    clearAll,
     exportRecords,
   }
 }

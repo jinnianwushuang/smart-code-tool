@@ -1,5 +1,5 @@
 <script setup>
-import { dayjs, formatRelative } from './utils'
+import { dayjs, formatRelative } from '../shared/utils'
 
 const props = defineProps({
   records: { type: Array, required: true },
@@ -14,13 +14,18 @@ const emit = defineEmits(['add', 'delete', 'clearAll', 'export'])
       <button class="qt-action-btn primary" @click="emit('add')">📌 记录当前页面进度</button>
       <button
         v-if="records.length > 0"
-        class="qt-action-btn ghost"
+        class="qt-action-btn ghost qt-right"
         @click="emit('export')"
         title="导出为 Markdown"
       >
         ⬇️ 导出
       </button>
-      <button v-if="records.length > 0" class="qt-action-btn ghost" @click="emit('clearAll')">
+      <button
+        v-if="records.length > 0"
+        class="qt-action-btn ghost danger"
+        @click="emit('clearAll')"
+        title="清空全部记录"
+      >
         🧹 清空全部
       </button>
     </div>

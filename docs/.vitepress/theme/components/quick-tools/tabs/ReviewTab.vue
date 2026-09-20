@@ -1,5 +1,5 @@
 <script setup>
-import { dayjs, formatRelative } from './utils'
+import { dayjs, formatRelative } from '../shared/utils'
 
 defineProps({
   records: { type: Array, required: true },
@@ -73,6 +73,14 @@ const masteryLevel = (m) => (m <= 3 ? 'low' : m <= 7 ? 'mid' : 'high')
       >
         ⬇️ 导出
       </button>
+      <button
+        v-if="records.length > 0"
+        class="qt-action-btn ghost danger"
+        @click="emit('clear-all')"
+        title="清空全部记录"
+      >
+        🧹 清空全部
+      </button>
     </div>
 
     <!-- 记录列表 -->
@@ -106,10 +114,6 @@ const masteryLevel = (m) => (m <= 3 ? 'low' : m <= 7 ? 'mid' : 'high')
               >
             </div>
           </div>
-        </div>
-
-        <div class="qt-doubt-footer">
-          <button class="qt-text-btn" @click="emit('clear-all')">🧹 清空全部记录</button>
         </div>
       </div>
     </div>

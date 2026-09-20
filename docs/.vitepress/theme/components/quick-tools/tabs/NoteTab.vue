@@ -1,6 +1,6 @@
 <script setup>
 import { ref, nextTick } from 'vue'
-import { dayjs, formatRelative } from './utils'
+import { dayjs, formatRelative } from '../shared/utils'
 
 const props = defineProps({
   records: { type: Array, required: true },
@@ -9,7 +9,7 @@ const props = defineProps({
   editingId: { type: String, default: null },
 })
 
-const emit = defineEmits(['update:draft', 'save', 'edit', 'delete', 'export'])
+const emit = defineEmits(['update:draft', 'save', 'edit', 'delete', 'export', 'clear-all'])
 
 const textareaRef = ref(null)
 
@@ -49,6 +49,14 @@ defineExpose({ focusTextarea })
           title="导出为 Markdown"
         >
           ⬇️ 导出
+        </button>
+        <button
+          v-if="records.length > 0"
+          class="qt-action-btn ghost danger"
+          @click="emit('clear-all')"
+          title="清空全部记录"
+        >
+          🧹 清空全部
         </button>
       </div>
     </div>
