@@ -10,6 +10,8 @@
  *   docs/instructions/vue/vue-assembler/vue-assembler/       → docs/public/archive/vue-assembler.zip
  *   docs/instructions/vue/vue-code-review/vue-code-review/   → docs/public/archive/vue-code-review.zip
  *   docs/instructions/vue/vue-arch-starter/vue-arch-starter/ → docs/public/archive/vue-arch-starter.zip
+ *   docs/instructions/react/react-code-review/react-code-review/     → docs/public/archive/react-code-review.zip
+ *   docs/instructions/flutter/flutter-code-review/flutter-code-review/ → docs/public/archive/flutter-code-review.zip
  */
 
 import { chalk, fs } from 'zx'
@@ -34,6 +36,16 @@ const TASKS = [
     name: 'vue-arch-starter',
     src: 'docs/instructions/vue/vue-arch-starter/vue-arch-starter',
     output: `${ARCHIVE_DIR}/vue-arch-starter.zip`,
+  },
+  {
+    name: 'react-code-review',
+    src: 'docs/instructions/react/react-code-review/react-code-review',
+    output: `${ARCHIVE_DIR}/react-code-review.zip`,
+  },
+  {
+    name: 'flutter-code-review',
+    src: 'docs/instructions/flutter/flutter-code-review/flutter-code-review',
+    output: `${ARCHIVE_DIR}/flutter-code-review.zip`,
   },
 ]
 

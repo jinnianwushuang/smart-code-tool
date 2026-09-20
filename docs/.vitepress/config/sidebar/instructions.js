@@ -172,5 +172,72 @@ export const instructionsSidebar = {
         },
       ],
     },
+    {
+      text: 'React',
+      collapsed: false,
+      items: [
+        {
+          text: 'React 通用代码检查指令集',
+          collapsed: true,
+          items: [
+            { text: '概述', link: '/instructions/react/react-code-review/docs/' },
+            { text: '设计架构', link: '/instructions/react/react-code-review/docs/design' },
+            {
+              text: '执行流程',
+              link: '/instructions/react/react-code-review/docs/execution-flow',
+            },
+            {
+              text: '配置指南',
+              link: '/instructions/react/react-code-review/docs/config-guide',
+            },
+            { text: '文件索引', link: '/instructions/react/react-code-review/docs/file-index' },
+          ],
+        },
+        {
+          text: '版本记录',
+          items: [
+            {
+              text: 'React 通用代码检查 — 变更日志',
+              link: '/instructions/react/react-code-review/VERSION',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      text: 'Flutter',
+      collapsed: false,
+      items: [
+        {
+          text: 'Flutter 通用代码检查指令集',
+          collapsed: true,
+          items: [
+            { text: '概述', link: '/instructions/flutter/flutter-code-review/docs/' },
+            { text: '设计架构', link: '/instructions/flutter/flutter-code-review/docs/design' },
+            {
+              text: '执行流程',
+              link: '/instructions/flutter/flutter-code-review/docs/execution-flow',
+            },
+            {
+              text: '配置指南',
+              link: '/instructions/flutter/flutter-code-review/docs/config-guide',
+            },
+            {
+              text: '文件索引',
+              link: '/instructions/flutter/flutter-code-review/docs/file-index',
+            },
+          ],
+        },
+        {
+          text: '版本记录',
+          items: [
+            {
+              text: 'Flutter 通用代码检查 — 变更日志',
+              link: '/instructions/flutter/flutter-code-review/VERSION',
+            },
+          ],
+        },
+      ],
+    },
   ],
 }
