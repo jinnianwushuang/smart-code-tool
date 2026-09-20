@@ -9,7 +9,15 @@ const props = defineProps({
   editingId: { type: String, default: null },
 })
 
-const emit = defineEmits(['update:draft', 'save', 'edit', 'resolve', 'delete', 'clearResolved'])
+const emit = defineEmits([
+  'update:draft',
+  'save',
+  'edit',
+  'resolve',
+  'delete',
+  'clearResolved',
+  'export',
+])
 
 const textareaRef = ref(null)
 
@@ -42,51 +50,61 @@ defineExpose({ focusTextarea })
           {{ editingId ? '💾 更新疑惑' : '💾 保存疑惑' }}
         </button>
         <span v-if="editingId" class="qt-edit-hint">✏️ 正在编辑已有记录</span>
+        <button
+          v-if="records.length > 0"
+          class="qt-action-btn ghost qt-right"
+          @click="emit('export')"
+          title="导出为 Markdown"
+        >
+          ⬇️ 导出
+        </button>
       </div>
     </div>
 
     <!-- 疑惑列表 -->
-    <div v-if="records.length === 0" class="qt-empty">暂无记录</div>
+    <div class="qt-record-scroll">
+      <div v-if="records.length === 0" class="qt-empty">暂无记录</div>
 
-    <div v-else>
-      <div class="qt-record-list">
-        <div
-          v-for="record in sorted"
-          :key="record.id"
-          :class="['qt-record-card', { resolved: record.resolved }]"
-        >
-          <div class="qt-record-header">
-            <span class="qt-record-title" :title="record.title">{{ record.title }}</span>
-            <div class="qt-record-actions">
-              <a :href="record.url" class="qt-icon-btn nav" title="跳转到此页面">🔗</a>
-              <button
-                v-if="!record.resolved"
-                class="qt-icon-btn success"
-                @click="emit('resolve', record)"
-                title="标记为已解决"
-              >
-                ✅
-              </button>
-              <button class="qt-icon-btn danger" @click="emit('delete', record.id)" title="删除">
-                🗑️
-              </button>
+      <div v-else>
+        <div class="qt-record-list">
+          <div
+            v-for="record in sorted"
+            :key="record.id"
+            :class="['qt-record-card', { resolved: record.resolved }]"
+          >
+            <div class="qt-record-header">
+              <span class="qt-record-title" :title="record.title">{{ record.title }}</span>
+              <div class="qt-record-actions">
+                <a :href="record.url" class="qt-icon-btn nav" title="跳转到此页面">🔗</a>
+                <button
+                  v-if="!record.resolved"
+                  class="qt-icon-btn success"
+                  @click="emit('resolve', record)"
+                  title="标记为已解决"
+                >
+                  ✅
+                </button>
+                <button class="qt-icon-btn danger" @click="emit('delete', record.id)" title="删除">
+                  🗑️
+                </button>
+              </div>
             </div>
+            <div class="qt-record-meta">
+              <span class="qt-record-time"
+                >🕐 {{ dayjs(record.time).format('YYYY-MM-DD HH:mm:ss') }}</span
+              >
+              <span class="qt-relative-time">{{ formatRelative(record.time) }}</span>
+              <span v-if="record.resolved" class="qt-resolved-tag">
+                ✅ 已解决 {{ formatRelative(record.resolvedTime) }}
+              </span>
+            </div>
+            <div class="qt-doubt-text">{{ record.doubt }}</div>
           </div>
-          <div class="qt-record-meta">
-            <span class="qt-record-time"
-              >🕐 {{ dayjs(record.time).format('YYYY-MM-DD HH:mm:ss') }}</span
-            >
-            <span class="qt-relative-time">{{ formatRelative(record.time) }}</span>
-            <span v-if="record.resolved" class="qt-resolved-tag">
-              ✅ 已解决 {{ formatRelative(record.resolvedTime) }}
-            </span>
-          </div>
-          <div class="qt-doubt-text">{{ record.doubt }}</div>
         </div>
-      </div>
 
-      <div v-if="records.some((r) => r.resolved)" class="qt-doubt-footer">
-        <button class="qt-text-btn" @click="emit('clearResolved')">🧹 清除已解决记录</button>
+        <div v-if="records.some((r) => r.resolved)" class="qt-doubt-footer">
+          <button class="qt-text-btn" @click="emit('clearResolved')">🧹 清除已解决记录</button>
+        </div>
       </div>
     </div>
   </div>

@@ -5,9 +5,11 @@ import { useReadingTimer } from './quick-tools/useReadingTimer'
 import { useProgress } from './quick-tools/useProgress'
 import { useDoubt } from './quick-tools/useDoubt'
 import { useNote } from './quick-tools/useNote'
+import { useReview } from './quick-tools/useReview'
 import ProgressTab from './quick-tools/ProgressTab.vue'
 import DoubtTab from './quick-tools/DoubtTab.vue'
 import NoteTab from './quick-tools/NoteTab.vue'
+import ReviewTab from './quick-tools/ReviewTab.vue'
 import './quick-tools/quick-tools.css'
 
 // ==================== 页面信息 ====================
@@ -26,13 +28,18 @@ const { displayTime } = useReadingTimer()
 const progress = useProgress(getPage)
 const doubt = useDoubt(getPage)
 const note = useNote(getPage)
+const review = useReview(getPage)
 
 // ==================== 面板状态 ====================
 const isOpen = ref(false)
 const activeTab = ref('progress')
 
 const totalCount = computed(
-  () => progress.records.value.length + doubt.records.value.length + note.records.value.length,
+  () =>
+    progress.records.value.length +
+    doubt.records.value.length +
+    note.records.value.length +
+    review.records.value.length,
 )
 
 const togglePanel = () => {
@@ -58,6 +65,11 @@ const switchToNote = () => {
   activeTab.value = 'note'
   note.initForm()
   nextTick(() => noteTabRef.value?.focusTextarea())
+}
+
+const switchToReview = () => {
+  activeTab.value = 'review'
+  review.refreshPage()
 }
 </script>
 
@@ -108,6 +120,9 @@ const switchToNote = () => {
             <button :class="['qt-tab', { active: activeTab === 'note' }]" @click="switchToNote">
               📝 笔记 ({{ note.records.value.length }})
             </button>
+            <button :class="['qt-tab', { active: activeTab === 'review' }]" @click="switchToReview">
+              🔁 复习 ({{ review.records.value.length }})
+            </button>
           </div>
 
           <!-- 面板内容区 -->
@@ -118,6 +133,7 @@ const switchToNote = () => {
               @add="progress.add"
               @delete="progress.remove"
               @clear-all="progress.clearAll"
+              @export="progress.exportRecords"
             />
 
             <DoubtTab
@@ -133,6 +149,7 @@ const switchToNote = () => {
               @resolve="doubt.resolve"
               @delete="doubt.remove"
               @clear-resolved="doubt.clearResolved"
+              @export="doubt.exportRecords"
             />
 
             <NoteTab
@@ -146,6 +163,21 @@ const switchToNote = () => {
               @save="note.save"
               @edit="note.edit"
               @delete="note.remove"
+              @export="note.exportRecords"
+            />
+
+            <ReviewTab
+              v-if="activeTab === 'review'"
+              :records="review.records.value"
+              :sorted="review.sorted.value"
+              :sort-mode="review.sortMode.value"
+              :current-page="review.currentPage.value"
+              :current-mastery="review.currentMastery.value"
+              @record="review.recordMastery"
+              @update:sort-mode="review.sortMode.value = $event"
+              @delete="review.remove"
+              @clear-all="review.clearAll"
+              @export="review.exportRecords"
             />
           </div>
         </div>

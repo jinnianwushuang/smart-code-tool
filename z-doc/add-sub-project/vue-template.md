@@ -93,7 +93,7 @@ const router = createRouter({
 export default router
 ```
 
-> **必须使用 `createWebHashHistory`**（而非 `createWebHistory`）。多项目 iframe 嵌入场景下，iframe src 指向 HTML 全路径（如 `entries/<项目名>-app/index.html`），History 模式会把 HTML 文件路径当作路由去匹配，导致路由失败；Hash 模式路由走 `#` 片段，不受 HTML 文件路径影响。
+> **必须使用 `createWebHashHistory`**（而非 `createWebHistory`）。多项目 iframe 嵌入场景下，iframe src 指向 HTML 全路径（如 `project/<项目名>-app/index.html`），History 模式会把 HTML 文件路径当作路由去匹配，导致路由失败；Hash 模式路由走 `#` 片段，不受 HTML 文件路径影响。
 
 ---
 
@@ -148,7 +148,7 @@ onMounted(() => {
 
 ## HTML 入口
 
-在 `entries/<项目名>-app/` 目录下创建 `index.html`：
+在 `project/<项目名>-app/` 目录下创建 `index.html`：
 
 ```html
 <!doctype html>
@@ -161,18 +161,18 @@ onMounted(() => {
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="../../project/<项目名>-app/main.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
 ```
 
-> `src` 路径相对于项目根目录（即 Vite root），从 `entries/<项目名>-app/` 回退两级。
+> `src` 路径相对于 HTML 文件位置，`index.html` 与 `main.js` 同在 `project/<项目名>-app/` 下，直接使用 `./main.js`。
 
 ---
 
 ## Vite 配置
 
-创建 `entries/<项目名>-app/vite.config.js`：
+创建 `project/<项目名>-app/vite.config.js`：
 
 ```js
 import { fileURLToPath, URL } from 'node:url'
@@ -186,7 +186,7 @@ import timezone from 'dayjs/plugin/timezone'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-// 项目根目录（配置文件在 entries/<项目名>-app/ 下，回退两级）
+// 项目根目录（配置文件在 project/<项目名>-app/ 下，回退两级）
 const projectRoot = fileURLToPath(new URL('../..', import.meta.url))
 
 export default defineConfig(async () => {
@@ -197,7 +197,7 @@ export default defineConfig(async () => {
     build: {
       outDir: `${projectRoot}/dist/<项目名>-app`,
       rollupOptions: {
-        input: `${projectRoot}/entries/<项目名>-app/index.html`,
+        input: `${projectRoot}/project/<项目名>-app/index.html`,
       },
     },
     define: {

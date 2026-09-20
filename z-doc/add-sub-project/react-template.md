@@ -65,8 +65,8 @@ ReactDOM.createRoot(document.getElementById('app')).render(
 
 > **关键点**：
 >
-> - **必须使用 `HashRouter`**（而非 `BrowserRouter`）。多项目 iframe 嵌入场景下，BrowserRouter 会把 HTML 文件路径（如 `/entries/react-test-app/index.html`）当作路由去匹配，导致 "No routes matched" 报错；HashRouter 路由走 `#` 片段，不受 HTML 文件路径影响
-> - iframe 嵌入页的 dev src 必须指向 **HTML 全路径**（`entries/<项目名>-app/index.html`），与 HashRouter 配合使用
+> - **必须使用 `HashRouter`**（而非 `BrowserRouter`）。多项目 iframe 嵌入场景下，BrowserRouter 会把 HTML 文件路径（如 `/project/react-test-app/index.html`）当作路由去匹配，导致 “No routes matched” 报错；HashRouter 路由走 `#` 片段，不受 HTML 文件路径影响
+> - iframe 嵌入页的 dev src 必须指向 **HTML 全路径**（`project/<项目名>-app/index.html`），与 HashRouter 配合使用
 > - `React.StrictMode` 启用开发模式严格检查
 > - 不使用共享 `src/App.vue`，React 子项目完全独立
 
@@ -158,7 +158,7 @@ export default function <页面组件名>() {
 
 ## HTML 入口
 
-在 `entries/<项目名>-app/` 目录下创建 `index.html`：
+在 `project/<项目名>-app/` 目录下创建 `index.html`：
 
 ```html
 <!doctype html>
@@ -171,18 +171,18 @@ export default function <页面组件名>() {
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="../../project/<项目名>-app/main.jsx"></script>
+    <script type="module" src="./main.jsx"></script>
   </body>
 </html>
 ```
 
-> 注意 `src` 指向 `main.jsx`（而非 Vue 的 `main.js`）。
+> `src` 指向 `main.jsx`（而非 Vue 的 `main.js`），`index.html` 与 `main.jsx` 同目录，直接使用 `./main.jsx`。
 
 ---
 
 ## Vite 配置
 
-创建 `entries/<项目名>-app/vite.config.js`：
+创建 `project/<项目名>-app/vite.config.js`：
 
 ```js
 import { fileURLToPath, URL } from 'node:url'
@@ -195,7 +195,7 @@ import timezone from 'dayjs/plugin/timezone'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-// 项目根目录（配置文件在 entries/<项目名>-app/ 下，回退两级）
+// 项目根目录（配置文件在 project/<项目名>-app/ 下，回退两级）
 const projectRoot = fileURLToPath(new URL('../..', import.meta.url))
 
 export default defineConfig(async () => {
@@ -206,7 +206,7 @@ export default defineConfig(async () => {
     build: {
       outDir: `${projectRoot}/dist/<项目名>-app`,
       rollupOptions: {
-        input: `${projectRoot}/entries/<项目名>-app/index.html`,
+        input: `${projectRoot}/project/<项目名>-app/index.html`,
       },
     },
     define: {

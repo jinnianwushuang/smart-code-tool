@@ -10,7 +10,7 @@ import timezone from 'dayjs/plugin/timezone'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-// 项目根目录（配置文件在 entries/react-test-app/ 下，回退两级）
+// 项目根目录（配置文件在 project/react-test-app/ 下，回退两级）
 const projectRoot = fileURLToPath(new URL('../..', import.meta.url))
 
 // React 架构验证 - 独立项目 Vite 配置
@@ -22,7 +22,7 @@ export default defineConfig(async () => {
     build: {
       outDir: `${projectRoot}/dist/react-test-app`,
       rollupOptions: {
-        input: `${projectRoot}/entries/react-test-app/index.html`,
+        input: `${projectRoot}/project/react-test-app/index.html`,
       },
     },
     define: {

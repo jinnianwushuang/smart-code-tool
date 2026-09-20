@@ -31,15 +31,14 @@ smart-code-tool/
 │   ├── output/                       # barrel export 层
 │   └── standardization/              # 标准化模板
 │
-├── project/<项目名>-app/              # 子项目特有代码
+├── project/<项目名>-app/              # 子项目代码 + Vite 配置 + HTML 入口
+│   ├── vite.config.js                # Vite 配置
+│   ├── index.html                    # HTML 入口
 │   ├── main.js(x)                    # 应用入口
 │   ├── router/                       # 路由配置
 │   ├── layout/                       # 布局组件
 │   └── pages/                        # 页面组件
 │
-├── entries/<项目名>-app/              # Vite 配置 + HTML 入口
-│   ├── vite.config.js                # Vite 配置
-│   └── index.html                    # HTML 入口
 ├── docs/app-iframe/<项目名>-app/index.md  # VitePress iframe 嵌入页
 │
 ├── scripts/dev.mjs                    # 开发脚本
@@ -52,7 +51,7 @@ smart-code-tool/
 
 - **Vite root**：统一指向 `projectRoot`（项目根目录）
 - **独立缓存**：`cacheDir` 设为 `node_modules/.vite-<项目名>-app`，避免多 Vite 实例共享缓存导致 504（注意是顶层配置项，不是 `optimizeDeps` 子项）
-- **HTML 入口**：在 `entries/<项目名>-app/index.html`，构建后由 post-build 脚本移到 dist 根目录
+- **HTML 入口**：在 `project/<项目名>-app/index.html`，构建后由 post-build 脚本移到 dist 根目录
 - **构建后处理**：`job/post-build/move-entry-html.js` 将嵌套路径的 HTML 移到 dist 输出根目录
 - **iframe 嵌入**：子应用通过 VitePress 的 iframe 页面展示，布局组件需检测 iframe 并隐藏头部
 
@@ -61,7 +60,7 @@ smart-code-tool/
 多项目 iframe 嵌入场景下，**必须同时满足以下两个条件**：
 
 1. **路由模式**：必须使用 Hash 路由（Vue: `createWebHashHistory` / React: `HashRouter`）
-2. **iframe src**：dev 环境指向 HTML 全路径（`entries/<项目名>-app/index.html`）
+2. **iframe src**：dev 环境指向 HTML 全路径（`project/<项目名>-app/index.html`）
 
 > History 路由（`createWebHistory` / `BrowserRouter`）会把 HTML 文件路径当作路由去匹配，导致 "No routes matched" 报错。Hash 路由走 `#` 片段，不受 HTML 文件路径影响。
 
@@ -133,7 +132,7 @@ function onIframeLoad() {
 onMounted(() => {
   const isDev = import.meta.env.DEV
   iframeSrc.value = isDev
-    ? 'http://localhost:<端口>/smart-code-tool/<项目名>-app/entries/<项目名>-app/index.html'
+    ? 'http://localhost:<端口>/smart-code-tool/<项目名>-app/project/<项目名>-app/index.html'
     : '/smart-code-tool/<项目名>-app/index.html'
 
   // 页面重新可见时，重置状态让 iframe 重新同步主题后再显示
@@ -170,7 +169,7 @@ onMounted(() => {
 2. 新增 Vite 启动命令：
 
    ```js
-   const <项目名变量>Dev = $`vite --config entries/<项目名>-app/vite.config.js`
+   const <项目名变量>Dev = $`vite --config project/<项目名>-app/vite.config.js`
    ```
 
 3. 新增 console 输出：
@@ -178,7 +177,7 @@ onMounted(() => {
    ```js
    console.log(
      chalk.gray(
-       '   - <项目标题>: http://localhost:<端口>/smart-code-tool/<项目名>-app/entries/<项目名>-app/',
+       '   - <项目标题>: http://localhost:<端口>/smart-code-tool/<项目名>-app/project/<项目名>-app/',
      ),
    )
    ```
@@ -196,7 +195,7 @@ onMounted(() => {
 
 ```js
 console.log(chalk.yellow('🔨 Step N: Building <项目名> application → dist/<项目名>-app/...'))
-await $`vite build --config entries/<项目名>-app/vite.config.js`
+await $`vite build --config project/<项目名>-app/vite.config.js`
 console.log(chalk.green('✓ <项目标题> application built\n'))
 ```
 
@@ -209,11 +208,11 @@ console.log(chalk.green('✓ <项目标题> application built\n'))
 编辑 `job/post-build/move-entry-html.js`，新增入口 HTML 的移动和清理：
 
 ```js
-await copyFile('dist/<项目名>-app/entries/<项目名>-app/index.html', 'dist/<项目名>-app/index.html')
-await remove('dist/<项目名>-app/entries/<项目名>-app/index.html')
+await copyFile('dist/<项目名>-app/project/<项目名>-app/index.html', 'dist/<项目名>-app/index.html')
+await remove('dist/<项目名>-app/project/<项目名>-app/index.html')
 ```
 
-> 构建后 Vite 会将 `entries/<项目名>-app/index.html` 输出到 `dist/<项目名>-app/entries/<项目名>-app/index.html`，此脚本将其移到 dist 根目录并清理原文件。
+> 构建后 Vite 会将 `project/<项目名>-app/index.html` 输出到 `dist/<项目名>-app/project/<项目名>-app/index.html`，此脚本将其移到 dist 根目录并清理原文件。
 
 ---
 
@@ -228,8 +227,8 @@ await remove('dist/<项目名>-app/entries/<项目名>-app/index.html')
 | 产物        | 命名规则                                | 示例                                  |
 | ----------- | --------------------------------------- | ------------------------------------- |
 | 子项目目录  | `project/<项目名>-app/`                 | `project/my-app-app/`                 |
-| Vite 配置   | `entries/<项目名>-app/vite.config.js`   | `entries/my-app-app/vite.config.js`   |
-| HTML 入口   | `entries/<项目名>-app/index.html`       | `entries/my-app-app/index.html`       |
+| Vite 配置   | `project/<项目名>-app/vite.config.js`   | `project/my-app-app/vite.config.js`   |
+| HTML 入口   | `project/<项目名>-app/index.html`       | `project/my-app-app/index.html`       |
 | base 路径   | `/smart-code-tool/<项目名>-app/`        | `/smart-code-tool/my-app-app/`        |
 | 构建输出    | `dist/<项目名>-app/`                    | `dist/my-app-app/`                    |
 | iframe 页面 | `docs/app-iframe/<项目名>-app/index.md` | `docs/app-iframe/my-app-app/index.md` |
@@ -241,8 +240,8 @@ await remove('dist/<项目名>-app/entries/<项目名>-app/index.html')
 
 ### 通用（所有框架）
 
-- [ ] `entries/<项目名>-app/index.html` 创建（HTML 入口）
-- [ ] `entries/<项目名>-app/vite.config.js` 创建
+- [ ] `project/<项目名>-app/index.html` 创建（HTML 入口）
+- [ ] `project/<项目名>-app/vite.config.js` 创建
 - [ ] `docs/app-iframe/<项目名>-app/index.md` 创建
 - [ ] `docs/.vitepress/config/vite.js` 新增代理
 - [ ] `scripts/dev.mjs` 新增启动命令 + 端口清理

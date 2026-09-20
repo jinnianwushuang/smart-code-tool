@@ -1,5 +1,5 @@
 import { ref, computed, onMounted } from 'vue'
-import { readStorage, writeStorage } from './utils'
+import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from './utils'
 import { NOTE_KEY, NOTE_LIMIT } from './constants'
 
 /**
@@ -85,5 +85,29 @@ export function useNote(getPage) {
     records.value = readStorage(NOTE_KEY)
   })
 
-  return { records, draft, editingId, sorted, initForm, save, edit, remove }
+  /** 导出为 Markdown（按更新时间倒序） */
+  const exportRecords = () => {
+    if (!records.value.length) return
+    const blocks = sorted.value.map((r, i) => {
+      const t = r.updatedAt || r.time
+      return [
+        `## ${i + 1}. ${r.title}`,
+        `- 🔗 ${r.url}`,
+        `- 🕐 ${r.updatedAt ? '更新' : '记录'}：${dayjs(t).format('YYYY-MM-DD HH:mm:ss')}`,
+        '',
+        r.content,
+        '',
+      ].join('\n')
+    })
+    const md = [
+      '# 📝 页面笔记',
+      '',
+      `> 导出时间：${dayjs().format('YYYY-MM-DD HH:mm')} ・ 共 ${records.value.length} 条`,
+      '',
+      ...blocks,
+    ].join('\n')
+    downloadText(`页面笔记_${exportTimestamp()}.md`, md)
+  }
+
+  return { records, draft, editingId, sorted, initForm, save, edit, remove, exportRecords }
 }

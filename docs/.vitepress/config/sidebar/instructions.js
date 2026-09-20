@@ -82,6 +82,8 @@ export const instructionsSidebar = {
         { text: '总索引', link: '/instructions/prompts/' },
         { text: '通用提示词', link: '/instructions/prompts/base-sentence' },
         { text: 'Vue 提示词', link: '/instructions/prompts/vue/prompts' },
+        { text: 'React 提示词', link: '/instructions/prompts/react/prompts' },
+        { text: 'Flutter 提示词', link: '/instructions/prompts/flutter/prompts' },
       ],
     },
     {

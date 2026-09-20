@@ -47,3 +47,19 @@ export const formatSeconds = (seconds) => {
   const rm = m % 60
   return `${h}小时${rm}分`
 }
+
+/** 生成导出文件名的时间戳后缀（YYYY-MM-DD_HHmm） */
+export const exportTimestamp = () => dayjs().format('YYYY-MM-DD_HHmm')
+
+/** 触发浏览器下载文本文件 */
+export const downloadText = (filename, content, mime = 'text/markdown;charset=utf-8') => {
+  const blob = new Blob([content], { type: mime })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = filename
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  URL.revokeObjectURL(url)
+}

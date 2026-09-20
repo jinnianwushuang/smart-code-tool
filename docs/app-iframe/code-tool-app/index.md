@@ -39,7 +39,7 @@ function onIframeLoad() {
 onMounted(() => {
   const isDev = import.meta.env.DEV
   toolSrc.value = isDev
-    ? 'http://localhost:23330/smart-code-tool/code-tool-app/entries/code-tool-app/index.html'
+    ? 'http://localhost:23330/smart-code-tool/code-tool-app/project/code-tool-app/index.html'
     : '/smart-code-tool/code-tool-app/index.html'
 
   // 页面重新可见时，重置状态让 iframe 重新同步主题后再显示

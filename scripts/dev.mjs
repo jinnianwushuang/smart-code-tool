@@ -26,24 +26,24 @@ try {
   console.log(chalk.gray('   - Docs (main): http://localhost:23000/smart-code-tool/'))
   console.log(
     chalk.gray(
-      '   - Code-Tool app: http://localhost:23330/smart-code-tool/code-tool-app/entries/code-tool-app/',
+      '   - Code-Tool app: http://localhost:23330/smart-code-tool/code-tool-app/project/code-tool-app/',
     ),
   )
   console.log(
     chalk.gray(
-      '   - Vue-Test app: http://localhost:23350/smart-code-tool/vue-test-app/entries/vue-test-app/',
+      '   - Vue-Test app: http://localhost:23350/smart-code-tool/vue-test-app/project/vue-test-app/',
     ),
   )
   console.log(
     chalk.gray(
-      '   - React-Test app: http://localhost:23370/smart-code-tool/react-test-app/entries/react-test-app/',
+      '   - React-Test app: http://localhost:23370/smart-code-tool/react-test-app/project/react-test-app/',
     ),
   )
   console.log('\n')
   // 使用 Promise.all 并行启动四个开发服务器
-  const vueDev = $`vite --config entries/code-tool-app/vite.config.js`
-  const vueTestDev = $`vite --config entries/vue-test-app/vite.config.js`
-  const reactTestDev = $`vite --config entries/react-test-app/vite.config.js`
+  const vueDev = $`vite --config project/code-tool-app/vite.config.js`
+  const vueTestDev = $`vite --config project/vue-test-app/vite.config.js`
+  const reactTestDev = $`vite --config project/react-test-app/vite.config.js`
   const docsDev = $`vitepress dev docs`
 
   // 等待四个进程（它们会持续运行）

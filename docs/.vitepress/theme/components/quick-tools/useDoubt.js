@@ -1,5 +1,5 @@
 import { ref, computed, onMounted } from 'vue'
-import { readStorage, writeStorage } from './utils'
+import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from './utils'
 import { DOUBT_KEY, DOUBT_LIMIT } from './constants'
 
 /**
@@ -95,6 +95,32 @@ export function useDoubt(getPage) {
     writeStorage(DOUBT_KEY, records.value)
   }
 
+  /** 导出为 Markdown（按时间倒序） */
+  const exportRecords = () => {
+    if (!records.value.length) return
+    const resolvedCount = records.value.filter((r) => r.resolved).length
+    const blocks = sorted.value.map((r, i) => {
+      const lines = [
+        `## ${i + 1}. ${r.title}${r.resolved ? ' ✅已解决' : ''}`,
+        `- 🔗 ${r.url}`,
+        `- 🕐 提出：${dayjs(r.time).format('YYYY-MM-DD HH:mm:ss')}`,
+      ]
+      if (r.resolved && r.resolvedTime) {
+        lines.push(`- ✅ 解决：${dayjs(r.resolvedTime).format('YYYY-MM-DD HH:mm:ss')}`)
+      }
+      lines.push('', `> ${r.doubt.replace(/\n/g, '\n> ')}`, '')
+      return lines.join('\n')
+    })
+    const md = [
+      '# ❓ 疑惑记录',
+      '',
+      `> 导出时间：${dayjs().format('YYYY-MM-DD HH:mm')} ・ 共 ${records.value.length} 条（已解决 ${resolvedCount} 条）`,
+      '',
+      ...blocks,
+    ].join('\n')
+    downloadText(`疑惑记录_${exportTimestamp()}.md`, md)
+  }
+
   onMounted(() => {
     records.value = readStorage(DOUBT_KEY)
   })
@@ -111,5 +137,6 @@ export function useDoubt(getPage) {
     resolve,
     remove,
     clearResolved,
+    exportRecords,
   }
 }

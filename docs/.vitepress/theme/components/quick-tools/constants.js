@@ -2,6 +2,7 @@
 export const PROGRESS_KEY = 'quick-tools-progress'
 export const DOUBT_KEY = 'quick-tools-doubts'
 export const NOTE_KEY = 'quick-tools-notes'
+export const REVIEW_KEY = 'quick-tools-reviews'
 export const READING_TIME_KEY = 'quick-tools-reading-time'
 
 // 记录上限
