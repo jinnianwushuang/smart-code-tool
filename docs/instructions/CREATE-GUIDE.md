@@ -58,6 +58,10 @@ docs/instructions/<框架分类>/<指令集名称>/
 │   │   ├── task-*.md                          ← 各类任务指令
 │   │   └── review-checklist.md                ← 复核自检清单
 │   │
+│   ├── custom/                                ← 业务扩展指令区（仅第 4/6 层）
+│   │   ├── index.md                           ← 入口汇总（AI 自动维护）
+│   │   └── *.md                               ← 单个业务指令文件（一指令一文件）
+│   │
 │   ├── config.md                              ← 填空式配置模板
 │   ├── config.example.md                      ← 完整配置示例
 │   └── glossary.md                            ← 术语表
@@ -182,6 +186,16 @@ docs/instructions/<框架分类>/<指令集名称>/
 - 每类任务有独立的 `task-*.md` 指令文件
 - 禁止混合执行多种任务类型
 
+### 5.6 业务扩展指令原则（仅第 4/6 层）
+
+- 第 4 层（代码检查）和第 6 层（文档生成）的指令集必须包含 `custom/` 子目录
+- `custom/index.md` 作为入口汇总，列出所有扩展指令的标题、用途、创建时间
+- 每个业务扩展指令独立一个 `.md` 文件，不合并
+- AI 在执行中发现缺少指令时，主动创建新文件并更新 `index.md`
+- AI 在执行指令后，可根据执行结果优化指令内容（自我进化）
+- 扩展指令与预设指令物理隔离，互不干扰
+- 每个扩展指令文件头部标注 `created`、`last_evolved`、`evolved_count` 时间戳
+
 ## 6. 创建流程（按顺序执行）
 
 ### 步骤 1：确定指令集定位
@@ -201,6 +215,9 @@ mkdir -p docs/instructions/<框架分类>/<指令集名称>/docs/
 mkdir -p docs/instructions/<框架分类>/<指令集名称>/<指令集名称>/entry/
 mkdir -p docs/instructions/<框架分类>/<指令集名称>/<指令集名称>/architecture/
 mkdir -p docs/instructions/<框架分类>/<指令集名称>/<指令集名称>/instructions/
+
+# 仅第 4 层（代码检查）和第 6 层（文档生成）需要创建 custom/ 目录
+mkdir -p docs/instructions/<框架分类>/<指令集名称>/<指令集名称>/custom/
 ```
 
 ### 步骤 3：创建 AI 指令区文件
@@ -372,8 +389,79 @@ docs/file-index.md      — 文件索引
 - [ ] 配置驱动：项目差异通过 config.md 配置
 - [ ] 约束优先：constraints.md 定义了行为边界
 - [ ] 任务隔离：每种任务类型独立文件
+- [ ] 业务扩展：第 4/6 层包含 `custom/` 目录，含入口汇总和统一格式
 
-## 8. 参照实现
+## 8. 业务扩展指令创建规范（仅第 4/6 层）
+
+当指令集覆盖第 4 层（代码检查）或第 6 层（文档生成）时，必须包含 `custom/` 子目录。
+
+### 目录结构
+
+```
+custom/
+├── index.md                   ← 入口汇总（AI 自动维护）
+├── check-api-consistency.md   ← 单个业务指令文件
+├── check-state-flow.md        ← 单个业务指令文件
+└── ...
+```
+
+### 入口汇总文件格式（custom/index.md）
+
+```markdown
+# 业务扩展指令汇总
+
+> 本文件由 AI 助手自动维护，列出所有业务扩展指令。
+
+| 指令文件                                               | 用途                 | 创建时间   | 最后进化   | 进化次数 |
+| ------------------------------------------------------ | -------------------- | ---------- | ---------- | -------- |
+| [check-api-consistency.md](./check-api-consistency.md) | 检查 API 接口一致性  | 2024-03-15 | 2024-04-02 | 3        |
+| [check-state-flow.md](./check-state-flow.md)           | 检查状态机流转完整性 | 2024-03-20 | 2024-03-20 | 0        |
+```
+
+### 单个指令文件格式
+
+```markdown
+---
+title: <指令标题>
+layer: <所属层级，如 layer-4>
+created: YYYY-MM-DD
+last_evolved: YYYY-MM-DD
+evolved_count: <进化次数>
+source: ai | human
+---
+
+# <指令标题>
+
+## 适用场景
+
+<描述什么情况下触发此指令>
+
+## 执行步骤
+
+1. ...
+2. ...
+
+## 检查项 / 输出格式
+
+- ...
+
+## 进化记录
+
+- YYYY-MM-DD: <本次进化内容>
+```
+
+### AI 追加与自我进化流程
+
+```
+AI 执行任务 → 发现缺少某条检查/生成指令
+  → 在 custom/ 下创建新文件（按统一格式）
+  → 更新 custom/index.md 汇总表格
+  → 后续执行该指令后，评估结果
+  → 发现可优化 → 修改指令文件 + 更新 last_evolved / evolved_count
+  → 在「进化记录」中追加变更说明
+```
+
+## 9. 参照实现
 
 当前已有一个完整的参照实现：
 
@@ -391,7 +479,7 @@ docs/instructions/vue/vue-assembler/
 
 创建新指令集时，建议先阅读参照实现的文件结构和内容风格，保持一致性。
 
-## 9. 常见场景 FAQ
+## 10. 常见场景 FAQ
 
 ### 同一框架下可以有多个指令集吗？
 

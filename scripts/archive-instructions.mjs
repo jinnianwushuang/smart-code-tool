@@ -1,78 +1,164 @@
 #!/usr/bin/env zx
 
 /**
- * 将指令集的 AI 指令区目录打包为 zip，供文档页面下载
+ * 将指令集按框架打包为套件 zip，供文档页面下载
  *
  * 用法：
  *   npx zx scripts/archive-instructions.mjs
  *
- * 打包规则：
- *   docs/instructions/vue/vue-assembler/vue-assembler/       → docs/public/archive/vue-assembler.zip
- *   docs/instructions/vue/vue-code-review/vue-code-review/   → docs/public/archive/vue-code-review.zip
- *   docs/instructions/vue/vue-arch-starter/vue-arch-starter/ → docs/public/archive/vue-arch-starter.zip
- *   docs/instructions/react/react-code-review/react-code-review/     → docs/public/archive/react-code-review.zip
- *   docs/instructions/flutter/flutter-code-review/flutter-code-review/ → docs/public/archive/flutter-code-review.zip
+ * 输出：
+ *   docs/public/archive/vue-kit.zip         — Vue 全套套件
+ *   docs/public/archive/react-kit.zip       — React 全套套件
+ *   docs/public/archive/flutter-kit.zip     — Flutter 全套套件
+ *   docs/public/archive/instructions-kit.zip — 三合一总套件
+ *
+ * 每个框架套件包含：
+ *   ├── instruction-architecture/   ← 指令设计架构准则（共享）
+ *   ├── prompts/                    ← 通用提示词 + 框架提示词与约束
+ *   └── <框架指令集>/               ← 该框架下所有指令集（含 docs + AI 指令区）
+ *
+ * 新增指令集时，只需在 FRAMEWORKS 配置的 instructionSets 数组中添加条目即可。
  */
 
 import { chalk, fs } from 'zx'
 
 $.verbose = true
 
-// ── 打包配置 ──────────────────────────────────────────────
+// ── 路径常量 ──────────────────────────────────────────────
 const ARCHIVE_DIR = 'docs/public/archive'
+const STAGING_DIR = '.staging-kits'
+const INSTRUCTIONS_ROOT = 'docs/instructions'
 
-const TASKS = [
+// ── 框架配置 ──────────────────────────────────────────────
+// 新增指令集时，只需在对应框架的 instructionSets 中添加 { name, src } 即可
+const FRAMEWORKS = [
   {
-    name: 'vue-assembler',
-    src: 'docs/instructions/vue/vue-assembler/vue-assembler',
-    output: `${ARCHIVE_DIR}/vue-assembler.zip`,
+    id: 'vue',
+    label: 'Vue',
+    instructionSets: [
+      {
+        name: 'vue-assembler',
+        src: `${INSTRUCTIONS_ROOT}/vue/vue-assembler`,
+      },
+      {
+        name: 'vue-code-review',
+        src: `${INSTRUCTIONS_ROOT}/vue/vue-code-review`,
+      },
+      {
+        name: 'vue-arch-starter',
+        src: `${INSTRUCTIONS_ROOT}/vue/vue-arch-starter`,
+      },
+    ],
   },
   {
-    name: 'vue-code-review',
-    src: 'docs/instructions/vue/vue-code-review/vue-code-review',
-    output: `${ARCHIVE_DIR}/vue-code-review.zip`,
+    id: 'react',
+    label: 'React',
+    instructionSets: [
+      {
+        name: 'react-assembler',
+        src: `${INSTRUCTIONS_ROOT}/react/react-assembler`,
+      },
+      {
+        name: 'react-code-review',
+        src: `${INSTRUCTIONS_ROOT}/react/react-code-review`,
+      },
+    ],
   },
   {
-    name: 'vue-arch-starter',
-    src: 'docs/instructions/vue/vue-arch-starter/vue-arch-starter',
-    output: `${ARCHIVE_DIR}/vue-arch-starter.zip`,
-  },
-  {
-    name: 'react-code-review',
-    src: 'docs/instructions/react/react-code-review/react-code-review',
-    output: `${ARCHIVE_DIR}/react-code-review.zip`,
-  },
-  {
-    name: 'flutter-code-review',
-    src: 'docs/instructions/flutter/flutter-code-review/flutter-code-review',
-    output: `${ARCHIVE_DIR}/flutter-code-review.zip`,
+    id: 'flutter',
+    label: 'Flutter',
+    instructionSets: [
+      {
+        name: 'flutter-assembler',
+        src: `${INSTRUCTIONS_ROOT}/flutter/flutter-assembler`,
+      },
+      {
+        name: 'flutter-code-review',
+        src: `${INSTRUCTIONS_ROOT}/flutter/flutter-code-review`,
+      },
+    ],
   },
 ]
 
-// ── 执行 ──────────────────────────────────────────────────
-console.log(chalk.blue('\n📦 指令集压缩包打包\n'))
-
-// 确保输出目录存在
-await fs.ensureDir(ARCHIVE_DIR)
-
-for (const task of TASKS) {
-  const srcExists = await fs.pathExists(task.src)
-
-  if (!srcExists) {
-    console.log(chalk.yellow(`⚠️  跳过 ${task.name}：源目录不存在 → ${task.src}`))
-    continue
-  }
-
-  console.log(chalk.gray(`  打包 ${task.src} → ${task.output}`))
-
-  // 进入源目录的父级，以目录名作为 zip 内的根目录
-  const parentDir = task.src.substring(0, task.src.lastIndexOf('/'))
-  const dirName = task.src.substring(task.src.lastIndexOf('/') + 1)
-
-  await $`cd ${parentDir} && zip -r ${process.cwd()}/${task.output} ${dirName}/ -x "*.DS_Store"`
-
-  console.log(chalk.green(`  ✅ ${task.name} 打包完成`))
+// ── 共享内容源路径 ─────────────────────────────────────────
+const SHARED_SOURCES = {
+  architecture: `${INSTRUCTIONS_ROOT}/instruction-architecture`,
+  basePrompt: `${INSTRUCTIONS_ROOT}/prompts/base-sentence.md`,
+  promptsBase: `${INSTRUCTIONS_ROOT}/prompts`,
 }
 
-console.log(chalk.green('\n✅ 所有指令集压缩包打包完成！'))
-console.log(chalk.gray(`   输出目录: ${ARCHIVE_DIR}/\n`))
+// ── 执行 ──────────────────────────────────────────────────
+console.log(chalk.blue('\n📦 指令集套件打包\n'))
+
+// 确保输出目录和临时目录
+await fs.ensureDir(ARCHIVE_DIR)
+await fs.remove(STAGING_DIR)
+await fs.ensureDir(STAGING_DIR)
+
+const kitZipPaths = []
+
+for (const framework of FRAMEWORKS) {
+  const kitName = `${framework.id}-kit`
+  const kitDir = `${STAGING_DIR}/${kitName}`
+
+  console.log(chalk.cyan(`\n━━━ ${framework.label} 套件 ━━━`))
+
+  // ── 1. 拷贝指令设计架构准则（共享） ──
+  const archDest = `${kitDir}/instruction-architecture`
+  if (await fs.pathExists(SHARED_SOURCES.architecture)) {
+    await fs.copy(SHARED_SOURCES.architecture, archDest)
+    console.log(chalk.gray(`  + instruction-architecture/`))
+  }
+
+  // ── 2. 拷贝提示词 ──
+  // 2a. 通用提示词
+  const promptsDest = `${kitDir}/prompts`
+  await fs.ensureDir(promptsDest)
+  if (await fs.pathExists(SHARED_SOURCES.basePrompt)) {
+    await fs.copy(SHARED_SOURCES.basePrompt, `${promptsDest}/base-sentence.md`)
+    console.log(chalk.gray(`  + prompts/base-sentence.md`))
+  }
+
+  // 2b. 框架专属提示词 + 约束
+  const frameworkPromptsSrc = `${SHARED_SOURCES.promptsBase}/${framework.id}`
+  if (await fs.pathExists(frameworkPromptsSrc)) {
+    await fs.copy(frameworkPromptsSrc, `${promptsDest}/${framework.id}`)
+    console.log(chalk.gray(`  + prompts/${framework.id}/`))
+  }
+
+  // ── 3. 拷贝该框架下所有指令集 ──
+  for (const set of framework.instructionSets) {
+    const setDest = `${kitDir}/${set.name}`
+    if (await fs.pathExists(set.src)) {
+      await fs.copy(set.src, setDest)
+      console.log(chalk.gray(`  + ${set.name}/`))
+    } else {
+      console.log(chalk.yellow(`  ⚠️  跳过 ${set.name}：源目录不存在`))
+    }
+  }
+
+  // ── 4. 打包框架套件 zip ──
+  const zipOutput = `${ARCHIVE_DIR}/${kitName}.zip`
+  await $`cd ${STAGING_DIR} && zip -r ${process.cwd()}/${zipOutput} ${kitName}/ -x "*.DS_Store"`
+  kitZipPaths.push(zipOutput)
+
+  console.log(chalk.green(`  ✅ ${kitName}.zip 打包完成`))
+}
+
+// ── 5. 打包三合一总套件 ──
+console.log(chalk.cyan(`\n━━━ 总套件 ━━━`))
+const masterZip = `${ARCHIVE_DIR}/instructions-kit.zip`
+await $`cd ${STAGING_DIR} && zip -r ${process.cwd()}/${masterZip} . -x "*.DS_Store"`
+console.log(chalk.green(`  ✅ instructions-kit.zip 打包完成`))
+
+// ── 6. 清理临时目录 ──
+await fs.remove(STAGING_DIR)
+
+console.log(chalk.green('\n✅ 所有套件打包完成！'))
+console.log(chalk.gray(`   输出目录: ${ARCHIVE_DIR}/`))
+console.log(chalk.gray(`   文件列表:`))
+for (const framework of FRAMEWORKS) {
+  console.log(chalk.gray(`     ${framework.id}-kit.zip — ${framework.label} 全套套件`))
+}
+console.log(chalk.gray(`     instructions-kit.zip — 三合一总套件`))
+console.log()

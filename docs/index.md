@@ -1,72 +1,52 @@
-# 读书的本质是一场合法抢劫。
+---
+layout: home
 
-> 不花时间去创造想要的生活，将被迫花很多时间应付不想要的生活。
->
-> **学习是唯一的出路，最低成本的出路。**
+hero:
+  name: YOLO
+  text: 保持清醒，保持输出，保持前行
+  tagline: 读书的本质是一场合法抢劫
+  actions:
+    - theme: brand
+      text: 心理认知
+      link: /psychology/
+    - theme: alt
+      text: 架构文档
+      link: /architecture-document/
+    - theme: alt
+      text: 开发手册
+      link: /handbook/
+    - theme: alt
+      text: 面试知识体系
+      link: /interview/
 
+features:
+  - icon: 🧠
+    title: 定心·内观
+    details: 一切外功，皆从心起。活在当下，跳过情绪直接做事，半称心即圆满。
+    link: /psychology/
+  - icon: ⚡
+    title: 行动·准则
+    details: Do or die. Now or never. 输出替代输入，复盘驱动成长，对抗熵增。
+    link: /psychology/#行动准则
+  - icon: 🔮
+    title: 思维·模型
+    details: 第一性原理、疯狂愿景、强悍执行、高效迭代、抗压死磕、成本杀手。
+    link: /architecture-document/
+  - icon: 📚
+    title: 知识·体系
+    details: 140+ 篇面试知识体系、90+ 篇架构文档、55+ 篇开发手册、13 篇 AI 知识库。
+    link: /interview/
+  - icon: 🛠️
+    title: 工具·利器
+    details: 善假于物者，致千里。Excel 统计分析、实用工具集、Vue 架构验证实验场。
+    link: /app-iframe/code-tool-app/
+  - icon: 🤖
+    title: AI 知识库
+    details: AI 行业概念、Ollama 本地部署、Agent 实践、本地智能体最佳实践。
+    link: /ai/
 ---
 
-## 一、定心·内观
-
-> 一切外功，皆从心起。心不定，则万事皆浮。
-
-- **活在当下，重在体验。** 过去已去，未来未来，你真正拥有的只有此刻。
-- **跳过情绪，直接做事。** 情绪是信号，不是指令。收到信号，然后动手。
-- **半称心即圆满。** 不完美是常态，接受即是力量。
-- **宁静致远。** 静下来，才能看到远处。
-
-📖 → [心理认知](/psychology/)（哲学 · 认知 · 心智 · 世界规律）
-
----
-
-## 二、行动·准则
-
-> 知道不等于做到，做到才是你的。
-
-- **Do or die.** 要么干，要么死。没有第三条路。
-- **Now or never.** 此刻不动手，永远不会有「更好的时机」。
-- **输出替代输入。** 读 100 篇不如写 1 篇。用输出倒逼理解。
-- **复盘驱动成长。** 做完 → 回顾 → 提炼 → 下次更好。没有复盘的经验是伪经验。
-- **对抗熵增。** 不主动整理就会越来越乱——代码如此，人生亦然。
-
----
-
-## 三、思维·模型
-
-> 工具会过时，框架会迭代，思维方式才是底层操作系统。
-
-- **第一性原理** — 回归本质，不被表象迷惑
-- **疯狂愿景** — 敢想大梦，不被现状束缚
-- **强悍执行** — 说干就干，不在计划里迷路
-- **高效迭代** — 不怕炸，快速改，完成优于完美
-- **抗压死磕** — 绝境不认输，问题总有解
-- **成本杀手** — 把冗余砍到极致，只留必要
-
-📖 → [架构文档](/architecture-document/)（设计模式 · 研发思维 · 技术选型 · 架构愿景）
-
----
-
-## 四、知识·体系
-
-> 体系化是抵抗遗忘和碎片化的唯一武器。
-
-| 模块                                |    规模 | 定位                                                   |
-| ----------------------------------- | ------: | ------------------------------------------------------ |
-| [面试知识体系](/interview/)         | 140+ 篇 | 初级→架构师全层级，前端 + Node + Flutter 全栈          |
-| [架构文档](/architecture-document/) |  90+ 篇 | 设计模式 · 数据库 · 工程化 · React/Vue 深度 · 研发思维 |
-| [开发手册](/handbook/)              |  55+ 篇 | Vue/React/Flutter/Docker/Git 等速查手册                |
-| [AI 知识库](/ai/)                   |   13 篇 | 行业概念 · Ollama 本地部署 · Agent 实践                |
-| [心理认知](/psychology/)            |   17 篇 | 哲学名言 · 认知学习 · 心智 · 世界规律                  |
-
----
-
-## 五、工具·利器
-
-> 善假于物者，致千里。
-
-- [工具库](/app-iframe/code-tool-app/) — Excel 统计分析 · 实用工具集
-- [Vue 架构验证](/app-iframe/vue-test-app/) — Vue 组件与架构实验场
-
----
-
-<p align="center"><strong>资本在收割你的注意力、意志力和思维。</strong><br>保持清醒，保持输出，保持前行。</p>
+<p align="center" style="padding: 2rem 1.5rem; font-size: 1.1rem; color: var(--vp-c-text-2); max-width: 600px; margin: 0 auto;">
+<strong style="color: var(--vp-c-text-1);">不花时间去创造想要的生活，将被迫花很多时间应付不想要的生活。</strong><br>
+学习是唯一的出路，最低成本的出路。
+</p>

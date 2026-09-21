@@ -2,7 +2,6 @@
 // 导航栏配置
 
 export const nav = [
-  { text: '首页', link: '/' },
   {
     text: '心理',
     link: '/psychology/',
@@ -36,5 +35,5 @@ export const nav = [
       { text: 'React 架构验证', link: '/app-iframe/react-test-app/' },
     ],
   },
-  // { text: 'GitHub', link: 'https://github.com/jinnianwushuang/smart-code-tool' },
+ 
 ]

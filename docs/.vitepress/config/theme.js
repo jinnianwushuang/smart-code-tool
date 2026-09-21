@@ -4,7 +4,6 @@
 export const themeConfig = {
   // Logo 和标题
   logo: '/doc-assets/logo/icons8-light-on-96.png',
- 
 
   // 上一页/下一页导航
   docFooter: {
@@ -27,8 +26,8 @@ export const themeConfig = {
     },
   },
 
-  // 社交链接
-  socialLinks: [{ icon: 'github', link: 'https://github.com/jinnianwushuang/smart-code-tool' }],
+  // // 社交链接
+  // socialLinks: [{ icon: 'github', link: 'https://github.com/jinnianwushuang/smart-code-tool' }],
 
   // 页面大纲
   outline: {

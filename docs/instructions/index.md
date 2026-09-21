@@ -10,6 +10,17 @@ title: 指令集
 
 核心理念：**复制 → 改配置 → 傻瓜式快速使用**。
 
+## 下载套件
+
+每个框架提供一套开箱即用的完整套件（含指令设计架构准则 + 提示词与约束 + 所有指令集），也可下载三合一总套件：
+
+| 套件                                                              | 包含内容                                                   |
+| ----------------------------------------------------------------- | ---------------------------------------------------------- |
+| <a href="/archive/vue-kit.zip" download>Vue 全套套件</a>          | 指令架构准则 + Vue 提示词 + 装配架构 + 代码检查 + 代码模板 |
+| <a href="/archive/react-kit.zip" download>React 全套套件</a>      | 指令架构准则 + React 提示词 + 装配架构 + 代码检查          |
+| <a href="/archive/flutter-kit.zip" download>Flutter 全套套件</a>  | 指令架构准则 + Flutter 提示词 + 装配架构 + 代码检查        |
+| <a href="/archive/instructions-kit.zip" download>三合一总套件</a> | 以上三个框架套件合一                                       |
+
 ---
 
 ## 指令集体系设计
@@ -32,7 +43,8 @@ title: 指令集
 | [Vue 架构代码模板](./vue/vue-arch-starter/docs/)                  | Vue 3            | 可复用的装配架构代码模板包，含集成/定制指南                            | 进行中 |
 | [React 通用代码检查指令集](./react/react-code-review/docs/)       | React 19         | 不绑定特定架构的通用代码质量检查（10 大维度，默认启用 React Compiler） | 进行中 |
 | [Flutter 通用代码检查指令集](./flutter/flutter-code-review/docs/) | Flutter 3 + GetX | 不绑定特定架构的通用代码质量检查（10 大维度，偏向 GetX）               | 进行中 |
-| React 装配架构指令集                                              | React            | 基于 React 的标准化装配架构指令集                                      | 规划中 |
+| [React 装配架构指令集](./react/react-assembler/docs/)             | React 19         | 基于 Hooks + Composition 模式的页面开发、重构、迭代、修复、代码检查    | 已完成 |
+| [Flutter 装配架构指令集](./flutter/flutter-assembler/docs/)       | Flutter 3 + GetX | 基于 Widget + GetX 装配模式的页面开发、重构、迭代、修复、代码检查      | 已完成 |
 
 ### 提示词集
 

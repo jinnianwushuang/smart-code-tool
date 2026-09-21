@@ -12,9 +12,9 @@
 
 ## 快速开始
 
-<a href="/archive/flutter-code-review.zip" class="download-btn" download>
+<a href="/archive/flutter-kit.zip" class="download-btn" download>
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-  下载指令集压缩包
+  下载 Flutter 全套套件
 </a>
 
 ### 1. 拷贝指令集
@@ -54,27 +54,27 @@
 
 ## 10 大检查维度
 
-| #   | 维度          | 检查项数 | 说明                                                       |
-| --- | ------------- | -------- | ---------------------------------------------------------- |
-| 1   | 代码规范      | 6        | 文件行数、函数长度、注释比例、dart analyze、命名            |
-| 2   | Flutter Widget | 9       | const 构造、key、build 体积、setState、Material 3、GetX 三件套 |
-| 3   | 性能          | 6        | const、ListView.builder、RepaintBoundary、重建、图片缓存     |
-| 4   | 内存管理      | 7        | Controller dispose、监听、Timer、StreamSubscription、GetX    |
-| 5   | 并发处理      | 4        | 竞态、async gap mounted、Isolate、防抖节流                 |
-| 6   | 国际化        | 4        | 硬编码文本、多语种键值对比（需开关）                        |
-| 7   | 安全          | 6        | 敏感信息、明文存储、http、SQL 注入、正则                    |
-| 8   | 错误处理      | 5        | try/catch、runZonedGuarded、FlutterError、Dio 拦截器        |
-| 9   | 组件设计      | 5        | Widget 职责、树深、Binding、循环依赖                        |
-| 10  | 代码卫生      | 5        | print/debugPrint、死代码、魔法数字                          |
+| #   | 维度           | 检查项数 | 说明                                                           |
+| --- | -------------- | -------- | -------------------------------------------------------------- |
+| 1   | 代码规范       | 6        | 文件行数、函数长度、注释比例、dart analyze、命名               |
+| 2   | Flutter Widget | 9        | const 构造、key、build 体积、setState、Material 3、GetX 三件套 |
+| 3   | 性能           | 6        | const、ListView.builder、RepaintBoundary、重建、图片缓存       |
+| 4   | 内存管理       | 7        | Controller dispose、监听、Timer、StreamSubscription、GetX      |
+| 5   | 并发处理       | 4        | 竞态、async gap mounted、Isolate、防抖节流                     |
+| 6   | 国际化         | 4        | 硬编码文本、多语种键值对比（需开关）                           |
+| 7   | 安全           | 6        | 敏感信息、明文存储、http、SQL 注入、正则                       |
+| 8   | 错误处理       | 5        | try/catch、runZonedGuarded、FlutterError、Dio 拦截器           |
+| 9   | 组件设计       | 5        | Widget 职责、树深、Binding、循环依赖                           |
+| 10  | 代码卫生       | 5        | print/debugPrint、死代码、魔法数字                             |
 
 ## 支持的任务类型
 
-| 任务类型           | 说明                                       |
-| ------------------ | ------------------------------------------ |
-| Dart 静态分析审计  | 检查 analysis_options.yaml 配置并给出建议  |
-| 深度代码审查       | 按 10 大维度逐项审查                       |
-| 完整检查           | 静态分析审计 + 深度审查                    |
-| 国际化专项检查     | 仅检查国际化相关项（需开关开启）           |
+| 任务类型          | 说明                                      |
+| ----------------- | ----------------------------------------- |
+| Dart 静态分析审计 | 检查 analysis_options.yaml 配置并给出建议 |
+| 深度代码审查      | 按 10 大维度逐项审查                      |
+| 完整检查          | 静态分析审计 + 深度审查                   |
+| 国际化专项检查    | 仅检查国际化相关项（需开关开启）          |
 
 ## 文档导航
 

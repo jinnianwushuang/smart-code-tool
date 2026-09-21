@@ -10,9 +10,9 @@
 
 ## 快速开始
 
-<a href="/archive/vue-arch-starter.zip" class="download-btn" download>
+<a href="/archive/vue-kit.zip" class="download-btn" download>
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-  下载代码模板压缩包
+  下载 Vue 全套套件
 </a>
 
 ### 1. 下载并解压
@@ -47,29 +47,29 @@ resolve: {
 
 ## 包含内容
 
-| 目录 | 说明 |
-|------|------|
-| `standardization/multiton-template/` | 多例模板 — 每次使用创建独立实例 |
-| `standardization/singleton-template/` | 单例模板 — 全局共享单一实例 |
-| `common/architecture-design/` | 装配引擎核心（7 个装配器 + 工具函数） |
-| `composable/architecture-design/` | 架构组合函数（上下文启动器、生命周期管理） |
-| `css/` | 全局样式变量（亮/暗主题、Quasar 变量） |
+| 目录                                  | 说明                                       |
+| ------------------------------------- | ------------------------------------------ |
+| `standardization/multiton-template/`  | 多例模板 — 每次使用创建独立实例            |
+| `standardization/singleton-template/` | 单例模板 — 全局共享单一实例                |
+| `common/architecture-design/`         | 装配引擎核心（7 个装配器 + 工具函数）      |
+| `composable/architecture-design/`     | 架构组合函数（上下文启动器、生命周期管理） |
+| `css/`                                | 全局样式变量（亮/暗主题、Quasar 变量）     |
 
 ## 与 vue-assembler 的关系
 
-| 本包（vue-arch-starter） | vue-assembler（AI 指令集） |
-|--------------------------|---------------------------|
-| 给**开发者**用 | 给 **AI 助手**用 |
-| 提供代码骨架 + 集成指南 | 提供 AI 执行规范 + 架构参照 |
-| 解决「怎么搭建」的问题 | 解决「怎么按规范工作」的问题 |
+| 本包（vue-arch-starter） | vue-assembler（AI 指令集）   |
+| ------------------------ | ---------------------------- |
+| 给**开发者**用           | 给 **AI 助手**用             |
+| 提供代码骨架 + 集成指南  | 提供 AI 执行规范 + 架构参照  |
+| 解决「怎么搭建」的问题   | 解决「怎么按规范工作」的问题 |
 
 两者互补，建议配合使用。
 
 ## 文档导航
 
-| 文档 | 说明 |
-|------|------|
-| [架构概念](./architecture.md) | 装配架构核心理念、模块系统、生命周期管理 |
-| [集成指南](./integration.md) | 手把手搭建架构骨架 + Common Pitfalls FAQ |
-| [定制指南](./customization.md) | UI 框架替换、模块扩展、模板维护策略 |
-| [文件索引](./file-index.md) | 代码模板全部文件的功能索引 |
+| 文档                           | 说明                                     |
+| ------------------------------ | ---------------------------------------- |
+| [架构概念](./architecture.md)  | 装配架构核心理念、模块系统、生命周期管理 |
+| [集成指南](./integration.md)   | 手把手搭建架构骨架 + Common Pitfalls FAQ |
+| [定制指南](./customization.md) | UI 框架替换、模块扩展、模板维护策略      |
+| [文件索引](./file-index.md)    | 代码模板全部文件的功能索引               |

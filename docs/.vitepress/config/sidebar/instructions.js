@@ -113,7 +113,7 @@ export const instructionsSidebar = {
           ],
         },
         {
-          text: 'Vue 架构代码模板',
+          text: 'Vue 装配架构代码模板',
           collapsed: true,
           items: [
             { text: '概述', link: '/instructions/vue/vue-arch-starter/docs/' },
@@ -158,6 +158,8 @@ export const instructionsSidebar = {
         },
         {
           text: '版本记录',
+          collapsed: true,
+
           items: [
             { text: 'Vue 装配架构 — 变更日志', link: '/instructions/vue/vue-assembler/VERSION' },
             {
@@ -177,6 +179,17 @@ export const instructionsSidebar = {
       collapsed: false,
       items: [
         {
+          text: 'React 装配架构 AI 指令集',
+          collapsed: true,
+          items: [
+            { text: '概述', link: '/instructions/react/react-assembler/docs/' },
+            { text: '设计架构', link: '/instructions/react/react-assembler/docs/design' },
+            { text: '执行流程', link: '/instructions/react/react-assembler/docs/execution-flow' },
+            { text: '配置指南', link: '/instructions/react/react-assembler/docs/config-guide' },
+            { text: '文件索引', link: '/instructions/react/react-assembler/docs/file-index' },
+          ],
+        },
+        {
           text: 'React 通用代码检查指令集',
           collapsed: true,
           items: [
@@ -195,7 +208,12 @@ export const instructionsSidebar = {
         },
         {
           text: '版本记录',
+          collapsed: true,
           items: [
+            {
+              text: 'React 装配架构 — 变更日志',
+              link: '/instructions/react/react-assembler/VERSION',
+            },
             {
               text: 'React 通用代码检查 — 变更日志',
               link: '/instructions/react/react-code-review/VERSION',
@@ -208,6 +226,20 @@ export const instructionsSidebar = {
       text: 'Flutter',
       collapsed: false,
       items: [
+        {
+          text: 'Flutter 装配架构 AI 指令集',
+          collapsed: true,
+          items: [
+            { text: '概述', link: '/instructions/flutter/flutter-assembler/docs/' },
+            { text: '设计架构', link: '/instructions/flutter/flutter-assembler/docs/design' },
+            {
+              text: '执行流程',
+              link: '/instructions/flutter/flutter-assembler/docs/execution-flow',
+            },
+            { text: '配置指南', link: '/instructions/flutter/flutter-assembler/docs/config-guide' },
+            { text: '文件索引', link: '/instructions/flutter/flutter-assembler/docs/file-index' },
+          ],
+        },
         {
           text: 'Flutter 通用代码检查指令集',
           collapsed: true,
@@ -230,7 +262,12 @@ export const instructionsSidebar = {
         },
         {
           text: '版本记录',
+          collapsed: true,
           items: [
+            {
+              text: 'Flutter 装配架构 — 变更日志',
+              link: '/instructions/flutter/flutter-assembler/VERSION',
+            },
             {
               text: 'Flutter 通用代码检查 — 变更日志',
               link: '/instructions/flutter/flutter-code-review/VERSION',
