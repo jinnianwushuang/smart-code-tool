@@ -76,20 +76,14 @@ export const instructionsSidebar = {
       ],
     },
     {
-      text: '提示词集',
-      collapsed: true,
-      items: [
-        { text: '总索引', link: '/instructions/prompts/' },
-        { text: '通用提示词', link: '/instructions/prompts/base-sentence' },
-        { text: 'Vue 提示词', link: '/instructions/prompts/vue/prompts' },
-        { text: 'React 提示词', link: '/instructions/prompts/react/prompts' },
-        { text: 'Flutter 提示词', link: '/instructions/prompts/flutter/prompts' },
-      ],
+      text: '多工作区组合开发套件',
+      link: '/instructions/multi-workspace-composition',
     },
     {
       text: 'Vue',
       collapsed: false,
       items: [
+        { text: 'Vue 提示词', link: '/instructions/vue/prompts' },
         {
           text: 'Vue 装配架构 AI 指令集',
           collapsed: true,
@@ -178,6 +172,7 @@ export const instructionsSidebar = {
       text: 'React',
       collapsed: false,
       items: [
+        { text: 'React 提示词', link: '/instructions/react/prompts' },
         {
           text: 'React 装配架构 AI 指令集',
           collapsed: true,
@@ -226,6 +221,7 @@ export const instructionsSidebar = {
       text: 'Flutter',
       collapsed: false,
       items: [
+        { text: 'Flutter 提示词', link: '/instructions/flutter/prompts' },
         {
           text: 'Flutter 装配架构 AI 指令集',
           collapsed: true,

@@ -14,7 +14,7 @@
  *
  * 每个框架套件包含：
  *   ├── instruction-architecture/   ← 指令设计架构准则（共享）
- *   ├── prompts/                    ← 通用提示词 + 框架提示词与约束
+ *   ├── prompts/                    ← 框架提示词与约束
  *   └── <框架指令集>/               ← 该框架下所有指令集（含 docs + AI 指令区）
  *
  * 新增指令集时，只需在 FRAMEWORKS 配置的 instructionSets 数组中添加条目即可。
@@ -83,8 +83,6 @@ const FRAMEWORKS = [
 // ── 共享内容源路径 ─────────────────────────────────────────
 const SHARED_SOURCES = {
   architecture: `${INSTRUCTIONS_ROOT}/instruction-architecture`,
-  basePrompt: `${INSTRUCTIONS_ROOT}/prompts/base-sentence.md`,
-  promptsBase: `${INSTRUCTIONS_ROOT}/prompts`,
 }
 
 // ── 执行 ──────────────────────────────────────────────────
@@ -110,20 +108,19 @@ for (const framework of FRAMEWORKS) {
     console.log(chalk.gray(`  + instruction-architecture/`))
   }
 
-  // ── 2. 拷贝提示词 ──
-  // 2a. 通用提示词
+  // ── 2. 拷贝提示词（从框架目录） ──
   const promptsDest = `${kitDir}/prompts`
   await fs.ensureDir(promptsDest)
-  if (await fs.pathExists(SHARED_SOURCES.basePrompt)) {
-    await fs.copy(SHARED_SOURCES.basePrompt, `${promptsDest}/base-sentence.md`)
-    console.log(chalk.gray(`  + prompts/base-sentence.md`))
+  const frameworkPromptsSrc = `${INSTRUCTIONS_ROOT}/${framework.id}`
+  // 拷贝 prompts.md
+  if (await fs.pathExists(`${frameworkPromptsSrc}/prompts.md`)) {
+    await fs.copy(`${frameworkPromptsSrc}/prompts.md`, `${promptsDest}/prompts.md`)
+    console.log(chalk.gray(`  + prompts/prompts.md`))
   }
-
-  // 2b. 框架专属提示词 + 约束
-  const frameworkPromptsSrc = `${SHARED_SOURCES.promptsBase}/${framework.id}`
-  if (await fs.pathExists(frameworkPromptsSrc)) {
-    await fs.copy(frameworkPromptsSrc, `${promptsDest}/${framework.id}`)
-    console.log(chalk.gray(`  + prompts/${framework.id}/`))
+  // 拷贝 constraints.md
+  if (await fs.pathExists(`${frameworkPromptsSrc}/constraints.md`)) {
+    await fs.copy(`${frameworkPromptsSrc}/constraints.md`, `${promptsDest}/constraints.md`)
+    console.log(chalk.gray(`  + prompts/constraints.md`))
   }
 
   // ── 3. 拷贝该框架下所有指令集 ──

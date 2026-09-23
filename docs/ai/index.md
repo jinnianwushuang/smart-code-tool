@@ -34,7 +34,7 @@
 
 > 已迁移至指令集体系，提供更细粒度的场景拆分和一键复制体验。
 >
-> 👉 [前往提示词集](../instructions/prompts/)
+> 👉 [前往指令集](../instructions/)
 
 ## 🎯 快速开始
 
@@ -45,7 +45,7 @@
 - **了解智能体演进**: 阅读 [智能体发展历程](./base-knowledge/ai-agent-evolution)
 - **构建知识库**: 查看 [AI 知识库建设指南](./idea/kbs)
 - **配置开发环境**: 参考 [新电脑整备指南](./idea/new-mac-setup-guide)
-- **AI 辅助编码**: 查看 [提示词集](../instructions/prompts/)，包含 24 个场景的一键复制 Prompt
+- **AI 辅助编码**: 查看 [指令集](../instructions/)，包含 Vue/React/Flutter 三框架提示词与架构指令
 
 ## 💡 使用建议
 
