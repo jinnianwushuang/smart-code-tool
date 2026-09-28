@@ -41,11 +41,10 @@ export const routes_tool = [
         component: () => import('project/pages/common-tool/index.vue'),
       },
       {
-        path: 'permanent-notice-calendar',
-        name: 'permanent-notice-calendar',
-        meta: { title: '万年历', icon: () => h(CalendarOutlined) },
-        component: () =>
-          import('project/pages/single-smart-tool/permanent-notice-calendar/index.vue'),
+        path: 'date-notes',
+        name: 'date-notes',
+        meta: { title: '日期记事', icon: () => h(CalendarOutlined) },
+        component: () => import('project/pages/single-smart-tool/date-notes/index.vue'),
       },
     ],
   },

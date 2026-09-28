@@ -1,5 +1,5 @@
 <template>
-  <q-card flat bordered class="shadow-2 sticky-card transition-base">
+  <q-card flat bordered class="shadow-2 sticky-card transition-base note-panel">
     <!-- 面板头部 -->
     <q-card-section class="bg-indigo-8 text-white row items-center q-py-sm">
       <q-icon name="assignment" size="xs" class="q-mr-xs" />
@@ -14,7 +14,12 @@
     <q-card-section class="q-pb-sm">
       <div class="selected-date-header row items-center q-mb-sm">
         <q-badge color="indigo" :label="selectedDateStr" class="q-mr-sm" />
-        <span class="text-caption text-grey-6">{{ lunarDetail }}</span>
+        <span class="text-caption text-grey-6 q-mr-sm">{{ lunarDetail }}</span>
+        <q-badge
+          :color="getDistanceColor(selectedDateStr)"
+          :label="getDistanceLabel(selectedDateStr)"
+          class="distance-badge"
+        />
       </div>
 
       <q-input
@@ -24,12 +29,12 @@
         filled
         dense
         placeholder="输入备注后点击保存，或 Ctrl+Enter..."
-        rows="3"
+        rows="2"
         maxlength="100"
         counter
         @keydown="$emit('editor-keydown', $event)"
       />
-      <div class="row justify-end q-gutter-x-sm q-mt-sm">
+      <div class="row justify-end q-gutter-x-sm q-mt-xs">
         <q-btn
           flat
           dense
@@ -72,7 +77,7 @@
     <q-separator />
 
     <!-- 全部备注列表 -->
-    <q-card-section class="q-pt-sm">
+    <q-card-section class="q-pt-sm list-section">
       <q-input
         :model-value="searchQuery"
         @update:model-value="$emit('update:searchQuery', $event)"
@@ -96,11 +101,18 @@
             >
               <a-list-item-meta :description="item.content">
                 <template #title>
-                  <span
-                    :class="item.date === selectedDateStr ? 'text-primary text-weight-bold' : ''"
-                  >
-                    {{ item.date }}
-                  </span>
+                  <div class="row items-center q-gutter-xs">
+                    <span
+                      :class="item.date === selectedDateStr ? 'text-primary text-weight-bold' : ''"
+                    >
+                      {{ item.date }}
+                    </span>
+                    <q-badge
+                      :color="getDistanceColor(item.date)"
+                      :label="getDistanceLabel(item.date)"
+                      class="distance-badge"
+                    />
+                  </div>
                 </template>
               </a-list-item-meta>
               <template #actions>
@@ -126,6 +138,9 @@
 </template>
 
 <script setup>
+import dayjs from 'dayjs'
+import { getDateDistanceInfo } from '../utils/note-utils.js'
+
 defineProps({
   selectedDateStr: String,
   lunarDetail: String,
@@ -144,6 +159,20 @@ defineEmits([
   'go-to-date',
   'delete-note',
 ])
+
+// 获取距今天数标签
+const getDistanceLabel = (dateStr) => {
+  return getDateDistanceInfo(dateStr, dayjs).label
+}
+
+// 根据距离返回 badge 颜色
+const getDistanceColor = (dateStr) => {
+  const info = getDateDistanceInfo(dateStr, dayjs)
+  if (info.isToday) return 'green'
+  if (info.isPast) return 'grey'
+  if (info.diff <= 7) return 'orange'
+  return 'blue'
+}
 </script>
 
 <style scoped>
@@ -153,6 +182,11 @@ defineEmits([
     border-color 0.3s,
     box-shadow 0.3s,
     transform 0.2s;
+}
+
+.note-panel {
+  display: flex;
+  flex-direction: column;
 }
 
 .selected-date-header {
@@ -172,16 +206,32 @@ defineEmits([
   background: rgba(255, 152, 0, 0.08);
 }
 
-.scroll-list {
-  max-height: calc(100vh - 420px);
-  min-height: 200px;
-  overflow-y: auto;
+/* 列表区域 flex 填充剩余空间 */
+.list-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
+.scroll-list {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 180px;
+  max-height: calc(100vh - 460px);
+}
+
 .sticky-card {
   position: sticky;
   top: 16px;
 }
+.note-list-item {
+  padding: 6px 8px;
+}
 .note-list-item:hover {
   background: rgba(0, 0, 0, 0.02);
+}
+.distance-badge {
+  font-size: 10px;
+  padding: 1px 6px;
 }
 </style>

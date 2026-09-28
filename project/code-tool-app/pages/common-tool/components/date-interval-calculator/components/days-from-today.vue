@@ -1,66 +1,72 @@
 <template>
-  <q-card flat bordered class="transition-base">
-    <q-card-section class="bg-indigo-1 text-indigo-10">
-      <div class="text-subtitle1 text-weight-bold">
-        <q-icon name="event_note" size="sm" class="q-mr-xs" />
-        距离今日多少天
-      </div>
-    </q-card-section>
-    <q-card-section>
-      <div class="row q-col-gutter-md">
-        <!-- 左侧：输入区域 -->
-        <div class="col-12 col-md-4">
-          <div class="text-caption q-mb-xs text-grey-7">输入或选择日期</div>
-          <a-date-picker
-            v-model:value="selectedDate"
-            style="width: 100%"
-            placeholder="选择日期"
-            :allow-clear="false"
-            @change="onDateChange"
-          />
-          <a-button type="primary" block class="q-mt-md" @click="addRecord">
-            <template #icon><q-icon name="add" size="sm" /></template>
-            添加记录
-          </a-button>
+  <div class="q-pa-md generator-wrapper">
+    <q-card flat bordered class="q-mx-auto shadow-2 transition-base" style="max-width: 1200px">
+      <!-- 头部 -->
+      <q-card-section class="bg-indigo-8 text-white row items-center">
+        <q-icon name="event_note" size="sm" class="q-mr-sm" />
+        <div class="text-h6 text-weight-bold">距离今日多少天</div>
+        <q-space />
+        <q-badge color="cyan-3" text-color="black" :label="`共 ${records.length} 条`" />
+      </q-card-section>
+
+      <!-- 输入区 -->
+      <q-card-section class="input-bar row items-center q-gutter-sm">
+        <div class="text-caption text-grey-7">输入或选择日期：</div>
+        <a-date-picker
+          v-model:value="selectedDate"
+          style="width: 220px"
+          placeholder="选择日期"
+          :allow-clear="false"
+          @change="onDateChange"
+        />
+        <a-button type="primary" @click="addRecord">
+          <template #icon><q-icon name="add" size="sm" /></template>
+          添加记录
+        </a-button>
+      </q-card-section>
+
+      <q-separator />
+
+      <!-- 记录列表 -->
+      <q-card-section>
+        <div v-if="records.length" class="record-grid">
+          <div
+            v-for="record in records"
+            :key="record.dateStr"
+            class="record-card row items-center q-pa-sm rounded-borders"
+          >
+            <div class="col">
+              <div class="row items-center q-gutter-sm">
+                <span class="text-weight-bold text-body1">{{ record.dateStr }}</span>
+                <span class="text-grey-6 text-caption">{{ record.weekday }}</span>
+                <a-tag
+                  :color="record.diff > 0 ? 'orange' : record.diff < 0 ? 'blue' : 'green'"
+                  class="diff-tag"
+                >
+                  {{ record.diff > 0 ? '还有' : '已过' }}
+                  <span class="text-weight-bold">{{ Math.abs(record.diff) }}</span> 天
+                </a-tag>
+              </div>
+              <div class="text-caption text-grey-7 q-mt-xs">{{ record.readableDiff }}</div>
+            </div>
+            <q-btn
+              flat
+              round
+              dense
+              color="grey-5"
+              icon="close"
+              size="sm"
+              @click="removeRecord(record.dateStr)"
+            />
+          </div>
         </div>
-        <!-- 右侧：记录列表 -->
-        <div class="col-12 col-md-8">
-          <div class="text-caption q-mb-xs text-grey-7">日期记录（共 {{ records.length }} 条）</div>
-          <q-list v-if="records.length" bordered separator dense class="rounded-borders">
-            <q-item v-for="record in records" :key="record.dateStr">
-              <q-item-section>
-                <q-item-label class="text-weight-bold">
-                  {{ record.dateStr }}
-                  <span class="text-grey-6 text-weight-regular">（{{ record.weekday }}）</span>
-                </q-item-label>
-                <q-item-label caption>
-                  {{ record.readableDiff }}
-                </q-item-label>
-              </q-item-section>
-              <q-item-section side>
-                <div class="row items-center no-wrap q-gutter-sm">
-                  <a-tag :color="record.diff > 0 ? 'orange' : record.diff < 0 ? 'blue' : 'green'">
-                    {{ record.diff > 0 ? '还有' : '已过' }}
-                    <span class="text-weight-bold">{{ Math.abs(record.diff) }}</span> 天
-                  </a-tag>
-                  <q-btn
-                    flat
-                    round
-                    dense
-                    color="negative"
-                    icon="close"
-                    size="sm"
-                    @click="removeRecord(record.dateStr)"
-                  />
-                </div>
-              </q-item-section>
-            </q-item>
-          </q-list>
-          <div v-else class="text-grey-5 text-center q-pa-md">暂无记录，请添加日期</div>
+        <div v-else class="text-grey-5 text-center q-pa-xl">
+          <q-icon name="event_busy" size="xl" color="grey-4" />
+          <div class="q-mt-sm text-body1">暂无记录，请在上方添加日期</div>
         </div>
-      </div>
-    </q-card-section>
-  </q-card>
+      </q-card-section>
+    </q-card>
+  </div>
 </template>
 
 <script setup>
@@ -153,10 +159,36 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.generator-wrapper {
+  transition: background-color 0.3s;
+}
 .transition-base {
   transition:
     background-color 0.3s,
     border-color 0.3s,
     box-shadow 0.3s;
+}
+.input-bar {
+  background: rgba(63, 81, 181, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.record-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 10px;
+}
+.record-card {
+  background: rgba(128, 128, 128, 0.04);
+  border: 1px solid rgba(128, 128, 128, 0.12);
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+.record-card:hover {
+  background: rgba(128, 128, 128, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.diff-tag {
+  font-size: 11px;
 }
 </style>

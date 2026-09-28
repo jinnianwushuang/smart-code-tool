@@ -7,7 +7,7 @@
         <div class="text-h6 text-weight-bold">日期间隔计算器</div>
       </q-card-section>
 
-      <!-- 第一行：两日期计算间隔 + 前/后多少天计算日期 -->
+      <!-- 两日期计算间隔 + 前/后多少天计算日期 -->
       <q-card-section class="row q-col-gutter-lg">
         <div class="col-12 col-md-6">
           <IntervalCalculator />
@@ -16,11 +16,6 @@
           <DateOffsetCalculator />
         </div>
       </q-card-section>
-
-      <!-- 第二行：距离今日多少天 -->
-      <q-card-section>
-        <DaysFromToday />
-      </q-card-section>
     </q-card>
   </div>
 </template>
@@ -28,7 +23,6 @@
 <script setup>
 import IntervalCalculator from './components/interval-calculator.vue'
 import DateOffsetCalculator from './components/date-offset-calculator.vue'
-import DaysFromToday from './components/days-from-today.vue'
 </script>
 
 <style scoped>

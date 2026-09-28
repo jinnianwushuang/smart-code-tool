@@ -1,38 +1,35 @@
 <template>
   <div class="q-pa-md generator-wrapper">
-    <div class="row q-col-gutter-md q-mx-auto max-w-1400">
+    <div class="row q-col-gutter-md q-mx-auto calendar-layout">
       <!-- 左侧：日历主体 -->
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-md-7">
         <q-card flat bordered class="shadow-2 transition-base">
           <!-- 头部标题栏 -->
           <q-card-section class="bg-indigo-8 text-white row items-center q-py-sm">
             <q-icon name="calendar_today" size="sm" class="q-mr-sm" />
-            <div class="text-h6 text-weight-bold">万年历</div>
+            <div class="text-subtitle1 text-weight-bold">日历记事本</div>
             <q-space />
-            <q-btn
-              flat
-              color="white"
-              size="sm"
-              icon="upload"
-              label="导入"
-              @click="triggerFileInput"
-            />
-            <q-btn
-              flat
-              color="white"
-              size="sm"
-              icon="download"
-              label="导出"
-              @click="exportToJSON"
-            />
-            <q-btn
-              outline
-              color="white"
-              size="sm"
-              icon="cleaning_services"
-              label="清理本月"
-              @click="confirmClearMonth"
-            />
+            <q-btn flat dense color="white" icon="more_vert" size="sm">
+              <q-menu anchor="bottom right" self="top right">
+                <q-list dense style="min-width: 140px">
+                  <q-item clickable v-close-popup @click="triggerFileInput">
+                    <q-item-section avatar><q-icon name="upload" size="sm" /></q-item-section>
+                    <q-item-section>导入 JSON</q-item-section>
+                  </q-item>
+                  <q-item clickable v-close-popup @click="exportToJSON">
+                    <q-item-section avatar><q-icon name="download" size="sm" /></q-item-section>
+                    <q-item-section>导出 JSON</q-item-section>
+                  </q-item>
+                  <q-separator />
+                  <q-item clickable v-close-popup @click="confirmClearMonth">
+                    <q-item-section avatar
+                      ><q-icon name="cleaning_services" size="sm" color="negative"
+                    /></q-item-section>
+                    <q-item-section class="text-negative">清理本月</q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
+            </q-btn>
             <input
               type="file"
               ref="fileInput"
@@ -43,7 +40,7 @@
           </q-card-section>
 
           <!-- 日期快捷操作栏 -->
-          <div class="quick-toolbar row items-center q-px-md q-py-xs">
+          <div class="quick-toolbar row items-center q-px-sm q-py-xs">
             <q-btn flat dense size="sm" label="今天" icon="today" @click="goToday" color="indigo" />
             <q-separator vertical class="q-mx-xs" />
             <q-btn
@@ -64,32 +61,34 @@
               @click="navMonth(-1)"
               title="上一月"
             />
-            <q-input
-              v-model="inputYear"
-              dense
-              outlined
-              class="nav-input"
-              input-class="text-center"
-              @blur="applyYearMonth"
-              @keydown.enter.prevent="applyYearMonth"
-            >
-              <template #append>
-                <div class="text-caption text-grey-5">年</div>
-              </template>
-            </q-input>
-            <q-input
-              v-model="inputMonth"
-              dense
-              outlined
-              class="nav-input"
-              input-class="text-center"
-              @blur="applyYearMonth"
-              @keydown.enter.prevent="applyYearMonth"
-            >
-              <template #append>
-                <div class="text-caption text-grey-5">月</div>
-              </template>
-            </q-input>
+            <div class="year-month-group row items-center no-wrap">
+              <q-input
+                v-model="inputYear"
+                dense
+                outlined
+                class="nav-input"
+                input-class="text-center"
+                @blur="applyYearMonth"
+                @keydown.enter.prevent="applyYearMonth"
+              >
+                <template #append>
+                  <div class="text-caption text-grey-5">年</div>
+                </template>
+              </q-input>
+              <q-input
+                v-model="inputMonth"
+                dense
+                outlined
+                class="nav-input"
+                input-class="text-center"
+                @blur="applyYearMonth"
+                @keydown.enter.prevent="applyYearMonth"
+              >
+                <template #append>
+                  <div class="text-caption text-grey-5">月</div>
+                </template>
+              </q-input>
+            </div>
             <q-btn
               flat
               dense
@@ -109,6 +108,20 @@
               title="下一年"
             />
             <q-space />
+            <div class="row items-center q-gutter-xs jump-days-group">
+              <q-input
+                v-model="jumpDaysInput"
+                dense
+                outlined
+                type="number"
+                class="jump-days-input"
+                input-class="text-center"
+                placeholder=""
+                @keydown.enter.prevent="applyJumpDays"
+                @blur="applyJumpDays"
+              />
+              <span class="text-caption text-grey-6 no-wrap">天后</span>
+            </div>
             <q-btn-toggle
               v-model="calendarMode"
               flat
@@ -152,7 +165,7 @@
       </div>
 
       <!-- 右侧：备注管理面板 -->
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-5">
         <NotePanel
           :selected-date-str="selectedDayjs.format('YYYY-MM-DD')"
           :lunar-detail="getFullLunarDetail(selectedDayjs)"
@@ -218,6 +231,7 @@ const searchQuery = ref('')
 const allNotes = ref([])
 const editVisible = ref(false)
 const editContent = ref('')
+const jumpDaysInput = ref('')
 
 // --- 计算属性 ---
 const filteredNotes = computed(() => {
@@ -274,6 +288,18 @@ const goToDate = (dateStr) => {
   selectedDayjs.value = dayjs(dateStr)
   syncInputFromSelected()
   loadDateNote(selectedDayjs.value)
+}
+
+const applyJumpDays = () => {
+  const n = parseInt(jumpDaysInput.value)
+  if (isNaN(n) || n <= 0) {
+    jumpDaysInput.value = ''
+    return
+  }
+  selectedDayjs.value = dayjs().add(n, 'day')
+  syncInputFromSelected()
+  loadDateNote(selectedDayjs.value)
+  jumpDaysInput.value = ''
 }
 
 const onPanelChange = (value, mode) => {
@@ -393,14 +419,16 @@ onMounted(loadData)
     transform 0.2s;
 }
 
-.max-w-1400 {
-  max-width: 1400px;
+.calendar-layout {
+  max-width: 1500px;
 }
 
 /* 快捷操作栏 */
 .quick-toolbar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   background: rgba(63, 81, 181, 0.03);
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 .quick-toolbar :deep(.q-btn) {
   min-height: 32px;
@@ -409,13 +437,28 @@ onMounted(loadData)
 .quick-toolbar :deep(.q-btn .q-icon) {
   font-size: 20px;
 }
+.year-month-group {
+  gap: 4px;
+}
 .nav-input {
-  width: 90px;
-  margin: 0 4px;
+  width: 82px;
 }
 .nav-input :deep(input) {
   padding: 4px 2px;
   font-size: 14px;
+  font-weight: 500;
+}
+
+/* 快捷跳转天数 */
+.jump-days-group {
+  margin-right: 4px;
+}
+.jump-days-input {
+  width: 64px;
+}
+.jump-days-input :deep(input) {
+  padding: 4px 2px;
+  font-size: 13px;
   font-weight: 500;
 }
 
@@ -426,15 +469,16 @@ onMounted(loadData)
   padding: 4px;
 }
 .lunar-text {
-  font-size: 10px;
+  font-size: 11px;
   position: absolute;
   top: 2px;
   right: 2px;
-  color: rgba(128, 128, 128, 0.6);
+  color: rgba(100, 100, 100, 0.85);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: calc(100% - 4px);
+  font-weight: 500;
 }
 .festival-tag {
   font-size: 10px;

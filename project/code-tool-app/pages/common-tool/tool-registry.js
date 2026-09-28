@@ -92,20 +92,6 @@ export const commonToolTabs = [
     ),
   },
   {
-    name: 'DateIntervalCalculator',
-    label: '日期间隔计算器',
-    component: defineAsyncComponent(
-      () => import('./components/date-interval-calculator/date-interval-calculator.vue'),
-    ),
-  },
-  {
-    name: 'FestivalCalculator',
-    label: '中国传统节日计算器',
-    component: defineAsyncComponent(
-      () => import('./components/festival-calculator/festival-calculator.vue'),
-    ),
-  },
-  {
     name: 'MarkdownPdfTool',
     label: 'Markdown → PDF / 图片',
     component: defineAsyncComponent(
