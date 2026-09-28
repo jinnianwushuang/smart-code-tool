@@ -49,10 +49,8 @@
           <!-- 结果列：显示转换后的内容并支持复制 -->
           <template v-slot:body-cell-result="props">
             <q-td :props="props">
-              <div class="row items-center no-wrap">
-                <q-badge color="primary" class="q-pa-sm text-body2 font-mono result-badge">
-                  {{ props.value || '-' }}
-                </q-badge>
+              <div class="result-text font-mono" :style="{ color: isDark ? '#fff' : '#000' }">
+                {{ props.value || '-' }}
               </div>
             </q-td>
           </template>
@@ -90,11 +88,12 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useQuasar, copyToClipboard } from 'quasar'
+import { ref, onMounted, computed } from 'vue'
+import { useQuasar, copyToClipboard, Dark } from 'quasar'
 import * as changeCase from 'change-case'
 import { copyText } from 'src/output/common/project-common.js'
 const $q = useQuasar()
+const isDark = computed(() => Dark.isActive)
 const inputText = ref('src/pages/code-tool/components/string-change-case/string-change-case.vue')
 const rows = ref([])
 import { methodConfigs, suffixes, columns } from './config/config.js'
@@ -151,9 +150,10 @@ onMounted(() => {
   font-family: 'Fira Code', 'Courier New', Courier, monospace;
 }
 
-.result-badge {
-  /* 确保在深色模式下背景半透明，提升质感 */
-  background-color: rgba(128, 128, 128, 0.05);
-  font-weight: 500;
+.result-text {
+  font-weight: 700;
+  font-size: 13px;
+  word-break: break-all;
+  user-select: all;
 }
 </style>

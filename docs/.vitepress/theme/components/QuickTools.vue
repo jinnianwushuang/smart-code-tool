@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, nextTick } from 'vue'
+import { useRouter } from 'vitepress'
 import { useCurrentPage } from './quick-tools/composables/useCurrentPage'
 import { useProgress } from './quick-tools/composables/useProgress'
 import { useDoubt } from './quick-tools/composables/useDoubt'
@@ -12,6 +13,25 @@ import ReviewTab from './quick-tools/tabs/ReviewTab.vue'
 import './quick-tools/shared/quick-tools.css'
 
 // ==================== 页面信息 ====================
+const router = useRouter()
+
+/** 导航到记录对应的页面（SPA 内跳转） */
+const navigateTo = (url) => {
+  if (!url) return
+  try {
+    const target = new URL(url)
+    const current = new URL(window.location.href)
+    // 同域名走 SPA 路由，否则整页跳转
+    if (target.origin === current.origin) {
+      router.go(target.pathname)
+    } else {
+      window.location.href = url
+    }
+  } catch {
+    window.location.href = url
+  }
+}
+
 const { currentUrl, currentTitle, refresh } = useCurrentPage()
 
 /** 获取当前页面快照（每次操作时实时读取） */
@@ -125,6 +145,7 @@ const switchToReview = () => {
             <ProgressTab
               v-if="activeTab === 'progress'"
               :records="progress.records.value"
+              :navigate-to="navigateTo"
               @add="progress.add"
               @delete="progress.remove"
               @clear-all="progress.clearAll"
@@ -138,6 +159,7 @@ const switchToReview = () => {
               :sorted="doubt.sorted.value"
               :draft="doubt.draft.value"
               :editing-id="doubt.editingId.value"
+              :navigate-to="navigateTo"
               @update:draft="doubt.draft.value = $event"
               @save="doubt.save"
               @edit="doubt.edit"
@@ -155,6 +177,7 @@ const switchToReview = () => {
               :sorted="note.sorted.value"
               :draft="note.draft.value"
               :editing-id="note.editingId.value"
+              :navigate-to="navigateTo"
               @update:draft="note.draft.value = $event"
               @save="note.save"
               @edit="note.edit"
@@ -170,6 +193,7 @@ const switchToReview = () => {
               :sort-mode="review.sortMode.value"
               :current-page="review.currentPage.value"
               :current-mastery="review.currentMastery.value"
+              :navigate-to="navigateTo"
               @record="review.recordMastery"
               @update:sort-mode="review.sortMode.value = $event"
               @delete="review.remove"

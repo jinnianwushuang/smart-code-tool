@@ -7,6 +7,7 @@ const props = defineProps({
   sorted: { type: Array, required: true },
   draft: { type: String, required: true },
   editingId: { type: String, default: null },
+  navigateTo: { type: Function, required: true },
 })
 
 const emit = defineEmits([
@@ -80,11 +81,18 @@ defineExpose({ focusTextarea })
             v-for="record in sorted"
             :key="record.id"
             :class="['qt-record-card', { resolved: record.resolved }]"
+            @click="navigateTo(record.url)"
           >
             <div class="qt-record-header">
               <span class="qt-record-title" :title="record.title">{{ record.title }}</span>
-              <div class="qt-record-actions">
-                <a :href="record.url" class="qt-icon-btn nav" title="跳转到此页面">🔗</a>
+              <div class="qt-record-actions" @click.stop>
+                <button
+                  class="qt-icon-btn nav"
+                  @click="navigateTo(record.url)"
+                  title="跳转到此页面"
+                >
+                  🔗
+                </button>
                 <button
                   v-if="!record.resolved"
                   class="qt-icon-btn success"

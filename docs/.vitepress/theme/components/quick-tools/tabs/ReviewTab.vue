@@ -7,6 +7,7 @@ defineProps({
   sortMode: { type: String, required: true },
   currentPage: { type: Object, required: true },
   currentMastery: { type: Number, default: null },
+  navigateTo: { type: Function, required: true },
 })
 
 const emit = defineEmits(['record', 'update:sortMode', 'delete', 'clear-all', 'export'])
@@ -89,14 +90,25 @@ const masteryLevel = (m) => (m <= 3 ? 'low' : m <= 7 ? 'mid' : 'high')
 
       <div v-else>
         <div class="qt-record-list">
-          <div v-for="record in sorted" :key="record.id" class="qt-record-card">
+          <div
+            v-for="record in sorted"
+            :key="record.id"
+            class="qt-record-card"
+            @click="navigateTo(record.url)"
+          >
             <div class="qt-record-header">
               <span :class="['qt-mastery-badge', masteryLevel(record.mastery)]">
                 {{ record.mastery }}
               </span>
               <span class="qt-record-title" :title="record.title">{{ record.title }}</span>
-              <div class="qt-record-actions">
-                <a :href="record.url" class="qt-icon-btn nav" title="跳转到此页面">🔗</a>
+              <div class="qt-record-actions" @click.stop>
+                <button
+                  class="qt-icon-btn nav"
+                  @click="navigateTo(record.url)"
+                  title="跳转到此页面"
+                >
+                  🔗
+                </button>
                 <button class="qt-icon-btn danger" @click="emit('delete', record.id)" title="删除">
                   🗑️
                 </button>

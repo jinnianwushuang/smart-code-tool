@@ -256,10 +256,12 @@
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .qt-record-card:hover {
   border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-alt);
 }
 
 .qt-record-card.resolved {
