@@ -68,7 +68,7 @@ target: 'P6-P7 高级工程师'
 | [Pinia 状态管理原理与实战 [P6-P7]](/interview/vue/pinia-deep)               | Pinia 插件、状态持久化         |
 | [Vue Router 4 路由系统深度 [P6-P7]](/interview/vue/vue-router-4)            | 路由守卫、动态路由             |
 | [Nuxt 3 全栈框架原理与实战 [P6-P7]](/interview/vue/nuxt-3-fullstack)        | SSR/SSG、Hydration             |
-| [Vitest + Vue 测试体系 [P6-P7]](/interview/vue/vitest-and-vue-testing)      | 组件测试、E2E 测试             |
+| [前端测试金字塔实战 [P6-P7]](/interview/engineering/testing-strategy)       | 测试金字塔、组件测试、E2E      |
 | [Vue 3 生态实战模式 [P6-P7]](/interview/vue/vue-ecosystem-patterns)         | 生态整合、最佳实践             |
 
 ### React 深入（12 篇）
