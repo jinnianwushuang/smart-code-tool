@@ -84,6 +84,10 @@ export const psychologySidebar = {
           text: '身体觉醒术：即时提神技巧',
           link: '/psychology/cognition-learning/body-awakening-tips',
         },
+        {
+          text: '锚点效应：你的人生被什么定住了',
+          link: '/psychology/cognition-learning/anchoring-effect',
+        },
       ],
     },
 
