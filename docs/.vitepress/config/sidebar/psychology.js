@@ -51,6 +51,10 @@ export const psychologySidebar = {
           text: '全球50位顶级富豪的宝贵箴言',
           link: '/psychology/philosophy/priceless-advice', // 50位世界顶级企业家的创业与人生忠告
         },
+        {
+          text: '人生即阅历：不去体验，连猪都不如',
+          link: '/psychology/philosophy/life-is-experience',
+        },
       ],
     },
     {

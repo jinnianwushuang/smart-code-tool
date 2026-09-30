@@ -57,6 +57,7 @@
 - [乔丹·彼得森名言](./philosophy/jordan-b-peterson) - 1962年出生,当代临床心理学家
 - [纳瓦尔·拉维康特的名言](./philosophy/naval-ravikant) - 1974年出生,当代硅谷现代思想家、投资人
 - [全球50位顶级富豪的宝贵箴言](./philosophy/priceless-advice) - 50位世界顶级企业家的创业与人生忠告
+- [人生即阅历：不去体验，连猪都不如](./philosophy/life-is-experience) - 人生不是来“活着”的，是来“活过”的
 
 ### 🎓 认知与学习
 
