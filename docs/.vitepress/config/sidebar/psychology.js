@@ -3,7 +3,7 @@ export const psychologySidebar = {
   // text: '🧠 心理认知',
   collapsed: false,
   items: [
-       {
+    {
       text: '世界规律',
       items: [
         {
@@ -76,9 +76,13 @@ export const psychologySidebar = {
           text: '人生感悟：活在当下',
           link: '/psychology/cognition-learning/living-in-the-moment',
         },
+        {
+          text: '身体觉醒术：即时提神技巧',
+          link: '/psychology/cognition-learning/body-awakening-tips',
+        },
       ],
     },
- 
+
     {
       text: '心理健康',
       items: [

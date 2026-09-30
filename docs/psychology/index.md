@@ -67,6 +67,7 @@
 - [个人成长顺序](./cognition-learning/sequence-of-personal-growth) - 成长的正确路径
 - [一天彻底改变人生](./cognition-learning/how-to-fix-your-entire-life-in-1-day) - 快速行动的力量
 - [人生感悟：活在当下](./cognition-learning/living-in-the-moment) - 活在当下，重在体验，不慌不忙，珍惜拥有
+- [身体觉醒术：即时提神技巧](./cognition-learning/body-awakening-tips) - 黑咖啡、怪异动作与感官刺激，打破身体和心理的倦怠感
 
 ### 🌍 世界规律
 
