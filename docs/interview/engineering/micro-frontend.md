@@ -1,15 +1,15 @@
 ---
-title: "微前端方案对比 [P8]"
-level: "architect"
-tags: ["微前端", "Module Federation", "qiankun", "WASM"]
-difficulty: "hard"
-updated: "2026-09-10"
-target: "架构师（P8）"
+title: '微前端方案对比 [P8]'
+level: 'architect'
+tags: ['微前端', 'Module Federation', 'qiankun', 'WASM']
+difficulty: 'hard'
+updated: '2026-09-10'
+target: '架构师（P8）'
 ---
 
 # 微前端方案对比 [P8]
 
-> 微前端是将多个前端应用组合成一个统一用户体验的架构模式。2026 年，Module Federation V2 和 Web Container 方案正在重塑微前端格局。
+> 微前端是将多个前端应用组合成一个统一用户体验的架构模式。2026 年，Module Federation V2 稳定版发布，解耦了对 Webpack 的依赖，成为大型组织微前端的事实标准。
 
 ## 核心概念（What）
 
@@ -21,8 +21,7 @@ target: "架构师（P8）"
 ├── Web Components（浏览器原生）
 ├── qiankun / single-spa（JS 沙箱隔离）
 ├── Module Federation（构建时集成）
-├── Module Federation V2（去中心化）
-└── Web Container / WASM 隔离（2026 新趋势）
+└── Module Federation V2（去中心化，支持 Vite/Rspack 等多打包器）
 ```
 
 ---
@@ -44,7 +43,7 @@ new ModuleFederationPlugin({
     react: { singleton: true, requiredVersion: '^19.0.0' },
     'react-dom': { singleton: true },
   },
-});
+})
 
 // 远程应用配置
 new ModuleFederationPlugin({
@@ -55,7 +54,7 @@ new ModuleFederationPlugin({
     './utils': './src/utils/index',
   },
   shared: ['react', 'react-dom'],
-});
+})
 ```
 
 ### 2. JS 沙箱方案（qiankun）
@@ -66,18 +65,18 @@ new ModuleFederationPlugin({
 
 class ProxySandbox {
   constructor() {
-    const rawWindow = window;
-    const fakeWindow = Object.create(null);
+    const rawWindow = window
+    const fakeWindow = Object.create(null)
     const proxy = new Proxy(fakeWindow, {
       get(target, key) {
-        return key in target ? target[key] : rawWindow[key];
+        return key in target ? target[key] : rawWindow[key]
       },
       set(target, key, value) {
-        target[key] = value;
-        return true;
-      }
-    });
-    this.proxy = proxy;
+        target[key] = value
+        return true
+      },
+    })
+    this.proxy = proxy
   }
 }
 
@@ -87,14 +86,14 @@ class ProxySandbox {
 
 ### 3. 方案对比
 
-| 维度 | Module Federation | qiankun | iframe |
-|------|------------------|---------|--------|
-| 隔离性 | 弱（共享运行时） | 中（JS 沙箱） | 强（完全隔离） |
-| 通信成本 | 低（直接引用） | 中（事件总线） | 高（postMessage） |
-| 依赖共享 | 原生支持 | 需要配置 | 不支持 |
-| 技术栈限制 | 同框架 | 可跨框架 | 无限制 |
-| 样式隔离 | 需要手动处理 | 自动（Shadow DOM） | 天然隔离 |
-| 性能 | 最优 | 良好 | 较差 |
+| 维度       | Module Federation | qiankun            | iframe            |
+| ---------- | ----------------- | ------------------ | ----------------- |
+| 隔离性     | 弱（共享运行时）  | 中（JS 沙箱）      | 强（完全隔离）    |
+| 通信成本   | 低（直接引用）    | 中（事件总线）     | 高（postMessage） |
+| 依赖共享   | 原生支持          | 需要配置           | 不支持            |
+| 技术栈限制 | 同框架            | 可跨框架           | 无限制            |
+| 样式隔离   | 需要手动处理      | 自动（Shadow DOM） | 天然隔离          |
+| 性能       | 最优              | 良好               | 较差              |
 
 ---
 
@@ -103,6 +102,7 @@ class ProxySandbox {
 ### Q1: 微前端的核心挑战是什么？
 
 **参考答案要点**：
+
 - JS 沙箱隔离：防止全局变量污染
 - CSS 隔离：防止样式冲突
 - 应用间通信：状态共享和事件传递
@@ -112,6 +112,7 @@ class ProxySandbox {
 ### Q2: Module Federation 和 qiankun 如何选择？
 
 **参考答案要点**：
+
 - Module Federation：同技术栈、追求性能、构建时集成
 - qiankun：跨技术栈、需要隔离、运行时集成
 - Module Federation 性能更好但隔离性弱
@@ -120,6 +121,7 @@ class ProxySandbox {
 ### Q3: 如何设计微前端的通信机制？
 
 **参考答案要点**：
+
 - 全局事件总线（EventBus）
 - 共享状态（Redux/Zustand 实例）
 - URL 参数传递
@@ -132,7 +134,7 @@ class ProxySandbox {
 
 1. **设计题**：设计一个支持 10+ 子应用的微前端架构。
 2. **场景题**：微前端应用中如何处理共享状态和登录态？
-3. **对比题**：Module Federation V2 vs Web Container vs iframe 2.0？
+3. **对比题**：Module Federation V2 vs single-spa vs iframe，各自的适用场景？
 
 ---
 

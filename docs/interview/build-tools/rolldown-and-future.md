@@ -1,7 +1,7 @@
 ---
 title: 'Rolldown 与构建工具未来 [P8]'
 level: 'architect'
-tags: ['Rolldown', 'Oxc', 'Vite 6', 'Rust', '构建工具']
+tags: ['Rolldown', 'Oxc', 'Vite 8', 'Rust', '构建工具']
 difficulty: 'expert'
 updated: '2026-09-10'
 target: '架构师（P8）'
@@ -9,20 +9,20 @@ target: '架构师（P8）'
 
 # Rolldown 与构建工具未来 [P8]
 
-> Rolldown 是 Vite 团队用 Rust 开发的打包器，旨在替代 Rollup 成为 Vite 的生产构建工具。配合 Oxc 统一工具链，构建工具正进入 Rust 时代。
+> Rolldown 是 Vite 团队用 Rust 开发的打包器，2026 年 3 月随 Vite 8 发布，**统一替代了 esbuild + Rollup 双引擎**，成为 Vite 唯一的构建内核。配合 Oxc 统一工具链，构建工具正式进入 Rust 时代。
 
 ## 核心概念（What）
 
 ### 构建工具演进时间线
 
 ```
-2020：Vite 发布（esbuild + Rollup）
-2021：Turbopack 发布（Next.js 专用）
-2022：Rspack 发布（Webpack 兼容）
-2023：Rolldown 项目启动
-2024：Rolldown Alpha 发布
-2025：Vite 6 默认使用 Rolldown
-2026：Rolldown 稳定 + Oxc 工具链集成
+2023：Rolldown 项目在 ViteConf 首次公开
+2024：Rolldown 开源，持续 Beta 迭代
+2025：rolldown-vite 技术预览包发布，供社区早期试用
+2025-12：Vite 8 Beta 发布，Rolldown 完整集成
+2026-03-12：Vite 8.0 正式发布，Rolldown 成为默认且唯一的打包引擎
+2026-05-07：Rolldown 1.0 正式发布（比 Rollup 快 10-30 倍）
+2026-06-23：Vite 8.1 发布，引入实验性 Bundled Dev Mode
 ```
 
 ---
@@ -58,33 +58,31 @@ Rolldown 架构：
 └── 生态成熟（SWC/Turbopack/Rspack 验证）
 ```
 
-### 2. Vite 6 + Rolldown
+### 2. Vite 8 + Rolldown
 
 ```typescript
-// Vite 6 配置（Rolldown 默认）
+// Vite 8 配置（Rolldown 统一引擎）
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
-    // Rolldown 默认启用
-    // 无需额外配置
-
-    // Rolldown 特有选项
-    rollupOptions: {
-      // 兼容 Rollup 配置
+    // Vite 8：rolldownOptions 替代 rollupOptions
+    rolldownOptions: {
       output: {
         manualChunks: {
           vendor: ['vue', 'vue-router'],
         },
       },
     },
+    // 压缩默认使用 Oxc minifier
+    minify: 'oxc',
   },
 })
 
-// 性能对比（Vite 5 Rollup vs Vite 6 Rolldown）：
-// 生产构建速度：提升 2-5x
-// 内存使用：减少 30-50%
-// Tree Shaking：更彻底
+// 性能对比（Vite 7 Rollup vs Vite 8 Rolldown）：
+// 生产构建速度：提升 10-30x（Linear: 46s → 6s）
+// 内存使用：减少 30-60%
+// Tree Shaking：更彻底（统一模块图）
 ```
 
 ### 3. Oxc 统一工具链
@@ -112,26 +110,30 @@ Oxc（氧化编译器）：
 └── 内存高效（Rust 无 GC）
 ```
 
-### 4. esbuild 替代趋势
+### 4. esbuild 已退出核心链路
 
 ```
-esbuild 被替代的趋势：
+Vite 8 中 esbuild 的位置变化：
 
-Rolldown 替代 esbuild 的原因：
-├── Rolldown 功能更完整（兼容 Rollup）
-├── Oxc 转译速度接近 esbuild
-├── 统一工具链（减少依赖）
-└── Vite 官方支持
+旧架构（Vite 2-7）：
+├── 开发态：esbuild 预构建 + 转译
+├── 生产态：Rollup 打包
+└── esbuild 是核心依赖
 
-esbuild 仍存在的场景：
-├── 依赖预构建（Vite dev server）
-├── 独立使用（不需要 Rollup 功能）
-└── 简单转译（不需要完整打包）
+Vite 8 新架构：
+├── 开发态：Rolldown 预构建 + Oxc 转译
+├── 生产态：Rolldown 打包 + Oxc 压缩
+└── esbuild 从 dependencies 退到 peerDependencies（可选）
 
-2026 趋势：
-├── Vite dev：esbuild（预构建）+ Oxc（转译）
-├── Vite prod：Rolldown（打包）+ Oxc（转译）
-└── esbuild 逐步退出核心链路
+esbuild 仍保留的场景：
+├── 旧插件兼容层（部分插件依赖 esbuild 行为）
+├── 独立使用（不需要 Rolldown 功能）
+└── 简单转译任务（不需要完整打包）
+
+2026 现状：
+├── Vite dev：Rolldown（预构建）+ Oxc（转译）
+├── Vite prod：Rolldown（打包）+ Oxc（压缩）
+└── esbuild 已退出 Vite 核心链路
 ```
 
 ### 5. 2026-2027 演进方向
@@ -173,10 +175,10 @@ esbuild 仍存在的场景：
 
 **参考答案要点**：
 
-- Vite 团队用 Rust 开发的打包器
-- 替代 Rollup 成为 Vite 生产构建工具
+- Vite 团队用 Rust 开发的统一打包器
+- 替代 esbuild + Rollup 双引擎，成为 Vite 8 唯一构建内核
 - 兼容 Rollup API（迁移成本低）
-- 性能提升 2-5x（Rust 实现）
+- 性能提升 10-30x（Rust 实现，Linear: 46s→6s）
 - 配合 Oxc 统一工具链
 
 ### Q2: Oxc 工具链包含什么？
@@ -203,8 +205,8 @@ esbuild 仍存在的场景：
 
 ## 延伸思考
 
-1. **设计题**：为一个大型前端团队设计构建工具迁移方案（Webpack → Vite 6 + Rolldown）。
-2. **场景题**：Rolldown 替代 Rollup 后，现有 Rollup 插件如何迁移？
+1. **设计题**：为一个大型前端团队设计构建工具迁移方案（Webpack → Vite 8 + Rolldown）。
+2. **场景题**：Rolldown 替代 esbuild + Rollup 后，现有插件如何适配？
 3. **对比题**：Oxc vs SWC vs esbuild，Rust 转译工具怎么选？
 
 ---
@@ -213,5 +215,5 @@ esbuild 仍存在的场景：
 
 - [Rolldown 官网](https://rolldown.rs)
 - [Oxc 项目](https://oxc.rs)
-- [Vite 6 RFC](https://github.com/vitejs/vite/discussions/15845)
-- [Vite 6 发布公告](https://vitejs.dev/blog/announcing-vite6)
+- [Vite 8 发布说明](https://vitejs.dev/blog/announcing-vite8)
+- [Vite 8 迁移指南](https://vitejs.dev/guide/migration)

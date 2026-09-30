@@ -1,10 +1,10 @@
 ---
-title: "Monorepo 构建优化 [P8]"
-level: "architect"
-tags: ["Monorepo", "Turborepo", "Nx", "pnpm", "增量构建"]
-difficulty: "expert"
-updated: "2026-09-10"
-target: "架构师（P8）"
+title: 'Monorepo 构建优化 [P8]'
+level: 'architect'
+tags: ['Monorepo', 'Turborepo', 'Nx', 'pnpm', '增量构建']
+difficulty: 'expert'
+updated: '2026-09-10'
+target: '架构师（P8）'
 ---
 
 # Monorepo 构建优化 [P8]
@@ -15,15 +15,15 @@ target: "架构师（P8）"
 
 ### Monorepo 构建工具对比
 
-| 特性 | Turborepo | Nx | pnpm workspace |
-|------|-----------|-----|----------------|
-| 缓存 | ✅（本地+远程） | ✅（本地+远程） | ❌ |
-| 任务编排 | ✅（topology） | ✅（计算图） | ❌ |
-| 增量构建 | ✅ | ✅ | ❌ |
-| 受影响分析 | ❌ | ✅ | ❌ |
-| 配置复杂度 | 低 | 中 | 低 |
-| 学习曲线 | 低 | 高 | 低 |
-| 2026 趋势 | 主流 | 主流 | 基础 |
+| 特性       | Turborepo       | Nx              | pnpm workspace |
+| ---------- | --------------- | --------------- | -------------- |
+| 缓存       | ✅（本地+远程） | ✅（本地+远程） | ❌             |
+| 任务编排   | ✅（topology）  | ✅（计算图）    | ❌             |
+| 增量构建   | ✅              | ✅              | ❌             |
+| 受影响分析 | ❌              | ✅              | ❌             |
+| 配置复杂度 | 低              | 中              | 低             |
+| 学习曲线   | 低              | 高              | 低             |
+| 2026 趋势  | 主流            | 主流            | 基础           |
 
 ---
 
@@ -39,11 +39,7 @@ target: "架构师（P8）"
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
-      "inputs": [
-        "src/**",
-        "tsconfig.json",
-        "package.json"
-      ]
+      "inputs": ["src/**", "tsconfig.json", "package.json"]
     },
     "test": {
       "dependsOn": ["build"],
@@ -196,7 +192,7 @@ TURBO_TEAM=your-team
 ├── 只构建受影响的项目
 └── nx affected --target=build
 
-4. 模块级增量（Vite/Rollup）
+4. 模块级增量（Vite/Rolldown）
 ├── 只编译变更的模块
 ├── 缓存未变更模块的编译结果
 └── HMR 感知（开发模式）
@@ -209,6 +205,7 @@ TURBO_TEAM=your-team
 ### Q1: Turborepo 的缓存机制是什么？
 
 **参考答案要点**：
+
 - 基于任务输入哈希（源文件 + 依赖 + 环境变量）
 - 命中缓存 → 直接恢复产物（秒级）
 - 未命中 → 执行任务 → 存入缓存
@@ -217,6 +214,7 @@ TURBO_TEAM=your-team
 ### Q2: Nx 的受影响分析（affected）是什么？
 
 **参考答案要点**：
+
 - 分析项目依赖图
 - 检测哪些项目受代码变更影响
 - 只构建/测试受影响的项目
@@ -225,6 +223,7 @@ TURBO_TEAM=your-team
 ### Q3: Monorepo 中如何优化构建性能？
 
 **参考答案要点**：
+
 - 任务缓存（Turborepo/Nx）
 - 远程缓存（团队共享）
 - 增量构建（只构建变更部分）

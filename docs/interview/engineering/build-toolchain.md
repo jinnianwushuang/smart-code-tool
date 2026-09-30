@@ -1,15 +1,15 @@
 ---
-title: "构建工具链演进 [P6-P7]"
-level: "senior"
-tags: ["Webpack", "Vite", "Turbopack", "Rspack", "Oxc"]
-difficulty: "hard"
-updated: "2026-09-10"
-target: "P6+ 高级工程师"
+title: '构建工具链演进 [P6-P7]'
+level: 'senior'
+tags: ['Webpack', 'Vite', 'Turbopack', 'Rspack', 'Oxc']
+difficulty: 'hard'
+updated: '2026-09-10'
+target: 'P6+ 高级工程师'
 ---
 
 # 构建工具链演进 [P6-P7]
 
-> 前端构建工具经历了从 Grunt → Gulp → Webpack → Vite → Turbopack 的演进。2026 年，Rust 工具链（Oxc、Rspack、SWC）正在重塑整个生态。理解演进脉络和底层原理，才能在架构层面做出正确的工具选型。
+> 前端构建工具经历了从 Grunt → Gulp → Webpack → Vite → Vite 8（Rolldown 统一引擎）的演进。2026 年，Rust 工具链（Rolldown、Oxc、Rspack、Turbopack）已经重塑整个生态。理解演进脉络和底层原理，才能在架构层面做出正确的工具选型。
 
 ## 核心概念（What）
 
@@ -22,13 +22,13 @@ target: "P6+ 高级工程师"
   ↓   问题：插件质量参差不齐
 2014  Webpack（模块打包器）
   ↓   问题：大型项目构建慢
-2020  Vite（ESM 开发服务器）
-  ↓   问题：大型项目生产构建仍用 Rollup
+2020  Vite（ESM 开发服务器 + Rollup 生产构建）
+  ↓   问题：双引擎（esbuild + Rollup）行为不一致
 2022  Turbopack / Rspack（Rust 工具链）
   ↓
 2024  Oxc（JavaScript 工具链全家桶）
   ↓
-2026  Rust 工具链成为主流
+2026  Vite 8：Rolldown + Oxc 统一 Rust 内核，双引擎时代结束
 ```
 
 ---
@@ -52,20 +52,25 @@ Webpack 构建流程：
 └── Plugin：构建流程扩展（HtmlWebpackPlugin）
 ```
 
-### 2. Vite 的核心创新
+### 2. Vite 的核心创新与演进
 
 ```
-Vite 的开发模式：
+Vite 开发模式（不变）：
 ├── 利用浏览器原生 ESM 支持
 ├── 不打包，按需编译
 ├── 启动速度不随项目规模增长
 └── HMR 只更新变更模块
 
-Vite 的生产构建：
-├── 使用 Rollup 打包
-├── 支持 Tree Shaking
-├── 代码分割
-└── 资源内联
+Vite 生产构建演进：
+├── Vite 2-5：Rollup 打包
+├── Vite 6-7：Rolldown 可选（技术预览）
+└── Vite 8+：Rolldown 统一引擎（替代 esbuild + Rollup）
+
+Vite 8 底层变化（2026）：
+├── Rolldown（Rust）替代 esbuild（预构建）+ Rollup（生产打包）
+├── Oxc（Rust）接管解析、转换、压缩
+├── 配置：rollupOptions → rolldownOptions
+└── 性能：构建速度提升 10-30x（Linear: 46s → 6s）
 
 Vite vs Webpack 开发模式对比：
 Webpack：启动时打包全部模块 → 项目越大启动越慢
@@ -85,7 +90,7 @@ Rust 工具链生态：
 │   ├── 格式化器（Formatter）
 │   ├── 转换器（Transformer）
 │   └── 压缩器（Minifier）
-├── Rolldown：Rollup 的 Rust 实现
+├── Rolldown：Vite 8 的底层 Rust 打包引擎（替代 Rollup，比 Rollup 快 10-30 倍）
 └── Lightning CSS：Rust CSS 解析器/转换器
 ```
 
@@ -99,24 +104,28 @@ module.exports = {
 
   // 2. 多线程：thread-loader
   module: {
-    rules: [{
-      test: /\.js$/,
-      use: ['thread-loader', 'babel-loader']
-    }]
+    rules: [
+      {
+        test: /\.js$/,
+        use: ['thread-loader', 'babel-loader'],
+      },
+    ],
   },
 
   // 3. 缩小范围：include/exclude
   module: {
-    rules: [{
-      test: /\.js$/,
-      include: path.resolve(__dirname, 'src'),
-      exclude: /node_modules/
-    }]
+    rules: [
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src'),
+        exclude: /node_modules/,
+      },
+    ],
   },
 
   // 4. 持久化缓存（Webpack 5）
   // 5. Module Federation（微前端共享依赖）
-};
+}
 ```
 
 ---
@@ -126,14 +135,16 @@ module.exports = {
 ### Q1: Vite 为什么比 Webpack 快？
 
 **参考答案要点**：
+
 - 开发模式：Vite 利用浏览器原生 ESM，按需编译，不打包
 - Webpack 开发模式需要打包全部模块
-- Vite 使用 esbuild 做预构建（依赖预打包）
+- Vite 使用 Rolldown 做预构建（依赖预打包）和统一构建
 - HMR：Vite 只更新变更模块，Webpack 需要重新计算依赖图
 
 ### Q2: 为什么前端工具链在向 Rust 迁移？
 
 **参考答案要点**：
+
 - Rust 编译为原生代码，性能远超 JavaScript
 - 无 GC 停顿，内存安全
 - 多线程并行处理
@@ -143,11 +154,12 @@ module.exports = {
 ### Q3: 如何选择构建工具？
 
 **参考答案要点**：
+
 - 新项目：Vite（开发体验好）
 - 大型项目：Rspack/Turbopack（构建性能）
 - 已有 Webpack 项目：渐进迁移到 Rspack（兼容 Loader）
 - Next.js 项目：Turbopack（官方支持）
-- 库开发：Rollup（产物体积小）
+- 库开发：Rolldown/Rollup（产物体积小）
 
 ---
 
@@ -161,7 +173,8 @@ module.exports = {
 
 ## 参考资料
 
-- [Vite 官方文档](https://vitejs.dev)
+- [Vite 8 文档](https://vitejs.dev)
 - [Rspack 文档](https://rspack.dev)
+- [Rolldown 官网](https://rolldown.rs)
 - [Oxc 项目](https://oxc.rs)
 - [Webpack 5 文档](https://webpack.js.org)

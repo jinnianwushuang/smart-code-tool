@@ -9,7 +9,7 @@ target: 'P6+ 高级工程师'
 
 # Node.js 数据库与 ORM 集成 [P6-P7]
 
-> 前端工程师向全栈延伸，数据库是必经之路。2026 年，Prisma 成为 TypeScript ORM 的事实标准，同时 Redis 缓存层和连接池管理是面试高频考点。
+> 前端工程师向全栈延伸，数据库是必经之路。2026 年，Prisma 仍是 TypeScript ORM 的主流选择，但 Drizzle ORM 以“SQL-first + 零代码生成”的哲学强势崛起，成为性能敏感场景的首选。Redis 缓存层和连接池管理是面试高频考点。
 
 ## 核心概念（What）
 
@@ -24,12 +24,12 @@ target: 'P6+ 高级工程师'
 
 ### ORM 对比
 
-| ORM         | 类型安全 | 迁移 | 学习曲线 | 适用场景            |
-| ----------- | -------- | ---- | -------- | ------------------- |
-| **Prisma**  | 极高     | 内置 | 低       | TypeScript 项目首选 |
-| **TypeORM** | 高       | 内置 | 中       | NestJS 生态         |
-| **Drizzle** | 极高     | 内置 | 低       | 轻量、Edge Runtime  |
-| **Knex**    | 中       | 内置 | 中       | SQL-like API、灵活  |
+| ORM         | 类型安全 | 迁移 | 学习曲线 | 适用场景                                    |
+| ----------- | -------- | ---- | -------- | ------------------------------------------- |
+| **Prisma**  | 极高     | 内置 | 低       | TypeScript 项目首选，工具链完善             |
+| **Drizzle** | 极高     | 内置 | 低       | SQL-first、零代码生成、Edge/Serverless 首选 |
+| **TypeORM** | 高       | 内置 | 中       | NestJS 生态                                 |
+| **Knex**    | 中       | 内置 | 中       | SQL-like API、灵活                          |
 
 ---
 
@@ -194,7 +194,7 @@ await prisma.$transaction(async (tx) => {
 
 1. **设计题**：设计一个支持读写分离的数据库架构。
 2. **场景题**：高并发下如何防止缓存穿透和缓存雪崩？
-3. **对比题**：Prisma vs Drizzle vs TypeORM，2026 年该怎么选？
+3. **对比题**：Prisma vs Drizzle vs TypeORM，2026 年该怎么选？（Drizzle v1.0 性能已超越 Go）
 
 ---
 

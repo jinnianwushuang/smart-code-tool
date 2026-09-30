@@ -1,28 +1,28 @@
 ---
-title: "构建工具深度对比 [P8]"
-level: "architect"
-tags: ["Vite", "Turbopack", "Rspack", "Webpack", "esbuild", "构建工具"]
-difficulty: "expert"
-updated: "2026-09-10"
-target: "架构师（P8）"
+title: '构建工具深度对比 [P8]'
+level: 'architect'
+tags: ['Vite', 'Vite 8', 'Turbopack', 'Rspack', 'Rolldown', 'Webpack', '构建工具']
+difficulty: 'expert'
+updated: '2026-09-10'
+target: '架构师（P8）'
 ---
 
 # 构建工具深度对比 [P8]
 
-> 2026 年前端构建工具进入百花齐放时代。Vite 占据主流，Turbopack（Next.js 默认）、Rspack（Rust 实现 Webpack 兼容）崛起，Webpack 逐步退出历史舞台。
+> 2026 年前端构建工具进入 Rust 时代。Vite 8 用 Rolldown 统一底层引擎，Turbopack 成为 Next.js 16 默认打包器，Rspack 作为 Webpack Rust 兼容替代快速增长，Webpack 逐步退出历史舞台。
 
 ## 核心概念（What）
 
 ### 2026 构建工具格局
 
-| 工具 | 语言 | 定位 | 2026 状态 |
-|------|------|------|----------|
-| **Vite** | JS + esbuild | 通用构建工具 | 主流 |
-| **Turbopack** | Rust | Next.js 专用 | Next.js 默认 |
-| **Rspack** | Rust | Webpack 兼容替代 | 快速增长 |
-| **Rolldown** | Rust | Vite 打包器 | Vite 6+ 默认 |
-| **Webpack** | JS | 通用构建工具 | 维护模式 |
-| **esbuild** | Go | 底层转译/打包 | 被集成 |
+| 工具          | 语言                | 定位             | 2026 状态       |
+| ------------- | ------------------- | ---------------- | --------------- |
+| **Vite 8**    | JS + Rolldown + Oxc | 通用构建工具     | 主流            |
+| **Turbopack** | Rust                | Next.js 专用     | Next.js 16 默认 |
+| **Rspack**    | Rust                | Webpack 兼容替代 | 快速增长        |
+| **Rolldown**  | Rust                | Vite 底层引擎    | Vite 8+ 默认    |
+| **Webpack**   | JS                  | 通用构建工具     | 维护模式        |
+| **esbuild**   | Go                  | 底层转译/打包    | 被集成          |
 
 ---
 
@@ -31,15 +31,15 @@ target: "架构师（P8）"
 ### 1. 架构对比
 
 ```
-Vite 架构：
-├── Dev Server：ESM 原生 + esbuild 预构建
-├── Production：Rollup（未来 Rolldown）
-├── 插件：Rollup 插件兼容
+Vite 8 架构（2026）：
+├── Dev Server：ESM 原生 + Rolldown 预构建 + Oxc 转换
+├── Production：Rolldown（统一引擎）
+├── 插件：Rolldown 插件接口（兼容 Rollup）
 └── 定位：通用、框架无关
 
 Turbopack 架构：
 ├── Dev Server：Rust 实现 + 增量编译
-├── Production：Rust 打包（与 Next.js 深度集成）
+├── Production：Rust 打包（Next.js 16 支持 build）
 ├── 插件：Next.js 插件系统
 └── 定位：Next.js 专用
 
@@ -68,7 +68,7 @@ HMR（单文件修改）：
 └── CRA：~2000ms
 
 生产构建：
-├── Vite（Rollup）：~30s
+├── Vite 8（Rolldown）：~10s
 ├── Turbopack：~20s
 ├── Rspack：~25s
 ├── Webpack 5：~60s
@@ -156,15 +156,17 @@ Q: 性能需求？
 ### Q1: 2026 年构建工具格局如何？
 
 **参考答案要点**：
+
 - Vite：主流通用选择（Vue/React/Svelte 生态）
 - Turbopack：Next.js 默认（Rust 实现）
 - Rspack：Webpack 兼容替代（Rust 实现）
-- Rolldown：Vite 6+ 默认打包器
+- Rolldown：Vite 8+ 默认底层引擎（Rust 实现，统一开发和生产）
 - Webpack：维护模式（新项目不再推荐）
 
 ### Q2: Vite vs Turbopack 如何选择？
 
 **参考答案要点**：
+
 - Vite：通用、框架无关、插件生态最丰富
 - Turbopack：Next.js 专用、性能最优、与 Next.js 深度集成
 - Next.js 项目 → Turbopack
@@ -173,6 +175,7 @@ Q: 性能需求？
 ### Q3: 大型 Webpack 项目如何迁移？
 
 **参考答案要点**：
+
 - 渐进式迁移：Rspack（兼容 Webpack 配置）
 - 完全迁移：Vite（需要改配置和 ESM）
 - Next.js：直接用 Turbopack
@@ -190,7 +193,7 @@ Q: 性能需求？
 
 ## 参考资料
 
-- [Vite 文档](https://vitejs.dev)
+- [Vite 8 发布说明](https://vitejs.dev/blog/announcing-vite8)
 - [Turbopack 文档](https://nextjs.org/docs/architecture/turbopack)
 - [Rspack 文档](https://rspack.dev)
-- [Rolldown](https://rolldown.rs)
+- [Rolldown 官网](https://rolldown.rs)
