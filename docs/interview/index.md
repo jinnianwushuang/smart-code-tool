@@ -1,7 +1,7 @@
 # 大前端面试知识体系
 
 > 面向 2026 年，覆盖初级（P4-P5）、中级（P5-P6）、高级工程师（P6-P7）、架构师（P8）、技术主管五个层级的系统化面试知识库。
-> 覆盖 Web 前端 + Node.js 全栈 + Flutter 跨端，共计 134 篇深度文档。
+> 覆盖 Web 前端 + Node.js 全栈 + Flutter 跨端，共计 128 篇深度文档。
 
 ---
 
@@ -23,8 +23,8 @@
 
 | 文档                                                  | 级别         | 描述                                      |
 | ----------------------------------------------------- | ------------ | ----------------------------------------- |
-| [初级工程师（P4-P5）](/interview/levels/junior)       | junior       | 20 篇基础文档，HTML/CSS/JS/Vue/TS/工具链  |
-| [中级工程师（P5-P6）](/interview/levels/intermediate) | intermediate | 22 篇进阶文档，JS/CSS/Vue/TS/React/工程化 |
+| [初级工程师（P4-P5）](/interview/levels/junior)       | junior       | 19 篇基础文档，HTML/CSS/JS/Vue/TS/工具链  |
+| [中级工程师（P5-P6）](/interview/levels/intermediate) | intermediate | 18 篇进阶文档，JS/CSS/Vue/TS/React/工程化 |
 | [高级工程师（P6-P7）](/interview/levels/senior)       | senior       | 41 篇深入文档，框架源码/架构设计/性能优化 |
 | [架构师（P8）](/interview/levels/architect)           | architect    | 12 篇架构文档，系统设计/技术选型/影响力   |
 | [技术主管（TL）](/interview/levels/manager)           | manager      | 8 篇管理文档，团队管理/项目管理/沟通协作  |
@@ -53,7 +53,6 @@
 | [Git 基础：分支策略与协作流程 [P4-P5]](/interview/junior/git-basics)                 | junior | add/commit/push、分支、合并             |
 | [npm/pnpm 包管理入门 [P4-P5]](/interview/junior/npm-pnpm-basics)                     | junior | package.json、依赖管理、scripts         |
 | [前端调试基础 [P4-P5]](/interview/junior/debugging-basics)                           | junior | debugger、断点、条件断点                |
-| [Web 安全入门：XSS/CSRF [P4-P5]](/interview/junior/web-security-basics)              | junior | XSS 类型与防范、CSRF 原理               |
 | [SPA 部署基础（Nginx 配置） [P4-P5]](/interview/junior/spa-deploy-basics)            | junior | Nginx try_files、History 模式           |
 | [表单与验证基础 [P4-P5]](/interview/junior/form-validation-basics)                   | junior | 表单控件、验证规则、正则                |
 
@@ -66,13 +65,10 @@
 | [CSS 架构：BEM/CSS Modules/Tailwind [P5-P6]](/interview/intermediate/css-architecture)   | intermediate | BEM 命名、CSS Modules、Tailwind        |
 | [CSS 预处理器：Sass/Less/PostCSS [P5-P6]](/interview/intermediate/css-preprocessors)     | intermediate | Sass 变量/嵌套/mixin、PostCSS          |
 | [闭包、作用域链与执行上下文 [P5-P6]](/interview/intermediate/js-closures-context)        | intermediate | 执行上下文、闭包应用、this             |
-| [异步编程深入：Promise/async/await [P5-P6]](/interview/intermediate/async-deep-dive)     | intermediate | Promise 链、并发控制、错误处理         |
 | [ES6+ 模块系统与工程化 [P5-P6]](/interview/intermediate/es6-modules)                     | intermediate | ESM vs CJS、tree-shaking、动态 import  |
 | [JavaScript 常用设计模式 [P5-P6]](/interview/intermediate/js-design-patterns)            | intermediate | 观察者/策略/工厂/单例/装饰器           |
-| [浏览器渲染机制：重排/重绘/合成 [P5-P6]](/interview/intermediate/rendering-mechanism)    | intermediate | 重排/重绘/合成、GPU 加速               |
 | [HTTP 缓存策略：强缓存/协商缓存 [P5-P6]](/interview/intermediate/http-caching)           | intermediate | Cache-Control/ETag、缓存策略设计       |
 | [前端网络优化：预加载/懒加载/压缩 [P5-P6]](/interview/intermediate/network-optimization) | intermediate | preload/prefetch、懒加载、CDN          |
-| [Vue 3 响应式原理入门 [P5-P6]](/interview/intermediate/vue-reactivity-basics)            | intermediate | reactive/ref 原理、依赖收集/派发       |
 | [Vue 3 生命周期深入 [P5-P6]](/interview/intermediate/vue-lifecycle)                      | intermediate | 完整生命周期、组合式 API 钩子          |
 | [Vue 组件通信方式全景 [P5-P6]](/interview/intermediate/vue-communication)                | intermediate | props/emit/provide-inject/v-model      |
 | [Vue Router 路由实战 [P5-P6]](/interview/intermediate/vue-router-basics)                 | intermediate | 路由配置、导航守卫、路由懒加载         |
@@ -80,10 +76,9 @@
 | [TypeScript 工程化实践 [P5-P6]](/interview/intermediate/ts-engineering)                  | intermediate | tsconfig 配置、声明文件、框架集成      |
 | [React 入门：JSX、Hooks、组件模式 [P5-P6]](/interview/intermediate/react-basics)         | intermediate | JSX、useState/useEffect、组件模式      |
 | [前端性能优化基础 [P5-P6]](/interview/intermediate/performance-basics)                   | intermediate | Core Web Vitals、图片优化、代码分割    |
-| [前端测试基础：Jest/Vitest [P5-P6]](/interview/intermediate/testing-basics)              | intermediate | 测试金字塔、Vitest/Jest、组件测试      |
 | [构建工具入门：Vite 配置与使用 [P5-P6]](/interview/intermediate/build-tools-basics)      | intermediate | Vite 配置、环境变量、代理              |
 | [前端错误处理与监控入门 [P5-P6]](/interview/intermediate/error-handling)                 | intermediate | ErrorBoundary、全局错误捕获、上报      |
-| [Web 安全实战：CSP/SRI/依赖检查 [P5-P6]](/interview/intermediate/web-security-practice)  | intermediate | CSP 策略、SRI、依赖安全检查            |
+| [Web 安全实战：CSP/SRI/依赖检查 [P5-P6]](/interview/intermediate/web-security-practice)  | intermediate | XSS/CSRF 原理、CSP、SRI、依赖检查      |
 | [Docker 容器化基础与前端部署 [P5-P6]](/interview/intermediate/docker-basics)             | intermediate | Dockerfile、docker-compose、容器化部署 |
 
 ---
@@ -147,7 +142,6 @@
 | [Pinia 状态管理原理与实战 [P6-P7]](/interview/vue/pinia-deep)               | senior    | Plugin 系统、持久化、SSR 集成      |
 | [Vue Router 4 路由系统深度 [P6-P7]](/interview/vue/vue-router-4)            | senior    | Radix Tree、导航守卫、动态路由     |
 | [Nuxt 3 全栈框架原理与实战 [P8]](/interview/vue/nuxt-3-fullstack)           | architect | SSR/SSG/ISR、Nitro、auto-imports   |
-| [Vitest + Vue 测试体系 [P6-P7]](/interview/vue/vitest-and-vue-testing)      | senior    | Vitest、Vue Test Utils、Playwright |
 | [Vue 3 生态实战模式 [P6-P7]](/interview/vue/vue-ecosystem-patterns)         | senior    | Composable、Suspense、KeepAlive    |
 
 ---
@@ -213,7 +207,7 @@
 | [微前端方案对比 [P8]](/interview/engineering/micro-frontend)                 | architect | Module Federation、qiankun、WASM 隔离  |
 | [设计系统与组件库架构 [P8]](/interview/engineering/design-system)            | architect | headless UI、design token、主题引擎    |
 | [性能预算体系 [P6-P7]](/interview/engineering/performance-budget)            | senior    | Core Web Vitals、INP、优化策略         |
-| [测试金字塔实战 [P6-P7]](/interview/engineering/testing-strategy)            | senior    | 单元/集成/E2E/视觉回归/性能测试        |
+| [前端测试金字塔实战 [P6-P7]](/interview/engineering/testing-strategy)        | senior    | 单元/集成/E2E/视觉回归/Vitest/Vue 测试 |
 | [前端 DevOps 与发布体系 [P8]](/interview/engineering/frontend-devops)        | architect | CI/CD、Feature Flag、金丝雀发布        |
 | [Node.js Web 框架对比 [P6-P7]](/interview/engineering/nodejs-web-framework)  | senior    | Express/Koa/Fastify/NestJS 对比        |
 | [Node.js 数据库与 ORM [P6-P7]](/interview/engineering/nodejs-database-orm)   | senior    | MySQL/PostgreSQL/MongoDB/Redis 集成    |

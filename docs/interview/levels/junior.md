@@ -30,7 +30,7 @@ target: 'P4-P5 初级工程师'
 
 ---
 
-## 学习文档（20 篇）
+## 学习文档（19 篇）
 
 ### HTML/CSS 基础（4 篇）
 
@@ -79,11 +79,10 @@ target: 'P4-P5 初级工程师'
 | [npm/pnpm 包管理入门 [P4-P5]](/interview/junior/npm-pnpm-basics)     | package.json、依赖管理、scripts |
 | [前端调试基础 [P4-P5]](/interview/junior/debugging-basics)           | debugger、断点、条件断点        |
 
-### 安全/部署/实战（3 篇）
+### 安全/部署/实战（2 篇）
 
 | 文档                                                                      | 描述                          |
 | ------------------------------------------------------------------------- | ----------------------------- |
-| [Web 安全入门：XSS/CSRF [P4-P5]](/interview/junior/web-security-basics)   | XSS 类型与防范、CSRF 原理     |
 | [SPA 部署基础（Nginx 配置） [P4-P5]](/interview/junior/spa-deploy-basics) | Nginx try_files、History 模式 |
 | [表单与验证基础 [P4-P5]](/interview/junior/form-validation-basics)        | 表单控件、验证规则、正则      |
 
@@ -97,7 +96,7 @@ target: 'P4-P5 初级工程师'
 第 3 周：浏览器/网络（3 篇）→ 理解运行环境
 第 4 周：Vue 入门（2 篇）→ 框架开发
 第 5 周：TypeScript + 工具链（4 篇）→ 工程化基础
-第 6 周：安全/部署/实战（3 篇）→ 完整项目
+第 6 周：安全/部署/实战（2 篇）→ 完整项目
 ```
 
 ## 晋升到中级

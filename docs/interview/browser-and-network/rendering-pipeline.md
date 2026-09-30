@@ -1,10 +1,10 @@
 ---
-title: "浏览器渲染管线 [P6-P7]"
-level: "senior"
-tags: ["渲染管线", "样式计算", "布局", "合成", "GPU"]
-difficulty: "hard"
-updated: "2026-09-10"
-target: "P6+ 高级工程师"
+title: '浏览器渲染管线 [P6-P7]'
+level: 'senior'
+tags: ['渲染管线', '样式计算', '布局', '合成', 'GPU']
+difficulty: 'hard'
+updated: '2026-09-10'
+target: 'P6+ 高级工程师'
 ---
 
 # 浏览器渲染管线 [P6-P7]
@@ -70,23 +70,23 @@ DOM + CSSOM → Style → Layout → Paint → Composite → Frame
 ```javascript
 // 反模式：强制同步布局（Layout Thrashing）
 // 每次循环都触发回流
-elements.forEach(el => {
-  const height = el.offsetHeight;  // 强制布局
-  el.style.height = (height + 10) + 'px';  // 使布局失效
-});
+elements.forEach((el) => {
+  const height = el.offsetHeight // 强制布局
+  el.style.height = height + 10 + 'px' // 使布局失效
+})
 
 // 优化：批量读写分离
-const heights = elements.map(el => el.offsetHeight);  // 批量读
+const heights = elements.map((el) => el.offsetHeight) // 批量读
 elements.forEach((el, i) => {
-  el.style.height = (heights[i] + 10) + 'px';  // 批量写
-});
+  el.style.height = heights[i] + 10 + 'px' // 批量写
+})
 
 // 更优：使用 requestAnimationFrame
 function animate() {
   elements.forEach((el, i) => {
-    el.style.height = (heights[i] + 10) + 'px';
-  });
-  requestAnimationFrame(animate);
+    el.style.height = heights[i] + 10 + 'px'
+  })
+  requestAnimationFrame(animate)
 }
 ```
 
@@ -98,10 +98,18 @@ function animate() {
 - 生成 Paint Records（绘制记录列表）
 - 复杂阴影、渐变会增加绘制成本
 
+重绘（Repaint）：
+├── 重新绘制像素（外观变化，不影响布局）
+├── 触发条件：color、background、border、box-shadow、visibility、outline
+├── 代价：中等（不需要重新计算布局，但比重绘便宜）
+└── 重排一定触发重绘，重绘不一定触发重排
+
 合成（Composite）：
-- 将页面分层（Layer）
-- 各层独立合成（GPU 加速）
-- transform 和 opacity 只触发合成（不触发回流/重绘）
+├── 将页面分层（Layer）
+├── 各层独立合成（GPU 加速）
+├── transform 和 opacity 只触发合成（不触发回流/重绘）
+├── 代价最低
+└── 触发条件：transform、opacity、filter
 
 合成层提升条件：
 - 3D transform（translate3d, rotate3d）
@@ -130,6 +138,65 @@ position       ✓      ✓      ✗
 4. 使用 content-visibility: auto 跳过屏外渲染
 ```
 
+### 5. GPU 加速与动画优化
+
+```css
+/* 使用 GPU 加速的属性 */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0); /* 创建合成层 */
+  will-change: transform; /* 提前告知浏览器 */
+}
+
+/* ❌ 不好（触发重排） */
+@keyframes slide {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100px;
+  }
+}
+
+/* ✅ 好（合成层，GPU 加速） */
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100px);
+  }
+}
+
+/* will-change 使用注意：只在动画前设置，动画后移除 */
+.element:hover {
+  will-change: transform;
+}
+```
+
+### 6. 性能检测
+
+```javascript
+// Performance API
+const start = performance.now()
+// ... 执行操作
+const end = performance.now()
+console.log(`耗时: ${end - start}ms`)
+
+// Layout Shift（布局偏移）
+new PerformanceObserver((entryList) => {
+  for (const entry of entryList.getEntries()) {
+    console.log('Layout shift:', entry.value)
+  }
+}).observe({ type: 'layout-shift', buffered: true })
+
+// Long Task（长任务）
+new PerformanceObserver((entryList) => {
+  for (const entry of entryList.getEntries()) {
+    console.log('Long task detected:', entry.duration)
+  }
+}).observe({ type: 'longtask', buffered: true })
+```
+
 ---
 
 ## 高频面试题
@@ -137,6 +204,7 @@ position       ✓      ✓      ✗
 ### Q1: 浏览器渲染管线有哪些阶段？
 
 **参考答案要点**：
+
 - DOM + CSS → CSSOM → 样式计算 → 布局 → 绘制 → 合成
 - 每个阶段都可能成为性能瓶颈
 - 优化目标：减少每个阶段的耗时，避免不必要的阶段
@@ -144,6 +212,7 @@ position       ✓      ✓      ✗
 ### Q2: 什么是回流（Reflow）和重绘（Repaint）？
 
 **参考答案要点**：
+
 - 回流：重新计算元素几何信息（布局变化）
 - 重绘：重新绘制像素（外观变化，如颜色）
 - 回流一定触发重绘，重绘不一定触发回流
@@ -152,11 +221,24 @@ position       ✓      ✓      ✗
 ### Q3: 如何实现 60fps 的流畅动画？
 
 **参考答案要点**：
+
 - 只使用 transform 和 opacity 做动画
 - 使用 requestAnimationFrame 而非 setTimeout
 - 使用 will-change 提升合成层
 - 避免动画期间触发回流（固定尺寸）
 - 使用 CSS contain 限制渲染范围
+
+### Q4: 如何避免重排？
+
+**参考答案要点**：
+
+- 批量读写 DOM（避免强制同步布局）
+- 使用 DocumentFragment 离线操作 DOM
+- 使用 CSS 类一次修改多个样式
+- 离线操作 DOM（克隆节点修改后替换）
+- 使用 transform/opacity（合成层，不触发重排）
+- 使用 requestAnimationFrame 对齐刷新率
+- 使用 ResizeObserver 代替轮询检测尺寸变化
 
 ---
 

@@ -318,6 +318,76 @@ async function fetchWithTimeout(url, timeoutMs) {
 }
 ```
 
+### 并发限制（asyncPool）
+
+```javascript
+// 限制并发数的异步池
+async function asyncPool(poolLimit, array, iteratorFn) {
+  const ret = []
+  const executing = []
+
+  for (const item of array) {
+    const p = Promise.resolve().then(() => iteratorFn(item))
+    ret.push(p)
+
+    if (poolLimit <= array.length) {
+      const e = p.then(() => executing.splice(executing.indexOf(e), 1))
+      executing.push(e)
+
+      if (executing.length >= poolLimit) {
+        await Promise.race(executing)
+      }
+    }
+  }
+
+  return Promise.all(ret)
+}
+
+// 使用：最多同时 3 个请求
+const urls = Array.from({ length: 100 }, (_, i) => `/api/data/${i}`)
+await asyncPool(3, urls, (url) => fetch(url))
+```
+
+### 重试机制
+
+```javascript
+async function retry(fn, retries = 3, delay = 1000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await fn()
+    } catch (error) {
+      if (i === retries - 1) throw error
+      await new Promise((resolve) => setTimeout(resolve, delay))
+    }
+  }
+}
+
+// 使用
+const data = await retry(() => fetchData(), 3, 2000)
+```
+
+### 常见异步模式
+
+```javascript
+// 1. 瀑布流（前一个结果传给后一个）
+async function waterfall(fns) {
+  let result
+  for (const fn of fns) {
+    result = await fn(result)
+  }
+  return result
+}
+
+// 使用
+const result = await waterfall([() => step1(), (r1) => step2(r1), (r2) => step3(r2)])
+
+// 2. 竞争执行
+async function race() {
+  const result = await Promise.race([fetchFromCDN(), fetchFromAPI(), timeout(5000)])
+  return result
+}
+```
+
 ---
 
 ## 高频面试题

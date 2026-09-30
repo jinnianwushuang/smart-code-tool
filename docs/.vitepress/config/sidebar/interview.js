@@ -46,7 +46,6 @@ export const interviewSidebar = {
         { text: 'Git 基础：分支策略与协作流程 [P4-P5]', link: '/interview/junior/git-basics' },
         { text: 'npm/pnpm 包管理入门 [P4-P5]', link: '/interview/junior/npm-pnpm-basics' },
         { text: '前端调试基础 [P4-P5]', link: '/interview/junior/debugging-basics' },
-        { text: 'Web 安全入门：XSS/CSRF [P4-P5]', link: '/interview/junior/web-security-basics' },
         { text: 'SPA 部署基础（Nginx 配置） [P4-P5]', link: '/interview/junior/spa-deploy-basics' },
         { text: '表单与验证基础 [P4-P5]', link: '/interview/junior/form-validation-basics' },
       ],
@@ -68,18 +67,10 @@ export const interviewSidebar = {
           text: '闭包、作用域链与执行上下文 [P5-P6]',
           link: '/interview/intermediate/js-closures-context',
         },
-        {
-          text: '异步编程深入：Promise/async/await [P5-P6]',
-          link: '/interview/intermediate/async-deep-dive',
-        },
         { text: 'ES6+ 模块系统与工程化 [P5-P6]', link: '/interview/intermediate/es6-modules' },
         {
           text: 'JavaScript 常用设计模式 [P5-P6]',
           link: '/interview/intermediate/js-design-patterns',
-        },
-        {
-          text: '浏览器渲染机制：重排/重绘/合成 [P5-P6]',
-          link: '/interview/intermediate/rendering-mechanism',
         },
         {
           text: 'HTTP 缓存策略：强缓存/协商缓存 [P5-P6]',
@@ -88,10 +79,6 @@ export const interviewSidebar = {
         {
           text: '前端网络优化：预加载/懒加载/压缩 [P5-P6]',
           link: '/interview/intermediate/network-optimization',
-        },
-        {
-          text: 'Vue 3 响应式原理入门 [P5-P6]',
-          link: '/interview/intermediate/vue-reactivity-basics',
         },
         { text: 'Vue 3 生命周期深入 [P5-P6]', link: '/interview/intermediate/vue-lifecycle' },
         { text: 'Vue 组件通信方式全景 [P5-P6]', link: '/interview/intermediate/vue-communication' },
@@ -106,10 +93,6 @@ export const interviewSidebar = {
           link: '/interview/intermediate/react-basics',
         },
         { text: '前端性能优化基础 [P5-P6]', link: '/interview/intermediate/performance-basics' },
-        {
-          text: '前端测试基础：Jest/Vitest [P5-P6]',
-          link: '/interview/intermediate/testing-basics',
-        },
         {
           text: '构建工具入门：Vite 配置与使用 [P5-P6]',
           link: '/interview/intermediate/build-tools-basics',
@@ -196,7 +179,6 @@ export const interviewSidebar = {
         { text: 'Pinia 状态管理原理与实战 [P6-P7]', link: '/interview/vue/pinia-deep' },
         { text: 'Vue Router 4 路由系统深度 [P6-P7]', link: '/interview/vue/vue-router-4' },
         { text: 'Nuxt 3 全栈框架原理与实战 [P8]', link: '/interview/vue/nuxt-3-fullstack' },
-        { text: 'Vitest + Vue 测试体系 [P6-P7]', link: '/interview/vue/vitest-and-vue-testing' },
         { text: 'Vue 3 生态实战模式 [P6-P7]', link: '/interview/vue/vue-ecosystem-patterns' },
       ],
     },
@@ -286,7 +268,7 @@ export const interviewSidebar = {
         { text: '微前端方案对比 [P8]', link: '/interview/engineering/micro-frontend' },
         { text: '设计系统与组件库架构 [P8]', link: '/interview/engineering/design-system' },
         { text: '性能预算体系 [P6-P7]', link: '/interview/engineering/performance-budget' },
-        { text: '测试金字塔实战 [P6-P7]', link: '/interview/engineering/testing-strategy' },
+        { text: '前端测试金字塔实战 [P6-P7]', link: '/interview/engineering/testing-strategy' },
         { text: '前端 DevOps 与发布体系 [P8]', link: '/interview/engineering/frontend-devops' },
         {
           text: 'Node.js Web 框架对比 [P6-P7]',
