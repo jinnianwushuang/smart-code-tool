@@ -211,13 +211,13 @@ const routes = [ { path: '/users', name: 'UserList', component: UserList, meta: 
 
 <!-- KeepAlive 生命周期 -->
 <script setup>
-// 组件被缓存时触发（离开页面但未销毁）
+// 组件从缓存中被重新激活（再次进入）时触发
 onActivated(() => {
   console.log('Component activated')
   // 重新获取数据
 })
 
-// 组件从缓存中移除时触发
+// 组件被隐藏（离开但仍被缓存）时触发
 onDeactivated(() => {
   console.log('Component deactivated')
 })
@@ -227,7 +227,7 @@ onDeactivated(() => {
 <!-- ├── include/exclude：字符串数组或正则 -->
 <!-- ├── max：最大缓存数量（LRU 策略） -->
 <!-- ├── 组件必须有 name 属性（include/exclude 依赖 name） -->
-<!-- └── 缓存的组件不会触发 onUnmounted，而是 onDeactivated -->
+<!-- └── 缓存组件被隐藏时触发 onDeactivated 而非 onUnmounted；缓存被真正销毁时仍会触发 onUnmounted -->
 ```
 
 ### 5. provide/inject 依赖注入
