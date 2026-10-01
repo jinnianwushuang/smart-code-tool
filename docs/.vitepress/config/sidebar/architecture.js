@@ -287,6 +287,10 @@ const react = {
       text: '原理说明',
       items: [
         { text: 'useEffect 原理', link: '/architecture-document/react/principle/use-effect' },
+        {
+          text: 'Hooks 执行阶段：Render vs Commit',
+          link: '/architecture-document/react/principle/hooks-phase-timing',
+        },
       ],
     },
     {

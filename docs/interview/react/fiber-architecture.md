@@ -1,10 +1,10 @@
 ---
-title: "Fiber 架构与优先级调度 [P6-P7]"
-level: "senior"
-tags: ["React", "Fiber", "时间切片", "优先级调度"]
-difficulty: "hard"
-updated: "2026-09-10"
-target: "P6+ 高级工程师"
+title: 'Fiber 架构与优先级调度 [P6-P7]'
+level: 'senior'
+tags: ['React', 'Fiber', '时间切片', '优先级调度']
+difficulty: 'hard'
+updated: '2026-09-10'
+target: 'P6+ 高级工程师'
 ---
 
 # Fiber 架构与优先级调度 [P6-P7]
@@ -34,32 +34,32 @@ Fiber Reconciler（React 16+）
 
 ```javascript
 // Fiber 节点的简化结构
-function FiberNode {
-  // 静态数据结构
-  tag;           // 组件类型（FunctionComponent, ClassComponent, HostComponent...）
-  key;           // 唯一标识
-  type;          // 组件函数/类/DOM 标签名
-  stateNode;     // DOM 节点或类组件实例
+const fiberNode = {
+  // ── 静态数据（标识“我是谁”）─────────────────────────
+  tag:       FunctionComponent | ClassComponent | HostComponent | ...,
+  key:       string | null,            // 唯一标识（Diff 用）
+  type:      Function | Class | string, // 组件函数 / 类 / DOM 标签名
+  stateNode: HTMLElement | null,       // 真实 DOM 节点或类组件实例
 
-  // 链表结构（替代树的 children/parent）
-  return;        // 父节点
-  child;         // 第一个子节点
-  sibling;       // 下一个兄弟节点
-  index;         // 在兄弟节点中的索引
+  // ── 链表指针（替代树结构，实现 O(1) 遍历）────────────
+  return:  FiberNode | null,  // → 父节点
+  child:   FiberNode | null,  // → 第一个子节点
+  sibling: FiberNode | null,  // → 下一个兄弟节点
+  index:   number,            // 在兄弟节点中的位置
 
-  // 工作单元
-  pendingProps;  // 新的 props
-  memoizedProps; // 上次渲染的 props
-  memoizedState; // 上次渲染的 state（Hooks 链表）
-  updateQueue;   // 待处理的更新队列
+  // ── 工作单元（渲染过程中的“草稿纸”）─────────────────
+  pendingProps:   object,     // 本次待处理的 props
+  memoizedProps:  object,     // 上次渲染后的 props（用于 Diff）
+  memoizedState:  Hook | null,// 上次渲染后的 state（Hooks 链表头）
+  updateQueue:    UpdateQueue | null, // 待处理的更新队列
 
-  // 副作用
-  flags;         // 副作用标记（Placement, Update, Deletion...）
-  subtreeFlags;  // 子树的副作用
-  deletions;     // 需要删除的子节点
+  // ── 副作用（Commit 阶段的操作指令）──────────────────
+  flags:        Placement | Update | Deletion | ..., // 自身副作用标记
+  subtreeFlags: number,       // 子树冒泡上来的副作用
+  deletions:    FiberNode[],  // 需要删除的子节点列表
 
-  // 双缓冲
-  alternate;     // 指向另一棵树中对应的 Fiber 节点
+  // ── 双缓冲（两棵树的桥梁）──────────────────────────
+  alternate: FiberNode | null, // → 另一棵树中对应的 Fiber 节点
 }
 ```
 
@@ -97,35 +97,35 @@ Root → App → Header → Logo → (返回 Header)
 ```javascript
 // Fiber 遍历算法（简化版）
 function workLoop() {
-  let workInProgress = rootFiber.child;
+  let workInProgress = rootFiber.child
 
   while (workInProgress) {
     // 执行当前 Fiber 的工作
-    workInProgress = performUnitOfWork(workInProgress);
+    workInProgress = performUnitOfWork(workInProgress)
     // performUnitOfWork 返回下一个要处理的 Fiber
   }
 }
 
 function performUnitOfWork(fiber) {
   // 1. 执行当前节点的工作（渲染/对比）
-  beginWork(fiber);
+  beginWork(fiber)
 
   // 2. 返回下一个工作单元
   // 优先级：子节点 → 兄弟节点 → 叔父节点
   if (fiber.child) {
-    return fiber.child;
+    return fiber.child
   }
 
   while (fiber) {
-    completeWork(fiber); // 完成当前节点
+    completeWork(fiber) // 完成当前节点
 
     if (fiber.sibling) {
-      return fiber.sibling; // 处理兄弟
+      return fiber.sibling // 处理兄弟
     }
-    fiber = fiber.return; // 向上回溯
+    fiber = fiber.return // 向上回溯
   }
 
-  return null; // 遍历完成
+  return null // 遍历完成
 }
 ```
 
@@ -144,33 +144,33 @@ function performUnitOfWork(fiber) {
 // 4. 完成后，将 workInProgress 树的根节点替换 current 根节点
 
 function createWorkInProgress(current, pendingProps) {
-  let workInProgress = current.alternate;
+  let workInProgress = current.alternate
 
   if (!workInProgress) {
     // 首次：创建新的 Fiber 节点
-    workInProgress = createFiber(current.tag, pendingProps, current.key);
-    workInProgress.stateNode = current.stateNode;
-    workInProgress.alternate = current;
-    current.alternate = workInProgress;
+    workInProgress = createFiber(current.tag, pendingProps, current.key)
+    workInProgress.stateNode = current.stateNode
+    workInProgress.alternate = current
+    current.alternate = workInProgress
   } else {
     // 复用：更新 props
-    workInProgress.pendingProps = pendingProps;
-    workInProgress.flags = 0;
-    workInProgress.subtreeFlags = 0;
+    workInProgress.pendingProps = pendingProps
+    workInProgress.flags = 0
+    workInProgress.subtreeFlags = 0
   }
 
-  return workInProgress;
+  return workInProgress
 }
 
 // 提交阶段：切换两棵树
 function commitRoot(root) {
-  const finishedWork = root.finishedWork;
+  const finishedWork = root.finishedWork
 
   // 切换 current 指针
-  root.current = finishedWork;
+  root.current = finishedWork
 
   // 执行 DOM 操作
-  commitMutationEffects(root, finishedWork);
+  commitMutationEffects(root, finishedWork)
 
   // 清理 alternate 引用
   // ...
@@ -182,13 +182,13 @@ function commitRoot(root) {
 ```javascript
 // React 18 的 Lane 优先级模型
 const Lanes = {
-  NoLanes:          0b0000000000000000000000000000000,
-  SyncLane:         0b0000000000000000000000000000001, // 同步任务
+  NoLanes: 0b0000000000000000000000000000000,
+  SyncLane: 0b0000000000000000000000000000001, // 同步任务
   InputContinuousLane: 0b0000000000000000000000000000100, // 连续输入
-  DefaultLane:      0b0000000000000000000000000010000, // 默认优先级
-  TransitionLanes:  0b0000000000000000011111111000000, // 过渡动画
-  IdleLane:         0b0100000000000000000000000000000, // 空闲任务
-};
+  DefaultLane: 0b0000000000000000000000000010000, // 默认优先级
+  TransitionLanes: 0b0000000000000000011111111000000, // 过渡动画
+  IdleLane: 0b0100000000000000000000000000000, // 空闲任务
+}
 
 // 优先级从高到低：
 // Sync > InputContinuous > Default > Transition > Idle
@@ -206,25 +206,25 @@ const Lanes = {
 function workLoopConcurrent() {
   // 在每个时间切片中检查是否需要让出主线程
   while (workInProgress !== null && !shouldYield()) {
-    workInProgress = performUnitOfWork(workInProgress);
+    workInProgress = performUnitOfWork(workInProgress)
   }
 }
 
 function shouldYield() {
   // 检查当前帧是否还有剩余时间
   // 默认 5ms 一个时间切片
-  return getCurrentTime() >= deadline;
+  return getCurrentTime() >= deadline
 }
 
 // Scheduler 使用 MessageChannel 实现调度
 // 比 setTimeout 更精确（setTimeout 最小延迟 4ms）
-const channel = new MessageChannel();
-const port = channel.port2;
+const channel = new MessageChannel()
+const port = channel.port2
 
-channel.port1.onmessage = performWorkUntilDeadline;
+channel.port1.onmessage = performWorkUntilDeadline
 
 function scheduleCallback(callback) {
-  port.postMessage(null);
+  port.postMessage(null)
 }
 ```
 
@@ -237,23 +237,24 @@ function beginWork(current, workInProgress, renderLanes) {
     case FunctionComponent: {
       // 执行函数组件，收集 Hooks 状态
       const children = renderWithHooks(
-        current, workInProgress,
+        current,
+        workInProgress,
         workInProgress.type,
         workInProgress.pendingProps,
-        renderLanes
-      );
-      reconcileChildren(current, workInProgress, children);
-      break;
+        renderLanes,
+      )
+      reconcileChildren(current, workInProgress, children)
+      break
     }
     case HostComponent: {
       // 原生 DOM 元素
-      reconcileChildren(current, workInProgress, workInProgress.pendingProps.children);
-      break;
+      reconcileChildren(current, workInProgress, workInProgress.pendingProps.children)
+      break
     }
   }
 
   // 返回第一个子节点继续遍历
-  return workInProgress.child;
+  return workInProgress.child
 }
 
 // completeWork：向上回溯，创建/更新 DOM 节点
@@ -262,20 +263,20 @@ function completeWork(current, workInProgress, renderLanes) {
     case HostComponent: {
       if (current === null) {
         // 首次挂载：创建 DOM 节点
-        const instance = createInstance(workInProgress.type, workInProgress.pendingProps);
+        const instance = createInstance(workInProgress.type, workInProgress.pendingProps)
         // 将所有子节点 append 到 instance
-        appendAllChildren(instance, workInProgress);
-        workInProgress.stateNode = instance;
+        appendAllChildren(instance, workInProgress)
+        workInProgress.stateNode = instance
       } else {
         // 更新：标记需要更新的 props
-        markUpdate(workInProgress);
+        markUpdate(workInProgress)
       }
-      break;
+      break
     }
   }
 
   // 冒泡副作用标记到父节点
-  bubbleProperties(workInProgress);
+  bubbleProperties(workInProgress)
 }
 ```
 
@@ -286,22 +287,22 @@ function completeWork(current, workInProgress, renderLanes) {
 ### 使用 startTransition 控制优先级
 
 ```jsx
-import { useState, useTransition, startTransition } from 'react';
+import { useState, useTransition, startTransition } from 'react'
 
 function SearchComponent() {
-  const [input, setInput] = useState('');
-  const [results, setResults] = useState([]);
-  const [isPending, startTransition] = useTransition();
+  const [input, setInput] = useState('')
+  const [results, setResults] = useState([])
+  const [isPending, startTransition] = useTransition()
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    setInput(value); // 高优先级：立即更新输入框
+    const value = e.target.value
+    setInput(value) // 高优先级：立即更新输入框
 
     startTransition(() => {
       // 低优先级：搜索结果可以延迟
-      setResults(expensiveSearch(value));
-    });
-  };
+      setResults(expensiveSearch(value))
+    })
+  }
 
   return (
     <div>
@@ -309,7 +310,7 @@ function SearchComponent() {
       {isPending && <Spinner />}
       <ResultList results={results} />
     </div>
-  );
+  )
 }
 ```
 
@@ -318,21 +319,21 @@ function SearchComponent() {
 ```jsx
 // 1. React.memo 跳过未变化的组件
 const ExpensiveComponent = React.memo(({ data }) => {
-  return <ComplexUI data={data} />;
-});
+  return <ComplexUI data={data} />
+})
 
 // 2. useMemo 缓存计算结果
 const filteredList = useMemo(() => {
-  return list.filter(item => item.active);
-}, [list]);
+  return list.filter((item) => item.active)
+}, [list])
 
 // 3. useCallback 稳定函数引用
 const handleClick = useCallback((id) => {
-  setSelected(id);
-}, []);
+  setSelected(id)
+}, [])
 
 // 4. 使用 key 强制重新挂载
-<Component key={userId} /> // userId 变化时完全重新创建
+;<Component key={userId} /> // userId 变化时完全重新创建
 ```
 
 ---
@@ -342,6 +343,7 @@ const handleClick = useCallback((id) => {
 ### Q1: React Fiber 架构的核心改进是什么？
 
 **参考答案要点**：
+
 - 将递归渲染改造为可中断的链表遍历
 - 每个 Fiber 节点是一个工作单元，工作可暂停/恢复
 - 引入双缓冲机制（current + workInProgress）
@@ -351,6 +353,7 @@ const handleClick = useCallback((id) => {
 ### Q2: React 的调度机制是如何工作的？
 
 **参考答案要点**：
+
 - Scheduler 使用 MessageChannel 实现异步调度
 - 每个时间切片默认 5ms，超时则让出主线程
 - Lane Model 将更新分为不同优先级
@@ -361,6 +364,7 @@ const handleClick = useCallback((id) => {
 ### Q3: beginWork 和 completeWork 分别做什么？
 
 **参考答案要点**：
+
 - beginWork：向下遍历，执行组件渲染函数，对比子节点（reconcile）
 - completeWork：向上回溯，创建/更新 DOM 节点，冒泡副作用标记
 - beginWork 阶段可以中断，completeWork 阶段不可中断
