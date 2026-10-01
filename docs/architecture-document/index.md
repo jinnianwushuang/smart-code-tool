@@ -109,10 +109,14 @@
 - [前端渲染模式全解](./general-knowledge/frontend-rendering-modes) - CSR、SSR、SSG、ISR、Streaming SSR、RSC 等模式详解
 - [网络通用知识](./general-knowledge/network-fundamentals) - TCP/IP、HTTP、HTTPS、DNS、CORS、缓存策略等
 - [Chrome 开发者工具全解](./general-knowledge/chrome-devtools) - Elements、Console、Sources、Network、Performance 等面板详解
+- [构建优化核心概念](./general-knowledge/build-optimization-concepts) - Tree Shaking、代码分割、HMR、依赖预构建四大支柱
+- [Rolldown 与 Oxc](./general-knowledge/rolldown-and-oxc) - Rust 重塑前端工具链：Rolldown 统一打包器 + Oxc 编译器工具链
+- [Signal 细粒度响应式](./general-knowledge/signal-reactivity) - Signal 原语、跨框架对比、ES2026 原生规范
 
 ### 💭 研发思维
 
-- [跨框架研发思维对比（入口）](./thinking/cross-framework-thinking-comparison) - Vue·React·Flutter 三大框架在三个核心主题上的横向对比：三层分离、不必要渲染元凶、底层万用公式
+- [技术名词深度解析索引（入口）](./thinking/terminology-index) - 核心名词按领域分类，链接各技术目录深度解析，跨框架对比速查
+- [跨框架研发思维对比](./thinking/cross-framework-thinking-comparison) - Vue·React·Flutter 三大框架在三个核心主题上的横向对比：三层分离、不必要渲染元凶、底层万用公式
 - [BUG 修复思维对比](./thinking/bug-fixing-thinking) - 工程师/架构师/主管三种视角的 BUG 修复思维差异与协同模式
 - [技术迭代与学习疲态](./thinking/tech-iteration-and-learning-fatigue) - 技术快速迭代下的学习疲态本质、三种视角应对策略与协同模型
 - [数据·算法·显示 三者分离](./thinking/frontend-data-algorithm-view-separation) - 前端编程终极朴素思想：接口原始数据、算法处理、界面显示数据三层分离，与浏览器架构同构

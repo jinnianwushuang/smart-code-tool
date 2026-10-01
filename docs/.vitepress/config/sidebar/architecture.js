@@ -506,6 +506,18 @@ const generalKnowledge = {
       text: '国内开发镜像设置与还原',
       link: '/architecture-document/general-knowledge/dev-mirror-setup',
     },
+    {
+      text: '构建优化核心概念',
+      link: '/architecture-document/general-knowledge/build-optimization-concepts',
+    },
+    {
+      text: 'Rolldown 与 Oxc',
+      link: '/architecture-document/general-knowledge/rolldown-and-oxc',
+    },
+    {
+      text: 'Signal 细粒度响应式',
+      link: '/architecture-document/general-knowledge/signal-reactivity',
+    },
   ],
 }
 
@@ -611,7 +623,11 @@ const thinking = {
   collapsed: true,
   items: [
     {
-      text: '跨框架研发思维对比（入口）',
+      text: '技术名词深度解析索引（入口）',
+      link: '/architecture-document/thinking/terminology-index',
+    },
+    {
+      text: '跨框架研发思维对比',
       link: '/architecture-document/thinking/cross-framework-thinking-comparison',
     },
     { text: 'BUG 修复思维对比', link: '/architecture-document/thinking/bug-fixing-thinking' },

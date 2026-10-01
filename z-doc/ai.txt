@@ -278,3 +278,20 @@ const all_tabs = [
   "csuir": "1",
   "atvm": "2"
 }
+
+
+
+
+
+
+我计划在这个总目录下新增名词解析相关内容
+/Users/jinnian/Code/web/smart-code-tool/docs/architecture-document
+原因是：    深入理解一个技术相关名词、起名特性对理解相关的技术栈非常有帮助
+
+现在有两个方案：
+方案一：
+在下面目录各自的技术目录内 增补文档
+方案二：
+直接新建一个名词解释目录 ，在里面增补文档
+
+请评估哪个合适
