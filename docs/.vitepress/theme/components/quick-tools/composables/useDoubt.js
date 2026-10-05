@@ -1,6 +1,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from '../shared/utils'
 import { DOUBT_KEY, DOUBT_LIMIT } from '../shared/constants'
+import { getDocIdByUrl, migrateRecords, findByDocIdOrUrl, findIndexByDocIdOrUrl } from '../shared/useDocIdMapper'
 
 /**
  * 记忆疑惑：同链接唯一，支持编辑/已解决/删除
@@ -16,10 +17,11 @@ export function useDoubt(getPage) {
     [...records.value].sort((a, b) => new Date(b.time) - new Date(a.time)),
   )
 
-  /** 初始化表单：检测当前页面是否已有疑惑 */
-  const initForm = () => {
+  /** 初始化表单：检测当前页面是否已有疑惑（docId 优先，回退 URL） */
+  const initForm = async () => {
     const { url, title } = getPage()
-    const existing = records.value.find((r) => r.url === url)
+    const docId = await getDocIdByUrl(url)
+    const existing = findByDocIdOrUrl(records.value, docId, url)
     if (existing) {
       editingId.value = existing.id
       draft.value = existing.doubt
@@ -30,9 +32,10 @@ export function useDoubt(getPage) {
     return { url, title }
   }
 
-  const save = () => {
+  const save = async () => {
     if (!draft.value.trim()) return
     const { url, title } = getPage()
+    const docId = await getDocIdByUrl(url)
 
     if (editingId.value) {
       const record = records.value.find((r) => r.id === editingId.value)
@@ -40,12 +43,14 @@ export function useDoubt(getPage) {
         record.doubt = draft.value.trim()
         record.title = title
         record.url = url
+        if (docId) record.docId = docId
       }
     } else {
-      const existingIndex = records.value.findIndex((r) => r.url === url)
+      const existingIndex = findIndexByDocIdOrUrl(records.value, docId, url)
       if (existingIndex !== -1) {
         records.value[existingIndex].doubt = draft.value.trim()
         records.value[existingIndex].title = title
+        if (docId) records.value[existingIndex].docId = docId
       } else {
         if (records.value.length >= DOUBT_LIMIT) {
           alert(`疑惑记录已达上限（${DOUBT_LIMIT}条），请先删除部分记录`)
@@ -53,6 +58,7 @@ export function useDoubt(getPage) {
         }
         records.value.push({
           id: Date.now().toString(),
+          docId,
           url,
           title,
           time: new Date().toISOString(),
@@ -130,8 +136,12 @@ export function useDoubt(getPage) {
     downloadText(`疑惑记录_${exportTimestamp()}.md`, md)
   }
 
-  onMounted(() => {
-    records.value = readStorage(DOUBT_KEY)
+  onMounted(async () => {
+    const data = readStorage(DOUBT_KEY)
+    // 自动迁移旧数据
+    const { migrated, records: patched } = await migrateRecords(data)
+    records.value = patched
+    if (migrated > 0) writeStorage(DOUBT_KEY, patched)
   })
 
   return {
