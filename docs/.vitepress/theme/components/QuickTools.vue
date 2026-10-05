@@ -1,11 +1,12 @@
 <script setup>
-import { ref, computed, nextTick } from 'vue'
+import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vitepress'
 import { useCurrentPage } from './quick-tools/composables/useCurrentPage'
 import { useProgress } from './quick-tools/composables/useProgress'
 import { useDoubt } from './quick-tools/composables/useDoubt'
 import { useNote } from './quick-tools/composables/useNote'
 import { useReview } from './quick-tools/composables/useReview'
+import { useReviewNotification } from './quick-tools/composables/useReviewNotification'
 import ProgressTab from './quick-tools/tabs/ProgressTab.vue'
 import DoubtTab from './quick-tools/tabs/DoubtTab.vue'
 import NoteTab from './quick-tools/tabs/NoteTab.vue'
@@ -45,18 +46,49 @@ const progress = useProgress(getPage)
 const doubt = useDoubt(getPage)
 const note = useNote(getPage)
 const review = useReview(getPage)
+const notification = useReviewNotification(review)
+
+// ==================== 初始化复习系统 + 自动学习 ====================
+onMounted(async () => {
+  // 初始化复习系统（加载 IndexedDB + 文档清单 + 数据迁移）
+  await review.init()
+
+  // 启动自动学习追踪
+  review.autoLearn.startTracking(window.location.pathname)
+
+  // 如果用户开启了通知，启动定时检查
+  const settings = await review.storage.getSettings()
+  if (settings.enableNotification) {
+    const granted = await notification.requestPermission()
+    if (granted) notification.startChecking()
+  }
+})
+
+// 监听路由变化 → 自动学习切换页面
+router.onAfterRouteChanged = (to) => {
+  if (to) {
+    review.autoLearn.onRouteChange(to)
+  }
+}
+
+onUnmounted(() => {
+  review.autoLearn.destroy()
+})
 
 // ==================== 面板状态 ====================
 const isOpen = ref(false)
 const activeTab = ref('progress')
 
-const totalCount = computed(
-  () =>
+/** badge 显示：今日到期复习数（复习 Tab 优先） */
+const badgeCount = computed(() => {
+  const dueCount = review.dueRecords.value.length
+  return (
     progress.records.value.length +
     doubt.records.value.length +
     note.records.value.length +
-    review.records.value.length,
-)
+    dueCount
+  )
+})
 
 const togglePanel = () => {
   isOpen.value = !isOpen.value
@@ -85,7 +117,7 @@ const switchToNote = () => {
 
 const switchToReview = () => {
   activeTab.value = 'review'
-  review.refreshPage()
+  review.refreshRecords()
 }
 </script>
 
@@ -108,13 +140,13 @@ const switchToReview = () => {
           d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
         />
       </svg>
-      <span v-if="totalCount > 0" class="qt-badge">{{ totalCount }}</span>
+      <span v-if="badgeCount > 0" class="qt-badge">{{ badgeCount }}</span>
     </button>
 
     <!-- 遮罩 + 面板 -->
     <Transition name="qt-fade">
       <div v-if="isOpen" class="qt-overlay" @click.self="closePanel">
-        <div class="qt-panel">
+        <div class="qt-panel qt-panel-large">
           <!-- 头部 -->
           <div class="qt-panel-header">
             <h3 class="qt-panel-title">🧰 快捷工具</h3>
@@ -136,7 +168,10 @@ const switchToReview = () => {
               📝 笔记 ({{ note.records.value.length }})
             </button>
             <button :class="['qt-tab', { active: activeTab === 'review' }]" @click="switchToReview">
-              🔁 复习 ({{ review.records.value.length }})
+              🔁 复习
+              <span v-if="review.dueRecords.value.length > 0" class="qt-tab-badge">
+                {{ review.dueRecords.value.length }}
+              </span>
             </button>
           </div>
 
@@ -186,20 +221,7 @@ const switchToReview = () => {
               @export="note.exportRecords"
             />
 
-            <ReviewTab
-              v-if="activeTab === 'review'"
-              :records="review.records.value"
-              :sorted="review.sorted.value"
-              :sort-mode="review.sortMode.value"
-              :current-page="review.currentPage.value"
-              :current-mastery="review.currentMastery.value"
-              :navigate-to="navigateTo"
-              @record="review.recordMastery"
-              @update:sort-mode="review.sortMode.value = $event"
-              @delete="review.remove"
-              @clear-all="review.clearAll"
-              @export="review.exportRecords"
-            />
+            <ReviewTab v-if="activeTab === 'review'" :review="review" :navigate-to="navigateTo" />
           </div>
         </div>
       </div>

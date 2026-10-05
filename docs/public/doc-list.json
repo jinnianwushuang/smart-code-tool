@@ -1,0 +1,2474 @@
+[
+  {
+    "id": "zU1dwYFb4Bma-fy42Rj88uOS",
+    "title": "十大世界运转法则",
+    "url": "/psychology/world-laws/world-operation",
+    "group": "世界规律"
+  },
+  {
+    "id": "8arIqeXMvyXQpxO5OkVqfDmH",
+    "title": "威廉·詹姆斯名言",
+    "url": "/psychology/philosophy/william-james",
+    "group": "人生哲学"
+  },
+  {
+    "id": "ypMfZCZexYzZ00q3gWnoMS21",
+    "title": "西格蒙德·弗洛伊德名言",
+    "url": "/psychology/philosophy/sigmund-freud",
+    "group": "人生哲学"
+  },
+  {
+    "id": "582xT2OtKFTibtioa0WmlECh",
+    "title": "阿尔弗雷德·阿德勒名言",
+    "url": "/psychology/philosophy/alfred-adler",
+    "group": "人生哲学"
+  },
+  {
+    "id": "If5Tjed6YK23rHwH3gPmMCxW",
+    "title": "卡尔·荣格经典名言",
+    "url": "/psychology/philosophy/carl-gustav-jung",
+    "group": "人生哲学"
+  },
+  {
+    "id": "Qx1RtjjPHoxax1FIgc9OypU5",
+    "title": "维克多·弗兰克尔名言",
+    "url": "/psychology/philosophy/viktor-frankl",
+    "group": "人生哲学"
+  },
+  {
+    "id": "Dfr5YFknDmzZ_1Eo3FCJn61j",
+    "title": "米哈里·契克森米哈赖名言",
+    "url": "/psychology/philosophy/mihaly-csikszentmihalyi",
+    "group": "人生哲学"
+  },
+  {
+    "id": "VM-dzE2CAmswYXhvE7EQWRsY",
+    "title": "乔丹·彼得森名言",
+    "url": "/psychology/philosophy/jordan-b-peterson",
+    "group": "人生哲学"
+  },
+  {
+    "id": "UbkBO0rfIoV0WQihHCbQbgKY",
+    "title": "纳瓦尔·拉维康特的名言",
+    "url": "/psychology/philosophy/naval-ravikant",
+    "group": "人生哲学"
+  },
+  {
+    "id": "QyIlT7vP6nBJpnhvbg0ZmwMS",
+    "title": "全球50位顶级富豪的宝贵箴言",
+    "url": "/psychology/philosophy/priceless-advice",
+    "group": "人生哲学"
+  },
+  {
+    "id": "RvjyXbvKcgmLie9ZBRslYpPH",
+    "title": "人生即阅历：不去体验，连猪都不如",
+    "url": "/psychology/philosophy/life-is-experience",
+    "group": "人生哲学"
+  },
+  {
+    "id": "-OSdbTkd955YMX6wVqCy0smw",
+    "title": "思维闭环 - 学习之道",
+    "url": "/psychology/cognition-learning/thought-loop-the-path-of-learning",
+    "group": "认知与学习"
+  },
+  {
+    "id": "1zL_jYmEDainSbmcyiEh3Tu9",
+    "title": "玩游戏与学习的差异",
+    "url": "/psychology/cognition-learning/games-and-learning",
+    "group": "认知与学习"
+  },
+  {
+    "id": "f6vCJxnJDyiU5YAC1ELXntBk",
+    "title": "个人成长顺序",
+    "url": "/psychology/cognition-learning/sequence-of-personal-growth",
+    "group": "认知与学习"
+  },
+  {
+    "id": "q6kXKaTOynC5tMV1xhrgorV3",
+    "title": "一天彻底改变人生",
+    "url": "/psychology/cognition-learning/how-to-fix-your-entire-life-in-1-day",
+    "group": "认知与学习"
+  },
+  {
+    "id": "I-B9pdeoopPYVhHa5SdkAFgV",
+    "title": "人生感悟：活在当下",
+    "url": "/psychology/cognition-learning/living-in-the-moment",
+    "group": "认知与学习"
+  },
+  {
+    "id": "lZdesaPBf8icsFj3CUBGPm4J",
+    "title": "身体觉醒术：即时提神技巧",
+    "url": "/psychology/cognition-learning/body-awakening-tips",
+    "group": "认知与学习"
+  },
+  {
+    "id": "YKtDVqHV0DcVP-dOvVs1nuwJ",
+    "title": "锚点效应：你的人生被什么定住了",
+    "url": "/psychology/cognition-learning/anchoring-effect",
+    "group": "认知与学习"
+  },
+  {
+    "id": "YLPbNPAZLi6e4rGsbjUK_Vlt",
+    "title": "走出精神内耗",
+    "url": "/psychology/mental-health/break-from-mental-exhaustion",
+    "group": "心理健康"
+  },
+  {
+    "id": "SzBWRrd5Jk9eFFoUNHFkH1EC",
+    "title": "现代生存双指南",
+    "url": "/psychology/comprehensive-guide/modern-survival-dual-guide",
+    "group": "综合指南"
+  },
+  {
+    "id": "KY74QeMTkG4pj8Vyl8DW0-P_",
+    "title": "AI时代大前端工程师的生存与出路",
+    "url": "/ai/thinking/frontend-engineer-survival-in-ai-era",
+    "group": "零散思考"
+  },
+  {
+    "id": "e1fcmSeOterLAVoIAtxHK30a",
+    "title": "AI行业核心概念与术语",
+    "url": "/ai/base-knowledge/ai-industry-concepts",
+    "group": "AI知识库"
+  },
+  {
+    "id": "joy3LHVl8mywxyIihP5j7SNa",
+    "title": "AI应用开发者知识清单",
+    "url": "/ai/base-knowledge/ai-developer-knowledge-checklist",
+    "group": "AI知识库"
+  },
+  {
+    "id": "9UaJ1q_pSLrYHqvAcf2A1jtG",
+    "title": "智能体发展历程",
+    "url": "/ai/base-knowledge/ai-agent-evolution",
+    "group": "AI知识库"
+  },
+  {
+    "id": "JwdHMUg-J0rqJtbayh3thvwY",
+    "title": "本地知识库",
+    "url": "/ai/idea/kbs",
+    "group": "AI知识库"
+  },
+  {
+    "id": "Rs-XEWKC4pWc9CDvnSOIpUDZ",
+    "title": "M4 Max 新电脑整备指南",
+    "url": "/ai/idea/new-mac-setup-guide",
+    "group": "AI知识库"
+  },
+  {
+    "id": "SF1OLJlwxjVmVCv0ymzDkVuZ",
+    "title": "Ollama 自定义模型笔记",
+    "url": "/ai/ollama/ollama-custom-model-file",
+    "group": "AI知识库"
+  },
+  {
+    "id": "xATmrV29a2sQn8PAm2zU2evK",
+    "title": "Python 本地智能体最佳实践",
+    "url": "/ai/ollama/python-local-agent-best-practice",
+    "group": "AI知识库"
+  },
+  {
+    "id": "Sm6U_aWOcu80kamxJ7JSDua4",
+    "title": "LangChain 手册",
+    "url": "/handbook/ai/langchain-handbook",
+    "group": "AI手册"
+  },
+  {
+    "id": "pYbeeROoYk3tBtWWLDSqrIP7",
+    "title": "Ollama 手册",
+    "url": "/handbook/ai/ollama-handbook",
+    "group": "AI手册"
+  },
+  {
+    "id": "EKBVi9HeKb1VqdyA6hL_xDZD",
+    "title": "架构愿景",
+    "url": "/architecture-document/architectural-vision/architectural-vision-1",
+    "group": "架构愿景"
+  },
+  {
+    "id": "IAND01o2TqdJ8icVDyd23t7O",
+    "title": "闭环设计",
+    "url": "/architecture-document/architectural-vision/closed-loop-1",
+    "group": "架构愿景"
+  },
+  {
+    "id": "lsUb7Cyzb-_MB0lN0W1qPvWG",
+    "title": "影响分析",
+    "url": "/architecture-document/architectural-vision/influence-1",
+    "group": "架构愿景"
+  },
+  {
+    "id": "t2HwGHSArpXXL_10JrqZGEqo",
+    "title": "设计原则",
+    "url": "/architecture-document/architectural-vision/principles-1",
+    "group": "架构愿景"
+  },
+  {
+    "id": "zDgyi8QNBXFkht4-YU5CTwd9",
+    "title": "实施报告",
+    "url": "/architecture-document/architectural-vision/report-1",
+    "group": "架构愿景"
+  },
+  {
+    "id": "J2adGTYbBYDmEDWy9SkbmT3E",
+    "title": "路线图",
+    "url": "/architecture-document/architectural-vision/roadmap-1",
+    "group": "架构愿景"
+  },
+  {
+    "id": "M5BX5o_a0iKKa1u_smDRl7lm",
+    "title": "检查清单",
+    "url": "/architecture-document/architectural-vision/checklist-1",
+    "group": "架构愿景"
+  },
+  {
+    "id": "M7gC9Q1hgvTzM-NfXgNCKSpM",
+    "title": "Python 项目工程化实践",
+    "url": "/architecture-document/python/engineering/python-engineering-practices",
+    "group": "Python 架构 > 工程化实践"
+  },
+  {
+    "id": "TzC-Xf_4I2CGv3X1vbT3qNvk",
+    "title": "Python 后端框架技术选型",
+    "url": "/architecture-document/python/technology-selection/python-backend-framework-selection",
+    "group": "Python 架构 > 技术选型"
+  },
+  {
+    "id": "_2waLSTPyA_x-hZ9HMvfqUu6",
+    "title": "Python AI 开发架构指南",
+    "url": "/architecture-document/python/ai-architecture/python-ai-development-guide",
+    "group": "Python 架构 > AI 开发架构"
+  },
+  {
+    "id": "FEYEr9apr3_uXicXqs5Y9Y1H",
+    "title": "Node.js 项目架构与分层规范",
+    "url": "/architecture-document/nodejs/project-architecture/nodejs-project-architecture",
+    "group": "Node.js 架构 > 项目架构"
+  },
+  {
+    "id": "BBe9B5yNs1bU9OOegN-AINxx",
+    "title": "Node.js 框架架构选型",
+    "url": "/architecture-document/nodejs/framework-selection/nodejs-framework-selection",
+    "group": "Node.js 架构 > 框架选型"
+  },
+  {
+    "id": "0iDgHBPrK0OeySxR6cCbznrX",
+    "title": "Node.js 中间件与管道架构",
+    "url": "/architecture-document/nodejs/middleware-patterns/nodejs-middleware-patterns",
+    "group": "Node.js 架构 > 中间件架构"
+  },
+  {
+    "id": "ztDSmYNxV_YTp-VqTR3OFPyZ",
+    "title": "React 组件设计模式",
+    "url": "/architecture-document/react/component-patterns/react-component-design-patterns",
+    "group": "React 架构 > 组件设计模式"
+  },
+  {
+    "id": "w5DKoU37dXlsaxAkqfILZv0S",
+    "title": "React Hooks 架构模式",
+    "url": "/architecture-document/react/hooks-patterns/react-hooks-architecture",
+    "group": "React 架构 > Hooks 架构模式"
+  },
+  {
+    "id": "N71Sjioo3ZkPoULrvjDf8A9v",
+    "title": "数据·算法·显示 三者分离",
+    "url": "/architecture-document/react/hooks-patterns/data-algorithm-view-separation",
+    "group": "React 架构 > Hooks 架构模式"
+  },
+  {
+    "id": "hqo96eLofwbJOHN9vezcwh9k",
+    "title": "React 状态管理架构",
+    "url": "/architecture-document/react/state-management/react-state-management-architecture",
+    "group": "React 架构 > 状态管理架构"
+  },
+  {
+    "id": "zkqmNwzI0gz5MRW025OhlqAg",
+    "title": "大型单例对象高性能消费",
+    "url": "/architecture-document/react/performance/large-object-consumption",
+    "group": "React 架构 > 性能思考"
+  },
+  {
+    "id": "Nk-8CWPKQrqJ82Hqk1fLiJq2",
+    "title": "不必要 Re-render 的元凶与根治",
+    "url": "/architecture-document/react/thinking/unnecessary-rerender-root-cause",
+    "group": "React 架构 > 研发思维"
+  },
+  {
+    "id": "g_AvfJNasYLO6Af_ixLW0kjn",
+    "title": "Fiber × 并发调度 × 数据视图同步",
+    "url": "/architecture-document/react/thinking/fiber-concurrent-sync-formula",
+    "group": "React 架构 > 研发思维"
+  },
+  {
+    "id": "RANuzxeimpltF74mEzJdeExh",
+    "title": "大型深层对象的 zustand+selector+Immer 分频治理",
+    "url": "/architecture-document/react/thinking/deep-object-frequency-governance-cn",
+    "group": "React 架构 > 研发思维"
+  },
+  {
+    "id": "qlpYU_1T0skJIghsrQJ04S7d",
+    "title": "useEffect 原理",
+    "url": "/architecture-document/react/principle/use-effect",
+    "group": "React 架构 > 原理说明"
+  },
+  {
+    "id": "6dh199RccRTzLXzMGnKESNWO",
+    "title": "Hooks 执行阶段：Render vs Commit",
+    "url": "/architecture-document/react/principle/hooks-phase-timing",
+    "group": "React 架构 > 原理说明"
+  },
+  {
+    "id": "-Im6F2jj_UN7Swx9ZiICEU3J",
+    "title": "App 项目",
+    "url": "/architecture-document/react/technology-selection/app-project",
+    "group": "React 架构 > 技术选型"
+  },
+  {
+    "id": "4loNlErhavhYmtd5U3DyBYFx",
+    "title": "后端项目",
+    "url": "/architecture-document/react/technology-selection/backend-project",
+    "group": "React 架构 > 技术选型"
+  },
+  {
+    "id": "7fHXnZc5IOED2YivtdEgUlHJ",
+    "title": "客户端项目",
+    "url": "/architecture-document/react/technology-selection/client-project",
+    "group": "React 架构 > 技术选型"
+  },
+  {
+    "id": "sqqqHD8nC7LhSYrHXNOGboAu",
+    "title": "桌面端项目",
+    "url": "/architecture-document/react/technology-selection/desktop-project",
+    "group": "React 架构 > 技术选型"
+  },
+  {
+    "id": "bnmu4nYPS-Ovxs-6oE83NrgE",
+    "title": "Electron + React 技术选型",
+    "url": "/architecture-document/react/technology-selection/electron-react-technology-selection",
+    "group": "React 架构 > 技术选型"
+  },
+  {
+    "id": "-IfxevXeW91Ix7iurjkAVEEB",
+    "title": "模块加载器",
+    "url": "/architecture-document/vue/general-tools/module-loader",
+    "group": "Vue 架构 > 通用工具"
+  },
+  {
+    "id": "iwtfXQv_OVlW6knvxvQBOxMg",
+    "title": "Payload 包装器",
+    "url": "/architecture-document/vue/general-tools/wrap-with-payload",
+    "group": "Vue 架构 > 通用工具"
+  },
+  {
+    "id": "PGQj7CYKDaHUkNZLXH3sIhDb",
+    "title": "架构概述",
+    "url": "/architecture-document/vue/standardized-template-cn/architecture-overview-cn",
+    "group": "Vue 架构 > 标准化模板"
+  },
+  {
+    "id": "1rO_SGybaUNDCBHIQfsDMeGy",
+    "title": "LV1-LV5 架构演进",
+    "url": "/architecture-document/vue/standardized-template-cn/architecture-evolution-cn",
+    "group": "Vue 架构 > 标准化模板"
+  },
+  {
+    "id": "fI52Y7HTYCx1fVz61qdGn-Dn",
+    "title": "装配器模式",
+    "url": "/architecture-document/vue/standardized-template-cn/assembler-pattern-cn",
+    "group": "Vue 架构 > 标准化模板"
+  },
+  {
+    "id": "vNJnSq-wECg4rrpMo9Ut6EPb",
+    "title": "状态管理",
+    "url": "/architecture-document/vue/standardized-template-cn/state-management-cn",
+    "group": "Vue 架构 > 标准化模板"
+  },
+  {
+    "id": "1sxE6TnlPc_4S64_SSTtrnyR",
+    "title": "生命周期与副作用",
+    "url": "/architecture-document/vue/standardized-template-cn/lifecycle-and-effects-cn",
+    "group": "Vue 架构 > 标准化模板"
+  },
+  {
+    "id": "dHBMwDlD9WYKpuMM5RLo_ToQ",
+    "title": "事件管道系统",
+    "url": "/architecture-document/vue/standardized-template-cn/event-pipeline-system-cn",
+    "group": "Vue 架构 > 标准化模板"
+  },
+  {
+    "id": "hpD01zU5exHFzpzRN1eS0thR",
+    "title": "组件系统",
+    "url": "/architecture-document/vue/standardized-template-cn/component-system-cn",
+    "group": "Vue 架构 > 标准化模板"
+  },
+  {
+    "id": "qvvl493vNxrjfiuSCjVNS3Xd",
+    "title": "API 请求与模块调用说明",
+    "url": "/architecture-document/vue/standardized-template-cn/api-request-and-module",
+    "group": "Vue 架构 > 标准化模板"
+  },
+  {
+    "id": "Ml1uIaxTfhaBK98i_eqNkLgD",
+    "title": "组件设计模式",
+    "url": "/architecture-document/vue/standardized-template-cn/vue-component-design-patterns",
+    "group": "Vue 架构 > 标准化模板"
+  },
+  {
+    "id": "qcaObjv4rjg4gFyVEjirmBGF",
+    "title": "数据·算法·显示 三者分离",
+    "url": "/architecture-document/vue/thinking/data-algorithm-view-separation-cn",
+    "group": "Vue 架构 > 研发思维"
+  },
+  {
+    "id": "1a6XCCAni-54Am-II7rQE3LI",
+    "title": "shallowRef 范式与高性能架构",
+    "url": "/architecture-document/vue/thinking/shallowRef-paradigm-high-performance",
+    "group": "Vue 架构 > 研发思维"
+  },
+  {
+    "id": "yDSS93QX-w7PQRXKy14Zc6BM",
+    "title": "无效渲染的元凶与根治方案",
+    "url": "/architecture-document/vue/thinking/render-chaos-root-cause",
+    "group": "Vue 架构 > 研发思维"
+  },
+  {
+    "id": "FzSHQz7EBBP_SLmvfziMmeY3",
+    "title": "渲染原理 × 事件调度 × 数据视图同步",
+    "url": "/architecture-document/vue/thinking/rendering-scheduling-sync-formula",
+    "group": "Vue 架构 > 研发思维"
+  },
+  {
+    "id": "wd0l-6METxuqz8GfvD_YcckK",
+    "title": "大型深层对象的按频率分频治理",
+    "url": "/architecture-document/vue/thinking/deep-object-frequency-governance-cn",
+    "group": "Vue 架构 > 研发思维"
+  },
+  {
+    "id": "zsD1qYeN3haxKPF_D48Vu2DF",
+    "title": "App 项目",
+    "url": "/architecture-document/vue/technology-selection/app-project",
+    "group": "Vue 架构 > 技术选型"
+  },
+  {
+    "id": "JIpGALrKypcSj0tGWROjXvjD",
+    "title": "后端项目",
+    "url": "/architecture-document/vue/technology-selection/backend-project",
+    "group": "Vue 架构 > 技术选型"
+  },
+  {
+    "id": "-U6mm7EVvPEc9twF1rT5cqNM",
+    "title": "客户端项目",
+    "url": "/architecture-document/vue/technology-selection/client-project",
+    "group": "Vue 架构 > 技术选型"
+  },
+  {
+    "id": "2rAhz04MpzDjUKT3qBikP3gK",
+    "title": "桌面端项目",
+    "url": "/architecture-document/vue/technology-selection/desktop-project",
+    "group": "Vue 架构 > 技术选型"
+  },
+  {
+    "id": "tSxDmCD3EU6QOWNZXIFiGXbY",
+    "title": "业务组件 SDK 打包",
+    "url": "/architecture-document/vue/technology-selection/sdk-project",
+    "group": "Vue 架构 > 技术选型"
+  },
+  {
+    "id": "bUYMb2Bg3hKRQnStuE_td8NA",
+    "title": "Electron + Vue 3 技术选型",
+    "url": "/architecture-document/vue/technology-selection/electron-vue3-technology-selection",
+    "group": "Vue 架构 > 技术选型"
+  },
+  {
+    "id": "7EUMOUTWgqGx2XiGzGiz-fRW",
+    "title": "Flutter 状态管理架构选型",
+    "url": "/architecture-document/flutter/state-management/flutter-state-management-architecture",
+    "group": "Flutter 架构 > 状态管理架构"
+  },
+  {
+    "id": "zoFtvjcqs72GN06QrznML6c7",
+    "title": "Flutter 路由架构设计",
+    "url": "/architecture-document/flutter/routing/flutter-routing-architecture",
+    "group": "Flutter 架构 > 路由架构设计"
+  },
+  {
+    "id": "nw3_PL5Fw3Oaueyax54xbjLj",
+    "title": "Flutter 网络层架构设计",
+    "url": "/architecture-document/flutter/networking/flutter-network-architecture",
+    "group": "Flutter 架构 > 网络层架构"
+  },
+  {
+    "id": "9SZMkG_F6867zlib6RuHx22d",
+    "title": "Flutter 项目结构与分层规范",
+    "url": "/architecture-document/flutter/project-structure/flutter-project-structure",
+    "group": "Flutter 架构 > 项目结构规范"
+  },
+  {
+    "id": "HYt5KtSwqU_E4OPPoBahNHc2",
+    "title": "原生开发主流语言对比",
+    "url": "/architecture-document/flutter/thinking/native-languages-comparison",
+    "group": "Flutter 架构 > 思考文档 > 平台认知"
+  },
+  {
+    "id": "Mg88cDSX_6xM1eFFWrEV2Mo9",
+    "title": "iOS 与 Android 必备知识",
+    "url": "/architecture-document/flutter/thinking/flutter-ios-android-knowledge",
+    "group": "Flutter 架构 > 思考文档 > 平台认知"
+  },
+  {
+    "id": "-S24gXWPhmH7Tj399DPiZ84K",
+    "title": "APP 启动与屏幕渲染原理",
+    "url": "/architecture-document/flutter/thinking/app-launch-and-rendering-pipeline",
+    "group": "Flutter 架构 > 思考文档 > 平台认知"
+  },
+  {
+    "id": "nUtLX1V72rx7KYFpy6-gnT-l",
+    "title": "系统内核与平台差异适配",
+    "url": "/architecture-document/flutter/thinking/os-kernel-platform-differences",
+    "group": "Flutter 架构 > 思考文档 > 平台认知"
+  },
+  {
+    "id": "R86oj_WdnZUWa3qWO2xPpRDY",
+    "title": "网络层与弱网优化",
+    "url": "/architecture-document/flutter/thinking/mobile-network-layer",
+    "group": "Flutter 架构 > 思考文档 > 核心原理"
+  },
+  {
+    "id": "C-xTF7MBTopNgzC6Ymc7WXAt",
+    "title": "内存管理与性能调优",
+    "url": "/architecture-document/flutter/thinking/memory-management-performance",
+    "group": "Flutter 架构 > 思考文档 > 核心原理"
+  },
+  {
+    "id": "KIQmUuAF6So_Hzoi9OLB8Wfk",
+    "title": "音视频与相机管线",
+    "url": "/architecture-document/flutter/thinking/audio-video-camera",
+    "group": "Flutter 架构 > 思考文档 > 核心原理"
+  },
+  {
+    "id": "I1uaDO7rsgcYc34-Ay7c0Nve",
+    "title": "数据·算法·显示 三者分离",
+    "url": "/architecture-document/flutter/thinking/data-algorithm-view-separation",
+    "group": "Flutter 架构 > 思考文档 > 核心原理"
+  },
+  {
+    "id": "o0RaaxqygCxL8gsK6w3ZO4R-",
+    "title": "组件设计模式",
+    "url": "/architecture-document/flutter/thinking/flutter-component-design-patterns",
+    "group": "Flutter 架构 > 思考文档 > 核心原理"
+  },
+  {
+    "id": "pB86u79TwM9q-Qk2KfNFOQM3",
+    "title": "setState 滥用与 Widget 重建失控",
+    "url": "/architecture-document/flutter/thinking/setstate-rebuild-chaos-root-cause",
+    "group": "Flutter 架构 > 思考文档 > 核心原理"
+  },
+  {
+    "id": "yB5b96FDlOpaQtriSXTPRLoO",
+    "title": "Widget × 帧调度 × 三层对象同步",
+    "url": "/architecture-document/flutter/thinking/widget-frame-sync-formula",
+    "group": "Flutter 架构 > 思考文档 > 核心原理"
+  },
+  {
+    "id": "ZTv9KTvKlytFZ8KdaMV_4n6I",
+    "title": "存储与数据同步",
+    "url": "/architecture-document/flutter/thinking/storage-data-sync",
+    "group": "Flutter 架构 > 思考文档 > 数据与安全"
+  },
+  {
+    "id": "0nnOmoF055jNvn20xzuoyT1-",
+    "title": "安全攻防基础",
+    "url": "/architecture-document/flutter/thinking/mobile-security",
+    "group": "Flutter 架构 > 思考文档 > 数据与安全"
+  },
+  {
+    "id": "h6OzZKMo2NGOm8IAxx0FBKQm",
+    "title": "混合栈与模块化架构",
+    "url": "/architecture-document/flutter/thinking/hybrid-stack-modularization",
+    "group": "Flutter 架构 > 思考文档 > 工程实践"
+  },
+  {
+    "id": "N9nckESxfmbdR0tyNpUcLSdQ",
+    "title": "CI/CD 与发布工程化",
+    "url": "/architecture-document/flutter/thinking/cicd-release-engineering",
+    "group": "Flutter 架构 > 思考文档 > 工程实践"
+  },
+  {
+    "id": "B-3faNi_Bx5QWOOVRx_qnzLX",
+    "title": "测试体系",
+    "url": "/architecture-document/flutter/thinking/testing-system",
+    "group": "Flutter 架构 > 思考文档 > 工程实践"
+  },
+  {
+    "id": "raQdA5ia_yYx-qKqeQQGOk0s",
+    "title": "前端脚手架背后的脚本语言解析",
+    "url": "/architecture-document/engineering/job/frontend-scaffold-scripts",
+    "group": "工程化"
+  },
+  {
+    "id": "8OqI7DwhEMgZHp8XR4y8AZDg",
+    "title": "项目根目录配置文件解析",
+    "url": "/architecture-document/engineering/job/frontend-project-config-files",
+    "group": "工程化"
+  },
+  {
+    "id": "u8yAD8a3dpo-EpfK1Nefx1x3",
+    "title": "Docker 镜像构建脚本对比",
+    "url": "/architecture-document/engineering/job/docker-image-build-script-comparison",
+    "group": "工程化"
+  },
+  {
+    "id": "BC0uDGVKrp_knBR0KiqFICZk",
+    "title": "包管理与 Monorepo 工具链",
+    "url": "/architecture-document/engineering/job/npm-pnpm-monorepo-toolchain",
+    "group": "工程化"
+  },
+  {
+    "id": "137I4eWCVaOjw59CRPJywdUt",
+    "title": "单仓 vs 多仓的选择",
+    "url": "/architecture-document/engineering/job/monorepo-vs-polyrepo",
+    "group": "工程化"
+  },
+  {
+    "id": "mamKtugLJU3-2_gKcVzu_aN-",
+    "title": "常见 SaaS 平台功能",
+    "url": "/architecture-document/engineering/job/common-saas-platform-features",
+    "group": "工程化"
+  },
+  {
+    "id": "pYKcPE8rdattb1C6nxdVav7g",
+    "title": "全栈基座项目（React）",
+    "url": "/architecture-document/engineering/job/fullstack-base-project-react",
+    "group": "工程化"
+  },
+  {
+    "id": "Y6AtCbwPmmYfYRQEywI_Jsl4",
+    "title": "全栈基座项目（Vue）",
+    "url": "/architecture-document/engineering/job/fullstack-base-project-vue",
+    "group": "工程化"
+  },
+  {
+    "id": "VXnd5hfY1vWrOhWIbcMlId_H",
+    "title": "架构概述",
+    "url": "/architecture-document/ai-code-inspection/architecture-overview",
+    "group": "AI 代码检查"
+  },
+  {
+    "id": "A5eOACFM7Oi7Ql55HSjRPMMe",
+    "title": "Prompt 工程策略",
+    "url": "/architecture-document/ai-code-inspection/prompt-engineering",
+    "group": "AI 代码检查"
+  },
+  {
+    "id": "B_AyWiNk120ggJNRW8kYFxMS",
+    "title": "代码上下文采集与组装",
+    "url": "/architecture-document/ai-code-inspection/code-context-pipeline",
+    "group": "AI 代码检查"
+  },
+  {
+    "id": "mzD-ndXersggkSvE3YFwcQ_D",
+    "title": "检查规则体系设计",
+    "url": "/architecture-document/ai-code-inspection/rule-system-design",
+    "group": "AI 代码检查"
+  },
+  {
+    "id": "i6dUT84uwqTQMg2TAGmHPANQ",
+    "title": "CI/CD 集成方案",
+    "url": "/architecture-document/ai-code-inspection/ci-integration",
+    "group": "AI 代码检查"
+  },
+  {
+    "id": "Zw37avn7uzXSfr3ShGG4ykWw",
+    "title": "扩展性与自定义机制",
+    "url": "/architecture-document/ai-code-inspection/extensibility-and-customization",
+    "group": "AI 代码检查"
+  },
+  {
+    "id": "B1Z2Jp2sRvW1R_gg5kHBSyoh",
+    "title": "PostgreSQL vs MySQL + MongoDB",
+    "url": "/architecture-document/database/postgresql-vs-mysql-mongodb",
+    "group": "数据库"
+  },
+  {
+    "id": "2ZI6JeS86oW6uu04_X4_uCHh",
+    "title": "前端渲染模式全解",
+    "url": "/architecture-document/general-knowledge/frontend-rendering-modes",
+    "group": "通用知识"
+  },
+  {
+    "id": "9PnQqFj2P04pkHNxoFRp9iuY",
+    "title": "网络通用知识",
+    "url": "/architecture-document/general-knowledge/network-fundamentals",
+    "group": "通用知识"
+  },
+  {
+    "id": "9GoChumAsKAu3CjFFjdh9nQA",
+    "title": "Chrome 开发者工具全解",
+    "url": "/architecture-document/general-knowledge/chrome-devtools",
+    "group": "通用知识"
+  },
+  {
+    "id": "gkS6X26Io7PccVRTGZCDzCqv",
+    "title": "系统内核与 CPU 架构",
+    "url": "/architecture-document/general-knowledge/os-kernel-cpu-architecture",
+    "group": "通用知识"
+  },
+  {
+    "id": "XLM3sKmTJ1m2TFNEVg3wXwv0",
+    "title": "Linux 目录结构",
+    "url": "/architecture-document/general-knowledge/linux-directory-structure",
+    "group": "通用知识"
+  },
+  {
+    "id": "EywGA0L3jqSz6gnw6OnX885k",
+    "title": "国内开发镜像设置与还原",
+    "url": "/architecture-document/general-knowledge/dev-mirror-setup",
+    "group": "通用知识"
+  },
+  {
+    "id": "_JqmPTq-YFv3joHsq1EN-t0X",
+    "title": "构建优化核心概念",
+    "url": "/architecture-document/general-knowledge/build-optimization-concepts",
+    "group": "通用知识"
+  },
+  {
+    "id": "j7aOfXWUvlQc5_CSfywzwSeM",
+    "title": "Rolldown 与 Oxc",
+    "url": "/architecture-document/general-knowledge/rolldown-and-oxc",
+    "group": "通用知识"
+  },
+  {
+    "id": "6THSGgA5RMVkZJLfdW0Qd_aF",
+    "title": "Signal 细粒度响应式",
+    "url": "/architecture-document/general-knowledge/signal-reactivity",
+    "group": "通用知识"
+  },
+  {
+    "id": "Cgg6LvUD1NhmBIMkjXzgxS_1",
+    "title": "基础概念",
+    "url": "/architecture-document/data-structure/basic-concepts",
+    "group": "数据结构"
+  },
+  {
+    "id": "O4xn4qbfnB4QuqkPY_JBzMVK",
+    "title": "线性结构",
+    "url": "/architecture-document/data-structure/linear-structures",
+    "group": "数据结构"
+  },
+  {
+    "id": "WnZ67PONkdEmoB3-8GGeBKuu",
+    "title": "树形结构",
+    "url": "/architecture-document/data-structure/tree-structures",
+    "group": "数据结构"
+  },
+  {
+    "id": "D5KrOsOBF7WkfqVbJmx5VRUA",
+    "title": "图结构",
+    "url": "/architecture-document/data-structure/graph-structures",
+    "group": "数据结构"
+  },
+  {
+    "id": "Pup9yg4tpTI6bJ_vBJF5KBw_",
+    "title": "哈希表与集合",
+    "url": "/architecture-document/data-structure/hash-structures",
+    "group": "数据结构"
+  },
+  {
+    "id": "M4rF-anbEjBd_nTUn8pOpWhe",
+    "title": "高级数据结构",
+    "url": "/architecture-document/data-structure/advanced-structures",
+    "group": "数据结构"
+  },
+  {
+    "id": "QhhNiXMDPEY4mvd2kKrhSenJ",
+    "title": "概述",
+    "url": "/architecture-document/design-patterns/overview",
+    "group": "设计模式"
+  },
+  {
+    "id": "juvz29IotOKHSxnNZPZHfoKV",
+    "title": "创建型模式",
+    "url": "/architecture-document/design-patterns/creational",
+    "group": "设计模式"
+  },
+  {
+    "id": "6MaIWwrYAxw1XbphivXVFFgc",
+    "title": "结构型模式",
+    "url": "/architecture-document/design-patterns/structural",
+    "group": "设计模式"
+  },
+  {
+    "id": "zhpZPqkOCZqMhlONnZx75MOl",
+    "title": "行为型模式",
+    "url": "/architecture-document/design-patterns/behavioral",
+    "group": "设计模式"
+  },
+  {
+    "id": "rQYao9gcxJMJpXfgF0OUGbrh",
+    "title": "TypeScript 类型拆解",
+    "url": "/architecture-document/typical-analysis/typescript-type-analysis",
+    "group": "典型拆解"
+  },
+  {
+    "id": "tPbKAPsPMZO_xYHE4ZnlkMGQ",
+    "title": "Node.js 事件调度拆解",
+    "url": "/architecture-document/typical-analysis/nodejs-event-scheduling",
+    "group": "典型拆解"
+  },
+  {
+    "id": "43k_QOuOTsF80NPXG1z7n005",
+    "title": "浏览器端 JS 调度拆解",
+    "url": "/architecture-document/typical-analysis/browser-js-scheduling",
+    "group": "典型拆解"
+  },
+  {
+    "id": "3vpgQbBaHPamEsXYbNoFtNk-",
+    "title": "Promise/A+ 手写实现拆解",
+    "url": "/architecture-document/typical-analysis/promise-implementation",
+    "group": "典型拆解"
+  },
+  {
+    "id": "tF7_oxLGCVcmRVRy6Pwln7V2",
+    "title": "原型链与继承拆解",
+    "url": "/architecture-document/typical-analysis/prototype-chain-and-inheritance",
+    "group": "典型拆解"
+  },
+  {
+    "id": "Se244vJTuEmWgOrZWxjGrMGm",
+    "title": "虚拟 DOM Diff 算法拆解",
+    "url": "/architecture-document/typical-analysis/virtual-dom-diff",
+    "group": "典型拆解"
+  },
+  {
+    "id": "liT1-YBz9kkawS3LuS20jKDO",
+    "title": "响应式系统核心原理拆解",
+    "url": "/architecture-document/typical-analysis/reactive-system",
+    "group": "典型拆解"
+  },
+  {
+    "id": "ibHdfTDWr0R9QSLrGmTbPbCv",
+    "title": "深拷贝全场景拆解",
+    "url": "/architecture-document/typical-analysis/deep-clone",
+    "group": "典型拆解"
+  },
+  {
+    "id": "7CtQqOZQO_bQKpUzmJTsz_kM",
+    "title": "前端路由系统实现拆解",
+    "url": "/architecture-document/typical-analysis/frontend-router",
+    "group": "典型拆解"
+  },
+  {
+    "id": "ozIL0o_ltXfBuXI2hkm3jjX2",
+    "title": "技术名词深度解析索引（入口）",
+    "url": "/architecture-document/thinking/terminology-index",
+    "group": "研发思维"
+  },
+  {
+    "id": "y0ZcW5BycsZTRWZLbmie-GZX",
+    "title": "跨框架研发思维对比",
+    "url": "/architecture-document/thinking/cross-framework-thinking-comparison",
+    "group": "研发思维"
+  },
+  {
+    "id": "YquLM7cTTLRaI2GtQpVJD-h1",
+    "title": "BUG 修复思维对比",
+    "url": "/architecture-document/thinking/bug-fixing-thinking",
+    "group": "研发思维"
+  },
+  {
+    "id": "oS4oQVVx0FEqtB4LbukvJz1v",
+    "title": "技术迭代与学习疲态",
+    "url": "/architecture-document/thinking/tech-iteration-and-learning-fatigue",
+    "group": "研发思维"
+  },
+  {
+    "id": "37F4wFSzNS4d8F4_tr6WrJU2",
+    "title": "数据·算法·显示 三者分离",
+    "url": "/architecture-document/thinking/frontend-data-algorithm-view-separation",
+    "group": "研发思维"
+  },
+  {
+    "id": "FhHItJRvhn-u5-0h5I_bIm6G",
+    "title": "技术术语速查索引",
+    "url": "/handbook/tech-glossary-index/",
+    "group": "速查索引"
+  },
+  {
+    "id": "qS65gjoJSCAFQgTnXqhEznES",
+    "title": "知识体系导航",
+    "url": "/handbook/tech-glossary-index/knowledge-map",
+    "group": "速查索引"
+  },
+  {
+    "id": "TFeoDohK0iBERYa3ZIZ15IDy",
+    "title": "LangChain 手册",
+    "url": "/handbook/ai/langchain-handbook",
+    "group": "AI 开发"
+  },
+  {
+    "id": "OEIIcYsHutpTrh99uiq-XH9y",
+    "title": "Ollama 手册",
+    "url": "/handbook/ai/ollama-handbook",
+    "group": "AI 开发"
+  },
+  {
+    "id": "l5fFWgqQMbfzl1Tm9T5X85ob",
+    "title": "Vue 3 手册",
+    "url": "/handbook/frontend/vue3-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "8Y3J2L-M1kgTk-KcigN0W4Nd",
+    "title": "Vue 3 核心原理",
+    "url": "/handbook/frontend/vue3-core-principles",
+    "group": "前端开发"
+  },
+  {
+    "id": "gfnojO12ayaHtb1if67m9Mxh",
+    "title": "React 19 手册",
+    "url": "/handbook/frontend/react19-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "VJRb4nNWkwt5lR0s2ORmH9Kx",
+    "title": "React 19 核心原理",
+    "url": "/handbook/frontend/react19-core-principles",
+    "group": "前端开发"
+  },
+  {
+    "id": "SBom8XaIsK5QWj_ddZuMAGWk",
+    "title": "React Native 手册",
+    "url": "/handbook/frontend/react-native-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "MqSEhTCFUVwauG0ddk8QJ7E8",
+    "title": "React Native 核心原理",
+    "url": "/handbook/frontend/react-native-core-principles",
+    "group": "前端开发"
+  },
+  {
+    "id": "vJ31jyiw040FstciSL4LvORz",
+    "title": "Next.js 手册",
+    "url": "/handbook/frontend/nextjs-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "52O8ageMB0cudACc-y2e08k1",
+    "title": "Next.js 核心原理",
+    "url": "/handbook/frontend/nextjs-core-principles",
+    "group": "前端开发"
+  },
+  {
+    "id": "S4PxoOELHfUSMu7DxRTPAvI1",
+    "title": "Vite 核心原理",
+    "url": "/handbook/frontend/vite-core-principles",
+    "group": "前端开发"
+  },
+  {
+    "id": "3RN105fCX-tonGdJosUmkr2a",
+    "title": "Electron 手册",
+    "url": "/handbook/electron/electron-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "707HYbyl054I1dl_zaAPO3ow",
+    "title": "Electron 核心原理",
+    "url": "/handbook/electron/electron-core-principles",
+    "group": "前端开发"
+  },
+  {
+    "id": "BT8H0hgjE_pnCj2Ie5xNcrHM",
+    "title": "TypeScript 手册",
+    "url": "/handbook/frontend/typescript-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "5WIdTA0XL3LKrCqgY-GPGA-A",
+    "title": "TypeScript 核心原理",
+    "url": "/handbook/frontend/typescript-core-principles",
+    "group": "前端开发"
+  },
+  {
+    "id": "s9KRq_YaqSRyRCTbIPuy7d4z",
+    "title": "JavaScript 手册",
+    "url": "/handbook/frontend/javascript-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "l1YAprpeoVUh5yvf2bN1npEp",
+    "title": "JavaScript 高阶API原理",
+    "url": "/handbook/frontend/javascript-advanced-principles",
+    "group": "前端开发"
+  },
+  {
+    "id": "RrJkmJeCUqybBuskGv5wt7oU",
+    "title": "CSS 手册",
+    "url": "/handbook/frontend/css-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "yZhCv5A_yowAbNGfzHXDSKj2",
+    "title": "SCSS 手册",
+    "url": "/handbook/frontend/scss-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "L6JDFKMCN6g85mcA7zSf2dbb",
+    "title": "Tailwind CSS 手册",
+    "url": "/handbook/frontend/tailwind-css-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "QagUcR4BxsSunLPnMhSgxLOe",
+    "title": "正则 手册",
+    "url": "/handbook/frontend/regex-handbook",
+    "group": "前端开发"
+  },
+  {
+    "id": "tBV47YYX2fAKGFMBiFpCKlrs",
+    "title": "Python 手册",
+    "url": "/handbook/backend/python-handbook",
+    "group": "后端开发"
+  },
+  {
+    "id": "osCZjmreNGboQ9OTaSgcdPXq",
+    "title": "Node.js 手册",
+    "url": "/handbook/backend/nodejs-handbook",
+    "group": "后端开发"
+  },
+  {
+    "id": "95Ig3aakfPBpyUxxuXX3py47",
+    "title": "NestJS 手册",
+    "url": "/handbook/backend/nestjs-handbook",
+    "group": "后端开发"
+  },
+  {
+    "id": "sLm6PxGRoBWekuWTala2lbou",
+    "title": "NestJS 核心原理",
+    "url": "/handbook/backend/nestjs-core-principles",
+    "group": "后端开发"
+  },
+  {
+    "id": "YilBKf9ZwSagCak01qiz1aAY",
+    "title": "FastAPI 手册",
+    "url": "/handbook/backend/fastapi-handbook",
+    "group": "后端开发"
+  },
+  {
+    "id": "ghAzUFmcLnAVl5iFeZDW_0Ui",
+    "title": "Django 手册",
+    "url": "/handbook/backend/django-handbook",
+    "group": "后端开发"
+  },
+  {
+    "id": "mAgQaxgUx9n1xMBsUPD6SPUk",
+    "title": "Egg.js V3 手册",
+    "url": "/handbook/backend/eggjs-handbook",
+    "group": "后端开发"
+  },
+  {
+    "id": "2mdxTq59Op4yhHbuLRDVT_pT",
+    "title": "Egg.js V4 手册",
+    "url": "/handbook/backend/eggjs-v4-handbook",
+    "group": "后端开发"
+  },
+  {
+    "id": "FnxqMR9XFRG6bOUs1uRbMGoB",
+    "title": "MySQL 手册",
+    "url": "/handbook/database/mysql-handbook",
+    "group": "数据库"
+  },
+  {
+    "id": "JGdF249ou-hxzK6WybbcEcmR",
+    "title": "PostgreSQL 速查",
+    "url": "/handbook/database/postgresql-handbook",
+    "group": "数据库"
+  },
+  {
+    "id": "ZWalh8QFHtUZo24LBjDhBsTE",
+    "title": "MongoDB 手册",
+    "url": "/handbook/database/mongodb-handbook",
+    "group": "数据库"
+  },
+  {
+    "id": "UfawqvWMO6E80OovBaSsJN7v",
+    "title": "Redis 手册",
+    "url": "/handbook/database/redis-handbook",
+    "group": "数据库"
+  },
+  {
+    "id": "GvR_sE8JM_t-doEETvqMM_St",
+    "title": "Prisma 手册",
+    "url": "/handbook/database/prisma-handbook",
+    "group": "数据库"
+  },
+  {
+    "id": "zyZrs1smB1nIBplRsOUEJcG4",
+    "title": "Sequelize 手册",
+    "url": "/handbook/database/sequelize-handbook",
+    "group": "数据库"
+  },
+  {
+    "id": "QQUYG3jW1Vit3TjzAF1bZKqv",
+    "title": "Mongoose 手册",
+    "url": "/handbook/database/mongoose-handbook",
+    "group": "数据库"
+  },
+  {
+    "id": "379fvt0UftUINue4XKICWgu9",
+    "title": "Chroma 手册",
+    "url": "/handbook/database/chroma-handbook",
+    "group": "数据库"
+  },
+  {
+    "id": "cAW_bY_MJkTY8ciVJMl365BV",
+    "title": "Milvus 手册",
+    "url": "/handbook/database/milvus-handbook",
+    "group": "数据库"
+  },
+  {
+    "id": "5ccjdS34ccqvL7WBa-zgLago",
+    "title": "Flutter 手册",
+    "url": "/handbook/mobile/flutter-handbook",
+    "group": "移动开发"
+  },
+  {
+    "id": "M1TApL5SK7zqWxGmEFdaIGO2",
+    "title": "Flutter 核心原理",
+    "url": "/handbook/mobile/flutter-core-principles",
+    "group": "移动开发"
+  },
+  {
+    "id": "MVV4_yZsDoVPzHhXxoqzQfdn",
+    "title": "Flutter 企业级项目手册",
+    "url": "/handbook/mobile/flutter-enterprise-handbook",
+    "group": "移动开发"
+  },
+  {
+    "id": "R5WKexUmX94Hjvm7tqTYHT-b",
+    "title": "Retrofit 原理与工作流",
+    "url": "/handbook/mobile/flutter-retrofit",
+    "group": "移动开发"
+  },
+  {
+    "id": "JnpIFMtNdJNfK1QYPNEo1MvO",
+    "title": "GetX 原理与工作流",
+    "url": "/handbook/mobile/flutter-getx",
+    "group": "移动开发"
+  },
+  {
+    "id": "sBxGvOv90KHwmZ-58AmTiiEj",
+    "title": "Dart 手册",
+    "url": "/handbook/mobile/dart-handbook",
+    "group": "移动开发"
+  },
+  {
+    "id": "kj8LPHJ_37UhS23nyzrdFOqu",
+    "title": "Docker 手册",
+    "url": "/handbook/devops/docker-handbook",
+    "group": "系统运维"
+  },
+  {
+    "id": "CmAdaBOytn6fMCRS6I8kRXTB",
+    "title": "Linux 命令速查",
+    "url": "/handbook/devops/linux-handbook",
+    "group": "系统运维"
+  },
+  {
+    "id": "jvJqz5zXzdqV8Ydc8SXVMfGU",
+    "title": "Git 速查",
+    "url": "/handbook/devops/git-handbook",
+    "group": "系统运维"
+  },
+  {
+    "id": "mxIiARkWGdkOx5BVzNiaLKLr",
+    "title": "Shell 手册",
+    "url": "/handbook/devops/shell-handbook",
+    "group": "系统运维"
+  },
+  {
+    "id": "ghb-9-X9V0M7z-Zm7cWYaRCB",
+    "title": "Nginx 速查",
+    "url": "/handbook/devops/nginx-handbook",
+    "group": "系统运维"
+  },
+  {
+    "id": "vT7IyEvuMFW50FBL1L5uS3m5",
+    "title": "Jenkins 手册",
+    "url": "/handbook/devops/jenkins-handbook",
+    "group": "系统运维"
+  },
+  {
+    "id": "FJoNry1cfyKK_5Kb6poDM_qT",
+    "title": "Google zx 手册",
+    "url": "/handbook/devops/google-zx-handbook",
+    "group": "系统运维"
+  },
+  {
+    "id": "X6ycVBqL-TLZNI1OozUoqoWy",
+    "title": "VBA 手册",
+    "url": "/handbook/tools/vba-handbook",
+    "group": "其他手册"
+  },
+  {
+    "id": "U0qIcXgrdnv6VmTtYGYDRiYF",
+    "title": "Excel 公式手册",
+    "url": "/handbook/tools/excel-formulas-handbook",
+    "group": "其他手册"
+  },
+  {
+    "id": "tX1hznePj4cuzUeDvD32tLFx",
+    "title": "Vim 手册",
+    "url": "/handbook/tools/vim-handbook",
+    "group": "其他手册"
+  },
+  {
+    "id": "Gr_sTowxSTaHZCtr3gxb1eOE",
+    "title": "首页",
+    "url": "/",
+    "group": "未分组"
+  },
+  {
+    "id": "lQIIz_RM5ltPjjv6KQSdRxwF",
+    "title": "AI",
+    "url": "/ai/",
+    "group": "未分组"
+  },
+  {
+    "id": "T17fZnChv5AMEgtEUNvg7WfQ",
+    "title": "架构",
+    "url": "/architecture-document/",
+    "group": "未分组"
+  },
+  {
+    "id": "uQbfeHU1XaKr9PceowahW3Px",
+    "title": "心理认知",
+    "url": "/psychology/",
+    "group": "未分组"
+  },
+  {
+    "id": "WI6RU8BgzE6QpTHOxtDOrTOD",
+    "title": "开发手册",
+    "url": "/handbook",
+    "group": "未分组"
+  },
+  {
+    "id": "m7q2z0Vjs9VssaNpIFKVHPkH",
+    "title": "指令集",
+    "url": "/instructions/",
+    "group": "未分组"
+  },
+  {
+    "id": "WVj8oInLjW5GZJkCXYp75w2e",
+    "title": "初级工程师（P4-P5）",
+    "url": "/interview/levels/junior",
+    "group": "学习路径导航"
+  },
+  {
+    "id": "p7gk0iYgfqZY9CwLUmGU-zlR",
+    "title": "中级工程师（P5-P6）",
+    "url": "/interview/levels/intermediate",
+    "group": "学习路径导航"
+  },
+  {
+    "id": "s1Tg8jup4tiZ1BLEeEosbYzv",
+    "title": "高级工程师（P6-P7）",
+    "url": "/interview/levels/senior",
+    "group": "学习路径导航"
+  },
+  {
+    "id": "8xZI61ROaXpShYE22XJguT0E",
+    "title": "架构师（P8）",
+    "url": "/interview/levels/architect",
+    "group": "学习路径导航"
+  },
+  {
+    "id": "47EBF7ccRO6ftuKWFrOT7U-N",
+    "title": "技术主管（TL）",
+    "url": "/interview/levels/manager",
+    "group": "学习路径导航"
+  },
+  {
+    "id": "BWEnJoJ0X2LtOywYY1G8Z6y5",
+    "title": "Flutter 学习路径",
+    "url": "/interview/levels/flutter",
+    "group": "学习路径导航"
+  },
+  {
+    "id": "gdYXIH9QdmUivAPDB8Hw1wed",
+    "title": "HTML5 语义化与文档结构 [P4-P5]",
+    "url": "/interview/junior/html-semantics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "kkAt18NllZ0HjtFsuXyhxI5a",
+    "title": "CSS 布局：Flexbox 与 Grid [P4-P5]",
+    "url": "/interview/junior/css-layout",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "DKVHnoxgSARO4-VjPJaRyiV8",
+    "title": "响应式设计与移动端适配 [P4-P5]",
+    "url": "/interview/junior/responsive-design",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "3-lTH07nOVYlJE32u3SCHdbu",
+    "title": "CSS 新特性：变量、动画、过渡 [P4-P5]",
+    "url": "/interview/junior/css-modern-features",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "9YId5WYdW8WL7qQKndwcbbDS",
+    "title": "JavaScript 基础：变量、类型、运算 [P4-P5]",
+    "url": "/interview/junior/js-basics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "D2moxos2zS_YpdhhQVhaUUfe",
+    "title": "函数与作用域基础 [P4-P5]",
+    "url": "/interview/junior/functions-and-scope",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "KnCcO14wUB2BNmCnpEYgb5R-",
+    "title": "对象与类基础 [P4-P5]",
+    "url": "/interview/junior/objects-and-classes",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "Xi1uMbAODT1b6eha7Pxjq_Mn",
+    "title": "DOM 操作与事件处理 [P4-P5]",
+    "url": "/interview/junior/dom-and-events",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "3LO0-lVXcOJEqbXIKwsAyJpB",
+    "title": "浏览器基础与 DevTools 实战 [P4-P5]",
+    "url": "/interview/junior/browser-basics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "nALkBy9NoSJGicPg7jiiue0O",
+    "title": "HTTP 协议基础 [P4-P5]",
+    "url": "/interview/junior/http-basics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "q76RgMU0vIsLA-JcRcryovrt",
+    "title": "本地存储与 Cookie 基础 [P4-P5]",
+    "url": "/interview/junior/storage-and-cookie",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "WnpiI8RBp0FcnAygLlsaUyn7",
+    "title": "Vue 3 入门：模板、组件、生命周期 [P4-P5]",
+    "url": "/interview/junior/vue-basics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "y1k9SUggmbTDtlyIUY8tzvuD",
+    "title": "Vue 组件模式：Props、Emit、Slots [P4-P5]",
+    "url": "/interview/junior/vue-component-patterns",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "F7ZcIfkVdwITh-rGr46a-1Sm",
+    "title": "TypeScript 入门：类型注解与基础类型 [P4-P5]",
+    "url": "/interview/junior/typescript-basics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "TyIn96W65PJxkplpuMqQl5_v",
+    "title": "Git 基础：分支策略与协作流程 [P4-P5]",
+    "url": "/interview/junior/git-basics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "xJdONHrmzNG_duVT3mTNvFND",
+    "title": "npm/pnpm 包管理入门 [P4-P5]",
+    "url": "/interview/junior/npm-pnpm-basics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "q_dqoyflerbFWJtR4_ALNpP1",
+    "title": "前端调试基础 [P4-P5]",
+    "url": "/interview/junior/debugging-basics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "KUvbQTOAlipCbJ-sx2U_AI6v",
+    "title": "SPA 部署基础（Nginx 配置） [P4-P5]",
+    "url": "/interview/junior/spa-deploy-basics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "AQCvnBeA93TCOH_VqzO-CnYn",
+    "title": "表单与验证基础 [P4-P5]",
+    "url": "/interview/junior/form-validation-basics",
+    "group": "初级工程师（P4-P5）"
+  },
+  {
+    "id": "-hRTDKW-Boq7Uy0Ubk2j9MLC",
+    "title": "CSS 架构：BEM/CSS Modules/Tailwind [P5-P6]",
+    "url": "/interview/intermediate/css-architecture",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "ijJ-DBX2OIgDUayfuBy-Lmia",
+    "title": "CSS 预处理器：Sass/Less/PostCSS [P5-P6]",
+    "url": "/interview/intermediate/css-preprocessors",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "jVm7-xO0YpN1qWSUsD_w9xHd",
+    "title": "闭包、作用域链与执行上下文 [P5-P6]",
+    "url": "/interview/intermediate/js-closures-context",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "GZIQqV0yXfesWbJXSN6jRVgk",
+    "title": "ES6+ 模块系统与工程化 [P5-P6]",
+    "url": "/interview/intermediate/es6-modules",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "-mGl8kGM434YpKxL0a7MWYRh",
+    "title": "JavaScript 常用设计模式 [P5-P6]",
+    "url": "/interview/intermediate/js-design-patterns",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "55nU025jMY_c5NHwqnWXrxXk",
+    "title": "HTTP 缓存策略：强缓存/协商缓存 [P5-P6]",
+    "url": "/interview/intermediate/http-caching",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "nNhNbIhfrjyM8Mi-uoKo7KCs",
+    "title": "前端网络优化：预加载/懒加载/压缩 [P5-P6]",
+    "url": "/interview/intermediate/network-optimization",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "j9G6LqjXw9_F8fV6ykxEQQJJ",
+    "title": "Vue 3 生命周期深入 [P5-P6]",
+    "url": "/interview/intermediate/vue-lifecycle",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "9emorJlnDAVrOspsE8KXTOb4",
+    "title": "Vue 组件通信方式全景 [P5-P6]",
+    "url": "/interview/intermediate/vue-communication",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "CPtj6b5l95evw09IcJEgs4NN",
+    "title": "Vue Router 路由实战 [P5-P6]",
+    "url": "/interview/intermediate/vue-router-basics",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "fn3uKl3P_vsYRj61lQlkfmW3",
+    "title": "TypeScript 类型体操入门 [P5-P6]",
+    "url": "/interview/intermediate/ts-types-practice",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "g2GbycSHBNrcNORBEYQ_TAwO",
+    "title": "TypeScript 工程化实践 [P5-P6]",
+    "url": "/interview/intermediate/ts-engineering",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "ZWnoBp1um83PwXaG37rN8GZI",
+    "title": "React 入门：JSX、Hooks、组件模式 [P5-P6]",
+    "url": "/interview/intermediate/react-basics",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "CZUtncmrcHa7XC52Yg5olGQx",
+    "title": "前端性能优化基础 [P5-P6]",
+    "url": "/interview/intermediate/performance-basics",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "5EsATXKVEymwOq8hP_rewbFG",
+    "title": "构建工具入门：Vite 配置与使用 [P5-P6]",
+    "url": "/interview/intermediate/build-tools-basics",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "4iwFYk0_6JmN2CLyMYKwWrX3",
+    "title": "前端错误处理与监控入门 [P5-P6]",
+    "url": "/interview/intermediate/error-handling",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "b62lCXcyY1Rza3DFfOqYJUlk",
+    "title": "Web 安全实战：CSP/SRI/依赖检查 [P5-P6]",
+    "url": "/interview/intermediate/web-security-practice",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "sQhmacXLzuMEdWOvGLXcIOtK",
+    "title": "Docker 容器化基础与前端部署 [P5-P6]",
+    "url": "/interview/intermediate/docker-basics",
+    "group": "中级工程师（P5-P6）"
+  },
+  {
+    "id": "5z8Q5YysO7DNZWWQojPtbapi",
+    "title": "Dart 语言基础与核心特性 [P5-P6]",
+    "url": "/interview/flutter-intermediate/flutter-dart-basics",
+    "group": "Flutter 中级（P5-P6）"
+  },
+  {
+    "id": "-c8Yg6tvMoT5_0nTDfG-2A7m",
+    "title": "Flutter Widget 体系与布局系统 [P5-P6]",
+    "url": "/interview/flutter-intermediate/flutter-widget-and-layout",
+    "group": "Flutter 中级（P5-P6）"
+  },
+  {
+    "id": "L6RYmHc5ahD3TqyDEIDrHTgl",
+    "title": "Flutter 状态管理基础：setState/Provider/Bloc [P5-P6]",
+    "url": "/interview/flutter-intermediate/flutter-state-management-basics",
+    "group": "Flutter 中级（P5-P6）"
+  },
+  {
+    "id": "oTaHdZOJ1r1yK4c7_yCp5Mzf",
+    "title": "Flutter 导航与路由实战 [P5-P6]",
+    "url": "/interview/flutter-intermediate/flutter-navigation-and-routing",
+    "group": "Flutter 中级（P5-P6）"
+  },
+  {
+    "id": "cVV7nF5Bm5qclsZIMLu_gujg",
+    "title": "V8 引擎与 JavaScript 运行时 [P6-P7]",
+    "url": "/interview/javascript/engine-and-runtime",
+    "group": "JavaScript & Node.js 深度（P6-P7）"
+  },
+  {
+    "id": "7_A9oA1iILeYn_OAew0MVwsh",
+    "title": "Node.js 运行时 [P6-P7]",
+    "url": "/interview/javascript/nodejs-runtime",
+    "group": "JavaScript & Node.js 深度（P6-P7）"
+  },
+  {
+    "id": "pXGt0WCX_9qIKJ18DFsWwNiy",
+    "title": "JavaScript 类型系统深层 [P6-P7]",
+    "url": "/interview/javascript/type-system-deep",
+    "group": "JavaScript & Node.js 深度（P6-P7）"
+  },
+  {
+    "id": "buwzCf-RLHeFU8c4r3oWJFXS",
+    "title": "异步编程模型演进 [P6-P7]",
+    "url": "/interview/javascript/async-model",
+    "group": "JavaScript & Node.js 深度（P6-P7）"
+  },
+  {
+    "id": "5PjcoNoRmXJUgwY0TlACnsE5",
+    "title": "GC 算法与内存管理 [P6-P7]",
+    "url": "/interview/javascript/gc-and-memory",
+    "group": "JavaScript & Node.js 深度（P6-P7）"
+  },
+  {
+    "id": "FJFbya2AIpIaEOWyENXNRKam",
+    "title": "原型链本质与元编程 [P6-P7]",
+    "url": "/interview/javascript/prototype-and-oop",
+    "group": "JavaScript & Node.js 深度（P6-P7）"
+  },
+  {
+    "id": "lMQchCvavEeD7SCEdkRYyT-b",
+    "title": "ES2025/2026 新特性与现代 Web APIs [P6-P7]",
+    "url": "/interview/javascript/es2025-2026-and-web-apis",
+    "group": "JavaScript & Node.js 深度（P6-P7）"
+  },
+  {
+    "id": "7DdyBANJiqK8JsSdCjqaPin5",
+    "title": "高级类型体操 [P6-P7]",
+    "url": "/interview/typescript/type-challenges",
+    "group": "TypeScript 高阶（P6-P7）"
+  },
+  {
+    "id": "YhuQs-pklD6LcWy_Ohhq1KcB",
+    "title": "TypeScript 编译器架构 [P8]",
+    "url": "/interview/typescript/compiler-internals",
+    "group": "TypeScript 高阶（P6-P7）"
+  },
+  {
+    "id": "2AL21-tYU1P6CAt02e51CXLS",
+    "title": "类型系统设计哲学 [P8]",
+    "url": "/interview/typescript/type-system-design",
+    "group": "TypeScript 高阶（P6-P7）"
+  },
+  {
+    "id": "n7duFpQAkDmnE7RhBC34-F4Z",
+    "title": "TypeScript 5.x 新特性 [P6-P7]",
+    "url": "/interview/typescript/ts5-new-features",
+    "group": "TypeScript 高阶（P6-P7）"
+  },
+  {
+    "id": "1Bs6ikjDv06l2mnb_4oQrY-8",
+    "title": "Vue 响应式系统底层 [P6-P7]",
+    "url": "/interview/vue/reactivity-deep",
+    "group": "Vue 深度（P6-P7）"
+  },
+  {
+    "id": "hxUFlRNXwZ5LyeMFSMd3aYB0",
+    "title": "Vue 编译器优化 [P6-P7]",
+    "url": "/interview/vue/compiler-optimization",
+    "group": "Vue 深度（P6-P7）"
+  },
+  {
+    "id": "G84UPAl8UgfIESd40QPHEbns",
+    "title": "Vapor Mode 原理 [P6-P7]",
+    "url": "/interview/vue/vapor-mode",
+    "group": "Vue 深度（P6-P7）"
+  },
+  {
+    "id": "pJD9WCuda_OEfr36na8EEBEi",
+    "title": "渲染器 Patch 流程与 Diff 算法 [P6-P7]",
+    "url": "/interview/vue/renderer-patch-flow",
+    "group": "Vue 深度（P6-P7）"
+  },
+  {
+    "id": "LgIKyUlVsTKCnnrl3gO4fVh8",
+    "title": "Vue 3.5+ 新特性与响应式重构 [P6-P7]",
+    "url": "/interview/vue/vue-3.5-new-features",
+    "group": "Vue 深度（P6-P7）"
+  },
+  {
+    "id": "9SbPGff4LCkZpF_JZuS8BK1N",
+    "title": "Pinia 状态管理原理与实战 [P6-P7]",
+    "url": "/interview/vue/pinia-deep",
+    "group": "Vue 深度（P6-P7）"
+  },
+  {
+    "id": "rbr7RLR49owTavY1hcdyqvZl",
+    "title": "Vue Router 4 路由系统深度 [P6-P7]",
+    "url": "/interview/vue/vue-router-4",
+    "group": "Vue 深度（P6-P7）"
+  },
+  {
+    "id": "e2KMSwVPTeadxXiyrzNIfnqe",
+    "title": "Nuxt 3 全栈框架原理与实战 [P8]",
+    "url": "/interview/vue/nuxt-3-fullstack",
+    "group": "Vue 深度（P6-P7）"
+  },
+  {
+    "id": "LCFCLRLpKSrfbhE9ItiSISz0",
+    "title": "Vue 3 生态实战模式 [P6-P7]",
+    "url": "/interview/vue/vue-ecosystem-patterns",
+    "group": "Vue 深度（P6-P7）"
+  },
+  {
+    "id": "Z2CB8AWNuWQRi6gYIRNHVcr_",
+    "title": "Fiber 架构与优先级调度 [P6-P7]",
+    "url": "/interview/react/fiber-architecture",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "l4Is0ZtaxYmSXB0xYdJCzBqI",
+    "title": "并发渲染与 Suspense [P6-P7]",
+    "url": "/interview/react/concurrent-rendering",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "2Icnq_RxCPvP7HsAXVt4KBiO",
+    "title": "React Server Components 原理 [P6-P7]",
+    "url": "/interview/react/server-components",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "ru1zDv9HCEzFyYOcFaA2YRDY",
+    "title": "状态管理本质与有限状态机 [P6-P7]",
+    "url": "/interview/react/state-machine",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "2RNimVFWWHGZtxLKI0efqr75",
+    "title": "React 19 新特性深度解析 [P6-P7]",
+    "url": "/interview/react/react-19-features",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "epm4TKLdxaK116z_WOwZuZpo",
+    "title": "React Compiler 原理与实践 [P8]",
+    "url": "/interview/react/react-compiler",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "AI5eXy7EuIviPZgv2j7VBQdk",
+    "title": "Zustand/Jotai 状态管理深度 [P6-P7]",
+    "url": "/interview/react/zustand-and-jotai",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "xCDk58u_azaZtmcskbvM7tGT",
+    "title": "TanStack Query 数据获取与缓存 [P6-P7]",
+    "url": "/interview/react/tanstack-query",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "8rMBQlP19ZVNrB45kn6W9W3P",
+    "title": "Next.js 15 全栈框架原理 [P8]",
+    "url": "/interview/react/nextjs-15",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "jn8AQMyXBkj8HpGS0oAWk_cu",
+    "title": "React Hook Form + Zod 表单体系 [P6-P7]",
+    "url": "/interview/react/react-hook-form-and-zod",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "leJ0fAOpVyRqKylioD_OKwz1",
+    "title": "Testing Library + MSW 测试体系 [P6-P7]",
+    "url": "/interview/react/react-testing-library",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "E_NAKS7erhL_Cv8w2IfBRLna",
+    "title": "React 生态架构模式 [P8]",
+    "url": "/interview/react/react-architecture-patterns",
+    "group": "React 深度（P6-P7）"
+  },
+  {
+    "id": "61Xe9qwipH9SMPTlTLr5XrWp",
+    "title": "Flutter 渲染引擎 [P6-P7]",
+    "url": "/interview/flutter/rendering-engine",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "fGSd0nnFr4beLnZYqJJ0YTE1",
+    "title": "Dart 语言深度 [P6-P7]",
+    "url": "/interview/flutter/dart-advanced",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "9iMZqLK0tcSE6Q65j553123m",
+    "title": "Flutter 状态管理架构 [P8]",
+    "url": "/interview/flutter/architecture-patterns",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "__FbM94OzRzKnZJt-Rq97sb1",
+    "title": "Flutter 与原生交互 [P8]",
+    "url": "/interview/flutter/platform-interop",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "7kkG1g-tzS-oy0SDNC-Cpgn7",
+    "title": "Flutter 性能优化与工程化 [P8]",
+    "url": "/interview/flutter/performance-engineering",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "Qp36Mvg1B3vrgzKZwja7gta7",
+    "title": "Riverpod 状态管理深度 [P6-P7]",
+    "url": "/interview/flutter/riverpod-deep",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "lv-opTClrUXRUmsv5WtuPJyr",
+    "title": "BLoC/Cubit 架构模式与大规模实践 [P6-P7]",
+    "url": "/interview/flutter/bloc-cubit-architecture",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "gXZ55kgSqecmkLTvoAPxEyAp",
+    "title": "GetX 生态体系 [P6-P7]",
+    "url": "/interview/flutter/getx-ecosystem",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "wiPtO559urkWeRCC5q3YobYj",
+    "title": "GoRouter 路由管理深度 [P6-P7]",
+    "url": "/interview/flutter/go-router-deep",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "zXyuYgaWrKsBjSAcYfjJRa-g",
+    "title": "Dio 网络层与 HTTP 客户端体系 [P6-P7]",
+    "url": "/interview/flutter/dio-and-networking",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "4fWHCLxNVLkHi_Z5UbhEejWN",
+    "title": "Flutter 本地存储与持久化 [P6-P7]",
+    "url": "/interview/flutter/flutter-local-storage",
+    "group": "Flutter 高级与架构（P6-P7/P8）"
+  },
+  {
+    "id": "g7Wdhoo_LsD4D-uhWt5KxIBs",
+    "title": "浏览器渲染管线 [P6-P7]",
+    "url": "/interview/browser-and-network/rendering-pipeline",
+    "group": "浏览器与网络（P6-P7）"
+  },
+  {
+    "id": "r9sw0YYB8QulwMghYYdftFeP",
+    "title": "HTTP/3、WebTransport 与 QUIC [P6-P7]",
+    "url": "/interview/browser-and-network/http3-and-webtransport",
+    "group": "浏览器与网络（P6-P7）"
+  },
+  {
+    "id": "P3ID5_JZdjpbtJIppLMIZa_P",
+    "title": "WebAssembly 在前端的应用 [P6-P7]",
+    "url": "/interview/browser-and-network/wasm-frontend",
+    "group": "浏览器与网络（P6-P7）"
+  },
+  {
+    "id": "kd3Asrl3siT5cloOL6roE80n",
+    "title": "浏览器安全模型 [P6-P7]",
+    "url": "/interview/browser-and-network/security-model",
+    "group": "浏览器与网络（P6-P7）"
+  },
+  {
+    "id": "8J0oAWTROn00Y6qKnAbEo65y",
+    "title": "构建工具链演进 [P6-P7]",
+    "url": "/interview/engineering/build-toolchain",
+    "group": "工程化与全栈（P6-P7/P8）"
+  },
+  {
+    "id": "4a_kJzsFW8AeKktnZThGrjEQ",
+    "title": "Monorepo 架构设计 [P8]",
+    "url": "/interview/engineering/monorepo-architecture",
+    "group": "工程化与全栈（P6-P7/P8）"
+  },
+  {
+    "id": "maJk4W4_uNK3HtI5NMBxcAf3",
+    "title": "微前端方案对比 [P8]",
+    "url": "/interview/engineering/micro-frontend",
+    "group": "工程化与全栈（P6-P7/P8）"
+  },
+  {
+    "id": "R3HmVkMYvzW2-omeihiajtT1",
+    "title": "设计系统与组件库架构 [P8]",
+    "url": "/interview/engineering/design-system",
+    "group": "工程化与全栈（P6-P7/P8）"
+  },
+  {
+    "id": "_itcbVQ1RVRamXV04hMNHWio",
+    "title": "性能预算体系 [P6-P7]",
+    "url": "/interview/engineering/performance-budget",
+    "group": "工程化与全栈（P6-P7/P8）"
+  },
+  {
+    "id": "qv8jb94JEew8grhZATAmyxtU",
+    "title": "前端测试金字塔实战 [P6-P7]",
+    "url": "/interview/engineering/testing-strategy",
+    "group": "工程化与全栈（P6-P7/P8）"
+  },
+  {
+    "id": "O42bSF-2oCdGmeEhQhLh8uyG",
+    "title": "前端 DevOps 与发布体系 [P8]",
+    "url": "/interview/engineering/frontend-devops",
+    "group": "工程化与全栈（P6-P7/P8）"
+  },
+  {
+    "id": "2Q1k6qw8_ZPxLkI11SFSn_yz",
+    "title": "Node.js Web 框架对比 [P6-P7]",
+    "url": "/interview/engineering/nodejs-web-framework",
+    "group": "工程化与全栈（P6-P7/P8）"
+  },
+  {
+    "id": "3vQbrBSIZZxoUrqZ-ihyHS6F",
+    "title": "Node.js 数据库与 ORM [P6-P7]",
+    "url": "/interview/engineering/nodejs-database-orm",
+    "group": "工程化与全栈（P6-P7/P8）"
+  },
+  {
+    "id": "QVYh0VgxjQLdhOnATOAm-Wfq",
+    "title": "Node.js 部署与运维 [P6-P7]",
+    "url": "/interview/engineering/nodejs-deploy-ops",
+    "group": "工程化与全栈（P6-P7/P8）"
+  },
+  {
+    "id": "75k_RFkDPldQMFNIE-bhkpvT",
+    "title": "Vite 核心原理与插件开发 [P6-P7]",
+    "url": "/interview/build-tools/vite-internals",
+    "group": "构建工具生态（P6-P7）"
+  },
+  {
+    "id": "n9CRfjBe23DSOHmIYNQGOoeG",
+    "title": "构建工具深度对比 [P8]",
+    "url": "/interview/build-tools/build-tool-deep-comparison",
+    "group": "构建工具生态（P6-P7）"
+  },
+  {
+    "id": "LfUBp4uX0oE6N4hPFGgsjKzc",
+    "title": "Vite 插件开发实战 [P6-P7]",
+    "url": "/interview/build-tools/vite-plugin-development",
+    "group": "构建工具生态（P6-P7）"
+  },
+  {
+    "id": "Px3_4ar1BPylNgDG32jxG8Ce",
+    "title": "Monorepo 构建优化 [P8]",
+    "url": "/interview/build-tools/monorepo-build-optimization",
+    "group": "构建工具生态（P6-P7）"
+  },
+  {
+    "id": "cFDZAH4O2SKK9WugHSoutm-m",
+    "title": "Rolldown 与构建工具未来 [P8]",
+    "url": "/interview/build-tools/rolldown-and-future",
+    "group": "构建工具生态（P6-P7）"
+  },
+  {
+    "id": "m1SITSIuyruUSZkEJbMqvo3O",
+    "title": "前端架构模式 [P8]",
+    "url": "/interview/architecture/frontend-architecture-patterns",
+    "group": "架构设计（P8）"
+  },
+  {
+    "id": "ubfTEui2DQg4fZoPLd7JhKrQ",
+    "title": "大型应用状态架构 [P8]",
+    "url": "/interview/architecture/state-architecture",
+    "group": "架构设计（P8）"
+  },
+  {
+    "id": "XtibcJJE8ny_Q2sucu7FONdC",
+    "title": "模块联邦 V2 [P8]",
+    "url": "/interview/architecture/module-federation-v2",
+    "group": "架构设计（P8）"
+  },
+  {
+    "id": "UKloBb1wC4xcfJQP4StH2LZv",
+    "title": "AI 能力集成架构 [P8]",
+    "url": "/interview/architecture/ai-integration-architecture",
+    "group": "架构设计（P8）"
+  },
+  {
+    "id": "Hf3atlG1_8D44DHKv8k0Xwjp",
+    "title": "客户端数据架构 [P8]",
+    "url": "/interview/architecture/client-data-architecture",
+    "group": "架构设计（P8）"
+  },
+  {
+    "id": "u0P-U-PhF9cYmHaRXcA-vb7i",
+    "title": "实时协作系统设计 [P8]",
+    "url": "/interview/system-design/real-time-collaboration",
+    "group": "系统设计（P8）"
+  },
+  {
+    "id": "P82pObdH1zBWg0IGveTb_4F4",
+    "title": "低代码平台架构 [P8]",
+    "url": "/interview/system-design/low-code-platform",
+    "group": "系统设计（P8）"
+  },
+  {
+    "id": "iuZVylnMc5ZeTJ6wpw4PieXj",
+    "title": "Design Token 体系 [P8]",
+    "url": "/interview/system-design/design-token-system",
+    "group": "系统设计（P8）"
+  },
+  {
+    "id": "XD1q6j5N_t_8JQyrnVdzED3e",
+    "title": "前端可观测性 [P8]",
+    "url": "/interview/system-design/frontend-observability",
+    "group": "系统设计（P8）"
+  },
+  {
+    "id": "Uwtn98RO7x83OHSF7ADhJkfb",
+    "title": "API 设计模式 [P8]",
+    "url": "/interview/api-architecture/api-design-patterns",
+    "group": "API 与跨平台架构（P6-P7）"
+  },
+  {
+    "id": "5Pvdm0FYhRHBa7uUvZUdfq8L",
+    "title": "BFF 模式与 API 网关 [P8]",
+    "url": "/interview/api-architecture/bff-and-gateway",
+    "group": "API 与跨平台架构（P6-P7）"
+  },
+  {
+    "id": "d6ryagn-MgK1LmnvHEDDi0nO",
+    "title": "跨端技术选型矩阵 [P8]",
+    "url": "/interview/cross-platform/cross-platform-selection",
+    "group": "API 与跨平台架构（P6-P7）"
+  },
+  {
+    "id": "Re352iCgIf1_0NOF8V3KsXlE",
+    "title": "多端一致性方案 [P8]",
+    "url": "/interview/cross-platform/multi-platform-consistency",
+    "group": "API 与跨平台架构（P6-P7）"
+  },
+  {
+    "id": "ZLmTDE08pIe0GsRZGai0MPW_",
+    "title": "Signals vs Virtual DOM [P6-P7]",
+    "url": "/interview/framework-comparison/signal-vs-vdom",
+    "group": "框架对比与选型（P6-P7）"
+  },
+  {
+    "id": "TAY2tCoIawLxUijJsGG5m_Bq",
+    "title": "SSR/SSG/ISR 全栈方案对比 [P6-P7]",
+    "url": "/interview/framework-comparison/ssr-fullstack-comparison",
+    "group": "框架对比与选型（P6-P7）"
+  },
+  {
+    "id": "sm_NSo5_wce5sxxsYNgTDByc",
+    "title": "2026 元框架趋势 [P8]",
+    "url": "/interview/framework-comparison/meta-framework-trends",
+    "group": "框架对比与选型（P6-P7）"
+  },
+  {
+    "id": "2j1JeOzODWmUaOzHXxBvb5VJ",
+    "title": "AI 辅助开发工程化 [P6-P7]",
+    "url": "/interview/ai-and-new-tech/ai-assisted-development",
+    "group": "AI 与新技术（P6-P7）"
+  },
+  {
+    "id": "dswg_3L0u6XpnQQrjcF4j4gg",
+    "title": "LLM 前端集成 [P6-P7]",
+    "url": "/interview/ai-and-new-tech/llm-frontend-integration",
+    "group": "AI 与新技术（P6-P7）"
+  },
+  {
+    "id": "hk0x4Klk0uiwJeBCuNqqqe1b",
+    "title": "MCP 协议与 Tool Use [P6-P7]",
+    "url": "/interview/ai-and-new-tech/mcp-and-tool-use",
+    "group": "AI 与新技术（P6-P7）"
+  },
+  {
+    "id": "PsGJG91upec0_M4u32c66Q2n",
+    "title": "Edge Computing 前端场景 [P8]",
+    "url": "/interview/ai-and-new-tech/edge-computing",
+    "group": "AI 与新技术（P6-P7）"
+  },
+  {
+    "id": "wuulhcMWh4aoEHbIUokwwIBF",
+    "title": "技术领导力 [TL]",
+    "url": "/interview/management/tech-leadership",
+    "group": "技术管理（TL）"
+  },
+  {
+    "id": "6JLkC-Ls6byGDTDW8T_qjcBS",
+    "title": "团队建设方法论 [TL]",
+    "url": "/interview/management/team-building",
+    "group": "技术管理（TL）"
+  },
+  {
+    "id": "94idwcwpiXd8qsprjkGX3cvB",
+    "title": "项目交付管理 [TL]",
+    "url": "/interview/management/project-delivery",
+    "group": "技术管理（TL）"
+  },
+  {
+    "id": "jf3W-AaL3Yjo6pvGPNPkT4y3",
+    "title": "跨团队协作 [TL]",
+    "url": "/interview/management/cross-team-collaboration",
+    "group": "技术管理（TL）"
+  },
+  {
+    "id": "2IJInL1T-hjVOnkAY3Mwnokn",
+    "title": "技术雷达与创新落地 [TL]",
+    "url": "/interview/management/tech-radar-and-innovation",
+    "group": "技术管理（TL）"
+  },
+  {
+    "id": "urjfs3o5zDYrokhLuD1LVUAU",
+    "title": "总览",
+    "url": "/instructions/",
+    "group": "快速开始"
+  },
+  {
+    "id": "u8j7TdX7Rvk-wIoGBh8xiXbL",
+    "title": "新增指令集指南",
+    "url": "/instructions/CREATE-GUIDE",
+    "group": "快速开始"
+  },
+  {
+    "id": "GHdjVG0XCjQNzSsr2edfzeFe",
+    "title": "计划书归档",
+    "url": "/instructions/_plan-archive/",
+    "group": "快速开始"
+  },
+  {
+    "id": "dZinK2xonp__M0s83nQXY32-",
+    "title": "总览",
+    "url": "/instructions/instruction-architecture/",
+    "group": "指令集体系设计"
+  },
+  {
+    "id": "ToEdgcvYply8B3AZGaiNnikV",
+    "title": "分层模型设计",
+    "url": "/instructions/instruction-architecture/design/layered-model",
+    "group": "指令集体系设计 > 设计文档"
+  },
+  {
+    "id": "5mrsWr-VgCOqnsBsUr3LtGOo",
+    "title": "参数管道设计",
+    "url": "/instructions/instruction-architecture/design/parameter-pipeline",
+    "group": "指令集体系设计 > 设计文档"
+  },
+  {
+    "id": "-RHtZ83mJAwDbPdlS5GLXoNs",
+    "title": "注解驱动文档生成",
+    "url": "/instructions/instruction-architecture/design/annotation-driven-docs",
+    "group": "指令集体系设计 > 设计文档"
+  },
+  {
+    "id": "3qxdijt6h0KXoJif_57YZvgX",
+    "title": "执行模型与编排",
+    "url": "/instructions/instruction-architecture/design/execution-model",
+    "group": "指令集体系设计 > 设计文档"
+  },
+  {
+    "id": "9cTO-D0onJkFuXslg1Oz2e6v",
+    "title": "术语表模板",
+    "url": "/instructions/instruction-architecture/standards/glossary-template",
+    "group": "指令集体系设计 > 规范文件"
+  },
+  {
+    "id": "nieouMuASjxiT75hIywxDT8i",
+    "title": "约束规则规范",
+    "url": "/instructions/instruction-architecture/standards/constraint-rules",
+    "group": "指令集体系设计 > 规范文件"
+  },
+  {
+    "id": "yokm4c6TUhEj2nEr2k--rlqF",
+    "title": "注解格式规范",
+    "url": "/instructions/instruction-architecture/standards/annotation-format",
+    "group": "指令集体系设计 > 规范文件"
+  },
+  {
+    "id": "9rCoRla0uJq0wLNSoTR6pXL7",
+    "title": "第 2 层示例",
+    "url": "/instructions/instruction-architecture/examples/layer-2-example/entry",
+    "group": "指令集体系设计 > 实现示例"
+  },
+  {
+    "id": "nVW1oXAY24EhaY7SwCrhN9PL",
+    "title": "第 3 层示例",
+    "url": "/instructions/instruction-architecture/examples/layer-3-example/entry",
+    "group": "指令集体系设计 > 实现示例"
+  },
+  {
+    "id": "KQinjtPzR-83NY0VkQ3CmNH7",
+    "title": "编排文件示例",
+    "url": "/instructions/instruction-architecture/examples/pipeline-example/feature-complete",
+    "group": "指令集体系设计 > 实现示例"
+  },
+  {
+    "id": "Qtn0ecgODQxcPI-rQbsL_oLe",
+    "title": "多工作区组合开发套件",
+    "url": "/instructions/multi-workspace-composition",
+    "group": "未分组"
+  },
+  {
+    "id": "aqSbWE9nvwaS968q3KXaMA8P",
+    "title": "Vue 提示词",
+    "url": "/instructions/vue/prompts",
+    "group": "Vue"
+  },
+  {
+    "id": "zVhAsZ-oaiLSSQdrzzOMDNRO",
+    "title": "概述",
+    "url": "/instructions/vue/vue-assembler/docs/",
+    "group": "Vue > Vue 装配架构 AI 指令集"
+  },
+  {
+    "id": "yfY7x0dyZMpJgt3FQ2pgx5NQ",
+    "title": "设计架构",
+    "url": "/instructions/vue/vue-assembler/docs/design",
+    "group": "Vue > Vue 装配架构 AI 指令集"
+  },
+  {
+    "id": "Tkp5YbJBjPEO3k0_W54fzWHD",
+    "title": "执行流程",
+    "url": "/instructions/vue/vue-assembler/docs/execution-flow",
+    "group": "Vue > Vue 装配架构 AI 指令集"
+  },
+  {
+    "id": "MbHgRNuPU9yWX8Htu3jBJ5ky",
+    "title": "配置指南",
+    "url": "/instructions/vue/vue-assembler/docs/config-guide",
+    "group": "Vue > Vue 装配架构 AI 指令集"
+  },
+  {
+    "id": "gll-5UChdEvi1SaU23j3an4I",
+    "title": "文件索引",
+    "url": "/instructions/vue/vue-assembler/docs/file-index",
+    "group": "Vue > Vue 装配架构 AI 指令集"
+  },
+  {
+    "id": "N-CrPe2XCxCwJLQwtzfDkCZx",
+    "title": "概述",
+    "url": "/instructions/vue/vue-code-review/docs/",
+    "group": "Vue > Vue 通用代码检查指令集"
+  },
+  {
+    "id": "0hUBC3j5gMTFg3alnUNPfGGy",
+    "title": "设计架构",
+    "url": "/instructions/vue/vue-code-review/docs/design",
+    "group": "Vue > Vue 通用代码检查指令集"
+  },
+  {
+    "id": "s8ipwko-1ke4XNdNF7pnNAPm",
+    "title": "执行流程",
+    "url": "/instructions/vue/vue-code-review/docs/execution-flow",
+    "group": "Vue > Vue 通用代码检查指令集"
+  },
+  {
+    "id": "bajV24MMpZQ6gZNV6gy1Kpop",
+    "title": "配置指南",
+    "url": "/instructions/vue/vue-code-review/docs/config-guide",
+    "group": "Vue > Vue 通用代码检查指令集"
+  },
+  {
+    "id": "CDc8cKqdLxxTdXXw1go63Ue_",
+    "title": "文件索引",
+    "url": "/instructions/vue/vue-code-review/docs/file-index",
+    "group": "Vue > Vue 通用代码检查指令集"
+  },
+  {
+    "id": "CgtHHghwdNQsDogc-M3YfrU-",
+    "title": "概述",
+    "url": "/instructions/vue/vue-arch-starter/docs/",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "KooCJvOOHH6QA7wraTWMvdMF",
+    "title": "架构概念",
+    "url": "/instructions/vue/vue-arch-starter/docs/architecture",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "XC97c5grDLfdRTy0heT0B3r5",
+    "title": "集成指南",
+    "url": "/instructions/vue/vue-arch-starter/docs/integration",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "3bypHDsT-8o7pMP1Z8pW91dD",
+    "title": "定制指南",
+    "url": "/instructions/vue/vue-arch-starter/docs/customization",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "2bNiLqBDCxsVGWJMTb1Q6t-N",
+    "title": "文件索引",
+    "url": "/instructions/vue/vue-arch-starter/docs/file-index",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "RlqqQRN7Tbmkl268nU0rnAUa",
+    "title": "启动器",
+    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/launcher",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "kfiBO4m5-SRTkIqhByl6B-Sj",
+    "title": "约束规则",
+    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/constraints",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "FoNhPbmbqCa3Xi0DuTAlSfET",
+    "title": "代码规范",
+    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/code-standard",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "1KuwNt8wQF1tSzY60m4ePemo",
+    "title": "门禁检查",
+    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/gate-check",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "qYPFnavxJOth4ZGUZeYMHhyk",
+    "title": "通用步骤",
+    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/common-steps",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "M0B7ztLZDjLV7iuadIJlSlFc",
+    "title": "任务：新项目集成",
+    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/task-integration",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "FV4tHfRfuvFpuaZYxWRbsIqI",
+    "title": "任务：定制修改",
+    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/task-customization",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "NhAT5Q5VrvXbwmcNJHffGgNT",
+    "title": "复核清单",
+    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/review-checklist",
+    "group": "Vue > Vue 装配架构代码模板"
+  },
+  {
+    "id": "7eYxBb3zYuHGIBa8vN-QgHND",
+    "title": "Vue 装配架构 — 变更日志",
+    "url": "/instructions/vue/vue-assembler/VERSION",
+    "group": "Vue > 版本记录"
+  },
+  {
+    "id": "MCnTWwAVqx_f0YnVpD0OvHJt",
+    "title": "Vue 通用代码检查 — 变更日志",
+    "url": "/instructions/vue/vue-code-review/VERSION",
+    "group": "Vue > 版本记录"
+  },
+  {
+    "id": "dSlsILidcLsdUTQBoxQfGczU",
+    "title": "Vue 架构代码模板 — 变更日志",
+    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/VERSION",
+    "group": "Vue > 版本记录"
+  },
+  {
+    "id": "f3MJ1Jwns_g069uLVrm_mp6D",
+    "title": "React 提示词",
+    "url": "/instructions/react/prompts",
+    "group": "React"
+  },
+  {
+    "id": "_vuFn8kWoANAQnpeGPJw1bSw",
+    "title": "概述",
+    "url": "/instructions/react/react-assembler/docs/",
+    "group": "React > React 装配架构 AI 指令集"
+  },
+  {
+    "id": "K3XiDvYnr0e4U-m46CLbnWdM",
+    "title": "设计架构",
+    "url": "/instructions/react/react-assembler/docs/design",
+    "group": "React > React 装配架构 AI 指令集"
+  },
+  {
+    "id": "LWB-VVEPB0jHrId4CwtV8Fnd",
+    "title": "执行流程",
+    "url": "/instructions/react/react-assembler/docs/execution-flow",
+    "group": "React > React 装配架构 AI 指令集"
+  },
+  {
+    "id": "vOSUGJeljv0EoFp5Vy16qHCd",
+    "title": "配置指南",
+    "url": "/instructions/react/react-assembler/docs/config-guide",
+    "group": "React > React 装配架构 AI 指令集"
+  },
+  {
+    "id": "KqV36n0PJ3fLtVcTovNgFRib",
+    "title": "文件索引",
+    "url": "/instructions/react/react-assembler/docs/file-index",
+    "group": "React > React 装配架构 AI 指令集"
+  },
+  {
+    "id": "ulo0DZTcwCzuD9q8Cu8FPCIC",
+    "title": "概述",
+    "url": "/instructions/react/react-code-review/docs/",
+    "group": "React > React 通用代码检查指令集"
+  },
+  {
+    "id": "pX8Iq7hLf-xP8TR6D5omVDQe",
+    "title": "设计架构",
+    "url": "/instructions/react/react-code-review/docs/design",
+    "group": "React > React 通用代码检查指令集"
+  },
+  {
+    "id": "Hn1FpKPPhOcp9v5UbRGvpGaN",
+    "title": "执行流程",
+    "url": "/instructions/react/react-code-review/docs/execution-flow",
+    "group": "React > React 通用代码检查指令集"
+  },
+  {
+    "id": "6mP0tRKl4LzI7EyW2JILLMJR",
+    "title": "配置指南",
+    "url": "/instructions/react/react-code-review/docs/config-guide",
+    "group": "React > React 通用代码检查指令集"
+  },
+  {
+    "id": "yTlWgufegvwGBaK58P-hz-zS",
+    "title": "文件索引",
+    "url": "/instructions/react/react-code-review/docs/file-index",
+    "group": "React > React 通用代码检查指令集"
+  },
+  {
+    "id": "TcN1pGESx81HqA7pV4UY_5-9",
+    "title": "React 装配架构 — 变更日志",
+    "url": "/instructions/react/react-assembler/VERSION",
+    "group": "React > 版本记录"
+  },
+  {
+    "id": "hdeu5AQYL_G73pQ9U1S61AgM",
+    "title": "React 通用代码检查 — 变更日志",
+    "url": "/instructions/react/react-code-review/VERSION",
+    "group": "React > 版本记录"
+  },
+  {
+    "id": "dlzsdgyf5S_qahp3XL304WKv",
+    "title": "Flutter 提示词",
+    "url": "/instructions/flutter/prompts",
+    "group": "Flutter"
+  },
+  {
+    "id": "uJ2fE5HyU_PTtLp239vjsQ0C",
+    "title": "概述",
+    "url": "/instructions/flutter/flutter-assembler/docs/",
+    "group": "Flutter > Flutter 装配架构 AI 指令集"
+  },
+  {
+    "id": "1v_AAymk0f3OO_gb7Lmg0NXR",
+    "title": "设计架构",
+    "url": "/instructions/flutter/flutter-assembler/docs/design",
+    "group": "Flutter > Flutter 装配架构 AI 指令集"
+  },
+  {
+    "id": "vSS8Lxwrj6Kb26I997TLqHqA",
+    "title": "执行流程",
+    "url": "/instructions/flutter/flutter-assembler/docs/execution-flow",
+    "group": "Flutter > Flutter 装配架构 AI 指令集"
+  },
+  {
+    "id": "DdsXGDDw5dsvxjK_sS_gYAN9",
+    "title": "配置指南",
+    "url": "/instructions/flutter/flutter-assembler/docs/config-guide",
+    "group": "Flutter > Flutter 装配架构 AI 指令集"
+  },
+  {
+    "id": "5Yg_BgBk7xlJYoa5nCfxXt80",
+    "title": "文件索引",
+    "url": "/instructions/flutter/flutter-assembler/docs/file-index",
+    "group": "Flutter > Flutter 装配架构 AI 指令集"
+  },
+  {
+    "id": "CLQ2_QVznWvRnBDBkiwvZnGD",
+    "title": "概述",
+    "url": "/instructions/flutter/flutter-code-review/docs/",
+    "group": "Flutter > Flutter 通用代码检查指令集"
+  },
+  {
+    "id": "KQHXYjDW73_CrSpLnhqTX-OK",
+    "title": "设计架构",
+    "url": "/instructions/flutter/flutter-code-review/docs/design",
+    "group": "Flutter > Flutter 通用代码检查指令集"
+  },
+  {
+    "id": "C3Set8D9jFZd7Fl2y_YFHtGs",
+    "title": "执行流程",
+    "url": "/instructions/flutter/flutter-code-review/docs/execution-flow",
+    "group": "Flutter > Flutter 通用代码检查指令集"
+  },
+  {
+    "id": "B8QfuZDY589p0VZRRXKFCc-u",
+    "title": "配置指南",
+    "url": "/instructions/flutter/flutter-code-review/docs/config-guide",
+    "group": "Flutter > Flutter 通用代码检查指令集"
+  },
+  {
+    "id": "TQGz4I4JGpRnVVE9E8JfvYvS",
+    "title": "文件索引",
+    "url": "/instructions/flutter/flutter-code-review/docs/file-index",
+    "group": "Flutter > Flutter 通用代码检查指令集"
+  },
+  {
+    "id": "Fw8dJ6kzHdpt857_5n4vrXGK",
+    "title": "Flutter 装配架构 — 变更日志",
+    "url": "/instructions/flutter/flutter-assembler/VERSION",
+    "group": "Flutter > 版本记录"
+  },
+  {
+    "id": "vqPuMCBRgbVwYGSpS0hjs1wP",
+    "title": "Flutter 通用代码检查 — 变更日志",
+    "url": "/instructions/flutter/flutter-code-review/VERSION",
+    "group": "Flutter > 版本记录"
+  }
+]

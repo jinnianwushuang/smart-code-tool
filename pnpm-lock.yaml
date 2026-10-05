@@ -95,6 +95,9 @@ importers:
       html2pdf.js:
         specifier: ^0.14.0
         version: 0.14.0
+      idb-keyval:
+        specifier: ^6.3.0
+        version: 6.3.0
       js-base64:
         specifier: ^3.9.3
         version: 3.9.3
@@ -155,6 +158,9 @@ importers:
       tinycolor2:
         specifier: ^1.6.0
         version: 1.6.0
+      ts-fsrs:
+        specifier: ^5.4.2
+        version: 5.4.2
       uuid:
         specifier: ^14.0.2
         version: 14.0.2
@@ -218,7 +224,7 @@ importers:
         version: 8.2.1(vite@8.2.2(@types/node@25.9.3)(jiti@2.7.0)(sass-embedded@1.104.0)(sass@1.104.0))(vue@3.5.42)
       vitepress:
         specifier: ^1.6.3
-        version: 1.6.4(@algolia/client-search@5.55.0)(@types/node@25.9.3)(async-validator@4.2.5)(change-case@5.4.4)(fuse.js@7.5.0)(lightningcss@1.33.0)(postcss@8.5.28)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(sass-embedded@1.104.0)(sass@1.104.0)(search-insights@2.17.3)
+        version: 1.6.4(@algolia/client-search@5.55.0)(@types/node@25.9.3)(async-validator@4.2.5)(change-case@5.4.4)(fuse.js@7.5.0)(idb-keyval@6.3.0)(lightningcss@1.33.0)(postcss@8.5.28)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(sass-embedded@1.104.0)(sass@1.104.0)(search-insights@2.17.3)
       zx:
         specifier: ^8.7.1
         version: 8.8.5
@@ -2440,6 +2446,9 @@ packages:
     resolution: {integrity: sha512-OmvfoQ53WLjtA9HeYP9RNrWMJzzAz1JGaSFr1nijg0PVR1JaD/xbJq1mdEIIlxGpXp9eSe/O2LgU9DJmTPd0Eg==}
     engines: {node: '>= 4.5.0'}
 
+  idb-keyval@6.3.0:
+    resolution: {integrity: sha512-um+2dgAWmYsu615EXpWVwSmapJhON0G43t3Ka/EVaohzPQXSMqKEqeDK/oIW3Ow+BXaF2PvSc+oBTFp793A5Ow==}
+
   immediate@3.0.6:
     resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
 
@@ -3391,6 +3400,10 @@ packages:
   ts-custom-error@3.3.1:
     resolution: {integrity: sha512-5OX1tzOjxWEgsr/YEUWSuPrQ00deKLh6D7OTWcvNHm12/7QPyRh8SYpyWvA4IZv8H/+GQWQEh/kwo95Q9OVW1A==}
     engines: {node: '>=14.0.0'}
+
+  ts-fsrs@5.4.2:
+    resolution: {integrity: sha512-z4qop4pzTcyTzuJ566d9EaX/4bZZzhYfeaPImfVr+xcYT65c5oBgFDijUhCE/D+C78eaolHIhKRZ04/RwF+v2g==}
+    engines: {node: '>=20.0.0'}
 
   tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
@@ -5620,7 +5633,7 @@ snapshots:
       '@vueuse/shared': 14.4.0(vue@3.5.42)
       vue: 3.5.42
 
-  '@vueuse/integrations@12.8.2(async-validator@4.2.5)(change-case@5.4.4)(focus-trap@7.8.0)(fuse.js@7.5.0)':
+  '@vueuse/integrations@12.8.2(async-validator@4.2.5)(change-case@5.4.4)(focus-trap@7.8.0)(fuse.js@7.5.0)(idb-keyval@6.3.0)':
     dependencies:
       '@vueuse/core': 12.8.2
       '@vueuse/shared': 12.8.2
@@ -5630,6 +5643,7 @@ snapshots:
       change-case: 5.4.4
       focus-trap: 7.8.0
       fuse.js: 7.5.0
+      idb-keyval: 6.3.0
     transitivePeerDependencies:
       - typescript
 
@@ -6237,6 +6251,8 @@ snapshots:
       debug: 3.2.7
     transitivePeerDependencies:
       - supports-color
+
+  idb-keyval@6.3.0: {}
 
   immediate@3.0.6: {}
 
@@ -7137,6 +7153,8 @@ snapshots:
 
   ts-custom-error@3.3.1: {}
 
+  ts-fsrs@5.4.2: {}
+
   tslib@1.14.1: {}
 
   tslib@2.3.0: {}
@@ -7349,7 +7367,7 @@ snapshots:
       sass: 1.104.0
       sass-embedded: 1.104.0
 
-  vitepress@1.6.4(@algolia/client-search@5.55.0)(@types/node@25.9.3)(async-validator@4.2.5)(change-case@5.4.4)(fuse.js@7.5.0)(lightningcss@1.33.0)(postcss@8.5.28)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(sass-embedded@1.104.0)(sass@1.104.0)(search-insights@2.17.3):
+  vitepress@1.6.4(@algolia/client-search@5.55.0)(@types/node@25.9.3)(async-validator@4.2.5)(change-case@5.4.4)(fuse.js@7.5.0)(idb-keyval@6.3.0)(lightningcss@1.33.0)(postcss@8.5.28)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(sass-embedded@1.104.0)(sass@1.104.0)(search-insights@2.17.3):
     dependencies:
       '@docsearch/css': 3.8.2
       '@docsearch/js': 3.8.2(@algolia/client-search@5.55.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(search-insights@2.17.3)
@@ -7362,7 +7380,7 @@ snapshots:
       '@vue/devtools-api': 7.7.9
       '@vue/shared': 3.5.38
       '@vueuse/core': 12.8.2
-      '@vueuse/integrations': 12.8.2(async-validator@4.2.5)(change-case@5.4.4)(focus-trap@7.8.0)(fuse.js@7.5.0)
+      '@vueuse/integrations': 12.8.2(async-validator@4.2.5)(change-case@5.4.4)(focus-trap@7.8.0)(fuse.js@7.5.0)(idb-keyval@6.3.0)
       focus-trap: 7.8.0
       mark.js: 8.11.1
       minisearch: 7.2.0

@@ -67,6 +67,12 @@
   overflow: hidden;
 }
 
+/* 大面板模式：80vw × 80vh */
+.qt-panel-large {
+  width: 80vw;
+  max-height: 80vh;
+}
+
 .qt-panel-header {
   display: flex;
   align-items: center;
@@ -574,6 +580,306 @@
   opacity: 0;
 }
 
+/* ==================== Tab 小徽章 ==================== */
+.qt-tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  background: #ef4444;
+  color: white;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0 4px;
+  margin-left: 4px;
+  line-height: 1;
+}
+
+/* ════════════════════════════════════════════════════════
+   抗遗忘复习系统样式
+   ════════════════════════════════════════════════════════ */
+
+/* ── 子视图切换栏 ── */
+.rv-sub-tabs {
+  display: flex;
+  gap: 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  flex-wrap: wrap;
+}
+
+.rv-sub-tab {
+  padding: 6px 14px;
+  border: 1px solid var(--vp-c-divider);
+  background: transparent;
+  color: var(--vp-c-text-3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rv-sub-tab:hover {
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-text-3);
+}
+
+.rv-sub-tab.active {
+  color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.rv-sub-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  background: var(--vp-c-brand-1);
+  color: white;
+  border-radius: 9px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+.rv-sub-badge.warn {
+  background: #f59e0b;
+}
+
+/* ── 评分按钮行 ── */
+.rv-rating-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.rv-rating-btn {
+  flex: 1;
+  padding: 8px 0;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.rv-rating-btn:hover {
+  border-color: var(--rating-color);
+  color: var(--rating-color);
+  background: color-mix(in srgb, var(--rating-color) 8%, transparent);
+}
+
+/* ── 状态/到期标签 ── */
+.rv-state-tag {
+  font-size: 11px;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.rv-due-info {
+  font-size: 11px;
+  color: #f59e0b;
+  font-weight: 500;
+}
+
+.rv-review-count {
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+}
+
+.rv-group-tag {
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+  background: var(--vp-c-bg-mute);
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.rv-progress-hint {
+  font-size: 11px;
+  color: var(--vp-c-brand-1);
+}
+
+/* ── 空状态 ── */
+.rv-empty-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.rv-empty-hint {
+  font-size: 12px;
+  color: var(--vp-c-text-3);
+  margin-top: 4px;
+}
+
+/* ── 盲区子 Tab ── */
+.rv-blindspot-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.rv-bs-tab {
+  padding: 6px 14px;
+  border: 1px solid var(--vp-c-divider);
+  background: transparent;
+  color: var(--vp-c-text-3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.rv-bs-tab:hover {
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-text-3);
+}
+
+.rv-bs-tab.active {
+  color: #f59e0b;
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.08);
+}
+
+/* ── 搜索/筛选栏 ── */
+.rv-filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.rv-search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+  transition: border-color 0.2s;
+}
+
+.rv-search-input:focus {
+  outline: none;
+  border-color: var(--vp-c-brand-1);
+}
+
+.rv-group-select {
+  padding: 8px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+  min-width: 120px;
+}
+
+/* ── 统计网格 ── */
+.rv-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.rv-stat-card {
+  padding: 16px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-c-bg-soft);
+  text-align: center;
+}
+
+.rv-stat-card.highlight {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.rv-stat-card.warn {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.rv-stat-num {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.rv-stat-card.highlight .rv-stat-num {
+  color: var(--vp-c-brand-1);
+}
+
+.rv-stat-card.warn .rv-stat-num {
+  color: #f59e0b;
+}
+
+.rv-stat-label {
+  font-size: 12px;
+  color: var(--vp-c-text-3);
+  margin-top: 4px;
+}
+
+/* ── 设置面板 ── */
+.rv-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rv-setting-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rv-setting-item label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+}
+
+.rv-setting-item select,
+.rv-setting-item input[type='range'] {
+  width: 100%;
+}
+
+.rv-setting-item select {
+  padding: 8px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+}
+
+.rv-setting-divider {
+  height: 1px;
+  background: var(--vp-c-divider);
+  margin: 4px 0;
+}
+
+.rv-setting-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 /* ==================== 响应式 ==================== */
 @media (max-width: 768px) {
   .qt-panel {
@@ -581,7 +887,24 @@
     max-height: 85vh;
   }
 
+  .qt-panel-large {
+    width: 96vw;
+    max-height: 85vh;
+  }
+
   .qt-panel-body {
     padding: 12px 14px 16px;
+  }
+
+  .rv-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rv-rating-row {
+    flex-wrap: wrap;
+  }
+
+  .rv-rating-btn {
+    flex: 1 1 45%;
   }
 }

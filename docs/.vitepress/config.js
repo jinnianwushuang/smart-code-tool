@@ -1,10 +1,15 @@
 // docs/.vitepress/config.js
 import { defineConfig } from 'vitepress'
+import { execSync } from 'node:child_process'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { nav } from './config/nav'
 import { sidebar } from './config/sidebar'
 import { search } from './config/search'
 import { themeConfig } from './config/theme'
 import { vite } from './config/vite'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   title: 'YOLO',
@@ -56,5 +61,14 @@ export default defineConfig({
       light: 'github-light',
       dark: 'github-dark',
     },
+  },
+
+  // 构建前自动生成全站文档清单 doc-list.json（供抗遗忘复习系统使用）
+  async buildStart() {
+    console.log('\n📋 正在生成全站文档清单...')
+    execSync('node scripts/gen-doc-list.mjs', {
+      cwd: resolve(__dirname, '../..'),
+      stdio: 'inherit',
+    })
   },
 })

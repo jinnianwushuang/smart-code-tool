@@ -1,112 +1,241 @@
-import { ref, computed, onMounted } from 'vue'
-import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from '../shared/utils'
-import { REVIEW_KEY } from '../shared/constants'
+/**
+ * 抗遗忘复习系统 — 核心业务逻辑（重构版）
+ *
+ * 组合：storage + scheduler + docRegistry + autoLearn
+ * 暴露 Vue 响应式 API 供 ReviewTab 和 QuickTools 使用
+ */
+
+import { ref, computed, shallowRef } from 'vue'
+import { useReviewStorage } from './useReviewStorage'
+import { useReviewScheduler, REVIEW_RATING } from './useReviewScheduler'
+import { useReviewDocRegistry } from './useReviewDocRegistry'
+import { useAutoLearn } from './useAutoLearn'
+import { HISTORY_LIMIT_PER_DOC } from '../shared/constants'
+
+/** 全局单例（避免多组件重复初始化） */
+let globalInstance = null
 
 /**
- * 复习记录：同链接唯一，记录当前页面 + 掌握程度（0-10），无条数上限
- * 排序模式：time（更新时间）| mastery-desc（掌握程度从高到低）| mastery-asc（掌握程度从低到高）
+ * useReview — 复习系统主 composable
+ *
+ * @param {function} getPage - 返回 { url, title } 的函数
  */
 export function useReview(getPage) {
+  if (globalInstance) return globalInstance
+
+  // ── 初始化各模块 ──
+  const storage = useReviewStorage()
+  const settings = shallowRef({ algorithm: 'fsrs', requestRetention: 0.9, maximumInterval: 365 })
+  let scheduler = useReviewScheduler(settings.value)
+  const docRegistry = useReviewDocRegistry(storage)
+
+  // ── 响应式状态 ──
   const records = ref([])
-  const currentPage = ref({ url: '', title: '' })
-  const sortMode = ref('time')
+  const isReady = ref(false)
+  const activeSubView = ref('today') // today | blindspot | all | stats | settings
 
-  /** 当前页面已有的掌握程度（用于高亮按钮），无记录返回 null */
-  const currentMastery = computed(() => {
-    const existing = records.value.find((r) => r.url === currentPage.value.url)
-    return existing ? existing.mastery : null
+  // ── 自动学习感知 ──
+  const autoLearn = useAutoLearn(
+    getPage,
+    storage,
+    scheduler,
+    (url) => docRegistry.getDocIdByUrl(url),
+    (docId) => docRegistry.getDocInfoById(docId),
+  )
+
+  // ── 计算属性 ──
+
+  /** 今日到期待复习 */
+  const dueRecords = computed(() => scheduler.getDueRecords(records.value))
+
+  /** 文档盲区 */
+  const blindSpots = computed(() => docRegistry.getBlindSpots())
+
+  /** 盲区总数 */
+  const blindSpotTotal = computed(
+    () =>
+      blindSpots.value.neverOpened.length +
+      blindSpots.value.neverLearned.length +
+      blindSpots.value.neverReviewed.length,
+  )
+
+  /** 统计概览 */
+  const stats = computed(() => {
+    const all = records.value.filter((r) => !r.isArchived)
+    const learned = all.filter((r) => r.autoLearnedAt)
+    const reviewed = all.filter((r) => r.reviewCount > 0)
+    const today = dueRecords.value
+    const totalDocs = docRegistry.getTotalDocCount()
+
+    return {
+      totalDocs,
+      totalRecords: all.length,
+      learnedCount: learned.length,
+      reviewedCount: reviewed.length,
+      dueCount: today.length,
+      coverageRate: totalDocs > 0 ? Math.round((learned.length / totalDocs) * 100) : 0,
+    }
   })
 
-  const latestTime = (r) => new Date(r.updatedAt || r.time)
+  // ── 核心方法 ──
 
-  const sorted = computed(() => {
-    const list = [...records.value]
-    if (sortMode.value === 'mastery-desc') {
-      return list.sort((a, b) => b.mastery - a.mastery || latestTime(b) - latestTime(a))
+  /**
+   * 初始化系统（应用启动时调用一次）
+   */
+  async function init() {
+    // 1. 初始化存储（从 IndexedDB 加载）
+    await storage.init()
+
+    // 2. 尝试从 localStorage 迁移旧数据
+    await storage.migrateFromLocalStorage()
+
+    // 3. 加载用户配置
+    const savedSettings = await storage.getSettings()
+    settings.value = savedSettings
+    scheduler = useReviewScheduler(savedSettings)
+
+    // 4. 加载文档清单
+    await docRegistry.init()
+
+    // 5. 同步文档清单与记录
+    await docRegistry.syncDocsWithRecords()
+
+    // 6. 刷新记录列表
+    refreshRecords()
+
+    isReady.value = true
+  }
+
+  /** 刷新内存中的记录列表 */
+  function refreshRecords() {
+    records.value = storage.getAllRecords()
+  }
+
+  /**
+   * 提交复习评分
+   *
+   * @param {string} docId - 文档 ID
+   * @param {string} ratingStr - 'again' | 'hard' | 'good' | 'easy'
+   */
+  async function submitReview(docId, ratingStr) {
+    const record = storage.getRecord(docId)
+    if (!record) return
+
+    const { fsrsFields, logEntry } = scheduler.scheduleReview(record, ratingStr)
+
+    // 更新 FSRS 字段
+    Object.assign(record, fsrsFields)
+
+    // 添加学习历史
+    record.history.push(logEntry)
+    // 裁剪历史（保留最新 N 条）
+    if (record.history.length > HISTORY_LIMIT_PER_DOC) {
+      record.history = record.history.slice(-HISTORY_LIMIT_PER_DOC)
     }
-    if (sortMode.value === 'mastery-asc') {
-      return list.sort((a, b) => a.mastery - b.mastery || latestTime(b) - latestTime(a))
-    }
-    return list.sort((a, b) => latestTime(b) - latestTime(a))
-  })
 
-  /** 刷新当前页面信息（切换到复习 Tab 时调用） */
-  const refreshPage = () => {
-    const { url, title } = getPage()
-    currentPage.value = { url, title }
+    await storage.saveRecord(record)
+    refreshRecords()
   }
 
-  /** 记录/更新当前页面的掌握程度 */
-  const recordMastery = (mastery) => {
-    const { url, title } = getPage()
-    currentPage.value = { url, title }
-    const now = new Date().toISOString()
-    const existing = records.value.find((r) => r.url === url)
-
-    if (existing) {
-      existing.mastery = mastery
-      existing.title = title
-      existing.updatedAt = now
-    } else {
-      records.value.push({
-        id: Date.now().toString(),
-        url,
-        title,
-        mastery,
-        time: now,
-        updatedAt: null,
-      })
-    }
-
-    writeStorage(REVIEW_KEY, records.value)
+  /**
+   * 标记文档为「已知」（从盲区移除，不参与调度）
+   */
+  async function dismissDoc(docId) {
+    const record = storage.getRecord(docId)
+    if (!record) return
+    record.isDismissed = true
+    await storage.saveRecord(record)
+    refreshRecords()
   }
 
-  const remove = (id) => {
-    records.value = records.value.filter((r) => r.id !== id)
-    writeStorage(REVIEW_KEY, records.value)
+  /**
+   * 取消「已知」标记
+   */
+  async function undismissDoc(docId) {
+    const record = storage.getRecord(docId)
+    if (!record) return
+    record.isDismissed = false
+    await storage.saveRecord(record)
+    refreshRecords()
   }
 
-  const clearAll = () => {
-    if (!records.value.length) return
-    if (!confirm(`确定清空全部 ${records.value.length} 条复习记录吗？`)) return
-    records.value = []
-    writeStorage(REVIEW_KEY, records.value)
+  /**
+   * 更新用户配置
+   */
+  async function updateSettings(newSettings) {
+    settings.value = { ...settings.value, ...newSettings }
+    await storage.saveSettings(settings.value)
+    // 重建调度器（参数可能变了）
+    scheduler = useReviewScheduler(settings.value)
   }
 
-  /** 导出为 Markdown（表格，按当前排序） */
-  const exportRecords = () => {
-    if (!records.value.length) return
-    const rows = sorted.value.map(
-      (r, i) =>
-        `| ${i + 1} | [${r.title}](${r.url}) | ${r.mastery} | ${dayjs(r.updatedAt || r.time).format('YYYY-MM-DD HH:mm')} | ${dayjs(r.time).format('YYYY-MM-DD HH:mm')} |`,
-    )
-    const md = [
-      '# 🔁 复习记录（掌握程度）',
-      '',
-      `> 导出时间：${dayjs().format('YYYY-MM-DD HH:mm')} ・ 共 ${records.value.length} 条（掌握程度 0-10）`,
-      '',
-      '| # | 页面 | 掌握程度 | 更新时间 | 加入时间 |',
-      '| --- | --- | --- | --- | --- |',
-      ...rows,
-      '',
-    ].join('\n')
-    downloadText(`复习记录_${exportTimestamp()}.md`, md)
+  /**
+   * 导出全部数据
+   */
+  async function exportData() {
+    return await storage.exportAllData()
   }
 
-  onMounted(() => {
-    records.value = readStorage(REVIEW_KEY)
-  })
+  /**
+   * 导入数据
+   */
+  async function importData(data) {
+    const result = await storage.importAllData(data)
+    refreshRecords()
+    return result
+  }
 
-  return {
+  /**
+   * 清空全部数据
+   */
+  async function clearAll() {
+    await storage.clearAllRecords()
+    refreshRecords()
+  }
+
+  /**
+   * 跳转到文档页面
+   */
+  function goToDoc(url) {
+    window.location.href = url
+  }
+
+  // ── 构建实例 ──
+  const instance = {
+    // 状态
     records,
-    sorted,
-    sortMode,
-    currentPage,
-    currentMastery,
-    refreshPage,
-    recordMastery,
-    remove,
+    isReady,
+    settings,
+    activeSubView,
+    autoLearn,
+    // 计算属性
+    dueRecords,
+    blindSpots,
+    blindSpotTotal,
+    stats,
+    // 方法
+    init,
+    refreshRecords,
+    submitReview,
+    dismissDoc,
+    undismissDoc,
+    updateSettings,
+    exportData,
+    importData,
     clearAll,
-    exportRecords,
+    goToDoc,
+    // 子模块暴露（高级用法）
+    storage,
+    scheduler,
+    docRegistry,
+    REVIEW_RATING,
   }
+
+  globalInstance = instance
+  return instance
+}
+
+/** 重置全局单例（仅测试用） */
+export function _resetReviewInstance() {
+  globalInstance = null
 }
