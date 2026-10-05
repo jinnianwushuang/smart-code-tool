@@ -1,7 +1,12 @@
 import { ref, computed, onMounted } from 'vue'
 import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from '../shared/utils'
 import { DOUBT_KEY, DOUBT_LIMIT } from '../shared/constants'
-import { getDocIdByUrl, migrateRecords, findByDocIdOrUrl, findIndexByDocIdOrUrl } from '../shared/useDocIdMapper'
+import {
+  getDocIdByUrl,
+  migrateRecords,
+  findByDocIdOrUrl,
+  findIndexByDocIdOrUrl,
+} from '../shared/useDocIdMapper'
 
 /**
  * 记忆疑惑：同链接唯一，支持编辑/已解决/删除

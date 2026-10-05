@@ -16,6 +16,17 @@ export function useReviewNotification(review) {
     typeof Notification !== 'undefined' && Notification.permission === 'granted',
   )
   let checkInterval = null
+  let isActive = false // 是否正在运行定时检查
+  let wasPaused = false // 是否因页面隐藏而暂停
+
+  /**
+   * 立即检查一次到期情况
+   */
+  function checkOnce() {
+    if (!isPermissionGranted.value) return
+    const dueCount = review.dueRecords.value.length
+    if (dueCount > 0) sendNotification(dueCount)
+  }
 
   /**
    * 请求通知权限
@@ -54,29 +65,47 @@ export function useReviewNotification(review) {
   }
 
   /**
-   * 启动定时检查（每 30 分钟检查一次到期情况）
+   * 页面可见性变化处理：隐藏时暂停，可见时恢复并立即检查一次
    */
-  function startChecking() {
-    stopChecking()
-    checkInterval = setInterval(
-      () => {
-        const dueCount = review.dueRecords.value.length
-        if (dueCount > 0) {
-          sendNotification(dueCount)
-        }
-      },
-      30 * 60 * 1000,
-    ) // 30 分钟
+  function onVisibilityChange() {
+    if (document.visibilityState === 'hidden') {
+      // 页面隐藏：暂停 interval，但保留 isActive 状态
+      if (isActive && checkInterval) {
+        clearInterval(checkInterval)
+        checkInterval = null
+        wasPaused = true
+      }
+    } else if (document.visibilityState === 'visible' && wasPaused) {
+      // 页面恢复可见：重启 interval + 立即检查一次
+      checkInterval = setInterval(checkOnce, 30 * 60 * 1000)
+      wasPaused = false
+      checkOnce()
+    }
   }
 
   /**
-   * 停止定时检查
+   * 启动定时检查（每 30 分钟检查一次到期情况）
+   */
+  function startChecking() {
+    if (isActive) return
+    isActive = true
+    wasPaused = false
+    checkInterval = setInterval(checkOnce, 30 * 60 * 1000) // 30 分钟
+    // 注册可见性监听
+    document.addEventListener('visibilitychange', onVisibilityChange)
+  }
+
+  /**
+   * 停止定时检查（完全关闭，移除监听）
    */
   function stopChecking() {
     if (checkInterval) {
       clearInterval(checkInterval)
       checkInterval = null
     }
+    isActive = false
+    wasPaused = false
+    document.removeEventListener('visibilitychange', onVisibilityChange)
   }
 
   return {

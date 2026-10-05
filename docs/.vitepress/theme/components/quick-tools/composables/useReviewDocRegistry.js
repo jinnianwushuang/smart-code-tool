@@ -10,6 +10,7 @@
 
 import { ref } from 'vue'
 import { DOC_LIST_URL } from '../shared/constants'
+import { injectDocList } from '../shared/useDocIdMapper'
 
 /**
  * useReviewDocRegistry — 文档清单管理
@@ -53,6 +54,9 @@ export function useReviewDocRegistry(storage) {
           })
         }
       }
+
+      // 注入数据到共享 mapper，避免 Progress/Doubt/Note 重复 fetch
+      injectDocList(docs)
 
       // 保存文档快照
       await storage.saveDocSnapshot({

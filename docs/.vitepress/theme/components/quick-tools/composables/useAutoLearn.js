@@ -34,6 +34,25 @@ export function useAutoLearn(getPage, storage, scheduler, getDocIdByUrl, getDocI
 
   let timer = null
   let trackingUrl = ''
+  let wasTracking = false // 页面隐藏前是否在追踪
+
+  /**
+   * 监听页面可见性变化：隐藏时停止计时，恢复时重启
+   */
+  function onVisibilityChange() {
+    if (document.visibilityState === 'hidden') {
+      // 页面隐藏：持久化进度 + 停止计时
+      wasTracking = timer !== null
+      if (wasTracking) {
+        persistCurrentProgress()
+        stopTimer()
+      }
+    } else if (document.visibilityState === 'visible' && wasTracking) {
+      // 页面恢复可见：重启计时
+      startTimer()
+      wasTracking = false
+    }
+  }
 
   /**
    * 开始追踪指定 URL 的页面
@@ -47,6 +66,10 @@ export function useAutoLearn(getPage, storage, scheduler, getDocIdByUrl, getDocI
       currentDocId.value = null
       return
     }
+
+    // 注册可见性监听（先移除旧的，防止重复）
+    document.removeEventListener('visibilitychange', onVisibilityChange)
+    document.addEventListener('visibilitychange', onVisibilityChange)
 
     currentDocId.value = docId
     const record = storage.getRecord(docId)
@@ -90,11 +113,12 @@ export function useAutoLearn(getPage, storage, scheduler, getDocIdByUrl, getDocI
   }
 
   /**
-   * 每秒 tick：仅页面可见时累加
+   * 每 10 秒 tick：累加阅读秒数
+   * 注：页面不可见时 timer 已被 visibilitychange 停止，此处仅做安全兆底
    */
   async function tick() {
     if (document.visibilityState !== 'visible') return
-    accumulatedSeconds.value++
+    accumulatedSeconds.value += TICK_INTERVAL / 1000
 
     if (accumulatedSeconds.value >= AUTO_LEARN_THRESHOLD) {
       await onAutoLearned()
@@ -173,6 +197,7 @@ export function useAutoLearn(getPage, storage, scheduler, getDocIdByUrl, getDocI
    * 组件卸载时清理
    */
   async function destroy() {
+    document.removeEventListener('visibilitychange', onVisibilityChange)
     await persistCurrentProgress()
     stopTimer()
   }

@@ -2,9 +2,13 @@
  * 文档 ID 映射器 — 供 Progress/Doubt/Note 等工具使用
  *
  * 职责：
- * - 获取 doc-list.json，建立 URL ↔ docId 双向映射
+ * - 建立 URL ↔ docId 双向映射
  * - 提供 URL → docId 查找
  * - 提供旧数据自动迁移（为无 docId 的记录补上 docId）
+ *
+ * 数据源策略：
+ * - 优先由 useReviewDocRegistry 加载后注入（injectDocList），零额外请求
+ * - 兑底：若无人注入，首次调用时自行 fetch doc-list.json
  */
 
 import { DOC_LIST_URL } from './constants'
@@ -13,7 +17,28 @@ let urlToIdMap = null
 let idToDocMap = null
 let initPromise = null
 
-/** 懒初始化（仅首次调用时 fetch） */
+/** 内部：从 docs 数组构建映射表 */
+function buildMaps(docs) {
+  urlToIdMap = new Map()
+  idToDocMap = new Map()
+  for (const doc of docs) {
+    if (doc.id && doc.url) {
+      urlToIdMap.set(doc.url, doc.id)
+      idToDocMap.set(doc.id, { id: doc.id, url: doc.url, title: doc.title, group: doc.group })
+    }
+  }
+}
+
+/**
+ * 注入已加载的文档清单（由 useReviewDocRegistry 调用）
+ * 避免重复 fetch doc-list.json
+ */
+export function injectDocList(docs) {
+  if (!Array.isArray(docs) || docs.length === 0) return
+  buildMaps(docs)
+}
+
+/** 懒初始化：优先已注入，否则自行 fetch */
 async function ensureInit() {
   if (urlToIdMap) return
   if (initPromise) return initPromise
@@ -24,16 +49,7 @@ async function ensureInit() {
       if (!res.ok) return
       const data = await res.json()
       const docs = Array.isArray(data) ? data : data.docs || []
-
-      urlToIdMap = new Map()
-      idToDocMap = new Map()
-
-      for (const doc of docs) {
-        if (doc.id && doc.url) {
-          urlToIdMap.set(doc.url, doc.id)
-          idToDocMap.set(doc.id, { id: doc.id, url: doc.url, title: doc.title, group: doc.group })
-        }
-      }
+      buildMaps(docs)
     } catch {
       // 获取失败时映射表为空，不影响功能
     }
