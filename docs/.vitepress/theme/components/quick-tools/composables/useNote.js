@@ -1,12 +1,13 @@
 import { ref, computed, onMounted } from 'vue'
-import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from '../shared/utils'
-import { NOTE_KEY, NOTE_LIMIT } from '../shared/constants'
+import { dayjs, downloadText, exportTimestamp } from '../shared/utils'
+import { NOTE_LIMIT } from '../shared/constants'
 import {
   getDocIdByUrl,
   migrateRecords,
   findByDocIdOrUrl,
   findIndexByDocIdOrUrl,
 } from '../shared/useDocIdMapper'
+import { readQt, writeQt, KEY_NOTES } from '../shared/useQtStorage'
 
 /**
  * 页面笔记：同链接唯一，支持编辑/删除
@@ -71,7 +72,7 @@ export function useNote(getPage) {
       }
     }
 
-    writeStorage(NOTE_KEY, records.value)
+    await writeQt(KEY_NOTES, records.value)
     draft.value = ''
     editingId.value = null
     initForm()
@@ -82,9 +83,9 @@ export function useNote(getPage) {
     draft.value = record.content
   }
 
-  const remove = (id) => {
+  const remove = async (id) => {
     records.value = records.value.filter((r) => r.id !== id)
-    writeStorage(NOTE_KEY, records.value)
+    await writeQt(KEY_NOTES, records.value)
     if (editingId.value === id) {
       editingId.value = null
       draft.value = ''
@@ -92,21 +93,22 @@ export function useNote(getPage) {
     }
   }
 
-  const clearAll = () => {
+  const clearAll = async () => {
     if (!records.value.length) return
     if (!confirm(`确定清空全部 ${records.value.length} 条笔记吗？`)) return
     records.value = []
-    writeStorage(NOTE_KEY, records.value)
+    await writeQt(KEY_NOTES, records.value)
     editingId.value = null
     draft.value = ''
   }
 
   onMounted(async () => {
-    const data = readStorage(NOTE_KEY)
-    // 自动迁移旧数据
+    // 从 IDB 加载（自动迁移 localStorage 旧数据）
+    const data = await readQt(KEY_NOTES)
+    // 自动迁移：规范化 URL + 补全 docId
     const { migrated, records: patched } = await migrateRecords(data)
     records.value = patched
-    if (migrated > 0) writeStorage(NOTE_KEY, patched)
+    if (migrated > 0) await writeQt(KEY_NOTES, patched)
   })
 
   /** 导出为 Markdown（按更新时间倒序） */

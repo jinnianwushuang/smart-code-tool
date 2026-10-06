@@ -1,12 +1,13 @@
 import { ref, computed, onMounted } from 'vue'
-import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from '../shared/utils'
-import { DOUBT_KEY, DOUBT_LIMIT } from '../shared/constants'
+import { dayjs, downloadText, exportTimestamp } from '../shared/utils'
+import { DOUBT_LIMIT } from '../shared/constants'
 import {
   getDocIdByUrl,
   migrateRecords,
   findByDocIdOrUrl,
   findIndexByDocIdOrUrl,
 } from '../shared/useDocIdMapper'
+import { readQt, writeQt, KEY_DOUBTS } from '../shared/useQtStorage'
 
 /**
  * 记忆疑惑：同链接唯一，支持编辑/已解决/删除
@@ -74,7 +75,7 @@ export function useDoubt(getPage) {
       }
     }
 
-    writeStorage(DOUBT_KEY, records.value)
+    await writeQt(KEY_DOUBTS, records.value)
     draft.value = ''
     editingId.value = null
     initForm()
@@ -85,15 +86,15 @@ export function useDoubt(getPage) {
     draft.value = record.doubt
   }
 
-  const resolve = (record) => {
+  const resolve = async (record) => {
     record.resolved = true
     record.resolvedTime = new Date().toISOString()
-    writeStorage(DOUBT_KEY, records.value)
+    await writeQt(KEY_DOUBTS, records.value)
   }
 
-  const remove = (id) => {
+  const remove = async (id) => {
     records.value = records.value.filter((r) => r.id !== id)
-    writeStorage(DOUBT_KEY, records.value)
+    await writeQt(KEY_DOUBTS, records.value)
     if (editingId.value === id) {
       editingId.value = null
       draft.value = ''
@@ -101,16 +102,16 @@ export function useDoubt(getPage) {
     }
   }
 
-  const clearResolved = () => {
+  const clearResolved = async () => {
     records.value = records.value.filter((r) => !r.resolved)
-    writeStorage(DOUBT_KEY, records.value)
+    await writeQt(KEY_DOUBTS, records.value)
   }
 
-  const clearAll = () => {
+  const clearAll = async () => {
     if (!records.value.length) return
     if (!confirm(`确定清空全部 ${records.value.length} 条疑惑记录吗？`)) return
     records.value = []
-    writeStorage(DOUBT_KEY, records.value)
+    await writeQt(KEY_DOUBTS, records.value)
     editingId.value = null
     draft.value = ''
   }
@@ -142,11 +143,12 @@ export function useDoubt(getPage) {
   }
 
   onMounted(async () => {
-    const data = readStorage(DOUBT_KEY)
-    // 自动迁移旧数据
+    // 从 IDB 加载（自动迁移 localStorage 旧数据）
+    const data = await readQt(KEY_DOUBTS)
+    // 自动迁移：规范化 URL + 补全 docId
     const { migrated, records: patched } = await migrateRecords(data)
     records.value = patched
-    if (migrated > 0) writeStorage(DOUBT_KEY, patched)
+    if (migrated > 0) await writeQt(KEY_DOUBTS, patched)
   })
 
   return {

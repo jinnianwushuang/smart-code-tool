@@ -1,7 +1,7 @@
-# 抗遗忘复习系统 — AI 快速认知文档（详细版）
+# 抗遗忘复习系统 — AI 快速认知文档
 
 > 本文档供 AI 助手快速理解「抗遗忘复习清单系统」的完整设计与实现细节。
-> **状态：已实现 ✅**（全部 7 个 Phase 已完成，构建验证通过）
+> **状态：已实现 ✅**（全部 Phase 已完成，构建验证通过）
 > 详细方案见：[`抗遗忘复习系统方案.md`](./抗遗忘复习系统方案.md)
 
 ---
@@ -25,13 +25,16 @@
 
 ## 二、核心技术选型
 
-| 领域     | 方案                       | 说明                                                          |
-| -------- | -------------------------- | ------------------------------------------------------------- |
-| 调度算法 | **ts-fsrs**                | Free Spaced Repetition Scheduler，Anki 新一代算法，~15KB gzip |
-| 降级方案 | 固定艾宾浩斯间隔           | 5min→30min→12h→1d→2d→4d→7d→15d，作为「经典模式」可选项        |
-| 持久化   | **idb-keyval** (IndexedDB) | ~600B brotli，替代现有 localStorage（5MB 限制）               |
-| 文档 ID  | **24 字符 nanoid**         | 稳定锚点，防止 URL/标题变更导致历史丢失                       |
-| 文档清单 | `doc-list.json`            | 构建时从 sidebar 配置生成，运行时 fetch 获取                  |
+| 领域       | 方案                       | 说明                                                                  |
+| ---------- | -------------------------- | --------------------------------------------------------------------- |
+| 调度算法   | **ts-fsrs**                | Free Spaced Repetition Scheduler，Anki 新一代算法，~15KB gzip         |
+| 降级方案   | 固定艾宾浩斯间隔           | 5min→30min→12h→1d→2d→4d→7d→15d，作为「经典模式」可选项                |
+| 持久化     | **idb-keyval** (IndexedDB) | 全部工具统一使用 IDB，DB 名 `smart-code-tool`，Store 名 `quick-tools` |
+| 文档 ID    | **24 字符 nanoid**         | 稳定锚点，四工具统一 docId 优先匹配                                   |
+| 文档清单   | `doc-list.json`            | 构建时从 sidebar 生成，运行时由 docRegistry 加载并注入 mapper         |
+| URL 规范化 | `stripBase()`              | 剥离域名 + VitePress base 前缀 + .html 后缀，统一为 doc-list 格式     |
+| URL 存储   | `useCurrentPage`           | 返回 stripBase 规范化后的路径（与 doc-list 一致）                     |
+| 导航跳转   | `navigateTo`               | 路径格式 URL 加回 base 前缀后走 router.go()                           |
 
 ---
 
@@ -40,7 +43,7 @@
 ```
 Layout.vue (全局挂载 useAutoLearn)
   ↓ 累计 ≥ 10min 自动注册
-QuickTools.vue (面板入口)
+QuickTools.vue (面板入口 + navigateTo 导航)
   └── ReviewTab.vue (五子视图)
         ├── 今日待复习    → 到期文档评分
         ├── 文档盲区      → 从未打开/从未学习/从未复习
@@ -51,14 +54,17 @@ QuickTools.vue (面板入口)
 
 ### 模块职责
 
-| 模块         | 文件                       | 职责                                               |
-| ------------ | -------------------------- | -------------------------------------------------- |
-| 自动学习感知 | `useAutoLearn.js`          | 页面计时、可见性检测、路由监听、自动触发注册       |
-| 调度引擎     | `useReviewScheduler.js`    | FSRS / 固定间隔算法封装                            |
-| 文档清单管理 | `useReviewDocRegistry.js`  | 获取 doc-list、基于 docId 的增删检测、URL 变更同步 |
-| 持久化层     | `useReviewStorage.js`      | IndexedDB 读写、localStorage 迁移                  |
-| 业务逻辑     | `useReview.js` (重构)      | 组合以上模块，暴露 Vue 响应式 API                  |
-| 通知提醒     | `useReviewNotification.js` | 浏览器通知权限管理 + 定时到期检查                  |
+| 模块         | 文件                       | 职责                                                    |
+| ------------ | -------------------------- | ------------------------------------------------------- |
+| 自动学习感知 | `useAutoLearn.js`          | 页面计时、visibilitychange 事件驱动、10s tick、路由监听 |
+| 调度引擎     | `useReviewScheduler.js`    | FSRS / 固定间隔算法封装                                 |
+| 文档清单管理 | `useReviewDocRegistry.js`  | 加载 doc-list、注入 mapper、盲区检测、旧记录修复        |
+| 持久化层     | `useReviewStorage.js`      | IDB 读写（review 专用键）、内存缓存 + 批量持久化        |
+| 统一存储层   | `useQtStorage.js`          | 四工具共用 IDB 存储 + localStorage 一次性迁移           |
+| docId 映射器 | `useDocIdMapper.js`        | URL↔docId 映射、stripBase 规范化、旧数据迁移            |
+| 页面信息     | `useCurrentPage.js`        | 返回 stripBase 规范化后的 URL（与 doc-list 格式一致）   |
+| 业务逻辑     | `useReview.js`             | 组合以上模块，暴露 Vue 响应式 API                       |
+| 通知提醒     | `useReviewNotification.js` | 浏览器通知 + visibilitychange 感知定时                  |
 
 ---
 
@@ -67,21 +73,32 @@ QuickTools.vue (面板入口)
 ```
 docs/.vitepress/
 ├── config/sidebar/*.js             ← 叶子节点带 id 字段（24 位 nanoid）
+├── config.js                        ← base: '/smart-code-tool/'、favicon 绝对路径
 └── theme/components/
-    ├── QuickTools.vue              ← 主组件（编排层）
+    ├── QuickTools.vue               ← 主组件（编排层 + navigateTo 加回 base）
     └── quick-tools/
         ├── composables/
-        │   ├── useAutoLearn.js             ← 新增
-        │   ├── useReview.js                ← 重构
-        │   ├── useReviewScheduler.js       ← 新增
-        │   ├── useReviewStorage.js         ← 新增
-        │   ├── useReviewDocRegistry.js     ← 新增
-        │   └── useReviewNotification.js    ← 新增
+        │   ├── useAutoLearn.js              ← 自动学习感知（10s tick + visibilitychange）
+        │   ├── useReview.js                 ← 复习业务逻辑
+        │   ├── useReviewScheduler.js        ← FSRS 调度引擎
+        │   ├── useReviewStorage.js          ← Review IndexedDB 层
+        │   ├── useReviewDocRegistry.js      ← 文档清单管理 + 旧记录修复
+        │   ├── useReviewNotification.js     ← 浏览器通知（visibilitychange 感知）
+        │   ├── useProgress.js               ← 进度记录（IDB）
+        │   ├── useDoubt.js                  ← 疑惑记录（IDB）
+        │   ├── useNote.js                   ← 笔记记录（IDB）
+        │   └── useCurrentPage.js            ← 页面 URL/标题（stripBase 规范化）
         ├── tabs/
-        │   └── ReviewTab.vue               ← 重构（五子视图）
+        │   ├── ReviewTab.vue                ← 复习五子视图
+        │   ├── ProgressTab.vue
+        │   ├── DoubtTab.vue
+        │   └── NoteTab.vue
         └── shared/
-            ├── constants.js
-            └── utils.js
+            ├── constants.js                 ← TICK_INTERVAL=10000、阈值、键名
+            ├── utils.js
+            ├── useQtStorage.js              ← 统一 IDB 存储层（四工具共用）
+            ├── useDocIdMapper.js            ← docId 映射 + stripBase + 迁移
+            └── quick-tools.css
 
 scripts/
 ├── inject-sidebar-ids.mjs          ← 为 sidebar 叶子节点注入 id（幂等）
@@ -97,7 +114,7 @@ scripts/
 ```typescript
 interface ReviewRecord {
   docId: string // 文档稳定 ID（与 sidebar 中的 id 对应）
-  url: string // 文档路径（可从 doc-list 同步更新）
+  url: string // 文档路径（stripBase 规范化后，如 /interview/react/xxx）
   title: string // 文档标题（可从 doc-list 同步更新）
   group: string // 所属分组
 
@@ -180,27 +197,75 @@ interface LearningLogEntry {
 ## 九、有效时间判定规则
 
 - 页面 `visibilityState === 'visible'` 时才计时（切 Tab / 最小化不计）
+- **visibilitychange 事件驱动**：页面隐藏时立即停止 timer + 持久化，恢复时重启
 - SPA 路由切换时停止旧计时、开始新页面累计
 - 同一页面多次进入时间累加（5min + 5min = 10min → 触发）
 - 达到阈值后自动写入，不重复触发
+- tick 间隔 10 秒（对 600 秒阈值误差可忽略，减少 90% CPU 唤醒）
 
 ---
 
-## 十、实施阶段
+## 十、VitePress 适配要点
 
-| Phase               | 内容                                                       | 状态 |
-| ------------------- | ---------------------------------------------------------- | ---- |
-| 1. 文档 ID 基础设施 | inject-sidebar-ids 脚本 + 头部约束注释 + gen-doc-list 脚本 | ✅   |
-| 2. 存储与调度引擎   | IndexedDB 持久化层 + FSRS 调度封装                         | ✅   |
-| 3. 自动学习感知     | useAutoLearn（计时 + 可见性 + 路由监听）                   | ✅   |
-| 4. 核心复习功能     | docRegistry + useReview 重构 + 数据迁移                    | ✅   |
-| 5. UI 重构          | ReviewTab 五子视图 + 面板 80vw + 样式                      | ✅   |
-| 6. 增强功能         | 浏览器通知 + 导出/导入 + 统计面板                          | ✅   |
-| 7. 测试与优化       | 构建验证通过                                               | ✅   |
+### URL 规范化（stripBase）
+
+VitePress 生产环境的运行时 URL 与 doc-list.json 存在三处差异：
+
+| 差异点     | 运行时 URL                              | doc-list.json          |
+| ---------- | --------------------------------------- | ---------------------- |
+| 域名       | `https://jinnianwushuang.github.io/...` | 无域名                 |
+| base 前缀  | `/smart-code-tool/interview/react/xxx`  | `/interview/react/xxx` |
+| .html 后缀 | `.../react-compiler.html`               | `.../react-compiler`   |
+
+`stripBase()` 统一处理三者，确保 URL 匹配成功。
+
+### URL 存储与导航
+
+- **存储**：`useCurrentPage` 返回 `stripBase(window.location.pathname)`，与 doc-list 格式一致
+- **导航**：`navigateTo` 对路径格式 URL 加回 `import.meta.env.BASE_URL` 前缀后调用 `router.go()`
+- **旧数据兼容**：完整 URL（含 https://）在 `navigateTo` 中通过 `new URL()` 提取 pathname 处理
+
+### 四工具统一存储
+
+所有工具（Progress/Doubt/Note/Review）统一使用 IndexedDB：
+
+```
+IndexedDB: smart-code-tool / quick-tools
+├── qt:progress        ← 进度记录
+├── qt:doubts          ← 疑惑记录
+├── qt:notes           ← 笔记记录
+├── review:records     ← 复习记录
+├── review:docSnapshot ← 文档快照
+└── review:settings    ← 用户配置
+```
+
+旧 localStorage 数据在首次访问时自动迁移到 IDB 并清除旧键。
+
+### doc-list 数据源统一
+
+`useReviewDocRegistry` 加载 doc-list.json 后通过 `injectDocList()` 注入到 `useDocIdMapper`，避免重复 fetch。
 
 ---
 
-## 十一、依赖清单
+## 十一、实施阶段
+
+| Phase               | 内容                                                            | 状态 |
+| ------------------- | --------------------------------------------------------------- | ---- |
+| 1. 文档 ID 基础设施 | inject-sidebar-ids 脚本 + 头部约束注释 + gen-doc-list 脚本      | ✅   |
+| 2. 存储与调度引擎   | IndexedDB 持久化层 + FSRS 调度封装                              | ✅   |
+| 3. 自动学习感知     | useAutoLearn（10s tick + visibilitychange 事件驱动 + 路由监听） | ✅   |
+| 4. 核心复习功能     | docRegistry + useReview 重构 + 数据迁移                         | ✅   |
+| 5. UI 重构          | ReviewTab 五子视图 + 面板 80vw + 样式                           | ✅   |
+| 6. 增强功能         | 浏览器通知 + 导出/导入 + 统计面板                               | ✅   |
+| 7. 测试与优化       | 构建验证通过                                                    | ✅   |
+| 8. VitePress 适配   | stripBase URL 规范化 + favicon 修复                             | ✅   |
+| 9. 四工具统一升级   | docId 锚定 + localStorage → IndexedDB + 数据源统一              | ✅   |
+| 10. 定时器优化      | 10s 间隔 + visibilitychange 事件驱动 + 通知感知可见性           | ✅   |
+| 11. URL 一致性修复  | useCurrentPage 用 stripBase + navigateTo 加回 base              | ✅   |
+
+---
+
+## 十二、依赖清单
 
 | 包名         | 用途                   | 体积         |
 | ------------ | ---------------------- | ------------ |

@@ -1,7 +1,8 @@
 import { ref, onMounted } from 'vue'
-import { readStorage, writeStorage, dayjs, downloadText, exportTimestamp } from '../shared/utils'
-import { PROGRESS_KEY, PROGRESS_LIMIT } from '../shared/constants'
+import { dayjs, downloadText, exportTimestamp } from '../shared/utils'
+import { PROGRESS_LIMIT } from '../shared/constants'
 import { getDocIdByUrl, migrateRecords } from '../shared/useDocIdMapper'
+import { readQt, writeQt, KEY_PROGRESS } from '../shared/useQtStorage'
 
 /**
  * 记忆进度：记录当前页面 URL + 标题 + 时间
@@ -16,19 +17,19 @@ export function useProgress(getPage) {
     if (records.value.length > PROGRESS_LIMIT) {
       records.value = records.value.slice(0, PROGRESS_LIMIT)
     }
-    writeStorage(PROGRESS_KEY, records.value)
+    await writeQt(KEY_PROGRESS, records.value)
   }
 
-  const remove = (index) => {
+  const remove = async (index) => {
     records.value.splice(index, 1)
-    writeStorage(PROGRESS_KEY, records.value)
+    await writeQt(KEY_PROGRESS, records.value)
   }
 
-  const clearAll = () => {
+  const clearAll = async () => {
     if (!records.value.length) return
     if (!confirm(`确定清空全部 ${records.value.length} 条进度记录吗？`)) return
     records.value = []
-    writeStorage(PROGRESS_KEY, records.value)
+    await writeQt(KEY_PROGRESS, records.value)
   }
 
   /** 导出为 Markdown（表格） */
@@ -52,11 +53,12 @@ export function useProgress(getPage) {
   }
 
   onMounted(async () => {
-    const data = readStorage(PROGRESS_KEY)
-    // 自动迁移旧数据：为无 docId 的记录补上 docId
+    // 从 IDB 加载（自动迁移 localStorage 旧数据）
+    const data = await readQt(KEY_PROGRESS)
+    // 自动迁移：规范化 URL + 补全 docId
     const { migrated, records: patched } = await migrateRecords(data)
     records.value = patched
-    if (migrated > 0) writeStorage(PROGRESS_KEY, patched)
+    if (migrated > 0) await writeQt(KEY_PROGRESS, patched)
   })
 
   return { records, add, remove, clearAll, exportRecords }

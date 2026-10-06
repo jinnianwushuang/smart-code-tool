@@ -1,0 +1,67 @@
+/**
+ * QuickTools 统一 IndexedDB 存储层
+ *
+ * 所有工具（Progress/Doubt/Note/Review）共用同一个 IDB 数据库：
+ *   - DB 名: smart-code-tool
+ *   - Store: quick-tools
+ *
+ * 替代原 localStorage 方案，无 5MB 限制
+ */
+
+import { get, set, createStore } from 'idb-keyval'
+
+// 与 useReviewStorage.js 共用同一个 IDB 数据库
+export const qtStore = createStore('smart-code-tool', 'quick-tools')
+
+// ── IDB 键名 ──
+const KEY_PROGRESS = 'qt:progress'
+const KEY_DOUBTS = 'qt:doubts'
+const KEY_NOTES = 'qt:notes'
+
+// ── localStorage 旧键（用于一次性迁移） ──
+const LEGACY_KEYS = {
+  [KEY_PROGRESS]: 'quick-tools-progress',
+  [KEY_DOUBTS]: 'quick-tools-doubts',
+  [KEY_NOTES]: 'quick-tools-notes',
+}
+
+/**
+ * 读取数据（IDB 优先，回退 localStorage 旧数据）
+ */
+export async function readQt(idbKey) {
+  // 先尝试 IDB
+  const idbData = await get(idbKey, qtStore)
+  if (idbData) return idbData
+
+  // IDB 无数据 → 尝试从 localStorage 迁移
+  const legacyKey = LEGACY_KEYS[idbKey]
+  if (legacyKey) {
+    try {
+      const raw = localStorage.getItem(legacyKey)
+      if (raw) {
+        const data = JSON.parse(raw)
+        if (data && data.length > 0) {
+          // 写入 IDB 并清除 localStorage
+          await set(idbKey, data, qtStore)
+          localStorage.removeItem(legacyKey)
+          return data
+        }
+      }
+    } catch {
+      // localStorage 读取/解析失败，忽略
+    }
+  }
+
+  // 返回默认空数组
+  return []
+}
+
+/**
+ * 写入数据（仅 IDB）
+ */
+export async function writeQt(idbKey, data) {
+  await set(idbKey, data, qtStore)
+}
+
+// ── 键名导出（供各工具使用） ──
+export { KEY_PROGRESS, KEY_DOUBTS, KEY_NOTES }

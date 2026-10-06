@@ -19,23 +19,26 @@ const router = useRouter()
 /** 导航到记录对应的页面（SPA 内跳转） */
 const navigateTo = (url) => {
   if (!url) return
-  // 路径格式（如 /smart-code-tool/interview/xxx）直接走 SPA 路由
-  if (url.startsWith('/')) {
-    router.go(url)
-    return
-  }
-  // 完整 URL 格式（兼容旧数据）
-  try {
-    const target = new URL(url)
-    const current = new URL(window.location.href)
-    if (target.origin === current.origin) {
-      router.go(target.pathname)
-    } else {
+  // 完整 URL 格式（兼容旧数据）→ 提取 pathname
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    try {
+      const target = new URL(url)
+      const current = new URL(window.location.href)
+      if (target.origin === current.origin) {
+        router.go(target.pathname)
+      } else {
+        window.location.href = url
+      }
+    } catch {
       window.location.href = url
     }
-  } catch {
-    window.location.href = url
+    return
   }
+  // 路径格式：加回 base 前缀后走 SPA 路由
+  // VitePress router.go() 需要含 base 的完整路径
+  const base = import.meta.env.BASE_URL || '/'
+  const fullPath = base !== '/' && !url.startsWith(base) ? base + url.slice(1) : url
+  router.go(fullPath)
 }
 
 const { currentUrl, currentTitle, refresh } = useCurrentPage()
