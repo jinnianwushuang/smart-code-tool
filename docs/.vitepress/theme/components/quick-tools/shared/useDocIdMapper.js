@@ -18,20 +18,28 @@ let idToDocMap = null
 let initPromise = null
 
 /**
- * 剥离 VitePress base 路径前缀
+ * 将运行时 URL 规范化为 doc-list 格式
  *
- * VitePress 配置 base: '/smart-code-tool/' 后：
- * - window.location.pathname → /smart-code-tool/handbook/vue3
- * - doc-list.json 中的 url   → /handbook/vue3
- * 必须统一为无前缀格式才能匹配
+ * VitePress 生产环境：
+ *   window.location.pathname → /smart-code-tool/interview/react/react-compiler.html
+ * doc-list.json 中的 url：
+ *                           → /interview/react/react-compiler
+ *
+ * 需要剥离：① base 前缀  ② .html 后缀
  */
 export function stripBase(url) {
   if (!url) return url
+  let clean = url
+  // ① 剥离 VitePress base 前缀（如 /smart-code-tool/）
   const base = import.meta.env.BASE_URL || '/'
-  if (base && base !== '/' && url.startsWith(base)) {
-    return '/' + url.slice(base.length)
+  if (base && base !== '/' && clean.startsWith(base)) {
+    clean = '/' + clean.slice(base.length)
   }
-  return url
+  // ② 剥离 .html 后缀（VitePress 生产环境生成）
+  if (clean.endsWith('.html')) {
+    clean = clean.slice(0, -5)
+  }
+  return clean
 }
 
 /** 内部：从 docs 数组构建映射表 */
