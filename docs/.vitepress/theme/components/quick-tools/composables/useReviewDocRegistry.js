@@ -10,7 +10,7 @@
 
 import { ref } from 'vue'
 import { DOC_LIST_URL } from '../shared/constants'
-import { injectDocList } from '../shared/useDocIdMapper'
+import { injectDocList, stripBase } from '../shared/useDocIdMapper'
 
 /**
  * useReviewDocRegistry — 文档清单管理
@@ -72,14 +72,15 @@ export function useReviewDocRegistry(storage) {
   }
 
   /**
-   * 根据 URL 查找 docId
+   * 根据 URL 查找 docId（剥离 VitePress base 前缀后匹配）
    */
   function getDocIdByUrl(url) {
+    const cleanUrl = stripBase(url)
     // 尝试精确匹配
-    if (urlToIdMap.has(url)) return urlToIdMap.get(url)
+    if (urlToIdMap.has(cleanUrl)) return urlToIdMap.get(cleanUrl)
 
     // 尝试规范化匹配（去掉尾部斜杠）
-    const normalized = url.replace(/\/$/, '')
+    const normalized = cleanUrl.replace(/\/$/, '')
     for (const [docUrl, docId] of urlToIdMap) {
       if (docUrl.replace(/\/$/, '') === normalized) return docId
     }

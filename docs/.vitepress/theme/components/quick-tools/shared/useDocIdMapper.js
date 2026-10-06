@@ -17,6 +17,23 @@ let urlToIdMap = null
 let idToDocMap = null
 let initPromise = null
 
+/**
+ * 剥离 VitePress base 路径前缀
+ *
+ * VitePress 配置 base: '/smart-code-tool/' 后：
+ * - window.location.pathname → /smart-code-tool/handbook/vue3
+ * - doc-list.json 中的 url   → /handbook/vue3
+ * 必须统一为无前缀格式才能匹配
+ */
+export function stripBase(url) {
+  if (!url) return url
+  const base = import.meta.env.BASE_URL || '/'
+  if (base && base !== '/' && url.startsWith(base)) {
+    return '/' + url.slice(base.length)
+  }
+  return url
+}
+
 /** 内部：从 docs 数组构建映射表 */
 function buildMaps(docs) {
   urlToIdMap = new Map()
@@ -62,9 +79,11 @@ async function ensureInit() {
 export async function getDocIdByUrl(url) {
   await ensureInit()
   if (!urlToIdMap) return null
-  if (urlToIdMap.has(url)) return urlToIdMap.get(url)
+  // 剥离 VitePress base 前缀，统一为 doc-list 格式
+  const cleanUrl = stripBase(url)
+  if (urlToIdMap.has(cleanUrl)) return urlToIdMap.get(cleanUrl)
   // 规范化：去掉尾部斜杠再试
-  const normalized = url.replace(/\/$/, '')
+  const normalized = cleanUrl.replace(/\/$/, '')
   for (const [docUrl, docId] of urlToIdMap) {
     if (docUrl.replace(/\/$/, '') === normalized) return docId
   }
@@ -88,7 +107,8 @@ export async function migrateRecords(records) {
   let migrated = 0
   for (const record of records) {
     if (!record.docId && record.url) {
-      const docId = urlToIdMap.get(record.url)
+      const cleanUrl = stripBase(record.url)
+      const docId = urlToIdMap.get(cleanUrl)
       if (docId) {
         record.docId = docId
         migrated++
