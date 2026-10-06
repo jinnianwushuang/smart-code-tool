@@ -1,6 +1,8 @@
 ---
 title: LV1-LV5 架构演进
 order: 2
+tags: ['Vue']
+
 ---
 
 # Vue 标准化装配架构 — LV1 到 LV5 演进过程

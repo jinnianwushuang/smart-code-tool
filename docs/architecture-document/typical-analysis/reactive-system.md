@@ -1,3 +1,7 @@
+---
+title: '响应式系统核心原理拆解'
+tags: ['案例']
+---
 # 响应式系统核心原理典型拆解
 
 > 本文档以 Vue 3 的 `Proxy + effect + track/trigger` 为主线，

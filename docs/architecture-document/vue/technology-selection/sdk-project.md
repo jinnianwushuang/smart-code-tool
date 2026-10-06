@@ -1,6 +1,8 @@
 ---
 title: 业务组件 SDK 打包技术选型
 order: 120
+tags: ['Vue']
+
 ---
 
 # Vue 3 业务组件 SDK 打包技术选型指南

@@ -1,6 +1,8 @@
 ---
 title: Node.js 项目架构与分层规范
 order: 10
+tags: ['Node.js']
+
 ---
 
 # Node.js 项目架构与分层规范

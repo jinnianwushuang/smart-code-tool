@@ -1,6 +1,8 @@
 ---
 title: Python 项目工程化实践
 order: 10
+tags: ['Python', '工程化']
+
 ---
 
 # Python 项目工程化实践

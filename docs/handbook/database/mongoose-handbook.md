@@ -1,3 +1,7 @@
+---
+title: 'Mongoose 手册'
+tags: ['数据库']
+---
 # Mongoose ODM 开发速查手册
 
 > **版本**: 1.0  

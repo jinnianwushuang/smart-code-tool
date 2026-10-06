@@ -1,6 +1,8 @@
 ---
 title: React 组件设计模式
 order: 10
+tags: ['React']
+
 ---
 
 # React 组件设计模式

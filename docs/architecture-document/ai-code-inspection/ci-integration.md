@@ -1,6 +1,8 @@
 ---
 title: AI 代码检查 — CI/CD 集成方案
 order: 5
+tags: ['代码审查']
+
 ---
 
 # AI 代码检查 — CI/CD 集成方案

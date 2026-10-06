@@ -1,3 +1,7 @@
+---
+title: 'Shell 手册'
+tags: ['DevOps']
+---
 # Shell 脚本开发速查手册
 
 > **版本**: 1.0  

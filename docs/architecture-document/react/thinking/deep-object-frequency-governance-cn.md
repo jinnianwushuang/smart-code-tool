@@ -1,3 +1,7 @@
+---
+title: '大型深层对象的 zustand+selector+Immer 分频治理'
+tags: ['React', '思维']
+---
 # React 19 大型深层对象的代码组织：zustand + selector + Immer 分频治理
 
 > React 项目的性能问题，本质上是"不必要的 Re-render"问题。当大型深层对象（仪表盘配置、实时数据面板、编辑器状态）中的不同数据区域以不同频率更新时，如果把它们放在同一个 `useState` / `useReducer` / `Context` 中，高频更新会不断触发整棵组件树的重渲染——即使只有某个叶子节点需要刷新。本文提出 React 19 中的**分频治理范式**：**用 zustand 承载全局状态，用 selector 实现细粒度订阅隔离，用 Immer 简化不可变更新**——三件套协同，构建与 Vue shallowRef + computed 等价但更符合 React 心智模型的高性能代码组织。

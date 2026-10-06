@@ -1,6 +1,8 @@
 ---
 title: Vue 组件设计模式
 order: 10
+tags: ['Vue']
+
 ---
 
 # Vue 组件设计模式

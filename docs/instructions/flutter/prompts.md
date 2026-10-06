@@ -1,5 +1,7 @@
 ---
 title: Flutter 提示词集
+tags: ['指令集', 'Flutter']
+
 ---
 
 # Flutter 提示词集

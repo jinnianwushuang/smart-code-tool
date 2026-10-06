@@ -1,3 +1,7 @@
+---
+title: 'PostgreSQL vs MySQL + MongoDB'
+tags: ['数据库']
+---
 # PostgreSQL vs MySQL + MongoDB：为什么 PostgreSQL 是更优选择
 
 > **版本**: 1.0  

@@ -1,3 +1,7 @@
+---
+title: 'JavaScript 手册'
+tags: ['前端']
+---
 # JavaScript 开发速查手册
 
 > **版本**: 1.0  

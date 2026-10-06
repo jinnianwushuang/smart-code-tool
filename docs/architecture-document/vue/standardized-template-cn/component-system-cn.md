@@ -1,6 +1,8 @@
 ---
 title: 组件系统
 order: 7
+tags: ['Vue']
+
 ---
 
 # 组件系统

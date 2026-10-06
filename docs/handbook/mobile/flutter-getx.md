@@ -1,6 +1,8 @@
 ---
 title: Flutter GetX 原理与工作流
 order: 164
+tags: ['移动端']
+
 ---
 
 ## Flutter GetX 原理与工作流

@@ -1,3 +1,7 @@
+---
+title: 'Python 本地智能体最佳实践'
+tags: ['AI', 'Ollama']
+---
 # Python 本地智能体开发最佳实践
 
 > 基于 Ollama + Qwen 系列模型，使用 Python 构建本地自用智能体的项目实践指南。

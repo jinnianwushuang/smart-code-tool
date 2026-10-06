@@ -1,6 +1,8 @@
 ---
 title: 原生APP类型项目技术选型
 order: 194
+tags: ['React']
+
 ---
 
 # React 原生 APP 类型项目技术选型指南

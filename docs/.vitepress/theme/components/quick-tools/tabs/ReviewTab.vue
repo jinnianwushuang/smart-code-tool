@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { dayjs, formatRelative, downloadText, exportTimestamp } from '../shared/utils'
 import { REVIEW_RATING } from '../composables/useReviewScheduler'
+import { getTagsById, getAllTags } from '../shared/useDocIdMapper'
 
 const props = defineProps({
   review: { type: Object, required: true },
@@ -22,6 +23,9 @@ const settings = computed(() => props.review.settings.value)
 // ── 全部文档视图：搜索/筛选 ──
 const searchQuery = ref('')
 const filterGroup = ref('')
+const filterTag = ref('')
+
+const allTags = computed(() => getAllTags())
 
 const allGroups = computed(() => {
   const groups = new Set(allRecords.value.map((r) => r.group).filter(Boolean))
@@ -33,6 +37,12 @@ const filteredRecords = computed(() => {
   if (filterGroup.value) {
     list = list.filter((r) => r.group === filterGroup.value)
   }
+  if (filterTag.value) {
+    list = list.filter((r) => {
+      const tags = getTagsById(r.docId)
+      return tags.includes(filterTag.value)
+    })
+  }
   if (searchQuery.value) {
     const q = searchQuery.value.toLowerCase()
     list = list.filter((r) => r.title.toLowerCase().includes(q))
@@ -43,12 +53,41 @@ const filteredRecords = computed(() => {
   })
 })
 
-// ── 盲区当前列表 ──
+// ── 盲区当前列表（含标签筛选）──
+const blindSpotTag = ref('')
+
 const currentBlindSpotList = computed(() => {
   const bs = blindSpots.value
-  if (blindSpotTab.value === 'neverOpened') return bs.neverOpened
-  if (blindSpotTab.value === 'neverLearned') return bs.neverLearned
-  return bs.neverReviewed
+  let list = []
+  if (blindSpotTab.value === 'neverOpened') list = bs.neverOpened
+  else if (blindSpotTab.value === 'neverLearned') list = bs.neverLearned
+  else list = bs.neverReviewed
+  // 标签筛选
+  if (blindSpotTag.value) {
+    list = list.filter((doc) => {
+      const tags = getTagsById(doc.id)
+      return tags.includes(blindSpotTag.value)
+    })
+  }
+  return list
+})
+
+// ── 标签分布统计 ──
+const tagDistribution = computed(() => {
+  const map = {}
+  for (const record of allRecords.value) {
+    if (record.isArchived) continue
+    const tags = getTagsById(record.docId)
+    for (const tag of tags) {
+      if (!map[tag]) map[tag] = { total: 0, learned: 0, reviewed: 0 }
+      map[tag].total++
+      if (record.autoLearnedAt) map[tag].learned++
+      if (record.reviewCount > 0) map[tag].reviewed++
+    }
+  }
+  return Object.entries(map)
+    .map(([tag, counts]) => ({ tag, ...counts }))
+    .sort((a, b) => b.total - a.total)
 })
 
 // ── 评分操作 ──
@@ -223,6 +262,12 @@ function dueLabel(due) {
           从未复习 ({{ blindSpots.neverReviewed.length }})
         </button>
       </div>
+      <div class="rv-filter-bar">
+        <select v-model="blindSpotTag" class="rv-group-select">
+          <option value="">全部标签</option>
+          <option v-for="t in allTags" :key="t" :value="t">{{ t }}</option>
+        </select>
+      </div>
 
       <div v-if="currentBlindSpotList.length === 0" class="qt-empty">
         <div class="rv-empty-icon">✨</div>
@@ -260,6 +305,10 @@ function dueLabel(due) {
         <select v-model="filterGroup" class="rv-group-select">
           <option value="">全部分组</option>
           <option v-for="g in allGroups" :key="g" :value="g">{{ g }}</option>
+        </select>
+        <select v-model="filterTag" class="rv-group-select">
+          <option value="">全部标签</option>
+          <option v-for="t in allTags" :key="t" :value="t">{{ t }}</option>
         </select>
       </div>
 
@@ -315,6 +364,29 @@ function dueLabel(due) {
         <div class="rv-stat-card">
           <div class="rv-stat-num">{{ review.blindSpotTotal.value }}</div>
           <div class="rv-stat-label">文档盲区</div>
+        </div>
+      </div>
+
+      <!-- 标签分布图 -->
+      <div v-if="tagDistribution.length" class="rv-tag-dist">
+        <h4 class="rv-tag-dist-title">📊 标签覆盖分布</h4>
+        <div class="rv-tag-dist-list">
+          <div v-for="item in tagDistribution" :key="item.tag" class="rv-tag-dist-row">
+            <span class="rv-tag-dist-name">{{ item.tag }}</span>
+            <div class="rv-tag-dist-bars">
+              <div
+                class="rv-tag-bar reviewed"
+                :style="{ width: (item.reviewed / item.total) * 100 + '%' }"
+                :title="`已复习 ${item.reviewed}`"
+              ></div>
+              <div
+                class="rv-tag-bar learned"
+                :style="{ width: ((item.learned - item.reviewed) / item.total) * 100 + '%' }"
+                :title="`已学习 ${item.learned - item.reviewed}`"
+              ></div>
+            </div>
+            <span class="rv-tag-dist-count">{{ item.learned }}/{{ item.total }}</span>
+          </div>
         </div>
       </div>
     </div>

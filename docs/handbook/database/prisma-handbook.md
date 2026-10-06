@@ -1,3 +1,7 @@
+---
+title: 'Prisma 手册'
+tags: ['数据库']
+---
 # Prisma ORM 开发速查手册
 
 > **版本**: 1.0  

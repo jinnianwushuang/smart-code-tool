@@ -1,3 +1,7 @@
+---
+title: 'PostgreSQL 速查'
+tags: ['数据库']
+---
 # PostgreSQL 速查手册
 
 > **版本**: 1.0  

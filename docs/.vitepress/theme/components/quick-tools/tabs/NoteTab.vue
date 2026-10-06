@@ -1,6 +1,7 @@
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, computed, nextTick } from 'vue'
 import { dayjs, formatRelative } from '../shared/utils'
+import { getTagsById } from '../shared/useDocIdMapper'
 
 const props = defineProps({
   records: { type: Array, required: true },
@@ -24,6 +25,24 @@ const focusTextarea = () => {
 }
 
 defineExpose({ focusTextarea })
+
+// ── 标签筛选 ──
+const filterTag = ref('')
+const allTags = computed(() => {
+  const tagSet = new Set()
+  for (const r of props.records) {
+    const tags = getTagsById(r.docId)
+    tags.forEach((t) => tagSet.add(t))
+  }
+  return Array.from(tagSet).sort()
+})
+const filteredSorted = computed(() => {
+  if (!filterTag.value) return props.sorted
+  return props.sorted.filter((r) => {
+    const tags = getTagsById(r.docId)
+    return tags.includes(filterTag.value)
+  })
+})
 </script>
 
 <template>
@@ -64,11 +83,17 @@ defineExpose({ focusTextarea })
 
     <!-- 笔记列表 -->
     <div class="qt-record-scroll">
-      <div v-if="records.length === 0" class="qt-empty">暂无笔记</div>
+      <div v-if="allTags.length > 0" class="rv-filter-bar">
+        <select v-model="filterTag" class="rv-group-select">
+          <option value="">全部标签</option>
+          <option v-for="t in allTags" :key="t" :value="t">{{ t }}</option>
+        </select>
+      </div>
+      <div v-if="filteredSorted.length === 0" class="qt-empty">暂无笔记</div>
 
       <div v-else class="qt-record-list">
         <div
-          v-for="record in sorted"
+          v-for="record in filteredSorted"
           :key="record.id"
           class="qt-record-card"
           @click="navigateTo(record.url)"

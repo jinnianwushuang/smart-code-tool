@@ -1,6 +1,8 @@
 ---
 title: Flutter 架构中的数据·算法·显示分离思考
 order: 50
+tags: ['Flutter', '思维']
+
 ---
 
 # Flutter 架构思考 — 数据·算法·显示 三者分离

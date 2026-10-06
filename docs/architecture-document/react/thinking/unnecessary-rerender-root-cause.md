@@ -1,3 +1,7 @@
+---
+title: '不必要 Re-render 的元凶与根治'
+tags: ['React', '思维']
+---
 # React 项目卡顿的元凶：不必要的 Re-render 与根治方案
 
 > React 项目绝大多数的性能问题，不是 Virtual DOM 慢，不是组件太多，不是数据量大——**而是业务逻辑以不当的方式触发了大量高频且完全无用的 Re-render**。React 的渲染模型是"setState 触发整个子树重新执行函数"，这意味着每一次不必要的 setState 都会让整棵组件树重新运行——即使最终 DOM 没有任何变化。本文深入剖析 React 中不必要 Re-render 的病灶，给出系统性的根治方案。

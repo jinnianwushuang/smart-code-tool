@@ -1,3 +1,7 @@
+---
+title: 'TypeScript 核心原理'
+tags: ['前端']
+---
 # TypeScript 核心底层原理深度解析
 
 > **版本**: 1.0  

@@ -1,3 +1,7 @@
+---
+title: 'Promise/A+ 手写实现拆解'
+tags: ['案例']
+---
 # Promise/A+ 手写实现典型拆解
 
 > 本文档从 Promise/A+ 规范出发，逐步手写实现一个符合规范的 Promise，

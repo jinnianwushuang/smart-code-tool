@@ -1,3 +1,7 @@
+---
+title: 'Fiber × 并发调度 × 数据视图同步'
+tags: ['React', '思维']
+---
 # React 底层万用公式：Fiber 架构 × 并发调度 × 数据视图同步
 
 > React 18 之后的一切设计——并发模式、Suspense、Transitions、Server Components——都建立在同一个底层架构之上：**Fiber 架构 × 并发调度 × 数据视图同步**。理解这个公式，就理解了 React 为什么需要 `memo`、为什么 `useEffect` 是异步的、为什么 `startTransition` 能提升流畅度、为什么 React 的渲染模型与 Vue 根本不同。本文从 React 的底层架构出发，推导出这个万用公式。

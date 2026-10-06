@@ -1,6 +1,8 @@
 ---
 title: Python 后端框架技术选型
 order: 20
+tags: ['Python']
+
 ---
 
 # Python 后端框架技术选型

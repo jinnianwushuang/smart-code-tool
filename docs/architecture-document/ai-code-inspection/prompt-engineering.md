@@ -1,6 +1,8 @@
 ---
 title: AI 代码检查 — Prompt 工程策略
 order: 2
+tags: ['代码审查']
+
 ---
 
 # AI 代码检查 — Prompt 工程策略

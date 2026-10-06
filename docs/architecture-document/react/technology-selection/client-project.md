@@ -1,6 +1,8 @@
 ---
 title: 用户端类型项目技术选型
 order: 104
+tags: ['React']
+
 ---
 
 # React 用户端项目技术选型指南

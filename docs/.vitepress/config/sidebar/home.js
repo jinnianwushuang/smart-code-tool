@@ -1,9 +1,11 @@
 /**
  * ⚠️ AI / 开发者须知：
- * 每个带 link 的叶子菜单项必须包含 id 字段（24 位 nanoid），作为文档的稳定锚点。
- * 新增菜单时请运行: node scripts/inject-sidebar-ids.mjs 自动生成 id
- * id 一旦生成永不修改，即使 text / link 变更也保持原值。
- * VitePress 会忽略 id 字段，不影响解析。
+ * 1. 每个带 link 的叶子菜单项必须包含 id 字段（24 位 nanoid），作为文档的稳定锚点。
+ *    新增菜单时请运行: node scripts/inject-sidebar-ids.mjs 自动生成 id
+ *    id 一旦生成永不修改，即使 text / link 变更也保持原值。
+ *    VitePress 会忽略 id 字段，不影响解析。
+ * 2. 对应的 markdown 文档必须在 frontmatter 中包含 tags 字段（字符串数组），
+ *    用于快捷工具的标签筛选和统计分布。
  */
 
 // 首页侧边栏配置

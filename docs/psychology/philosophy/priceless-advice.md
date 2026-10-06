@@ -1,3 +1,7 @@
+---
+title: '全球50位顶级富豪的宝贵箴言'
+tags: ['心理学', '哲学']
+---
 # 全球50位顶级富豪的宝贵箴言
 
 50 of world's richest entrepreneur's priceless advice

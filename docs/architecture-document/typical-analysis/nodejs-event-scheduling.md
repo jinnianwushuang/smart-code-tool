@@ -1,3 +1,7 @@
+---
+title: 'Node.js 事件调度拆解'
+tags: ['案例']
+---
 # Node.js 服务端事件调度典型拆解
 
 > 本文档从**手写 EventEmitter** 出发，逐步拆解 Node.js 事件调度的核心机制，

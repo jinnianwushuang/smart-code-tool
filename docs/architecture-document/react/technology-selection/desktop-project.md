@@ -1,6 +1,8 @@
 ---
 title: 桌面端类型项目技术选型
 order: 304
+tags: ['React']
+
 ---
 
 # React 桌面端项目技术选型指南

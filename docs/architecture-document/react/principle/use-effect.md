@@ -1,6 +1,8 @@
 ---
 title: useEffect
 order: 14
+tags: ['React']
+
 ---
 
 # useEffect

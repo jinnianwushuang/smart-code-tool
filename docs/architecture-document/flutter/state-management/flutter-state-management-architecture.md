@@ -1,6 +1,8 @@
 ---
 title: Flutter 状态管理架构选型
 order: 10
+tags: ['Flutter']
+
 ---
 
 # Flutter 状态管理架构选型

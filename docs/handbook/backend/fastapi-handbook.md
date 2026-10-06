@@ -1,3 +1,7 @@
+---
+title: 'FastAPI 手册'
+tags: ['后端']
+---
 # FastAPI 开发速查手册
 
 > **版本**: 1.0  

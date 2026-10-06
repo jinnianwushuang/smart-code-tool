@@ -1,3 +1,7 @@
+---
+title: 'LangChain 手册'
+tags: ['AI']
+---
 # LangChain 开发手册
 
 ## 概述

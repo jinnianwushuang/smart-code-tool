@@ -1,3 +1,7 @@
+---
+title: 'Nginx 速查'
+tags: ['DevOps']
+---
 # Nginx 速查手册
 
 > **版本**: 1.0  

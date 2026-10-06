@@ -1,3 +1,7 @@
+---
+title: 'Rolldown 与 Oxc'
+tags: ['基础']
+---
 # Rolldown 与 Oxc — Rust 重塑前端工具链的双引擎
 
 > Vite 8 的底层架构从 esbuild + Rollup 双引擎切换为 Rolldown + Oxc 统一引擎。

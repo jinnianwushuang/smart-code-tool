@@ -19,6 +19,8 @@
     "pdf": "zx scripts/pdf-export-all.mjs",
     "archive:instructions": "zx scripts/archive-instructions.mjs",
     "sync:arch-starter": "zx scripts/sync-arch-starter.mjs",
+    "gen:doc-list": "node scripts/gen-doc-list.mjs",
+    "gen:frontmatter-tags": "node scripts/add-frontmatter-tags.mjs",
     "clean:ports": "kill -9 $(lsof -ti :23330 -ti :23000 -ti :23350) 2>/dev/null; echo '✅ Ports 23330 & 23000 & 23350 cleared'"
   },
   "dependencies": {

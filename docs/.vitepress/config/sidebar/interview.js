@@ -1,9 +1,11 @@
 /**
  * ⚠️ AI / 开发者须知：
- * 每个带 link 的叶子菜单项必须包含 id 字段（24 位 nanoid），作为文档的稳定锚点。
- * 新增菜单时请运行: node scripts/inject-sidebar-ids.mjs 自动生成 id
- * id 一旦生成永不修改，即使 text / link 变更也保持原值。
- * VitePress 会忽略 id 字段，不影响解析。
+ * 1. 每个带 link 的叶子菜单项必须包含 id 字段（24 位 nanoid），作为文档的稳定锚点。
+ *    新增菜单时请运行: node scripts/inject-sidebar-ids.mjs 自动生成 id
+ *    id 一旦生成永不修改，即使 text / link 变更也保持原值。
+ *    VitePress 会忽略 id 字段，不影响解析。
+ * 2. 对应的 markdown 文档必须在 frontmatter 中包含 tags 字段（字符串数组），
+ *    用于快捷工具的标签筛选和统计分布。示例：tags: ['React', 'Hooks']
  */
 
 // 面试知识库侧边栏配置
@@ -15,12 +17,36 @@ export const interviewSidebar = {
       text: '学习路径导航',
       collapsed: false,
       items: [
-        { id: 'WVj8oInLjW5GZJkCXYp75w2e', text: '初级工程师（P4-P5）', link: '/interview/levels/junior' },
-        { id: 'p7gk0iYgfqZY9CwLUmGU-zlR', text: '中级工程师（P5-P6）', link: '/interview/levels/intermediate' },
-        { id: 's1Tg8jup4tiZ1BLEeEosbYzv', text: '高级工程师（P6-P7）', link: '/interview/levels/senior' },
-        { id: '8xZI61ROaXpShYE22XJguT0E', text: '架构师（P8）', link: '/interview/levels/architect' },
-        { id: '47EBF7ccRO6ftuKWFrOT7U-N', text: '技术主管（TL）', link: '/interview/levels/manager' },
-        { id: 'BWEnJoJ0X2LtOywYY1G8Z6y5', text: 'Flutter 学习路径', link: '/interview/levels/flutter' },
+        {
+          id: 'WVj8oInLjW5GZJkCXYp75w2e',
+          text: '初级工程师（P4-P5）',
+          link: '/interview/levels/junior',
+        },
+        {
+          id: 'p7gk0iYgfqZY9CwLUmGU-zlR',
+          text: '中级工程师（P5-P6）',
+          link: '/interview/levels/intermediate',
+        },
+        {
+          id: 's1Tg8jup4tiZ1BLEeEosbYzv',
+          text: '高级工程师（P6-P7）',
+          link: '/interview/levels/senior',
+        },
+        {
+          id: '8xZI61ROaXpShYE22XJguT0E',
+          text: '架构师（P8）',
+          link: '/interview/levels/architect',
+        },
+        {
+          id: '47EBF7ccRO6ftuKWFrOT7U-N',
+          text: '技术主管（TL）',
+          link: '/interview/levels/manager',
+        },
+        {
+          id: 'BWEnJoJ0X2LtOywYY1G8Z6y5',
+          text: 'Flutter 学习路径',
+          link: '/interview/levels/flutter',
+        },
       ],
     },
     // ── 初级（P4-P5）──
@@ -28,22 +54,66 @@ export const interviewSidebar = {
       text: '初级工程师（P4-P5）',
       collapsed: true,
       items: [
-        { id: 'gdYXIH9QdmUivAPDB8Hw1wed', text: 'HTML5 语义化与文档结构 [P4-P5]', link: '/interview/junior/html-semantics' },
-        { id: 'kkAt18NllZ0HjtFsuXyhxI5a', text: 'CSS 布局：Flexbox 与 Grid [P4-P5]', link: '/interview/junior/css-layout' },
-        { id: 'DKVHnoxgSARO4-VjPJaRyiV8', text: '响应式设计与移动端适配 [P4-P5]', link: '/interview/junior/responsive-design' },
+        {
+          id: 'gdYXIH9QdmUivAPDB8Hw1wed',
+          text: 'HTML5 语义化与文档结构 [P4-P5]',
+          link: '/interview/junior/html-semantics',
+        },
+        {
+          id: 'kkAt18NllZ0HjtFsuXyhxI5a',
+          text: 'CSS 布局：Flexbox 与 Grid [P4-P5]',
+          link: '/interview/junior/css-layout',
+        },
+        {
+          id: 'DKVHnoxgSARO4-VjPJaRyiV8',
+          text: '响应式设计与移动端适配 [P4-P5]',
+          link: '/interview/junior/responsive-design',
+        },
         {
           text: 'CSS 新特性：变量、动画、过渡 [P4-P5]',
           link: '/interview/junior/css-modern-features',
           id: '3-lTH07nOVYlJE32u3SCHdbu',
         },
-        { id: '9YId5WYdW8WL7qQKndwcbbDS', text: 'JavaScript 基础：变量、类型、运算 [P4-P5]', link: '/interview/junior/js-basics' },
-        { id: 'D2moxos2zS_YpdhhQVhaUUfe', text: '函数与作用域基础 [P4-P5]', link: '/interview/junior/functions-and-scope' },
-        { id: 'KnCcO14wUB2BNmCnpEYgb5R-', text: '对象与类基础 [P4-P5]', link: '/interview/junior/objects-and-classes' },
-        { id: 'Xi1uMbAODT1b6eha7Pxjq_Mn', text: 'DOM 操作与事件处理 [P4-P5]', link: '/interview/junior/dom-and-events' },
-        { id: '3LO0-lVXcOJEqbXIKwsAyJpB', text: '浏览器基础与 DevTools 实战 [P4-P5]', link: '/interview/junior/browser-basics' },
-        { id: 'nALkBy9NoSJGicPg7jiiue0O', text: 'HTTP 协议基础 [P4-P5]', link: '/interview/junior/http-basics' },
-        { id: 'q76RgMU0vIsLA-JcRcryovrt', text: '本地存储与 Cookie 基础 [P4-P5]', link: '/interview/junior/storage-and-cookie' },
-        { id: 'WnpiI8RBp0FcnAygLlsaUyn7', text: 'Vue 3 入门：模板、组件、生命周期 [P4-P5]', link: '/interview/junior/vue-basics' },
+        {
+          id: '9YId5WYdW8WL7qQKndwcbbDS',
+          text: 'JavaScript 基础：变量、类型、运算 [P4-P5]',
+          link: '/interview/junior/js-basics',
+        },
+        {
+          id: 'D2moxos2zS_YpdhhQVhaUUfe',
+          text: '函数与作用域基础 [P4-P5]',
+          link: '/interview/junior/functions-and-scope',
+        },
+        {
+          id: 'KnCcO14wUB2BNmCnpEYgb5R-',
+          text: '对象与类基础 [P4-P5]',
+          link: '/interview/junior/objects-and-classes',
+        },
+        {
+          id: 'Xi1uMbAODT1b6eha7Pxjq_Mn',
+          text: 'DOM 操作与事件处理 [P4-P5]',
+          link: '/interview/junior/dom-and-events',
+        },
+        {
+          id: '3LO0-lVXcOJEqbXIKwsAyJpB',
+          text: '浏览器基础与 DevTools 实战 [P4-P5]',
+          link: '/interview/junior/browser-basics',
+        },
+        {
+          id: 'nALkBy9NoSJGicPg7jiiue0O',
+          text: 'HTTP 协议基础 [P4-P5]',
+          link: '/interview/junior/http-basics',
+        },
+        {
+          id: 'q76RgMU0vIsLA-JcRcryovrt',
+          text: '本地存储与 Cookie 基础 [P4-P5]',
+          link: '/interview/junior/storage-and-cookie',
+        },
+        {
+          id: 'WnpiI8RBp0FcnAygLlsaUyn7',
+          text: 'Vue 3 入门：模板、组件、生命周期 [P4-P5]',
+          link: '/interview/junior/vue-basics',
+        },
         {
           text: 'Vue 组件模式：Props、Emit、Slots [P4-P5]',
           link: '/interview/junior/vue-component-patterns',
@@ -54,11 +124,31 @@ export const interviewSidebar = {
           link: '/interview/junior/typescript-basics',
           id: 'F7ZcIfkVdwITh-rGr46a-1Sm',
         },
-        { id: 'TyIn96W65PJxkplpuMqQl5_v', text: 'Git 基础：分支策略与协作流程 [P4-P5]', link: '/interview/junior/git-basics' },
-        { id: 'xJdONHrmzNG_duVT3mTNvFND', text: 'npm/pnpm 包管理入门 [P4-P5]', link: '/interview/junior/npm-pnpm-basics' },
-        { id: 'q_dqoyflerbFWJtR4_ALNpP1', text: '前端调试基础 [P4-P5]', link: '/interview/junior/debugging-basics' },
-        { id: 'KUvbQTOAlipCbJ-sx2U_AI6v', text: 'SPA 部署基础（Nginx 配置） [P4-P5]', link: '/interview/junior/spa-deploy-basics' },
-        { id: 'AQCvnBeA93TCOH_VqzO-CnYn', text: '表单与验证基础 [P4-P5]', link: '/interview/junior/form-validation-basics' },
+        {
+          id: 'TyIn96W65PJxkplpuMqQl5_v',
+          text: 'Git 基础：分支策略与协作流程 [P4-P5]',
+          link: '/interview/junior/git-basics',
+        },
+        {
+          id: 'xJdONHrmzNG_duVT3mTNvFND',
+          text: 'npm/pnpm 包管理入门 [P4-P5]',
+          link: '/interview/junior/npm-pnpm-basics',
+        },
+        {
+          id: 'q_dqoyflerbFWJtR4_ALNpP1',
+          text: '前端调试基础 [P4-P5]',
+          link: '/interview/junior/debugging-basics',
+        },
+        {
+          id: 'KUvbQTOAlipCbJ-sx2U_AI6v',
+          text: 'SPA 部署基础（Nginx 配置） [P4-P5]',
+          link: '/interview/junior/spa-deploy-basics',
+        },
+        {
+          id: 'AQCvnBeA93TCOH_VqzO-CnYn',
+          text: '表单与验证基础 [P4-P5]',
+          link: '/interview/junior/form-validation-basics',
+        },
       ],
     },
     // ── 中级（P5-P6）──
@@ -81,7 +171,11 @@ export const interviewSidebar = {
           link: '/interview/intermediate/js-closures-context',
           id: 'jVm7-xO0YpN1qWSUsD_w9xHd',
         },
-        { id: 'GZIQqV0yXfesWbJXSN6jRVgk', text: 'ES6+ 模块系统与工程化 [P5-P6]', link: '/interview/intermediate/es6-modules' },
+        {
+          id: 'GZIQqV0yXfesWbJXSN6jRVgk',
+          text: 'ES6+ 模块系统与工程化 [P5-P6]',
+          link: '/interview/intermediate/es6-modules',
+        },
         {
           text: 'JavaScript 常用设计模式 [P5-P6]',
           link: '/interview/intermediate/js-design-patterns',
@@ -97,27 +191,51 @@ export const interviewSidebar = {
           link: '/interview/intermediate/network-optimization',
           id: 'nNhNbIhfrjyM8Mi-uoKo7KCs',
         },
-        { id: 'j9G6LqjXw9_F8fV6ykxEQQJJ', text: 'Vue 3 生命周期深入 [P5-P6]', link: '/interview/intermediate/vue-lifecycle' },
-        { id: '9emorJlnDAVrOspsE8KXTOb4', text: 'Vue 组件通信方式全景 [P5-P6]', link: '/interview/intermediate/vue-communication' },
-        { id: 'CPtj6b5l95evw09IcJEgs4NN', text: 'Vue Router 路由实战 [P5-P6]', link: '/interview/intermediate/vue-router-basics' },
+        {
+          id: 'j9G6LqjXw9_F8fV6ykxEQQJJ',
+          text: 'Vue 3 生命周期深入 [P5-P6]',
+          link: '/interview/intermediate/vue-lifecycle',
+        },
+        {
+          id: '9emorJlnDAVrOspsE8KXTOb4',
+          text: 'Vue 组件通信方式全景 [P5-P6]',
+          link: '/interview/intermediate/vue-communication',
+        },
+        {
+          id: 'CPtj6b5l95evw09IcJEgs4NN',
+          text: 'Vue Router 路由实战 [P5-P6]',
+          link: '/interview/intermediate/vue-router-basics',
+        },
         {
           text: 'TypeScript 类型体操入门 [P5-P6]',
           link: '/interview/intermediate/ts-types-practice',
           id: 'fn3uKl3P_vsYRj61lQlkfmW3',
         },
-        { id: 'g2GbycSHBNrcNORBEYQ_TAwO', text: 'TypeScript 工程化实践 [P5-P6]', link: '/interview/intermediate/ts-engineering' },
+        {
+          id: 'g2GbycSHBNrcNORBEYQ_TAwO',
+          text: 'TypeScript 工程化实践 [P5-P6]',
+          link: '/interview/intermediate/ts-engineering',
+        },
         {
           text: 'React 入门：JSX、Hooks、组件模式 [P5-P6]',
           link: '/interview/intermediate/react-basics',
           id: 'ZWnoBp1um83PwXaG37rN8GZI',
         },
-        { id: 'CZUtncmrcHa7XC52Yg5olGQx', text: '前端性能优化基础 [P5-P6]', link: '/interview/intermediate/performance-basics' },
+        {
+          id: 'CZUtncmrcHa7XC52Yg5olGQx',
+          text: '前端性能优化基础 [P5-P6]',
+          link: '/interview/intermediate/performance-basics',
+        },
         {
           text: '构建工具入门：Vite 配置与使用 [P5-P6]',
           link: '/interview/intermediate/build-tools-basics',
           id: '5EsATXKVEymwOq8hP_rewbFG',
         },
-        { id: '4iwFYk0_6JmN2CLyMYKwWrX3', text: '前端错误处理与监控入门 [P5-P6]', link: '/interview/intermediate/error-handling' },
+        {
+          id: '4iwFYk0_6JmN2CLyMYKwWrX3',
+          text: '前端错误处理与监控入门 [P5-P6]',
+          link: '/interview/intermediate/error-handling',
+        },
         {
           text: 'Web 安全实战：CSP/SRI/依赖检查 [P5-P6]',
           link: '/interview/intermediate/web-security-practice',
@@ -167,11 +285,31 @@ export const interviewSidebar = {
           link: '/interview/javascript/engine-and-runtime',
           id: 'cVV7nF5Bm5qclsZIMLu_gujg',
         },
-        { id: '7_A9oA1iILeYn_OAew0MVwsh', text: 'Node.js 运行时 [P6-P7]', link: '/interview/javascript/nodejs-runtime' },
-        { id: 'pXGt0WCX_9qIKJ18DFsWwNiy', text: 'JavaScript 类型系统深层 [P6-P7]', link: '/interview/javascript/type-system-deep' },
-        { id: 'buwzCf-RLHeFU8c4r3oWJFXS', text: '异步编程模型演进 [P6-P7]', link: '/interview/javascript/async-model' },
-        { id: '5PjcoNoRmXJUgwY0TlACnsE5', text: 'GC 算法与内存管理 [P6-P7]', link: '/interview/javascript/gc-and-memory' },
-        { id: 'FJFbya2AIpIaEOWyENXNRKam', text: '原型链本质与元编程 [P6-P7]', link: '/interview/javascript/prototype-and-oop' },
+        {
+          id: '7_A9oA1iILeYn_OAew0MVwsh',
+          text: 'Node.js 运行时 [P6-P7]',
+          link: '/interview/javascript/nodejs-runtime',
+        },
+        {
+          id: 'pXGt0WCX_9qIKJ18DFsWwNiy',
+          text: 'JavaScript 类型系统深层 [P6-P7]',
+          link: '/interview/javascript/type-system-deep',
+        },
+        {
+          id: 'buwzCf-RLHeFU8c4r3oWJFXS',
+          text: '异步编程模型演进 [P6-P7]',
+          link: '/interview/javascript/async-model',
+        },
+        {
+          id: '5PjcoNoRmXJUgwY0TlACnsE5',
+          text: 'GC 算法与内存管理 [P6-P7]',
+          link: '/interview/javascript/gc-and-memory',
+        },
+        {
+          id: 'FJFbya2AIpIaEOWyENXNRKam',
+          text: '原型链本质与元编程 [P6-P7]',
+          link: '/interview/javascript/prototype-and-oop',
+        },
         {
           text: 'ES2025/2026 新特性与现代 Web APIs [P6-P7]',
           link: '/interview/javascript/es2025-2026-and-web-apis',
@@ -183,19 +321,47 @@ export const interviewSidebar = {
       text: 'TypeScript 高阶（P6-P7）',
       collapsed: true,
       items: [
-        { id: '7DdyBANJiqK8JsSdCjqaPin5', text: '高级类型体操 [P6-P7]', link: '/interview/typescript/type-challenges' },
-        { id: 'YhuQs-pklD6LcWy_Ohhq1KcB', text: 'TypeScript 编译器架构 [P8]', link: '/interview/typescript/compiler-internals' },
-        { id: '2AL21-tYU1P6CAt02e51CXLS', text: '类型系统设计哲学 [P8]', link: '/interview/typescript/type-system-design' },
-        { id: 'n7duFpQAkDmnE7RhBC34-F4Z', text: 'TypeScript 5.x 新特性 [P6-P7]', link: '/interview/typescript/ts5-new-features' },
+        {
+          id: '7DdyBANJiqK8JsSdCjqaPin5',
+          text: '高级类型体操 [P6-P7]',
+          link: '/interview/typescript/type-challenges',
+        },
+        {
+          id: 'YhuQs-pklD6LcWy_Ohhq1KcB',
+          text: 'TypeScript 编译器架构 [P8]',
+          link: '/interview/typescript/compiler-internals',
+        },
+        {
+          id: '2AL21-tYU1P6CAt02e51CXLS',
+          text: '类型系统设计哲学 [P8]',
+          link: '/interview/typescript/type-system-design',
+        },
+        {
+          id: 'n7duFpQAkDmnE7RhBC34-F4Z',
+          text: 'TypeScript 5.x 新特性 [P6-P7]',
+          link: '/interview/typescript/ts5-new-features',
+        },
       ],
     },
     {
       text: 'Vue 深度（P6-P7）',
       collapsed: true,
       items: [
-        { id: '1Bs6ikjDv06l2mnb_4oQrY-8', text: 'Vue 响应式系统底层 [P6-P7]', link: '/interview/vue/reactivity-deep' },
-        { id: 'hxUFlRNXwZ5LyeMFSMd3aYB0', text: 'Vue 编译器优化 [P6-P7]', link: '/interview/vue/compiler-optimization' },
-        { id: 'G84UPAl8UgfIESd40QPHEbns', text: 'Vapor Mode 原理 [P6-P7]', link: '/interview/vue/vapor-mode' },
+        {
+          id: '1Bs6ikjDv06l2mnb_4oQrY-8',
+          text: 'Vue 响应式系统底层 [P6-P7]',
+          link: '/interview/vue/reactivity-deep',
+        },
+        {
+          id: 'hxUFlRNXwZ5LyeMFSMd3aYB0',
+          text: 'Vue 编译器优化 [P6-P7]',
+          link: '/interview/vue/compiler-optimization',
+        },
+        {
+          id: 'G84UPAl8UgfIESd40QPHEbns',
+          text: 'Vapor Mode 原理 [P6-P7]',
+          link: '/interview/vue/vapor-mode',
+        },
         {
           text: '渲染器 Patch 流程与 Diff 算法 [P6-P7]',
           link: '/interview/vue/renderer-patch-flow',
@@ -206,29 +372,77 @@ export const interviewSidebar = {
           link: '/interview/vue/vue-3.5-new-features',
           id: 'LgIKyUlVsTKCnnrl3gO4fVh8',
         },
-        { id: '9SbPGff4LCkZpF_JZuS8BK1N', text: 'Pinia 状态管理原理与实战 [P6-P7]', link: '/interview/vue/pinia-deep' },
-        { id: 'rbr7RLR49owTavY1hcdyqvZl', text: 'Vue Router 4 路由系统深度 [P6-P7]', link: '/interview/vue/vue-router-4' },
-        { id: 'e2KMSwVPTeadxXiyrzNIfnqe', text: 'Nuxt 3 全栈框架原理与实战 [P8]', link: '/interview/vue/nuxt-3-fullstack' },
-        { id: 'LCFCLRLpKSrfbhE9ItiSISz0', text: 'Vue 3 生态实战模式 [P6-P7]', link: '/interview/vue/vue-ecosystem-patterns' },
+        {
+          id: '9SbPGff4LCkZpF_JZuS8BK1N',
+          text: 'Pinia 状态管理原理与实战 [P6-P7]',
+          link: '/interview/vue/pinia-deep',
+        },
+        {
+          id: 'rbr7RLR49owTavY1hcdyqvZl',
+          text: 'Vue Router 4 路由系统深度 [P6-P7]',
+          link: '/interview/vue/vue-router-4',
+        },
+        {
+          id: 'e2KMSwVPTeadxXiyrzNIfnqe',
+          text: 'Nuxt 3 全栈框架原理与实战 [P8]',
+          link: '/interview/vue/nuxt-3-fullstack',
+        },
+        {
+          id: 'LCFCLRLpKSrfbhE9ItiSISz0',
+          text: 'Vue 3 生态实战模式 [P6-P7]',
+          link: '/interview/vue/vue-ecosystem-patterns',
+        },
       ],
     },
     {
       text: 'React 深度（P6-P7）',
       collapsed: true,
       items: [
-        { id: 'Z2CB8AWNuWQRi6gYIRNHVcr_', text: 'Fiber 架构与优先级调度 [P6-P7]', link: '/interview/react/fiber-architecture' },
-        { id: 'l4Is0ZtaxYmSXB0xYdJCzBqI', text: '并发渲染与 Suspense [P6-P7]', link: '/interview/react/concurrent-rendering' },
+        {
+          id: 'Z2CB8AWNuWQRi6gYIRNHVcr_',
+          text: 'Fiber 架构与优先级调度 [P6-P7]',
+          link: '/interview/react/fiber-architecture',
+        },
+        {
+          id: 'l4Is0ZtaxYmSXB0xYdJCzBqI',
+          text: '并发渲染与 Suspense [P6-P7]',
+          link: '/interview/react/concurrent-rendering',
+        },
         {
           text: 'React Server Components 原理 [P6-P7]',
           link: '/interview/react/server-components',
           id: '2Icnq_RxCPvP7HsAXVt4KBiO',
         },
-        { id: 'ru1zDv9HCEzFyYOcFaA2YRDY', text: '状态管理本质与有限状态机 [P6-P7]', link: '/interview/react/state-machine' },
-        { id: '2RNimVFWWHGZtxLKI0efqr75', text: 'React 19 新特性深度解析 [P6-P7]', link: '/interview/react/react-19-features' },
-        { id: 'epm4TKLdxaK116z_WOwZuZpo', text: 'React Compiler 原理与实践 [P8]', link: '/interview/react/react-compiler' },
-        { id: 'AI5eXy7EuIviPZgv2j7VBQdk', text: 'Zustand/Jotai 状态管理深度 [P6-P7]', link: '/interview/react/zustand-and-jotai' },
-        { id: 'xCDk58u_azaZtmcskbvM7tGT', text: 'TanStack Query 数据获取与缓存 [P6-P7]', link: '/interview/react/tanstack-query' },
-        { id: '8rMBQlP19ZVNrB45kn6W9W3P', text: 'Next.js 15 全栈框架原理 [P8]', link: '/interview/react/nextjs-15' },
+        {
+          id: 'ru1zDv9HCEzFyYOcFaA2YRDY',
+          text: '状态管理本质与有限状态机 [P6-P7]',
+          link: '/interview/react/state-machine',
+        },
+        {
+          id: '2RNimVFWWHGZtxLKI0efqr75',
+          text: 'React 19 新特性深度解析 [P6-P7]',
+          link: '/interview/react/react-19-features',
+        },
+        {
+          id: 'epm4TKLdxaK116z_WOwZuZpo',
+          text: 'React Compiler 原理与实践 [P8]',
+          link: '/interview/react/react-compiler',
+        },
+        {
+          id: 'AI5eXy7EuIviPZgv2j7VBQdk',
+          text: 'Zustand/Jotai 状态管理深度 [P6-P7]',
+          link: '/interview/react/zustand-and-jotai',
+        },
+        {
+          id: 'xCDk58u_azaZtmcskbvM7tGT',
+          text: 'TanStack Query 数据获取与缓存 [P6-P7]',
+          link: '/interview/react/tanstack-query',
+        },
+        {
+          id: '8rMBQlP19ZVNrB45kn6W9W3P',
+          text: 'Next.js 15 全栈框架原理 [P8]',
+          link: '/interview/react/nextjs-15',
+        },
         {
           text: 'React Hook Form + Zod 表单体系 [P6-P7]',
           link: '/interview/react/react-hook-form-and-zod',
@@ -239,30 +453,62 @@ export const interviewSidebar = {
           link: '/interview/react/react-testing-library',
           id: 'leJ0fAOpVyRqKylioD_OKwz1',
         },
-        { id: 'E_NAKS7erhL_Cv8w2IfBRLna', text: 'React 生态架构模式 [P8]', link: '/interview/react/react-architecture-patterns' },
+        {
+          id: 'E_NAKS7erhL_Cv8w2IfBRLna',
+          text: 'React 生态架构模式 [P8]',
+          link: '/interview/react/react-architecture-patterns',
+        },
       ],
     },
     {
       text: 'Flutter 高级与架构（P6-P7/P8）',
       collapsed: true,
       items: [
-        { id: '61Xe9qwipH9SMPTlTLr5XrWp', text: 'Flutter 渲染引擎 [P6-P7]', link: '/interview/flutter/rendering-engine' },
-        { id: 'fGSd0nnFr4beLnZYqJJ0YTE1', text: 'Dart 语言深度 [P6-P7]', link: '/interview/flutter/dart-advanced' },
-        { id: '9iMZqLK0tcSE6Q65j553123m', text: 'Flutter 状态管理架构 [P8]', link: '/interview/flutter/architecture-patterns' },
-        { id: '__FbM94OzRzKnZJt-Rq97sb1', text: 'Flutter 与原生交互 [P8]', link: '/interview/flutter/platform-interop' },
+        {
+          id: '61Xe9qwipH9SMPTlTLr5XrWp',
+          text: 'Flutter 渲染引擎 [P6-P7]',
+          link: '/interview/flutter/rendering-engine',
+        },
+        {
+          id: 'fGSd0nnFr4beLnZYqJJ0YTE1',
+          text: 'Dart 语言深度 [P6-P7]',
+          link: '/interview/flutter/dart-advanced',
+        },
+        {
+          id: '9iMZqLK0tcSE6Q65j553123m',
+          text: 'Flutter 状态管理架构 [P8]',
+          link: '/interview/flutter/architecture-patterns',
+        },
+        {
+          id: '__FbM94OzRzKnZJt-Rq97sb1',
+          text: 'Flutter 与原生交互 [P8]',
+          link: '/interview/flutter/platform-interop',
+        },
         {
           text: 'Flutter 性能优化与工程化 [P8]',
           link: '/interview/flutter/performance-engineering',
           id: '7kkG1g-tzS-oy0SDNC-Cpgn7',
         },
-        { id: 'Qp36Mvg1B3vrgzKZwja7gta7', text: 'Riverpod 状态管理深度 [P6-P7]', link: '/interview/flutter/riverpod-deep' },
+        {
+          id: 'Qp36Mvg1B3vrgzKZwja7gta7',
+          text: 'Riverpod 状态管理深度 [P6-P7]',
+          link: '/interview/flutter/riverpod-deep',
+        },
         {
           text: 'BLoC/Cubit 架构模式与大规模实践 [P6-P7]',
           link: '/interview/flutter/bloc-cubit-architecture',
           id: 'lv-opTClrUXRUmsv5WtuPJyr',
         },
-        { id: 'gXZ55kgSqecmkLTvoAPxEyAp', text: 'GetX 生态体系 [P6-P7]', link: '/interview/flutter/getx-ecosystem' },
-        { id: 'wiPtO559urkWeRCC5q3YobYj', text: 'GoRouter 路由管理深度 [P6-P7]', link: '/interview/flutter/go-router-deep' },
+        {
+          id: 'gXZ55kgSqecmkLTvoAPxEyAp',
+          text: 'GetX 生态体系 [P6-P7]',
+          link: '/interview/flutter/getx-ecosystem',
+        },
+        {
+          id: 'wiPtO559urkWeRCC5q3YobYj',
+          text: 'GoRouter 路由管理深度 [P6-P7]',
+          link: '/interview/flutter/go-router-deep',
+        },
         {
           text: 'Dio 网络层与 HTTP 客户端体系 [P6-P7]',
           link: '/interview/flutter/dio-and-networking',
@@ -295,7 +541,11 @@ export const interviewSidebar = {
           link: '/interview/browser-and-network/wasm-frontend',
           id: 'P3ID5_JZdjpbtJIppLMIZa_P',
         },
-        { id: 'kd3Asrl3siT5cloOL6roE80n', text: '浏览器安全模型 [P6-P7]', link: '/interview/browser-and-network/security-model' },
+        {
+          id: 'kd3Asrl3siT5cloOL6roE80n',
+          text: '浏览器安全模型 [P6-P7]',
+          link: '/interview/browser-and-network/security-model',
+        },
       ],
     },
     // ── 工程化与构建 ──
@@ -303,13 +553,41 @@ export const interviewSidebar = {
       text: '工程化与全栈（P6-P7/P8）',
       collapsed: true,
       items: [
-        { id: '8J0oAWTROn00Y6qKnAbEo65y', text: '构建工具链演进 [P6-P7]', link: '/interview/engineering/build-toolchain' },
-        { id: '4a_kJzsFW8AeKktnZThGrjEQ', text: 'Monorepo 架构设计 [P8]', link: '/interview/engineering/monorepo-architecture' },
-        { id: 'maJk4W4_uNK3HtI5NMBxcAf3', text: '微前端方案对比 [P8]', link: '/interview/engineering/micro-frontend' },
-        { id: 'R3HmVkMYvzW2-omeihiajtT1', text: '设计系统与组件库架构 [P8]', link: '/interview/engineering/design-system' },
-        { id: '_itcbVQ1RVRamXV04hMNHWio', text: '性能预算体系 [P6-P7]', link: '/interview/engineering/performance-budget' },
-        { id: 'qv8jb94JEew8grhZATAmyxtU', text: '前端测试金字塔实战 [P6-P7]', link: '/interview/engineering/testing-strategy' },
-        { id: 'O42bSF-2oCdGmeEhQhLh8uyG', text: '前端 DevOps 与发布体系 [P8]', link: '/interview/engineering/frontend-devops' },
+        {
+          id: '8J0oAWTROn00Y6qKnAbEo65y',
+          text: '构建工具链演进 [P6-P7]',
+          link: '/interview/engineering/build-toolchain',
+        },
+        {
+          id: '4a_kJzsFW8AeKktnZThGrjEQ',
+          text: 'Monorepo 架构设计 [P8]',
+          link: '/interview/engineering/monorepo-architecture',
+        },
+        {
+          id: 'maJk4W4_uNK3HtI5NMBxcAf3',
+          text: '微前端方案对比 [P8]',
+          link: '/interview/engineering/micro-frontend',
+        },
+        {
+          id: 'R3HmVkMYvzW2-omeihiajtT1',
+          text: '设计系统与组件库架构 [P8]',
+          link: '/interview/engineering/design-system',
+        },
+        {
+          id: '_itcbVQ1RVRamXV04hMNHWio',
+          text: '性能预算体系 [P6-P7]',
+          link: '/interview/engineering/performance-budget',
+        },
+        {
+          id: 'qv8jb94JEew8grhZATAmyxtU',
+          text: '前端测试金字塔实战 [P6-P7]',
+          link: '/interview/engineering/testing-strategy',
+        },
+        {
+          id: 'O42bSF-2oCdGmeEhQhLh8uyG',
+          text: '前端 DevOps 与发布体系 [P8]',
+          link: '/interview/engineering/frontend-devops',
+        },
         {
           text: 'Node.js Web 框架对比 [P6-P7]',
           link: '/interview/engineering/nodejs-web-framework',
@@ -320,14 +598,22 @@ export const interviewSidebar = {
           link: '/interview/engineering/nodejs-database-orm',
           id: '3vQbrBSIZZxoUrqZ-ihyHS6F',
         },
-        { id: 'QVYh0VgxjQLdhOnATOAm-Wfq', text: 'Node.js 部署与运维 [P6-P7]', link: '/interview/engineering/nodejs-deploy-ops' },
+        {
+          id: 'QVYh0VgxjQLdhOnATOAm-Wfq',
+          text: 'Node.js 部署与运维 [P6-P7]',
+          link: '/interview/engineering/nodejs-deploy-ops',
+        },
       ],
     },
     {
       text: '构建工具生态（P6-P7）',
       collapsed: true,
       items: [
-        { id: '75k_RFkDPldQMFNIE-bhkpvT', text: 'Vite 核心原理与插件开发 [P6-P7]', link: '/interview/build-tools/vite-internals' },
+        {
+          id: '75k_RFkDPldQMFNIE-bhkpvT',
+          text: 'Vite 核心原理与插件开发 [P6-P7]',
+          link: '/interview/build-tools/vite-internals',
+        },
         {
           text: '构建工具深度对比 [P8]',
           link: '/interview/build-tools/build-tool-deep-comparison',
@@ -360,24 +646,52 @@ export const interviewSidebar = {
           link: '/interview/architecture/frontend-architecture-patterns',
           id: 'm1SITSIuyruUSZkEJbMqvo3O',
         },
-        { id: 'ubfTEui2DQg4fZoPLd7JhKrQ', text: '大型应用状态架构 [P8]', link: '/interview/architecture/state-architecture' },
-        { id: 'XtibcJJE8ny_Q2sucu7FONdC', text: '模块联邦 V2 [P8]', link: '/interview/architecture/module-federation-v2' },
+        {
+          id: 'ubfTEui2DQg4fZoPLd7JhKrQ',
+          text: '大型应用状态架构 [P8]',
+          link: '/interview/architecture/state-architecture',
+        },
+        {
+          id: 'XtibcJJE8ny_Q2sucu7FONdC',
+          text: '模块联邦 V2 [P8]',
+          link: '/interview/architecture/module-federation-v2',
+        },
         {
           text: 'AI 能力集成架构 [P8]',
           link: '/interview/architecture/ai-integration-architecture',
           id: 'UKloBb1wC4xcfJQP4StH2LZv',
         },
-        { id: 'Hf3atlG1_8D44DHKv8k0Xwjp', text: '客户端数据架构 [P8]', link: '/interview/architecture/client-data-architecture' },
+        {
+          id: 'Hf3atlG1_8D44DHKv8k0Xwjp',
+          text: '客户端数据架构 [P8]',
+          link: '/interview/architecture/client-data-architecture',
+        },
       ],
     },
     {
       text: '系统设计（P8）',
       collapsed: true,
       items: [
-        { id: 'u0P-U-PhF9cYmHaRXcA-vb7i', text: '实时协作系统设计 [P8]', link: '/interview/system-design/real-time-collaboration' },
-        { id: 'P82pObdH1zBWg0IGveTb_4F4', text: '低代码平台架构 [P8]', link: '/interview/system-design/low-code-platform' },
-        { id: 'iuZVylnMc5ZeTJ6wpw4PieXj', text: 'Design Token 体系 [P8]', link: '/interview/system-design/design-token-system' },
-        { id: 'XD1q6j5N_t_8JQyrnVdzED3e', text: '前端可观测性 [P8]', link: '/interview/system-design/frontend-observability' },
+        {
+          id: 'u0P-U-PhF9cYmHaRXcA-vb7i',
+          text: '实时协作系统设计 [P8]',
+          link: '/interview/system-design/real-time-collaboration',
+        },
+        {
+          id: 'P82pObdH1zBWg0IGveTb_4F4',
+          text: '低代码平台架构 [P8]',
+          link: '/interview/system-design/low-code-platform',
+        },
+        {
+          id: 'iuZVylnMc5ZeTJ6wpw4PieXj',
+          text: 'Design Token 体系 [P8]',
+          link: '/interview/system-design/design-token-system',
+        },
+        {
+          id: 'XD1q6j5N_t_8JQyrnVdzED3e',
+          text: '前端可观测性 [P8]',
+          link: '/interview/system-design/frontend-observability',
+        },
       ],
     },
     // ── 跨领域专题 ──
@@ -385,8 +699,16 @@ export const interviewSidebar = {
       text: 'API 与跨平台架构（P6-P7）',
       collapsed: true,
       items: [
-        { id: 'Uwtn98RO7x83OHSF7ADhJkfb', text: 'API 设计模式 [P8]', link: '/interview/api-architecture/api-design-patterns' },
-        { id: '5Pvdm0FYhRHBa7uUvZUdfq8L', text: 'BFF 模式与 API 网关 [P8]', link: '/interview/api-architecture/bff-and-gateway' },
+        {
+          id: 'Uwtn98RO7x83OHSF7ADhJkfb',
+          text: 'API 设计模式 [P8]',
+          link: '/interview/api-architecture/api-design-patterns',
+        },
+        {
+          id: '5Pvdm0FYhRHBa7uUvZUdfq8L',
+          text: 'BFF 模式与 API 网关 [P8]',
+          link: '/interview/api-architecture/bff-and-gateway',
+        },
         {
           text: '跨端技术选型矩阵 [P8]',
           link: '/interview/cross-platform/cross-platform-selection',
@@ -439,7 +761,11 @@ export const interviewSidebar = {
           link: '/interview/ai-and-new-tech/mcp-and-tool-use',
           id: 'hk0x4Klk0uiwJeBCuNqqqe1b',
         },
-        { id: 'PsGJG91upec0_M4u32c66Q2n', text: 'Edge Computing 前端场景 [P8]', link: '/interview/ai-and-new-tech/edge-computing' },
+        {
+          id: 'PsGJG91upec0_M4u32c66Q2n',
+          text: 'Edge Computing 前端场景 [P8]',
+          link: '/interview/ai-and-new-tech/edge-computing',
+        },
       ],
     },
     // ── 管理 ──
@@ -447,10 +773,26 @@ export const interviewSidebar = {
       text: '技术管理（TL）',
       collapsed: true,
       items: [
-        { id: 'wuulhcMWh4aoEHbIUokwwIBF', text: '技术领导力 [TL]', link: '/interview/management/tech-leadership' },
-        { id: '6JLkC-Ls6byGDTDW8T_qjcBS', text: '团队建设方法论 [TL]', link: '/interview/management/team-building' },
-        { id: '94idwcwpiXd8qsprjkGX3cvB', text: '项目交付管理 [TL]', link: '/interview/management/project-delivery' },
-        { id: 'jf3W-AaL3Yjo6pvGPNPkT4y3', text: '跨团队协作 [TL]', link: '/interview/management/cross-team-collaboration' },
+        {
+          id: 'wuulhcMWh4aoEHbIUokwwIBF',
+          text: '技术领导力 [TL]',
+          link: '/interview/management/tech-leadership',
+        },
+        {
+          id: '6JLkC-Ls6byGDTDW8T_qjcBS',
+          text: '团队建设方法论 [TL]',
+          link: '/interview/management/team-building',
+        },
+        {
+          id: '94idwcwpiXd8qsprjkGX3cvB',
+          text: '项目交付管理 [TL]',
+          link: '/interview/management/project-delivery',
+        },
+        {
+          id: 'jf3W-AaL3Yjo6pvGPNPkT4y3',
+          text: '跨团队协作 [TL]',
+          link: '/interview/management/cross-team-collaboration',
+        },
         {
           text: '技术雷达与创新落地 [TL]',
           link: '/interview/management/tech-radar-and-innovation',

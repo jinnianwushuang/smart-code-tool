@@ -1,3 +1,7 @@
+---
+title: 'Ollama 手册'
+tags: ['AI']
+---
 # Ollama 开发手册
 
 ## 概述

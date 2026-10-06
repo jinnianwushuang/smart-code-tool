@@ -1,9 +1,11 @@
 /**
  * ⚠️ AI / 开发者须知：
- * 每个带 link 的叶子菜单项必须包含 id 字段（24 位 nanoid），作为文档的稳定锚点。
- * 新增菜单时请运行: node scripts/inject-sidebar-ids.mjs 自动生成 id
- * id 一旦生成永不修改，即使 text / link 变更也保持原值。
- * VitePress 会忽略 id 字段，不影响解析。
+ * 1. 每个带 link 的叶子菜单项必须包含 id 字段（24 位 nanoid），作为文档的稳定锚点。
+ *    新增菜单时请运行: node scripts/inject-sidebar-ids.mjs 自动生成 id
+ *    id 一旦生成永不修改，即使 text / link 变更也保持原值。
+ *    VitePress 会忽略 id 字段，不影响解析。
+ * 2. 对应的 markdown 文档必须在 frontmatter 中包含 tags 字段（字符串数组），
+ *    用于快捷工具的标签筛选和统计分布。示例：tags: ['设计模式', '架构']
  */
 
 // 架构文档侧边栏配置
@@ -18,12 +20,36 @@ const architecturalVision = {
       link: '/architecture-document/architectural-vision/architectural-vision-1',
       id: 'EKBVi9HeKb1VqdyA6hL_xDZD',
     },
-    { id: 'IAND01o2TqdJ8icVDyd23t7O', text: '闭环设计', link: '/architecture-document/architectural-vision/closed-loop-1' },
-    { id: 'lsUb7Cyzb-_MB0lN0W1qPvWG', text: '影响分析', link: '/architecture-document/architectural-vision/influence-1' },
-    { id: 't2HwGHSArpXXL_10JrqZGEqo', text: '设计原则', link: '/architecture-document/architectural-vision/principles-1' },
-    { id: 'zDgyi8QNBXFkht4-YU5CTwd9', text: '实施报告', link: '/architecture-document/architectural-vision/report-1' },
-    { id: 'J2adGTYbBYDmEDWy9SkbmT3E', text: '路线图', link: '/architecture-document/architectural-vision/roadmap-1' },
-    { id: 'M5BX5o_a0iKKa1u_smDRl7lm', text: '检查清单', link: '/architecture-document/architectural-vision/checklist-1' },
+    {
+      id: 'IAND01o2TqdJ8icVDyd23t7O',
+      text: '闭环设计',
+      link: '/architecture-document/architectural-vision/closed-loop-1',
+    },
+    {
+      id: 'lsUb7Cyzb-_MB0lN0W1qPvWG',
+      text: '影响分析',
+      link: '/architecture-document/architectural-vision/influence-1',
+    },
+    {
+      id: 't2HwGHSArpXXL_10JrqZGEqo',
+      text: '设计原则',
+      link: '/architecture-document/architectural-vision/principles-1',
+    },
+    {
+      id: 'zDgyi8QNBXFkht4-YU5CTwd9',
+      text: '实施报告',
+      link: '/architecture-document/architectural-vision/report-1',
+    },
+    {
+      id: 'J2adGTYbBYDmEDWy9SkbmT3E',
+      text: '路线图',
+      link: '/architecture-document/architectural-vision/roadmap-1',
+    },
+    {
+      id: 'M5BX5o_a0iKKa1u_smDRl7lm',
+      text: '检查清单',
+      link: '/architecture-document/architectural-vision/checklist-1',
+    },
   ],
 }
 
@@ -329,7 +355,11 @@ const react = {
     {
       text: '原理说明',
       items: [
-        { id: 'qlpYU_1T0skJIghsrQJ04S7d', text: 'useEffect 原理', link: '/architecture-document/react/principle/use-effect' },
+        {
+          id: 'qlpYU_1T0skJIghsrQJ04S7d',
+          text: 'useEffect 原理',
+          link: '/architecture-document/react/principle/use-effect',
+        },
         {
           text: 'Hooks 执行阶段：Render vs Commit',
           link: '/architecture-document/react/principle/hooks-phase-timing',
@@ -340,7 +370,11 @@ const react = {
     {
       text: '技术选型',
       items: [
-        { id: '-Im6F2jj_UN7Swx9ZiICEU3J', text: 'App 项目', link: '/architecture-document/react/technology-selection/app-project' },
+        {
+          id: '-Im6F2jj_UN7Swx9ZiICEU3J',
+          text: 'App 项目',
+          link: '/architecture-document/react/technology-selection/app-project',
+        },
         {
           text: '后端项目',
           link: '/architecture-document/react/technology-selection/backend-project',
@@ -374,7 +408,11 @@ const vue = {
     {
       text: '通用工具',
       items: [
-        { id: '-IfxevXeW91Ix7iurjkAVEEB', text: '模块加载器', link: '/architecture-document/vue/general-tools/module-loader' },
+        {
+          id: '-IfxevXeW91Ix7iurjkAVEEB',
+          text: '模块加载器',
+          link: '/architecture-document/vue/general-tools/module-loader',
+        },
         {
           text: 'Payload 包装器',
           link: '/architecture-document/vue/general-tools/wrap-with-payload',
@@ -467,7 +505,11 @@ const vue = {
     {
       text: '技术选型',
       items: [
-        { id: 'zsD1qYeN3haxKPF_D48Vu2DF', text: 'App 项目', link: '/architecture-document/vue/technology-selection/app-project' },
+        {
+          id: 'zsD1qYeN3haxKPF_D48Vu2DF',
+          text: 'App 项目',
+          link: '/architecture-document/vue/technology-selection/app-project',
+        },
         {
           text: '后端项目',
           link: '/architecture-document/vue/technology-selection/backend-project',
@@ -571,7 +613,11 @@ const generalKnowledge = {
       link: '/architecture-document/general-knowledge/frontend-rendering-modes',
       id: '2ZI6JeS86oW6uu04_X4_uCHh',
     },
-    { id: '9PnQqFj2P04pkHNxoFRp9iuY', text: '网络通用知识', link: '/architecture-document/general-knowledge/network-fundamentals' },
+    {
+      id: '9PnQqFj2P04pkHNxoFRp9iuY',
+      text: '网络通用知识',
+      link: '/architecture-document/general-knowledge/network-fundamentals',
+    },
     {
       text: 'Chrome 开发者工具全解',
       link: '/architecture-document/general-knowledge/chrome-devtools',
@@ -615,12 +661,36 @@ const dataStructure = {
   text: '数据结构',
   collapsed: true,
   items: [
-    { id: 'Cgg6LvUD1NhmBIMkjXzgxS_1', text: '基础概念', link: '/architecture-document/data-structure/basic-concepts' },
-    { id: 'O4xn4qbfnB4QuqkPY_JBzMVK', text: '线性结构', link: '/architecture-document/data-structure/linear-structures' },
-    { id: 'WnZ67PONkdEmoB3-8GGeBKuu', text: '树形结构', link: '/architecture-document/data-structure/tree-structures' },
-    { id: 'D5KrOsOBF7WkfqVbJmx5VRUA', text: '图结构', link: '/architecture-document/data-structure/graph-structures' },
-    { id: 'Pup9yg4tpTI6bJ_vBJF5KBw_', text: '哈希表与集合', link: '/architecture-document/data-structure/hash-structures' },
-    { id: 'M4rF-anbEjBd_nTUn8pOpWhe', text: '高级数据结构', link: '/architecture-document/data-structure/advanced-structures' },
+    {
+      id: 'Cgg6LvUD1NhmBIMkjXzgxS_1',
+      text: '基础概念',
+      link: '/architecture-document/data-structure/basic-concepts',
+    },
+    {
+      id: 'O4xn4qbfnB4QuqkPY_JBzMVK',
+      text: '线性结构',
+      link: '/architecture-document/data-structure/linear-structures',
+    },
+    {
+      id: 'WnZ67PONkdEmoB3-8GGeBKuu',
+      text: '树形结构',
+      link: '/architecture-document/data-structure/tree-structures',
+    },
+    {
+      id: 'D5KrOsOBF7WkfqVbJmx5VRUA',
+      text: '图结构',
+      link: '/architecture-document/data-structure/graph-structures',
+    },
+    {
+      id: 'Pup9yg4tpTI6bJ_vBJF5KBw_',
+      text: '哈希表与集合',
+      link: '/architecture-document/data-structure/hash-structures',
+    },
+    {
+      id: 'M4rF-anbEjBd_nTUn8pOpWhe',
+      text: '高级数据结构',
+      link: '/architecture-document/data-structure/advanced-structures',
+    },
   ],
 }
 
@@ -629,10 +699,26 @@ const designPatterns = {
   text: '设计模式',
   collapsed: true,
   items: [
-    { id: 'QhhNiXMDPEY4mvd2kKrhSenJ', text: '概述', link: '/architecture-document/design-patterns/overview' },
-    { id: 'juvz29IotOKHSxnNZPZHfoKV', text: '创建型模式', link: '/architecture-document/design-patterns/creational' },
-    { id: '6MaIWwrYAxw1XbphivXVFFgc', text: '结构型模式', link: '/architecture-document/design-patterns/structural' },
-    { id: 'zhpZPqkOCZqMhlONnZx75MOl', text: '行为型模式', link: '/architecture-document/design-patterns/behavioral' },
+    {
+      id: 'QhhNiXMDPEY4mvd2kKrhSenJ',
+      text: '概述',
+      link: '/architecture-document/design-patterns/overview',
+    },
+    {
+      id: 'juvz29IotOKHSxnNZPZHfoKV',
+      text: '创建型模式',
+      link: '/architecture-document/design-patterns/creational',
+    },
+    {
+      id: '6MaIWwrYAxw1XbphivXVFFgc',
+      text: '结构型模式',
+      link: '/architecture-document/design-patterns/structural',
+    },
+    {
+      id: 'zhpZPqkOCZqMhlONnZx75MOl',
+      text: '行为型模式',
+      link: '/architecture-document/design-patterns/behavioral',
+    },
   ],
 }
 
@@ -641,7 +727,11 @@ const aiCodeInspection = {
   text: 'AI 代码检查',
   collapsed: true,
   items: [
-    { id: 'VXnd5hfY1vWrOhWIbcMlId_H', text: '架构概述', link: '/architecture-document/ai-code-inspection/architecture-overview' },
+    {
+      id: 'VXnd5hfY1vWrOhWIbcMlId_H',
+      text: '架构概述',
+      link: '/architecture-document/ai-code-inspection/architecture-overview',
+    },
     {
       text: 'Prompt 工程策略',
       link: '/architecture-document/ai-code-inspection/prompt-engineering',
@@ -657,7 +747,11 @@ const aiCodeInspection = {
       link: '/architecture-document/ai-code-inspection/rule-system-design',
       id: 'mzD-ndXersggkSvE3YFwcQ_D',
     },
-    { id: 'i6dUT84uwqTQMg2TAGmHPANQ', text: 'CI/CD 集成方案', link: '/architecture-document/ai-code-inspection/ci-integration' },
+    {
+      id: 'i6dUT84uwqTQMg2TAGmHPANQ',
+      text: 'CI/CD 集成方案',
+      link: '/architecture-document/ai-code-inspection/ci-integration',
+    },
     {
       text: '扩展性与自定义机制',
       link: '/architecture-document/ai-code-inspection/extensibility-and-customization',
@@ -734,7 +828,11 @@ const thinking = {
       link: '/architecture-document/thinking/cross-framework-thinking-comparison',
       id: 'y0ZcW5BycsZTRWZLbmie-GZX',
     },
-    { id: 'YquLM7cTTLRaI2GtQpVJD-h1', text: 'BUG 修复思维对比', link: '/architecture-document/thinking/bug-fixing-thinking' },
+    {
+      id: 'YquLM7cTTLRaI2GtQpVJD-h1',
+      text: 'BUG 修复思维对比',
+      link: '/architecture-document/thinking/bug-fixing-thinking',
+    },
     {
       text: '技术迭代与学习疲态',
       link: '/architecture-document/thinking/tech-iteration-and-learning-fatigue',

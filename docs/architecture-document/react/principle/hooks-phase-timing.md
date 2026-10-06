@@ -1,6 +1,8 @@
 ---
 title: Hooks 执行阶段：Render vs Commit
 order: 15
+tags: ['React']
+
 ---
 
 # Hooks 执行阶段：Render vs Commit

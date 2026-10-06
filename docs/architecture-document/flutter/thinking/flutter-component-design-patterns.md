@@ -1,6 +1,8 @@
 ---
 title: Flutter 组件设计模式
 order: 10
+tags: ['Flutter', '思维']
+
 ---
 
 # Flutter 组件设计模式

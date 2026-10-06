@@ -9,8 +9,8 @@
  * 用法：node scripts/gen-doc-list.mjs
  */
 
-import { writeFileSync } from 'node:fs'
-import { resolve, dirname } from 'node:path'
+import { writeFileSync, readFileSync, existsSync } from 'node:fs'
+import { resolve, dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -36,6 +36,122 @@ const ALL_SIDEBARS = [
   { name: '指令集', sidebar: instructionsSidebar },
 ]
 
+// ── URL 路径段 → 可读标签映射 ──
+const TAG_MAP = {
+  // 面试
+  react: 'React',
+  vue: 'Vue',
+  flutter: 'Flutter',
+  javascript: 'JavaScript',
+  typescript: 'TypeScript',
+  intermediate: '中级',
+  junior: '初级',
+  senior: '高级',
+  engineering: '工程化',
+  'build-tools': '构建工具',
+  'browser-and-network': '浏览器',
+  'system-design': '系统设计',
+  'api-architecture': 'API',
+  architecture: '架构',
+  'flutter-intermediate': 'Flutter',
+  'cross-platform': '跨端',
+  'ai-and-new-tech': 'AI',
+  management: '管理',
+  levels: '成长路径',
+  // 手册
+  frontend: '前端',
+  backend: '后端',
+  database: '数据库',
+  devops: 'DevOps',
+  mobile: '移动端',
+  tools: '工具',
+  ai: 'AI',
+  'tech-glossary-index': '术语',
+  // 架构文档
+  'design-patterns': '设计模式',
+  'data-structure': '数据结构',
+  'general-knowledge': '基础',
+  nodejs: 'Node.js',
+  python: 'Python',
+  electron: 'Electron',
+  flutter: 'Flutter',
+  'typical-analysis': '案例',
+  'architectural-vision': '架构',
+  'code-analysis': '代码分析',
+  database: '数据库',
+  // 心理
+  psychology: '心理学',
+  'cognition-learning': '认知',
+  'mental-health': '心理健康',
+  philosophy: '哲学',
+  'world-laws': '规律',
+  'comprehensive-guide': '综合',
+  // AI
+  ollama: 'Ollama',
+  'base-knowledge': '基础',
+  thinking: '思维',
+  sentence_assembly: '句子组合',
+  // 指令集
+  instructions: '指令集',
+  react: 'React',
+  vue: 'Vue',
+  flutter: 'Flutter',
+}
+
+/**
+ * 从 markdown 文件提取 tags：
+ * 1. 优先读 frontmatter 中的 tags 字段
+ * 2. 无 frontmatter tags → 从 URL 路径推导
+ */
+function extractTags(url) {
+  const mdPath = join(ROOT, 'docs', url + '.md')
+  if (existsSync(mdPath)) {
+    const content = readFileSync(mdPath, 'utf-8')
+    // 尝试匹配 frontmatter tags
+    const fmMatch = content.match(/^---\n([\s\S]*?)\n---/)
+    if (fmMatch) {
+      const tagsMatch = fmMatch[1].match(/^tags:\s*\[([^\]]*)\]/m)
+      if (tagsMatch) {
+        // 解析 frontmatter tags 数组
+        return tagsMatch[1]
+          .split(',')
+          .map((t) => t.trim().replace(/^['"]|['"]$/g, ''))
+          .filter(Boolean)
+      }
+    }
+  }
+  // 无 frontmatter tags → 从 URL 路径推导
+  return deriveTagsFromUrl(url)
+}
+
+/**
+ * 从 URL 路径段推导标签
+ */
+function deriveTagsFromUrl(url) {
+  const segments = url.split('/').filter(Boolean)
+  const tags = []
+  for (const seg of segments) {
+    if (TAG_MAP[seg]) {
+      const tag = TAG_MAP[seg]
+      if (!tags.includes(tag)) tags.push(tag)
+    }
+  }
+  // 兜底：至少给一个顶级分类标签
+  if (tags.length === 0 && segments.length > 0) {
+    const topSeg = segments[0]
+    const topMap = {
+      interview: '面试',
+      handbook: '手册',
+      'architecture-document': '架构',
+      psychology: '心理学',
+      ai: 'AI',
+      instructions: '指令集',
+    }
+    if (topMap[topSeg]) tags.push(topMap[topSeg])
+  }
+  return tags
+}
+
 // ── 递归遍历，收集叶子节点 ──
 const docs = []
 const warnings = []
@@ -60,6 +176,7 @@ function traverse(items, groupPath = []) {
         title: item.text,
         url: item.link,
         group: groupPath.length > 0 ? groupPath.join(' > ') : '未分组',
+        tags: extractTags(item.link),
       })
     } else if (hasItems) {
       // 分组节点：递归进入子级

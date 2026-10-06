@@ -1,3 +1,7 @@
+---
+title: 'TypeScript 类型拆解'
+tags: ['案例']
+---
 # TypeScript 典型类型拆解
 
 > 本文档对 TypeScript 中经典的内置工具类型进行**逐行拆解**，揭示其底层实现原理。

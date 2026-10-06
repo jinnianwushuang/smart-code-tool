@@ -1,6 +1,8 @@
 ---
 title: Python AI 开发架构指南
 order: 30
+tags: ['Python']
+
 ---
 
 # Python AI 开发架构指南

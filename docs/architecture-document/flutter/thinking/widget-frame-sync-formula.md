@@ -1,3 +1,7 @@
+---
+title: 'Widget × 帧调度 × 三层对象同步'
+tags: ['Flutter', '思维']
+---
 # Flutter 底层万用公式：Widget 不可变性 × 帧调度 × 三层对象同步
 
 > Flutter 的一切设计——Widget 树、Element 树、RenderObject 树、状态管理、动画系统——都建立在同一个底层架构之上：**Widget 不可变性 × 帧调度 × 三层对象同步**。理解这个公式，就理解了 Flutter 为什么需要 `const` Widget、为什么 `setState` 要触发 `build()`、为什么 `RepaintBoundary` 能提升性能、为什么 Flutter 的渲染模型与 Web 框架根本不同。本文从 Flutter 的底层引擎出发，推导出这个万用公式。

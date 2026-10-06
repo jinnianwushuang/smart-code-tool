@@ -1,3 +1,7 @@
+---
+title: '构建优化核心概念'
+tags: ['基础']
+---
 # 构建优化核心概念：Tree Shaking · 代码分割 · HMR · 依赖预构建
 
 > 现代前端构建工具（Vite、Rolldown、Webpack、Turbopack）都在围绕这四个核心概念做优化。

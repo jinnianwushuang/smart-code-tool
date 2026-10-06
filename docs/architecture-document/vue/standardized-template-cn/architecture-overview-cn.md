@@ -1,6 +1,8 @@
 ---
 title: 架构概述
 order: 1
+tags: ['Vue']
+
 ---
 
 # Vue 标准化装配架构 — 架构概述

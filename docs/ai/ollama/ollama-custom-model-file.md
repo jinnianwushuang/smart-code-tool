@@ -1,3 +1,7 @@
+---
+title: 'Ollama 自定义模型笔记'
+tags: ['AI', 'Ollama']
+---
 # Ollama 自定义模型 Modelfile 笔记
 
 > 本地采用双模型分工策略：**代码专用** + **日常通用**，各司其职。

@@ -63,7 +63,13 @@ function buildMaps(docs) {
   for (const doc of docs) {
     if (doc.id && doc.url) {
       urlToIdMap.set(doc.url, doc.id)
-      idToDocMap.set(doc.id, { id: doc.id, url: doc.url, title: doc.title, group: doc.group })
+      idToDocMap.set(doc.id, {
+        id: doc.id,
+        url: doc.url,
+        title: doc.title,
+        group: doc.group,
+        tags: doc.tags || [],
+      })
     }
   }
 }
@@ -112,10 +118,25 @@ export async function getDocIdByUrl(url) {
   return null
 }
 
-/** 根据 docId 查找文档信息 */
+/** 根据 docId 查找文档信息（含 tags） */
 export async function getDocInfoById(docId) {
   await ensureInit()
   return idToDocMap?.get(docId) || null
+}
+
+/** 根据 docId 获取 tags */
+export function getTagsById(docId) {
+  return idToDocMap?.get(docId)?.tags || []
+}
+
+/** 获取所有不重复的 tags 列表 */
+export function getAllTags() {
+  if (!idToDocMap) return []
+  const tagSet = new Set()
+  for (const doc of idToDocMap.values()) {
+    if (doc.tags) doc.tags.forEach((t) => tagSet.add(t))
+  }
+  return Array.from(tagSet).sort()
 }
 
 /**

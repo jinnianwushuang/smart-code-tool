@@ -1,5 +1,7 @@
 ---
 title: React 提示词集
+tags: ['指令集', 'React']
+
 ---
 
 # React 提示词集

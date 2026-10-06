@@ -1,3 +1,7 @@
+---
+title: 'Linux 命令速查'
+tags: ['DevOps']
+---
 # Linux 日常最常用命令速查表
 
 > **版本**: 1.0  

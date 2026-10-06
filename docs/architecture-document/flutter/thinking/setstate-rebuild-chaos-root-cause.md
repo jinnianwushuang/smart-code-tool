@@ -1,3 +1,7 @@
+---
+title: 'setState 滥用与 Widget 重建失控'
+tags: ['Flutter', '思维']
+---
 # Flutter 项目卡顿的元凶：setState 滥用与 Widget 树重建失控
 
 > Flutter 项目绝大多数的性能问题，不是 Skia/Impeller 渲染引擎慢，不是 Widget 树太深，不是 Dart 不够快——**而是业务逻辑以不当的方式调用了 setState，导致整棵 Widget 子树频繁重建，而其中绝大部分重建完全没有必要**。Flutter 的 Widget 是不可变的——每次 setState 都会销毁旧 Widget 树、创建新 Widget 树，这个"销毁+重建"的成本远比想象中高。本文深入剖析 Flutter 中不必要重建的病灶，给出系统性的根治方案。
