@@ -8,7 +8,10 @@
  *   - review:settings   → UserSettings
  */
 
-import { get, set } from 'idb-keyval'
+import { get, set, createStore } from 'idb-keyval'
+
+// ── IndexedDB 自定义存储（替代默认 keyval-store）──
+const reviewStore = createStore('smart-code-tool', 'quick-tools')
 
 // ── IndexedDB 键名 ──
 const KEY_RECORDS = 'review:records'
@@ -71,7 +74,7 @@ export function useReviewStorage() {
   // ── 初始化：从 IndexedDB 加载全部记录到内存 ──
   async function init() {
     if (initialized) return
-    const records = (await get(KEY_RECORDS)) || []
+    const records = (await get(KEY_RECORDS, reviewStore)) || []
     recordsMap = new Map(records.map((r) => [r.docId, r]))
     initialized = true
   }
@@ -79,7 +82,7 @@ export function useReviewStorage() {
   // ── 持久化：将内存缓存写回 IndexedDB ──
   async function persist() {
     const records = Array.from(recordsMap.values())
-    await set(KEY_RECORDS, records)
+    await set(KEY_RECORDS, records, reviewStore)
   }
 
   // ── 数据迁移：localStorage → IndexedDB ──
@@ -194,21 +197,21 @@ export function useReviewStorage() {
 
   // ── 文档快照 ──
   async function getDocSnapshot() {
-    return (await get(KEY_DOC_SNAPSHOT)) || null
+    return (await get(KEY_DOC_SNAPSHOT, reviewStore)) || null
   }
 
   async function saveDocSnapshot(snapshot) {
-    await set(KEY_DOC_SNAPSHOT, snapshot)
+    await set(KEY_DOC_SNAPSHOT, snapshot, reviewStore)
   }
 
   // ── 用户配置 ──
   async function getSettings() {
-    const saved = (await get(KEY_SETTINGS)) || {}
+    const saved = (await get(KEY_SETTINGS, reviewStore)) || {}
     return { ...DEFAULT_SETTINGS, ...saved }
   }
 
   async function saveSettings(settings) {
-    await set(KEY_SETTINGS, { ...DEFAULT_SETTINGS, ...settings })
+    await set(KEY_SETTINGS, { ...DEFAULT_SETTINGS, ...settings }, reviewStore)
   }
 
   // ── 导出全部数据（JSON） ──

@@ -30,7 +30,7 @@ export default defineConfig({
     '/smart-code-tool/code-tool-app/',
   ],
   // 头信息
-  head: [['link', { rel: 'icon', href: 'doc-assets/logo/icons8-light-on-96.png' }]],
+  head: [['link', { rel: 'icon', href: '/doc-assets/logo/icons8-light-on-96.png' }]],
 
   // 启用 VitePress 内置暗色模式切换（导航栏太阳/月亮按钮），统一使用 app-theme-mode 键
   appearance: {

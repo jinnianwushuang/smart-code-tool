@@ -97,15 +97,37 @@ export function useReviewDocRegistry(storage) {
 
   /**
    * 同步文档清单与 IndexedDB 记录：
+   * - 旧记录修复 → 补全 docId + 规范化 URL
    * - 新增文档 → 自动创建空记录
    * - 删除文档 → 标记 isArchived
    * - URL/标题变更 → 更新记录
    */
   async function syncDocsWithRecords() {
     const allRecords = storage.getAllRecords()
-    const recordIds = new Set(allRecords.map((r) => r.docId))
-    const docIds = new Set(docList.value.map((d) => d.id))
-    let changes = { added: 0, archived: 0, updated: 0 }
+    const recordsToUpdate = []
+    let changes = { added: 0, archived: 0, updated: 0, migrated: 0 }
+
+    // 0. 修复旧记录：补全 docId + 规范化 URL（完整 URL → 路径格式）
+    for (const record of allRecords) {
+      if (!record.docId && record.url) {
+        const cleanUrl = stripBase(record.url)
+        const docId = urlToIdMap.get(cleanUrl)
+        if (docId) {
+          record.docId = docId
+          record.url = cleanUrl
+          const docInfo = idToDocMap.get(docId)
+          if (docInfo) {
+            record.title = docInfo.title
+            record.group = docInfo.group
+          }
+          recordsToUpdate.push(record)
+          changes.migrated++
+        }
+      }
+    }
+
+    // 重新构建 recordIds（包含已迁移的 docId）
+    const recordIds = new Set(allRecords.map((r) => r.docId).filter(Boolean))
 
     // 1. 检测新增文档（doc-list 中有但 IndexedDB 中无）
     for (const doc of docList.value) {
@@ -116,8 +138,10 @@ export function useReviewDocRegistry(storage) {
     }
 
     // 2. 检测 URL/标题变更 + 归档已删除文档
-    const recordsToUpdate = []
     for (const record of allRecords) {
+      // 跳过刚迁移过的记录（已更新，无需重复处理）
+      if (recordsToUpdate.includes(record)) continue
+
       const docInfo = idToDocMap.get(record.docId)
 
       if (!docInfo) {
@@ -131,7 +155,6 @@ export function useReviewDocRegistry(storage) {
         // 文档存在 → 同步 URL/标题
         let changed = false
         if (record.isArchived) {
-          // 之前被归档的文档重新出现 → 取消归档
           record.isArchived = false
           changed = true
         }

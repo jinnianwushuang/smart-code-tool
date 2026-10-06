@@ -20,25 +20,39 @@ let initPromise = null
 /**
  * 将运行时 URL 规范化为 doc-list 格式
  *
- * VitePress 生产环境：
- *   window.location.pathname → /smart-code-tool/interview/react/react-compiler.html
- * doc-list.json 中的 url：
- *                           → /interview/react/react-compiler
+ * 输入可能是：
+ *   完整 URL: https://jinnianwushuang.github.io/smart-code-tool/interview/react/xxx.html
+ *   带 base 路径: /smart-code-tool/interview/react/xxx.html
+ *   纯路径: /interview/react/xxx
  *
- * 需要剥离：① base 前缀  ② .html 后缀
+ * 输出统一为: /interview/react/xxx
+ *
+ * 剥离：① 域名  ② base 前缀  ③ .html 后缀
  */
 export function stripBase(url) {
   if (!url) return url
   let clean = url
-  // ① 剥离 VitePress base 前缀（如 /smart-code-tool/）
+
+  // ① 剥离域名，提取 pathname
+  if (clean.startsWith('http://') || clean.startsWith('https://')) {
+    try {
+      clean = new URL(clean).pathname
+    } catch {
+      return url
+    }
+  }
+
+  // ② 剥离 VitePress base 前缀（如 /smart-code-tool/）
   const base = import.meta.env.BASE_URL || '/'
   if (base && base !== '/' && clean.startsWith(base)) {
     clean = '/' + clean.slice(base.length)
   }
-  // ② 剥离 .html 后缀（VitePress 生产环境生成）
+
+  // ③ 剥离 .html 后缀（VitePress 生产环境生成）
   if (clean.endsWith('.html')) {
     clean = clean.slice(0, -5)
   }
+
   return clean
 }
 
