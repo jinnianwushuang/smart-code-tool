@@ -119,7 +119,9 @@ export async function getDocInfoById(docId) {
 }
 
 /**
- * 批量迁移旧记录：为没有 docId 的记录补上 docId
+ * 批量迁移旧记录：
+ * - 为没有 docId 的记录补上 docId
+ * - 规范化 URL（完整 URL → 路径格式）
  * 返回 { migrated: number, records: Array }
  */
 export async function migrateRecords(records) {
@@ -128,14 +130,24 @@ export async function migrateRecords(records) {
 
   let migrated = 0
   for (const record of records) {
-    if (!record.docId && record.url) {
+    let changed = false
+    // 规范化 URL（完整 URL → 路径格式）
+    if (record.url) {
       const cleanUrl = stripBase(record.url)
-      const docId = urlToIdMap.get(cleanUrl)
-      if (docId) {
-        record.docId = docId
-        migrated++
+      if (cleanUrl !== record.url) {
+        record.url = cleanUrl
+        changed = true
       }
     }
+    // 补全 docId
+    if (!record.docId && record.url) {
+      const docId = urlToIdMap.get(record.url)
+      if (docId) {
+        record.docId = docId
+        changed = true
+      }
+    }
+    if (changed) migrated++
   }
   return { migrated, records }
 }
