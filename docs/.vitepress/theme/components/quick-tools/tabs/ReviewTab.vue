@@ -287,8 +287,11 @@
 import { ref, computed } from 'vue'
 import { dayjs, formatRelative, downloadText, exportTimestamp } from '../shared/utils'
 import { REVIEW_RATING } from '../composables/useReviewScheduler'
+import { useLearningStreak } from '../composables/useLearningStreak'
 import { getTagsById, getAllTags } from '../shared/useDocIdMapper'
 import TagFilter from '../shared/TagFilter.vue'
+
+const { recordToday: recordLearning } = useLearningStreak()
 
 const props = defineProps({
   review: { type: Object, required: true },
@@ -383,6 +386,7 @@ const ratingLabels = {
 
 async function handleReview(docId, rating) {
   await props.review.submitReview(docId, rating)
+  recordLearning('review')
 }
 
 // ── 导入/导出 ──

@@ -10,6 +10,7 @@
 
 import { ref, computed } from 'vue'
 import { AUTO_LEARN_THRESHOLD, TICK_INTERVAL } from '../shared/constants'
+import { useLearningStreak } from './useLearningStreak'
 
 /**
  * useAutoLearn — 自动学习感知 composable
@@ -21,6 +22,7 @@ import { AUTO_LEARN_THRESHOLD, TICK_INTERVAL } from '../shared/constants'
  * @param {function} getDocInfoById - 根据 docId 查找文档信息 { url, title, group } 的函数
  */
 export function useAutoLearn(getPage, storage, scheduler, getDocIdByUrl, getDocInfoById) {
+  const { recordToday } = useLearningStreak()
   /** 当前页面累计有效秒数 */
   const accumulatedSeconds = ref(0)
   /** 当前页面是否已自动标记学习 */
@@ -145,6 +147,9 @@ export function useAutoLearn(getPage, storage, scheduler, getDocIdByUrl, getDocI
       group: docInfo.group,
       accumulatedSeconds: accumulatedSeconds.value,
     })
+
+    // 记录学习实况
+    recordToday('autoLearn')
 
     // 触发首次调度（计算首次复习时间）
     const fsrsFields = scheduler.scheduleFirstLearn(record)

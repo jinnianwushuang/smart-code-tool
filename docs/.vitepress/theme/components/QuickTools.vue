@@ -32,6 +32,13 @@
       destroy-on-close
     >
       <el-tabs v-model="activeTab" @tab-change="handleTabChange" class="qt-main-tabs">
+        <el-tab-pane name="streak">
+          <template #label>
+            <span>📊 实况</span>
+          </template>
+          <LearningStreakTab />
+        </el-tab-pane>
+
         <el-tab-pane name="progress">
           <template #label>
             <span>📖 进度</span>
@@ -44,7 +51,7 @@
           <ProgressTab
             :records="progress.records.value"
             :navigate-to="navigateTo"
-            @add="progress.add"
+            @add="handleProgressAdd"
             @delete="progress.remove"
             @clear-all="progress.clearAll"
             @export="progress.exportRecords"
@@ -68,7 +75,7 @@
             :editing-id="doubt.editingId.value"
             :navigate-to="navigateTo"
             @update:draft="doubt.draft.value = $event"
-            @save="doubt.save"
+            @save="handleDoubtSave"
             @edit="doubt.edit"
             @resolve="doubt.resolve"
             @delete="doubt.remove"
@@ -95,7 +102,7 @@
             :editing-id="note.editingId.value"
             :navigate-to="navigateTo"
             @update:draft="note.draft.value = $event"
-            @save="note.save"
+            @save="handleNoteSave"
             @edit="note.edit"
             @delete="note.remove"
             @clear-all="note.clearAll"
@@ -128,10 +135,12 @@ import { useDoubt } from './quick-tools/composables/useDoubt'
 import { useNote } from './quick-tools/composables/useNote'
 import { useReview } from './quick-tools/composables/useReview'
 import { useReviewNotification } from './quick-tools/composables/useReviewNotification'
+import { useLearningStreak } from './quick-tools/composables/useLearningStreak'
 import ProgressTab from './quick-tools/tabs/ProgressTab.vue'
 import DoubtTab from './quick-tools/tabs/DoubtTab.vue'
 import NoteTab from './quick-tools/tabs/NoteTab.vue'
 import ReviewTab from './quick-tools/tabs/ReviewTab.vue'
+import LearningStreakTab from './quick-tools/tabs/LearningStreakTab.vue'
 import './quick-tools/shared/quick-tools.css'
 
 // ==================== 页面信息 ====================
@@ -170,6 +179,7 @@ const doubt = useDoubt(getPage)
 const note = useNote(getPage)
 const review = useReview(getPage)
 const notification = useReviewNotification(review)
+const learningStreak = useLearningStreak()
 
 // ==================== 初始化 ====================
 onMounted(async () => {
@@ -233,5 +243,21 @@ const handleTabChange = (tab) => {
   if (tab === 'doubt') switchToDoubt()
   else if (tab === 'note') switchToNote()
   else if (tab === 'review') switchToReview()
+}
+
+// ==================== 学习实况记录 ====================
+function handleProgressAdd(...args) {
+  progress.add(...args)
+  learningStreak.recordToday('progress')
+}
+
+function handleDoubtSave(...args) {
+  doubt.save(...args)
+  learningStreak.recordToday('doubt')
+}
+
+function handleNoteSave(...args) {
+  note.save(...args)
+  learningStreak.recordToday('note')
 }
 </script>

@@ -401,10 +401,158 @@
   color: var(--el-text-color-placeholder);
 }
 
+/* ==================== 学习实况（Learning Streak） ==================== */
+.ls-container {
+  gap: 16px;
+}
+
+/* 打脸真相卡片 */
+.ls-truth-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 2px solid;
+  border-radius: 12px;
+  background: var(--el-fill-color-lighter);
+}
+.ls-truth-emoji {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+.ls-truth-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--el-text-color-primary);
+}
+
+/* 统计卡片网格 */
+.ls-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.ls-stat-card {
+  text-align: center;
+  padding: 12px 8px;
+}
+.ls-stat-num {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.ls-stat-label {
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+  margin-top: 4px;
+}
+
+/* 日历热力图 */
+.ls-calendar-section {
+  margin-top: 8px;
+}
+.ls-calendar-section h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--el-text-color-primary);
+}
+.ls-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.ls-calendar-legend {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+}
+.ls-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ls-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+.ls-legend-dot.learned {
+  background: #67c23a;
+}
+.ls-legend-dot.idle {
+  background: var(--el-fill-color-darker);
+}
+.ls-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  gap: 3px;
+}
+.ls-calendar-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: var(--el-fill-color-darker);
+  font-size: 10px;
+  color: var(--el-text-color-placeholder);
+  cursor: default;
+  transition: all 0.2s;
+}
+.ls-calendar-cell.learned {
+  background: #67c23a;
+  color: #fff;
+  font-weight: 600;
+}
+.ls-calendar-cell.weekend {
+  opacity: 0.7;
+}
+.ls-cell-date {
+  pointer-events: none;
+}
+
+/* 断档记录 */
+.ls-gaps-section {
+  margin-top: 8px;
+}
+.ls-gaps-section h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--el-text-color-primary);
+}
+.ls-gap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ls-gap-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  background: var(--el-fill-color-lighter);
+  border-radius: 6px;
+  font-size: 13px;
+}
+.ls-gap-range {
+  color: var(--el-text-color-regular);
+  font-family: monospace;
+}
+
 /* ==================== 响应式 ==================== */
 @media (max-width: 768px) {
   .rv-stats-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ls-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ls-calendar-grid {
+    grid-template-columns: repeat(10, 1fr);
   }
 
   .rv-filter-bar {
