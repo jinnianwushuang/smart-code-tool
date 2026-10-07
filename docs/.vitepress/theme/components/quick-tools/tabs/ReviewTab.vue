@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { dayjs, formatRelative, downloadText, exportTimestamp } from '../shared/utils'
 import { REVIEW_RATING } from '../composables/useReviewScheduler'
 import { getTagsById, getAllTags } from '../shared/useDocIdMapper'
+import TagFilter from '../shared/TagFilter.vue'
 
 const props = defineProps({
   review: { type: Object, required: true },
@@ -211,7 +212,12 @@ function dueLabel(due) {
         <div class="rv-empty-hint">系统会在你阅读文档时自动安排复习计划</div>
       </div>
       <div v-else class="qt-record-list">
-        <div v-for="record in dueRecords" :key="record.docId" class="qt-record-card rv-review-card">
+        <div
+          v-for="record in dueRecords"
+          :key="record.docId"
+          class="qt-record-card rv-review-card"
+          @click="navigateTo(record.url)"
+        >
           <div class="qt-record-header">
             <span class="qt-record-title" :title="record.title">{{ record.title }}</span>
             <div class="qt-record-actions" @click.stop>
@@ -263,10 +269,7 @@ function dueLabel(due) {
         </button>
       </div>
       <div class="rv-filter-bar">
-        <select v-model="blindSpotTag" class="rv-group-select">
-          <option value="">全部标签</option>
-          <option v-for="t in allTags" :key="t" :value="t">{{ t }}</option>
-        </select>
+        <TagFilter :tags="allTags" v-model="blindSpotTag" />
       </div>
 
       <div v-if="currentBlindSpotList.length === 0" class="qt-empty">
@@ -306,10 +309,7 @@ function dueLabel(due) {
           <option value="">全部分组</option>
           <option v-for="g in allGroups" :key="g" :value="g">{{ g }}</option>
         </select>
-        <select v-model="filterTag" class="rv-group-select">
-          <option value="">全部标签</option>
-          <option v-for="t in allTags" :key="t" :value="t">{{ t }}</option>
-        </select>
+        <TagFilter :tags="allTags" v-model="filterTag" />
       </div>
 
       <div v-if="filteredRecords.length === 0" class="qt-empty">暂无匹配文档</div>

@@ -290,6 +290,13 @@
   white-space: nowrap;
   flex: 1;
   min-width: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.qt-record-title:hover {
+  color: var(--vp-c-brand-1);
+  text-decoration: underline;
 }
 
 .qt-record-actions {
@@ -976,4 +983,141 @@
   flex-shrink: 0;
   color: var(--vp-c-text-3);
   font-size: 11px;
+}
+
+/* ==================== 标签筛选器 ==================== */
+.qt-tag-filter {
+  position: relative;
+  min-width: 180px;
+  max-width: 260px;
+  font-size: 14px;
+}
+
+.qt-tag-filter-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.qt-tag-filter-trigger:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.qt-tag-filter.expanded .qt-tag-filter-trigger {
+  border-color: var(--vp-c-brand-1);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.qt-tag-filter-placeholder {
+  color: var(--vp-c-text-3);
+  flex: 1;
+}
+
+.qt-tag-filter-selected {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.qt-tag-filter-clear {
+  background: none;
+  border: none;
+  color: var(--vp-c-text-3);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 2px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.qt-tag-filter-clear:hover {
+  color: var(--vp-c-danger-1, #ef4444);
+}
+
+.qt-tag-filter-arrow {
+  color: var(--vp-c-text-3);
+  font-size: 10px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.qt-tag-filter.expanded .qt-tag-filter-arrow {
+  transform: rotate(180deg);
+}
+
+.qt-tag-filter-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-brand-1);
+  border-top: none;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.qt-tag-filter-search {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 1px solid var(--vp-c-border);
+  background: var(--vp-c-bg-soft);
+  font-size: 14px;
+  outline: none;
+  color: var(--vp-c-text-1);
+}
+
+.qt-tag-filter-search::placeholder {
+  color: var(--vp-c-text-3);
+}
+
+.qt-tag-filter-list {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.qt-tag-filter-item {
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+  transition: all 0.15s;
+}
+
+.qt-tag-filter-item:hover {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+}
+
+.qt-tag-filter-item.active {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+}
+
+.qt-tag-filter-empty {
+  padding: 12px;
+  text-align: center;
+  color: var(--vp-c-text-3);
+  font-size: 12px;
 }

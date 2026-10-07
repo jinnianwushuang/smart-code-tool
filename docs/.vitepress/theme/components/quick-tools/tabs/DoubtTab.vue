@@ -2,6 +2,7 @@
 import { ref, computed, nextTick } from 'vue'
 import { dayjs, formatRelative } from '../shared/utils'
 import { getTagsById } from '../shared/useDocIdMapper'
+import TagFilter from '../shared/TagFilter.vue'
 
 const props = defineProps({
   records: { type: Array, required: true },
@@ -93,10 +94,7 @@ const filteredSorted = computed(() => {
     <!-- 疑惑列表 -->
     <div class="qt-record-scroll">
       <div v-if="allTags.length > 0" class="rv-filter-bar">
-        <select v-model="filterTag" class="rv-group-select">
-          <option value="">全部标签</option>
-          <option v-for="t in allTags" :key="t" :value="t">{{ t }}</option>
-        </select>
+        <TagFilter :tags="allTags" v-model="filterTag" />
       </div>
       <div v-if="filteredSorted.length === 0" class="qt-empty">暂无记录</div>
 
