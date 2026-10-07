@@ -1,18 +1,3 @@
-<script setup>
-import DefaultTheme from 'vitepress/theme'
-import BackToTop from './components/BackToTop.vue'
-import QuickTools from './components/QuickTools.vue'
-import dayjs from 'dayjs'
-
-const { Layout } = DefaultTheme
-
-// 构建时间，由 vite define 注入
-const buildTime = __APP_BUILD_TIME__
-// const build_time = dayjs(buildTime).format('YYYY-MM-DD HH:mm:ss Z')
-const build_date = dayjs(buildTime).format('YYYY-MM-DD')
-const build_time = dayjs(buildTime).format('HH:mm:ss Z')
-</script>
-
 <template>
   <Layout>
     <template #nav-bar-content-after>
@@ -25,12 +10,27 @@ const build_time = dayjs(buildTime).format('HH:mm:ss Z')
         </span>
       </div>
     </template>
+
     <template #layout-bottom>
       <BackToTop />
       <QuickTools />
     </template>
   </Layout>
 </template>
+
+<script setup>
+import DefaultTheme from 'vitepress/theme'
+import BackToTop from './components/BackToTop.vue'
+import QuickTools from './components/QuickTools.vue'
+import dayjs from 'dayjs'
+
+const { Layout } = DefaultTheme
+
+// 构建时间，由 vite define 注入
+const buildTime = __APP_BUILD_TIME__
+const build_date = dayjs(buildTime).format('YYYY-MM-DD')
+const build_time = dayjs(buildTime).format('HH:mm:ss Z')
+</script>
 
 <style scoped>
 .build-info-wrapper {

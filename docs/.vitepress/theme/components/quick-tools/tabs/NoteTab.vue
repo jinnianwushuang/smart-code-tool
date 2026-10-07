@@ -1,3 +1,87 @@
+<template>
+  <div class="qt-tab-content">
+    <!-- 笔记录入/编辑表单 -->
+    <div class="qt-doubt-form">
+      <el-input
+        ref="textareaRef"
+        :model-value="draft"
+        type="textarea"
+        :rows="3"
+        placeholder="记录学习心得、总结、要点..."
+        @update:model-value="emit('update:draft', $event)"
+      />
+      <div class="qt-form-actions">
+        <el-button type="primary" :disabled="!draft?.trim()" @click="emit('save')">
+          {{ editingId ? '💾 更新笔记' : '💾 保存笔记' }}
+        </el-button>
+        <span v-if="editingId" class="qt-edit-hint">✏️ 正在编辑已有笔记</span>
+        <div class="qt-form-actions-right">
+          <el-button v-if="records.length > 0" @click="emit('export')" title="导出为 Markdown">
+            ⬇️ 导出
+          </el-button>
+          <el-button
+            v-if="records.length > 0"
+            type="danger"
+            plain
+            @click="emit('clear-all')"
+            title="清空全部记录"
+          >
+            🧹 清空全部
+          </el-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 笔记列表 -->
+    <div class="qt-record-scroll">
+      <div v-if="allTags.length > 0" class="rv-filter-bar">
+        <TagFilter :tags="allTags" v-model="filterTag" />
+      </div>
+
+      <el-empty v-if="filteredSorted.length === 0" description="暂无笔记" :image-size="80" />
+
+      <div v-else class="qt-record-list">
+        <el-card
+          v-for="record in filteredSorted"
+          :key="record.id"
+          class="qt-record-card"
+          shadow="hover"
+          @click="navigateTo(record.url)"
+        >
+          <div class="qt-record-header">
+            <span class="qt-record-title" :title="record.title">{{ record.title }}</span>
+            <div class="qt-record-actions" @click.stop>
+              <el-button size="small" circle @click="navigateTo(record.url)" title="跳转到此页面">
+                🔗
+              </el-button>
+              <el-button size="small" circle @click="onEdit(record)" title="编辑">✏️</el-button>
+              <el-button
+                size="small"
+                circle
+                type="danger"
+                plain
+                @click="emit('delete', record.id)"
+                title="删除"
+              >
+                🗑️
+              </el-button>
+            </div>
+          </div>
+          <div class="qt-record-meta">
+            <el-tag size="small" type="info">
+              🕐 {{ dayjs(record.updatedAt || record.time).format('YYYY-MM-DD HH:mm') }}
+            </el-tag>
+            <span class="qt-relative-time">
+              {{ formatRelative(record.updatedAt || record.time) }}
+            </span>
+          </div>
+          <div class="qt-note-text">{{ record.content }}</div>
+        </el-card>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup>
 import { ref, computed, nextTick } from 'vue'
 import { dayjs, formatRelative } from '../shared/utils'
@@ -45,80 +129,3 @@ const filteredSorted = computed(() => {
   })
 })
 </script>
-
-<template>
-  <div class="qt-tab-content">
-    <!-- 笔记录入/编辑表单 -->
-    <div class="qt-doubt-form">
-      <textarea
-        ref="textareaRef"
-        :value="draft"
-        class="qt-textarea"
-        placeholder="记录学习心得、总结、要点..."
-        rows="3"
-        @input="emit('update:draft', $event.target.value)"
-      ></textarea>
-      <div class="qt-form-actions">
-        <button class="qt-action-btn primary" :disabled="!draft.trim()" @click="emit('save')">
-          {{ editingId ? '💾 更新笔记' : '💾 保存笔记' }}
-        </button>
-        <span v-if="editingId" class="qt-edit-hint">✏️ 正在编辑已有笔记</span>
-        <button
-          v-if="records.length > 0"
-          class="qt-action-btn ghost qt-right"
-          @click="emit('export')"
-          title="导出为 Markdown"
-        >
-          ⬇️ 导出
-        </button>
-        <button
-          v-if="records.length > 0"
-          class="qt-action-btn ghost danger"
-          @click="emit('clear-all')"
-          title="清空全部记录"
-        >
-          🧹 清空全部
-        </button>
-      </div>
-    </div>
-
-    <!-- 笔记列表 -->
-    <div class="qt-record-scroll">
-      <div v-if="allTags.length > 0" class="rv-filter-bar">
-        <TagFilter :tags="allTags" v-model="filterTag" />
-      </div>
-      <div v-if="filteredSorted.length === 0" class="qt-empty">暂无笔记</div>
-
-      <div v-else class="qt-record-list">
-        <div
-          v-for="record in filteredSorted"
-          :key="record.id"
-          class="qt-record-card"
-          @click="navigateTo(record.url)"
-        >
-          <div class="qt-record-header">
-            <span class="qt-record-title" :title="record.title">{{ record.title }}</span>
-            <div class="qt-record-actions" @click.stop>
-              <button class="qt-icon-btn nav" @click="navigateTo(record.url)" title="跳转到此页面">
-                🔗
-              </button>
-              <button class="qt-icon-btn" @click="onEdit(record)" title="编辑">✏️</button>
-              <button class="qt-icon-btn danger" @click="emit('delete', record.id)" title="删除">
-                🗑️
-              </button>
-            </div>
-          </div>
-          <div class="qt-record-meta">
-            <span class="qt-record-time"
-              >🕐 {{ dayjs(record.updatedAt || record.time).format('YYYY-MM-DD HH:mm') }}</span
-            >
-            <span class="qt-relative-time">{{
-              formatRelative(record.updatedAt || record.time)
-            }}</span>
-          </div>
-          <div class="qt-note-text">{{ record.content }}</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>

@@ -1,5 +1,9 @@
 // .vitepress/theme/index.js
 import DefaultTheme from 'vitepress/theme'
+import ElementPlus from 'element-plus'
+import { ID_INJECTION_KEY, ZINDEX_INJECTION_KEY } from 'element-plus'
+import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 import Layout from './Layout.vue'
 import './custom.css'
 
@@ -7,6 +11,12 @@ export default {
   ...DefaultTheme,
   Layout,
   enhanceApp({ app, router, siteData }) {
+    // 注册 Element Plus
+    app.use(ElementPlus)
+    // SSR 注入，确保服务端/客户端 hydration 一致
+    app.provide(ID_INJECTION_KEY, { prefix: 1024, current: 0 })
+    app.provide(ZINDEX_INJECTION_KEY, { current: 0 })
+
     // 在应用启动时同步主题
     syncThemeFromURL()
 

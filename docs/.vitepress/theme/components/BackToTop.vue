@@ -1,29 +1,3 @@
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-
-const showButton = ref(false)
-const scrollThreshold = 300 // 滚动超过300px时显示按钮
-
-const handleScroll = () => {
-  showButton.value = window.scrollY > scrollThreshold
-}
-
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  })
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
-</script>
-
 <template>
   <Transition name="fade">
     <button
@@ -49,6 +23,32 @@ onUnmounted(() => {
     </button>
   </Transition>
 </template>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const showButton = ref(false)
+const scrollThreshold = 300 // 滚动超过300px时显示按钮
+
+const handleScroll = () => {
+  showButton.value = window.scrollY > scrollThreshold
+}
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+</script>
 
 <style scoped>
 .back-to-top {

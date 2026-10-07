@@ -1,5 +1,7 @@
 // docs/.vitepress/config/vite.js
 // Vite 构建配置
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 /**
  * 生成构建时间字符串，强制 Asia/Shanghai 时区 (UTC+8)
@@ -25,6 +27,17 @@ function formatBuildTime() {
 }
 
 export const vite = {
+  plugins: [
+    Components({
+      resolvers: [ElementPlusResolver()],
+      dts: false,
+    }),
+  ],
+  ssr: {
+    // SSR 构建时将 element-plus 打包进 bundle，
+    // 避免 Node.js 直接 import .css 文件报错
+    noExternal: ['element-plus'],
+  },
   define: {
     __APP_BUILD_TIME__: JSON.stringify(formatBuildTime()),
   },

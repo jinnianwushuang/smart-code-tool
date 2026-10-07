@@ -5,16 +5,21 @@
 
 ---
 
-## 文档规范
+## 文档与组件规范
 
-所有 Markdown 文档必须遵循：[`z-doc/文档规范.md`](./z-doc/文档规范.md)
+所有 Markdown 文档和 Vue 组件必须遵循：[`z-doc/文档规范.md`](./z-doc/文档规范.md)
 
-核心要求：
+**Markdown 核心**：
 
-- 文件首行必须是 frontmatter（`---` 包裹）
-- 必须包含 `title` 和 `tags` 字段
-- tags 为字符串数组，1-6 个标签，反映核心技术主题
-- 新增文档时运行 `node scripts/gen-doc-list.mjs` 重新生成 doc-list.json
+- 文件首行必须是 frontmatter（含 `title` + `tags`）
+- 新增文档后运行 `pnpm gen:frontmatter-tags` + `pnpm gen:doc-list`
+
+**Vue 组件核心**：
+
+- 代码块顺序：`<template>` → `<script setup>` → `<style scoped>`
+- VitePress 主题侧使用 **Element Plus**，优先用 `el-*` 组件，避免手写按钮/卡片/弹窗
+- 暗色模式由 Element Plus `dark/css-vars.css` 自动适配，无需手动写 `.dark` 覆盖
+- 自定义 CSS 只保留布局/间距，视觉样式交给组件库
 
 ---
 
