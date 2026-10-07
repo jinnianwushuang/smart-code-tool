@@ -194,6 +194,10 @@ onMounted(async () => {
 
 router.onAfterRouteChanged = (to) => {
   if (to) review.autoLearn.onRouteChange(to)
+  // 浏览文档页面也记录学习实况（非索引页 = 实际文档内容页）
+  if (to && !to.endsWith('/index') && to !== '/' && to !== '/index.html') {
+    learningStreak.recordToday('browse')
+  }
 }
 
 onUnmounted(() => {

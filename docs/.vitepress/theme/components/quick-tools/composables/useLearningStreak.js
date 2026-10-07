@@ -32,7 +32,7 @@ function dateToStr(date) {
 
 // ── 模块级单例状态 ──
 const learningDays = ref({}) // { '2026-10-07': { date, eventCount, lastEventAt } }
-let initialized = false
+const initialized = ref(false)
 
 // ── 持久化 ──
 
@@ -41,7 +41,7 @@ async function load() {
   if (data && typeof data === 'object') {
     learningDays.value = data
   }
-  initialized = true
+  initialized.value = true
 }
 
 async function persist() {
@@ -55,7 +55,7 @@ async function persist() {
  * @param {string} source 来源标识（progress / doubt / note / review）
  */
 async function recordToday(source = 'unknown') {
-  if (!initialized) await load()
+  if (!initialized.value) await load()
 
   const today = todayStr()
   const existing = learningDays.value[today]
