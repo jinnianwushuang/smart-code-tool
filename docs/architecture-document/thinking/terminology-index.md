@@ -2,6 +2,7 @@
 title: '技术名词深度解析索引（入口）'
 tags: ['思维']
 ---
+
 # 技术名词深度解析索引
 
 > 深入理解一个技术名词的命名与特性，对理解相关技术栈非常有帮助。
@@ -25,16 +26,17 @@ tags: ['思维']
 
 ## 渲染与更新
 
-| 名词                           | 简述                                          | 深度解析                                                                                                                                                |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **虚拟 DOM (Virtual DOM)**     | 用 JS 对象描述 DOM 树，Diff 后最小化更新      | 📖 [虚拟 DOM Diff 算法](../typical-analysis/virtual-dom-diff.md)                                                                                        |
-| **Diff 算法**                  | 同层比较 + key 优化，找出最小变更集           | 📖 [Diff 算法拆解](../typical-analysis/virtual-dom-diff.md)                                                                                             |
-| **Fiber**                      | React 的增量渲染架构，可中断的协程式调度      | 📖 [Fiber × 并发调度公式](../react/thinking/fiber-concurrent-sync-formula.md)                                                                           |
-| **渲染管线 (Render Pipeline)** | 数据变化 → 虚拟 DOM → Diff → Patch → 像素上屏 | 📖 [Vue 渲染调度公式](../vue/thinking/rendering-scheduling-sync-formula.md) · [Flutter 帧调度](../flutter/thinking/widget-frame-sync-formula.md)        |
-| **渲染模式**                   | CSR / SSR / SSG / ISR / Streaming SSR / RSC   | 📖 [前端渲染模式全解](../general-knowledge/frontend-rendering-modes.md)                                                                                 |
-| **Re-render / 重渲染**         | 组件函数重新执行，生成新的虚拟 DOM            | 📖 [React 不必要 Re-render 元凶](../react/thinking/unnecessary-rerender-root-cause.md) · [Vue 无效渲染元凶](../vue/thinking/render-chaos-root-cause.md) |
-| **Reconciliation / 协调**      | React 将新旧虚拟 DOM 对比的过程               | 📖 [Diff 算法拆解](../typical-analysis/virtual-dom-diff.md)                                                                                             |
-| **Patch**                      | Vue 将 Diff 结果应用到真实 DOM 的操作         | 📖 [渲染调度公式](../vue/thinking/rendering-scheduling-sync-formula.md)                                                                                 |
+| 名词                           | 简述                                          | 深度解析                                                                                                                                                                                                  |
+| ------------------------------ | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **虚拟 DOM (Virtual DOM)**     | 用 JS 对象描述 DOM 树，Diff 后最小化更新      | 📖 [虚拟 DOM Diff 算法](../typical-analysis/virtual-dom-diff.md)                                                                                                                                          |
+| **Diff 算法**                  | 同层比较 + key 优化，找出最小变更集           | 📖 [Diff 算法拆解](../typical-analysis/virtual-dom-diff.md)                                                                                                                                               |
+| **Fiber**                      | React 的增量渲染架构，可中断的协程式调度      | 📖 [Fiber × 并发调度公式](../react/thinking/fiber-concurrent-sync-formula.md) · [Fiber Node 数据结构](../react/principle/fiber-node-data-structure.md)                                                    |
+| **节点数据结构**               | 各框架渲染树的核心节点数据结构与树形组织方式  | 📖 [React Fiber Node](../react/principle/fiber-node-data-structure.md) · [Vue VNode](../vue/thinking/vnode-data-structure.md) · [Flutter 三棵树](../flutter/thinking/element-widget-renderobject-tree.md) |
+| **渲染管线 (Render Pipeline)** | 数据变化 → 虚拟 DOM → Diff → Patch → 像素上屏 | 📖 [Vue 渲染调度公式](../vue/thinking/rendering-scheduling-sync-formula.md) · [Flutter 帧调度](../flutter/thinking/widget-frame-sync-formula.md)                                                          |
+| **渲染模式**                   | CSR / SSR / SSG / ISR / Streaming SSR / RSC   | 📖 [前端渲染模式全解](../general-knowledge/frontend-rendering-modes.md)                                                                                                                                   |
+| **Re-render / 重渲染**         | 组件函数重新执行，生成新的虚拟 DOM            | 📖 [React 不必要 Re-render 元凶](../react/thinking/unnecessary-rerender-root-cause.md) · [Vue 无效渲染元凶](../vue/thinking/render-chaos-root-cause.md)                                                   |
+| **Reconciliation / 协调**      | React 将新旧虚拟 DOM 对比的过程               | 📖 [Diff 算法拆解](../typical-analysis/virtual-dom-diff.md)                                                                                                                                               |
+| **Patch**                      | Vue 将 Diff 结果应用到真实 DOM 的操作         | 📖 [渲染调度公式](../vue/thinking/rendering-scheduling-sync-formula.md)                                                                                                                                   |
 
 ---
 
@@ -109,13 +111,14 @@ tags: ['思维']
 
 > 同一概念在不同框架中的命名与实现差异，点击可快速跳转对比。
 
-| 概念                   | Vue                                                                                     | React                                                                              | Flutter                                                                            |
-| ---------------------- | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| **数据·算法·显示分离** | [Composition API 三层分离](../vue/thinking/data-algorithm-view-separation-cn.md)        | [Hooks 三层分离](../react/hooks-patterns/data-algorithm-view-separation.md)        | [BLoC 三层分离](../flutter/thinking/data-algorithm-view-separation.md)             |
-| **不必要渲染元凶**     | [无效渲染根治](../vue/thinking/render-chaos-root-cause.md)                              | [Re-render 根治](../react/thinking/unnecessary-rerender-root-cause.md)             | [Widget 重建失控](../flutter/thinking/setstate-rebuild-chaos-root-cause.md)        |
-| **底层调度公式**       | [渲染 × 事件 × 数据视图](../vue/thinking/rendering-scheduling-sync-formula.md)          | [Fiber × 并发 × 数据视图](../react/thinking/fiber-concurrent-sync-formula.md)      | [Widget × 帧调度 × 三层对象](../flutter/thinking/widget-frame-sync-formula.md)     |
-| **深层对象治理**       | [按频率分频治理](../vue/thinking/deep-object-frequency-governance-cn.md)                | [zustand+selector+Immer](../react/thinking/deep-object-frequency-governance-cn.md) | —                                                                                  |
-| **组件设计模式**       | [Composable + 装配器](../vue/standardized-template-cn/vue-component-design-patterns.md) | [HOC + 复合组件](../react/component-patterns/react-component-design-patterns.md)   | [InheritedWidget + BLoC](../flutter/thinking/flutter-component-design-patterns.md) |
+| 概念                   | Vue                                                                                     | React                                                                              | Flutter                                                                                       |
+| ---------------------- | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **数据·算法·显示分离** | [Composition API 三层分离](../vue/thinking/data-algorithm-view-separation-cn.md)        | [Hooks 三层分离](../react/hooks-patterns/data-algorithm-view-separation.md)        | [BLoC 三层分离](../flutter/thinking/data-algorithm-view-separation.md)                        |
+| **不必要渲染元凶**     | [无效渲染根治](../vue/thinking/render-chaos-root-cause.md)                              | [Re-render 根治](../react/thinking/unnecessary-rerender-root-cause.md)             | [Widget 重建失控](../flutter/thinking/setstate-rebuild-chaos-root-cause.md)                   |
+| **底层调度公式**       | [渲染 × 事件 × 数据视图](../vue/thinking/rendering-scheduling-sync-formula.md)          | [Fiber × 并发 × 数据视图](../react/thinking/fiber-concurrent-sync-formula.md)      | [Widget × 帧调度 × 三层对象](../flutter/thinking/widget-frame-sync-formula.md)                |
+| **节点数据结构**       | [VNode 数据结构精讲](../vue/thinking/vnode-data-structure.md)                           | [Fiber Node 数据结构精讲](../react/principle/fiber-node-data-structure.md)         | [Widget·Element·RenderObject 三棵树](../flutter/thinking/element-widget-renderobject-tree.md) |
+| **深层对象治理**       | [按频率分频治理](../vue/thinking/deep-object-frequency-governance-cn.md)                | [zustand+selector+Immer](../react/thinking/deep-object-frequency-governance-cn.md) | —                                                                                             |
+| **组件设计模式**       | [Composable + 装配器](../vue/standardized-template-cn/vue-component-design-patterns.md) | [HOC + 复合组件](../react/component-patterns/react-component-design-patterns.md)   | [InheritedWidget + BLoC](../flutter/thinking/flutter-component-design-patterns.md)            |
 
 ---
 

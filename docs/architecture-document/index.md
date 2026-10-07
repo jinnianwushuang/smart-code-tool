@@ -25,6 +25,7 @@
 - [组件设计模式](./flutter/thinking/flutter-component-design-patterns) - Stateless/Stateful 分离、InheritedWidget、BLoC、Key 模式等
 - [setState 滥用与 Widget 重建失控](./flutter/thinking/setstate-rebuild-chaos-root-cause) - Flutter 卡顿元凶：不必要重建的五大病灶与根治方案
 - [Widget × 帧调度 × 三层对象同步](./flutter/thinking/widget-frame-sync-formula) - Flutter 底层万用公式：Widget 不可变性、帧管线、三层对象同步
+- [节点数据结构精讲：Widget·Element·RenderObject 三棵树](./flutter/thinking/element-widget-renderobject-tree) - 三棵节点树的数据结构、职责分工与协同更新流程
 - [存储与数据同步](./flutter/thinking/storage-data-sync) - SQLite/KV 选型、离线优先架构与冲突解决
 - [安全攻防基础](./flutter/thinking/mobile-security) - 逆向防护、安全存储、证书固定与 API 安全
 - [混合栈与模块化架构](./flutter/thinking/hybrid-stack-modularization) - 引擎管理、混合路由与大型项目模块化
@@ -53,6 +54,7 @@
 - [Hooks 执行阶段：Render vs Commit](./react/principle/hooks-phase-timing) - 各 Hook 在渲染管线中的执行位点、三种 Effect 时序对比、实战排查指南
 - [不必要 Re-render 的元凶与根治](./react/thinking/unnecessary-rerender-root-cause) - React 卡顿元凶：不必要 Re-render 的五大病灶与根治方案
 - [Fiber × 并发调度 × 数据视图同步](./react/thinking/fiber-concurrent-sync-formula) - React 底层万用公式：Fiber 架构、并发调度、数据视图同步
+- [Fiber Node 数据结构精讲](./react/principle/fiber-node-data-structure) - Fiber 节点完整字段解析、链表遍历、双缓冲、Hooks 链表、副作用标记位
 - [大型深层对象的 zustand+selector+Immer 分频治理](./react/thinking/deep-object-frequency-governance-cn) - zustand 外部 Store + selector 精确订阅 + Immer 不可变更新，按频率分频治理
 - [技术选型](./react/technology-selection/app-project)
 
@@ -68,6 +70,7 @@
 - [shallowRef 范式与高性能架构](./vue/thinking/shallowRef-paradigm-high-performance) - shallowRef 范式 + 纯粹算法转换 + 合理调度策略 = 完全可控的高性能项目
 - [无效渲染的元凶与根治方案](./vue/thinking/render-chaos-root-cause) - Vue 3 卡顿元凶：逻辑触发的混乱无序高频无效渲染
 - [渲染原理 × 事件调度 × 数据视图同步](./vue/thinking/rendering-scheduling-sync-formula) - 现代前端底层万用公式：渲染原理、事件调度、数据视图同步三柱合一
+- [VNode 数据结构精讲](./vue/thinking/vnode-data-structure) - VNode 完整字段解析、shapeFlag/patchFlag 位优化、Block 树靶向更新
 - [大型深层对象的按频率分频治理](./vue/thinking/deep-object-frequency-governance-cn) - 低频 shallowRef+computed / 高频 mitt+节流防抖+细项导出+computed 双管道协同
 
 ### 🔧 工程化

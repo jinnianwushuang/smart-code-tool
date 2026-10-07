@@ -507,6 +507,15 @@
     ]
   },
   {
+    "id": "FbNode1React_principle_fiber",
+    "title": "Fiber Node 数据结构精讲",
+    "url": "/architecture-document/react/principle/fiber-node-data-structure",
+    "group": "React 架构 > 原理说明",
+    "tags": [
+      "React"
+    ]
+  },
+  {
     "id": "-Im6F2jj_UN7Swx9ZiICEU3J",
     "title": "App 项目",
     "url": "/architecture-document/react/technology-selection/app-project",
@@ -698,6 +707,15 @@
     "tags": [
       "Vue",
       "思维"
+    ]
+  },
+  {
+    "id": "VuNode1vue_thinking_vnode",
+    "title": "VNode 数据结构精讲",
+    "url": "/architecture-document/vue/thinking/vnode-data-structure",
+    "group": "Vue 架构 > 研发思维",
+    "tags": [
+      "Vue"
     ]
   },
   {
@@ -898,6 +916,15 @@
     "tags": [
       "Flutter",
       "思维"
+    ]
+  },
+  {
+    "id": "FlNode1flutter_thinking_element",
+    "title": "节点数据结构精讲：Widget·Element·RenderObject 三棵树",
+    "url": "/architecture-document/flutter/thinking/element-widget-renderobject-tree",
+    "group": "Flutter 架构 > 思考文档 > 核心原理",
+    "tags": [
+      "Flutter"
     ]
   },
   {

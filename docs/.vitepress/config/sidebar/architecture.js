@@ -164,6 +164,11 @@ const flutter = {
               link: '/architecture-document/flutter/thinking/widget-frame-sync-formula',
               id: 'yB5b96FDlOpaQtriSXTPRLoO',
             },
+            {
+              text: '节点数据结构精讲：Widget·Element·RenderObject 三棵树',
+              link: '/architecture-document/flutter/thinking/element-widget-renderobject-tree',
+              id: 'FlNode1flutter_thinking_element',
+            },
           ],
         },
         {
@@ -365,6 +370,11 @@ const react = {
           link: '/architecture-document/react/principle/hooks-phase-timing',
           id: '6dh199RccRTzLXzMGnKESNWO',
         },
+        {
+          text: 'Fiber Node 数据结构精讲',
+          link: '/architecture-document/react/principle/fiber-node-data-structure',
+          id: 'FbNode1React_principle_fiber',
+        },
       ],
     },
     {
@@ -498,6 +508,11 @@ const vue = {
           text: '大型深层对象的按频率分频治理',
           link: '/architecture-document/vue/thinking/deep-object-frequency-governance-cn',
           id: 'wd0l-6METxuqz8GfvD_YcckK',
+        },
+        {
+          text: 'VNode 数据结构精讲',
+          link: '/architecture-document/vue/thinking/vnode-data-structure',
+          id: 'VuNode1vue_thinking_vnode',
         },
       ],
     },

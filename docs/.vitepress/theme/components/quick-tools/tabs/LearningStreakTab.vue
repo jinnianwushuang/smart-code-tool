@@ -31,12 +31,8 @@
       <div class="ls-calendar-header">
         <h4>最近 90 天学习实况</h4>
         <div class="ls-calendar-legend">
-          <span class="ls-legend-item">
-            <span class="ls-legend-dot learned"></span>已学习
-          </span>
-          <span class="ls-legend-item">
-            <span class="ls-legend-dot idle"></span>未学习
-          </span>
+          <span class="ls-legend-item"> <span class="ls-legend-dot learned"></span>已学习 </span>
+          <span class="ls-legend-item"> <span class="ls-legend-dot idle"></span>未学习 </span>
         </div>
       </div>
       <div class="ls-calendar-grid">

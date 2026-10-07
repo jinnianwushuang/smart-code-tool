@@ -11,13 +11,15 @@ import { vite } from './config/vite'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+const BASE = '/smart-code-tool/'
+
 export default defineConfig({
   title: 'YOLO',
   description: 'YOLO 文档中心',
 
   // 必须设置 base。如果你的 GitHub 仓库名是 'my-project',
   // 那么基础路径必须包含仓库名,格式为:/仓库名/docs/
-  base: '/smart-code-tool/',
+  base: BASE,
 
   // 文档项目为主项目，直接输出到 dist 根目录
   outDir: '../dist',
@@ -29,8 +31,8 @@ export default defineConfig({
     '/smart-code-tool/vue-test-app/',
     '/smart-code-tool/code-tool-app/',
   ],
-  // 头信息
-  head: [['link', { rel: 'icon', href: '/doc-assets/logo/icons8-light-on-96.png' }]],
+  // 头信息（head 中的路径不会自动补 base，需手动拼接）
+  head: [['link', { rel: 'icon', href: `${BASE}doc-assets/logo/icons8-light-on-96.png` }]],
 
   // 启用 VitePress 内置暗色模式切换（导航栏太阳/月亮按钮），统一使用 app-theme-mode 键
   appearance: {
