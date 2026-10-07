@@ -1,14 +1,14 @@
 /* ==================== 贴边按钮 ==================== */
 .qt-sticky-btn {
   position: fixed !important;
-  right: 8px;
+  right: 10px;
   bottom: 130px;
   z-index: 998;
 }
 
 .qt-badge-wrapper {
   position: fixed;
-  right: 8px;
+  right: 12px;
   bottom: 130px;
   z-index: 998;
 }
