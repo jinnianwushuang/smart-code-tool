@@ -81,7 +81,55 @@
 
 /* 页面容器最大宽度 */
 :root {
-  --vp-layout-max-width: 1440px;
+  --vp-layout-max-width: 1800px;
+}
+
+/* 内容区宽度：按屏幕尺寸递增（覆盖 VitePress 内置的 688px 限制） */
+.VPDoc .content-container,
+.VPDoc.has-aside .content-container,
+.VPDoc.has-sidebar .content-container,
+.VPDoc.has-sidebar.has-aside .content-container {
+  max-width: 688px !important;
+}
+
+@media (min-width: 1280px) {
+  .VPDoc.has-aside .content-container,
+  .VPDoc.has-sidebar .content-container,
+  .VPDoc.has-sidebar.has-aside .content-container {
+    max-width: 880px !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPDoc.has-aside .content-container,
+  .VPDoc.has-sidebar .content-container,
+  .VPDoc.has-sidebar.has-aside .content-container {
+    max-width: 1040px !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  .VPDoc.has-aside .content-container,
+  .VPDoc.has-sidebar .content-container,
+  .VPDoc.has-sidebar.has-aside .content-container {
+    max-width: 1200px !important;
+  }
+}
+
+@media (min-width: 1800px) {
+  .VPDoc.has-aside .content-container,
+  .VPDoc.has-sidebar .content-container,
+  .VPDoc.has-sidebar.has-aside .content-container {
+    max-width: 1400px !important;
+  }
+}
+
+@media (min-width: 2000px) {
+  .VPDoc.has-aside .content-container,
+  .VPDoc.has-sidebar .content-container,
+  .VPDoc.has-sidebar.has-aside .content-container {
+    max-width: 1600px !important;
+  }
 }
 
 /* 响应式优化 */

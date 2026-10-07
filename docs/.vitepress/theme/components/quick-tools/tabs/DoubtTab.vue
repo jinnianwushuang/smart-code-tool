@@ -2,11 +2,23 @@
   <div class="qt-tab-content">
     <!-- 疑惑录入/编辑表单 -->
     <div class="qt-doubt-form">
+      <div class="qt-rows-switch">
+        <span class="qt-rows-label">行数</span>
+        <el-button
+          v-for="n in rowOptions"
+          :key="n"
+          :type="textareaRows === n ? 'primary' : 'default'"
+          size="small"
+          @click="textareaRows = n"
+        >
+          {{ n }}
+        </el-button>
+      </div>
       <el-input
         ref="textareaRef"
         :model-value="draft"
         type="textarea"
-        :rows="3"
+        :rows="textareaRows"
         placeholder="请填写你的疑惑点..."
         @update:model-value="emit('update:draft', $event)"
       />
@@ -123,6 +135,8 @@ const emit = defineEmits([
 ])
 
 const textareaRef = ref(null)
+const textareaRows = ref(5)
+const rowOptions = [5, 10, 15, 20, 25, 30]
 
 const onEdit = (record) => {
   emit('edit', record)

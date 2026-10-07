@@ -34,21 +34,21 @@ interface FiberNode {
   // ══════════ 双缓冲 ══════════
   alternate: FiberNode | null // 指向另一棵树（current ↔ workInProgress）的对应节点
 
-  // ══════════ 状态与副作用 ══════════
+  // ══════════ 状态链表 ══════════
   pendingProps: any // 新的 props（来自 ReactElement）
   memoizedProps: any // 上一次渲染时的 props
   memoizedState: any // Hooks 链表（函数组件）或 state 对象（类组件）
   updateQueue: UpdateQueue | null // 待处理的更新队列（setState 等产生的更新）
 
-  // ══════════ 副作用标记 ══════════
-  flags: Flags // 副作用标记位（Placement / Update / Deletion 等二进制位）
-  subtreeFlags: Flags // 子树的副作用聚合（冒泡优化，避免遍历子树检查）
-  deletions: FiberNode[] | null // 需要删除的子节点列表
-
   // ══════════ Effect 链表 ══════════
   updateQueue: {
     lastEffect: Effect | null // Effect 循环链表头（useEffect / useLayoutEffect）
   }
+
+  // ══════════ 副作用标记 ══════════
+  flags: Flags // 副作用标记位（Placement / Update / Deletion 等二进制位）
+  subtreeFlags: Flags // 子树的副作用聚合（冒泡优化，避免遍历子树检查）
+  deletions: FiberNode[] | null // 需要删除的子节点列表
 
   // ══════════ 调度优先级 ══════════
   lanes: Lanes // 本节点的优先级车道位
@@ -60,7 +60,7 @@ interface FiberNode {
 
 ## 3. 关键字段深度解析
 
-### 3.1 tag — 节点类型标识
+### 3.1 tag / type / key — 节点身份
 
 `tag` 决定 React 如何处理这个节点：
 
@@ -74,7 +74,9 @@ interface FiberNode {
 | `HostText` (6)               | 纯文本节点    | 直接操作 textContent           |
 | `SuspenseComponent` (13)     | Suspense 边界 | 管理 fallback 与异步加载       |
 
-### 3.2 链表指针 — 树的链表化
+`type` 对于 DOM 节点是标签名（`'div'`），对于组件是对应的函数或类。`key` 是 Diff 时判断节点是否可复用的唯一标识。
+
+### 3.2 child / sibling / return — 树的链表化
 
 传统虚拟 DOM 用 `children` 数组表示子节点，遍历必须递归。Fiber 用三个指针将树转化为链表：
 
@@ -142,7 +144,7 @@ current 树:                workInProgress 树:
 3. 构建完成后，将 root 的 `current` 指针切换到 workInProgress 树（称为 "commit"）
 4. 下一次更新时，角色互换
 
-### 3.4 memoizedState — Hooks 链表
+### 3.4 memoizedState / updateQueue — 状态链表
 
 对于函数组件，`memoizedState` 不是单个 state 对象，而是一个 **Hook 链表**：
 
@@ -193,7 +195,29 @@ memoizedState = {
 
 **为什么是链表而不是数组？** 因为 React 通过**执行顺序**定位 Hook。每次渲染时，React 从头遍历链表，按顺序将每个 Hook 与上一次的对应节点匹配。如果写在 `if` 语句里，顺序会乱，匹配就出错。
 
-### 3.5 flags — 副作用标记位
+`pendingProps` 和 `memoizedProps` 分别存储新传入的 props 和上一次渲染时的 props，Render 阶段通过比较两者决定是否需要更新。`updateQueue` 存储 `setState` 等调用产生的待处理更新，Render 阶段依次消费。
+
+### 3.5 Effect 链表 — 副作用循环链
+
+`updateQueue.lastEffect` 指向一个 **Effect 循环链表**，将同一组件的多个 `useEffect` / `useLayoutEffect` 串联起来：
+
+```
+lastEffect → Effect3 → Effect2 → Effect1 → (回到 Effect3，循环)
+```
+
+每个 Effect 节点包含：
+
+| 字段      | 含义                                            |
+| --------- | ----------------------------------------------- |
+| `tag`     | Effect 类型标记（Passive / Layout / HasEffect） |
+| `create`  | Effect 回调函数                                 |
+| `destroy` | 清理函数（上一次 Effect 的返回值）              |
+| `deps`    | 依赖数组，变化时重新执行                        |
+| `next`    | 指向下一个 Effect，形成循环链表                 |
+
+Commit 阶段遍历此链表，根据 `tag` 决定同步执行（useLayoutEffect）还是异步调度（useEffect）。
+
+### 3.6 flags / subtreeFlags — 副作用标记位
 
 `flags` 是二进制位，用于 Commit 阶段快速判断节点需要执行什么操作：
 
@@ -208,7 +232,20 @@ memoizedState = {
 | `Passive`       | 0b0000100000000000 | 需要执行 useEffect             |
 | `Layout`        | 0b0100000000000000 | 需要执行 useLayoutEffect       |
 
-`subtreeFlags` 是子树所有节点 flags 的按位或（OR），Commit 阶段通过检查 `subtreeFlags` 决定是否跳过整棵子树的遍历（冒泡优化）。
+`subtreeFlags` 是子树所有节点 flags 的按位或（OR），Commit 阶段通过检查 `subtreeFlags` 决定是否跳过整棵子树的遍历（冒泡优化）。`deletions` 数组存储需要删除的子节点引用。
+
+### 3.7 lanes / childLanes — 调度优先级
+
+`lanes` 使用位运算表示优先级车道，值越小优先级越高：
+
+| 车道             | 含义                                       |
+| ---------------- | ------------------------------------------ |
+| `SyncLane`       | 最高优先级，同步执行（如 useLayoutEffect） |
+| `InputLane`      | 用户输入（点击、键盘）                     |
+| `TransitionLane` | 过渡更新（startTransition 包裹）           |
+| `IdleLane`       | 最低优先级，空闲时执行                     |
+
+`childLanes` 是子树所有节点 lanes 的按位或，用于快速判断子树是否包含高优先级更新，避免无谓遍历。
 
 ---
 

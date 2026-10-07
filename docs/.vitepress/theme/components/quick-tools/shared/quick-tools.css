@@ -95,6 +95,19 @@
   color: var(--el-text-color-secondary);
 }
 
+/* ==================== 行数快捷切换 ==================== */
+.qt-rows-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.qt-rows-label {
+  font-size: 14px;
+  color: var(--el-text-color-secondary);
+  margin-right: 4px;
+}
+
 /* ==================== 记录卡片列表 ==================== */
 .qt-record-list {
   display: flex;

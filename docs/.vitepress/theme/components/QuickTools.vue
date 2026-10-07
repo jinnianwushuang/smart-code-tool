@@ -32,11 +32,16 @@
       destroy-on-close
     >
       <el-tabs v-model="activeTab" @tab-change="handleTabChange" class="qt-main-tabs">
-        <el-tab-pane name="streak">
+        <el-tab-pane name="review">
           <template #label>
-            <span>📊 实况</span>
+            <span>🔁 复习</span>
+            <el-badge
+              v-if="review.dueRecords.value.length > 0"
+              :value="review.dueRecords.value.length"
+              type="danger"
+            />
           </template>
-          <LearningStreakTab />
+          <ReviewTab :review="review" :navigate-to="navigateTo" />
         </el-tab-pane>
 
         <el-tab-pane name="progress">
@@ -110,16 +115,11 @@
           />
         </el-tab-pane>
 
-        <el-tab-pane name="review">
+        <el-tab-pane name="streak">
           <template #label>
-            <span>🔁 复习</span>
-            <el-badge
-              v-if="review.dueRecords.value.length > 0"
-              :value="review.dueRecords.value.length"
-              type="danger"
-            />
+            <span>📊 实况</span>
           </template>
-          <ReviewTab :review="review" :navigate-to="navigateTo" />
+          <LearningStreakTab />
         </el-tab-pane>
       </el-tabs>
     </el-dialog>
@@ -206,7 +206,7 @@ onUnmounted(() => {
 
 // ==================== 面板状态 ====================
 const isOpen = ref(false)
-const activeTab = ref('progress')
+const activeTab = ref('review')
 
 const badgeCount = computed(() => {
   return (
