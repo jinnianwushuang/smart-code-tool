@@ -1,3 +1,13 @@
+/**
+ * QuickTools 全局样式
+ *
+ * ⚠️ 约束：
+ * - 最小字号 14px（PC 端为主，所有文本不得低于 14px）
+ * - CSS 类名统一使用 qt-* 前缀
+ * - 亮暗色模式通过 CSS 变量自动适配，禁止硬编码颜色值
+ * - 滚动容器统一使用 .qt-tab-content + .qt-record-scroll 两层结构
+ */
+
 /* ==================== 贴边按钮 ==================== */
 .qt-sticky-btn {
   position: fixed !important;
@@ -41,7 +51,7 @@
 .qt-record-scroll {
   flex: 1;
   overflow-y: auto;
-  padding-top: 12px;
+  padding: 12px 16px;
 }
 
 /* ==================== 工具栏 ==================== */
@@ -81,7 +91,7 @@
 }
 
 .qt-edit-hint {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--el-text-color-secondary);
 }
 
@@ -146,7 +156,7 @@
   gap: 8px;
   margin-top: 8px;
   flex-wrap: wrap;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--el-text-color-secondary);
 }
 
@@ -183,7 +193,7 @@
 
 .rv-progress-hint {
   color: var(--el-color-success);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* ==================== 评分按钮行 ==================== */
@@ -198,7 +208,7 @@
   min-width: 0;
   border-color: var(--rating-color) !important;
   color: var(--rating-color);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .rv-rating-btn:hover {
@@ -236,7 +246,7 @@
 }
 
 .rv-stat-label {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--el-text-color-secondary);
   margin-top: 4px;
 }
@@ -275,7 +285,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .rv-tag-dist-name {
@@ -315,7 +325,7 @@
   width: 50px;
   flex-shrink: 0;
   color: var(--el-text-color-placeholder);
-  font-size: 11px;
+  font-size: 14px;
 }
 
 /* ==================== 设置区 ==================== */
@@ -348,7 +358,7 @@
 .qt-doubt-text,
 .qt-note-text {
   margin-top: 8px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--el-text-color-regular);
   line-height: 1.5;
   padding: 8px;
@@ -397,7 +407,7 @@
 }
 
 .qt-tag-panel-count {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--el-text-color-placeholder);
 }
 
@@ -431,6 +441,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
+  margin: 8px 0;
 }
 .ls-stat-card {
   text-align: center;
@@ -442,7 +453,7 @@
   line-height: 1.2;
 }
 .ls-stat-label {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--el-text-color-secondary);
   margin-top: 4px;
 }
@@ -465,7 +476,7 @@
 .ls-calendar-legend {
   display: flex;
   gap: 12px;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--el-text-color-secondary);
 }
 .ls-legend-item {
@@ -486,17 +497,18 @@
 }
 .ls-calendar-grid {
   display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  gap: 3px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
 }
 .ls-calendar-cell {
-  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 36px;
+  padding: 4px 2px;
   border-radius: 4px;
   background: var(--el-fill-color-darker);
-  font-size: 10px;
+  font-size: 16px;
   color: var(--el-text-color-placeholder);
   cursor: default;
   transition: all 0.2s;
@@ -511,6 +523,8 @@
 }
 .ls-cell-date {
   pointer-events: none;
+  font-family: monospace;
+  white-space: nowrap;
 }
 
 /* 断档记录 */
@@ -534,7 +548,7 @@
   padding: 6px 10px;
   background: var(--el-fill-color-lighter);
   border-radius: 6px;
-  font-size: 13px;
+  font-size: 14px;
 }
 .ls-gap-range {
   color: var(--el-text-color-regular);
@@ -552,7 +566,7 @@
   }
 
   .ls-calendar-grid {
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .rv-filter-bar {

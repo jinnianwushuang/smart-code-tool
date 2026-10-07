@@ -187,10 +187,10 @@ const truthMessage = computed(() => {
   return { level: 'dead', emoji: '💀', text: `${gap} 天…你管这叫"一直在学"？`, color: '#9b59b6' }
 })
 
-/** 日历数据：最近 N 天的学习状态 */
+/** 日历数据：最近 N 天的学习状态（倒序，今天在前） */
 function getCalendarData(days = 90) {
   const result = []
-  for (let i = days - 1; i >= 0; i--) {
+  for (let i = 0; i < days; i++) {
     const dateStr = daysAgoStr(i)
     const record = learningDays.value[dateStr]
     result.push({
