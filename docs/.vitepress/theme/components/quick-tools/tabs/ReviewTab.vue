@@ -257,12 +257,11 @@
           />
         </div>
         <div class="rv-setting-item">
+          <label>浏览器通知（到期复习提醒）</label>
           <el-switch
             :model-value="settings.enableNotification"
             @update:model-value="handleNotificationToggle($event)"
-          >
-            <template #active-text>开启浏览器通知（到期复习提醒）</template>
-          </el-switch>
+          />
         </div>
 
         <el-divider />

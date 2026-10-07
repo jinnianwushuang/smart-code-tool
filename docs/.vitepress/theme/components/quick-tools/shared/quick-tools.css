@@ -1,14 +1,14 @@
 /* ==================== 贴边按钮 ==================== */
 .qt-sticky-btn {
   position: fixed !important;
-  right: 0;
+  right: 8px;
   bottom: 130px;
   z-index: 998;
 }
 
 .qt-badge-wrapper {
   position: fixed;
-  right: 0;
+  right: 8px;
   bottom: 130px;
   z-index: 998;
 }
@@ -24,6 +24,10 @@
 
 .qt-main-tabs > .el-tabs__header {
   margin-bottom: 0;
+}
+
+.qt-main-tabs > .el-tabs__content {
+  padding-top: 12px;
 }
 
 /* ==================== Tab 内容区 ==================== */
@@ -185,13 +189,12 @@
 /* ==================== 评分按钮行 ==================== */
 .rv-rating-row {
   display: flex;
-  gap: 6px;
+  gap: 10px;
   margin-top: 10px;
-  flex-wrap: wrap;
 }
 
 .rv-rating-btn {
-  flex: 1 1 45%;
+  flex: 1;
   min-width: 0;
   border-color: var(--rating-color) !important;
   color: var(--rating-color);
@@ -402,10 +405,6 @@
 @media (max-width: 768px) {
   .rv-stats-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .rv-rating-btn {
-    flex: 1 1 100%;
   }
 
   .rv-filter-bar {
