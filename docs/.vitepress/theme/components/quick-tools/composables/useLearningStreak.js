@@ -45,7 +45,9 @@ async function load() {
 }
 
 async function persist() {
-  await set(KEY_LEARNING, learningDays.value, qtStore)
+  // Vue reactive proxy 无法被 IndexedDB 结构化克隆，需深度转为纯对象
+  const plain = JSON.parse(JSON.stringify(learningDays.value))
+  await set(KEY_LEARNING, plain, qtStore)
 }
 
 // ── 核心 API ──
