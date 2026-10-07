@@ -312,7 +312,7 @@ const settings = computed(() => props.review.settings.value)
 // ── 全部文档视图：搜索/筛选 ──
 const searchQuery = ref('')
 const filterGroup = ref('')
-const filterTag = ref('')
+const filterTag = ref([])
 
 const allTags = computed(() => getAllTags())
 
@@ -324,10 +324,10 @@ const allGroups = computed(() => {
 const filteredRecords = computed(() => {
   let list = allRecords.value.filter((r) => !r.isArchived)
   if (filterGroup.value) list = list.filter((r) => r.group === filterGroup.value)
-  if (filterTag.value) {
+  if (filterTag.value.length) {
     list = list.filter((r) => {
       const tags = getTagsById(r.docId)
-      return tags.includes(filterTag.value)
+      return filterTag.value.some((t) => tags.includes(t))
     })
   }
   if (searchQuery.value) {
@@ -341,7 +341,7 @@ const filteredRecords = computed(() => {
 })
 
 // ── 盲区 ──
-const blindSpotTag = ref('')
+const blindSpotTag = ref([])
 
 const currentBlindSpotList = computed(() => {
   const bs = blindSpots.value
@@ -349,10 +349,10 @@ const currentBlindSpotList = computed(() => {
   if (blindSpotTab.value === 'neverOpened') list = bs.neverOpened
   else if (blindSpotTab.value === 'neverLearned') list = bs.neverLearned
   else list = bs.neverReviewed
-  if (blindSpotTag.value) {
+  if (blindSpotTag.value.length) {
     list = list.filter((doc) => {
       const tags = getTagsById(doc.id)
-      return tags.includes(blindSpotTag.value)
+      return blindSpotTag.value.some((t) => tags.includes(t))
     })
   }
   return list

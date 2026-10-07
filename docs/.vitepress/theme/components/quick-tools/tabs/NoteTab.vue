@@ -126,7 +126,7 @@ const focusTextarea = () => {
 defineExpose({ focusTextarea })
 
 // ── 标签筛选 ──
-const filterTag = ref('')
+const filterTag = ref([])
 const allTags = computed(() => {
   const tagSet = new Set()
   for (const r of props.records) {
@@ -136,10 +136,10 @@ const allTags = computed(() => {
   return Array.from(tagSet).sort()
 })
 const filteredSorted = computed(() => {
-  if (!filterTag.value) return props.sorted
+  if (!filterTag.value.length) return props.sorted
   return props.sorted.filter((r) => {
     const tags = getTagsById(r.docId)
-    return tags.includes(filterTag.value)
+    return filterTag.value.some((t) => tags.includes(t))
   })
 })
 </script>

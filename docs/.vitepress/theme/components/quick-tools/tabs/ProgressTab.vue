@@ -76,7 +76,7 @@ const props = defineProps({
 
 const emit = defineEmits(['add', 'delete', 'clearAll', 'export'])
 
-const filterTag = ref('')
+const filterTag = ref([])
 const allTags = computed(() => {
   const tagSet = new Set()
   for (const r of props.records) {
@@ -86,10 +86,10 @@ const allTags = computed(() => {
   return Array.from(tagSet).sort()
 })
 const filteredRecords = computed(() => {
-  if (!filterTag.value) return props.records
+  if (!filterTag.value.length) return props.records
   return props.records.filter((r) => {
     const tags = getTagsById(r.docId)
-    return tags.includes(filterTag.value)
+    return filterTag.value.some((t) => tags.includes(t))
   })
 })
 </script>

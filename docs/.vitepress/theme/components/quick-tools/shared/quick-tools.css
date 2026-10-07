@@ -424,6 +424,12 @@
   color: var(--el-text-color-placeholder);
 }
 
+.qt-tag-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* ==================== 学习实况（Learning Streak） ==================== */
 .ls-container {
   gap: 16px;

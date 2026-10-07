@@ -3,7 +3,7 @@ title: 'Next.js 15 全栈框架原理 [P8]'
 level: 'architect'
 tags: ['Next.js 15', 'App Router', 'Server Actions', '缓存', 'Turbopack']
 difficulty: 'expert'
-updated: '2026-09-10'
+updated: '2026-10-07'
 target: '架构师（P8）'
 ---
 
@@ -16,19 +16,32 @@ target: '架构师（P8）'
 ### Next.js 15 架构全景
 
 ```
-┌──────────────────────────────────────────┐
-│              应用层                       │
-│  app/ │ 路由 │ Server Components │ Actions│
-├──────────────────────────────────────────┤
-│              React 19                    │
-│  Server Components │ Suspense │ use()    │
-├──────────────────────────────────────────┤
-│              Next.js 运行时              │
-│  Node.js（服务端）│ Edge Runtime │ 浏览器 │
-├──────────────────────────────────────────┤
-│              构建工具                     │
-│  Turbopack（开发）│ Webpack（生产）       │
-└──────────────────────────────────────────┘
+请求流转路径（从外到内）：
+
+┌─────────────────────────────────────────────────────┐
+│  ① 边缘层  Middleware（Edge Runtime）                │
+│  认证 · 重定向 · i18n · A/B 测试 · 请求改写         │
+├─────────────────────────────────────────────────────┤
+│  ② 路由层  App Router（文件系统路由）                │
+│  layout · page · loading · error · not-found        │
+│  路由分组 () · 动态 [slug] · 拦截 @modal            │
+├─────────────────────────────────────────────────────┤
+│  ③ 数据层  四层缓存 + Server Actions                 │
+│  Request Memo → Data Cache → Full Route → Router    │
+│  'use server' ←→ revalidatePath / revalidateTag     │
+├─────────────────────────────────────────────────────┤
+│  ④ 渲染层  RSC + Client Components + Streaming      │
+│  Server Component（默认）→ RSC Payload → Hydration  │
+│  Suspense 边界 · use() · 渐进式加载                  │
+├─────────────────────────────────────────────────────┤
+│  ⑤ 核心层  React 19                                  │
+│  Fiber 协调器 · Concurrent Mode · Compiler 优化      │
+├─────────────────────────────────────────────────────┤
+│  ⑥ 构建层  Turbopack（dev + prod）                   │
+│  Rust 内核 · 增量编译 · HMR                          │
+└─────────────────────────────────────────────────────┘
+
+运行时部署目标：Node.js（标准）│ Edge Runtime（低延迟）│ 浏览器（CSR）
 ```
 
 ---
@@ -99,8 +112,9 @@ export default function SearchBar() {
 }
 
 // 组合策略：Server Component 包裹 Client Component
-// app/search/page.tsx（Server Component）
+// app/search/page.tsx（Server Component，顶层 import 正常）
 import SearchBar from '../components/SearchBar'; // Client Component
+import { ResultsList } from '../components/ResultsList';
 
 export default async function SearchPage() {
   const results = await getInitialResults(); // 服务端获取
@@ -163,7 +177,7 @@ function TodoItem({ todo }: { todo: Todo }) {
 // 1. 客户端提交 → POST 请求到特殊端点
 // 2. 服务端执行函数（在 Node.js 运行时）
 // 3. 返回结果（序列化后发送回客户端）
-// 4. React 自动处理表单状态（useActionState）
+// 4. React 19 useActionState Hook 自动处理表单状态与乐观更新
 ```
 
 ### 4. 缓存体系
@@ -172,11 +186,14 @@ function TodoItem({ todo }: { todo: Todo }) {
 // Next.js 15 四层缓存体系：
 
 // 1. Request Memoization（请求记忆化）
-// 同一渲染中相同请求只执行一次
+// 同一渲染中相同 fetch 请求只执行一次（仅对 fetch 生效）
 async function getUser(id: string) {
-  return db.query('SELECT * FROM users WHERE id = ?', [id]);
+  const res = await fetch(`https://api.example.com/users/${id}`, {
+    cache: 'force-cache', // Data Cache 配合
+  });
+  return res.json();
 }
-// 即使多个组件调用 getUser('1')，只执行一次
+// 即使多个组件调用 getUser('1')，fetch 只执行一次
 
 // 2. Data Cache（数据缓存）
 // 跨请求缓存数据（类似 ISR）
@@ -240,6 +257,56 @@ export const config = {
 // 适用于：认证、重定向、国际化、A/B 测试、请求改写
 ```
 
+### 6. React 19 关键特性（Next.js 15 基石）
+
+```typescript
+// React 19 为 Next.js 15 提供的核心能力：
+
+// 1. use() Hook —— 渲染期间读取资源（Promise / Context）
+//    可在 if/for 中条件调用，突破传统 Hook 规则
+import { use } from 'react'
+
+function Comments({ commentsPromise }) {
+  const comments = use(commentsPromise) // 配合 Suspense 自动挂起
+  return comments.map(c => <p key={c.id}>{c.text}</p>)
+}
+
+// 2. useActionState() —— Server Actions 表单状态管理
+import { useActionState } from 'react'
+import { createTodo } from './actions'
+
+function TodoForm() {
+  // [state, formAction, isPending]
+  const [state, formAction, isPending] = useActionState(createTodo, initialState)
+  return (
+    <form action={formAction}>
+      <input name="title" />
+      <button disabled={isPending}>添加 {isPending && '...'}</button>
+      {state?.error && <p>{state.error}</p>}
+    </form>
+  )
+}
+
+// 3. useOptimistic() —— 乐观更新
+import { useOptimistic } from 'react'
+
+function TodoList({ todos, addTodo }) {
+  const [optimisticTodos, addOptimistic] = useOptimistic(
+    todos,
+    (state, newTodo: string) => [...state, { text: newTodo, pending: true }]
+  )
+  // 用户立即看到新 todo，服务端完成后自动替换为真实数据
+}
+
+// 4. React Compiler（React 19 内置）
+//    自动 memo 化组件渲染和 Hook 调用，无需手动 useMemo/useCallback
+//    Turbopack + React Compiler = 编译时优化 + 运行时优化
+
+// 5. Server Components 正式稳定
+//    默认所有组件都是 Server Component
+//    零客户端 JS 开销，可直接访问服务端资源
+```
+
 ---
 
 ## 高频面试题
@@ -270,8 +337,29 @@ export const config = {
 - 客户端表单提交 → POST 请求到特殊端点
 - 服务端执行标记为 `'use server'` 的函数
 - 结果序列化返回客户端
-- 配合 useActionState 处理表单状态
-- 配合 revalidatePath 更新缓存
+- 配合 React 19 `useActionState` 处理表单状态与乐观更新
+- 配合 `revalidatePath` / `revalidateTag` 更新缓存
+
+### Q4: App Router 的路由模式有哪些？
+
+**参考答案要点**：
+
+- 文件系统路由：`page.tsx` → URL，`layout.tsx` 嵌套布局
+- 动态路由：`[slug]`（单段）、`[[...slug]]`（可选捕获所有）
+- 路由分组：`(groupName)` 不影响 URL，用于逻辑分组
+- 拦截路由：`@modal` 插槽，在同一布局中展示不同视图，弹窗展示内容
+- 特殊文件：`loading.tsx`（Suspense fallback）、`error.tsx`（错误边界）、`not-found.tsx`
+- Next.js 15 中 `params` 和 `searchParams` 变为 Promise，需 `await`
+
+### Q5: Middleware 的运行机制和应用场景？
+
+**参考答案要点**：
+
+- 运行在 Edge Runtime（非 Node.js），启动极快、资源占用低
+- 在请求到达路由之前执行，可改写/重定向/拒绝请求
+- 典型场景：认证守卫、i18n 语言检测、A/B 测试分桶、请求头注入
+- 通过 `config.matcher` 精确匹配路径，避免全局执行
+- 返回 `NextResponse.redirect()` / `NextResponse.rewrite()` / `NextResponse.next()`
 
 ---
 

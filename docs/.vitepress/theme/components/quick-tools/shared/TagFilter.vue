@@ -1,8 +1,8 @@
 <template>
   <div class="qt-tag-filter">
-    <el-button @click="togglePanel" :type="modelValue ? 'primary' : 'default'" plain>
-      🏷️ {{ modelValue || '全部标签' }}
-      <el-icon v-if="modelValue" style="margin-left: 4px" @click.stop="clear">
+    <el-button @click="togglePanel" :type="modelValue.length ? 'primary' : 'default'" plain>
+      🏷️ {{ modelValue.length ? `已选 ${modelValue.length} 个` : '全部标签' }}
+      <el-icon v-if="modelValue.length" style="margin-left: 4px" @click.stop="clear">
         <span style="font-size: 12px">✕</span>
       </el-icon>
     </el-button>
@@ -29,8 +29,8 @@
           <el-tag
             v-for="tag in filteredTags"
             :key="tag"
-            :type="modelValue === tag ? '' : 'info'"
-            :effect="modelValue === tag ? 'dark' : 'plain'"
+            :type="modelValue.includes(tag) ? '' : 'info'"
+            :effect="modelValue.includes(tag) ? 'dark' : 'plain'"
             class="qt-tag-chip"
             @click="toggle(tag)"
           >
@@ -48,7 +48,20 @@
             <span class="qt-tag-panel-count">
               {{ filteredTags.length }} 个标签{{ search ? `（共 ${tags.length}）` : '' }}
             </span>
-            <el-button v-if="modelValue" text type="primary" @click="clear">清除选择</el-button>
+            <div class="qt-tag-footer-actions">
+              <el-button
+                type="primary"
+                plain
+                size="small"
+                :disabled="!search || !hasUnselectedFiltered"
+                @click="selectAll"
+              >
+                ✅ 全选
+              </el-button>
+              <el-button v-if="modelValue.length" text type="primary" @click="clear"
+                >清除选择</el-button
+              >
+            </div>
           </div>
         </template>
       </el-dialog>
@@ -61,7 +74,7 @@ import { ref, computed } from 'vue'
 
 const props = defineProps({
   tags: { type: Array, required: true },
-  modelValue: { type: String, default: '' },
+  modelValue: { type: Array, default: () => [] },
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -75,16 +88,28 @@ const filteredTags = computed(() => {
   return props.tags.filter((t) => t.toLowerCase().includes(q))
 })
 
+/** 过滤结果中是否有未选中的标签 */
+const hasUnselectedFiltered = computed(() =>
+  filteredTags.value.some((t) => !props.modelValue.includes(t)),
+)
+
 function toggle(tag) {
-  if (props.modelValue === tag) {
-    emit('update:modelValue', '')
-  } else {
-    emit('update:modelValue', tag)
-  }
+  const next = [...props.modelValue]
+  const idx = next.indexOf(tag)
+  if (idx >= 0) next.splice(idx, 1)
+  else next.push(tag)
+  emit('update:modelValue', next)
+}
+
+/** 全选当前过滤结果 */
+function selectAll() {
+  const merged = new Set(props.modelValue)
+  filteredTags.value.forEach((t) => merged.add(t))
+  emit('update:modelValue', [...merged])
 }
 
 function clear() {
-  emit('update:modelValue', '')
+  emit('update:modelValue', [])
   search.value = ''
 }
 
