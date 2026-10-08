@@ -26,6 +26,7 @@
       <el-empty v-if="filteredRecords.length === 0" description="暂无记录" :image-size="80" />
 
       <div v-else class="qt-record-list">
+        <div class="qt-result-count">共 {{ filteredRecords.length }} 项</div>
         <el-card
           v-for="(record, index) in filteredRecords"
           :key="index"

@@ -51,8 +51,8 @@
       </div>
 
       <el-empty v-if="filteredSorted.length === 0" description="暂无记录" :image-size="80" />
-
       <div v-else class="qt-record-list">
+        <div class="qt-result-count">共 {{ filteredSorted.length }} 项</div>
         <el-card
           v-for="record in filteredSorted"
           :key="record.id"

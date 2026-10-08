@@ -61,6 +61,7 @@
               <el-button v-if="modelValue.length" text type="primary" @click="clear"
                 >清除选择</el-button
               >
+              <el-button type="primary" size="small" @click="expanded = false">确定</el-button>
             </div>
           </div>
         </template>

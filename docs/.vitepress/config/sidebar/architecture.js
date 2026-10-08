@@ -99,6 +99,36 @@ const flutter = {
       ],
     },
     {
+      text: '渲染引擎',
+      items: [
+        {
+          text: 'Flutter 渲染管线与 Impeller',
+          link: '/architecture-document/flutter/rendering/flutter-rendering-pipeline',
+          id: 'FltRender1rendering',
+        },
+      ],
+    },
+    {
+      text: '性能优化',
+      items: [
+        {
+          text: 'Flutter 性能优化实战',
+          link: '/architecture-document/flutter/performance/flutter-performance-optimization',
+          id: 'FltPerf2perf',
+        },
+      ],
+    },
+    {
+      text: '插件开发架构',
+      items: [
+        {
+          text: 'Flutter 插件开发架构',
+          link: '/architecture-document/flutter/plugin/flutter-plugin-architecture',
+          id: 'FltPlugin3plugin',
+        },
+      ],
+    },
+    {
       text: '思考文档',
       items: [
         {
@@ -300,6 +330,11 @@ const react = {
           link: '/architecture-document/react/component-patterns/react-component-design-patterns',
           id: 'ztDSmYNxV_YTp-VqTR3OFPyZ',
         },
+        {
+          text: 'Error Boundary 与错误恢复',
+          link: '/architecture-document/react/component-patterns/error-boundary-and-suspense',
+          id: 'RctEB1errBoundary_comp',
+        },
       ],
     },
     {
@@ -315,6 +350,16 @@ const react = {
           link: '/architecture-document/react/hooks-patterns/data-algorithm-view-separation',
           id: 'N71Sjioo3ZkPoULrvjDf8A9v',
         },
+        {
+          text: 'React Ref 完全指南',
+          link: '/architecture-document/react/hooks-patterns/react-ref-complete-guide',
+          id: 'RctRef3guide_hooks',
+        },
+        {
+          text: 'React Context 深度专题',
+          link: '/architecture-document/react/hooks-patterns/react-context-deep-dive',
+          id: 'RctCtx4deep_hooks',
+        },
       ],
     },
     {
@@ -328,12 +373,27 @@ const react = {
       ],
     },
     {
+      text: '路由架构',
+      items: [
+        {
+          text: 'React Router v6+ 路由架构',
+          link: '/architecture-document/react/routing/react-router-architecture',
+          id: 'RctRouter6_routing',
+        },
+      ],
+    },
+    {
       text: '性能思考',
       items: [
         {
           text: '大型单例对象高性能消费',
           link: '/architecture-document/react/performance/large-object-consumption',
           id: 'zkqmNwzI0gz5MRW025OhlqAg',
+        },
+        {
+          text: 'React 性能优化系统手册',
+          link: '/architecture-document/react/performance/react-performance-optimization',
+          id: 'RctPerf5optim_perf',
         },
       ],
     },
@@ -374,6 +434,11 @@ const react = {
           text: 'Fiber Node 数据结构精讲',
           link: '/architecture-document/react/principle/fiber-node-data-structure',
           id: 'FbNode1React_principle_fiber',
+        },
+        {
+          text: 'React 事件系统',
+          link: '/architecture-document/react/principle/react-event-system',
+          id: 'RctEvt6sys_principle',
         },
       ],
     },
@@ -481,6 +546,36 @@ const vue = {
       ],
     },
 
+    {
+      text: '原理说明',
+      items: [
+        {
+          text: 'Vue 3 响应式系统架构',
+          link: '/architecture-document/vue/principle/vue-reactivity-system',
+          id: 'VueReactSys1principle',
+        },
+      ],
+    },
+    {
+      text: 'Composable 设计模式',
+      items: [
+        {
+          text: 'Vue 3 Composable 设计模式',
+          link: '/architecture-document/vue/composable-patterns/vue-composable-design-patterns',
+          id: 'VueComp3comp_patterns',
+        },
+      ],
+    },
+    {
+      text: '性能优化',
+      items: [
+        {
+          text: 'Vue 3 性能优化系统手册',
+          link: '/architecture-document/vue/performance/vue-performance-optimization',
+          id: 'VuePerf4perf',
+        },
+      ],
+    },
     {
       text: '研发思维',
       items: [
@@ -844,8 +939,8 @@ const thinking = {
       id: 'y0ZcW5BycsZTRWZLbmie-GZX',
     },
     {
-      text: 'React 19 vs Vue 3 复杂业务性能对决',
-      link: '/architecture-document/thinking/react19-vs-vue3-performance',
+      text: 'React 19 vs Vue 3 vs Flutter 复杂业务性能对决',
+      link: '/architecture-document/thinking/framework-performance-comparison',
       id: 'R19vV3perf_compare_thinking',
     },
     {

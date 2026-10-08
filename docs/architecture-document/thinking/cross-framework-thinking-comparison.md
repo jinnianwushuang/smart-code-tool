@@ -2,6 +2,7 @@
 title: '跨框架研发思维对比'
 tags: ['思维']
 ---
+
 # 跨框架研发思维：Vue · React · Flutter 三大框架的底层同构与差异对比
 
 > 前端框架层出不穷，API 千差万别，但剥去所有语法糖和抽象层之后，**三大框架（Vue / React / Flutter）在底层运行着同一套思维模型**。本文作为跨框架研发思维的对比入口，将三大框架在三个核心主题上的思考方式进行横向对比——**数据·算法·显示分离、不必要渲染的元凶、底层万用公式**——帮助开发者建立跨框架的统一认知，而非孤立地学习每个框架的"最佳实践"。
@@ -253,16 +254,65 @@ tags: ['思维']
 
 ---
 
-## 六、全部文档索引
+## 六、主题四：性能优化模式对比
+
+### 6.1 核心问题
+
+三大框架都有性能优化手册，但优化方向因默认渲染模型不同而截然相反：
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                  性能优化模式 三框架对比                                │
+│                                                                      │
+│           Vue 3              React 19            Flutter             │
+│  ─────    ──────────         ──────────          ──────────          │
+│                                                                      │
+│  跳过      v-once             React.memo          const Widget       │
+│  渲染      v-memo                                 + RepaintBoundary  │
+│                                                                      │
+│  缓存      computed           useMemo              手动缓存变量      │
+│  计算      （自动追踪）       （手动声明依赖）    （无框架缓存）     │
+│                                                                      │
+│  稳定      不需要             useCallback          不需要             │
+│  引用      （自动追踪）       （手动稳定引用）    （Widget 不可变）  │
+│                                                                      │
+│  缩小      组件拆分           组件拆分             组件拆分           │
+│  范围      + 状态下沉         + 状态下沉           + RepaintBoundary │
+│                                                                      │
+│  懒加载    defineAsync        React.lazy           Deferred Components│
+│           Component                                                  │
+│                                                                      │
+│  大数据    shallowRef         useSyncExternal      shallowRef        │
+│  控制      + Object.freeze    Store                + Object.freeze   │
+│                                                                      │
+│  优化      减少「过度追踪」  主动「阻断传播」    用 const + 范围    │
+│  方向      （因为默认精确）  （因为默认全量）    限定减少重建        │
+│                                                                      │
+│  诊断      Vue DevTools       React DevTools       Flutter DevTools   │
+│  工具      Performance        Profiler             Performance        │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 6.2 各框架性能优化文档
+
+- **Vue**：[Vue 3 性能优化系统手册](../vue/performance/vue-performance-optimization)
+- **React**：[React 性能优化系统手册](../react/performance/react-performance-optimization)
+- **Flutter**：[Flutter 性能优化实战](../flutter/performance/flutter-performance-optimization)
+
+---
+
+## 七、全部文档索引
 
 ### 通用思维（跨框架）
 
-| 文档                                                                 | 简述                                         |
-| -------------------------------------------------------------------- | -------------------------------------------- |
-| [数据·算法·显示 三者分离](./frontend-data-algorithm-view-separation) | 前端编程终极朴素思想，与浏览器架构同构       |
-| [BUG 修复思维对比](./bug-fixing-thinking)                            | 工程师/架构师/主管三种视角的 BUG 修复思维    |
-| [技术迭代与学习疲态](./tech-iteration-and-learning-fatigue)          | 研发学习疲态的本质、成因和应对策略           |
-| [跨框架研发思维对比](./cross-framework-thinking-comparison)          | 本文：三大框架在三个核心主题上的横向对比入口 |
+| 文档                                                                        | 简述                                            |
+| --------------------------------------------------------------------------- | ----------------------------------------------- |
+| [数据·算法·显示 三者分离](./frontend-data-algorithm-view-separation)        | 前端编程终极朴素思想，与浏览器架构同构          |
+| [React 19 vs Vue 3 vs Flutter 性能对决](./framework-performance-comparison) | 内存/CPU/更新耗时/交互延迟/动画稳定性全维度对比 |
+| [BUG 修复思维对比](./bug-fixing-thinking)                                   | 工程师/架构师/主管三种视角的 BUG 修复思维       |
+| [技术迭代与学习疲态](./tech-iteration-and-learning-fatigue)                 | 研发学习疲态的本质、成因和应对策略              |
+| [跨框架研发思维对比](./cross-framework-thinking-comparison)                 | 本文：三大框架在三个核心主题上的横向对比入口    |
 
 ### Vue 研发思维
 

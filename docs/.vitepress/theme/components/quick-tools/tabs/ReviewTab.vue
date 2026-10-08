@@ -42,6 +42,7 @@
         </template>
       </el-empty>
       <div v-else class="qt-record-list">
+        <div class="qt-result-count">共 {{ dueRecords.length }} 项待复习</div>
         <el-card
           v-for="record in dueRecords"
           :key="record.docId"
@@ -63,6 +64,18 @@
             </el-tag>
             <span class="rv-due-info">{{ dueLabel(record.due) }}</span>
             <span class="rv-review-count">第 {{ record.reviewCount + 1 }} 次复习</span>
+          </div>
+          <div v-if="getTagsById(record.docId).length" class="rv-card-tags">
+            <el-tag
+              v-for="tag in getTagsById(record.docId)"
+              :key="tag"
+              size="small"
+              :color="tagColor(tag)"
+              effect="dark"
+              class="rv-card-tag"
+            >
+              {{ tag }}
+            </el-tag>
           </div>
           <div class="rv-rating-row">
             <el-button
@@ -103,6 +116,7 @@
         :image-size="80"
       />
       <div v-else class="qt-record-list">
+        <div class="qt-result-count">共 {{ currentBlindSpotList.length }} 项</div>
         <el-card
           v-for="doc in currentBlindSpotList"
           :key="doc.id"
@@ -118,6 +132,18 @@
             <span class="rv-progress-hint">
               已阅读 {{ Math.round(doc.accumulatedSeconds / 60) }} 分钟
             </span>
+          </div>
+          <div v-if="getTagsById(doc.id).length" class="rv-card-tags">
+            <el-tag
+              v-for="tag in getTagsById(doc.id)"
+              :key="tag"
+              size="small"
+              :color="tagColor(tag)"
+              effect="dark"
+              class="rv-card-tag"
+            >
+              {{ tag }}
+            </el-tag>
           </div>
         </el-card>
       </div>
@@ -140,6 +166,7 @@
 
       <el-empty v-if="filteredRecords.length === 0" description="暂无匹配文档" :image-size="80" />
       <div v-else class="qt-record-list">
+        <div class="qt-result-count">共 {{ filteredRecords.length }} 项</div>
         <el-card
           v-for="record in filteredRecords"
           :key="record.docId"
@@ -162,6 +189,18 @@
             <span v-if="record.due" class="rv-due-info">{{ dueLabel(record.due) }}</span>
             <span class="rv-review-count">复习 {{ record.reviewCount }} 次</span>
             <el-tag v-if="record.group" size="small" type="info">{{ record.group }}</el-tag>
+          </div>
+          <div v-if="getTagsById(record.docId).length" class="rv-card-tags">
+            <el-tag
+              v-for="tag in getTagsById(record.docId)"
+              :key="tag"
+              size="small"
+              :color="tagColor(tag)"
+              effect="dark"
+              class="rv-card-tag"
+            >
+              {{ tag }}
+            </el-tag>
           </div>
         </el-card>
       </div>
@@ -448,6 +487,25 @@ function stateLabel(state) {
 function stateType(state) {
   const map = { new: 'info', learning: 'warning', review: 'success', relearning: 'danger' }
   return map[state] || 'info'
+}
+
+const tagColors = [
+  '#409eff',
+  '#67c23a',
+  '#e6a23c',
+  '#f56c6c',
+  '#909399',
+  '#00bcd4',
+  '#9c27b0',
+  '#ff9800',
+]
+
+function tagColor(tag) {
+  let hash = 0
+  for (let i = 0; i < tag.length; i++) {
+    hash = tag.charCodeAt(i) + ((hash << 5) - hash)
+  }
+  return tagColors[Math.abs(hash) % tagColors.length]
 }
 
 function dueLabel(due) {

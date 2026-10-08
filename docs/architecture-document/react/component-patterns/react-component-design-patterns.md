@@ -2,7 +2,6 @@
 title: React 组件设计模式
 order: 10
 tags: ['React']
-
 ---
 
 # React 组件设计模式
@@ -168,13 +167,18 @@ function MouseTracker({ render }: MouseTrackerProps) {
 }
 
 // ── 使用：调用方决定渲染方式 ──
-;<MouseTracker
-  render={({ x, y }) => (
+
+// render 函数独立定义：接收状态，返回 JSX
+function renderMouse({ x, y }: { x: number; y: number }) {
+  return (
     <div>
       Mouse at: {x}, {y}
     </div>
-  )}
-/>
+  )
+}
+
+// 将 render 函数作为 prop 传入
+;<MouseTracker render={renderMouse} />
 ```
 
 ### Render Props vs HOC

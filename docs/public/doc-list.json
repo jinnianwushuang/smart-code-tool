@@ -423,6 +423,16 @@
     ]
   },
   {
+    "id": "RctEB1errBoundary_comp",
+    "title": "Error Boundary 与错误恢复",
+    "url": "/architecture-document/react/component-patterns/error-boundary-and-suspense",
+    "group": "React 架构 > 组件设计模式",
+    "tags": [
+      "React",
+      "错误处理"
+    ]
+  },
+  {
     "id": "w5DKoU37dXlsaxAkqfILZv0S",
     "title": "React Hooks 架构模式",
     "url": "/architecture-document/react/hooks-patterns/react-hooks-architecture",
@@ -441,6 +451,26 @@
     ]
   },
   {
+    "id": "RctRef3guide_hooks",
+    "title": "React Ref 完全指南",
+    "url": "/architecture-document/react/hooks-patterns/react-ref-complete-guide",
+    "group": "React 架构 > Hooks 架构模式",
+    "tags": [
+      "React",
+      "Ref"
+    ]
+  },
+  {
+    "id": "RctCtx4deep_hooks",
+    "title": "React Context 深度专题",
+    "url": "/architecture-document/react/hooks-patterns/react-context-deep-dive",
+    "group": "React 架构 > Hooks 架构模式",
+    "tags": [
+      "React",
+      "Context"
+    ]
+  },
+  {
     "id": "hqo96eLofwbJOHN9vezcwh9k",
     "title": "React 状态管理架构",
     "url": "/architecture-document/react/state-management/react-state-management-architecture",
@@ -450,12 +480,32 @@
     ]
   },
   {
+    "id": "RctRouter6_routing",
+    "title": "React Router v6+ 路由架构",
+    "url": "/architecture-document/react/routing/react-router-architecture",
+    "group": "React 架构 > 路由架构",
+    "tags": [
+      "React",
+      "路由"
+    ]
+  },
+  {
     "id": "zkqmNwzI0gz5MRW025OhlqAg",
     "title": "大型单例对象高性能消费",
     "url": "/architecture-document/react/performance/large-object-consumption",
     "group": "React 架构 > 性能思考",
     "tags": [
       "React"
+    ]
+  },
+  {
+    "id": "RctPerf5optim_perf",
+    "title": "React 性能优化系统手册",
+    "url": "/architecture-document/react/performance/react-performance-optimization",
+    "group": "React 架构 > 性能思考",
+    "tags": [
+      "React",
+      "性能优化"
     ]
   },
   {
@@ -513,6 +563,16 @@
     "group": "React 架构 > 原理说明",
     "tags": [
       "React"
+    ]
+  },
+  {
+    "id": "RctEvt6sys_principle",
+    "title": "React 事件系统",
+    "url": "/architecture-document/react/principle/react-event-system",
+    "group": "React 架构 > 原理说明",
+    "tags": [
+      "React",
+      "事件系统"
     ]
   },
   {
@@ -657,6 +717,36 @@
     "group": "Vue 架构 > 标准化模板",
     "tags": [
       "Vue"
+    ]
+  },
+  {
+    "id": "VueReactSys1principle",
+    "title": "Vue 3 响应式系统架构",
+    "url": "/architecture-document/vue/principle/vue-reactivity-system",
+    "group": "Vue 架构 > 原理说明",
+    "tags": [
+      "Vue",
+      "响应式"
+    ]
+  },
+  {
+    "id": "VueComp3comp_patterns",
+    "title": "Vue 3 Composable 设计模式",
+    "url": "/architecture-document/vue/composable-patterns/vue-composable-design-patterns",
+    "group": "Vue 架构 > Composable 设计模式",
+    "tags": [
+      "Vue",
+      "Composable"
+    ]
+  },
+  {
+    "id": "VuePerf4perf",
+    "title": "Vue 3 性能优化系统手册",
+    "url": "/architecture-document/vue/performance/vue-performance-optimization",
+    "group": "Vue 架构 > 性能优化",
+    "tags": [
+      "Vue",
+      "性能优化"
     ]
   },
   {
@@ -806,6 +896,36 @@
     "group": "Flutter 架构 > 项目结构规范",
     "tags": [
       "Flutter"
+    ]
+  },
+  {
+    "id": "FltRender1rendering",
+    "title": "Flutter 渲染管线与 Impeller",
+    "url": "/architecture-document/flutter/rendering/flutter-rendering-pipeline",
+    "group": "Flutter 架构 > 渲染引擎",
+    "tags": [
+      "Flutter",
+      "渲染引擎"
+    ]
+  },
+  {
+    "id": "FltPerf2perf",
+    "title": "Flutter 性能优化实战",
+    "url": "/architecture-document/flutter/performance/flutter-performance-optimization",
+    "group": "Flutter 架构 > 性能优化",
+    "tags": [
+      "Flutter",
+      "性能优化"
+    ]
+  },
+  {
+    "id": "FltPlugin3plugin",
+    "title": "Flutter 插件开发架构",
+    "url": "/architecture-document/flutter/plugin/flutter-plugin-architecture",
+    "group": "Flutter 架构 > 插件开发架构",
+    "tags": [
+      "Flutter",
+      "插件"
     ]
   },
   {
@@ -1384,12 +1504,13 @@
   },
   {
     "id": "R19vV3perf_compare_thinking",
-    "title": "React 19 vs Vue 3 复杂业务性能对决",
-    "url": "/architecture-document/thinking/react19-vs-vue3-performance",
+    "title": "React 19 vs Vue 3 vs Flutter 复杂业务性能对决",
+    "url": "/architecture-document/thinking/framework-performance-comparison",
     "group": "研发思维",
     "tags": [
       "React",
       "Vue",
+      "Flutter",
       "思维"
     ]
   },
