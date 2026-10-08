@@ -1,3 +1,17 @@
+/**
+ * useProgress.js — 阅读进度 composable
+ *
+ * 架构层级：业务逻辑层
+ * 职责：
+ *   - 记录当前页面阅读进度（URL + 标题 + 时间）
+ *   - 记录上限 15 条，超出自动丢弃旧记录
+ *   - 支持导出 Markdown / 清空全部
+ *   - 自动关联当前页面 docId
+ *
+ * 存储：IndexedDB（qt:progress）
+ * 依赖：useDocIdMapper / useQtStorage
+ */
+
 import { ref, onMounted } from 'vue'
 import { dayjs, downloadText, exportTimestamp } from '../shared/utils'
 import { PROGRESS_LIMIT } from '../shared/constants'

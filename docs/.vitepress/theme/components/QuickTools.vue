@@ -1,3 +1,31 @@
+<!--
+  QuickTools.vue — 快捷工具面板主组件（入口）
+
+  架构层级：主组件（布局编排）
+  职责：
+    1. 贴边按钮触发面板开关
+    2. el-dialog 弹窗内嵌 el-tabs 一级导航
+    3. 编排 6 个 Tab 子组件：复习 / 进度 / 疑惑 / 笔记 / 实况 / 更新
+    4. 初始化并注入各 composable 实例（review/progress/doubt/note）
+    5. 提供 navigateTo() 全局导航方法
+
+  数据流：
+    composable → 主组件(props 传递) → Tab 子组件
+    Tab 子组件 → emit 事件 → 主组件 → composable 方法
+
+  依赖：
+    - composables/useReview.js          复习调度
+    - composables/useProgress.js        阅读进度
+    - composables/useDoubt.js           疑惑记录
+    - composables/useNote.js            笔记记录
+    - composables/useLearningStreak.js  学习打脸追踪
+    - tabs/ReviewTab.vue                复习子视图
+    - tabs/ProgressTab.vue              进度子视图
+    - tabs/DoubtTab.vue                 疑惑子视图
+    - tabs/NoteTab.vue                  笔记子视图
+    - tabs/LearningStreakTab.vue        实况子视图
+    - tabs/RecentUpdatesTab.vue         近期更新子视图
+-->
 <template>
   <div class="quick-tools-wrapper">
     <!-- 右侧贴边按钮 -->
@@ -121,6 +149,13 @@
           </template>
           <LearningStreakTab />
         </el-tab-pane>
+
+        <el-tab-pane name="recent">
+          <template #label>
+            <span>🆕 更新</span>
+          </template>
+          <RecentUpdatesTab :navigate-to="navigateTo" />
+        </el-tab-pane>
       </el-tabs>
     </el-dialog>
   </div>
@@ -141,6 +176,7 @@ import DoubtTab from './quick-tools/tabs/DoubtTab.vue'
 import NoteTab from './quick-tools/tabs/NoteTab.vue'
 import ReviewTab from './quick-tools/tabs/ReviewTab.vue'
 import LearningStreakTab from './quick-tools/tabs/LearningStreakTab.vue'
+import RecentUpdatesTab from './quick-tools/tabs/RecentUpdatesTab.vue'
 import './quick-tools/shared/quick-tools.css'
 
 // ==================== 页面信息 ====================

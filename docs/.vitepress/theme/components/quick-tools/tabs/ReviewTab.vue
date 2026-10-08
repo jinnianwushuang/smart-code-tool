@@ -1,3 +1,24 @@
+<!--
+  ReviewTab.vue — 复习工具子视图
+
+  架构层级：Tab 子组件（UI 展示层）
+  职责：
+    1. 五个二级子视图切换（今日待复习 / 文档盲区 / 全部文档 / 统计 / 设置）
+    2. 展示到期复习卡片，支持评分（Again/Hard/Good/Easy）
+    3. 文档盲区展示：从未打开 / 从未学习 / 从未复习
+    4. 全部文档搜索 + 分组过滤 + 标签筛选
+    5. 统计面板：总文档/已复习/覆盖率/今日到期
+    6. 设置面板：调度算法/请求保留率/最大间隔/导入导出
+
+  Props：
+    - review: Object — useReview() composable 实例
+    - navigateTo: Function — 文档导航方法
+
+  数据依赖：
+    - useReviewDocRegistry  → doc-list.json 的文档清单
+    - useDocIdMapper        → URL ↔ docId 双向映射
+    - useLearningStreak     → 复习后记录学习日志
+-->
 <template>
   <div class="qt-tab-content">
     <!-- 子视图切换 -->
@@ -24,7 +45,7 @@
     </el-tabs>
 
     <!-- ════════════ 今日待复习 ════════════ -->
-    <div v-if="subView === 'today'" class="qt-record-scroll">
+    <el-scrollbar v-if="subView === 'today'">
       <el-empty
         v-if="!review.isReady.value"
         description="⏳ 正在初始化复习系统..."
@@ -64,6 +85,18 @@
             </el-tag>
             <span class="rv-due-info">{{ dueLabel(record.due) }}</span>
             <span class="rv-review-count">第 {{ record.reviewCount + 1 }} 次复习</span>
+            <span
+              v-if="getTimestampsById(record.docId).updatedAt"
+              class="rv-time-info"
+              :title="
+                '创建于 ' +
+                getTimestampsById(record.docId).createdAt +
+                '，更新于 ' +
+                getTimestampsById(record.docId).updatedAt
+              "
+            >
+              📅 更新于 {{ getTimestampsById(record.docId).updatedAt }}
+            </span>
           </div>
           <div v-if="getTagsById(record.docId).length" class="rv-card-tags">
             <el-tag
@@ -90,10 +123,10 @@
           </div>
         </el-card>
       </div>
-    </div>
+    </el-scrollbar>
 
     <!-- ════════════ 文档盲区 ════════════ -->
-    <div v-if="subView === 'blindspot'" class="qt-record-scroll">
+    <el-scrollbar v-if="subView === 'blindspot'">
       <el-radio-group v-model="blindSpotTab" class="rv-bs-radio-group">
         <el-radio-button value="neverOpened">
           从未打开 ({{ blindSpots.neverOpened.length }})
@@ -132,6 +165,18 @@
             <span class="rv-progress-hint">
               已阅读 {{ Math.round(doc.accumulatedSeconds / 60) }} 分钟
             </span>
+            <span
+              v-if="getTimestampsById(doc.id).updatedAt"
+              class="rv-time-info"
+              :title="
+                '创建于 ' +
+                getTimestampsById(doc.id).createdAt +
+                '，更新于 ' +
+                getTimestampsById(doc.id).updatedAt
+              "
+            >
+              📅 更新于 {{ getTimestampsById(doc.id).updatedAt }}
+            </span>
           </div>
           <div v-if="getTagsById(doc.id).length" class="rv-card-tags">
             <el-tag
@@ -147,10 +192,10 @@
           </div>
         </el-card>
       </div>
-    </div>
+    </el-scrollbar>
 
     <!-- ════════════ 全部文档 ════════════ -->
-    <div v-if="subView === 'all'" class="qt-record-scroll">
+    <el-scrollbar v-if="subView === 'all'">
       <div class="rv-filter-bar rv-filter-bar-multi">
         <el-input
           v-model="searchQuery"
@@ -189,6 +234,18 @@
             <span v-if="record.due" class="rv-due-info">{{ dueLabel(record.due) }}</span>
             <span class="rv-review-count">复习 {{ record.reviewCount }} 次</span>
             <el-tag v-if="record.group" size="small" type="info">{{ record.group }}</el-tag>
+            <span
+              v-if="getTimestampsById(record.docId).updatedAt"
+              class="rv-time-info"
+              :title="
+                '创建于 ' +
+                getTimestampsById(record.docId).createdAt +
+                '，更新于 ' +
+                getTimestampsById(record.docId).updatedAt
+              "
+            >
+              📅 更新于 {{ getTimestampsById(record.docId).updatedAt }}
+            </span>
           </div>
           <div v-if="getTagsById(record.docId).length" class="rv-card-tags">
             <el-tag
@@ -204,10 +261,10 @@
           </div>
         </el-card>
       </div>
-    </div>
+    </el-scrollbar>
 
     <!-- ════════════ 统计面板 ════════════ -->
-    <div v-if="subView === 'stats'" class="qt-record-scroll">
+    <el-scrollbar v-if="subView === 'stats'">
       <div class="rv-stats-grid">
         <el-card class="rv-stat-card" shadow="never">
           <div class="rv-stat-num">{{ stats.totalDocs }}</div>
@@ -257,10 +314,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </el-scrollbar>
 
     <!-- ════════════ 设置 ════════════ -->
-    <div v-if="subView === 'settings'" class="qt-record-scroll">
+    <el-scrollbar v-if="subView === 'settings'">
       <div class="rv-settings">
         <div class="rv-setting-item">
           <label>调度算法</label>
@@ -318,7 +375,7 @@
           <el-button type="danger" plain @click="handleClearAll">🧹 清空全部</el-button>
         </div>
       </div>
-    </div>
+    </el-scrollbar>
   </div>
 </template>
 
@@ -327,7 +384,7 @@ import { ref, computed } from 'vue'
 import { dayjs, formatRelative, downloadText, exportTimestamp } from '../shared/utils'
 import { REVIEW_RATING } from '../composables/useReviewScheduler'
 import { useLearningStreak } from '../composables/useLearningStreak'
-import { getTagsById, getAllTags } from '../shared/useDocIdMapper'
+import { getTagsById, getAllTags, getTimestampsById } from '../shared/useDocIdMapper'
 import TagFilter from '../shared/TagFilter.vue'
 
 const { recordToday: recordLearning } = useLearningStreak()

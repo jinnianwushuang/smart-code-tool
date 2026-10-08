@@ -1,11 +1,14 @@
 /**
- * QuickTools 统一 IndexedDB 存储层
+ * useQtStorage.js — QuickTools 统一 IndexedDB 存储层
  *
- * 所有工具（Progress/Doubt/Note/Review）共用同一个 IDB 数据库：
- *   - DB 名: smart-code-tool
- *   - Store: quick-tools
+ * 架构层级：共享基础设施
+ * 职责：
+ *   - 所有工具（Progress/Doubt/Note）共用同一个 IDB 数据库
+ *   - DB 名: smart-code-tool，Store: quick-tools
+ *   - 自动从 localStorage 迁移旧数据（一次性迁移）
+ *   - 提供 readQt/writeQt 统一读写接口
  *
- * 替代原 localStorage 方案，无 5MB 限制
+ * 与 useReviewStorage.js 共用同一个 IDB 数据库
  */
 
 import { get, set, createStore } from 'idb-keyval'

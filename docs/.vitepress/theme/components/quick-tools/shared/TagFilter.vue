@@ -1,3 +1,18 @@
+<!--
+  TagFilter.vue — 标签多选筛选器（共享组件）
+
+  架构层级：共享 UI 组件
+  职责：
+    1. 触发按钮显示已选数量，点击弹出浮层面板
+    2. 浮层面板：搜索框 + 标签 chips 网格 + 全选按钮
+    3. 支持实时搜索过滤、多选切换、一键全选
+
+  Props：
+    - tags: Array<string> — 可选标签列表
+    - modelValue: Array<string> — 已选标签（v-model 双向绑定）
+
+  使用方：ReviewTab / ProgressTab / DoubtTab / NoteTab
+-->
 <template>
   <div class="qt-tag-filter">
     <el-button @click="togglePanel" :type="modelValue.length ? 'primary' : 'default'" plain>

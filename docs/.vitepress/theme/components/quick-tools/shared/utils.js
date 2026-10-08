@@ -1,3 +1,14 @@
+/**
+ * utils.js — 快捷工具纯函数工具集
+ *
+ * 包含：
+ * - dayjs 初始化（中文相对时间）
+ * - localStorage 安全读写
+ * - 相对时间格式化（刚刚/X分钟前/X小时前/X天前/X个月前）
+ * - 导出文件时间戳生成
+ * - 浏览器下载触发
+ */
+
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import 'dayjs/locale/zh-cn'

@@ -1,3 +1,19 @@
+<!--
+  ProgressTab.vue — 阅读进度 Tab
+
+  架构层级：Tab 子组件
+  职责：
+    1. 记录当前页面阅读进度（自动采集 URL、标题、分组）
+    2. 进度列表展示 + 标签筛选
+    3. 支持导出 Markdown / 清空全部
+
+  Props：
+    - records: Array — 进度记录列表
+    - sorted: Array — 排序后的记录
+    - navigateTo: Function — 文档导航
+
+  Events: add / export / clearAll
+-->
 <template>
   <div class="qt-tab-content">
     <div class="qt-progress-toolbar">
@@ -18,7 +34,7 @@
       </div>
     </div>
 
-    <div class="qt-record-scroll">
+    <el-scrollbar>
       <div v-if="allTags.length > 0" class="rv-filter-bar">
         <TagFilter :tags="allTags" v-model="filterTag" />
       </div>
@@ -60,7 +76,7 @@
           </div>
         </el-card>
       </div>
-    </div>
+    </el-scrollbar>
   </div>
 </template>
 

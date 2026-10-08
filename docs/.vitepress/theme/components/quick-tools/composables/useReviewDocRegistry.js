@@ -51,6 +51,8 @@ export function useReviewDocRegistry(storage) {
             url: doc.url,
             title: doc.title,
             group: doc.group || '未分组',
+            createdAt: doc.createdAt || null,
+            updatedAt: doc.updatedAt || null,
           })
         }
       }

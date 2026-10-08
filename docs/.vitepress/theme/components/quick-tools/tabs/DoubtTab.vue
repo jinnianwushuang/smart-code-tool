@@ -1,3 +1,20 @@
+<!--
+  DoubtTab.vue — 疑惑记录 Tab
+
+  架构层级：Tab 子组件
+  职责：
+    1. 疑惑录入/编辑表单（可调行数）
+    2. 疑惑列表展示 + 标签筛选
+    3. 支持解决/删除/导出/清空已解决
+
+  Props：
+    - records: Array — 疑惑记录
+    - draft: String — 当前输入草稿
+    - editingId: String|null — 正在编辑的记录 ID
+    - navigateTo: Function — 文档导航
+
+  Events: update:draft / save / edit / resolve / delete / clearResolved / clearAll / export
+-->
 <template>
   <div class="qt-tab-content">
     <!-- 疑惑录入/编辑表单 -->
@@ -45,7 +62,7 @@
     </div>
 
     <!-- 疑惑列表 -->
-    <div class="qt-record-scroll">
+    <el-scrollbar>
       <div v-if="allTags.length > 0" class="rv-filter-bar">
         <TagFilter :tags="allTags" v-model="filterTag" />
       </div>
@@ -101,7 +118,7 @@
           <div class="qt-doubt-text">{{ record.doubt }}</div>
         </el-card>
       </div>
-    </div>
+    </el-scrollbar>
 
     <div v-if="records.some((r) => r.resolved)" class="qt-doubt-footer">
       <el-button text type="info" @click="emit('clearResolved')"> 🧹 清除已解决记录 </el-button>

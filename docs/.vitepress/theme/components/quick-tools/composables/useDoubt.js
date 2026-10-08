@@ -1,3 +1,17 @@
+/**
+ * useDoubt.js — 疑惑记录 composable
+ *
+ * 架构层级：业务逻辑层
+ * 职责：
+ *   - 疑惑录入/编辑/删除/解决
+ *   - 同链接唯一（同一文档只有一条疑惑）
+ *   - 支持导出 Markdown / 清空已解决
+ *   - 自动关联当前页面 docId
+ *
+ * 存储：IndexedDB（qt:doubts）
+ * 依赖：useDocIdMapper / useQtStorage
+ */
+
 import { ref, computed, onMounted } from 'vue'
 import { dayjs, downloadText, exportTimestamp } from '../shared/utils'
 import { DOUBT_LIMIT } from '../shared/constants'

@@ -1,3 +1,21 @@
+<!--
+  NoteTab.vue — 学习笔记 Tab
+
+  架构层级：Tab 子组件
+  职责：
+    1. 笔记录入/编辑表单（可调行数）
+    2. 笔记列表展示 + 标签筛选
+    3. 支持编辑/删除/导出/清空
+
+  Props：
+    - records: Array — 笔记记录
+    - sorted: Array — 排序后的记录
+    - draft: String — 当前输入草稿
+    - editingId: String|null — 正在编辑的记录 ID
+    - navigateTo: Function — 文档导航
+
+  Events: update:draft / save / edit / delete / clearAll / export
+-->
 <template>
   <div class="qt-tab-content">
     <!-- 笔记录入/编辑表单 -->
@@ -45,7 +63,7 @@
     </div>
 
     <!-- 笔记列表 -->
-    <div class="qt-record-scroll">
+    <el-scrollbar>
       <div v-if="allTags.length > 0" class="rv-filter-bar">
         <TagFilter :tags="allTags" v-model="filterTag" />
       </div>
@@ -91,7 +109,7 @@
           <div class="qt-note-text">{{ record.content }}</div>
         </el-card>
       </div>
-    </div>
+    </el-scrollbar>
   </div>
 </template>
 

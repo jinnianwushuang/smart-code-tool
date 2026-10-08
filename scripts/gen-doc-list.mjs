@@ -12,6 +12,7 @@
 import { writeFileSync, readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { execSync } from 'node:child_process'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -152,6 +153,58 @@ function deriveTagsFromUrl(url) {
   return tags
 }
 
+// ── Git 时间戳提取 ──
+
+/**
+ * 从 git 历史提取每个文件的创建时间和最后更新时间
+ * 单次 git log 遍历全量历史，性能最优
+ * @returns { Map<string, { createdAt: string, updatedAt: string }> }
+ */
+function extractGitTimestamps() {
+  const map = new Map()
+  try {
+    const output = execSync(
+      'git log --reverse --diff-filter=ACDMR --name-status --format="COMMIT %aI" -- docs/',
+      { cwd: ROOT, encoding: 'utf-8', maxBuffer: 50 * 1024 * 1024 },
+    )
+
+    let currentCommitTime = null
+    for (const line of output.split('\n')) {
+      if (line.startsWith('COMMIT ')) {
+        currentCommitTime = line.slice(7).trim()
+      } else if (line.startsWith('M\tdocs/') || line.startsWith('A\tdocs/')) {
+        const filePath = line.slice(2).trim()
+        if (filePath.endsWith('.md') && currentCommitTime) {
+          const url = '/' + filePath.slice(5).replace(/\.md$/, '') // docs/xxx.md → /xxx
+          if (!map.has(url)) {
+            map.set(url, { createdAt: currentCommitTime, updatedAt: currentCommitTime })
+          } else {
+            map.get(url).updatedAt = currentCommitTime
+          }
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('⚠️  Git 时间戳提取失败（可能是首次提交或无 git 仓库）:', e.message)
+  }
+  return map
+}
+
+/**
+ * 格式化 ISO 时间字符串为 YYYY-MM-DD HH:mm:ss
+ */
+function formatDate(isoStr) {
+  if (!isoStr) return null
+  try {
+    const d = new Date(isoStr)
+    if (isNaN(d.getTime())) return null
+    const pad = (n) => String(n).padStart(2, '0')
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`
+  } catch {
+    return null
+  }
+}
+
 // ── 递归遍历，收集叶子节点 ──
 const docs = []
 const warnings = []
@@ -171,12 +224,15 @@ function traverse(items, groupPath = []) {
         warnings.push(`⚠️  缺少 id: ${item.text} (${item.link})`)
         continue
       }
+      const ts = gitTimestamps.get(item.link)
       docs.push({
         id: item.id,
         title: item.text,
         url: item.link,
         group: groupPath.length > 0 ? groupPath.join(' > ') : '未分组',
         tags: extractTags(item.link),
+        createdAt: formatDate(ts?.createdAt),
+        updatedAt: formatDate(ts?.updatedAt),
       })
     } else if (hasItems) {
       // 分组节点：递归进入子级
@@ -185,6 +241,11 @@ function traverse(items, groupPath = []) {
     }
   }
 }
+
+// ── 提取 Git 时间戳（单次 git log 全量扫描） ──
+console.log('⏳ 正在从 git 历史提取时间戳...')
+const gitTimestamps = extractGitTimestamps()
+console.log(`✅ 提取到 ${gitTimestamps.size} 个文件的时间戳`)
 
 // ── 执行遍历 ──
 for (const { sidebar } of ALL_SIDEBARS) {

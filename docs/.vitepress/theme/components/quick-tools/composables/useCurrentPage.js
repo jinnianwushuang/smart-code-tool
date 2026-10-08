@@ -1,3 +1,13 @@
+/**
+ * useCurrentPage.js — 当前页面信息 composable
+ *
+ * 架构层级：工具层
+ * 职责：
+ *   - 实时读取当前页面 URL 和标题
+ *   - URL 使用 stripBase 规范化（与 doc-list.json 格式一致）
+ *   - 每次操作时调用 refresh() 刷新，避免 computed 无法追踪浏览器原生 API
+ */
+
 import { ref } from 'vue'
 import { stripBase } from '../shared/useDocIdMapper'
 

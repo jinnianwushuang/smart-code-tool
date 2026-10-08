@@ -1,3 +1,17 @@
+/**
+ * useNote.js — 学习笔记 composable
+ *
+ * 架构层级：业务逻辑层
+ * 职责：
+ *   - 笔记录入/编辑/删除
+ *   - 同链接可多条（与疑惑不同）
+ *   - 支持导出 Markdown / 清空全部
+ *   - 自动关联当前页面 docId
+ *
+ * 存储：IndexedDB（qt:notes）
+ * 依赖：useDocIdMapper / useQtStorage
+ */
+
 import { ref, computed, onMounted } from 'vue'
 import { dayjs, downloadText, exportTimestamp } from '../shared/utils'
 import { NOTE_LIMIT } from '../shared/constants'

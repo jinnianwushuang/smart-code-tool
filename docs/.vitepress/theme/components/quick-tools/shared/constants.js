@@ -1,3 +1,13 @@
+/**
+ * constants.js — 快捷工具系统常量
+ *
+ * 包含：
+ * - localStorage 存储键名（进度/疑惑/笔记/复习）
+ * - 各工具记录上限
+ * - 抗遗忘复习系统常量（自动学习阈值、计时器间隔、单文档历史上限）
+ * - 全站文档清单 URL
+ */
+
 // 存储键名
 export const PROGRESS_KEY = 'quick-tools-progress'
 export const DOUBT_KEY = 'quick-tools-doubts'

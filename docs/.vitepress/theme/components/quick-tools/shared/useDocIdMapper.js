@@ -1,14 +1,16 @@
 /**
- * 文档 ID 映射器 — 供 Progress/Doubt/Note 等工具使用
+ * useDocIdMapper.js — 文档 ID 映射器
  *
+ * 架构层级：共享基础设施
  * 职责：
- * - 建立 URL ↔ docId 双向映射
- * - 提供 URL → docId 查找
- * - 提供旧数据自动迁移（为无 docId 的记录补上 docId）
+ *   - 建立 URL ↔ docId 双向映射
+ *   - 提供 URL → docId 查找（getDocIdByUrl）
+ *   - 提供 docId → 文档元数据查找（getTagsById/getTimestampsById）
+ *   - 提供旧数据自动迁移（为无 docId 的记录补上 docId）
  *
  * 数据源策略：
- * - 优先由 useReviewDocRegistry 加载后注入（injectDocList），零额外请求
- * - 兑底：若无人注入，首次调用时自行 fetch doc-list.json
+ *   - 优先由 useReviewDocRegistry 加载后注入（injectDocList），零额外请求
+ *   - 兜底：若无人注入，首次调用时自行 fetch doc-list.json
  */
 
 import { DOC_LIST_URL } from './constants'
@@ -69,6 +71,8 @@ function buildMaps(docs) {
         title: doc.title,
         group: doc.group,
         tags: doc.tags || [],
+        createdAt: doc.createdAt || null,
+        updatedAt: doc.updatedAt || null,
       })
     }
   }
@@ -127,6 +131,14 @@ export async function getDocInfoById(docId) {
 /** 根据 docId 获取 tags */
 export function getTagsById(docId) {
   return idToDocMap?.get(docId)?.tags || []
+}
+
+/** 根据 docId 获取时间戳 { createdAt, updatedAt } */
+export function getTimestampsById(docId) {
+  const doc = idToDocMap?.get(docId)
+  return doc
+    ? { createdAt: doc.createdAt || null, updatedAt: doc.updatedAt || null }
+    : { createdAt: null, updatedAt: null }
 }
 
 /** 获取所有不重复的 tags 列表 */
