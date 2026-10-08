@@ -3,7 +3,6 @@ title: "设计系统与组件库架构 [P8]"
 level: "architect"
 tags: ["设计系统", "headless UI", "design token", "主题引擎"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

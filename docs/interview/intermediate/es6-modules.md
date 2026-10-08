@@ -3,7 +3,6 @@ title: "ES6+ 模块系统与工程化 [P5-P6]"
 level: "intermediate"
 tags: ["JavaScript", "ES6", "模块", "ESM", "CJS", "tree-shaking"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

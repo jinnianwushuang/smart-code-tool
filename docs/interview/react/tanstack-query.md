@@ -3,7 +3,6 @@ title: 'TanStack Query 数据获取与缓存 [P6-P7]'
 level: 'senior'
 tags: ['TanStack Query', 'React Query', '数据获取', '缓存', '乐观更新']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

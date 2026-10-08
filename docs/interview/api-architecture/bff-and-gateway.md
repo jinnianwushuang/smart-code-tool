@@ -3,7 +3,6 @@ title: 'BFF 模式与 API 网关 [P8]'
 level: 'architect'
 tags: ['BFF', 'API 网关', '接口聚合', 'OpenAPI', 'Protobuf']
 difficulty: 'expert'
-updated: '2026-09-10'
 target: '架构师（P8）'
 ---
 

@@ -3,7 +3,6 @@ title: '技术主管（TL）学习路径'
 level: 'manager'
 tags: ['技术主管', 'TL', '管理', '学习路径']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: '技术主管'
 ---
 

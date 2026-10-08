@@ -3,7 +3,6 @@ title: 'Rolldown 与构建工具未来 [P8]'
 level: 'architect'
 tags: ['Rolldown', 'Oxc', 'Vite 8', 'Rust', '构建工具']
 difficulty: 'expert'
-updated: '2026-09-10'
 target: '架构师（P8）'
 ---
 

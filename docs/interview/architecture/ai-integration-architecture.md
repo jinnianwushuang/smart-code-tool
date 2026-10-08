@@ -3,7 +3,6 @@ title: "AI 能力集成架构 [P8]"
 level: "architect"
 tags: ["AI 集成", "Agent", "流式协议", "上下文管理", "LLM"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

@@ -3,7 +3,6 @@ title: "WebAssembly 在前端的实际应用 [P6-P7]"
 level: "senior"
 tags: ["WebAssembly", "WASM", "图像处理", "编解码", "游戏引擎"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

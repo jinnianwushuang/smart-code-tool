@@ -3,7 +3,6 @@ title: "TypeScript 编译器架构 [P8]"
 level: "architect"
 tags: ["TypeScript", "编译器", "AST", "类型检查"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

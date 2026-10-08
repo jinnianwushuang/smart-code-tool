@@ -3,7 +3,6 @@ title: 'React Hook Form + Zod 表单体系 [P6-P7]'
 level: 'senior'
 tags: ['React Hook Form', 'Zod', '表单', '验证', 'Schema']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

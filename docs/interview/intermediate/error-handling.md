@@ -3,7 +3,6 @@ title: "前端错误处理与监控入门 [P5-P6]"
 level: "intermediate"
 tags: ["错误处理", "ErrorBoundary", "监控", "错误上报"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

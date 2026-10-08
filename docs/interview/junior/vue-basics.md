@@ -3,7 +3,6 @@ title: "Vue 3 入门：模板、组件、生命周期 [P4-P5]"
 level: "junior"
 tags: ["Vue 3", "模板语法", "组件", "生命周期"]
 difficulty: "medium"
-updated: "2026-09-10"
 target: "P4-P5 初级工程师"
 ---
 

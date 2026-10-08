@@ -3,7 +3,6 @@ title: 'Node.js 运行时：libuv、Stream、Worker Threads [P6-P7]'
 level: 'senior'
 tags: ['Node.js', 'libuv', 'Stream', '并发']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

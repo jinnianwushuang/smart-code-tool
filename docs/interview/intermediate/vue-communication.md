@@ -3,7 +3,6 @@ title: "Vue 组件通信方式全景 [P5-P6]"
 level: "intermediate"
 tags: ["Vue 3", "组件通信", "Props", "Emit", "Provide/Inject"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

@@ -3,7 +3,6 @@ title: "前端架构模式 [P8]"
 level: "architect"
 tags: ["Clean Architecture", "Hexagonal", "DDD", "架构模式"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

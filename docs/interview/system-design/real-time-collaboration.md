@@ -3,7 +3,6 @@ title: "实时协作系统设计 [P8]"
 level: "architect"
 tags: ["CRDT", "OT", "WebSocket", "实时协作"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

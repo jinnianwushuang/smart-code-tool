@@ -3,7 +3,6 @@ title: 'Nuxt 3 全栈框架原理与实战 [P8]'
 level: 'architect'
 tags: ['Nuxt 3', 'SSR', 'SSG', 'Nitro', '全栈框架']
 difficulty: 'expert'
-updated: '2026-09-10'
 target: '架构师（P8）'
 ---
 

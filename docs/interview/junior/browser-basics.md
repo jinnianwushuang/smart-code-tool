@@ -3,7 +3,6 @@ title: '浏览器基础与 DevTools 实战 [P4-P5]'
 level: 'junior'
 tags: ['浏览器', 'Chrome', 'DevTools', '开发者工具', '渲染']
 difficulty: 'medium'
-updated: '2026-09-16'
 target: 'P4-P5 初级工程师'
 ---
 

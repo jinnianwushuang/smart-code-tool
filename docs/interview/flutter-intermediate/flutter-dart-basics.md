@@ -3,7 +3,6 @@ title: 'Dart 语言基础与核心特性 [P5-P6]'
 level: 'intermediate'
 tags: ['Dart', 'Flutter', '空安全', 'OOP', '异步']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P5-P6 中级工程师'
 ---
 

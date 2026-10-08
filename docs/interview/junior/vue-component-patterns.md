@@ -3,7 +3,6 @@ title: "Vue 组件模式：Props、Emit、Slots [P4-P5]"
 level: "junior"
 tags: ["Vue 3", "Props", "Emit", "Slots", "组件通信"]
 difficulty: "medium"
-updated: "2026-09-10"
 target: "P4-P5 初级工程师"
 ---
 

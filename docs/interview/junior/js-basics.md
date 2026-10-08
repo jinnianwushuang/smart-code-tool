@@ -3,7 +3,6 @@ title: 'JavaScript 基础：变量、类型、运算 [P4-P5]'
 level: 'junior'
 tags: ['JavaScript', '变量', '数据类型', '类型转换']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P4-P5 初级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: "GoRouter 路由管理深度 [P6-P7]"
 level: "senior"
 tags: ["GoRouter", "Flutter", "路由", "Deep Link", "ShellRoute"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

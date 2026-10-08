@@ -3,7 +3,6 @@ title: "npm/pnpm 包管理入门 [P4-P5]"
 level: "junior"
 tags: ["npm", "pnpm", "包管理", "package.json", "scripts"]
 difficulty: "medium"
-updated: "2026-09-10"
 target: "P4-P5 初级工程师"
 ---
 

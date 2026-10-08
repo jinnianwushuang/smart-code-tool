@@ -3,7 +3,6 @@ title: "BLoC/Cubit 架构模式与大规模实践 [P6-P7]"
 level: "senior"
 tags: ["BLoC", "Cubit", "Flutter", "状态管理", "事件驱动"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

@@ -3,7 +3,6 @@ title: "原型链本质与元编程 [P6-P7]"
 level: "senior"
 tags: ["JavaScript", "原型链", "class", "Proxy", "元编程"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

@@ -3,7 +3,6 @@ title: '浏览器渲染管线 [P6-P7]'
 level: 'senior'
 tags: ['渲染管线', '样式计算', '布局', '合成', 'GPU']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

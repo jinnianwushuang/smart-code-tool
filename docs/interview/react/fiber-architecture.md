@@ -3,7 +3,6 @@ title: 'Fiber 架构与优先级调度 [P6-P7]'
 level: 'senior'
 tags: ['React', 'Fiber', '时间切片', '优先级调度']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: '构建工具链演进 [P6-P7]'
 level: 'senior'
 tags: ['Webpack', 'Vite', 'Turbopack', 'Rspack', 'Oxc']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

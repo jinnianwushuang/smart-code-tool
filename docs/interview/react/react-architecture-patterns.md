@@ -3,7 +3,6 @@ title: 'React 生态架构模式 [P8]'
 level: 'architect'
 tags: ['React', '架构', '项目结构', '状态分层', '代码分割']
 difficulty: 'expert'
-updated: '2026-09-10'
 target: '架构师（P8）'
 ---
 

@@ -3,7 +3,6 @@ title: "客户端数据架构 [P8]"
 level: "architect"
 tags: ["离线优先", "IndexedDB", "SQLite WASM", "缓存分层", "数据同步"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

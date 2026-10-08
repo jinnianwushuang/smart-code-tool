@@ -3,7 +3,6 @@ title: 'ES2025/2026 新特性与现代 Web APIs [P6-P7]'
 level: 'senior'
 tags: ['ES2025', 'ES2026', 'Temporal', 'Decorators', 'View Transitions', 'Scroll-driven Animations']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

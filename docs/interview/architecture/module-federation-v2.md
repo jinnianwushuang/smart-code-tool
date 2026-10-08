@@ -3,7 +3,6 @@ title: "模块联邦 V2 与去中心化微前端 [P8]"
 level: "architect"
 tags: ["Module Federation", "微前端", "去中心化", "共享依赖"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

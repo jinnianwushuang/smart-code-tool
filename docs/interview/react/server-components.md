@@ -3,7 +3,6 @@ title: "React Server Components 原理 [P6-P7]"
 level: "senior"
 tags: ["React", "RSC", "流式渲染", "序列化协议"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

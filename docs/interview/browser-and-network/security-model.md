@@ -3,7 +3,6 @@ title: '浏览器安全模型 [P6-P7]'
 level: 'senior'
 tags: ['CSP', 'COOP', 'COEP', 'SRI', '沙箱', '安全']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

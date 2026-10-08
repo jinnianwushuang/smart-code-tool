@@ -3,7 +3,6 @@ title: "闭包、作用域链与执行上下文 [P5-P6]"
 level: "intermediate"
 tags: ["JavaScript", "闭包", "作用域", "执行上下文", "this"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

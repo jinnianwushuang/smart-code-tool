@@ -3,7 +3,6 @@ title: 'MCP 协议与 Tool Use 前端实践 [P6-P7]'
 level: 'senior'
 tags: ['MCP', 'Tool Use', 'Agent', '协议', 'AI 工具']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

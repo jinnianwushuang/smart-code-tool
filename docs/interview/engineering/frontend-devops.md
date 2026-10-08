@@ -3,7 +3,6 @@ title: "前端 DevOps 与发布体系 [P8]"
 level: "architect"
 tags: ["CI/CD", "Feature Flag", "金丝雀发布", "Preview Environment"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

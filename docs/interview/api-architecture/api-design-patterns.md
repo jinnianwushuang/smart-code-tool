@@ -3,7 +3,6 @@ title: "API 设计模式与选型 [P8]"
 level: "architect"
 tags: ["RESTful", "GraphQL", "tRPC", "gRPC-Web", "API 版本管理"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

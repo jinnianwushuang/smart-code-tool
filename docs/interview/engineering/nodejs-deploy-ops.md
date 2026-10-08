@@ -3,7 +3,6 @@ title: 'Node.js 部署与运维体系 [P6-P7]'
 level: 'senior'
 tags: ['Node.js', 'Docker', 'CI/CD', 'PM2', '监控', '日志']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: '响应式设计与移动端适配 [P4-P5]'
 level: 'junior'
 tags: ['响应式', '媒体查询', '移动端适配', 'rem', 'vw']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P4-P5 初级工程师'
 ---
 

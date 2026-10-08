@@ -3,7 +3,6 @@ title: '技术领导力 [TL]'
 level: 'manager'
 tags: ['技术决策', 'RFC 流程', '技术债务', '领导力']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: '技术主管（TL）'
 ---
 

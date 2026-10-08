@@ -3,7 +3,6 @@ title: "Riverpod 状态管理深度 [P6-P7]"
 level: "senior"
 tags: ["Riverpod", "Flutter", "状态管理", "Codegen", "Provider"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

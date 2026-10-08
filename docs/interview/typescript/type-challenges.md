@@ -3,7 +3,6 @@ title: "高级类型体操 [P6-P7]"
 level: "senior"
 tags: ["TypeScript", "条件类型", "模板字面量类型", "递归类型"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

@@ -3,7 +3,6 @@ title: 'GC 算法与内存管理 [P6-P7]'
 level: 'senior'
 tags: ['JavaScript', 'GC', '内存泄漏', 'WeakRef']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

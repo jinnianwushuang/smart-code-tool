@@ -21,8 +21,13 @@ try {
   await $`node ./job/entry/index.js`
   console.log(chalk.green('✓ Entry files created\n'))
 
-  // Step 4: 并行启动四个开发服务器
-  console.log(chalk.yellow('🔧 Step 4: Starting development servers...'))
+  // Step 4: 生成文档列表（VitePress 依赖）
+  console.log(chalk.yellow('📋 Step 4: Generating doc list...'))
+  await $`node scripts/gen-doc-list.mjs`
+  console.log(chalk.green('✓ Doc list generated\n'))
+
+  // Step 5: 并行启动四个开发服务器
+  console.log(chalk.yellow('🔧 Step 5: Starting development servers...'))
   console.log(chalk.gray('   - Docs (main): http://localhost:23000/smart-code-tool/'))
   console.log(
     chalk.gray(

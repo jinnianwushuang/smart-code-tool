@@ -3,7 +3,6 @@ title: 'Node.js 数据库与 ORM 集成 [P6-P7]'
 level: 'senior'
 tags: ['Node.js', 'MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'ORM']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

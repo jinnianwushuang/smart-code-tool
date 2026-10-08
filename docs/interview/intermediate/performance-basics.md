@@ -3,7 +3,6 @@ title: "前端性能优化基础 [P5-P6]"
 level: "intermediate"
 tags: ["性能优化", "Core Web Vitals", "图片优化", "代码分割"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

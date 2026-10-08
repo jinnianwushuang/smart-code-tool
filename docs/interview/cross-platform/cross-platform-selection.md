@@ -3,7 +3,6 @@ title: '跨端技术选型矩阵 [P8]'
 level: 'architect'
 tags: ['React Native', 'Flutter', 'Tauri', 'Electron', '跨端选型']
 difficulty: 'expert'
-updated: '2026-09-10'
 target: '架构师（P8）'
 ---
 

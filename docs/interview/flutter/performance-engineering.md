@@ -3,7 +3,6 @@ title: "Flutter 性能优化与工程化 [P8]"
 level: "architect"
 tags: ["Flutter", "性能优化", "内存治理", "灰度发布"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

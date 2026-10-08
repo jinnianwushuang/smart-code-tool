@@ -3,7 +3,6 @@ title: "Git 基础：分支策略与协作流程 [P4-P5]"
 level: "junior"
 tags: ["Git", "分支", "合并", "协作"]
 difficulty: "medium"
-updated: "2026-09-10"
 target: "P4-P5 初级工程师"
 ---
 

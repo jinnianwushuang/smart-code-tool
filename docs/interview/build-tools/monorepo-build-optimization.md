@@ -3,7 +3,6 @@ title: 'Monorepo 构建优化 [P8]'
 level: 'architect'
 tags: ['Monorepo', 'Turborepo', 'Nx', 'pnpm', '增量构建']
 difficulty: 'expert'
-updated: '2026-09-10'
 target: '架构师（P8）'
 ---
 

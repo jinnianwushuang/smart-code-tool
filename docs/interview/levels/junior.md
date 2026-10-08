@@ -3,7 +3,6 @@ title: '初级工程师（P4-P5）学习路径'
 level: 'junior'
 tags: ['初级', 'P4', 'P5', '学习路径']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P4-P5 初级工程师'
 ---
 

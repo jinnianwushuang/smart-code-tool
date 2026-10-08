@@ -3,7 +3,6 @@ title: '对象与类基础 [P4-P5]'
 level: 'junior'
 tags: ['JavaScript', '对象', 'class', '原型', '继承']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P4-P5 初级工程师'
 ---
 

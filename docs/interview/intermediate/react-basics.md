@@ -3,7 +3,6 @@ title: 'React 入门：JSX、Hooks、组件模式 [P5-P6]'
 level: 'intermediate'
 tags: ['React', 'JSX', 'Hooks', '组件', 'useState', 'useEffect']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P5-P6 中级工程师'
 ---
 

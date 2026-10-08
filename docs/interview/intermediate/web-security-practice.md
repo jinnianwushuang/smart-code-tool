@@ -3,7 +3,6 @@ title: 'Web 安全实战：CSP/SRI/依赖检查 [P5-P6]'
 level: 'intermediate'
 tags: ['安全', 'CSP', 'SRI', '依赖检查', 'Helmet']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P5-P6 中级工程师'
 ---
 

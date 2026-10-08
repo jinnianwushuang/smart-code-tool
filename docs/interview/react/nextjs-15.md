@@ -3,7 +3,6 @@ title: 'Next.js 15 全栈框架原理 [P8]'
 level: 'architect'
 tags: ['Next.js 15', 'App Router', 'Server Actions', '缓存', 'Turbopack']
 difficulty: 'expert'
-updated: '2026-10-07'
 target: '架构师（P8）'
 ---
 

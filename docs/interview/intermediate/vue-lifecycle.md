@@ -3,7 +3,6 @@ title: "Vue 3 生命周期深入 [P5-P6]"
 level: "intermediate"
 tags: ["Vue 3", "生命周期", "组合式 API", "钩子"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

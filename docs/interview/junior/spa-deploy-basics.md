@@ -3,7 +3,6 @@ title: "SPA 部署基础（Nginx 配置） [P4-P5]"
 level: "junior"
 tags: ["部署", "Nginx", "SPA", "CDN", "History 模式"]
 difficulty: "medium"
-updated: "2026-09-10"
 target: "P4-P5 初级工程师"
 ---
 

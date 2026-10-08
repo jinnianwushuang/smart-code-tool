@@ -3,7 +3,6 @@ title: "Design Token 体系 [P8]"
 level: "architect"
 tags: ["Design Token", "多品牌", "多主题", "跨平台"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

@@ -3,7 +3,6 @@ title: "Dart 语言深度：Isolate、Mixin、元编程 [P6-P7]"
 level: "senior"
 tags: ["Dart", "Isolate", "AOT", "JIT", "Mixin"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

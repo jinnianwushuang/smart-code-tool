@@ -3,7 +3,6 @@ title: "TypeScript 类型体操入门 [P5-P6]"
 level: "intermediate"
 tags: ["TypeScript", "泛型", "条件类型", "映射类型", "工具类型"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

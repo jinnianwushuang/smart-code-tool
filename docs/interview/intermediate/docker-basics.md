@@ -3,7 +3,6 @@ title: "Docker 容器化基础与前端部署 [P5-P6]"
 level: "intermediate"
 tags: ["Docker", "容器化", "部署", "Dockerfile", "docker-compose"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

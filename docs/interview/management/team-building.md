@@ -3,7 +3,6 @@ title: '团队建设 [TL]'
 level: 'manager'
 tags: ['招聘', '面试设计', '成长体系', '1on1']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: '技术主管（TL）'
 ---
 

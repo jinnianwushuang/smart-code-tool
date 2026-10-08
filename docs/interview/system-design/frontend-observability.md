@@ -3,7 +3,6 @@ title: '前端可观测性 [P8]'
 level: 'architect'
 tags: ['埋点', '性能监控', '错误追踪', '用户行为']
 difficulty: 'expert'
-updated: '2026-09-10'
 target: '架构师（P8）'
 ---
 

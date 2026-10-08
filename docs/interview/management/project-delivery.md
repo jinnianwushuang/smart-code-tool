@@ -3,7 +3,6 @@ title: "项目交付管理 [TL]"
 level: "manager"
 tags: ["估时", "风险管理", "质量门禁", "敏捷"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "技术主管（TL）"
 ---
 

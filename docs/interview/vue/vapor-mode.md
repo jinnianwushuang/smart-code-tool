@@ -3,7 +3,6 @@ title: "Vapor Mode 原理 [P6-P7]"
 level: "senior"
 tags: ["Vue", "Vapor Mode", "无虚拟DOM", "编译时优化"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

@@ -3,7 +3,6 @@ title: "HTTP 协议基础 [P4-P5]"
 level: "junior"
 tags: ["HTTP", "HTTPS", "状态码", "请求方法", "Header"]
 difficulty: "medium"
-updated: "2026-09-10"
 target: "P4-P5 初级工程师"
 ---
 

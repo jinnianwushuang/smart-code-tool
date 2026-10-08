@@ -3,7 +3,6 @@ title: 'Zustand/Jotai 状态管理深度 [P6-P7]'
 level: 'senior'
 tags: ['Zustand', 'Jotai', 'React', '状态管理', '原子化']
 difficulty: 'hard'
-updated: '2026-10-07'
 target: 'P6+ 高级工程师'
 ---
 

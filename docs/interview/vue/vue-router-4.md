@@ -3,7 +3,6 @@ title: 'Vue Router 4 路由系统深度 [P6-P7]'
 level: 'senior'
 tags: ['Vue Router', '路由', '导航守卫', '动态路由', 'History 模式']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

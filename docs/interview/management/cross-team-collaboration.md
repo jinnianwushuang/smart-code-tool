@@ -3,7 +3,6 @@ title: "跨团队协作 [TL]"
 level: "manager"
 tags: ["接口契约", "联调流程", "SLA", "跨团队"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "技术主管（TL）"
 ---
 

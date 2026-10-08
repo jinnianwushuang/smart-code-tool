@@ -3,7 +3,6 @@ title: 'React Compiler 原理与实践 [P8]'
 level: 'architect'
 tags: ['React Compiler', '自动 Memo', '编译时优化', 'React 19']
 difficulty: 'expert'
-updated: '2026-09-10'
 target: '架构师（P8）'
 ---
 

@@ -3,7 +3,6 @@ title: 'Vue 响应式系统底层 [P6-P7]'
 level: 'senior'
 tags: ['Vue', 'Proxy', '依赖收集', '调度器']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: 'CSS 架构：BEM/CSS Modules/Tailwind [P5-P6]'
 level: 'intermediate'
 tags: ['CSS', 'BEM', 'CSS Modules', 'Tailwind', '架构', ':deep', 'scoped']
 difficulty: 'hard'
-updated: '2026-09-16'
 target: 'P5-P6 中级工程师'
 ---
 

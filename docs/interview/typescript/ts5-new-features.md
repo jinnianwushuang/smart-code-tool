@@ -3,7 +3,6 @@ title: 'TypeScript 5.x 新特性 [P6-P7]'
 level: 'senior'
 tags: ['TypeScript 5', 'isolatedDeclarations', 'satisfies', 'const 类型参数', '装饰器']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

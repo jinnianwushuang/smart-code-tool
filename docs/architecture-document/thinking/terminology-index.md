@@ -119,6 +119,7 @@ tags: ['思维']
 | **节点数据结构**       | [VNode 数据结构精讲](../vue/thinking/vnode-data-structure.md)                           | [Fiber Node 数据结构精讲](../react/principle/fiber-node-data-structure.md)         | [Widget·Element·RenderObject 三棵树](../flutter/thinking/element-widget-renderobject-tree.md) |
 | **深层对象治理**       | [按频率分频治理](../vue/thinking/deep-object-frequency-governance-cn.md)                | [zustand+selector+Immer](../react/thinking/deep-object-frequency-governance-cn.md) | —                                                                                             |
 | **组件设计模式**       | [Composable + 装配器](../vue/standardized-template-cn/vue-component-design-patterns.md) | [HOC + 复合组件](../react/component-patterns/react-component-design-patterns.md)   | [InheritedWidget + BLoC](../flutter/thinking/flutter-component-design-patterns.md)            |
+| **运行时性能对决**     | [React 19 vs Vue 3 内存/CPU/更新/延迟全维度对比](./react19-vs-vue3-performance.md)      | ← 同左                                                                             | —                                                                                             |
 
 ---
 

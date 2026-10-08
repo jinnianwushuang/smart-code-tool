@@ -3,7 +3,6 @@ title: "GetX 生态体系 [P6-P7]"
 level: "senior"
 tags: ["GetX", "Flutter", "状态管理", "路由", "依赖注入"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

@@ -3,7 +3,6 @@ title: 'Flutter 状态管理基础：setState/Provider/Bloc 入门 [P5-P6]'
 level: 'intermediate'
 tags: ['Flutter', '状态管理', 'setState', 'Provider', 'Bloc']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P5-P6 中级工程师'
 ---
 

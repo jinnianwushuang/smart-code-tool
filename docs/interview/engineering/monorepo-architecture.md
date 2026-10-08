@@ -3,7 +3,6 @@ title: "Monorepo 架构设计 [P8]"
 level: "architect"
 tags: ["Monorepo", "pnpm", "Turborepo", "Nx"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

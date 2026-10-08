@@ -3,7 +3,6 @@ title: 'HTML5 语义化与文档结构 [P4-P5]'
 level: 'junior'
 tags: ['HTML5', '语义化', 'SEO', '无障碍']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P4-P5 初级工程师'
 ---
 

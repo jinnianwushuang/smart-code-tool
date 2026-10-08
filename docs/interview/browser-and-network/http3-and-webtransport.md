@@ -3,7 +3,6 @@ title: 'HTTP/3、WebTransport 与 QUIC [P6-P7]'
 level: 'senior'
 tags: ['HTTP/3', 'QUIC', 'WebTransport', '0-RTT']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

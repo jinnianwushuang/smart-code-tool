@@ -3,7 +3,6 @@ title: 'V8 引擎与 JavaScript 运行时 [P6-P7]'
 level: 'senior'
 tags: ['JavaScript', 'V8', '引擎原理', '运行时']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

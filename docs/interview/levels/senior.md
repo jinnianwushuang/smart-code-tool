@@ -3,7 +3,6 @@ title: '高级工程师（P6-P7）学习路径'
 level: 'senior'
 tags: ['高级', 'P6', 'P7', '学习路径']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6-P7 高级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: "渲染器 Patch 流程与 Diff 算法 [P6-P7]"
 level: "senior"
 tags: ["Vue", "渲染器", "diff", "调度更新"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

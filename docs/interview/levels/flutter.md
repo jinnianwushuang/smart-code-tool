@@ -3,7 +3,6 @@ title: 'Flutter 学习路径'
 level: 'all'
 tags: ['Flutter', 'Dart', '跨端', '学习路径']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'Flutter 开发者'
 ---
 

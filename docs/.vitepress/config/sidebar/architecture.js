@@ -844,6 +844,11 @@ const thinking = {
       id: 'y0ZcW5BycsZTRWZLbmie-GZX',
     },
     {
+      text: 'React 19 vs Vue 3 复杂业务性能对决',
+      link: '/architecture-document/thinking/react19-vs-vue3-performance',
+      id: 'R19vV3perf_compare_thinking',
+    },
+    {
       id: 'YquLM7cTTLRaI2GtQpVJD-h1',
       text: 'BUG 修复思维对比',
       link: '/architecture-document/thinking/bug-fixing-thinking',

@@ -3,7 +3,6 @@ title: "技术雷达与创新落地 [TL]"
 level: "manager"
 tags: ["技术选型", "PoC", "技术雷达", "创新"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "技术主管（TL）"
 ---
 

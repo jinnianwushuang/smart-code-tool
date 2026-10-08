@@ -3,7 +3,6 @@ title: "TypeScript 工程化实践 [P5-P6]"
 level: "intermediate"
 tags: ["TypeScript", "tsconfig", "声明文件", "Vue", "React"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

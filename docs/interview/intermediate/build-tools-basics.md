@@ -3,7 +3,6 @@ title: "构建工具入门：Vite 配置与使用 [P5-P6]"
 level: "intermediate"
 tags: ["构建工具", "Vite", "Webpack", "配置", "环境变量"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

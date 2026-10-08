@@ -3,7 +3,6 @@ title: 'Flutter Widget 体系与布局系统 [P5-P6]'
 level: 'intermediate'
 tags: ['Flutter', 'Widget', '布局', 'StatelessWidget', 'StatefulWidget']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P5-P6 中级工程师'
 ---
 

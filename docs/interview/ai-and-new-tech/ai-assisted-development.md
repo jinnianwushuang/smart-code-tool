@@ -3,7 +3,6 @@ title: 'AI 辅助开发工程化 [P6-P7]'
 level: 'senior'
 tags: ['Copilot', 'Prompt 工程', 'AI 代码审查', 'AI 辅助开发']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: 'Vite 插件开发实战 [P6-P7]'
 level: 'senior'
 tags: ['Vite', 'Vite 8', '插件', 'Rolldown', '虚拟模块', 'Hook']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: "Edge Computing 前端场景 [P8]"
 level: "senior"
 tags: ["Edge SSR", "Deno Deploy", "Cloudflare Workers", "Edge Runtime"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

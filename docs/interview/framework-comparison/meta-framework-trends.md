@@ -3,7 +3,6 @@ title: "2026 元框架趋势 [P8]"
 level: "architect"
 tags: ["Turbopack", "Rust 工具链", "Edge Runtime", "元框架"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

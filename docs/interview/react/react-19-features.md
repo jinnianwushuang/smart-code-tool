@@ -3,7 +3,6 @@ title: 'React 19 新特性深度解析 [P6-P7]'
 level: 'senior'
 tags: ['React 19', 'use hook', 'Actions', 'useOptimistic', 'useFormStatus']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

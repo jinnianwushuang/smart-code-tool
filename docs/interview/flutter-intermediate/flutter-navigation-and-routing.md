@@ -3,7 +3,6 @@ title: 'Flutter 导航与路由实战 [P5-P6]'
 level: 'intermediate'
 tags: ['Flutter', '导航', '路由', 'Navigator', 'GoRouter']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P5-P6 中级工程师'
 ---
 

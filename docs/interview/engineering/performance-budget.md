@@ -3,7 +3,6 @@ title: "性能预算体系 [P6-P7]"
 level: "senior"
 tags: ["性能", "Core Web Vitals", "INP", "优化"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

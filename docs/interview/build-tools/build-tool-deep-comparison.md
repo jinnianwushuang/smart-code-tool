@@ -3,7 +3,6 @@ title: '构建工具深度对比 [P8]'
 level: 'architect'
 tags: ['Vite', 'Vite 8', 'Turbopack', 'Rspack', 'Rolldown', 'Webpack', '构建工具']
 difficulty: 'expert'
-updated: '2026-09-10'
 target: '架构师（P8）'
 ---
 

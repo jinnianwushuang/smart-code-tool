@@ -3,7 +3,6 @@ title: "Flutter 状态管理架构与 Clean Architecture [P8]"
 level: "architect"
 tags: ["Flutter", "Riverpod", "BLoC", "DI", "Clean Architecture"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

@@ -3,7 +3,6 @@ title: "Flutter 本地存储与持久化 [P6-P7]"
 level: "senior"
 tags: ["Flutter", "本地存储", "SharedPreferences", "Hive", "SQLite", "Isar"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

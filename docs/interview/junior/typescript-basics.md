@@ -3,7 +3,6 @@ title: "TypeScript 入门：类型注解与基础类型 [P4-P5]"
 level: "junior"
 tags: ["TypeScript", "类型注解", "接口", "基础类型"]
 difficulty: "medium"
-updated: "2026-09-10"
 target: "P4-P5 初级工程师"
 ---
 

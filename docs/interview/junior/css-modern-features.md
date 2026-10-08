@@ -3,7 +3,6 @@ title: 'CSS 新特性：变量、动画、过渡 [P4-P5]'
 level: 'junior'
 tags: ['CSS 变量', 'transition', 'animation', 'calc']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P4-P5 初级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: "多端一致性方案 [P8]"
 level: "architect"
 tags: ["多端一致性", "Design Token", "共享代码", "平台差异抽象"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

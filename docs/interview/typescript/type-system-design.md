@@ -3,7 +3,6 @@ title: "类型系统设计哲学 [P8]"
 level: "architect"
 tags: ["TypeScript", "HKT", "brand 模式", "类型安全"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

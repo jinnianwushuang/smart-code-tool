@@ -3,7 +3,6 @@ title: "Vue 编译器优化 [P6-P7]"
 level: "senior"
 tags: ["Vue", "编译器", "静态提升", "补丁标记"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

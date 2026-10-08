@@ -3,7 +3,6 @@ title: 'Pinia 状态管理原理与实战 [P6-P7]'
 level: 'senior'
 tags: ['Pinia', 'Vue 3', '状态管理', 'Plugin', '持久化']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: 'DOM 操作与事件处理 [P4-P5]'
 level: 'junior'
 tags: ['JavaScript', 'DOM', '事件', '事件委托', '事件冒泡']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P4-P5 初级工程师'
 ---
 

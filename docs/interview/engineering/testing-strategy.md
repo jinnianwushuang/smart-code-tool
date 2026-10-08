@@ -3,7 +3,6 @@ title: '前端测试金字塔实战 [P6-P7]'
 level: 'senior'
 tags: ['测试', 'E2E', '视觉回归', 'Vitest', 'Vue Test Utils', 'Playwright']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

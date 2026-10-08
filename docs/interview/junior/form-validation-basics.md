@@ -3,7 +3,6 @@ title: "表单与验证基础 [P4-P5]"
 level: "junior"
 tags: ["表单", "验证", "正则", "HTML5", "表单控件"]
 difficulty: "medium"
-updated: "2026-09-10"
 target: "P4-P5 初级工程师"
 ---
 

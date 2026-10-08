@@ -3,7 +3,6 @@ title: "Signals vs Virtual DOM [P6-P7]"
 level: "senior"
 tags: ["Signals", "Virtual DOM", "响应式", "性能"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

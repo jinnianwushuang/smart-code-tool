@@ -3,7 +3,6 @@ title: 'CSS 预处理器：Sass/Less/PostCSS [P5-P6]'
 level: 'intermediate'
 tags: ['CSS', '预处理器', 'Sass', 'Less', 'PostCSS']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P5-P6 中级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: "LLM 前端集成 [P6-P7]"
 level: "senior"
 tags: ["LLM", "流式输出", "Tokenizer", "本地推理", "WASM"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

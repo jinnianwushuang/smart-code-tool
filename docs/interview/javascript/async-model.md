@@ -3,7 +3,6 @@ title: '异步编程模型演进 [P6-P7]'
 level: 'senior'
 tags: ['JavaScript', '异步', 'Promise', 'Async Iterator']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

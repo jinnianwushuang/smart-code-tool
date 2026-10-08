@@ -3,7 +3,6 @@ title: '函数与作用域基础 [P4-P5]'
 level: 'junior'
 tags: ['JavaScript', '函数', '作用域', 'this', '箭头函数']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P4-P5 初级工程师'
 ---
 

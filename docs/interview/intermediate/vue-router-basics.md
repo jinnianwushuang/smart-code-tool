@@ -3,7 +3,6 @@ title: "Vue Router 路由实战 [P5-P6]"
 level: "intermediate"
 tags: ["Vue 3", "Vue Router", "路由", "导航守卫", "懒加载"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

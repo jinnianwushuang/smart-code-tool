@@ -3,7 +3,6 @@ title: 'Vite 核心原理与插件开发 [P6-P7]'
 level: 'senior'
 tags: ['Vite', 'Vite 8', 'Rolldown', 'Oxc', 'ESM', 'HMR', '插件开发']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

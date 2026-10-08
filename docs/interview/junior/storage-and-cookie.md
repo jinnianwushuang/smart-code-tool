@@ -3,7 +3,6 @@ title: '浏览器存储全景 [P4-P5]'
 level: 'junior'
 tags: ['localStorage', 'sessionStorage', 'Cookie', 'IndexedDB', 'Cache API', '存储']
 difficulty: 'medium'
-updated: '2026-09-16'
 target: 'P4-P5 初级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: '中级工程师（P5-P6）学习路径'
 level: 'intermediate'
 tags: ['中级', 'P5', 'P6', '学习路径']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P5-P6 中级工程师'
 ---
 

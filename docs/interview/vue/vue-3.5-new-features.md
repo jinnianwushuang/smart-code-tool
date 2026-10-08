@@ -3,7 +3,6 @@ title: 'Vue 3.5+ 新特性与响应式重构 [P6-P7]'
 level: 'senior'
 tags: ['Vue 3.5', 'useTemplateRef', 'useId', 'defineModel', '响应式重构']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

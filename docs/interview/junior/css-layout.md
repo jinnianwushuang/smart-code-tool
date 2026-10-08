@@ -3,7 +3,6 @@ title: 'CSS 布局：Flexbox 与 Grid [P4-P5]'
 level: 'junior'
 tags: ['CSS', 'Flexbox', 'Grid', '布局']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P4-P5 初级工程师'
 ---
 

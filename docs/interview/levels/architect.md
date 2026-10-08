@@ -3,7 +3,6 @@ title: '架构师（P8）学习路径'
 level: 'architect'
 tags: ['架构师', 'P8', '学习路径']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P8 架构师'
 ---
 

@@ -3,7 +3,6 @@ title: '低代码平台架构 [P8]'
 level: 'architect'
 tags: ['低代码', 'DSL', '渲染引擎', '扩展机制']
 difficulty: 'expert'
-updated: '2026-09-10'
 target: '架构师（P8）'
 ---
 

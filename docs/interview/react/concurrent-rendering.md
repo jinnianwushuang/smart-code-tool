@@ -3,7 +3,6 @@ title: "并发渲染与 Suspense [P6-P7]"
 level: "senior"
 tags: ["React", "并发", "Suspense", "Transitions"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

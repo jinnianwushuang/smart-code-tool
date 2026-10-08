@@ -3,7 +3,6 @@ title: 'Flutter 渲染引擎：Impeller/Skia 与三棵树 [P6-P7]'
 level: 'senior'
 tags: ['Flutter', 'Impeller', 'Skia', '三棵树', 'Material 3', 'Web 渲染']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

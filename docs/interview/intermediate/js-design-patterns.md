@@ -3,7 +3,6 @@ title: "JavaScript 常用设计模式 [P5-P6]"
 level: "intermediate"
 tags: ["JavaScript", "设计模式", "观察者", "策略", "工厂", "单例"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

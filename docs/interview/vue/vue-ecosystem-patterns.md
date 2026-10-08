@@ -3,7 +3,6 @@ title: 'Vue 3 生态实战模式 [P6-P7]'
 level: 'senior'
 tags: ['Vue 3', '组合式 API', 'Suspense', 'Teleport', 'KeepAlive', 'provide/inject']
 difficulty: 'hard'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

@@ -3,7 +3,6 @@ title: "Dio 网络层与 HTTP 客户端体系 [P6-P7]"
 level: "senior"
 tags: ["Dio", "Flutter", "网络", "拦截器", "HTTP"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P6+ 高级工程师"
 ---
 

@@ -3,7 +3,6 @@ title: "Flutter 与原生交互 [P8]"
 level: "architect"
 tags: ["Flutter", "Platform Channel", "FFI", "混合栈"]
 difficulty: "expert"
-updated: "2026-09-10"
 target: "架构师（P8）"
 ---
 

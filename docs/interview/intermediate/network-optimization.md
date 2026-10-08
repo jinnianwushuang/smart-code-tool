@@ -3,7 +3,6 @@ title: "前端网络优化：预加载/懒加载/压缩 [P5-P6]"
 level: "intermediate"
 tags: ["网络优化", "预加载", "懒加载", "压缩", "CDN"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 

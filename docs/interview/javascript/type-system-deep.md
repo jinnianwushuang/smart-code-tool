@@ -3,7 +3,6 @@ title: 'JavaScript 类型系统深层 [P6-P7]'
 level: 'senior'
 tags: ['JavaScript', '类型系统', 'coercion', '结构化类型']
 difficulty: 'medium'
-updated: '2026-09-10'
 target: 'P6+ 高级工程师'
 ---
 

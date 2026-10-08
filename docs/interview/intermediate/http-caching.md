@@ -3,7 +3,6 @@ title: "HTTP 缓存策略：强缓存/协商缓存 [P5-P6]"
 level: "intermediate"
 tags: ["HTTP", "缓存", "Cache-Control", "ETag", "性能优化"]
 difficulty: "hard"
-updated: "2026-09-10"
 target: "P5-P6 中级工程师"
 ---
 
