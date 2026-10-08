@@ -30,7 +30,7 @@
             :type="!selectedDay ? 'primary' : 'default'"
             @click="selectedDay = ''"
           >
-            全部 <span class="ru-day-count">{{ recentDocs.length }}</span>
+            全部 <span class="ru-day-count">({{ recentDocs.length }})</span>
           </el-button>
           <el-button
             v-for="day in topDays"
@@ -39,7 +39,7 @@
             :type="selectedDay === day ? 'primary' : 'default'"
             @click="selectedDay = selectedDay === day ? '' : day"
           >
-            {{ day }} <span class="ru-day-count">{{ docsByDay[day].length }}</span>
+            {{ day }} <span class="ru-day-count">({{ docsByDay[day].length }})</span>
           </el-button>
         </div>
 

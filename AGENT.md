@@ -21,6 +21,13 @@
 - 暗色模式由 Element Plus `dark/css-vars.css` 自动适配，无需手动写 `.dark` 覆盖
 - 自定义 CSS 只保留布局/间距，视觉样式交给组件库
 
+**时间与时区**：
+
+- 项目有两种时间源：git 时间戳（本地时间）和 `toISOString()`（UTC），显示时必须转为本地时间
+- **禁止直接截取 ISO 字符串显示**（如 `.slice(0, 19)`），必须使用 `utils.js` 中的 `formatTimestamp()` / `formatDatePart()` / `todayStr()`
+- `dayjs()` 解析 ISO 字符串时自动转本地，无需额外处理
+- 详见：[`z-doc/文档规范.md`](./z-doc/文档规范.md) 第 8 节
+
 ---
 
 ## 抗遗忘复习系统 ✅ 已实现

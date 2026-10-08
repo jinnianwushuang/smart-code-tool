@@ -19,12 +19,14 @@
     - composables/useDoubt.js           疑惑记录
     - composables/useNote.js            笔记记录
     - composables/useLearningStreak.js  学习打脸追踪
+    - composables/useBrowseHistory.js   浏览历史
     - tabs/ReviewTab.vue                复习子视图
     - tabs/ProgressTab.vue              进度子视图
     - tabs/DoubtTab.vue                 疑惑子视图
     - tabs/NoteTab.vue                  笔记子视图
     - tabs/LearningStreakTab.vue        实况子视图
     - tabs/RecentUpdatesTab.vue         近期更新子视图
+    - tabs/HistoryTab.vue               浏览历史子视图
 -->
 <template>
   <div class="quick-tools-wrapper">
@@ -156,6 +158,13 @@
           </template>
           <RecentUpdatesTab :navigate-to="navigateTo" />
         </el-tab-pane>
+
+        <el-tab-pane name="history">
+          <template #label>
+            <span>📜 历史</span>
+          </template>
+          <HistoryTab :history="browseHistory" :navigate-to="navigateTo" />
+        </el-tab-pane>
       </el-tabs>
     </el-dialog>
   </div>
@@ -171,12 +180,14 @@ import { useNote } from './quick-tools/composables/useNote'
 import { useReview } from './quick-tools/composables/useReview'
 import { useReviewNotification } from './quick-tools/composables/useReviewNotification'
 import { useLearningStreak } from './quick-tools/composables/useLearningStreak'
+import { useBrowseHistory } from './quick-tools/composables/useBrowseHistory'
 import ProgressTab from './quick-tools/tabs/ProgressTab.vue'
 import DoubtTab from './quick-tools/tabs/DoubtTab.vue'
 import NoteTab from './quick-tools/tabs/NoteTab.vue'
 import ReviewTab from './quick-tools/tabs/ReviewTab.vue'
 import LearningStreakTab from './quick-tools/tabs/LearningStreakTab.vue'
 import RecentUpdatesTab from './quick-tools/tabs/RecentUpdatesTab.vue'
+import HistoryTab from './quick-tools/tabs/HistoryTab.vue'
 import './quick-tools/shared/quick-tools.css'
 
 // ==================== 页面信息 ====================
@@ -216,10 +227,12 @@ const note = useNote(getPage)
 const review = useReview(getPage)
 const notification = useReviewNotification(review)
 const learningStreak = useLearningStreak()
+const browseHistory = useBrowseHistory(getPage)
 
 // ==================== 初始化 ====================
 onMounted(async () => {
   await review.init()
+  await browseHistory.load()
   review.autoLearn.startTracking(window.location.pathname)
   const settings = await review.storage.getSettings()
   if (settings.enableNotification) {
@@ -233,6 +246,7 @@ router.onAfterRouteChanged = (to) => {
   // 浏览文档页面也记录学习实况（非索引页 = 实际文档内容页）
   if (to && !to.endsWith('/index') && to !== '/' && to !== '/index.html') {
     learningStreak.recordToday('browse')
+    browseHistory.recordVisit() // 记录浏览历史
   }
 }
 

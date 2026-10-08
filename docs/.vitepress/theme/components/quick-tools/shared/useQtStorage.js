@@ -12,6 +12,7 @@
  */
 
 import { get, set, createStore } from 'idb-keyval'
+import { toRaw } from 'vue'
 
 // 与 useReviewStorage.js 共用同一个 IDB 数据库
 export const qtStore = createStore('smart-code-tool', 'quick-tools')
@@ -20,6 +21,7 @@ export const qtStore = createStore('smart-code-tool', 'quick-tools')
 const KEY_PROGRESS = 'qt:progress'
 const KEY_DOUBTS = 'qt:doubts'
 const KEY_NOTES = 'qt:notes'
+const KEY_HISTORY = 'qt:history'
 
 // ── localStorage 旧键（用于一次性迁移） ──
 const LEGACY_KEYS = {
@@ -61,10 +63,11 @@ export async function readQt(idbKey) {
 
 /**
  * 写入数据（仅 IDB）
+ * 注意：Vue 响应式 Proxy 对象无法被 IDB 结构化克隆，必须先 toRaw 脱敏
  */
 export async function writeQt(idbKey, data) {
-  await set(idbKey, data, qtStore)
+  await set(idbKey, toRaw(data), qtStore)
 }
 
 // ── 键名导出（供各工具使用） ──
-export { KEY_PROGRESS, KEY_DOUBTS, KEY_NOTES }
+export { KEY_PROGRESS, KEY_DOUBTS, KEY_NOTES, KEY_HISTORY }

@@ -64,3 +64,41 @@ export const downloadText = (filename, content, mime = 'text/markdown;charset=ut
   document.body.removeChild(a)
   URL.revokeObjectURL(url)
 }
+
+/**
+ * 时间戳格式化（转本地时间）
+ *
+ * 支持两种输入：
+ * - ISO 格式: "2026-10-09T14:30:25.000Z" (UTC) → 转本地时间
+ * - 无时区格式: "2026-10-09 14:30:25" (已是本地时间，如 git 时间戳)
+ *
+ * 输出: "YYYY-MM-DD HH:mm:ss" (本地时间)
+ */
+export function formatTimestamp(ts) {
+  if (!ts) return ''
+  const d = new Date(ts.includes('T') ? ts : ts.replace(' ', 'T'))
+  if (isNaN(d.getTime())) return ts
+  const Y = d.getFullYear()
+  const M = String(d.getMonth() + 1).padStart(2, '0')
+  const D = String(d.getDate()).padStart(2, '0')
+  const h = String(d.getHours()).padStart(2, '0')
+  const m = String(d.getMinutes()).padStart(2, '0')
+  const s = String(d.getSeconds()).padStart(2, '0')
+  return `${Y}-${M}-${D} ${h}:${m}:${s}`
+}
+
+/**
+ * 时间戳提取日期部分（本地时间）
+ * 输出: "YYYY-MM-DD"
+ */
+export function formatDatePart(ts) {
+  return formatTimestamp(ts).slice(0, 10)
+}
+
+/**
+ * 获取今天的日期字符串（本地时间）
+ * 输出: "YYYY-MM-DD"
+ */
+export function todayStr() {
+  return formatDatePart(new Date().toISOString())
+}

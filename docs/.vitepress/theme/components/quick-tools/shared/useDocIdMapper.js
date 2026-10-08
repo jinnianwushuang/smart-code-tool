@@ -110,11 +110,17 @@ async function ensureInit() {
 /** 根据 URL 查找 docId（异步，首次会 fetch doc-list） */
 export async function getDocIdByUrl(url) {
   await ensureInit()
+  return getDocIdByUrlSync(url)
+}
+
+/**
+ * 根据 URL 查找 docId（同步版本）
+ * 注意：必须在 ensureInit / injectDocList 完成后调用，否则映射表为空
+ */
+export function getDocIdByUrlSync(url) {
   if (!urlToIdMap) return null
-  // 剥离 VitePress base 前缀，统一为 doc-list 格式
   const cleanUrl = stripBase(url)
   if (urlToIdMap.has(cleanUrl)) return urlToIdMap.get(cleanUrl)
-  // 规范化：去掉尾部斜杠再试
   const normalized = cleanUrl.replace(/\/$/, '')
   for (const [docUrl, docId] of urlToIdMap) {
     if (docUrl.replace(/\/$/, '') === normalized) return docId

@@ -18,6 +18,7 @@ export const REVIEW_KEY = 'quick-tools-reviews'
 export const PROGRESS_LIMIT = 15
 export const DOUBT_LIMIT = 30
 export const NOTE_LIMIT = 30
+export const HISTORY_LIMIT = 300 // 浏览历史上限
 
 // ── 抗遗忘复习系统常量 ──
 export const AUTO_LEARN_THRESHOLD = 600 // 自动学习阈值：10 分钟 = 600 秒
