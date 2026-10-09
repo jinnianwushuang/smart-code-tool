@@ -10,30 +10,13 @@
 
 ### 🎨 Flutter 架构
 
-- [状态管理架构选型](./flutter/state-management/flutter-state-management-architecture) - BLoC/Riverpod/GetX 选型决策矩阵与 Clean Architecture 集成
-- [路由架构设计](./flutter/routing/flutter-routing-architecture) - GoRouter 路由树设计、深度链接、守卫模式与导航抽象
-- [网络层架构设计](./flutter/networking/flutter-network-architecture) - Dio 拦截器链、Repository 模式、错误处理统一与缓存策略
-- [项目结构与分层规范](./flutter/project-structure/flutter-project-structure) - Feature-first 目录结构、分层架构、依赖注入与模块化实践
-- [Flutter 渲染管线与 Impeller](./flutter/rendering/flutter-rendering-pipeline) - Widget→Element→RenderObject 三棵树、Impeller 预编译着色器、渲染优化
-- [Flutter 性能优化实战](./flutter/performance/flutter-performance-optimization) - const Widget/RepaintBoundary/ListView.builder/内存管理/DevTools 诊断
-- [Flutter 插件开发架构](./flutter/plugin/flutter-plugin-architecture) - Platform Channel/MethodChannel/EventChannel/FFI 原生交互
-- [原生开发主流语言对比](./flutter/thinking/native-languages-comparison) - Kotlin/Swift/Dart/TS/C++ 等主流语言说明与选型对比
-- [iOS 与 Android 必备知识](./flutter/thinking/flutter-ios-android-knowledge) - Flutter 开发者必须掌握的平台知识梳理
-- [APP 启动与屏幕渲染原理](./flutter/thinking/app-launch-and-rendering-pipeline) - 从点击图标到像素点亮的全链路与图形管线解析
-- [系统内核与平台差异适配](./flutter/thinking/os-kernel-platform-differences) - Linux/XNU 内核差异、Android 碎片化与 Flutter 分层适配策略
-- [网络层与弱网优化](./flutter/thinking/mobile-network-layer) - HTTPS 全链路、连接优化、DNS 防劫持与弱网对抗
-- [内存管理与性能调优](./flutter/thinking/memory-management-performance) - 三层内存模型、OOM 归因、泄漏检测与 APM 体系
-- [音视频与相机管线](./flutter/thinking/audio-video-camera) - 相机管线、编解码、播放管线、WebRTC 与直播架构
-- [数据·算法·显示 三者分离](./flutter/thinking/data-algorithm-view-separation) - BLoC/Riverpod/Stream 架构下的三层分离与 Flutter 渲染管线同构
-- [组件设计模式](./flutter/thinking/flutter-component-design-patterns) - Stateless/Stateful 分离、InheritedWidget、BLoC、Key 模式等
-- [setState 滥用与 Widget 重建失控](./flutter/thinking/setstate-rebuild-chaos-root-cause) - Flutter 卡顿元凶：不必要重建的五大病灶与根治方案
-- [Widget × 帧调度 × 三层对象同步](./flutter/thinking/widget-frame-sync-formula) - Flutter 底层万用公式：Widget 不可变性、帧管线、三层对象同步
-- [节点数据结构精讲：Widget·Element·RenderObject 三棵树](./flutter/thinking/element-widget-renderobject-tree) - 三棵节点树的数据结构、职责分工与协同更新流程
-- [存储与数据同步](./flutter/thinking/storage-data-sync) - SQLite/KV 选型、离线优先架构与冲突解决
-- [安全攻防基础](./flutter/thinking/mobile-security) - 逆向防护、安全存储、证书固定与 API 安全
-- [混合栈与模块化架构](./flutter/thinking/hybrid-stack-modularization) - 引擎管理、混合路由与大型项目模块化
-- [CI/CD 与发布工程化](./flutter/thinking/cicd-release-engineering) - 双平台流水线、签名自动化与灰度发布
-- [测试体系](./flutter/thinking/testing-system) - 测试金字塔、Widget/集成/Golden 测试与 CI 质量门禁
+> 📌 完整入口：[Flutter 文档汇总](./framework-hub/flutter)
+
+- [状态管理架构选型](./flutter/state-management/flutter-state-management-architecture) - BLoC/Riverpod/GetX 选型决策矩阵
+- [项目结构与分层规范](./flutter/project-structure/flutter-project-structure) - Feature-first 目录结构与分层架构
+- [Flutter 渲染管线与 Impeller](./flutter/rendering/flutter-rendering-pipeline) - 三棵树、Impeller 预编译着色器
+
+_更多文档见 [Flutter 汇总页](./framework-hub/flutter)_
 
 ### 🐍 Python 架构
 
@@ -49,41 +32,25 @@
 
 ### ⚛️ React 架构
 
-- [组件设计模式](./react/component-patterns/react-component-design-patterns) - 容器/展示、HOC、复合组件、受控/非受控等模式
-- [Error Boundary 与错误恢复](./react/component-patterns/error-boundary-and-suspense) - 三层错误边界、Suspense 协同、错误上报与自动恢复
-- [Hooks 架构模式](./react/hooks-patterns/react-hooks-architecture) - 自定义 Hook 设计原则、分层体系、副作用管理
-- [数据·算法·显示 三者分离](./react/hooks-patterns/data-algorithm-view-separation) - React Query + useMemo + JSX 的三层分离与 RSC 架构拓展
-- [React Ref 完全指南](./react/hooks-patterns/react-ref-complete-guide) - useRef/forwardRef/useImperativeHandle/Callback Ref 全用法
-- [React Context 深度专题](./react/hooks-patterns/react-context-deep-dive) - Context 性能陷阱、拆分策略、精确订阅与状态管理边界
-- [React Router v6+ 路由架构](./react/routing/react-router-architecture) - 路由模式、loader/action 数据流、守卫、代码分割
-- [状态管理架构](./react/state-management/react-state-management-architecture) - 状态分类、Zustand/Redux Toolkit/Jotai 选型与工程化实践
-- [useEffect 原理](./react/principle/use-effect) - 同步机制与 Fiber 源码深度解析
-- [Hooks 执行阶段：Render vs Commit](./react/principle/hooks-phase-timing) - 各 Hook 在渲染管线中的执行位点、三种 Effect 时序对比、实战排查指南
-- [Fiber Node 数据结构精讲](./react/principle/fiber-node-data-structure) - Fiber 节点完整字段解析、链表遍历、双缓冲、Hooks 链表、副作用标记位
-- [React 事件系统](./react/principle/react-event-system) - 合成事件、事件委托、冒泡捕获、闭包陷阱、Portal 事件行为
-- [React 性能优化系统手册](./react/performance/react-performance-optimization) - memo/useMemo/代码分割/虚拟列表/Profiler 诊断全维度优化
-- [不必要 Re-render 的元凶与根治](./react/thinking/unnecessary-rerender-root-cause) - React 卡顿元凶：不必要 Re-render 的五大病灶与根治方案
-- [Fiber × 并发调度 × 数据视图同步](./react/thinking/fiber-concurrent-sync-formula) - React 底层万用公式：Fiber 架构、并发调度、数据视图同步
-- [大型深层对象的 zustand+selector+Immer 分频治理](./react/thinking/deep-object-frequency-governance-cn) - zustand 外部 Store + selector 精确订阅 + Immer 不可变更新，按频率分频治理
-- [技术选型](./react/technology-selection/app-project)
+> 📌 完整入口：[React 文档汇总](./framework-hub/react)
+
+- [组件设计模式](./react/component-patterns/react-component-design-patterns) - 容器/展示、HOC、复合组件等模式
+- [Hooks 架构模式](./react/hooks-patterns/react-hooks-architecture) - 自定义 Hook 设计原则、分层体系
+- [状态管理架构](./react/state-management/react-state-management-architecture) - Zustand/Redux Toolkit/Jotai 选型
+- [Fiber × 并发调度 × 数据视图同步](./react/thinking/fiber-concurrent-sync-formula) - React 底层万用公式
+
+_更多文档见 [React 汇总页](./framework-hub/react)_
 
 ### 💚 Vue 架构
 
+> 📌 完整入口：[Vue 文档汇总](./framework-hub/vue)
+
 - [架构概述](./vue/standardized-template-cn/architecture-overview-cn) - Vue 标准化装配架构总览
 - [LV1-LV5 架构演进](./vue/standardized-template-cn/architecture-evolution-cn) - 从单文件到装配器的渐进式演进
-- [通用工具](./vue/general-tools/module-loader) - 模块加载器与函数包装器
-- [技术选型](./vue/technology-selection/app-project)
-- [业务组件 SDK 打包](./vue/technology-selection/sdk-project) - 将业务组件封装为独立 SDK 供外部项目使用
-- [Vue 3 响应式系统架构](./vue/principle/vue-reactivity-system) - Proxy 依赖收集、调度器批量更新、ref/reactive/computed 全解析
-- [Vue 3 Composable 设计模式](./vue/composable-patterns/vue-composable-design-patterns) - 设计原则、常见模式、分层体系与反模式
-- [Vue 3 性能优化系统手册](./vue/performance/vue-performance-optimization) - v-once/v-memo/shallowRef/虚拟滚动/DevTools 诊断全维度
-- [数据·算法·显示 三者分离](./vue/thinking/data-algorithm-view-separation-cn) - Composition API + Composable + computed 的三层分离与装配架构融合
-- [组件设计模式](./vue/standardized-template-cn/vue-component-design-patterns) - Composable、作用域插槽、装配器、v-model、provide/inject 等模式
-- [shallowRef 范式与高性能架构](./vue/thinking/shallowRef-paradigm-high-performance) - shallowRef 范式 + 纯粹算法转换 + 合理调度策略 = 完全可控的高性能项目
-- [无效渲染的元凶与根治方案](./vue/thinking/render-chaos-root-cause) - Vue 3 卡顿元凶：逻辑触发的混乱无序高频无效渲染
-- [渲染原理 × 事件调度 × 数据视图同步](./vue/thinking/rendering-scheduling-sync-formula) - 现代前端底层万用公式：渲染原理、事件调度、数据视图同步三柱合一
-- [VNode 数据结构精讲](./vue/thinking/vnode-data-structure) - VNode 完整字段解析、shapeFlag/patchFlag 位优化、Block 树靶向更新
-- [大型深层对象的按频率分频治理](./vue/thinking/deep-object-frequency-governance-cn) - 低频 shallowRef+computed / 高频 mitt+节流防抖+细项导出+computed 双管道协同
+- [Vue 3 响应式系统架构](./vue/principle/vue-reactivity-system) - Proxy 依赖收集、调度器批量更新
+- [渲染原理 × 事件调度 × 数据视图同步](./vue/thinking/rendering-scheduling-sync-formula) - 现代前端底层万用公式三柱合一
+
+_更多文档见 [Vue 汇总页](./framework-hub/vue)_
 
 ### 🔧 工程化
 
@@ -153,6 +120,7 @@
 
 根据你的技术栈选择对应的架构文档:
 
-- **前端开发**: 查看 [Vue 架构](./vue/standardized-template-cn/architecture-overview-cn) 或 [React 架构](./react/component-patterns/react-component-design-patterns)
-- **移动开发**: 查看 [Flutter 架构](./flutter/project-structure/flutter-project-structure)
+- **前端开发**: 查看 [Vue 文档汇总](./framework-hub/vue) 或 [React 文档汇总](./framework-hub/react)
+- **移动开发**: 查看 [Flutter 文档汇总](./framework-hub/flutter)
+- **按框架浏览**: 进入 [框架文档汇总](./framework-hub/) 按技术栈一站查找
 - **后端开发**: 查看 [Python 架构](./python/technology-selection/python-backend-framework-selection)

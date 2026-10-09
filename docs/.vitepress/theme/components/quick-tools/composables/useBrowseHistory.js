@@ -7,7 +7,7 @@
  *   - 倒序排列（最新在前）
  *   - 上限 300 条，超出自动丢弃最旧记录
  *   - 去重：最新一条记录若为同一 URL 则不重复记录（刷新/长时间停留均只记一次）
- *   - 闪跳过滤：新记录与最新一条间隔不足 60 秒时，删除旧记录再插入（快速切换无阅读价值）
+ *   - 闪跳过滤：新记录与最新一条间隔不足 3 分钟时，删除旧记录再插入（快速切换无阅读价值）
  *
  * 存储：IndexedDB（qt:history）
  * 依赖：useQtStorage / constants
@@ -62,12 +62,12 @@ export function useBrowseHistory(getPage) {
     // 去重：最新一条已是同 URL 则跳过
     if (records.value.length > 0 && records.value[0].url === url) return
 
-    // 闪跳过滤：与最新一条间隔不足 60 秒 → 删除旧记录（无实质阅读停留）
+    // 闪跳过滤：与最新一条间隔不足 3 分钟 → 删除旧记录（无实质阅读停留）
     const now = new Date()
     if (records.value.length > 0) {
       const lastTime = new Date(records.value[0].visitedAt)
       const diffSec = (now - lastTime) / 1000
-      if (diffSec < 60) {
+      if (diffSec < 180) {
         records.value.shift() // 删除上一条
       }
     }

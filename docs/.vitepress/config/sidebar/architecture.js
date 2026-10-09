@@ -961,11 +961,40 @@ const thinking = {
   ],
 }
 
+// ── 框架文档汇总 ──
+const frameworkHub = {
+  text: '📚 框架文档汇总',
+  collapsed: false,
+  items: [
+    {
+      text: '总入口',
+      link: '/architecture-document/framework-hub/',
+      id: 'FwHub0index_page',
+    },
+    {
+      text: 'Vue 文档汇总',
+      link: '/architecture-document/framework-hub/vue',
+      id: 'FwHub1vue_page',
+    },
+    {
+      text: 'React 文档汇总',
+      link: '/architecture-document/framework-hub/react',
+      id: 'FwHub2react_page',
+    },
+    {
+      text: 'Flutter 文档汇总',
+      link: '/architecture-document/framework-hub/flutter',
+      id: 'FwHub3flutter_page',
+    },
+  ],
+}
+
 // ── 组装侧边栏 ──
 export const architectureSidebar = {
   // text: '🏗️ 架构',
   collapsed: false,
   items: [
+    frameworkHub,
     architecturalVision,
 
     python,

@@ -53,7 +53,7 @@
       </div>
 
       <!-- 规则提示 -->
-      <div class="rh-hint">💡 页面停留不足 1 分钟不记录，快速切换自动合并</div>
+      <div class="rh-hint">💡 页面停留不足 3 分钟不记录，快速切换自动合并</div>
 
       <!-- 历史列表 -->
       <div v-if="displayRecords.length === 0" class="rh-empty">
@@ -144,7 +144,7 @@ const recordTagsMap = computed(() => {
   const map = new Map()
   for (const record of props.history.records.value) {
     const docId = getDocIdByUrlSync(record.url)
-    const tags = docId ? (getTagsById(docId) || []) : []
+    const tags = docId ? getTagsById(docId) || [] : []
     map.set(record.visitedAt + record.url, tags)
   }
   return map

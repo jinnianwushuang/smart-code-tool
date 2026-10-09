@@ -85,12 +85,12 @@
 
 ## Flutter 中级 [P5-P6]
 
-| 文档                                                                                               | 层级         | 描述                                     |
-| -------------------------------------------------------------------------------------------------- | ------------ | ---------------------------------------- |
-| [Dart 语言基础与核心特性 [P5-P6]](/interview/flutter-intermediate/flutter-dart-basics)             | intermediate | 空安全、异步编程、OOP、Mixin             |
-| [Flutter Widget 体系与布局系统 [P5-P6]](/interview/flutter-intermediate/flutter-widget-and-layout) | intermediate | Widget 生命周期、布局约束、常用布局组件  |
-| [Flutter 状态管理基础 [P5-P6]](/interview/flutter-intermediate/flutter-state-management-basics)    | intermediate | setState、Provider、Bloc 入门            |
-| [Flutter 导航与路由实战 [P5-P6]](/interview/flutter-intermediate/flutter-navigation-and-routing)   | intermediate | Navigator、命名路由、GoRouter、Deep Link |
+> 📌 完整入口：[Flutter 文档汇总](/architecture-document/framework-hub/flutter)（含 4 篇中级 + 11 篇高级）
+
+| 文档                                                                                               | 层级         | 描述                                    |
+| -------------------------------------------------------------------------------------------------- | ------------ | --------------------------------------- |
+| [Dart 语言基础与核心特性 [P5-P6]](/interview/flutter-intermediate/flutter-dart-basics)             | intermediate | 空安全、异步编程、OOP、Mixin            |
+| [Flutter Widget 体系与布局系统 [P5-P6]](/interview/flutter-intermediate/flutter-widget-and-layout) | intermediate | Widget 生命周期、布局约束、常用布局组件 |
 
 ---
 
@@ -132,54 +132,37 @@
 
 ## Vue 深度 [P6-P7/P8]
 
-| 文档                                                                        | 层级      | 描述                               |
-| --------------------------------------------------------------------------- | --------- | ---------------------------------- |
-| [Vue 响应式系统底层 [P6-P7]](/interview/vue/reactivity-deep)                | senior    | Proxy/Reflect、依赖收集、调度器    |
-| [Vue 编译器优化 [P6-P7]](/interview/vue/compiler-optimization)              | senior    | 静态提升、补丁标记、内联缓存       |
-| [Vapor Mode 原理 [P6-P7]](/interview/vue/vapor-mode)                        | senior    | 无虚拟 DOM 编译模式                |
-| [渲染器 Patch 流程与 Diff 算法 [P6-P7]](/interview/vue/renderer-patch-flow) | senior    | patch 流程、diff 算法、调度更新    |
-| [Vue 3.5+ 新特性与响应式重构 [P6-P7]](/interview/vue/vue-3.5-new-features)  | senior    | useTemplateRef、useId、defineModel |
-| [Pinia 状态管理原理与实战 [P6-P7]](/interview/vue/pinia-deep)               | senior    | Plugin 系统、持久化、SSR 集成      |
-| [Vue Router 4 路由系统深度 [P6-P7]](/interview/vue/vue-router-4)            | senior    | Radix Tree、导航守卫、动态路由     |
-| [Nuxt 3 全栈框架原理与实战 [P8]](/interview/vue/nuxt-3-fullstack)           | architect | SSR/SSG/ISR、Nitro、auto-imports   |
-| [Vue 3 生态实战模式 [P6-P7]](/interview/vue/vue-ecosystem-patterns)         | senior    | Composable、Suspense、KeepAlive    |
+> 📌 完整入口：[Vue 文档汇总](/architecture-document/framework-hub/vue)（含初级 ~ 架构师共 14 篇）
+
+| 文档                                                          | 层级   | 描述                            |
+| ------------------------------------------------------------- | ------ | ------------------------------- |
+| [Vue 响应式系统底层 [P6-P7]](/interview/vue/reactivity-deep)  | senior | Proxy/Reflect、依赖收集、调度器 |
+| [Vapor Mode 原理 [P6-P7]](/interview/vue/vapor-mode)          | senior | 无虚拟 DOM 编译模式             |
+| [Pinia 状态管理原理与实战 [P6-P7]](/interview/vue/pinia-deep) | senior | Plugin 系统、持久化、SSR 集成   |
 
 ---
 
 ## React 深度 [P6-P7/P8]
 
-| 文档                                                                               | 层级      | 描述                             |
-| ---------------------------------------------------------------------------------- | --------- | -------------------------------- |
-| [Fiber 架构与优先级调度 [P6-P7]](/interview/react/fiber-architecture)              | senior    | Fiber 架构、时间切片、优先级调度 |
-| [并发渲染与 Suspense [P6-P7]](/interview/react/concurrent-rendering)               | senior    | 并发渲染、Suspense、Transitions  |
-| [React Server Components 原理 [P6-P7]](/interview/react/server-components)         | senior    | RSC 原理、序列化协议、流式渲染   |
-| [状态管理本质与有限状态机 [P6-P7]](/interview/react/state-machine)                 | senior    | 状态管理本质、信号 vs 不可变     |
-| [React 19 新特性深度解析 [P6-P7]](/interview/react/react-19-features)              | senior    | use hook、Actions、useOptimistic |
-| [React Compiler 原理与实践 [P8]](/interview/react/react-compiler)                  | architect | 自动 Memo、编译时优化            |
-| [Zustand/Jotai 状态管理深度 [P6-P7]](/interview/react/zustand-and-jotai)           | senior    | 单一 store vs 原子化模型         |
-| [TanStack Query 数据获取与缓存 [P6-P7]](/interview/react/tanstack-query)           | senior    | 缓存策略、乐观更新、无限滚动     |
-| [Next.js 15 全栈框架原理 [P8]](/interview/react/nextjs-15)                         | architect | App Router、Server Actions、缓存 |
-| [React Hook Form + Zod 表单体系 [P6-P7]](/interview/react/react-hook-form-and-zod) | senior    | uncontrolled、Schema 验证        |
-| [Testing Library + MSW 测试体系 [P6-P7]](/interview/react/react-testing-library)   | senior    | 用户视角测试、网络 Mock          |
-| [React 生态架构模式 [P8]](/interview/react/react-architecture-patterns)            | architect | 项目分层、状态分层、代码分割     |
+> 📌 完整入口：[React 文档汇总](/architecture-document/framework-hub/react)（含中级 ~ 架构师共 13 篇）
+
+| 文档                                                                  | 层级   | 描述                             |
+| --------------------------------------------------------------------- | ------ | -------------------------------- |
+| [Fiber 架构与优先级调度 [P6-P7]](/interview/react/fiber-architecture) | senior | Fiber 架构、时间切片、优先级调度 |
+| [并发渲染与 Suspense [P6-P7]](/interview/react/concurrent-rendering)  | senior | 并发渲染、Suspense、Transitions  |
+| [React 19 新特性深度解析 [P6-P7]](/interview/react/react-19-features) | senior | use hook、Actions、useOptimistic |
 
 ---
 
 ## Flutter 高级与架构 [P6-P7/P8]
 
-| 文档                                                                                  | 层级      | 描述                                         |
-| ------------------------------------------------------------------------------------- | --------- | -------------------------------------------- |
-| [Flutter 渲染引擎 [P6-P7]](/interview/flutter/rendering-engine)                       | senior    | Impeller/Skia、三棵树机制                    |
-| [Dart 语言深度 [P6-P7]](/interview/flutter/dart-advanced)                             | senior    | Isolate 并发、Mixin 线性化、AOT/JIT          |
-| [Flutter 状态管理架构 [P8]](/interview/flutter/architecture-patterns)                 | architect | Riverpod/BLoC 大规模、Clean Architecture、DI |
-| [Flutter 与原生交互 [P8]](/interview/flutter/platform-interop)                        | architect | Platform Channel、FFI、混合栈架构            |
-| [Flutter 性能优化与工程化 [P8]](/interview/flutter/performance-engineering)           | architect | 启动优化、内存治理、包体积、灰度发布         |
-| [Riverpod 状态管理深度 [P6-P7]](/interview/flutter/riverpod-deep)                     | senior    | Codegen、AsyncValue、Provider 依赖图         |
-| [BLoC/Cubit 架构模式与大规模实践 [P6-P7]](/interview/flutter/bloc-cubit-architecture) | senior    | 事件驱动、bloc_test、分层架构                |
-| [GetX 生态体系 [P6-P7]](/interview/flutter/getx-ecosystem)                            | senior    | 状态/路由/DI 三合一、GetBuilder vs Obx       |
-| [GoRouter 路由管理深度 [P6-P7]](/interview/flutter/go-router-deep)                    | senior    | ShellRoute、Deep Link、路由守卫              |
-| [Dio 网络层与 HTTP 客户端体系 [P6-P7]](/interview/flutter/dio-and-networking)         | senior    | 拦截器链、Transformer、取消请求              |
-| [Flutter 本地存储与持久化 [P6-P7]](/interview/flutter/flutter-local-storage)          | senior    | Isar/Hive/SQLite/drift、加密存储             |
+> 📌 完整入口：[Flutter 文档汇总](/architecture-document/framework-hub/flutter)
+
+| 文档                                                                        | 层级      | 描述                                         |
+| --------------------------------------------------------------------------- | --------- | -------------------------------------------- |
+| [Flutter 渲染引擎 [P6-P7]](/interview/flutter/rendering-engine)             | senior    | Impeller/Skia、三棵树机制                    |
+| [Flutter 状态管理架构 [P8]](/interview/flutter/architecture-patterns)       | architect | Riverpod/BLoC 大规模、Clean Architecture、DI |
+| [Flutter 性能优化与工程化 [P8]](/interview/flutter/performance-engineering) | architect | 启动优化、内存治理、包体积、灰度发布         |
 
 ---
 
