@@ -195,6 +195,11 @@ const flutter = {
               id: 'yB5b96FDlOpaQtriSXTPRLoO',
             },
             {
+              text: '大型深层对象的按频率分频治理',
+              link: '/architecture-document/flutter/thinking/deep-object-frequency-governance-cn',
+              id: 'FlDeepObj1govern_cn',
+            },
+            {
               text: '节点数据结构精讲：Widget·Element·RenderObject 三棵树',
               link: '/architecture-document/flutter/thinking/element-widget-renderobject-tree',
               id: 'FlNode1flutter_thinking_element',

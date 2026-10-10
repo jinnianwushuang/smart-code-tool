@@ -49,6 +49,7 @@ tags: ['Flutter', '架构', '面试', '汇总']
 - [组件设计模式](../flutter/thinking/flutter-component-design-patterns) - Stateless/Stateful 分离、InheritedWidget、BLoC、Key 模式等
 - [setState 滥用与 Widget 重建失控](../flutter/thinking/setstate-rebuild-chaos-root-cause) - Flutter 卡顿元凶：不必要重建的五大病灶与根治方案
 - [Widget × 帧调度 × 三层对象同步](../flutter/thinking/widget-frame-sync-formula) - Flutter 底层万用公式：Widget 不可变性、帧管线、三层对象同步
+- [大型深层对象的按频率分频治理](../flutter/thinking/deep-object-frequency-governance-cn) - ValueNotifier + Riverpod + Stream 三管道分频协同
 - [节点数据结构精讲：Widget·Element·RenderObject 三棵树](../flutter/thinking/element-widget-renderobject-tree) - 三棵节点树的数据结构、职责分工与协同更新流程
 
 #### 数据与安全

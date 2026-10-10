@@ -5,7 +5,7 @@ tags: ['思维']
 
 # 跨框架研发思维：Vue · React · Flutter 三大框架的底层同构与差异对比
 
-> 前端框架层出不穷，API 千差万别，但剥去所有语法糖和抽象层之后，**三大框架（Vue / React / Flutter）在底层运行着同一套思维模型**。本文作为跨框架研发思维的对比入口，将三大框架在三个核心主题上的思考方式进行横向对比——**数据·算法·显示分离、不必要渲染的元凶、底层万用公式**——帮助开发者建立跨框架的统一认知，而非孤立地学习每个框架的"最佳实践"。
+> 前端框架层出不穷，API 千差万别，但剥去所有语法糖和抽象层之后，**三大框架（Vue / React / Flutter）在底层运行着同一套思维模型**。本文作为跨框架研发思维的对比入口，将三大框架在七个核心主题上的思考方式进行横向对比——**数据·算法·显示分离、不必要渲染的元凶、底层万用公式、节点数据结构、深层对象治理、组件设计模式、性能优化模式**——帮助开发者建立跨框架的统一认知，而非孤立地学习每个框架的“最佳实践”。
 
 ---
 
@@ -282,8 +282,9 @@ tags: ['思维']
 │  懒加载    defineAsync        React.lazy           Deferred Components│
 │           Component                                                  │
 │                                                                      │
-│  大数据    shallowRef         useSyncExternal      shallowRef        │
-│  控制      + Object.freeze    Store                + Object.freeze   │
+│  大数据    shallowRef         useSyncExternal      ValueNotifier     │
+│  控制      + computed         Store                + Listenable      │
+│                               + Immer              Builder           │
 │                                                                      │
 │  优化      减少「过度追踪」  主动「阻断传播」    用 const + 范围    │
 │  方向      （因为默认精确）  （因为默认全量）    限定减少重建        │
@@ -302,7 +303,75 @@ tags: ['思维']
 
 ---
 
-## 七、全部文档索引
+## 七、主题五：节点数据结构
+
+### 7.1 三框架对比
+
+每个框架内部都有一套节点数据结构来描述 UI 树。理解这套结构，就理解了框架的渲染、Diff 和性能优化的底层基础。
+
+| 维度        | Vue（VNode）                  | React（Fiber Node）                          | Flutter（Widget·Element·RenderObject）  |
+| ----------- | ----------------------------- | -------------------------------------------- | --------------------------------------- |
+| 节点本质    | 轻量 JS 对象（虚拟 DOM 节点） | JS 对象（链表化的工作单元）                  | 三层对象各司其职                        |
+| 树结构      | 子节点数组（child → parent）  | 四指针链表（child/sibling/return/alternate） | 三棵树独立：Widget→Element→RenderObject |
+| Diff 策略   | 同层双端 Diff（2026 已优化）  | 同层 Map Diff（key 驱动）                    | 同层 Diff + Element 复用                |
+| 双缓冲      | 无（每次重新创建 VNode）      | 有（current ↔ workInProgress）               | 有（Element 树持久，RenderObject 复用） |
+| 与 DOM 关系 | VNode → 浏览器 DOM            | Fiber → DOM（通过 React DOM）                | RenderObject → Skia/Impeller → GPU      |
+
+### 7.2 各框架专属文档
+
+- **Vue**：[VNode 数据结构精讲](../vue/thinking/vnode-data-structure) — shapeFlag/patchFlag 位优化、Block 树靶向更新
+- **React**：[Fiber Node 数据结构精讲](../react/principle/fiber-node-data-structure) — 链表遍历、双缓冲、Hooks 链表、副作用标记位
+- **Flutter**：[Widget·Element·RenderObject 三棵树](../flutter/thinking/element-widget-renderobject-tree) — 三棵节点树的数据结构、职责分工与协同更新
+
+---
+
+## 八、主题六：深层对象治理
+
+### 8.1 三框架对比
+
+当项目中存在大型深层对象（仪表盘配置、实时数据面板、编辑器状态）时，不同更新频率的数据混在同一管道中会导致性能问题。三框架各有不同的分频治理范式。
+
+| 维度       | Vue                                 | React                             | Flutter                               |
+| ---------- | ----------------------------------- | --------------------------------- | ------------------------------------- |
+| 核心挑战   | reactive 深度追踪开销大             | setState 触发整棵子树重渲染       | setState 触发整棵子树 Widget 重建     |
+| 低频管道   | `shallowRef` + `computed`           | `zustand` + `selector`            | `Riverpod Provider` + `ref.watch`     |
+| 高频管道   | `mitt` + 节流防抖 + `computed` 终端 | `zustand` + `selector` + `Immer`  | `ValueNotifier` + `ListenableBuilder` |
+| 超高频管道 | 事件驱动 + `computed` 缓存          | `useSyncExternalStore` + throttle | `Stream` + `StreamTransformer`        |
+| 优化方向   | 减少“过度追踪”（因为默认精确）      | 主动“阻断传播”（因为默认全量）    | 用 Notifier 拆分 + const 限定减少重建 |
+
+### 8.3 各框架专属文档
+
+- **Vue**：[大型深层对象的按频率分频治理](../vue/thinking/deep-object-frequency-governance-cn) — shallowRef + computed 声明式管道 / mitt + 节流防抖事件驱动管道
+- **React**：[大型深层对象的 zustand+selector+Immer 分频治理](../react/thinking/deep-object-frequency-governance-cn) — 外部 Store + 选择性订阅 + 不可变更新
+- **Flutter**：[大型深层对象的 ValueNotifier+Riverpod+Stream 分频治理](../flutter/thinking/deep-object-frequency-governance-cn) — 三管道分频协同 + const 全局防线
+
+---
+
+## 九、主题七：组件设计模式
+
+### 9.1 三框架对比
+
+组件是三大框架的基本构建单元，但组件的抽象方式、逻辑复用机制和设计模式各有不同。
+
+| 维度       | Vue                        | React                                | Flutter                                  |
+| ---------- | -------------------------- | ------------------------------------ | ---------------------------------------- |
+| 组件本质   | 带响应式状态的模板对象     | 纯函数（输入 props → 输出 JSX）      | 不可变描述对象（build() 返回 Widget 树） |
+| 逻辑复用   | Composable（use-* 函数）   | Custom Hook（use-* 函数）            | 普通 Dart 函数 / Mixin                   |
+| 状态管理   | ref/reactive + computed    | useState/useReducer + Context        | StatefulWidget + Notifier/Provider       |
+| 跨组件通信 | provide/inject             | Context + 状态管理库                 | InheritedWidget + Provider/Riverpod      |
+| 插槽/组合  | `<slot>` + 作用域插槽      | `children` + render props + HOC      | `child` 参数 + Builder 模式              |
+| 双向绑定   | `v-model`（语言级支持）    | `value` + `onChange`（手动）         | `onChanged` 回调（手动）                 |
+| 架构装配   | 装配器模式（自动粘合三层） | 手动组合（Hooks + Context + 组件树） | 手动组合（Widget 树 + Provider 注入）    |
+
+### 9.2 各框架专属文档
+
+- **Vue**：[组件设计模式](../vue/standardized-template-cn/vue-component-design-patterns) — Composable、作用域插槽、装配器、v-model、provide/inject 等模式
+- **React**：[组件设计模式](../react/component-patterns/react-component-design-patterns) — 容器/展示、HOC、复合组件、受控/非受控等模式
+- **Flutter**：[组件设计模式](../flutter/thinking/flutter-component-design-patterns) — Stateless/Stateful 分离、InheritedWidget、BLoC、Key 模式等
+
+---
+
+## 十、全部文档索引
 
 ### 通用思维（跨框架）
 
@@ -312,7 +381,7 @@ tags: ['思维']
 | [React 19 vs Vue 3 vs Flutter 性能对决](./framework-performance-comparison) | 内存/CPU/更新耗时/交互延迟/动画稳定性全维度对比 |
 | [BUG 修复思维对比](./bug-fixing-thinking)                                   | 工程师/架构师/主管三种视角的 BUG 修复思维       |
 | [技术迭代与学习疲态](./tech-iteration-and-learning-fatigue)                 | 研发学习疲态的本质、成因和应对策略              |
-| [跨框架研发思维对比](./cross-framework-thinking-comparison)                 | 本文：三大框架在三个核心主题上的横向对比入口    |
+| [跨框架研发思维对比](./cross-framework-thinking-comparison)                 | 本文：三大框架在七个核心主题上的横向对比入口    |
 
 ### Vue 研发思维
 
@@ -322,26 +391,29 @@ tags: ['思维']
 | [shallowRef 范式与高性能架构](../vue/thinking/shallowRef-paradigm-high-performance) | shallowRef + 纯函数算法 + 调度策略 = 高性能        |
 | [无效渲染的元凶与根治](../vue/thinking/render-chaos-root-cause)                     | 逻辑触发的混乱无序高频无效渲染                     |
 | [渲染×调度×同步 万用公式](../vue/thinking/rendering-scheduling-sync-formula)        | Vue 底层万用公式                                   |
+| [大型深层对象的按频率分频治理](../vue/thinking/deep-object-frequency-governance-cn) | shallowRef+computed / mitt+节流防抖 双管道协同     |
 
 ### React 研发思维
 
-| 文档                                                                               | 简述                                   |
-| ---------------------------------------------------------------------------------- | -------------------------------------- |
-| [数据·算法·显示 三者分离](../react/hooks-patterns/data-algorithm-view-separation)  | React Query + useMemo + JSX 的三层分离 |
-| [不必要 Re-render 的元凶与根治](../react/thinking/unnecessary-rerender-root-cause) | 五大病灶 + 三层优化防线                |
-| [Fiber×并发调度×同步 万用公式](../react/thinking/fiber-concurrent-sync-formula)    | React 底层万用公式                     |
+| 文档                                                                                                    | 简述                                   |
+| ------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| [数据·算法·显示 三者分离](../react/hooks-patterns/data-algorithm-view-separation)                       | React Query + useMemo + JSX 的三层分离 |
+| [不必要 Re-render 的元凶与根治](../react/thinking/unnecessary-rerender-root-cause)                      | 五大病灶 + 三层优化防线                |
+| [Fiber×并发调度×同步 万用公式](../react/thinking/fiber-concurrent-sync-formula)                         | React 底层万用公式                     |
+| [大型深层对象的 zustand+selector+Immer 分频治理](../react/thinking/deep-object-frequency-governance-cn) | 外部 Store + 选择性订阅 + 不可变更新   |
 
 ### Flutter 研发思维
 
-| 文档                                                                                     | 简述                                  |
-| ---------------------------------------------------------------------------------------- | ------------------------------------- |
-| [数据·算法·显示 三者分离](../flutter/thinking/data-algorithm-view-separation)            | BLoC/Riverpod/Stream 架构下的三层分离 |
-| [setState 滥用与 Widget 重建失控](../flutter/thinking/setstate-rebuild-chaos-root-cause) | 五大病灶 + 三层优化防线               |
-| [Widget×帧调度×同步 万用公式](../flutter/thinking/widget-frame-sync-formula)             | Flutter 底层万用公式                  |
+| 文档                                                                                     | 简述                                     |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------- |
+| [数据·算法·显示 三者分离](../flutter/thinking/data-algorithm-view-separation)            | BLoC/Riverpod/Stream 架构下的三层分离    |
+| [setState 滥用与 Widget 重建失控](../flutter/thinking/setstate-rebuild-chaos-root-cause) | 五大病灶 + 三层优化防线                  |
+| [Widget×帧调度×同步 万用公式](../flutter/thinking/widget-frame-sync-formula)             | Flutter 底层万用公式                     |
+| [大型深层对象的按频率分频治理](../flutter/thinking/deep-object-frequency-governance-cn)  | ValueNotifier+Riverpod+Stream 三管道分频 |
 
 ---
 
-## 七、总结
+## 十一、总结
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -351,9 +423,12 @@ tags: ['思维']
 │   数据·算法·显示 三者分离 —— 所有框架的代码组织原则                  │
 │   不必要渲染的元凶与根治 —— 所有框架的性能共性病灶                   │
 │   渲染×调度×同步 万用公式 —— 所有框架的底层同构                      │
+│   节点数据结构 —— 所有框架的渲染基础                                 │
+│   深层对象治理 —— 所有框架的频率分治                                 │
+│   组件设计模式 —— 所有框架的构建单元                                 │
 │                                                                      │
-│   理解这三个主题在三大框架中的不同表现：                              │
-│   → 不是记住三套"最佳实践"                                          │
+│   理解这些主题在三大框架中的不同表现：                                │
+│   → 不是记住三套“最佳实践”                                          │
 │   → 而是理解一套底层原理在三种架构中的自然展开                      │
 │   → 从一个框架迁移到另一个框架时，底层认知可以复用                  │
 │                                                                      │
