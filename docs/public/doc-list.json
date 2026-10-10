@@ -377,8 +377,8 @@
       "面试",
       "汇总"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-09 21:27:45",
+    "updatedAt": "2026-10-09 21:27:45"
   },
   {
     "id": "FwHub2react_page",
@@ -391,8 +391,8 @@
       "面试",
       "汇总"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-09 21:27:45",
+    "updatedAt": "2026-10-09 21:27:45"
   },
   {
     "id": "FwHub3flutter_page",
@@ -405,8 +405,8 @@
       "面试",
       "汇总"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-09 21:27:45",
+    "updatedAt": "2026-10-10 20:50:46"
   },
   {
     "id": "EKBVi9HeKb1VqdyA6hL_xDZD",
@@ -1310,6 +1310,18 @@
     "updatedAt": "2026-10-07 00:42:01"
   },
   {
+    "id": "FlDeepObj1govern_cn",
+    "title": "大型深层对象的按频率分频治理",
+    "url": "/architecture-document/flutter/thinking/deep-object-frequency-governance-cn",
+    "group": "Flutter 架构 > 思考文档 > 核心原理",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": "2026-10-10 20:50:46",
+    "updatedAt": "2026-10-10 20:50:46"
+  },
+  {
     "id": "FlNode1flutter_thinking_element",
     "title": "节点数据结构精讲：Widget·Element·RenderObject 三棵树",
     "url": "/architecture-document/flutter/thinking/element-widget-renderobject-tree",
@@ -1862,7 +1874,7 @@
       "思维"
     ],
     "createdAt": "2026-10-01 10:05:51",
-    "updatedAt": "2026-10-08 18:17:50"
+    "updatedAt": "2026-10-10 20:50:46"
   },
   {
     "id": "y0ZcW5BycsZTRWZLbmie-GZX",
@@ -1873,7 +1885,7 @@
       "思维"
     ],
     "createdAt": "2026-09-19 23:46:11",
-    "updatedAt": "2026-10-08 18:17:50"
+    "updatedAt": "2026-10-10 20:50:46"
   },
   {
     "id": "R19vV3perf_compare_thinking",
@@ -3684,7 +3696,7 @@
       "原子化"
     ],
     "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "updatedAt": "2026-10-09 21:27:45"
   },
   {
     "id": "xCDk58u_azaZtmcskbvM7tGT",
