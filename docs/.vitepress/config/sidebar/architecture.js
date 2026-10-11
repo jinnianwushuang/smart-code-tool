@@ -925,6 +925,21 @@ const typicalAnalysis = {
       link: '/architecture-document/typical-analysis/frontend-router',
       id: '7CtQqOZQO_bQKpUzmJTsz_kM',
     },
+    {
+      text: 'Flutter GetX 响应式系统拆解',
+      link: '/architecture-document/flutter/typical-analysis/getx-reactive-system',
+      id: 'FlTypRx1sys0getx',
+    },
+    {
+      text: 'Flutter Widget 重建与 Element 更新拆解',
+      link: '/architecture-document/flutter/typical-analysis/flutter-widget-rebuild',
+      id: 'FlTypWdgt2rebuild',
+    },
+    {
+      text: 'Dart Future/Stream/Isolate 异步调度拆解',
+      link: '/architecture-document/flutter/typical-analysis/dart-async-scheduling',
+      id: 'FlTypAsync3dart',
+    },
   ],
 }
 

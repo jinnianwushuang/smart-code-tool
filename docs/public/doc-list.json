@@ -1866,6 +1866,39 @@
     "updatedAt": "2026-10-07 00:42:01"
   },
   {
+    "id": "FlTypRx1sys0getx",
+    "title": "Flutter GetX 响应式系统拆解",
+    "url": "/architecture-document/flutter/typical-analysis/getx-reactive-system",
+    "group": "典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "FlTypWdgt2rebuild",
+    "title": "Flutter Widget 重建与 Element 更新拆解",
+    "url": "/architecture-document/flutter/typical-analysis/flutter-widget-rebuild",
+    "group": "典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "FlTypAsync3dart",
+    "title": "Dart Future/Stream/Isolate 异步调度拆解",
+    "url": "/architecture-document/flutter/typical-analysis/dart-async-scheduling",
+    "group": "典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
     "id": "ozIL0o_ltXfBuXI2hkm3jjX2",
     "title": "技术名词深度解析索引（入口）",
     "url": "/architecture-document/thinking/terminology-index",

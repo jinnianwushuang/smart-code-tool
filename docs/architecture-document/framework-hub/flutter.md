@@ -63,6 +63,14 @@ tags: ['Flutter', '架构', '面试', '汇总']
 - [CI/CD 与发布工程化](../flutter/thinking/cicd-release-engineering) - 双平台流水线、签名自动化与灰度发布
 - [测试体系](../flutter/thinking/testing-system) - 测试金字塔、Widget/集成/Golden 测试与 CI 质量门禁
 
+### 典型拆解
+
+> 来源：`flutter/typical-analysis/`
+
+- [GetX 响应式系统核心原理拆解](../flutter/typical-analysis/getx-reactive-system) - `.obs` → `Obx` 依赖收集 → Worker 副作用 → 与 Vue 响应式同构
+- [Widget 重建与 Element 更新拆解](../flutter/typical-analysis/flutter-widget-rebuild) - setState → markNeedsBuild → Element Diff → const 优化 → RepaintBoundary
+- [Dart Future/Stream/Isolate 异步调度拆解](../flutter/typical-analysis/dart-async-scheduling) - Event Loop → Future → Stream → Isolate 内存隔离模型
+
 ---
 
 ## 🎯 面试知识
