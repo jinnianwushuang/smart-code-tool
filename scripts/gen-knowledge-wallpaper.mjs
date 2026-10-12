@@ -94,8 +94,9 @@ const CATEGORY_COLORS = [
   '#2ac3de', // 天蓝
 ]
 
-const ITEM_COLOR = '#a9b1d6' // 知识点名称
-const DESC_COLOR = '#565f89' // 描述文字 / 副标题
+const ITEM_COLOR = '#ffffff' // 知识点名称（白色，高对比度）
+const DESC_COLOR = '#565f89' // 副标题 / 水印
+const ITEM_DESC_COLOR = '#ffffff' // 知识点描述（白色，高对比度）
 
 /** 分数区间对应的标签颜色 */
 const SCORE_COLORS = {
@@ -166,19 +167,26 @@ function getScoreColor(score) {
 }
 
 /**
- * 文本截断：超出 maxWidth 时从末尾逐字裁剪并加省略号
+ * 文本换行：将文本按 maxWidth 拆分为多行数组
  * @param {CanvasRenderingContext2D} ctx
  * @param {string} text
- * @param {number} maxWidth - 最大像素宽度
- * @returns {string}
+ * @param {number} maxWidth - 每行最大像素宽度
+ * @returns {string[]} 换行后的文本行数组
  */
-function truncateText(ctx, text, maxWidth) {
-  if (ctx.measureText(text).width <= maxWidth) return text
-  let truncated = text
-  while (truncated.length > 0 && ctx.measureText(truncated + '…').width > maxWidth) {
-    truncated = truncated.slice(0, -1)
+function wrapText(ctx, text, maxWidth) {
+  const lines = []
+  let currentLine = ''
+  for (const char of text) {
+    const testLine = currentLine + char
+    if (ctx.measureText(testLine).width > maxWidth && currentLine.length > 0) {
+      lines.push(currentLine)
+      currentLine = char
+    } else {
+      currentLine = testLine
+    }
   }
-  return truncated + '…'
+  if (currentLine) lines.push(currentLine)
+  return lines.length > 0 ? lines : ['']
 }
 
 /**
@@ -214,10 +222,18 @@ function roundRect(ctx, x, y, w, h, r) {
  */
 function distributeToColumns(cats, numCols, colWidth, p) {
   // 估算单个分类的渲染高度（标题行 + 所有知识点行 + 分类间距）
+  // 知识点高度 = 名称行 + 描述换行数 × 描述行高
   const estimateHeight = (cat) => {
     let h = p.fontSizeCategory + CAT_TITLE_GAP + DECOR_LINE_GAP
     for (const item of cat.items) {
-      h += p.itemLineHeight
+      h += p.itemLineHeight // 名称行
+      if (item.description) {
+        // 粗略估算描述行数（按字符宽度比例）
+        const avgCharWidth = p.fontSizeDesc * 0.9
+        const maxCharsPerLine = Math.floor((colWidth - 10) / avgCharWidth)
+        const descLines = Math.ceil(item.description.length / maxCharsPerLine)
+        h += (descLines - 1) * (p.fontSizeDesc + 4) // 额外行高
+      }
     }
     h += p.categoryGap
     return h
@@ -242,6 +258,42 @@ function distributeToColumns(cats, numCols, colWidth, p) {
   }
 
   return columns
+}
+
+/**
+ * 计算内容实际高度（模拟渲染过程，返回最高列的底部 y 坐标）
+ * @param {Array<Array>} columnAssignments - 每列包含的分类数组
+ * @param {number} colWidth - 列宽
+ * @param {object} p - 预设配置对象
+ * @returns {number} 内容实际高度
+ */
+function calculateContentHeight(columnAssignments, colWidth, p) {
+  let maxHeight = 0
+
+  for (const catsInCol of columnAssignments) {
+    let y = p.padding.top
+
+    for (const cat of catsInCol) {
+      y += p.fontSizeCategory + CAT_TITLE_GAP + DECOR_LINE_GAP
+
+      for (const item of cat.items) {
+        let descLineCount = 0
+        if (item.description) {
+          // 粗略估算描述行数
+          const avgCharWidth = p.fontSizeDesc * 0.9
+          const maxCharsPerLine = Math.floor((colWidth - 10) / avgCharWidth)
+          descLineCount = Math.ceil(item.description.length / maxCharsPerLine)
+        }
+        y += p.itemLineHeight + descLineCount * (p.fontSizeDesc + 4)
+      }
+
+      y += p.categoryGap
+    }
+
+    if (y > maxHeight) maxHeight = y
+  }
+
+  return maxHeight
 }
 
 // ════════════════════════════════════════════════════════════
@@ -302,12 +354,16 @@ function generateWallpaper(presetKey, threshold) {
   const colWidth = (usableWidth - COLG * (targetColumns - 1)) / targetColumns
   const columnAssignments = distributeToColumns(categories, targetColumns, colWidth, p)
 
+  // ── 计算内容实际高度（动态调整画布高度） ──
+  const contentHeight = calculateContentHeight(columnAssignments, colWidth, p)
+  const finalHeight = Math.max(H, contentHeight + BOTTOM_MARGIN)
+
   // ── 创建画布 & 填充背景 ──
-  const canvas = createCanvas(W, H)
+  const canvas = createCanvas(W, finalHeight)
   const ctx = canvas.getContext('2d')
 
   ctx.fillStyle = BG_COLOR
-  ctx.fillRect(0, 0, W, H)
+  ctx.fillRect(0, 0, W, finalHeight)
 
   // ─ 头部：标题 + 副标题 + 分隔线 ──
   // y 坐标基于 PT 按比例计算，切换预设时自动适配间距
@@ -384,20 +440,25 @@ function generateWallpaper(presetKey, threshold) {
         ctx.fillText(String(score), tagX + TAG_WIDTH / 2, tagY + TAG_TEXT_BASELINE)
         ctx.textAlign = 'left'
 
-        // 描述文字（超出列宽时截断）
+        // 描述文字（自动换行，不截断）
+        let descLineCount = 0
         if (item.description) {
-          ctx.fillStyle = DESC_COLOR
+          ctx.fillStyle = ITEM_DESC_COLOR
           ctx.font = `${FSD}px ${FONT_FAMILY}`
-          const descText = truncateText(ctx, item.description, colWidth - 10)
-          ctx.fillText(descText, x + ITEM_INDENT, y + FSI + FSD + 6)
+          const descLines = wrapText(ctx, item.description, colWidth - 10)
+          for (let di = 0; di < descLines.length; di++) {
+            ctx.fillText(descLines[di], x + ITEM_INDENT, y + FSI + FSD + 6 + di * (FSD + 4))
+          }
+          descLineCount = descLines.length
         }
 
-        y += ILH
-        if (y > H - BOTTOM_MARGIN) break
+        // 行高 = 名称行 + 描述额外行
+        y += ILH + descLineCount * (FSD + 4)
+        if (y > finalHeight - BOTTOM_MARGIN) break
       }
 
       y += CG // 分类间距
-      if (y > H - BOTTOM_MARGIN) break
+      if (y > finalHeight - BOTTOM_MARGIN) break
     }
   }
 
@@ -405,13 +466,13 @@ function generateWallpaper(presetKey, threshold) {
   ctx.fillStyle = DESC_COLOR + '60' // 约 38% 透明度
   ctx.font = `${FSD}px ${FONT_FAMILY}`
   ctx.textAlign = 'right'
-  ctx.fillText('smart-code-tool / knowledge-point.json', W - PR, H - 30)
+  ctx.fillText('smart-code-tool / knowledge-point.json', W - PR, finalHeight - 30)
 
   // ── 输出 PNG ──
   const outputPath = resolve(OUTPUT_DIR, `knowledge-wallpaper-${presetKey}-${threshold}.png`)
   const buffer = canvas.toBuffer('image/png')
   writeFileSync(outputPath, buffer)
-  console.log(`    ✅ ${outputPath}  (${W} × ${H})`)
+  console.log(`    ✅ ${outputPath}  (${W} × ${finalHeight})`)
 }
 
 // 双层循环：预设 × 阈值
