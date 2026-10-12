@@ -25,8 +25,6 @@ const { architectureSidebar } = await import('../docs/.vitepress/config/sidebar/
 const { handbookSidebar } = await import('../docs/.vitepress/config/sidebar/handbook.js')
 const { homeSidebar } = await import('../docs/.vitepress/config/sidebar/home.js')
 const { interviewSidebar } = await import('../docs/.vitepress/config/sidebar/interview.js')
-const { instructionsSidebar } = await import('../docs/.vitepress/config/sidebar/instructions.js')
-
 const ALL_SIDEBARS = [
   { name: '心理认知', sidebar: psychologySidebar },
   { name: 'AI', sidebar: aiSidebar },
@@ -34,7 +32,6 @@ const ALL_SIDEBARS = [
   { name: '开发手册', sidebar: handbookSidebar },
   { name: '首页', sidebar: homeSidebar },
   { name: '面试', sidebar: interviewSidebar },
-  { name: '指令集', sidebar: instructionsSidebar },
 ]
 
 // ── URL 路径段 → 可读标签映射 ──

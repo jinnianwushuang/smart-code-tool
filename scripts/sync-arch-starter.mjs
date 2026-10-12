@@ -14,7 +14,6 @@
  *
  * 同步后需手动操作：
  *   - 检查 VERSION.md 是否需要更新变更说明
- *   - 运行 npx zx scripts/archive-instructions.mjs 重新打包 zip
  */
 
 import { chalk, fs } from 'zx'
@@ -270,5 +269,4 @@ console.log(chalk.gray(`   模板目录: ${TEMPLATE_DIR}/`))
 console.log(chalk.gray(`   导入替换: ${replacementCount} 个文件`))
 console.log('')
 console.log(chalk.yellow('📌 后续步骤:'))
-console.log(chalk.gray('   1. 检查 VERSION.md 是否需要更新变更说明'))
-console.log(chalk.gray('   2. 运行 npx zx scripts/archive-instructions.mjs 重新打包 zip'))
+console.log(chalk.gray('   检查 VERSION.md 是否需要更新变更说明'))

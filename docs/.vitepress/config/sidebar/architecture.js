@@ -837,44 +837,6 @@ const designPatterns = {
   ],
 }
 
-// ── AI 代码检查 ──
-const aiCodeInspection = {
-  text: 'AI 代码检查',
-  collapsed: true,
-  items: [
-    {
-      id: 'VXnd5hfY1vWrOhWIbcMlId_H',
-      text: '架构概述',
-      link: '/architecture-document/ai-code-inspection/architecture-overview',
-    },
-    {
-      text: 'Prompt 工程策略',
-      link: '/architecture-document/ai-code-inspection/prompt-engineering',
-      id: 'A5eOACFM7Oi7Ql55HSjRPMMe',
-    },
-    {
-      text: '代码上下文采集与组装',
-      link: '/architecture-document/ai-code-inspection/code-context-pipeline',
-      id: 'B_AyWiNk120ggJNRW8kYFxMS',
-    },
-    {
-      text: '检查规则体系设计',
-      link: '/architecture-document/ai-code-inspection/rule-system-design',
-      id: 'mzD-ndXersggkSvE3YFwcQ_D',
-    },
-    {
-      id: 'i6dUT84uwqTQMg2TAGmHPANQ',
-      text: 'CI/CD 集成方案',
-      link: '/architecture-document/ai-code-inspection/ci-integration',
-    },
-    {
-      text: '扩展性与自定义机制',
-      link: '/architecture-document/ai-code-inspection/extensibility-and-customization',
-      id: 'Zw37avn7uzXSfr3ShGG4ykWw',
-    },
-  ],
-}
-
 // ── 典型拆解 ──
 const typicalAnalysis = {
   text: '典型拆解',
@@ -1024,7 +986,6 @@ export const architectureSidebar = {
     vue,
     flutter,
     engineering,
-    aiCodeInspection,
     database,
     generalKnowledge,
     dataStructure,

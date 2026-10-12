@@ -17,7 +17,6 @@
     "pdf:export:psychology": "node scripts/pdf-export.mjs --group psychology",
     "pdf:export:architecture": "node scripts/pdf-export.mjs --group architecture",
     "pdf": "zx scripts/pdf-export-all.mjs",
-    "archive:instructions": "zx scripts/archive-instructions.mjs",
     "sync:arch-starter": "zx scripts/sync-arch-starter.mjs",
     "gen:doc-list": "node scripts/gen-doc-list.mjs",
     "gen:wallpaper": "node scripts/gen-knowledge-wallpaper.mjs",

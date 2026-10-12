@@ -356,6 +356,228 @@
     "updatedAt": "2026-10-07 00:42:01"
   },
   {
+    "id": "VXnd5hfY1vWrOhWIbcMlId_H",
+    "title": "架构概述",
+    "url": "/ai/code-inspection/architecture-overview",
+    "group": "AI 代码检查",
+    "tags": [
+      "代码审查"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "A5eOACFM7Oi7Ql55HSjRPMMe",
+    "title": "Prompt 工程策略",
+    "url": "/ai/code-inspection/prompt-engineering",
+    "group": "AI 代码检查",
+    "tags": [
+      "代码审查"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "B_AyWiNk120ggJNRW8kYFxMS",
+    "title": "代码上下文采集与组装",
+    "url": "/ai/code-inspection/code-context-pipeline",
+    "group": "AI 代码检查",
+    "tags": [
+      "代码审查"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "mzD-ndXersggkSvE3YFwcQ_D",
+    "title": "检查规则体系设计",
+    "url": "/ai/code-inspection/rule-system-design",
+    "group": "AI 代码检查",
+    "tags": [
+      "代码审查"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "i6dUT84uwqTQMg2TAGmHPANQ",
+    "title": "CI/CD 集成方案",
+    "url": "/ai/code-inspection/ci-integration",
+    "group": "AI 代码检查",
+    "tags": [
+      "代码审查"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Zw37avn7uzXSfr3ShGG4ykWw",
+    "title": "扩展性与自定义机制",
+    "url": "/ai/code-inspection/extensibility-and-customization",
+    "group": "AI 代码检查",
+    "tags": [
+      "代码审查"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "urjfs3o5zDYrokhLuD1LVUAU",
+    "title": "总览",
+    "url": "/ai/instructions/",
+    "group": "指令集设计理念",
+    "tags": [
+      "AI",
+      "指令集"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "GHdjVG0XCjQNzSsr2edfzeFe",
+    "title": "计划书归档",
+    "url": "/ai/instructions/_plan-archive/",
+    "group": "指令集设计理念",
+    "tags": [
+      "AI",
+      "指令集"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "dZinK2xonp__M0s83nQXY32-",
+    "title": "总览",
+    "url": "/ai/instructions/instruction-architecture/",
+    "group": "指令集设计理念 > 指令集体系设计",
+    "tags": [
+      "AI",
+      "指令集"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "ToEdgcvYply8B3AZGaiNnikV",
+    "title": "分层模型设计",
+    "url": "/ai/instructions/instruction-architecture/design/layered-model",
+    "group": "指令集设计理念 > 指令集体系设计 > 设计文档",
+    "tags": [
+      "指令集",
+      "指令架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "5mrsWr-VgCOqnsBsUr3LtGOo",
+    "title": "参数管道设计",
+    "url": "/ai/instructions/instruction-architecture/design/parameter-pipeline",
+    "group": "指令集设计理念 > 指令集体系设计 > 设计文档",
+    "tags": [
+      "指令集",
+      "指令架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "-RHtZ83mJAwDbPdlS5GLXoNs",
+    "title": "注解驱动文档生成",
+    "url": "/ai/instructions/instruction-architecture/design/annotation-driven-docs",
+    "group": "指令集设计理念 > 指令集体系设计 > 设计文档",
+    "tags": [
+      "指令集",
+      "指令架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "3qxdijt6h0KXoJif_57YZvgX",
+    "title": "执行模型与编排",
+    "url": "/ai/instructions/instruction-architecture/design/execution-model",
+    "group": "指令集设计理念 > 指令集体系设计 > 设计文档",
+    "tags": [
+      "指令集",
+      "指令架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "9cTO-D0onJkFuXslg1Oz2e6v",
+    "title": "术语表模板",
+    "url": "/ai/instructions/instruction-architecture/standards/glossary-template",
+    "group": "指令集设计理念 > 指令集体系设计 > 规范文件",
+    "tags": [
+      "指令集",
+      "指令架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "nieouMuASjxiT75hIywxDT8i",
+    "title": "约束规则规范",
+    "url": "/ai/instructions/instruction-architecture/standards/constraint-rules",
+    "group": "指令集设计理念 > 指令集体系设计 > 规范文件",
+    "tags": [
+      "指令集",
+      "指令架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "yokm4c6TUhEj2nEr2k--rlqF",
+    "title": "注解格式规范",
+    "url": "/ai/instructions/instruction-architecture/standards/annotation-format",
+    "group": "指令集设计理念 > 指令集体系设计 > 规范文件",
+    "tags": [
+      "指令集",
+      "指令架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "9rCoRla0uJq0wLNSoTR6pXL7",
+    "title": "第 2 层示例",
+    "url": "/ai/instructions/instruction-architecture/examples/layer-2-example/entry",
+    "group": "指令集设计理念 > 指令集体系设计 > 实现示例",
+    "tags": [
+      "指令集",
+      "指令架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "nVW1oXAY24EhaY7SwCrhN9PL",
+    "title": "第 3 层示例",
+    "url": "/ai/instructions/instruction-architecture/examples/layer-3-example/entry",
+    "group": "指令集设计理念 > 指令集体系设计 > 实现示例",
+    "tags": [
+      "指令集",
+      "指令架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "KQinjtPzR-83NY0VkQ3CmNH7",
+    "title": "编排文件示例",
+    "url": "/ai/instructions/instruction-architecture/examples/pipeline-example/feature-complete",
+    "group": "指令集设计理念 > 指令集体系设计 > 实现示例",
+    "tags": [
+      "指令集",
+      "指令架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
     "id": "FwHub0index_page",
     "title": "总入口",
     "url": "/architecture-document/framework-hub/",
@@ -406,7 +628,7 @@
       "汇总"
     ],
     "createdAt": "2026-10-09 21:27:45",
-    "updatedAt": "2026-10-10 20:50:46"
+    "updatedAt": "2026-10-11 07:50:19"
   },
   {
     "id": "EKBVi9HeKb1VqdyA6hL_xDZD",
@@ -1481,72 +1703,6 @@
     "updatedAt": "2026-10-07 00:42:01"
   },
   {
-    "id": "VXnd5hfY1vWrOhWIbcMlId_H",
-    "title": "架构概述",
-    "url": "/architecture-document/ai-code-inspection/architecture-overview",
-    "group": "AI 代码检查",
-    "tags": [
-      "代码审查"
-    ],
-    "createdAt": "2026-09-16 02:13:12",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "A5eOACFM7Oi7Ql55HSjRPMMe",
-    "title": "Prompt 工程策略",
-    "url": "/architecture-document/ai-code-inspection/prompt-engineering",
-    "group": "AI 代码检查",
-    "tags": [
-      "代码审查"
-    ],
-    "createdAt": "2026-09-16 02:13:12",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "B_AyWiNk120ggJNRW8kYFxMS",
-    "title": "代码上下文采集与组装",
-    "url": "/architecture-document/ai-code-inspection/code-context-pipeline",
-    "group": "AI 代码检查",
-    "tags": [
-      "代码审查"
-    ],
-    "createdAt": "2026-09-16 02:13:12",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "mzD-ndXersggkSvE3YFwcQ_D",
-    "title": "检查规则体系设计",
-    "url": "/architecture-document/ai-code-inspection/rule-system-design",
-    "group": "AI 代码检查",
-    "tags": [
-      "代码审查"
-    ],
-    "createdAt": "2026-09-16 02:13:12",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "i6dUT84uwqTQMg2TAGmHPANQ",
-    "title": "CI/CD 集成方案",
-    "url": "/architecture-document/ai-code-inspection/ci-integration",
-    "group": "AI 代码检查",
-    "tags": [
-      "代码审查"
-    ],
-    "createdAt": "2026-09-16 02:13:12",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Zw37avn7uzXSfr3ShGG4ykWw",
-    "title": "扩展性与自定义机制",
-    "url": "/architecture-document/ai-code-inspection/extensibility-and-customization",
-    "group": "AI 代码检查",
-    "tags": [
-      "代码审查"
-    ],
-    "createdAt": "2026-09-16 02:13:12",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
     "id": "B1Z2Jp2sRvW1R_gg5kHBSyoh",
     "title": "PostgreSQL vs MySQL + MongoDB",
     "url": "/architecture-document/database/postgresql-vs-mysql-mongodb",
@@ -1873,8 +2029,8 @@
     "tags": [
       "案例"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-11 07:50:19",
+    "updatedAt": "2026-10-11 07:50:19"
   },
   {
     "id": "FlTypWdgt2rebuild",
@@ -1884,8 +2040,8 @@
     "tags": [
       "案例"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-11 07:50:19",
+    "updatedAt": "2026-10-11 07:50:19"
   },
   {
     "id": "FlTypAsync3dart",
@@ -1895,8 +2051,8 @@
     "tags": [
       "案例"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-11 07:50:19",
+    "updatedAt": "2026-10-11 07:50:19"
   },
   {
     "id": "ozIL0o_ltXfBuXI2hkm3jjX2",
@@ -1907,7 +2063,7 @@
       "思维"
     ],
     "createdAt": "2026-10-01 10:05:51",
-    "updatedAt": "2026-10-10 20:50:46"
+    "updatedAt": "2026-10-11 07:50:19"
   },
   {
     "id": "y0ZcW5BycsZTRWZLbmie-GZX",
@@ -4617,818 +4773,5 @@
     ],
     "createdAt": "2026-09-10 04:06:42",
     "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "urjfs3o5zDYrokhLuD1LVUAU",
-    "title": "总览",
-    "url": "/instructions/",
-    "group": "快速开始",
-    "tags": [
-      "指令集"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "u8j7TdX7Rvk-wIoGBh8xiXbL",
-    "title": "新增指令集指南",
-    "url": "/instructions/CREATE-GUIDE",
-    "group": "快速开始",
-    "tags": [
-      "指令集"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "GHdjVG0XCjQNzSsr2edfzeFe",
-    "title": "计划书归档",
-    "url": "/instructions/_plan-archive/",
-    "group": "快速开始",
-    "tags": [
-      "指令集"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "dZinK2xonp__M0s83nQXY32-",
-    "title": "总览",
-    "url": "/instructions/instruction-architecture/",
-    "group": "指令集体系设计",
-    "tags": [
-      "指令集"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "ToEdgcvYply8B3AZGaiNnikV",
-    "title": "分层模型设计",
-    "url": "/instructions/instruction-architecture/design/layered-model",
-    "group": "指令集体系设计 > 设计文档",
-    "tags": [
-      "指令集",
-      "指令架构"
-    ],
-    "createdAt": "2026-09-19 13:50:04",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "5mrsWr-VgCOqnsBsUr3LtGOo",
-    "title": "参数管道设计",
-    "url": "/instructions/instruction-architecture/design/parameter-pipeline",
-    "group": "指令集体系设计 > 设计文档",
-    "tags": [
-      "指令集",
-      "指令架构"
-    ],
-    "createdAt": "2026-09-19 13:50:04",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "-RHtZ83mJAwDbPdlS5GLXoNs",
-    "title": "注解驱动文档生成",
-    "url": "/instructions/instruction-architecture/design/annotation-driven-docs",
-    "group": "指令集体系设计 > 设计文档",
-    "tags": [
-      "指令集",
-      "指令架构"
-    ],
-    "createdAt": "2026-09-19 13:50:04",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "3qxdijt6h0KXoJif_57YZvgX",
-    "title": "执行模型与编排",
-    "url": "/instructions/instruction-architecture/design/execution-model",
-    "group": "指令集体系设计 > 设计文档",
-    "tags": [
-      "指令集",
-      "指令架构"
-    ],
-    "createdAt": "2026-09-19 13:50:04",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "9cTO-D0onJkFuXslg1Oz2e6v",
-    "title": "术语表模板",
-    "url": "/instructions/instruction-architecture/standards/glossary-template",
-    "group": "指令集体系设计 > 规范文件",
-    "tags": [
-      "指令集",
-      "指令架构"
-    ],
-    "createdAt": "2026-09-19 13:50:04",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "nieouMuASjxiT75hIywxDT8i",
-    "title": "约束规则规范",
-    "url": "/instructions/instruction-architecture/standards/constraint-rules",
-    "group": "指令集体系设计 > 规范文件",
-    "tags": [
-      "指令集",
-      "指令架构"
-    ],
-    "createdAt": "2026-09-19 13:50:04",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "yokm4c6TUhEj2nEr2k--rlqF",
-    "title": "注解格式规范",
-    "url": "/instructions/instruction-architecture/standards/annotation-format",
-    "group": "指令集体系设计 > 规范文件",
-    "tags": [
-      "指令集",
-      "指令架构"
-    ],
-    "createdAt": "2026-09-19 13:50:04",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "9rCoRla0uJq0wLNSoTR6pXL7",
-    "title": "第 2 层示例",
-    "url": "/instructions/instruction-architecture/examples/layer-2-example/entry",
-    "group": "指令集体系设计 > 实现示例",
-    "tags": [
-      "指令集",
-      "指令架构"
-    ],
-    "createdAt": "2026-09-19 13:50:04",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "nVW1oXAY24EhaY7SwCrhN9PL",
-    "title": "第 3 层示例",
-    "url": "/instructions/instruction-architecture/examples/layer-3-example/entry",
-    "group": "指令集体系设计 > 实现示例",
-    "tags": [
-      "指令集",
-      "指令架构"
-    ],
-    "createdAt": "2026-09-19 13:50:04",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "KQinjtPzR-83NY0VkQ3CmNH7",
-    "title": "编排文件示例",
-    "url": "/instructions/instruction-architecture/examples/pipeline-example/feature-complete",
-    "group": "指令集体系设计 > 实现示例",
-    "tags": [
-      "指令集",
-      "指令架构"
-    ],
-    "createdAt": "2026-09-19 13:50:04",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Qtn0ecgODQxcPI-rQbsL_oLe",
-    "title": "多工作区组合开发套件",
-    "url": "/instructions/multi-workspace-composition",
-    "group": "未分组",
-    "tags": [
-      "指令集",
-      "多工作区"
-    ],
-    "createdAt": "2026-09-24 00:28:28",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "aqSbWE9nvwaS968q3KXaMA8P",
-    "title": "Vue 提示词",
-    "url": "/instructions/vue/prompts",
-    "group": "Vue",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "zVhAsZ-oaiLSSQdrzzOMDNRO",
-    "title": "概述",
-    "url": "/instructions/vue/vue-assembler/docs/",
-    "group": "Vue > Vue 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "yfY7x0dyZMpJgt3FQ2pgx5NQ",
-    "title": "设计架构",
-    "url": "/instructions/vue/vue-assembler/docs/design",
-    "group": "Vue > Vue 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Tkp5YbJBjPEO3k0_W54fzWHD",
-    "title": "执行流程",
-    "url": "/instructions/vue/vue-assembler/docs/execution-flow",
-    "group": "Vue > Vue 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "MbHgRNuPU9yWX8Htu3jBJ5ky",
-    "title": "配置指南",
-    "url": "/instructions/vue/vue-assembler/docs/config-guide",
-    "group": "Vue > Vue 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "gll-5UChdEvi1SaU23j3an4I",
-    "title": "文件索引",
-    "url": "/instructions/vue/vue-assembler/docs/file-index",
-    "group": "Vue > Vue 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "N-CrPe2XCxCwJLQwtzfDkCZx",
-    "title": "概述",
-    "url": "/instructions/vue/vue-code-review/docs/",
-    "group": "Vue > Vue 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "0hUBC3j5gMTFg3alnUNPfGGy",
-    "title": "设计架构",
-    "url": "/instructions/vue/vue-code-review/docs/design",
-    "group": "Vue > Vue 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "s8ipwko-1ke4XNdNF7pnNAPm",
-    "title": "执行流程",
-    "url": "/instructions/vue/vue-code-review/docs/execution-flow",
-    "group": "Vue > Vue 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "bajV24MMpZQ6gZNV6gy1Kpop",
-    "title": "配置指南",
-    "url": "/instructions/vue/vue-code-review/docs/config-guide",
-    "group": "Vue > Vue 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "CDc8cKqdLxxTdXXw1go63Ue_",
-    "title": "文件索引",
-    "url": "/instructions/vue/vue-code-review/docs/file-index",
-    "group": "Vue > Vue 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "CgtHHghwdNQsDogc-M3YfrU-",
-    "title": "概述",
-    "url": "/instructions/vue/vue-arch-starter/docs/",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "KooCJvOOHH6QA7wraTWMvdMF",
-    "title": "架构概念",
-    "url": "/instructions/vue/vue-arch-starter/docs/architecture",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue",
-      "架构"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "XC97c5grDLfdRTy0heT0B3r5",
-    "title": "集成指南",
-    "url": "/instructions/vue/vue-arch-starter/docs/integration",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "3bypHDsT-8o7pMP1Z8pW91dD",
-    "title": "定制指南",
-    "url": "/instructions/vue/vue-arch-starter/docs/customization",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "2bNiLqBDCxsVGWJMTb1Q6t-N",
-    "title": "文件索引",
-    "url": "/instructions/vue/vue-arch-starter/docs/file-index",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "RlqqQRN7Tbmkl268nU0rnAUa",
-    "title": "启动器",
-    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/launcher",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "kfiBO4m5-SRTkIqhByl6B-Sj",
-    "title": "约束规则",
-    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/constraints",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "FoNhPbmbqCa3Xi0DuTAlSfET",
-    "title": "代码规范",
-    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/code-standard",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "1KuwNt8wQF1tSzY60m4ePemo",
-    "title": "门禁检查",
-    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/gate-check",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "qYPFnavxJOth4ZGUZeYMHhyk",
-    "title": "通用步骤",
-    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/common-steps",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "M0B7ztLZDjLV7iuadIJlSlFc",
-    "title": "任务：新项目集成",
-    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/task-integration",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "FV4tHfRfuvFpuaZYxWRbsIqI",
-    "title": "任务：定制修改",
-    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/task-customization",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "NhAT5Q5VrvXbwmcNJHffGgNT",
-    "title": "复核清单",
-    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/instructions/review-checklist",
-    "group": "Vue > Vue 装配架构代码模板",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "7eYxBb3zYuHGIBa8vN-QgHND",
-    "title": "Vue 装配架构 — 变更日志",
-    "url": "/instructions/vue/vue-assembler/VERSION",
-    "group": "Vue > 版本记录",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "MCnTWwAVqx_f0YnVpD0OvHJt",
-    "title": "Vue 通用代码检查 — 变更日志",
-    "url": "/instructions/vue/vue-code-review/VERSION",
-    "group": "Vue > 版本记录",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "dSlsILidcLsdUTQBoxQfGczU",
-    "title": "Vue 架构代码模板 — 变更日志",
-    "url": "/instructions/vue/vue-arch-starter/vue-arch-starter/VERSION",
-    "group": "Vue > 版本记录",
-    "tags": [
-      "指令集",
-      "Vue"
-    ],
-    "createdAt": "2026-09-19 01:34:33",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "f3MJ1Jwns_g069uLVrm_mp6D",
-    "title": "React 提示词",
-    "url": "/instructions/react/prompts",
-    "group": "React",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "_vuFn8kWoANAQnpeGPJw1bSw",
-    "title": "概述",
-    "url": "/instructions/react/react-assembler/docs/",
-    "group": "React > React 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "K3XiDvYnr0e4U-m46CLbnWdM",
-    "title": "设计架构",
-    "url": "/instructions/react/react-assembler/docs/design",
-    "group": "React > React 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-09-21 22:20:06",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "LWB-VVEPB0jHrId4CwtV8Fnd",
-    "title": "执行流程",
-    "url": "/instructions/react/react-assembler/docs/execution-flow",
-    "group": "React > React 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-09-21 22:20:06",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "vOSUGJeljv0EoFp5Vy16qHCd",
-    "title": "配置指南",
-    "url": "/instructions/react/react-assembler/docs/config-guide",
-    "group": "React > React 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-09-21 22:20:06",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "KqV36n0PJ3fLtVcTovNgFRib",
-    "title": "文件索引",
-    "url": "/instructions/react/react-assembler/docs/file-index",
-    "group": "React > React 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-09-21 22:20:06",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "ulo0DZTcwCzuD9q8Cu8FPCIC",
-    "title": "概述",
-    "url": "/instructions/react/react-code-review/docs/",
-    "group": "React > React 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "pX8Iq7hLf-xP8TR6D5omVDQe",
-    "title": "设计架构",
-    "url": "/instructions/react/react-code-review/docs/design",
-    "group": "React > React 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-09-21 00:17:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Hn1FpKPPhOcp9v5UbRGvpGaN",
-    "title": "执行流程",
-    "url": "/instructions/react/react-code-review/docs/execution-flow",
-    "group": "React > React 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-09-21 00:17:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "6mP0tRKl4LzI7EyW2JILLMJR",
-    "title": "配置指南",
-    "url": "/instructions/react/react-code-review/docs/config-guide",
-    "group": "React > React 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-09-21 00:17:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "yTlWgufegvwGBaK58P-hz-zS",
-    "title": "文件索引",
-    "url": "/instructions/react/react-code-review/docs/file-index",
-    "group": "React > React 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-09-21 00:17:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "TcN1pGESx81HqA7pV4UY_5-9",
-    "title": "React 装配架构 — 变更日志",
-    "url": "/instructions/react/react-assembler/VERSION",
-    "group": "React > 版本记录",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-09-21 22:20:06",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "hdeu5AQYL_G73pQ9U1S61AgM",
-    "title": "React 通用代码检查 — 变更日志",
-    "url": "/instructions/react/react-code-review/VERSION",
-    "group": "React > 版本记录",
-    "tags": [
-      "指令集",
-      "React"
-    ],
-    "createdAt": "2026-09-21 00:17:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "dlzsdgyf5S_qahp3XL304WKv",
-    "title": "Flutter 提示词",
-    "url": "/instructions/flutter/prompts",
-    "group": "Flutter",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "uJ2fE5HyU_PTtLp239vjsQ0C",
-    "title": "概述",
-    "url": "/instructions/flutter/flutter-assembler/docs/",
-    "group": "Flutter > Flutter 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "1v_AAymk0f3OO_gb7Lmg0NXR",
-    "title": "设计架构",
-    "url": "/instructions/flutter/flutter-assembler/docs/design",
-    "group": "Flutter > Flutter 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-09-21 22:20:06",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "vSS8Lxwrj6Kb26I997TLqHqA",
-    "title": "执行流程",
-    "url": "/instructions/flutter/flutter-assembler/docs/execution-flow",
-    "group": "Flutter > Flutter 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-09-21 22:20:06",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "DdsXGDDw5dsvxjK_sS_gYAN9",
-    "title": "配置指南",
-    "url": "/instructions/flutter/flutter-assembler/docs/config-guide",
-    "group": "Flutter > Flutter 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-09-21 22:20:06",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "5Yg_BgBk7xlJYoa5nCfxXt80",
-    "title": "文件索引",
-    "url": "/instructions/flutter/flutter-assembler/docs/file-index",
-    "group": "Flutter > Flutter 装配架构 AI 指令集",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-09-21 22:20:06",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "CLQ2_QVznWvRnBDBkiwvZnGD",
-    "title": "概述",
-    "url": "/instructions/flutter/flutter-code-review/docs/",
-    "group": "Flutter > Flutter 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "KQHXYjDW73_CrSpLnhqTX-OK",
-    "title": "设计架构",
-    "url": "/instructions/flutter/flutter-code-review/docs/design",
-    "group": "Flutter > Flutter 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-09-21 00:17:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "C3Set8D9jFZd7Fl2y_YFHtGs",
-    "title": "执行流程",
-    "url": "/instructions/flutter/flutter-code-review/docs/execution-flow",
-    "group": "Flutter > Flutter 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-09-21 00:17:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "B8QfuZDY589p0VZRRXKFCc-u",
-    "title": "配置指南",
-    "url": "/instructions/flutter/flutter-code-review/docs/config-guide",
-    "group": "Flutter > Flutter 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-09-21 00:17:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "TQGz4I4JGpRnVVE9E8JfvYvS",
-    "title": "文件索引",
-    "url": "/instructions/flutter/flutter-code-review/docs/file-index",
-    "group": "Flutter > Flutter 通用代码检查指令集",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-09-21 00:17:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Fw8dJ6kzHdpt857_5n4vrXGK",
-    "title": "Flutter 装配架构 — 变更日志",
-    "url": "/instructions/flutter/flutter-assembler/VERSION",
-    "group": "Flutter > 版本记录",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-09-21 22:20:06",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "vqPuMCBRgbVwYGSpS0hjs1wP",
-    "title": "Flutter 通用代码检查 — 变更日志",
-    "url": "/instructions/flutter/flutter-code-review/VERSION",
-    "group": "Flutter > 版本记录",
-    "tags": [
-      "指令集",
-      "Flutter"
-    ],
-    "createdAt": "2026-09-21 00:17:01",
-    "updatedAt": "2026-10-07 00:42:01"
   }
 ]

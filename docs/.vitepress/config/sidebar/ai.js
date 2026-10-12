@@ -81,6 +81,42 @@ export const aiSidebar = {
       ],
     },
     {
+      text: 'AI 代码检查',
+      collapsed: true,
+      items: [
+        {
+          id: 'VXnd5hfY1vWrOhWIbcMlId_H',
+          text: '架构概述',
+          link: '/ai/code-inspection/architecture-overview',
+        },
+        {
+          text: 'Prompt 工程策略',
+          link: '/ai/code-inspection/prompt-engineering',
+          id: 'A5eOACFM7Oi7Ql55HSjRPMMe',
+        },
+        {
+          text: '代码上下文采集与组装',
+          link: '/ai/code-inspection/code-context-pipeline',
+          id: 'B_AyWiNk120ggJNRW8kYFxMS',
+        },
+        {
+          text: '检查规则体系设计',
+          link: '/ai/code-inspection/rule-system-design',
+          id: 'mzD-ndXersggkSvE3YFwcQ_D',
+        },
+        {
+          id: 'i6dUT84uwqTQMg2TAGmHPANQ',
+          text: 'CI/CD 集成方案',
+          link: '/ai/code-inspection/ci-integration',
+        },
+        {
+          text: '扩展性与自定义机制',
+          link: '/ai/code-inspection/extensibility-and-customization',
+          id: 'Zw37avn7uzXSfr3ShGG4ykWw',
+        },
+      ],
+    },
+    {
       text: '指令集设计理念',
       collapsed: true,
       items: [
