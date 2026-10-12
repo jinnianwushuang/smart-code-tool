@@ -80,5 +80,96 @@ export const aiSidebar = {
         },
       ],
     },
+    {
+      text: '指令集设计理念',
+      collapsed: true,
+      items: [
+        { id: 'urjfs3o5zDYrokhLuD1LVUAU', text: '总览', link: '/ai/instructions/' },
+        {
+          id: 'GHdjVG0XCjQNzSsr2edfzeFe',
+          text: '计划书归档',
+          link: '/ai/instructions/_plan-archive/',
+        },
+        {
+          text: '指令集体系设计',
+          collapsed: true,
+          items: [
+            {
+              id: 'dZinK2xonp__M0s83nQXY32-',
+              text: '总览',
+              link: '/ai/instructions/instruction-architecture/',
+            },
+            {
+              text: '设计文档',
+              collapsed: true,
+              items: [
+                {
+                  text: '分层模型设计',
+                  link: '/ai/instructions/instruction-architecture/design/layered-model',
+                  id: 'ToEdgcvYply8B3AZGaiNnikV',
+                },
+                {
+                  text: '参数管道设计',
+                  link: '/ai/instructions/instruction-architecture/design/parameter-pipeline',
+                  id: '5mrsWr-VgCOqnsBsUr3LtGOo',
+                },
+                {
+                  text: '注解驱动文档生成',
+                  link: '/ai/instructions/instruction-architecture/design/annotation-driven-docs',
+                  id: '-RHtZ83mJAwDbPdlS5GLXoNs',
+                },
+                {
+                  text: '执行模型与编排',
+                  link: '/ai/instructions/instruction-architecture/design/execution-model',
+                  id: '3qxdijt6h0KXoJif_57YZvgX',
+                },
+              ],
+            },
+            {
+              text: '规范文件',
+              collapsed: true,
+              items: [
+                {
+                  text: '术语表模板',
+                  link: '/ai/instructions/instruction-architecture/standards/glossary-template',
+                  id: '9cTO-D0onJkFuXslg1Oz2e6v',
+                },
+                {
+                  text: '约束规则规范',
+                  link: '/ai/instructions/instruction-architecture/standards/constraint-rules',
+                  id: 'nieouMuASjxiT75hIywxDT8i',
+                },
+                {
+                  text: '注解格式规范',
+                  link: '/ai/instructions/instruction-architecture/standards/annotation-format',
+                  id: 'yokm4c6TUhEj2nEr2k--rlqF',
+                },
+              ],
+            },
+            {
+              text: '实现示例',
+              collapsed: true,
+              items: [
+                {
+                  text: '第 2 层示例',
+                  link: '/ai/instructions/instruction-architecture/examples/layer-2-example/entry',
+                  id: '9rCoRla0uJq0wLNSoTR6pXL7',
+                },
+                {
+                  text: '第 3 层示例',
+                  link: '/ai/instructions/instruction-architecture/examples/layer-3-example/entry',
+                  id: 'nVW1oXAY24EhaY7SwCrhN9PL',
+                },
+                {
+                  text: '编排文件示例',
+                  link: '/ai/instructions/instruction-architecture/examples/pipeline-example/feature-complete',
+                  id: 'KQinjtPzR-83NY0VkQ3CmNH7',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   ],
 }

@@ -21,10 +21,6 @@ export const nav = [
     link: '/interview/',
   },
   {
-    text: '指令集',
-    link: '/instructions/',
-  },
-  {
     text: '工具库',
     link: '/app-iframe/code-tool-app/',
   },
@@ -35,5 +31,4 @@ export const nav = [
       { text: 'React 架构验证', link: '/app-iframe/react-test-app/' },
     ],
   },
- 
 ]
