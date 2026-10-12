@@ -16,10 +16,10 @@ title: 指令集
 
 | 套件                                                              | 包含内容                                                   |
 | ----------------------------------------------------------------- | ---------------------------------------------------------- |
-| <a href="/archive/vue-kit.zip" download>Vue 全套套件</a>          | 指令架构准则 + Vue 提示词 + 装配架构 + 代码检查 + 代码模板 |
-| <a href="/archive/react-kit.zip" download>React 全套套件</a>      | 指令架构准则 + React 提示词 + 装配架构 + 代码检查          |
-| <a href="/archive/flutter-kit.zip" download>Flutter 全套套件</a>  | 指令架构准则 + Flutter 提示词 + 装配架构 + 代码检查        |
-| <a href="/archive/instructions-kit.zip" download>三合一总套件</a> | 以上三个框架套件合一                                       |
+| <a href="/smart-code-tool/archive/vue-kit.zip" download>Vue 全套套件</a>          | 指令架构准则 + Vue 提示词 + 装配架构 + 代码检查 + 代码模板 |
+| <a href="/smart-code-tool/archive/react-kit.zip" download>React 全套套件</a>      | 指令架构准则 + React 提示词 + 装配架构 + 代码检查          |
+| <a href="/smart-code-tool/archive/flutter-kit.zip" download>Flutter 全套套件</a>  | 指令架构准则 + Flutter 提示词 + 装配架构 + 代码检查        |
+| <a href="/smart-code-tool/archive/instructions-kit.zip" download>三合一总套件</a> | 以上三个框架套件合一                                       |
 
 ---
 
