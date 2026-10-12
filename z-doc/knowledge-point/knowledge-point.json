@@ -1,0 +1,885 @@
+{
+  "javascript": [
+    { "name": "V8 引擎", "description": "编译流程(JIT)、隐藏类、内联缓存", "know_well": 8 },
+    {
+      "name": "事件循环 Event Loop",
+      "description": "宏任务/微任务调度、requestAnimationFrame、与 Node 差异",
+      "know_well": 9
+    },
+    {
+      "name": "原型链与继承",
+      "description": "原型查找机制、class extends 底层、寄生组合继承",
+      "know_well": 9
+    },
+    {
+      "name": "闭包与作用域链",
+      "description": "词法作用域、执行上下文、this 绑定规则",
+      "know_well": 9
+    },
+    {
+      "name": "Promise",
+      "description": "状态机、链式调用、all/race/allSettled/any、手写实现",
+      "know_well": 9
+    },
+    {
+      "name": "async/await",
+      "description": "语法糖本质、错误处理、并发控制、顶层 await",
+      "know_well": 9
+    },
+    {
+      "name": "Generator / yield",
+      "description": "生成器函数、迭代协议、异步生成器",
+      "know_well": 8
+    },
+    {
+      "name": "Proxy / Reflect",
+      "description": "元编程、拦截器、Reflect 与 Proxy 配合",
+      "know_well": 8
+    },
+    {
+      "name": "GC 与内存管理",
+      "description": "标记清除/分代回收、内存泄漏排查、WeakRef/FinalizationRegistry",
+      "know_well": 7
+    },
+    {
+      "name": "ES Module 系统",
+      "description": "ESM vs CJS、tree-shaking、动态 import()、import.meta",
+      "know_well": 9
+    },
+    {
+      "name": "类型系统深层",
+      "description": "类型强制转换规则、结构化类型、与 TS 对比",
+      "know_well": 7
+    },
+    {
+      "name": "深拷贝",
+      "description": "循环引用处理、Date/RegExp/Map/Set、structuredClone",
+      "know_well": 8
+    },
+    { "name": "设计模式", "description": "观察者/策略/工厂/单例/装饰器/发布订阅", "know_well": 8 },
+    {
+      "name": "Async Iterator",
+      "description": "异步迭代协议、for-await-of、流式数据处理",
+      "know_well": 6
+    },
+    {
+      "name": "ES2025/2026 新特性",
+      "description": "Temporal、Decorators、View Transitions、Scroll-driven Animations",
+      "know_well": 5
+    },
+    { "name": "正则表达式", "description": "高级语法、回溯、命名捕获组、性能优化", "know_well": 7 },
+    {
+      "name": "防抖与节流",
+      "description": "debounce/throttle 手写实现、leading/trailing 选项、应用场景",
+      "know_well": 8
+    },
+    {
+      "name": "call / apply / bind",
+      "description": "this 显式绑定、手写实现、bind 柯里化、箭头函数例外",
+      "know_well": 8
+    },
+    {
+      "name": "new 操作符",
+      "description": "手写 new、原型链接、构造函数返回值规则",
+      "know_well": 8
+    },
+    {
+      "name": "类型判断",
+      "description": "typeof/instanceof/Object.prototype.toString、Array.isArray",
+      "know_well": 8
+    },
+    {
+      "name": "事件委托",
+      "description": "事件冒泡原理、target vs currentTarget、动态元素绑定",
+      "know_well": 8
+    },
+    {
+      "name": "宏任务微任务输出题",
+      "description": "setTimeout/Promise/MutationObserver 执行顺序预测",
+      "know_well": 9
+    }
+  ],
+
+  "vue": [
+    {
+      "name": "响应式系统底层",
+      "description": "Proxy/Reflect 依赖收集、effect/track/trigger、调度器批量更新",
+      "know_well": 9
+    },
+    {
+      "name": "组合式 API",
+      "description": "setup()、composable 设计模式、逻辑复用与封装",
+      "know_well": 10
+    },
+    {
+      "name": "组件通信全景",
+      "description": "props/emit/provide-inject/v-model/attrs/useAttrs",
+      "know_well": 10
+    },
+    {
+      "name": "生命周期",
+      "description": "完整生命周期钩子、组合式 API 钩子、与 React 对比",
+      "know_well": 9
+    },
+    {
+      "name": "模板编译原理",
+      "description": "AST 生成、优化、codegen、静态提升/补丁标记",
+      "know_well": 7
+    },
+    {
+      "name": "虚拟 DOM Diff",
+      "description": "同层比较、双端 Diff 算法、key 的作用与最佳实践",
+      "know_well": 8
+    },
+    {
+      "name": "Vapor Mode",
+      "description": "无虚拟 DOM 编译模式、信号驱动、性能收益",
+      "know_well": 5
+    },
+    {
+      "name": "Signal 响应式原语",
+      "description": "细粒度响应式、effect/computed、跨框架 Signal 对比",
+      "know_well": 6
+    },
+    {
+      "name": "Pinia",
+      "description": "Plugin 系统、持久化方案、SSR 集成、与 Vuex 对比",
+      "know_well": 9
+    },
+    {
+      "name": "Vue Router",
+      "description": "路由配置、导航守卫、路由懒加载、动态路由、History 模式",
+      "know_well": 9
+    },
+    {
+      "name": "组件库架构",
+      "description": "Monorepo 组织、headless UI、design token、主题引擎、文档站",
+      "know_well": 7
+    },
+    {
+      "name": "SSR / SSG",
+      "description": "Nuxt 集成、水合 Hydration、流式 SSR、SSG 生成",
+      "know_well": 6
+    },
+    {
+      "name": "性能优化",
+      "description": "大列表虚拟滚动、懒加载、keep-alive、编译优化",
+      "know_well": 8
+    },
+    { "name": "测试", "description": "Vitest、Vue Test Utils、组件测试、快照测试", "know_well": 7 },
+    {
+      "name": "插件机制",
+      "description": "install 机制、provide/inject 全局化、插件开发",
+      "know_well": 8
+    },
+    {
+      "name": "标准化装配架构",
+      "description": "LV1-LV5 架构演进、从单文件到装配器、分层规范",
+      "know_well": 8
+    },
+    {
+      "name": "渲染 × 调度 × 数据视图同步",
+      "description": "现代前端底层万用公式三柱合一",
+      "know_well": 7
+    },
+    {
+      "name": "v-model 实现原理",
+      "description": "语法糖展开、modelValue/update:xxx、自定义 v-model 修饰符",
+      "know_well": 8
+    },
+    {
+      "name": "nextTick 原理",
+      "description": "微任务队列(Promise/MutationObserver)、DOM 更新时机",
+      "know_well": 8
+    },
+    {
+      "name": "keep-alive 缓存机制",
+      "description": "LRU 缓存策略、include/exclude/max、activated/deactivated 钩子",
+      "know_well": 7
+    },
+    {
+      "name": "Vue 2 vs Vue 3 响应式对比",
+      "description": "Object.defineProperty vs Proxy、数组响应式、性能差异",
+      "know_well": 8
+    },
+    {
+      "name": "自定义指令",
+      "description": "created/beforeMount/mounted/updated/unmounted 生命周期、binding 对象",
+      "know_well": 7
+    },
+    {
+      "name": "Teleport / Suspense",
+      "description": "DOM 传送门、异步组件加载边界、fallback 插槽",
+      "know_well": 6
+    }
+  ],
+
+  "react": [
+    {
+      "name": "Fiber 架构",
+      "description": "Fiber 树结构、时间切片、优先级调度、可中断渲染",
+      "know_well": 6
+    },
+    {
+      "name": "并发渲染",
+      "description": "Concurrent Mode、startTransition、可中断提交",
+      "know_well": 5
+    },
+    { "name": "Suspense", "description": "懒加载边界、并发数据获取、SuspenseList", "know_well": 5 },
+    {
+      "name": "React 19 新特性",
+      "description": "use hook、Actions、useOptimistic、编译器优化",
+      "know_well": 5
+    },
+    {
+      "name": "Hooks 体系",
+      "description": "useState/useEffect/useRef/useMemo/useCallback、自定义 Hook 设计",
+      "know_well": 7
+    },
+    {
+      "name": "状态管理",
+      "description": "Zustand 订阅广播/单一 store、Redux Toolkit、Jotai 原子状态",
+      "know_well": 6
+    },
+    {
+      "name": "协调算法 Reconciliation",
+      "description": "key Map Diff、批量更新策略、fiber 遍历",
+      "know_well": 5
+    },
+    {
+      "name": "性能优化",
+      "description": "memo/useMemo/useCallback、虚拟列表、代码分割、React Compiler",
+      "know_well": 6
+    },
+    {
+      "name": "组件设计模式",
+      "description": "容器/展示、HOC、Render Props、复合组件",
+      "know_well": 7
+    },
+    {
+      "name": "Server Components",
+      "description": "RSC 协议、流式渲染、与 SSR 区别",
+      "know_well": 4
+    },
+    {
+      "name": "Next.js",
+      "description": "App Router、RSC 集成、ISR、中间件、服务端动作",
+      "know_well": 5
+    },
+    {
+      "name": "React Native",
+      "description": "Bridge/JSI 架构、Fabric 渲染器、Yoga 布局、Hermes 引擎",
+      "know_well": 4
+    },
+    {
+      "name": "Fiber × 并发调度公式",
+      "description": "React 底层万用公式：调度优先级 × 可中断渲染 × 数据视图同步",
+      "know_well": 5
+    },
+    {
+      "name": "useEffect 清理与闭包陷阱",
+      "description": "cleanup 函数、依赖数组、过期闭包、stale state",
+      "know_well": 6
+    },
+    {
+      "name": "useRef vs useMemo vs useCallback",
+      "description": "引用持久化 vs 值缓存 vs 函数缓存、适用场景区别",
+      "know_well": 6
+    },
+    {
+      "name": "Error Boundary",
+      "description": "getDerivedStateFromError/componentDidCatch、错误隔离",
+      "know_well": 5
+    },
+    {
+      "name": "React.memo",
+      "description": "浅比较 props、自定义 areEqual、与 useMemo 区别",
+      "know_well": 6
+    },
+    {
+      "name": "类组件 vs 函数组件",
+      "description": "生命周期 vs Hooks、this 绑定、HOC 模式演进",
+      "know_well": 5
+    }
+  ],
+
+  "typescript": [
+    {
+      "name": "高级类型体操",
+      "description": "条件类型、模板字面量类型、递归类型、分布式条件类型",
+      "know_well": 6
+    },
+    {
+      "name": "infer 推断",
+      "description": "条件类型中的类型推断、协变/逆变位置、嵌套 infer",
+      "know_well": 6
+    },
+    {
+      "name": "泛型编程",
+      "description": "泛型约束、泛型默认值、泛型推断、多态 this",
+      "know_well": 7
+    },
+    {
+      "name": "工具类型底层",
+      "description": "Exclude/infer/ReturnType/Awaited/Partial/Pick/Omit 逐行拆解",
+      "know_well": 7
+    },
+    {
+      "name": "映射类型",
+      "description": "键重映射、as 子句、条件映射、深度 Partial/Readonly",
+      "know_well": 6
+    },
+    {
+      "name": "声明文件",
+      "description": ".d.ts 编写、模块声明、全局扩展、@types 生态",
+      "know_well": 6
+    },
+    {
+      "name": "tsconfig 工程化",
+      "description": "严格模式、路径映射、项目引用、增量编译",
+      "know_well": 7
+    },
+    {
+      "name": "TS 5.x 新特性",
+      "description": "satisfies、isolatedDeclarations、using、const 类型参数",
+      "know_well": 5
+    },
+    {
+      "name": "编译器架构",
+      "description": "AST 生成、类型检查流程、控制流分析、诊断信息",
+      "know_well": 3
+    },
+    {
+      "name": "类型系统设计哲学",
+      "description": "HKT 缺失、brand 模式、类型安全设计原则",
+      "know_well": 4
+    },
+    {
+      "name": "类型守卫 Type Guard",
+      "description": "typeof/instanceof/in、自定义 is 谓词、discriminated union",
+      "know_well": 6
+    },
+    {
+      "name": "unknown vs any",
+      "description": "类型安全顶层类型、类型收窄、any 的危害",
+      "know_well": 6
+    },
+    {
+      "name": "interface vs type alias",
+      "description": "声明合并、extends vs &、联合/交叉类型支持",
+      "know_well": 6
+    },
+    {
+      "name": "声明合并",
+      "description": "同名 interface 自动合并、函数重载、模块扩展",
+      "know_well": 5
+    }
+  ],
+
+  "nodejs": [
+    {
+      "name": "libuv 与事件循环",
+      "description": "线程池、I/O 多路复用、六阶段事件循环、与浏览器差异",
+      "know_well": 8
+    },
+    {
+      "name": "Stream / Buffer",
+      "description": "四种流类型、背压控制、管道链、Buffer 编解码",
+      "know_well": 8
+    },
+    {
+      "name": "Cluster 集群",
+      "description": "多进程模型、master/worker 通信、负载均衡、优雅重启",
+      "know_well": 7
+    },
+    {
+      "name": "Worker Threads",
+      "description": "线程间通信、SharedArrayBuffer、Transferable、适用场景",
+      "know_well": 7
+    },
+    {
+      "name": "EventEmitter",
+      "description": "手写实现、通配符事件、错误处理、异步事件",
+      "know_well": 8
+    },
+    {
+      "name": "框架选型",
+      "description": "Express/Koa/Fastify/NestJS/Hono 对比、洋葱模型中间件",
+      "know_well": 8
+    },
+    {
+      "name": "NestJS",
+      "description": "依赖注入容器、模块化架构、元编程、管道/守卫/拦截器",
+      "know_well": 7
+    },
+    {
+      "name": "数据库与 ORM",
+      "description": "MySQL/PostgreSQL/MongoDB/Redis 集成、Prisma/Sequelize/Mongoose",
+      "know_well": 7
+    },
+    {
+      "name": "Docker 部署",
+      "description": "Dockerfile 编写、多阶段构建、docker-compose、PM2 进程管理",
+      "know_well": 7
+    },
+    {
+      "name": "BFF 架构",
+      "description": "Backend For Frontend 模式、API 网关、契约设计",
+      "know_well": 6
+    },
+    {
+      "name": "中间件管道",
+      "description": "中间件模型演进、认证/限流/校验管道、Koa 洋葱模型",
+      "know_well": 8
+    },
+    {
+      "name": "项目分层架构",
+      "description": "分层规范、依赖注入、模块化设计、错误处理体系",
+      "know_well": 8
+    },
+    {
+      "name": "监控与运维",
+      "description": "日志体系、性能监控、错误追踪、灰度发布",
+      "know_well": 6
+    },
+    {
+      "name": "child_process",
+      "description": "spawn/exec/fork 区别、IPC 通信、进程池管理",
+      "know_well": 6
+    },
+    {
+      "name": "fs 文件系统",
+      "description": "异步/同步 API、流式读写、watch 监听、path 模块",
+      "know_well": 7
+    }
+  ],
+
+  "flutter": [
+    {
+      "name": "渲染引擎",
+      "description": "Impeller/Skia、三棵树机制(Element/Render/Object)",
+      "know_well": 4
+    },
+    {
+      "name": "Widget 体系",
+      "description": "Stateless/Stateful、生命周期、布局约束传递",
+      "know_well": 5
+    },
+    {
+      "name": "状态管理",
+      "description": "BLoC/Riverpod/GetX 选型、Clean Architecture 分层",
+      "know_well": 4
+    },
+    {
+      "name": "路由与导航",
+      "description": "Navigator 2.0、go_router、深链接、路由守卫",
+      "know_well": 4
+    },
+    {
+      "name": "平台通道",
+      "description": "Platform Channel、MethodChannel/EventChannel、FFI",
+      "know_well": 3
+    },
+    {
+      "name": "性能优化",
+      "description": "启动优化、内存治理、包体积、DevTools 性能面板",
+      "know_well": 3
+    },
+    {
+      "name": "企业级项目架构",
+      "description": "Feature-first 目录结构、分层架构、DI、灰度发布",
+      "know_well": 3
+    },
+    {
+      "name": "网络层",
+      "description": "Retrofit 声明式 HTTP、Dio 拦截器、缓存策略",
+      "know_well": 4
+    }
+  ],
+
+  "dart": [
+    {
+      "name": "异步编程",
+      "description": "Future/Stream/async-await、事件循环与微任务",
+      "know_well": 5
+    },
+    {
+      "name": "空安全",
+      "description": "Sound null safety、late 关键字、可空类型、流式 API",
+      "know_well": 5
+    },
+    { "name": "Mixin", "description": "Mixin 声明与约束、with 关键字、线性化顺序", "know_well": 4 },
+    { "name": "Extension", "description": "扩展方法、扩展属性、通用扩展", "know_well": 4 },
+    {
+      "name": "类型系统",
+      "description": "Sound type system、泛型、协变/逆变、模式匹配",
+      "know_well": 4
+    },
+    {
+      "name": "Isolate",
+      "description": " isolate 通信、SendPort/ReceivePort、compute()",
+      "know_well": 3
+    }
+  ],
+
+  "browser_network": [
+    {
+      "name": "浏览器渲染管线",
+      "description": "样式计算→布局→分层→绘制→合成、合成层优化",
+      "know_well": 7
+    },
+    {
+      "name": "HTTP 缓存",
+      "description": "强缓存/协商缓存、Cache-Control/ETag、策略设计",
+      "know_well": 8
+    },
+    {
+      "name": "HTTP/3 & QUIC",
+      "description": "HTTP/3 协议、WebTransport、QUIC 影响",
+      "know_well": 4
+    },
+    {
+      "name": "WebAssembly",
+      "description": "WASM 在前端应用：图像处理、编解码、游戏引擎",
+      "know_well": 4
+    },
+    { "name": "安全模型", "description": "CSP、COOP/COEP、SRI、沙箱机制、CORS", "know_well": 7 },
+    {
+      "name": "存储体系",
+      "description": "localStorage/Cookie/IndexedDB/Cache API/Service Worker",
+      "know_well": 8
+    },
+    {
+      "name": "网络优化",
+      "description": "preload/prefetch、懒加载、CDN、连接复用",
+      "know_well": 7
+    },
+    {
+      "name": "Chrome DevTools",
+      "description": "Elements/Console/Sources/Network/Performance/Memory 面板",
+      "know_well": 8
+    },
+    {
+      "name": "TCP 三次握手/四次挥手",
+      "description": "SYN/ACK 流程、TIME_WAIT、CLOSE_WAIT、连接状态机",
+      "know_well": 7
+    },
+    {
+      "name": "DNS 解析过程",
+      "description": "递归/迭代查询、缓存链路、DNS 预获取、HTTPS DNS",
+      "know_well": 7
+    },
+    {
+      "name": "XSS / CSRF 攻防",
+      "description": "反射/存储/DOM XSS、HttpOnly/SameSite、Token 校验",
+      "know_well": 7
+    },
+    {
+      "name": "URL 到页面渲染全流程",
+      "description": "DNS→TCP→TLS→HTTP→解析→样式→布局→绘制→合成→交互",
+      "know_well": 8
+    }
+  ],
+
+  "build_engineering": [
+    {
+      "name": "Vite 原理",
+      "description": "ESM 原生开发服务器、依赖预构建、HMR、Rollup 集成",
+      "know_well": 8
+    },
+    {
+      "name": "Vite 插件开发",
+      "description": "Rollup 兼容、虚拟模块、自动导入插件、自定义钩子",
+      "know_well": 7
+    },
+    {
+      "name": "构建工具对比",
+      "description": "Vite vs Turbopack vs Rspack vs Webpack 架构差异",
+      "know_well": 6
+    },
+    {
+      "name": "Rolldown & Oxc",
+      "description": "Rust 重塑前端工具链、Rolldown 统一打包器、Oxc 编译器",
+      "know_well": 5
+    },
+    {
+      "name": "Tree Shaking",
+      "description": "sideEffects、pure 标记、DCE、ESM 静态分析",
+      "know_well": 8
+    },
+    {
+      "name": "代码分割",
+      "description": "动态 import、splitChunks 策略、路由级分割",
+      "know_well": 8
+    },
+    {
+      "name": "Monorepo",
+      "description": "pnpm workspace、Turborepo 缓存、Nx 计算图、增量构建",
+      "know_well": 7
+    },
+    { "name": "微前端", "description": "Module Federation V2、qiankun、WASM 隔离", "know_well": 5 },
+    {
+      "name": "CI/CD 发布",
+      "description": "Feature Flag、金丝雀发布、蓝绿部署、GitHub Actions",
+      "know_well": 6
+    },
+    {
+      "name": "测试金字塔",
+      "description": "单元/集成/E2E/视觉回归、Vitest/Playwright",
+      "know_well": 7
+    },
+    {
+      "name": "性能预算",
+      "description": "Core Web Vitals(LCP/INP/CLS)、优化策略体系",
+      "know_well": 7
+    },
+    {
+      "name": "Source Map",
+      "description": "映射原理、devtool 配置选项、生产环境安全",
+      "know_well": 6
+    }
+  ],
+
+  "architecture_design": [
+    {
+      "name": "前端架构模式",
+      "description": "Clean Architecture、Hexagonal、DDD 前端落地",
+      "know_well": 6
+    },
+    { "name": "状态架构", "description": "有限状态机、事件溯源、CQRS 在前端应用", "know_well": 5 },
+    {
+      "name": "API 设计模式",
+      "description": "RESTful/GraphQL/tRPC/gRPC-Web 对比选型",
+      "know_well": 6
+    },
+    {
+      "name": "设计系统",
+      "description": "headless UI、design token 体系、主题引擎、多品牌",
+      "know_well": 6
+    },
+    {
+      "name": "数据·算法·显示分离",
+      "description": "前端编程终极思想：接口原始数据→算法处理→界面显示",
+      "know_well": 8
+    },
+    {
+      "name": "跨框架研发思维",
+      "description": "Vue·React·Flutter 三层分离、不必要渲染、底层万用公式",
+      "know_well": 7
+    },
+    {
+      "name": "Signals vs Virtual DOM",
+      "description": "细粒度响应式 vs 虚拟 DOM 技术路线之争",
+      "know_well": 6
+    },
+    {
+      "name": "SSR/SSG/ISR 对比",
+      "description": "Next/Nuxt/Astro/SvelteKit 全栈方案差异",
+      "know_well": 6
+    }
+  ],
+
+  "database": [
+    { "name": "MySQL", "description": "索引优化、事务处理、慢查询分析、主从复制", "know_well": 6 },
+    { "name": "PostgreSQL", "description": "JSONB、窗口函数、CTE、性能调优", "know_well": 5 },
+    {
+      "name": "MongoDB",
+      "description": "文档模型、聚合框架、索引策略、Change Stream",
+      "know_well": 6
+    },
+    {
+      "name": "Redis",
+      "description": "五大数据结构、持久化、集群、发布订阅、Lua 脚本",
+      "know_well": 6
+    },
+    {
+      "name": "向量数据库",
+      "description": "Chroma/Milvus、语义搜索、RAG 集成、混合搜索",
+      "know_well": 3
+    },
+    {
+      "name": "ORM 对比",
+      "description": "Prisma/Sequelize/Mongoose 设计哲学与适用场景",
+      "know_well": 7
+    }
+  ],
+
+  "devops": [
+    {
+      "name": "Docker",
+      "description": "Dockerfile、多阶段构建、docker-compose、容器编排",
+      "know_well": 7
+    },
+    {
+      "name": "Nginx",
+      "description": "反向代理、负载均衡、SSL、try_files、SPA 部署",
+      "know_well": 7
+    },
+    {
+      "name": "Git",
+      "description": "分支策略(Git Flow/Trunk)、rebase、cherry-pick、协作流程",
+      "know_well": 8
+    },
+    { "name": "Shell 脚本", "description": "自动化任务、管道、文本处理、CI 脚本", "know_well": 7 },
+    {
+      "name": "Jenkins",
+      "description": "CI/CD 流水线、Pipeline as Code、插件生态",
+      "know_well": 5
+    },
+    { "name": "Linux", "description": "进程管理、文件权限、系统监控、常用命令", "know_well": 6 }
+  ],
+
+  "ai_new_tech": [
+    {
+      "name": "AI 辅助开发",
+      "description": "Copilot 集成、Prompt 工程、AI 代码审查",
+      "know_well": 6
+    },
+    {
+      "name": "LLM 前端集成",
+      "description": "流式输出、Tokenizer、本地推理、上下文管理",
+      "know_well": 4
+    },
+    {
+      "name": "MCP 协议",
+      "description": "MCP 协议、Tool Use 前端实践、Agent 集成",
+      "know_well": 4
+    },
+    {
+      "name": "Edge Computing",
+      "description": "Edge SSR、Deno Deploy、Cloudflare Workers",
+      "know_well": 3
+    }
+  ],
+
+  "system_design": [
+    {
+      "name": "实时协作系统",
+      "description": "CRDT/OT 算法、WebSocket 架构、冲突解决",
+      "know_well": 3
+    },
+    {
+      "name": "低代码平台",
+      "description": "DSL 设计、渲染引擎、扩展机制、物料体系",
+      "know_well": 4
+    },
+    {
+      "name": "前端可观测性",
+      "description": "埋点体系、性能监控、错误追踪、用户行为分析",
+      "know_well": 5
+    },
+    {
+      "name": "客户端数据架构",
+      "description": "离线优先、IndexedDB/SQLite WASM、数据同步策略",
+      "know_well": 5
+    }
+  ],
+
+  "data_structure": [
+    { "name": "线性结构", "description": "数组、链表、栈、队列、双端队列", "know_well": 7 },
+    { "name": "树形结构", "description": "二叉树、BST、AVL/红黑树、堆、Trie", "know_well": 6 },
+    { "name": "图结构", "description": "BFS/DFS、最短路径、拓扑排序", "know_well": 5 },
+    { "name": "哈希与集合", "description": "哈希冲突解决、布隆过滤器、一致性哈希", "know_well": 7 },
+    { "name": "高级结构", "description": "并查集、跳表、线段树、LRU Cache", "know_well": 4 }
+  ],
+
+  "css": [
+    {
+      "name": "Flexbox / Grid 布局",
+      "description": "弹性布局、网格布局、复杂排版方案",
+      "know_well": 9
+    },
+    {
+      "name": "CSS 架构",
+      "description": "BEM 命名、CSS Modules、Tailwind 原子化、Scoped CSS",
+      "know_well": 8
+    },
+    {
+      "name": "CSS 预处理器",
+      "description": "Sass 变量/嵌套/mixin、Less、PostCSS 插件",
+      "know_well": 8
+    },
+    { "name": "响应式设计", "description": "媒体查询、移动优先、rem/vw、容器查询", "know_well": 8 },
+    {
+      "name": "CSS 动画",
+      "description": "transition、animation、transform、性能优化(GPU 加速)",
+      "know_well": 7
+    },
+    {
+      "name": "CSS 变量与主题",
+      "description": "自定义属性、暗色模式切换、主题变量体系",
+      "know_well": 8
+    },
+    {
+      "name": "BFC 块级格式化上下文",
+      "description": "触发条件、margin 折叠、清除浮动、独立渲染区域",
+      "know_well": 7
+    },
+    {
+      "name": "层叠上下文",
+      "description": "z-index 生效条件、stacking context 创建规则、层叠顺序",
+      "know_well": 7
+    }
+  ],
+
+  "cross_platform": [
+    {
+      "name": "跨端技术选型",
+      "description": "RN vs Flutter vs Tauri vs Electron vs Web 矩阵对比",
+      "know_well": 5
+    },
+    {
+      "name": "Electron",
+      "description": "多进程架构、IPC 通信、上下文隔离、安全模型",
+      "know_well": 5
+    },
+    {
+      "name": "多端一致性",
+      "description": "共享代码策略、平台差异抽象层、Design Token 跨平台",
+      "know_well": 4
+    }
+  ],
+
+  "algorithms": [
+    {
+      "name": "双指针",
+      "description": "对向指针、快慢指针、滑动窗口基础",
+      "know_well": 6
+    },
+    {
+      "name": "滑动窗口",
+      "description": "固定/可变窗口、最小覆盖子串、频率统计",
+      "know_well": 5
+    },
+    {
+      "name": "二分查找",
+      "description": "标准二分、边界查找、旋转数组、答案二分",
+      "know_well": 6
+    },
+    {
+      "name": "动态规划",
+      "description": "状态定义、转移方程、背包问题、路径 DP",
+      "know_well": 5
+    },
+    {
+      "name": "回溯算法",
+      "description": "排列/组合/子集、剪枝优化、N 皇后",
+      "know_well": 4
+    },
+    {
+      "name": "排序算法",
+      "description": "快排/归并/堆排、稳定性、时间复杂度对比",
+      "know_well": 6
+    },
+    {
+      "name": "链表操作",
+      "description": "反转/合并/环检测、虚拟头节点、快慢指针",
+      "know_well": 6
+    },
+    {
+      "name": "二叉树遍历",
+      "description": "前中后序、层序、Morris 遍历、序列化",
+      "know_well": 5
+    }
+  ]
+}

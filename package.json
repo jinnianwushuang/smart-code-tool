@@ -20,6 +20,7 @@
     "archive:instructions": "zx scripts/archive-instructions.mjs",
     "sync:arch-starter": "zx scripts/sync-arch-starter.mjs",
     "gen:doc-list": "node scripts/gen-doc-list.mjs",
+    "gen:wallpaper": "node scripts/gen-knowledge-wallpaper.mjs",
     "gen:frontmatter-tags": "node scripts/add-frontmatter-tags.mjs",
     "clean:ports": "kill -9 $(lsof -ti :23330 -ti :23000 -ti :23350) 2>/dev/null; echo '✅ Ports 23330 & 23000 & 23350 cleared'"
   },
@@ -90,6 +91,7 @@
     "@types/lodash-es": "^4.17.12",
     "@vitejs/plugin-react": "^6.1.1",
     "@vitejs/plugin-vue": "^6.0.8",
+    "canvas": "^3.2.3",
     "gray-matter": "^4.0.3",
     "pdf-lib": "^1.17.1",
     "prettier": "3.9.6",
