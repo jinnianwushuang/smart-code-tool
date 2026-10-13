@@ -126,10 +126,26 @@ let skippedCount = 0
 const errors = []
 
 for (const doc of docs) {
-  const filePath = join(ROOT, 'docs', doc.url + '.md')
+  // 解析 URL 到实际文件路径，支持三种形式：
+  // 1. 普通页面：/foo/bar → docs/foo/bar.md
+  // 2. 目录索引（带尾部 /）：/foo/ → docs/foo/index.md
+  // 3. 目录索引（无尾部 /）：/foo → docs/foo/index.md（兜底）
+  let urlPath = doc.url
+  if (urlPath === '/') {
+    urlPath = '/index'
+  } else if (urlPath.endsWith('/')) {
+    urlPath = urlPath + 'index'
+  }
+  let filePath = join(ROOT, 'docs', urlPath + '.md')
   if (!existsSync(filePath)) {
-    errors.push(`文件不存在: ${doc.url}`)
-    continue
+    // 兜底：尝试作为目录索引页
+    const indexPath = join(ROOT, 'docs', urlPath, 'index.md')
+    if (existsSync(indexPath)) {
+      filePath = indexPath
+    } else {
+      errors.push(`文件不存在: ${doc.url}`)
+      continue
+    }
   }
 
   const content = readFileSync(filePath, 'utf-8')

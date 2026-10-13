@@ -30,10 +30,5 @@ export const homeSidebar = {
       link: '/handbook',
       id: 'WI6RU8BgzE6QpTHOxtDOrTOD',
     },
-    {
-      text: '指令集',
-      link: '/instructions/',
-      id: 'm7q2z0Vjs9VssaNpIFKVHPkH',
-    },
   ],
 }

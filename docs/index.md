@@ -44,6 +44,8 @@ features:
     title: AI 知识库
     details: AI 行业概念、Ollama 本地部署、Agent 实践、本地智能体最佳实践。
     link: /ai/
+tags: []
+
 ---
 
 <p align="center" style="padding: 2rem 1.5rem; font-size: 1.1rem; color: var(--vp-c-text-2); max-width: 600px; margin: 0 auto;">
