@@ -83,9 +83,9 @@
 
   ```
   smart-dev-kit/
-  ├── AI_ENTRY.md                ← AI 助手阅读理解入口
+  ├── AGENTS.md                ← AI 助手阅读理解入口
   ├── README.md                  ← 项目简介 + 快速开始
-  ├── smart-dev-kit.config.json  ← 全局配置
+  ├── smart-dev-kit.json  ← 全局配置
   ├── smart-dev-kit.code-workspace ← VSCode 工作区配置
   ├── package.json               ← 根目录脚本命令（zx）
   ├── .gitignore
@@ -98,7 +98,7 @@
   └── scripts/                   ← ZX 脚本
   ```
 
-- [x] **0.3** 创建根目录配置文件 `smart-dev-kit.config.json`
+- [x] **0.3** 创建根目录配置文件 `smart-dev-kit.json`
 
   ```json
   {
@@ -153,7 +153,7 @@
 
 - [x] **0.7** 创建 `README.md`
 
-- [x] **0.8** 创建 `AI_ENTRY.md` — AI 助手阅读理解入口（原计划无此项，实际新增）
+- [x] **0.8** 创建 `AGENTS.md` — AI 助手阅读理解入口（原计划无此项，实际新增）
 
 ---
 
@@ -219,7 +219,7 @@ api-archive/
 ```
 api-archive/server/
 ├── index.js              ← Fastify 服务入口
-├── config.js             ← 配置加载（读取 smart-dev-kit.config.json）
+├── config.js             ← 配置加载（读取 smart-dev-kit.json）
 ├── registry.js           ← 路由注册中心
 ├── buffer.js             ← 内存缓冲区（批量上报数据暂存）
 ├── writer.js             ← 异步节流落盘
@@ -240,7 +240,7 @@ api-archive/server/
 - [x] **2.1** 初始化 Fastify 5 项目（pnpm 管理依赖）
 
 - [x] **2.2** 实现配置加载 `server/config.js`
-  - 读取根目录 `smart-dev-kit.config.json`
+  - 读取根目录 `smart-dev-kit.json`
   - 提供默认值（端口 38800、上限 4、防抖 5s 等）
 
 - [x] **2.3** 实现核心入口 `server/index.js`
@@ -629,7 +629,7 @@ api-web/src/
 AI 直接搜索主项目源码（不依赖预生成的 mapping 文件），工作流：
 
 ```
-1. 读商业项目根目录 smart-kit.json → 获取主项目路径和 apiDirs
+1. 读商业项目根目录 use-smart-dev-kit.json → 获取主项目路径和 apiDirs
 2. 读 schema → 找出 description 为空的字段
 3. grep 接口路径 → 定位 API 定义文件
 4. 追踪 TypeScript 类型 / Prisma schema → 获取字段含义
@@ -642,11 +642,11 @@ AI 直接搜索主项目源码（不依赖预生成的 mapping 文件），工�
 
 - [x] **10.2** 创建 `dispatcher/schema-enrichment.md` — Schema 丰富指令编排（调度层）
 
-- [x] **10.3** 定义商业项目配置文件 `smart-kit.json` 规范
+- [x] **10.3** 定义商业项目配置文件 `use-smart-dev-kit.json` 规范
   - 商业项目根目录放置，AI 执行任务前必须先读取
   - 字段：`projectId`（必填）、`kitPath`（必填）、`framework`（可选）、`apiDirs`（可选）
 
-> 与原计划差异：放弃了通过 mapping 文件定位的方式，改为 AI 直接搜索主项目源码（grep + 类型追踪），更灵活准确。新增 `smart-kit.json` 配置文件规范作为商业项目接入的桥梁
+> 与原计划差异：放弃了通过 mapping 文件定位的方式，改为 AI 直接搜索主项目源码（grep + 类型追踪），更灵活准确。新增 `use-smart-dev-kit.json` 配置文件规范作为商业项目接入的桥梁
 
 ---
 
@@ -674,7 +674,7 @@ AI 直接搜索主项目源码（不依赖预生成的 mapping 文件），工�
 | 架构层集成方式    | **直接拷贝**（独立托管，含 vue-arch-starter 完整 code-template）                    |
 | Git 仓库          | 本地 `git init`，用户自行上传 GitHub 私人仓库                                       |
 | Docker            | **未实施**（原计划生成 Dockerfile，实际决定暂不需要）                               |
-| 配置文件位置      | 项目根目录 `smart-dev-kit.config.json`                                              |
+| 配置文件位置      | 项目根目录 `smart-dev-kit.json`                                                     |
 | 存档上限          | 单接口最多 **4 条**（原计划 10 条，实际调整为 4）                                   |
 | 批量上报大小      | SDK batchSize **5**（原计划 10），服务端 maxBatchSize **50**                        |
 | 安全限制          | 请求体 maxBodySize **1MB**（原计划无，实际新增）                                    |
@@ -692,5 +692,5 @@ AI 直接搜索主项目源码（不依赖预生成的 mapping 文件），工�
 | api-web 路由      | **项目作用域嵌套路由** `/project/:projectId/...`（原计划扁平路由）                  |
 | api-web 页面模式  | **Tab 面板**（接口详情内含 Archives/Diff/Fields/Preview/Raw 五个 Tab）              |
 | AI 丰富 Schema    | **直接搜索主项目源码**，不依赖预生成 mapping 文件（原计划通过 mapping 定位）        |
-| 商业项目接入      | 根目录放置 `smart-kit.json` 配置文件，AI 执行任务前必须先读取                       |
-| AI 入口文档       | 根目录 `AI_ENTRY.md`（原计划无，实际新增为 AI 助手统一入口）                        |
+| 商业项目接入      | 根目录放置 `use-smart-dev-kit.json` 配置文件，AI 执行任务前必须先读取               |
+| AI 入口文档       | 根目录 `AGENTS.md`（原计划无，实际新增为 AI 助手统一入口）                          |

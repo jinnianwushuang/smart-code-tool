@@ -145,7 +145,7 @@ ai-instructions/
 
 ### 4.1 配置
 
-`smart-dev-kit.json` 新增 `businessContext` 字段：
+`use-smart-dev-kit.json` 新增 `businessContext` 字段：
 
 ```json
 {
@@ -160,7 +160,7 @@ ai-instructions/
 ### 4.2 dispatcher 加载编排
 
 ```
-1. smart-dev-kit.json             → 获取 businessContext 路径
+1. use-smart-dev-kit.json             → 获取 businessContext 路径
 2. <businessContext>/entry.md     → 加载业务层入口（无则自动生成）
 3. 按 entry.md 导航加载          → modules/ + ai-instructions/
 ```
@@ -168,7 +168,7 @@ ai-instructions/
 加载顺序（完整）：
 
 ```
-1. smart-dev-kit.json             → 获取 projectId、kitPath、businessContext
+1. use-smart-dev-kit.json             → 获取 projectId、kitPath、businessContext
 2. dispatcher/entry.md            → 了解调度编排
 3. *-instructions/entry.md        → 架构层（框架推断后加载）
 4. <businessContext>/entry.md     → 业务层（如有配置）
@@ -179,7 +179,7 @@ ai-instructions/
 
 | 职责     | 说明                                                    |
 | -------- | ------------------------------------------------------- |
-| 配置定义 | `smart-dev-kit.json` 中 `businessContext` 字段          |
+| 配置定义 | `use-smart-dev-kit.json` 中 `businessContext` 字段      |
 | 加载编排 | dispatcher 读取路径并加载 entry.md                      |
 | 设计指南 | `instruction-design/business-layer-design.md`（本文档） |
 
@@ -239,4 +239,4 @@ AI 协作中发现的业务规则遗漏
 | 业务规则位置 | 模块目录内部          | 独立 business-rules/ 目录       | 紧贴模块，不散落                      |
 | AI 指令位置  | 独立 ai-instructions/ | 混入模块文档                    | 指令有独立流程和产出物，关注点不同    |
 | 配置格式     | 字符串（文档站路径）  | 对象（多子路径）                | 只需知道根目录，AI 通过 entry.md 导航 |
-| 入口文件     | entry.md              | AI_ENTRY.md                     | 与 KIT 所有模块的入口约定一致         |
+| 入口文件     | entry.md              | AGENTS.md                       | 与 KIT 所有模块的入口约定一致         |
