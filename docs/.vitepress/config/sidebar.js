@@ -8,11 +8,14 @@ import {
   handbookSidebar,
   homeSidebar,
   interviewSidebar,
+  aigcSidebar,
 } from './sidebar/index.js'
 
 // 导出侧边栏配置函数,根据路径返回对应的侧边栏
 export const sidebar = {
   '/ai/': [aiSidebar],
+  // AIGC 经验分享体系
+  '/aigc/': [aigcSidebar],
   // 心理认知相关路径
   '/psychology/': [psychologySidebar],
 

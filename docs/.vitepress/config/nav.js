@@ -21,6 +21,10 @@ export const nav = [
     link: '/interview/',
   },
   {
+    text: 'AIGC',
+    link: '/aigc/',
+  },
+  {
     text: '工具库',
     link: '/app-iframe/code-tool-app/',
   },

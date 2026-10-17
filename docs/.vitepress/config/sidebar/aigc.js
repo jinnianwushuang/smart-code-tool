@@ -1,0 +1,125 @@
+// AIGC 经验分享体系 - 侧边栏配置
+export const aigcSidebar = {
+  collapsed: false,
+  items: [
+    {
+      text: '快速开始',
+      items: [
+        { id: 'K_I9W0i2I6r7G_XgvZuVlBPU', text: '模块总览', link: '/aigc/' },
+        { id: 'IfCovWne3SFvpyoKjV_v6arM', text: '学习计划', link: '/aigc/PLAN' },
+      ],
+    },
+    {
+      text: '01 认知篇',
+      collapsed: true,
+      items: [
+        { id: 'm6aTC0yZuUCaBy_-fYsr-xev', text: '本章导读', link: '/aigc/01-认知篇/' },
+        { id: '0OqlJ0hobt5yphadq0vU4Od0', text: '什么是AIGC', link: '/aigc/01-认知篇/01-什么是AIGC' },
+        { id: 'vlf3p8OJEKg9XYKdmkV8iW2c', text: '2026行业格局', link: '/aigc/01-认知篇/02-2026行业格局' },
+        { id: 'WJrHQymcEC2NkHwhVCcgVOIn', text: '程序员转型优势', link: '/aigc/01-认知篇/03-程序员转型优势' },
+        { id: 'MuGuqqa0kRXTbx0hjWi1l1OZ', text: '自由职业生存指南', link: '/aigc/01-认知篇/04-自由职业生存指南' },
+      ],
+    },
+    {
+      text: '02 AI对话与写作',
+      collapsed: true,
+      items: [
+        { id: 'd8nYXt-neNI4S05kDmhHeEDO', text: '本章导读', link: '/aigc/02-AI对话与写作/' },
+        { id: 'buFWHAqmWitKp6-Itghalxl2', text: '主流AI对话工具横评', link: '/aigc/02-AI对话与写作/01-主流AI对话工具' },
+        { id: 'axAOArrGMpW01TvEAHNrvmEA', text: 'Prompt工程', link: '/aigc/02-AI对话与写作/02-Prompt工程' },
+        { id: 'R4pr6g8WOL8c5BN0W81YkL3e', text: '自媒体文案批量生产', link: '/aigc/02-AI对话与写作/03-自媒体文案' },
+        { id: 'TQXGkMV1BJxdwHWP3g_b8pZ8', text: '商业文案接单', link: '/aigc/02-AI对话与写作/04-商业文案接单' },
+        { id: 't9n8HHtknB0Z9Uo3_BTzx1kt', text: 'AI写作避坑指南', link: '/aigc/02-AI对话与写作/05-AI写作避坑' },
+      ],
+    },
+    {
+      text: '03 AI绘画与设计',
+      collapsed: true,
+      items: [
+        { id: 'v4cOdqLPh_F5_SVKDQ91DM1E', text: '本章导读', link: '/aigc/03-AI绘画与设计/' },
+        { id: 'pM5nXEaRQ2WoRRqrB7A3yj3Q', text: 'AI绘画工具全景', link: '/aigc/03-AI绘画与设计/01-工具全景' },
+        { id: '3z33GryoUyIUfdlPI-HNjpMl', text: 'Midjourney实战', link: '/aigc/03-AI绘画与设计/02-Midjourney实战' },
+        { id: 'lQ1jipipbIVWjrR5OiKYpBo3', text: 'ComfyUI工作流', link: '/aigc/03-AI绘画与设计/03-ComfyUI工作流' },
+        { id: 'nP5EvzrtXBHPr6S7YdvJyn3D', text: 'ControlNet精准控制', link: '/aigc/03-AI绘画与设计/04-ControlNet精准控制' },
+        { id: 'Rqgj3inCN9513-o-RWgWlWm6', text: '电商美工实战', link: '/aigc/03-AI绘画与设计/05-电商美工实战' },
+        { id: 'VXJ0ScZmyPDnaTSJBgIooDho', text: 'AI写真与头像', link: '/aigc/03-AI绘画与设计/06-AI写真与头像' },
+        { id: 'qBA6gAD6sfMi8pFccCkuBkog', text: '商业接单全流程', link: '/aigc/03-AI绘画与设计/07-商业接单全流程' },
+      ],
+    },
+    {
+      text: '04 AI视频制作',
+      collapsed: true,
+      items: [
+        { id: 'AH7RVgaafaE-hITakHiWonje', text: '本章导读', link: '/aigc/04-AI视频制作/' },
+        { id: 'vVQC-BLXhypZhDGkOXr-SDor', text: 'AI视频工具全景', link: '/aigc/04-AI视频制作/01-工具全景' },
+        { id: 'xZHKnMjJ2_Ge6AobFDyBcyml', text: '短视频制作', link: '/aigc/04-AI视频制作/02-短视频制作' },
+        { id: 'dpbaWLpW2f6EJNkH-r6NZgWA', text: 'AI数字人口播', link: '/aigc/04-AI视频制作/03-AI数字人口播' },
+        { id: 'PE16WXDKSKY0YpcSIJ9Mcd1C', text: 'AI短剧制作', link: '/aigc/04-AI视频制作/04-AI短剧制作' },
+        { id: 'NQF4FVixdRc8ROZNKOCy682u', text: '电商视频广告', link: '/aigc/04-AI视频制作/05-电商视频广告' },
+        { id: 'niL0KT3PLnfkb16cad4W2xgV', text: '视频变现路径', link: '/aigc/04-AI视频制作/06-视频变现路径' },
+      ],
+    },
+    {
+      text: '05 AI音乐与音频',
+      collapsed: true,
+      items: [
+        { id: 'pj7DOD1IbOkZBLopws9eeAnA', text: '本章导读', link: '/aigc/05-AI音乐与音频/' },
+        { id: '0DpLbJT7HnhE8hWTQXQdkoPM', text: 'AI音乐工具全景', link: '/aigc/05-AI音乐与音频/01-工具全景' },
+        { id: '_uapk-clJbSI2W3IiajksDOl', text: 'AI音乐创作', link: '/aigc/05-AI音乐与音频/02-AI音乐创作' },
+        { id: 'Qs77GildoKBNmHF4Kgmwjpqa', text: 'AI配音与有声书', link: '/aigc/05-AI音乐与音频/03-AI配音与有声书' },
+        { id: '3GbO6_llERfhfPGFVFiNRg7J', text: 'BGM与音效制作', link: '/aigc/05-AI音乐与音频/04-BGM与音效' },
+        { id: 'elxJHVzmBfVC_hQEUk-TmhzE', text: '音乐变现路径', link: '/aigc/05-AI音乐与音频/05-音乐变现' },
+      ],
+    },
+    {
+      text: '06 自媒体运营',
+      collapsed: true,
+      items: [
+        { id: 'AEN-9tUw0BsOOUB2S3zGo65y', text: '本章导读', link: '/aigc/06-自媒体运营/' },
+        { id: 'LiKT1jxrEKtPbm3_sZEpLhsA', text: '平台选择策略', link: '/aigc/06-自媒体运营/01-平台选择策略' },
+        { id: 'Pw0kyBC-6mfqmoe-CfI1KOer', text: '内容定位与人设', link: '/aigc/06-自媒体运营/02-内容定位与人设' },
+        { id: 'DZqfbqJdiH55kBfrg28bHe9I', text: 'AI辅助内容生产', link: '/aigc/06-自媒体运营/03-AI辅助内容生产' },
+        { id: 'FRQVvO-IX86_YkF1Z96gs2e1', text: '涨粉与算法推荐', link: '/aigc/06-自媒体运营/04-涨粉与算法' },
+        { id: '9NfF4ozfxrRba55UwKmKQlM7', text: '变现模型', link: '/aigc/06-自媒体运营/05-变现模型' },
+        { id: 'erJls1IpgWQBZ9DMTm6r0tXE', text: '多平台分发策略', link: '/aigc/06-自媒体运营/06-多平台分发' },
+      ],
+    },
+    {
+      text: '07 接单与变现',
+      collapsed: true,
+      items: [
+        { id: 'Sfc-JyWMZ29ubB60cFkHaT4l', text: '本章导读', link: '/aigc/07-接单与变现/' },
+        { id: 'yt_HYZeHJ5HzFjgMwqeKF_Be', text: '接单平台对比', link: '/aigc/07-接单与变现/01-接单平台对比' },
+        { id: 'bQVFv0XNlXrsoVWuvolmmhzC', text: '从零到第一单', link: '/aigc/07-接单与变现/02-从零到第一单' },
+        { id: 'hoYtj7_w--vp9oO7xbkI-m3O', text: '定价策略', link: '/aigc/07-接单与变现/03-定价策略' },
+        { id: 'keeTLWnuITcNbhLcTYpyJ8NB', text: '客户管理与复购', link: '/aigc/07-接单与变现/04-客户管理与复购' },
+        { id: 'o7HYSCFldWVIRmA9M-77Kxu9', text: '知识付费', link: '/aigc/07-接单与变现/05-知识付费' },
+        { id: 'ApFFCj1F7kJbvwJ8939ULICx', text: '法律与版权', link: '/aigc/07-接单与变现/06-法律与版权' },
+      ],
+    },
+    {
+      text: '08 程序员专属赛道',
+      collapsed: true,
+      items: [
+        { id: 'HOaOucnCuYJ1N22gPOSR0gE9', text: '本章导读', link: '/aigc/08-程序员专属赛道/' },
+        { id: 'decBO_OOnyJX8zh1cE1eiF1y', text: 'AI Agent开发', link: '/aigc/08-程序员专属赛道/01-AI-Agent开发' },
+        { id: '3aRkU2EASzoD-HTpdcqITbst', text: 'AI工作流定制', link: '/aigc/08-程序员专属赛道/02-AI工作流定制' },
+        { id: 'pjWGYrFqp4yfyKwzAzEECfql', text: 'AI建站与小程序', link: '/aigc/08-程序员专属赛道/03-AI建站与小程序' },
+        { id: 'Ku6x4t2I6S3Y71Lq9ryCVY7K', text: 'AI编程接单', link: '/aigc/08-程序员专属赛道/04-AI编程接单' },
+        { id: 'wGl0u0QNwCCgLRKe9mdjm81C', text: '技术流知识付费', link: '/aigc/08-程序员专属赛道/05-技术流知识付费' },
+      ],
+    },
+    {
+      text: '09 工具箱',
+      collapsed: true,
+      items: [
+        { id: 'MxgSTEL2rK1RCvsiObjvoU-K', text: '本章导读', link: '/aigc/09-工具箱/' },
+        { id: 'bH3rvIYfJpn3WXXgw-x8Mb2t', text: '图像工具速查', link: '/aigc/09-工具箱/图像工具速查' },
+        { id: 'YGUxHnCoux-yAxR8tTnsJKSm', text: '视频工具速查', link: '/aigc/09-工具箱/视频工具速查' },
+        { id: 'qnO4To6N3Utk_MYyttuMQmX5', text: '音乐工具速查', link: '/aigc/09-工具箱/音乐工具速查' },
+        { id: 'HzvqvN6FS7O5BhLRHWsoovzg', text: '写作工具速查', link: '/aigc/09-工具箱/写作工具速查' },
+        { id: 'ZnQyIrq83CxJCFdG8Dca9lt9', text: '接单平台速查', link: '/aigc/09-工具箱/接单平台速查' },
+      ],
+    },
+  ],
+}
