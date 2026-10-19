@@ -1231,7 +1231,7 @@ defineOptions({
 })
 ```
 
-> 📖 底层拆解（Hash/History 两种模式、动态路由匹配、懒加载、导航守卫、服务端配置）：[前端路由系统实现拆解](/architecture-document/typical-analysis/frontend-router)
+> 📖 底层拆解（Hash/History 两种模式、动态路由匹配、懒加载、导航守卫、服务端配置）：[前端路由系统实现拆解](/dev-knowledge/js-ts/architecture/typical-analysis/frontend-router/architecture-document/
 
 ---
 

@@ -82,9 +82,8 @@ const TAG_MAP = {
 
 // 顶级分类兜底映射
 const TOP_MAP = {
-  interview: '面试',
+  'dev-knowledge': '研发知识',
   handbook: '手册',
-  'architecture-document': '架构',
   psychology: '心理学',
   ai: 'AI',
   instructions: '指令集',

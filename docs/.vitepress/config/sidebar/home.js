@@ -15,8 +15,8 @@ export const homeSidebar = {
     { id: 'Gr_sTowxSTaHZCtr3gxb1eOE', text: '首页', link: '/' },
     { id: 'lQIIz_RM5ltPjjv6KQSdRxwF', text: 'AI', link: '/ai/' },
     {
-      text: '架构',
-      link: '/architecture-document/',
+      text: '研发知识',
+      link: '/dev-knowledge/',
       id: 'T17fZnChv5AMEgtEUNvg7WfQ',
     },
     {

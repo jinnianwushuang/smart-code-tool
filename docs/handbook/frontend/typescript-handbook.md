@@ -970,7 +970,7 @@ const todo2 = updateTodo(todo1, {
 })
 ```
 
-> 📖 底层实现拆解（`[K in keyof T]?` 修饰符变更）：[Partial / Required 拆解](/architecture-document/typical-analysis/typescript-type-analysis#五-partial-required-映射类型修饰符)
+> 📖 底层实现拆解（`[K in keyof T]?` 修饰符变更）：[Partial / Required 拆解](/dev-knowledge/js-ts/architecture/typical-analysis/typescript-type-analysis/architecture-document/
 
 ### 11.2 `Required<T>`
 
@@ -986,7 +986,7 @@ const props: Required<Props> = {
 }
 ```
 
-> 📖 底层实现拆解（`-?` 移除可选修饰符）：[Partial / Required 拆解](/architecture-document/typical-analysis/typescript-type-analysis#五-partial-required-映射类型修饰符)
+> 📖 底层实现拆解（`-?` 移除可选修饰符）：[Partial / Required 拆解](/dev-knowledge/js-ts/architecture/typical-analysis/typescript-type-analysis/architecture-document/
 
 ### 11.3 `Readonly<T>`
 
@@ -1036,7 +1036,7 @@ const todo: TodoPreview = {
 }
 ```
 
-> 📖 底层实现拆解（`keyof` + 映射遍历 + `Exclude` 组合）：[Pick / Omit 拆解](/architecture-document/typical-analysis/typescript-type-analysis#六-pick-omit-属性筛选)
+> 📖 底层实现拆解（`keyof` + 映射遍历 + `Exclude` 组合）：[Pick / Omit 拆解](/dev-knowledge/js-ts/architecture/typical-analysis/typescript-type-analysis/architecture-document/
 
 ### 11.6 Omit<T, K>
 
@@ -1056,7 +1056,7 @@ const todo: TodoPreview = {
 }
 ```
 
-> 📖 底层实现拆解（内部复用 `Exclude` 剔除属性）：[Pick / Omit 拆解](/architecture-document/typical-analysis/typescript-type-analysis#六-pick-omit-属性筛选)
+> 📖 底层实现拆解（内部复用 `Exclude` 剔除属性）：[Pick / Omit 拆解](/dev-knowledge/js-ts/architecture/typical-analysis/typescript-type-analysis/architecture-document/
 
 ### 11.7 Exclude<T, U>
 
@@ -1066,7 +1066,7 @@ type T1 = Exclude<'a' | 'b' | 'c', 'a' | 'b'> // "c"
 type T2 = Exclude<string | number | (() => void), Function> // string | number
 ```
 
-> 📖 底层实现拆解（分发机制 + never 过滤）：[Exclude 拆解](/architecture-document/typical-analysis/typescript-type-analysis#一-exclude-分布式条件类型实现集合-差集)
+> 📖 底层实现拆解（分发机制 + never 过滤）：[Exclude 拆解](/dev-knowledge/js-ts/architecture/typical-analysis/typescript-type-analysis/architecture-document/
 
 ### 11.8 Extract<T, U>
 
@@ -1105,7 +1105,7 @@ type T3 = ReturnType<<T extends U, U extends number[]>() => T> // number[]
 type T4 = ReturnType<typeof f1> // { a: number; b: string }
 ```
 
-> 📖 底层实现拆解（`infer R` 提取返回值）：[ReturnType 拆解](/architecture-document/typical-analysis/typescript-type-analysis#三-returntype-infer-的经典应用)
+> 📖 底层实现拆解（`infer R` 提取返回值）：[ReturnType 拆解](/dev-knowledge/js-ts/architecture/typical-analysis/typescript-type-analysis/architecture-document/
 
 ### 11.12 `InstanceType<T>`
 
@@ -1321,7 +1321,7 @@ type B = IsString<number> // false
 
 内置工具类型 `Exclude<T, U>` 是条件类型最经典的应用，利用分发机制从联合类型中剔除指定类型。
 
-> 📖 详细拆解（含执行过程表格）：[TypeScript 类型拆解 — Exclude](/architecture-document/typical-analysis/typescript-type-analysis#一-exclude-分布式条件类型实现集合-差集)
+> 📖 详细拆解（含执行过程表格）：[TypeScript 类型拆解 — Exclude](/dev-knowledge/js-ts/architecture/typical-analysis/typescript-type-analysis/architecture-document/
 
 ### 14.2 分布式条件类型
 
@@ -1334,7 +1334,7 @@ type StrArrOrNumArr = ToArray<string | number>
 
 当泛型参数是联合类型时，TypeScript 自动拆开逐个计算再合并，即**分布式条件类型**。用 `[T]` 包裹可阻止分发。
 
-> 📖 详细拆解（含分发机制对比）：[TypeScript 类型拆解 — 分布式条件类型](/architecture-document/typical-analysis/typescript-type-analysis#_1-4-分布式条件类型详解)
+> 📖 详细拆解（含分发机制对比）：[TypeScript 类型拆解 — 分布式条件类型](/dev-knowledge/js-ts/architecture/typical-analysis/typescript-type-analysis/architecture-document/
 
 ### 14.3 infer 关键字
 
@@ -1360,7 +1360,7 @@ type Str = GetReturnType<(x: string) => string> // string
 - `GetReturnType`：提取函数返回值类型
 - 核心规则：只能出现在 `extends` 子句中，同一子句可声明多个 `infer`
 
-> 📖 详细拆解（含 Flatten/GetReturnType 执行过程表格）：[TypeScript 类型拆解 — infer](/architecture-document/typical-analysis/typescript-type-analysis#二-infer-条件类型中的类型推断)
+> 📖 详细拆解（含 Flatten/GetReturnType 执行过程表格）：[TypeScript 类型拆解 — infer](/dev-knowledge/js-ts/architecture/typical-analysis/typescript-type-analysis/architecture-document/
 
 ### 14.4 嵌套条件类型
 

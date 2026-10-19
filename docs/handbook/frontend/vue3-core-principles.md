@@ -249,7 +249,7 @@ function createSetter(shallow = false) {
 }
 ```
 
-> 📖 底层拆解（Proxy + effect + track/trigger、computed 惰性计算、watch 侦听器）：[响应式系统核心原理拆解](/architecture-document/typical-analysis/reactive-system)
+> 📖 底层拆解（Proxy + effect + track/trigger、computed 惰性计算、watch 侦听器）：[响应式系统核心原理拆解](/dev-knowledge/js-ts/architecture/typical-analysis/reactive-system/architecture-document/
 
 ### 2.3 ref 实现原理
 
@@ -1072,7 +1072,7 @@ function getSequence(arr: number[]): number[] {
 }
 ```
 
-> 📖 底层拆解（同层比较、Vue 2 双端 Diff、React key Map Diff、key 的作用）：[虚拟 DOM Diff 算法拆解](/architecture-document/typical-analysis/virtual-dom-diff)
+> 📖 底层拆解（同层比较、Vue 2 双端 Diff、React key Map Diff、key 的作用）：[虚拟 DOM Diff 算法拆解](/dev-knowledge/js-ts/architecture/typical-analysis/virtual-dom-diff/architecture-document/
 
 ---
 

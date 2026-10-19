@@ -756,7 +756,7 @@ const dog = new Dog('Rex', 'Labrador')
 dog.speak() // "Rex barks"
 ```
 
-> 📖 底层拆解（new 操作符、原型链查找、继承方案演进）：[原型链与继承拆解](/architecture-document/typical-analysis/prototype-chain-and-inheritance)
+> 📖 底层拆解（new 操作符、原型链查找、继承方案演进）：[原型链与继承拆解](/dev-knowledge/js-ts/architecture/typical-analysis/prototype-chain-and-inheritance/architecture-document/
 
 ### 9.4 Promise
 
@@ -884,7 +884,7 @@ Promise.race([p1, p2, p3]) // 第一个完成
 Promise.any([p1, p2, p3]) // 第一个成功
 ```
 
-> 📖 底层拆解（状态机、then 链式调用、resolvePromise 递归解析）：[Promise/A+ 手写实现拆解](/architecture-document/typical-analysis/promise-implementation)
+> 📖 底层拆解（状态机、then 链式调用、resolvePromise 递归解析）：[Promise/A+ 手写实现拆解](/dev-knowledge/js-ts/architecture/typical-analysis/promise-implementation/architecture-document/
 
 ### 10.3 async/await
 
@@ -979,7 +979,7 @@ console.log('Script end')
 // setTimeout
 ```
 
-> 📖 底层拆解（Event Loop 调度模型、高频面试题输出预测、并发调度器）：[浏览器端 JS 调度拆解](/architecture-document/typical-analysis/browser-js-scheduling)
+> 📖 底层拆解（Event Loop 调度模型、高频面试题输出预测、并发调度器）：[浏览器端 JS 调度拆解](/dev-knowledge/js-ts/architecture/typical-analysis/browser-js-scheduling/architecture-document/
 
 ---
 
@@ -1022,7 +1022,7 @@ dog instanceof Animal // true
 Object.getPrototypeOf(dog) === Dog.prototype // true
 ```
 
-> 📖 底层拆解（手写 new、instanceof、继承方案演进、class extends 底层原理）：[原型链与继承拆解](/architecture-document/typical-analysis/prototype-chain-and-inheritance)
+> 📖 底层拆解（手写 new、instanceof、继承方案演进、class extends 底层原理）：[原型链与继承拆解](/dev-knowledge/js-ts/architecture/typical-analysis/prototype-chain-and-inheritance/architecture-document/
 
 ---
 
@@ -2583,7 +2583,7 @@ function deepClone(obj) {
 }
 ```
 
-> 📖 底层拆解（循环引用、Date/RegExp/Map/Set、Symbol 键、structuredClone 对比）：[深拷贝全场景拆解](/architecture-document/typical-analysis/deep-clone)
+> 📖 底层拆解（循环引用、Date/RegExp/Map/Set、Symbol 键、structuredClone 对比）：[深拷贝全场景拆解](/dev-knowledge/js-ts/architecture/typical-analysis/deep-clone/architecture-document/
 
 ### 33.2 数组去重
 

@@ -578,1642 +578,6 @@
     "updatedAt": null
   },
   {
-    "id": "FwHub0index_page",
-    "title": "总入口",
-    "url": "/architecture-document/framework-hub/",
-    "group": "📚 框架文档汇总",
-    "tags": [
-      "架构"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "FwHub1vue_page",
-    "title": "Vue 文档汇总",
-    "url": "/architecture-document/framework-hub/vue",
-    "group": "📚 框架文档汇总",
-    "tags": [
-      "Vue",
-      "架构",
-      "面试",
-      "汇总"
-    ],
-    "createdAt": "2026-10-09 21:27:45",
-    "updatedAt": "2026-10-09 21:27:45"
-  },
-  {
-    "id": "FwHub2react_page",
-    "title": "React 文档汇总",
-    "url": "/architecture-document/framework-hub/react",
-    "group": "📚 框架文档汇总",
-    "tags": [
-      "React",
-      "架构",
-      "面试",
-      "汇总"
-    ],
-    "createdAt": "2026-10-09 21:27:45",
-    "updatedAt": "2026-10-09 21:27:45"
-  },
-  {
-    "id": "FwHub3flutter_page",
-    "title": "Flutter 文档汇总",
-    "url": "/architecture-document/framework-hub/flutter",
-    "group": "📚 框架文档汇总",
-    "tags": [
-      "Flutter",
-      "架构",
-      "面试",
-      "汇总"
-    ],
-    "createdAt": "2026-10-09 21:27:45",
-    "updatedAt": "2026-10-11 07:50:19"
-  },
-  {
-    "id": "EKBVi9HeKb1VqdyA6hL_xDZD",
-    "title": "架构愿景",
-    "url": "/architecture-document/architectural-vision/architectural-vision-1",
-    "group": "架构愿景",
-    "tags": [
-      "架构"
-    ],
-    "createdAt": "2026-07-29 06:37:43",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "IAND01o2TqdJ8icVDyd23t7O",
-    "title": "闭环设计",
-    "url": "/architecture-document/architectural-vision/closed-loop-1",
-    "group": "架构愿景",
-    "tags": [
-      "架构"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "lsUb7Cyzb-_MB0lN0W1qPvWG",
-    "title": "影响分析",
-    "url": "/architecture-document/architectural-vision/influence-1",
-    "group": "架构愿景",
-    "tags": [
-      "架构"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "t2HwGHSArpXXL_10JrqZGEqo",
-    "title": "设计原则",
-    "url": "/architecture-document/architectural-vision/principles-1",
-    "group": "架构愿景",
-    "tags": [
-      "架构"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "zDgyi8QNBXFkht4-YU5CTwd9",
-    "title": "实施报告",
-    "url": "/architecture-document/architectural-vision/report-1",
-    "group": "架构愿景",
-    "tags": [
-      "架构"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "J2adGTYbBYDmEDWy9SkbmT3E",
-    "title": "路线图",
-    "url": "/architecture-document/architectural-vision/roadmap-1",
-    "group": "架构愿景",
-    "tags": [
-      "架构"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "M5BX5o_a0iKKa1u_smDRl7lm",
-    "title": "检查清单",
-    "url": "/architecture-document/architectural-vision/checklist-1",
-    "group": "架构愿景",
-    "tags": [
-      "架构"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "M7gC9Q1hgvTzM-NfXgNCKSpM",
-    "title": "Python 项目工程化实践",
-    "url": "/architecture-document/python/engineering/python-engineering-practices",
-    "group": "Python 架构 > 工程化实践",
-    "tags": [
-      "Python",
-      "工程化"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "TzC-Xf_4I2CGv3X1vbT3qNvk",
-    "title": "Python 后端框架技术选型",
-    "url": "/architecture-document/python/technology-selection/python-backend-framework-selection",
-    "group": "Python 架构 > 技术选型",
-    "tags": [
-      "Python"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "_2waLSTPyA_x-hZ9HMvfqUu6",
-    "title": "Python AI 开发架构指南",
-    "url": "/architecture-document/python/ai-architecture/python-ai-development-guide",
-    "group": "Python 架构 > AI 开发架构",
-    "tags": [
-      "Python"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "FEYEr9apr3_uXicXqs5Y9Y1H",
-    "title": "Node.js 项目架构与分层规范",
-    "url": "/architecture-document/nodejs/project-architecture/nodejs-project-architecture",
-    "group": "Node.js 架构 > 项目架构",
-    "tags": [
-      "Node.js"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "BBe9B5yNs1bU9OOegN-AINxx",
-    "title": "Node.js 框架架构选型",
-    "url": "/architecture-document/nodejs/framework-selection/nodejs-framework-selection",
-    "group": "Node.js 架构 > 框架选型",
-    "tags": [
-      "Node.js"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "0iDgHBPrK0OeySxR6cCbznrX",
-    "title": "Node.js 中间件与管道架构",
-    "url": "/architecture-document/nodejs/middleware-patterns/nodejs-middleware-patterns",
-    "group": "Node.js 架构 > 中间件架构",
-    "tags": [
-      "Node.js"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "ztDSmYNxV_YTp-VqTR3OFPyZ",
-    "title": "React 组件设计模式",
-    "url": "/architecture-document/react/component-patterns/react-component-design-patterns",
-    "group": "React 架构 > 组件设计模式",
-    "tags": [
-      "React"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "RctEB1errBoundary_comp",
-    "title": "Error Boundary 与错误恢复",
-    "url": "/architecture-document/react/component-patterns/error-boundary-and-suspense",
-    "group": "React 架构 > 组件设计模式",
-    "tags": [
-      "React",
-      "错误处理"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "w5DKoU37dXlsaxAkqfILZv0S",
-    "title": "React Hooks 架构模式",
-    "url": "/architecture-document/react/hooks-patterns/react-hooks-architecture",
-    "group": "React 架构 > Hooks 架构模式",
-    "tags": [
-      "React"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "N71Sjioo3ZkPoULrvjDf8A9v",
-    "title": "数据·算法·显示 三者分离",
-    "url": "/architecture-document/react/hooks-patterns/data-algorithm-view-separation",
-    "group": "React 架构 > Hooks 架构模式",
-    "tags": [
-      "React"
-    ],
-    "createdAt": "2026-09-16 01:58:52",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "RctRef3guide_hooks",
-    "title": "React Ref 完全指南",
-    "url": "/architecture-document/react/hooks-patterns/react-ref-complete-guide",
-    "group": "React 架构 > Hooks 架构模式",
-    "tags": [
-      "React",
-      "Ref"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "RctCtx4deep_hooks",
-    "title": "React Context 深度专题",
-    "url": "/architecture-document/react/hooks-patterns/react-context-deep-dive",
-    "group": "React 架构 > Hooks 架构模式",
-    "tags": [
-      "React",
-      "Context"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "hqo96eLofwbJOHN9vezcwh9k",
-    "title": "React 状态管理架构",
-    "url": "/architecture-document/react/state-management/react-state-management-architecture",
-    "group": "React 架构 > 状态管理架构",
-    "tags": [
-      "React"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "RctRouter6_routing",
-    "title": "React Router v6+ 路由架构",
-    "url": "/architecture-document/react/routing/react-router-architecture",
-    "group": "React 架构 > 路由架构",
-    "tags": [
-      "React",
-      "路由"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "zkqmNwzI0gz5MRW025OhlqAg",
-    "title": "大型单例对象高性能消费",
-    "url": "/architecture-document/react/performance/large-object-consumption",
-    "group": "React 架构 > 性能思考",
-    "tags": [
-      "React"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "RctPerf5optim_perf",
-    "title": "React 性能优化系统手册",
-    "url": "/architecture-document/react/performance/react-performance-optimization",
-    "group": "React 架构 > 性能思考",
-    "tags": [
-      "React",
-      "性能优化"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "Nk-8CWPKQrqJ82Hqk1fLiJq2",
-    "title": "不必要 Re-render 的元凶与根治",
-    "url": "/architecture-document/react/thinking/unnecessary-rerender-root-cause",
-    "group": "React 架构 > 研发思维",
-    "tags": [
-      "React",
-      "思维"
-    ],
-    "createdAt": "2026-09-19 23:46:11",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "g_AvfJNasYLO6Af_ixLW0kjn",
-    "title": "Fiber × 并发调度 × 数据视图同步",
-    "url": "/architecture-document/react/thinking/fiber-concurrent-sync-formula",
-    "group": "React 架构 > 研发思维",
-    "tags": [
-      "React",
-      "思维"
-    ],
-    "createdAt": "2026-09-19 23:46:11",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "RANuzxeimpltF74mEzJdeExh",
-    "title": "大型深层对象的 zustand+selector+Immer 分频治理",
-    "url": "/architecture-document/react/thinking/deep-object-frequency-governance-cn",
-    "group": "React 架构 > 研发思维",
-    "tags": [
-      "React",
-      "思维"
-    ],
-    "createdAt": "2026-09-20 16:25:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "qlpYU_1T0skJIghsrQJ04S7d",
-    "title": "useEffect 原理",
-    "url": "/architecture-document/react/typical-analysis/use-effect",
-    "group": "React 架构 > 底层原理拆解",
-    "tags": [
-      "React"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "6dh199RccRTzLXzMGnKESNWO",
-    "title": "Hooks 执行阶段：Render vs Commit",
-    "url": "/architecture-document/react/typical-analysis/hooks-phase-timing",
-    "group": "React 架构 > 底层原理拆解",
-    "tags": [
-      "React"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "FbNode1React_principle_fiber",
-    "title": "Fiber Node 数据结构精讲",
-    "url": "/architecture-document/react/typical-analysis/fiber-node-data-structure",
-    "group": "React 架构 > 底层原理拆解",
-    "tags": [
-      "React"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "RctEvt6sys_principle",
-    "title": "React 事件系统",
-    "url": "/architecture-document/react/typical-analysis/react-event-system",
-    "group": "React 架构 > 底层原理拆解",
-    "tags": [
-      "React",
-      "事件系统"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "QGB2M6tkazABBqGxodTaNelG",
-    "title": "Fiber 架构与并发模式原理",
-    "url": "/architecture-document/react/typical-analysis/react-fiber-architecture",
-    "group": "React 架构 > 底层原理拆解",
-    "tags": [
-      "React",
-      "Fiber",
-      "并发模式",
-      "调度",
-      "底层原理"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "nE7rsAqOerLFLRWwoc0f1piX",
-    "title": "Hooks 闭包陷阱与依赖追踪原理",
-    "url": "/architecture-document/react/typical-analysis/react-hooks-closure-trap",
-    "group": "React 架构 > 底层原理拆解",
-    "tags": [
-      "React",
-      "Hooks",
-      "闭包",
-      "依赖追踪",
-      "底层原理"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "N7Z81wA1NT8iZXHMj_v_M_fT",
-    "title": "Context 底层原理与性能陷阱",
-    "url": "/architecture-document/react/typical-analysis/react-context-internals",
-    "group": "React 架构 > 底层原理拆解",
-    "tags": [
-      "React",
-      "Context",
-      "性能优化",
-      "底层原理"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "-Im6F2jj_UN7Swx9ZiICEU3J",
-    "title": "App 项目",
-    "url": "/architecture-document/react/technology-selection/app-project",
-    "group": "React 架构 > 技术选型",
-    "tags": [
-      "React"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "4loNlErhavhYmtd5U3DyBYFx",
-    "title": "后端项目",
-    "url": "/architecture-document/react/technology-selection/backend-project",
-    "group": "React 架构 > 技术选型",
-    "tags": [
-      "React"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "7fHXnZc5IOED2YivtdEgUlHJ",
-    "title": "客户端项目",
-    "url": "/architecture-document/react/technology-selection/client-project",
-    "group": "React 架构 > 技术选型",
-    "tags": [
-      "React"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "sqqqHD8nC7LhSYrHXNOGboAu",
-    "title": "桌面端项目",
-    "url": "/architecture-document/react/technology-selection/desktop-project",
-    "group": "React 架构 > 技术选型",
-    "tags": [
-      "React"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "bnmu4nYPS-Ovxs-6oE83NrgE",
-    "title": "Electron + React 技术选型",
-    "url": "/architecture-document/react/technology-selection/electron-react-technology-selection",
-    "group": "React 架构 > 技术选型",
-    "tags": [
-      "React"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "-IfxevXeW91Ix7iurjkAVEEB",
-    "title": "模块加载器",
-    "url": "/architecture-document/vue/general-tools/module-loader",
-    "group": "Vue 架构 > 通用工具",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "iwtfXQv_OVlW6knvxvQBOxMg",
-    "title": "Payload 包装器",
-    "url": "/architecture-document/vue/general-tools/wrap-with-payload",
-    "group": "Vue 架构 > 通用工具",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "PGQj7CYKDaHUkNZLXH3sIhDb",
-    "title": "架构概述",
-    "url": "/architecture-document/vue/standardized-template-cn/architecture-overview-cn",
-    "group": "Vue 架构 > 标准化模板",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "1rO_SGybaUNDCBHIQfsDMeGy",
-    "title": "LV1-LV5 架构演进",
-    "url": "/architecture-document/vue/standardized-template-cn/architecture-evolution-cn",
-    "group": "Vue 架构 > 标准化模板",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "fI52Y7HTYCx1fVz61qdGn-Dn",
-    "title": "装配器模式",
-    "url": "/architecture-document/vue/standardized-template-cn/assembler-pattern-cn",
-    "group": "Vue 架构 > 标准化模板",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "vNJnSq-wECg4rrpMo9Ut6EPb",
-    "title": "状态管理",
-    "url": "/architecture-document/vue/standardized-template-cn/state-management-cn",
-    "group": "Vue 架构 > 标准化模板",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "1sxE6TnlPc_4S64_SSTtrnyR",
-    "title": "生命周期与副作用",
-    "url": "/architecture-document/vue/standardized-template-cn/lifecycle-and-effects-cn",
-    "group": "Vue 架构 > 标准化模板",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "dHBMwDlD9WYKpuMM5RLo_ToQ",
-    "title": "事件管道系统",
-    "url": "/architecture-document/vue/standardized-template-cn/event-pipeline-system-cn",
-    "group": "Vue 架构 > 标准化模板",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "hpD01zU5exHFzpzRN1eS0thR",
-    "title": "组件系统",
-    "url": "/architecture-document/vue/standardized-template-cn/component-system-cn",
-    "group": "Vue 架构 > 标准化模板",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "qvvl493vNxrjfiuSCjVNS3Xd",
-    "title": "API 请求与模块调用说明",
-    "url": "/architecture-document/vue/standardized-template-cn/api-request-and-module",
-    "group": "Vue 架构 > 标准化模板",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Ml1uIaxTfhaBK98i_eqNkLgD",
-    "title": "组件设计模式",
-    "url": "/architecture-document/vue/standardized-template-cn/vue-component-design-patterns",
-    "group": "Vue 架构 > 标准化模板",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-09-17 03:57:15",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "VueReactSys1principle",
-    "title": "Vue 3 响应式系统架构",
-    "url": "/architecture-document/vue/typical-analysis/vue-reactivity-system",
-    "group": "Vue 架构 > 底层原理拆解",
-    "tags": [
-      "Vue",
-      "响应式"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "OH-soAG9hHMy1vtPq7cw6Hqw",
-    "title": "Vue 3 编译器优化原理",
-    "url": "/architecture-document/vue/typical-analysis/vue-compiler-optimization",
-    "group": "Vue 架构 > 底层原理拆解",
-    "tags": [
-      "Vue",
-      "编译器",
-      "静态提升",
-      "Block Tree",
-      "底层原理"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "naPefaauCNY2Onq-Qni3cJMu",
-    "title": "Vue Router 4 底层原理",
-    "url": "/architecture-document/vue/typical-analysis/vue-router-internals",
-    "group": "Vue 架构 > 底层原理拆解",
-    "tags": [
-      "Vue",
-      "Vue Router",
-      "路由",
-      "导航守卫",
-      "底层原理"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "VueComp3comp_patterns",
-    "title": "Vue 3 Composable 设计模式",
-    "url": "/architecture-document/vue/composable-patterns/vue-composable-design-patterns",
-    "group": "Vue 架构 > Composable 设计模式",
-    "tags": [
-      "Vue",
-      "Composable"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "VuePerf4perf",
-    "title": "Vue 3 性能优化系统手册",
-    "url": "/architecture-document/vue/performance/vue-performance-optimization",
-    "group": "Vue 架构 > 性能优化",
-    "tags": [
-      "Vue",
-      "性能优化"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "qcaObjv4rjg4gFyVEjirmBGF",
-    "title": "数据·算法·显示 三者分离",
-    "url": "/architecture-document/vue/thinking/data-algorithm-view-separation-cn",
-    "group": "Vue 架构 > 研发思维",
-    "tags": [
-      "Vue",
-      "思维"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "1a6XCCAni-54Am-II7rQE3LI",
-    "title": "shallowRef 范式与高性能架构",
-    "url": "/architecture-document/vue/thinking/shallowRef-paradigm-high-performance",
-    "group": "Vue 架构 > 研发思维",
-    "tags": [
-      "Vue",
-      "思维"
-    ],
-    "createdAt": "2026-09-19 23:46:11",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "yDSS93QX-w7PQRXKy14Zc6BM",
-    "title": "无效渲染的元凶与根治方案",
-    "url": "/architecture-document/vue/thinking/render-chaos-root-cause",
-    "group": "Vue 架构 > 研发思维",
-    "tags": [
-      "Vue",
-      "思维"
-    ],
-    "createdAt": "2026-09-19 23:46:11",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "FzSHQz7EBBP_SLmvfziMmeY3",
-    "title": "渲染原理 × 事件调度 × 数据视图同步",
-    "url": "/architecture-document/vue/thinking/rendering-scheduling-sync-formula",
-    "group": "Vue 架构 > 研发思维",
-    "tags": [
-      "Vue",
-      "思维"
-    ],
-    "createdAt": "2026-09-19 23:46:11",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "wd0l-6METxuqz8GfvD_YcckK",
-    "title": "大型深层对象的按频率分频治理",
-    "url": "/architecture-document/vue/thinking/deep-object-frequency-governance-cn",
-    "group": "Vue 架构 > 研发思维",
-    "tags": [
-      "Vue",
-      "思维"
-    ],
-    "createdAt": "2026-09-20 16:25:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "VuNode1vue_thinking_vnode",
-    "title": "VNode 数据结构精讲",
-    "url": "/architecture-document/vue/thinking/vnode-data-structure",
-    "group": "Vue 架构 > 研发思维",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-10-07 13:58:17",
-    "updatedAt": "2026-10-07 13:58:17"
-  },
-  {
-    "id": "zsD1qYeN3haxKPF_D48Vu2DF",
-    "title": "App 项目",
-    "url": "/architecture-document/vue/technology-selection/app-project",
-    "group": "Vue 架构 > 技术选型",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "JIpGALrKypcSj0tGWROjXvjD",
-    "title": "后端项目",
-    "url": "/architecture-document/vue/technology-selection/backend-project",
-    "group": "Vue 架构 > 技术选型",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "-U6mm7EVvPEc9twF1rT5cqNM",
-    "title": "客户端项目",
-    "url": "/architecture-document/vue/technology-selection/client-project",
-    "group": "Vue 架构 > 技术选型",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "2rAhz04MpzDjUKT3qBikP3gK",
-    "title": "桌面端项目",
-    "url": "/architecture-document/vue/technology-selection/desktop-project",
-    "group": "Vue 架构 > 技术选型",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "tSxDmCD3EU6QOWNZXIFiGXbY",
-    "title": "业务组件 SDK 打包",
-    "url": "/architecture-document/vue/technology-selection/sdk-project",
-    "group": "Vue 架构 > 技术选型",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-07-13 05:05:36",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "bUYMb2Bg3hKRQnStuE_td8NA",
-    "title": "Electron + Vue 3 技术选型",
-    "url": "/architecture-document/vue/technology-selection/electron-vue3-technology-selection",
-    "group": "Vue 架构 > 技术选型",
-    "tags": [
-      "Vue"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "7EUMOUTWgqGx2XiGzGiz-fRW",
-    "title": "Flutter 状态管理架构选型",
-    "url": "/architecture-document/flutter/state-management/flutter-state-management-architecture",
-    "group": "Flutter 架构 > 状态管理架构",
-    "tags": [
-      "Flutter"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "zoFtvjcqs72GN06QrznML6c7",
-    "title": "Flutter 路由架构设计",
-    "url": "/architecture-document/flutter/routing/flutter-routing-architecture",
-    "group": "Flutter 架构 > 路由架构设计",
-    "tags": [
-      "Flutter"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "nw3_PL5Fw3Oaueyax54xbjLj",
-    "title": "Flutter 网络层架构设计",
-    "url": "/architecture-document/flutter/networking/flutter-network-architecture",
-    "group": "Flutter 架构 > 网络层架构",
-    "tags": [
-      "Flutter"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "9SZMkG_F6867zlib6RuHx22d",
-    "title": "Flutter 项目结构与分层规范",
-    "url": "/architecture-document/flutter/project-structure/flutter-project-structure",
-    "group": "Flutter 架构 > 项目结构规范",
-    "tags": [
-      "Flutter"
-    ],
-    "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "FltRender1rendering",
-    "title": "Flutter 渲染管线与 Impeller",
-    "url": "/architecture-document/flutter/rendering/flutter-rendering-pipeline",
-    "group": "Flutter 架构 > 渲染引擎",
-    "tags": [
-      "Flutter",
-      "渲染引擎"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "FltPerf2perf",
-    "title": "Flutter 性能优化实战",
-    "url": "/architecture-document/flutter/performance/flutter-performance-optimization",
-    "group": "Flutter 架构 > 性能优化",
-    "tags": [
-      "Flutter",
-      "性能优化"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "FltPlugin3plugin",
-    "title": "Flutter 插件开发架构",
-    "url": "/architecture-document/flutter/plugin/flutter-plugin-architecture",
-    "group": "Flutter 架构 > 插件开发架构",
-    "tags": [
-      "Flutter",
-      "插件"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "HYt5KtSwqU_E4OPPoBahNHc2",
-    "title": "原生开发主流语言对比",
-    "url": "/architecture-document/flutter/thinking/native-languages-comparison",
-    "group": "Flutter 架构 > 思考文档 > 平台认知",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Mg88cDSX_6xM1eFFWrEV2Mo9",
-    "title": "iOS 与 Android 必备知识",
-    "url": "/architecture-document/flutter/thinking/flutter-ios-android-knowledge",
-    "group": "Flutter 架构 > 思考文档 > 平台认知",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "-S24gXWPhmH7Tj399DPiZ84K",
-    "title": "APP 启动与屏幕渲染原理",
-    "url": "/architecture-document/flutter/thinking/app-launch-and-rendering-pipeline",
-    "group": "Flutter 架构 > 思考文档 > 平台认知",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "nUtLX1V72rx7KYFpy6-gnT-l",
-    "title": "系统内核与平台差异适配",
-    "url": "/architecture-document/flutter/thinking/os-kernel-platform-differences",
-    "group": "Flutter 架构 > 思考文档 > 平台认知",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "R86oj_WdnZUWa3qWO2xPpRDY",
-    "title": "网络层与弱网优化",
-    "url": "/architecture-document/flutter/thinking/mobile-network-layer",
-    "group": "Flutter 架构 > 思考文档 > 核心原理",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "C-xTF7MBTopNgzC6Ymc7WXAt",
-    "title": "内存管理与性能调优",
-    "url": "/architecture-document/flutter/thinking/memory-management-performance",
-    "group": "Flutter 架构 > 思考文档 > 核心原理",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "KIQmUuAF6So_Hzoi9OLB8Wfk",
-    "title": "音视频与相机管线",
-    "url": "/architecture-document/flutter/thinking/audio-video-camera",
-    "group": "Flutter 架构 > 思考文档 > 核心原理",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "I1uaDO7rsgcYc34-Ay7c0Nve",
-    "title": "数据·算法·显示 三者分离",
-    "url": "/architecture-document/flutter/thinking/data-algorithm-view-separation",
-    "group": "Flutter 架构 > 思考文档 > 核心原理",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-09-16 01:58:52",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "o0RaaxqygCxL8gsK6w3ZO4R-",
-    "title": "组件设计模式",
-    "url": "/architecture-document/flutter/thinking/flutter-component-design-patterns",
-    "group": "Flutter 架构 > 思考文档 > 核心原理",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-09-17 03:57:15",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "pB86u79TwM9q-Qk2KfNFOQM3",
-    "title": "setState 滥用与 Widget 重建失控",
-    "url": "/architecture-document/flutter/thinking/setstate-rebuild-chaos-root-cause",
-    "group": "Flutter 架构 > 思考文档 > 核心原理",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-09-19 23:46:11",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "yB5b96FDlOpaQtriSXTPRLoO",
-    "title": "Widget × 帧调度 × 三层对象同步",
-    "url": "/architecture-document/flutter/thinking/widget-frame-sync-formula",
-    "group": "Flutter 架构 > 思考文档 > 核心原理",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-09-19 23:46:11",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "FlDeepObj1govern_cn",
-    "title": "大型深层对象的按频率分频治理",
-    "url": "/architecture-document/flutter/thinking/deep-object-frequency-governance-cn",
-    "group": "Flutter 架构 > 思考文档 > 核心原理",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-10-10 20:50:46",
-    "updatedAt": "2026-10-10 20:50:46"
-  },
-  {
-    "id": "FlNode1flutter_thinking_element",
-    "title": "节点数据结构精讲：Widget·Element·RenderObject 三棵树",
-    "url": "/architecture-document/flutter/thinking/element-widget-renderobject-tree",
-    "group": "Flutter 架构 > 思考文档 > 核心原理",
-    "tags": [
-      "Flutter"
-    ],
-    "createdAt": "2026-10-07 13:58:17",
-    "updatedAt": "2026-10-07 13:58:17"
-  },
-  {
-    "id": "ZTv9KTvKlytFZ8KdaMV_4n6I",
-    "title": "存储与数据同步",
-    "url": "/architecture-document/flutter/thinking/storage-data-sync",
-    "group": "Flutter 架构 > 思考文档 > 数据与安全",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "0nnOmoF055jNvn20xzuoyT1-",
-    "title": "安全攻防基础",
-    "url": "/architecture-document/flutter/thinking/mobile-security",
-    "group": "Flutter 架构 > 思考文档 > 数据与安全",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "h6OzZKMo2NGOm8IAxx0FBKQm",
-    "title": "混合栈与模块化架构",
-    "url": "/architecture-document/flutter/thinking/hybrid-stack-modularization",
-    "group": "Flutter 架构 > 思考文档 > 工程实践",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "N9nckESxfmbdR0tyNpUcLSdQ",
-    "title": "CI/CD 与发布工程化",
-    "url": "/architecture-document/flutter/thinking/cicd-release-engineering",
-    "group": "Flutter 架构 > 思考文档 > 工程实践",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "B-3faNi_Bx5QWOOVRx_qnzLX",
-    "title": "测试体系",
-    "url": "/architecture-document/flutter/thinking/testing-system",
-    "group": "Flutter 架构 > 思考文档 > 工程实践",
-    "tags": [
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-07-26 06:55:44",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "raQdA5ia_yYx-qKqeQQGOk0s",
-    "title": "前端脚手架背后的脚本语言解析",
-    "url": "/architecture-document/engineering/job/frontend-scaffold-scripts",
-    "group": "工程化",
-    "tags": [
-      "工程化"
-    ],
-    "createdAt": "2026-07-01 04:16:35",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "8OqI7DwhEMgZHp8XR4y8AZDg",
-    "title": "项目根目录配置文件解析",
-    "url": "/architecture-document/engineering/job/frontend-project-config-files",
-    "group": "工程化",
-    "tags": [
-      "工程化"
-    ],
-    "createdAt": "2026-07-25 04:10:42",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "u8yAD8a3dpo-EpfK1Nefx1x3",
-    "title": "Docker 镜像构建脚本对比",
-    "url": "/architecture-document/engineering/job/docker-image-build-script-comparison",
-    "group": "工程化",
-    "tags": [
-      "工程化"
-    ],
-    "createdAt": "2026-06-22 04:56:46",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "BC0uDGVKrp_knBR0KiqFICZk",
-    "title": "包管理与 Monorepo 工具链",
-    "url": "/architecture-document/engineering/job/npm-pnpm-monorepo-toolchain",
-    "group": "工程化",
-    "tags": [
-      "工程化"
-    ],
-    "createdAt": "2026-07-12 04:33:42",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "137I4eWCVaOjw59CRPJywdUt",
-    "title": "单仓 vs 多仓的选择",
-    "url": "/architecture-document/engineering/job/monorepo-vs-polyrepo",
-    "group": "工程化",
-    "tags": [
-      "工程化"
-    ],
-    "createdAt": "2026-07-19 23:15:45",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "mamKtugLJU3-2_gKcVzu_aN-",
-    "title": "常见 SaaS 平台功能",
-    "url": "/architecture-document/engineering/job/common-saas-platform-features",
-    "group": "工程化",
-    "tags": [
-      "工程化"
-    ],
-    "createdAt": "2026-07-21 08:09:07",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "pYKcPE8rdattb1C6nxdVav7g",
-    "title": "全栈基座项目（React）",
-    "url": "/architecture-document/engineering/job/fullstack-base-project-react",
-    "group": "工程化",
-    "tags": [
-      "工程化"
-    ],
-    "createdAt": "2026-07-21 08:09:07",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Y6AtCbwPmmYfYRQEywI_Jsl4",
-    "title": "全栈基座项目（Vue）",
-    "url": "/architecture-document/engineering/job/fullstack-base-project-vue",
-    "group": "工程化",
-    "tags": [
-      "工程化"
-    ],
-    "createdAt": "2026-07-21 08:09:07",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "B1Z2Jp2sRvW1R_gg5kHBSyoh",
-    "title": "PostgreSQL vs MySQL + MongoDB",
-    "url": "/architecture-document/database/postgresql-vs-mysql-mongodb",
-    "group": "数据库",
-    "tags": [
-      "数据库"
-    ],
-    "createdAt": "2026-10-07 00:42:01",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "2ZI6JeS86oW6uu04_X4_uCHh",
-    "title": "前端渲染模式全解",
-    "url": "/architecture-document/general-knowledge/frontend-rendering-modes",
-    "group": "通用知识",
-    "tags": [
-      "基础"
-    ],
-    "createdAt": "2026-07-10 04:38:13",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "9PnQqFj2P04pkHNxoFRp9iuY",
-    "title": "网络通用知识",
-    "url": "/architecture-document/general-knowledge/network-fundamentals",
-    "group": "通用知识",
-    "tags": [
-      "基础"
-    ],
-    "createdAt": "2026-07-10 04:38:13",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "9GoChumAsKAu3CjFFjdh9nQA",
-    "title": "Chrome 开发者工具全解",
-    "url": "/architecture-document/general-knowledge/chrome-devtools",
-    "group": "通用知识",
-    "tags": [
-      "基础"
-    ],
-    "createdAt": "2026-07-13 03:30:02",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "gkS6X26Io7PccVRTGZCDzCqv",
-    "title": "系统内核与 CPU 架构",
-    "url": "/architecture-document/general-knowledge/os-kernel-cpu-architecture",
-    "group": "通用知识",
-    "tags": [
-      "基础"
-    ],
-    "createdAt": "2026-07-21 09:58:13",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "XLM3sKmTJ1m2TFNEVg3wXwv0",
-    "title": "Linux 目录结构",
-    "url": "/architecture-document/general-knowledge/linux-directory-structure",
-    "group": "通用知识",
-    "tags": [
-      "基础"
-    ],
-    "createdAt": "2026-07-22 00:37:42",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "EywGA0L3jqSz6gnw6OnX885k",
-    "title": "国内开发镜像设置与还原",
-    "url": "/architecture-document/general-knowledge/dev-mirror-setup",
-    "group": "通用知识",
-    "tags": [
-      "基础"
-    ],
-    "createdAt": "2026-07-22 00:37:42",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "_JqmPTq-YFv3joHsq1EN-t0X",
-    "title": "构建优化核心概念",
-    "url": "/architecture-document/general-knowledge/build-optimization-concepts",
-    "group": "通用知识",
-    "tags": [
-      "基础"
-    ],
-    "createdAt": "2026-10-01 10:05:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "j7aOfXWUvlQc5_CSfywzwSeM",
-    "title": "Rolldown 与 Oxc",
-    "url": "/architecture-document/general-knowledge/rolldown-and-oxc",
-    "group": "通用知识",
-    "tags": [
-      "基础"
-    ],
-    "createdAt": "2026-10-01 10:05:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "6THSGgA5RMVkZJLfdW0Qd_aF",
-    "title": "Signal 细粒度响应式",
-    "url": "/architecture-document/general-knowledge/signal-reactivity",
-    "group": "通用知识",
-    "tags": [
-      "基础"
-    ],
-    "createdAt": "2026-10-01 10:05:51",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Cgg6LvUD1NhmBIMkjXzgxS_1",
-    "title": "基础概念",
-    "url": "/architecture-document/data-structure/basic-concepts",
-    "group": "数据结构",
-    "tags": [
-      "数据结构"
-    ],
-    "createdAt": "2026-07-07 04:48:39",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "O4xn4qbfnB4QuqkPY_JBzMVK",
-    "title": "线性结构",
-    "url": "/architecture-document/data-structure/linear-structures",
-    "group": "数据结构",
-    "tags": [
-      "数据结构"
-    ],
-    "createdAt": "2026-07-07 04:48:39",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "WnZ67PONkdEmoB3-8GGeBKuu",
-    "title": "树形结构",
-    "url": "/architecture-document/data-structure/tree-structures",
-    "group": "数据结构",
-    "tags": [
-      "数据结构"
-    ],
-    "createdAt": "2026-07-07 04:48:39",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "D5KrOsOBF7WkfqVbJmx5VRUA",
-    "title": "图结构",
-    "url": "/architecture-document/data-structure/graph-structures",
-    "group": "数据结构",
-    "tags": [
-      "数据结构"
-    ],
-    "createdAt": "2026-07-07 04:48:39",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Pup9yg4tpTI6bJ_vBJF5KBw_",
-    "title": "哈希表与集合",
-    "url": "/architecture-document/data-structure/hash-structures",
-    "group": "数据结构",
-    "tags": [
-      "数据结构"
-    ],
-    "createdAt": "2026-07-07 04:48:39",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "M4rF-anbEjBd_nTUn8pOpWhe",
-    "title": "高级数据结构",
-    "url": "/architecture-document/data-structure/advanced-structures",
-    "group": "数据结构",
-    "tags": [
-      "数据结构"
-    ],
-    "createdAt": "2026-07-07 04:48:39",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "QhhNiXMDPEY4mvd2kKrhSenJ",
-    "title": "概述",
-    "url": "/architecture-document/design-patterns/overview",
-    "group": "设计模式",
-    "tags": [
-      "设计模式"
-    ],
-    "createdAt": "2026-07-07 04:48:39",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "juvz29IotOKHSxnNZPZHfoKV",
-    "title": "创建型模式",
-    "url": "/architecture-document/design-patterns/creational",
-    "group": "设计模式",
-    "tags": [
-      "设计模式"
-    ],
-    "createdAt": "2026-07-07 04:48:39",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "6MaIWwrYAxw1XbphivXVFFgc",
-    "title": "结构型模式",
-    "url": "/architecture-document/design-patterns/structural",
-    "group": "设计模式",
-    "tags": [
-      "设计模式"
-    ],
-    "createdAt": "2026-07-07 04:48:39",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "zhpZPqkOCZqMhlONnZx75MOl",
-    "title": "行为型模式",
-    "url": "/architecture-document/design-patterns/behavioral",
-    "group": "设计模式",
-    "tags": [
-      "设计模式"
-    ],
-    "createdAt": "2026-07-07 04:48:39",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "rQYao9gcxJMJpXfgF0OUGbrh",
-    "title": "TypeScript 类型拆解",
-    "url": "/architecture-document/typical-analysis/typescript-type-analysis",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-09-16 17:44:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "tPbKAPsPMZO_xYHE4ZnlkMGQ",
-    "title": "Node.js 事件调度拆解",
-    "url": "/architecture-document/typical-analysis/nodejs-event-scheduling",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-09-16 17:44:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "43k_QOuOTsF80NPXG1z7n005",
-    "title": "浏览器端 JS 调度拆解",
-    "url": "/architecture-document/typical-analysis/browser-js-scheduling",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-09-16 17:44:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "3vpgQbBaHPamEsXYbNoFtNk-",
-    "title": "Promise/A+ 手写实现拆解",
-    "url": "/architecture-document/typical-analysis/promise-implementation",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-09-16 17:44:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "tF7_oxLGCVcmRVRy6Pwln7V2",
-    "title": "原型链与继承拆解",
-    "url": "/architecture-document/typical-analysis/prototype-chain-and-inheritance",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-09-16 17:44:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "Se244vJTuEmWgOrZWxjGrMGm",
-    "title": "虚拟 DOM Diff 算法拆解",
-    "url": "/architecture-document/typical-analysis/virtual-dom-diff",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-09-16 17:44:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "liT1-YBz9kkawS3LuS20jKDO",
-    "title": "响应式系统核心原理拆解",
-    "url": "/architecture-document/typical-analysis/reactive-system",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-09-16 17:44:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "ibHdfTDWr0R9QSLrGmTbPbCv",
-    "title": "深拷贝全场景拆解",
-    "url": "/architecture-document/typical-analysis/deep-clone",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-09-16 17:44:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "7CtQqOZQO_bQKpUzmJTsz_kM",
-    "title": "前端路由系统实现拆解",
-    "url": "/architecture-document/typical-analysis/frontend-router",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-09-16 17:44:32",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "FlTypRx1sys0getx",
-    "title": "Flutter GetX 框架底层设计原理全拆解",
-    "url": "/architecture-document/flutter/typical-analysis/getx-reactive-system",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-10-11 07:50:19",
-    "updatedAt": "2026-10-11 07:50:19"
-  },
-  {
-    "id": "FlTypWdgt2rebuild",
-    "title": "Flutter Widget 重建与 Element 更新拆解",
-    "url": "/architecture-document/flutter/typical-analysis/flutter-widget-rebuild",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-10-11 07:50:19",
-    "updatedAt": "2026-10-11 07:50:19"
-  },
-  {
-    "id": "FlTypAsync3dart",
-    "title": "Dart Future/Stream/Isolate 异步调度拆解",
-    "url": "/architecture-document/flutter/typical-analysis/dart-async-scheduling",
-    "group": "典型拆解",
-    "tags": [
-      "案例"
-    ],
-    "createdAt": "2026-10-11 07:50:19",
-    "updatedAt": "2026-10-11 07:50:19"
-  },
-  {
-    "id": "ozIL0o_ltXfBuXI2hkm3jjX2",
-    "title": "技术名词深度解析索引（入口）",
-    "url": "/architecture-document/thinking/terminology-index",
-    "group": "研发思维",
-    "tags": [
-      "思维"
-    ],
-    "createdAt": "2026-10-01 10:05:51",
-    "updatedAt": "2026-10-11 07:50:19"
-  },
-  {
-    "id": "y0ZcW5BycsZTRWZLbmie-GZX",
-    "title": "跨框架研发思维对比",
-    "url": "/architecture-document/thinking/cross-framework-thinking-comparison",
-    "group": "研发思维",
-    "tags": [
-      "思维"
-    ],
-    "createdAt": "2026-09-19 23:46:11",
-    "updatedAt": "2026-10-10 20:50:46"
-  },
-  {
-    "id": "yTY0_yAiCWeuYu628WxDuRbK",
-    "title": "JS · Dart · Python 三大语言 API 与底层机制对比",
-    "url": "/architecture-document/thinking/js-dart-python-api-comparison",
-    "group": "研发思维",
-    "tags": [
-      "JavaScript",
-      "Dart",
-      "Python",
-      "语言对比",
-      "API对比",
-      "底层原理"
-    ],
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "R19vV3perf_compare_thinking",
-    "title": "React 19 vs Vue 3 vs Flutter 复杂业务性能对决",
-    "url": "/architecture-document/thinking/framework-performance-comparison",
-    "group": "研发思维",
-    "tags": [
-      "React",
-      "Vue",
-      "Flutter",
-      "思维"
-    ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
-  },
-  {
-    "id": "YquLM7cTTLRaI2GtQpVJD-h1",
-    "title": "BUG 修复思维对比",
-    "url": "/architecture-document/thinking/bug-fixing-thinking",
-    "group": "研发思维",
-    "tags": [
-      "思维"
-    ],
-    "createdAt": "2026-09-13 23:58:59",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "oS4oQVVx0FEqtB4LbukvJz1v",
-    "title": "技术迭代与学习疲态",
-    "url": "/architecture-document/thinking/tech-iteration-and-learning-fatigue",
-    "group": "研发思维",
-    "tags": [
-      "思维"
-    ],
-    "createdAt": "2026-09-13 23:58:59",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
-    "id": "37F4wFSzNS4d8F4_tr6WrJU2",
-    "title": "数据·算法·显示 三者分离",
-    "url": "/architecture-document/thinking/frontend-data-algorithm-view-separation",
-    "group": "研发思维",
-    "tags": [
-      "思维"
-    ],
-    "createdAt": "2026-09-16 01:58:52",
-    "updatedAt": "2026-10-07 00:42:01"
-  },
-  {
     "id": "FhHItJRvhn-u5-0h5I_bIm6G",
     "title": "技术术语速查索引",
     "url": "/handbook/tech-glossary-index/",
@@ -2851,11 +1215,11 @@
   },
   {
     "id": "T17fZnChv5AMEgtEUNvg7WfQ",
-    "title": "架构",
-    "url": "/architecture-document/",
+    "title": "研发知识",
+    "url": "/dev-knowledge/",
     "group": "未分组",
     "tags": [
-      "架构"
+      "研发知识"
     ],
     "createdAt": null,
     "updatedAt": null
@@ -2883,9 +1247,9 @@
     "updatedAt": null
   },
   {
-    "id": "WVj8oInLjW5GZJkCXYp75w2e",
+    "id": "iIBnp7w831B0xDF-gwsaUhz6",
     "title": "初级工程师（P4-P5）",
-    "url": "/interview/levels/junior",
+    "url": "/dev-knowledge/learning-paths/junior",
     "group": "学习路径导航",
     "tags": [
       "初级",
@@ -2893,13 +1257,13 @@
       "P5",
       "学习路径"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "p7gk0iYgfqZY9CwLUmGU-zlR",
+    "id": "8t5Ar_hPd06rodt3sUPTfhn7",
     "title": "中级工程师（P5-P6）",
-    "url": "/interview/levels/intermediate",
+    "url": "/dev-knowledge/learning-paths/intermediate",
     "group": "学习路径导航",
     "tags": [
       "中级",
@@ -2907,13 +1271,13 @@
       "P6",
       "学习路径"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "s1Tg8jup4tiZ1BLEeEosbYzv",
+    "id": "t_bOPLWCjxZsDId1piV-8xYP",
     "title": "高级工程师（P6-P7）",
-    "url": "/interview/levels/senior",
+    "url": "/dev-knowledge/learning-paths/senior",
     "group": "学习路径导航",
     "tags": [
       "高级",
@@ -2921,26 +1285,26 @@
       "P7",
       "学习路径"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "8xZI61ROaXpShYE22XJguT0E",
+    "id": "O4CwJq2yv3vr38SP4Rwd7FnU",
     "title": "架构师（P8）",
-    "url": "/interview/levels/architect",
+    "url": "/dev-knowledge/learning-paths/architect",
     "group": "学习路径导航",
     "tags": [
       "架构师",
       "P8",
       "学习路径"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "47EBF7ccRO6ftuKWFrOT7U-N",
+    "id": "Yfm5ZMq_XHuSURZW3dftDr8D",
     "title": "技术主管（TL）",
-    "url": "/interview/levels/manager",
+    "url": "/dev-knowledge/learning-paths/manager",
     "group": "学习路径导航",
     "tags": [
       "技术主管",
@@ -2948,13 +1312,13 @@
       "管理",
       "学习路径"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "BWEnJoJ0X2LtOywYY1G8Z6y5",
+    "id": "YyNSeu8ggs4zKQ9pKoNDpipz",
     "title": "Flutter 学习路径",
-    "url": "/interview/levels/flutter",
+    "url": "/dev-knowledge/learning-paths/flutter",
     "group": "学习路径导航",
     "tags": [
       "Flutter",
@@ -2962,85 +1326,1711 @@
       "跨端",
       "学习路径"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "gdYXIH9QdmUivAPDB8Hw1wed",
-    "title": "HTML5 语义化与文档结构 [P4-P5]",
-    "url": "/interview/junior/html-semantics",
-    "group": "初级工程师（P4-P5）",
+    "id": "WOOyjk6ud4ZontyREErymom2",
+    "title": "模块加载器",
+    "url": "/dev-knowledge/vue/architecture/general-tools/module-loader",
+    "group": "Vue 体系 > 架构设计 > 通用工具",
     "tags": [
-      "HTML5",
-      "语义化",
-      "SEO",
-      "无障碍"
+      "Vue"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "kkAt18NllZ0HjtFsuXyhxI5a",
-    "title": "CSS 布局：Flexbox 与 Grid [P4-P5]",
-    "url": "/interview/junior/css-layout",
-    "group": "初级工程师（P4-P5）",
+    "id": "AMjMxQ3yJfETZYMiZKxI9gT6",
+    "title": "Payload 包装器",
+    "url": "/dev-knowledge/vue/architecture/general-tools/wrap-with-payload",
+    "group": "Vue 体系 > 架构设计 > 通用工具",
     "tags": [
-      "CSS",
-      "Flexbox",
-      "Grid",
-      "布局"
+      "Vue"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "DKVHnoxgSARO4-VjPJaRyiV8",
-    "title": "响应式设计与移动端适配 [P4-P5]",
-    "url": "/interview/junior/responsive-design",
-    "group": "初级工程师（P4-P5）",
+    "id": "r-tGROgH9IwcYj3OFcsizlZ4",
+    "title": "架构概述",
+    "url": "/dev-knowledge/vue/architecture/standardized-template/architecture-overview",
+    "group": "Vue 体系 > 架构设计 > 标准化模板",
     "tags": [
-      "响应式",
-      "媒体查询",
-      "移动端适配",
-      "rem",
-      "vw"
+      "Vue"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "3-lTH07nOVYlJE32u3SCHdbu",
-    "title": "CSS 新特性：变量、动画、过渡 [P4-P5]",
-    "url": "/interview/junior/css-modern-features",
-    "group": "初级工程师（P4-P5）",
+    "id": "m2HrrwOb0WOOwPk3n6VvVtoc",
+    "title": "LV1-LV5 架构演进",
+    "url": "/dev-knowledge/vue/architecture/standardized-template/architecture-evolution",
+    "group": "Vue 体系 > 架构设计 > 标准化模板",
     "tags": [
-      "CSS 变量",
-      "transition",
-      "animation",
-      "calc"
+      "Vue"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "9YId5WYdW8WL7qQKndwcbbDS",
+    "id": "U5lxbDG60Nj7bRrke-avlJXP",
+    "title": "装配器模式",
+    "url": "/dev-knowledge/vue/architecture/standardized-template/assembler-pattern",
+    "group": "Vue 体系 > 架构设计 > 标准化模板",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "zNr29dH4Q_qZbSgr9YODdzc0",
+    "title": "状态管理",
+    "url": "/dev-knowledge/vue/architecture/standardized-template/state-management",
+    "group": "Vue 体系 > 架构设计 > 标准化模板",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "3zY6MzaeU3cKb4Nknvya95t4",
+    "title": "生命周期与副作用",
+    "url": "/dev-knowledge/vue/architecture/standardized-template/lifecycle-and-effects",
+    "group": "Vue 体系 > 架构设计 > 标准化模板",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "sTroFr7o8FSIJXNYwoHTSw0U",
+    "title": "事件管道系统",
+    "url": "/dev-knowledge/vue/architecture/standardized-template/event-pipeline-system",
+    "group": "Vue 体系 > 架构设计 > 标准化模板",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "d-BsMZyhz7Cm5LickkTzGILi",
+    "title": "组件系统",
+    "url": "/dev-knowledge/vue/architecture/standardized-template/component-system",
+    "group": "Vue 体系 > 架构设计 > 标准化模板",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "xtuQnT10Rk5_eljtSDlFlvKp",
+    "title": "API 请求与模块调用",
+    "url": "/dev-knowledge/vue/architecture/standardized-template/api-request-and-module",
+    "group": "Vue 体系 > 架构设计 > 标准化模板",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "WA3-D7C67zfC9w4f5HMKZg70",
+    "title": "组件设计模式",
+    "url": "/dev-knowledge/vue/architecture/standardized-template/component-design-patterns",
+    "group": "Vue 体系 > 架构设计 > 标准化模板",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "jmZppMUuPce-rPkZ4M52dExt",
+    "title": "Composable 设计模式",
+    "url": "/dev-knowledge/vue/architecture/composable-patterns/vue-composable-design-patterns",
+    "group": "Vue 体系 > 架构设计",
+    "tags": [
+      "Vue",
+      "Composable"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "e4jG6awmVYV5vfPujfF23Ay0",
+    "title": "性能优化系统手册",
+    "url": "/dev-knowledge/vue/architecture/performance/vue-performance-optimization",
+    "group": "Vue 体系 > 架构设计",
+    "tags": [
+      "Vue",
+      "性能优化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "PAykDF42Bo7mSnv02Ts6WmTd",
+    "title": "数据·算法·显示 三者分离",
+    "url": "/dev-knowledge/vue/architecture/thinking/data-algorithm-view-separation",
+    "group": "Vue 体系 > 架构设计 > 研发思维",
+    "tags": [
+      "Vue",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "7vSTvvhTv_CRFphgHA_HU3id",
+    "title": "shallowRef 范式与高性能架构",
+    "url": "/dev-knowledge/vue/architecture/thinking/shallowRef-paradigm",
+    "group": "Vue 体系 > 架构设计 > 研发思维",
+    "tags": [
+      "Vue",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "2AOuDMk4QL5HV9RqOUmXKofs",
+    "title": "无效渲染的元凶与根治",
+    "url": "/dev-knowledge/vue/architecture/thinking/render-chaos-root-cause",
+    "group": "Vue 体系 > 架构设计 > 研发思维",
+    "tags": [
+      "Vue",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "SHrmpVqt9g44MEm4YG9MKs9X",
+    "title": "渲染原理 × 事件调度 × 数据视图同步",
+    "url": "/dev-knowledge/vue/architecture/thinking/rendering-scheduling-sync",
+    "group": "Vue 体系 > 架构设计 > 研发思维",
+    "tags": [
+      "Vue",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "yFI4p_KcAc6j4uxs5KtNXgh3",
+    "title": "大型深层对象的按频率分频治理",
+    "url": "/dev-knowledge/vue/architecture/thinking/deep-object-frequency-governance",
+    "group": "Vue 体系 > 架构设计 > 研发思维",
+    "tags": [
+      "Vue",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "TO9ExYoi-tGxuequTlEufAFB",
+    "title": "VNode 数据结构精讲",
+    "url": "/dev-knowledge/vue/architecture/thinking/vnode-data-structure",
+    "group": "Vue 体系 > 架构设计 > 研发思维",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "qIHz-e_lbrfPmnOXt21NKhcu",
+    "title": "Vue 3 响应式系统架构",
+    "url": "/dev-knowledge/vue/architecture/typical-analysis/vue-reactivity-system",
+    "group": "Vue 体系 > 架构设计 > 底层原理拆解",
+    "tags": [
+      "Vue",
+      "响应式"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "gYXcE4eZYTMvdgnPjGSS7U1h",
+    "title": "Vue 3 编译器优化原理",
+    "url": "/dev-knowledge/vue/architecture/typical-analysis/vue-compiler-optimization",
+    "group": "Vue 体系 > 架构设计 > 底层原理拆解",
+    "tags": [
+      "Vue",
+      "编译器",
+      "静态提升",
+      "Block Tree",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "juq3DSMJcp-vvS8eNqRjAyDa",
+    "title": "Vue Router 4 底层原理",
+    "url": "/dev-knowledge/vue/architecture/typical-analysis/vue-router-internals",
+    "group": "Vue 体系 > 架构设计 > 底层原理拆解",
+    "tags": [
+      "Vue",
+      "Vue Router",
+      "路由",
+      "导航守卫",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "HT4bhn1D2I8G_E5MJ-cmjfkM",
+    "title": "App 项目",
+    "url": "/dev-knowledge/vue/architecture/technology-selection/app-project",
+    "group": "Vue 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "C-AagpGm_uwydAP7sCKdLpMx",
+    "title": "后端项目",
+    "url": "/dev-knowledge/vue/architecture/technology-selection/backend-project",
+    "group": "Vue 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "3b-AsUoYK44zklayS_8xI7nd",
+    "title": "客户端项目",
+    "url": "/dev-knowledge/vue/architecture/technology-selection/client-project",
+    "group": "Vue 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "dQRj9pvWGNzYJD4VGZgEmaIJ",
+    "title": "桌面端项目",
+    "url": "/dev-knowledge/vue/architecture/technology-selection/desktop-project",
+    "group": "Vue 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "JZ4vdWeSD_Wx9FBveCRRW6kB",
+    "title": "业务组件 SDK 打包",
+    "url": "/dev-knowledge/vue/architecture/technology-selection/sdk-project",
+    "group": "Vue 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "DI-hGS4JGqfwH4WOpv-FyIdD",
+    "title": "Electron + Vue 3 技术选型",
+    "url": "/dev-knowledge/vue/architecture/technology-selection/electron-vue3",
+    "group": "Vue 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "Vue"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "1ot9IOOLg2vKJ5anJwVHwHOx",
+    "title": "Vue 3 入门：模板、组件、生命周期 [P4-P5]",
+    "url": "/dev-knowledge/vue/interview/junior/vue-basics",
+    "group": "Vue 体系 > 面试知识库 > 初级 [P4-P5]",
+    "tags": [
+      "Vue 3",
+      "模板语法",
+      "组件",
+      "生命周期"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "ty5GgVz1dZo4abVcLyl2iXeA",
+    "title": "Vue 组件模式：Props、Emit、Slots [P4-P5]",
+    "url": "/dev-knowledge/vue/interview/junior/vue-component-patterns",
+    "group": "Vue 体系 > 面试知识库 > 初级 [P4-P5]",
+    "tags": [
+      "Vue 3",
+      "Props",
+      "Emit",
+      "Slots",
+      "组件通信"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "sCN3TnCTzy76QUKE46GtR-SR",
+    "title": "Vue 3 生命周期深入 [P5-P6]",
+    "url": "/dev-knowledge/vue/interview/intermediate/vue-lifecycle",
+    "group": "Vue 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "Vue 3",
+      "生命周期",
+      "组合式 API",
+      "钩子"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "GavSBXLDWPbBY-fHVFQ57RMR",
+    "title": "Vue 组件通信方式全景 [P5-P6]",
+    "url": "/dev-knowledge/vue/interview/intermediate/vue-communication",
+    "group": "Vue 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "Vue 3",
+      "组件通信",
+      "Props",
+      "Emit",
+      "Provide/Inject"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "kON_BC8lqCgY2UBhbvLDHq_H",
+    "title": "Vue Router 路由实战 [P5-P6]",
+    "url": "/dev-knowledge/vue/interview/intermediate/vue-router-basics",
+    "group": "Vue 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "Vue 3",
+      "Vue Router",
+      "路由",
+      "导航守卫",
+      "懒加载"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "38Bk7Ewz7RE1Dq5hDtAxMxL2",
+    "title": "Vue 响应式系统底层 [P6-P7]",
+    "url": "/dev-knowledge/vue/interview/advanced/reactivity-deep",
+    "group": "Vue 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Vue",
+      "Proxy",
+      "依赖收集",
+      "调度器"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "3Dozt_5YTYgoedhZhlZrA33b",
+    "title": "Vue 编译器优化 [P6-P7]",
+    "url": "/dev-knowledge/vue/interview/advanced/compiler-optimization",
+    "group": "Vue 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Vue",
+      "编译器",
+      "静态提升",
+      "补丁标记"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "rDrlgs9FUtJeMnGz6i7O49PV",
+    "title": "Vapor Mode 原理 [P6-P7]",
+    "url": "/dev-knowledge/vue/interview/advanced/vapor-mode",
+    "group": "Vue 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Vue",
+      "Vapor Mode",
+      "无虚拟DOM",
+      "编译时优化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "jfIrEws6dHSugY_qwkGxa3lk",
+    "title": "渲染器 Patch 流程与 Diff 算法 [P6-P7]",
+    "url": "/dev-knowledge/vue/interview/advanced/renderer-patch-flow",
+    "group": "Vue 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Vue",
+      "渲染器",
+      "diff",
+      "调度更新"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "G-d3WPxfR75uI3QcV99lZ2pD",
+    "title": "Vue 3.5+ 新特性与响应式重构 [P6-P7]",
+    "url": "/dev-knowledge/vue/interview/advanced/vue-3.5-new-features",
+    "group": "Vue 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Vue 3.5",
+      "useTemplateRef",
+      "useId",
+      "defineModel",
+      "响应式重构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "rNh3Vc98OOPcduO6HTKpGuz4",
+    "title": "Pinia 状态管理原理与实战 [P6-P7]",
+    "url": "/dev-knowledge/vue/interview/advanced/pinia-deep",
+    "group": "Vue 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Pinia",
+      "Vue 3",
+      "状态管理",
+      "Plugin",
+      "持久化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "jhcNa2AR9rGwLIoYm-TNS7LN",
+    "title": "Vue Router 4 路由系统深度 [P6-P7]",
+    "url": "/dev-knowledge/vue/interview/advanced/vue-router-4",
+    "group": "Vue 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Vue Router",
+      "路由",
+      "导航守卫",
+      "动态路由",
+      "History 模式"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "lzs9_UedncP1VtNKZ_NZRgS4",
+    "title": "Nuxt 3 全栈框架原理与实战 [P8]",
+    "url": "/dev-knowledge/vue/interview/advanced/nuxt-3-fullstack",
+    "group": "Vue 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Nuxt 3",
+      "SSR",
+      "SSG",
+      "Nitro",
+      "全栈框架"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "OqPXL8N2WahQODW_6ZtG7Nhu",
+    "title": "Vue 3 生态实战模式 [P6-P7]",
+    "url": "/dev-knowledge/vue/interview/advanced/vue-ecosystem-patterns",
+    "group": "Vue 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Vue 3",
+      "组合式 API",
+      "Suspense",
+      "Teleport",
+      "KeepAlive",
+      "provide/inject"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "AFofBeLBGBaVpBDs7HDmwi1x",
+    "title": "React 组件设计模式",
+    "url": "/dev-knowledge/react/architecture/component-patterns/react-component-design-patterns",
+    "group": "React 体系 > 架构设计 > 组件设计模式",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "18zkkyDoKF0H2BOB6mC8vVg-",
+    "title": "Error Boundary 与错误恢复",
+    "url": "/dev-knowledge/react/architecture/component-patterns/error-boundary-and-suspense",
+    "group": "React 体系 > 架构设计 > 组件设计模式",
+    "tags": [
+      "React",
+      "错误处理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "agy-NmNWHZKDGoEuAk9gZC3S",
+    "title": "React Hooks 架构模式",
+    "url": "/dev-knowledge/react/architecture/hooks-patterns/react-hooks-architecture",
+    "group": "React 体系 > 架构设计 > Hooks 架构模式",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "yHnIr_RQYrUJmUNkw_4CuivO",
+    "title": "数据·算法·显示 三者分离",
+    "url": "/dev-knowledge/react/architecture/hooks-patterns/data-algorithm-view-separation",
+    "group": "React 体系 > 架构设计 > Hooks 架构模式",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "CA926s5iUe9LsJqr1S4yoJPM",
+    "title": "React Ref 完全指南",
+    "url": "/dev-knowledge/react/architecture/hooks-patterns/react-ref-complete-guide",
+    "group": "React 体系 > 架构设计 > Hooks 架构模式",
+    "tags": [
+      "React",
+      "Ref"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "vpHnGtuOt3ZPMfwwySoih1WF",
+    "title": "React Context 深度专题",
+    "url": "/dev-knowledge/react/architecture/hooks-patterns/react-context-deep-dive",
+    "group": "React 体系 > 架构设计 > Hooks 架构模式",
+    "tags": [
+      "React",
+      "Context"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "r8uugqqAaWRRYphVkGdHjp3A",
+    "title": "状态管理架构",
+    "url": "/dev-knowledge/react/architecture/state-management/react-state-management-architecture",
+    "group": "React 体系 > 架构设计",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Og_aKOHhwarLYSCaHd3tMn4d",
+    "title": "React Router v6+ 路由架构",
+    "url": "/dev-knowledge/react/architecture/routing/react-router-architecture",
+    "group": "React 体系 > 架构设计",
+    "tags": [
+      "React",
+      "路由"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "bEhQUpj3xRrdzlcThooItNAd",
+    "title": "大型单例对象高性能消费",
+    "url": "/dev-knowledge/react/architecture/performance/large-object-consumption",
+    "group": "React 体系 > 架构设计 > 性能思考",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "3rtQpw6oq8VGircrY8564mv_",
+    "title": "React 性能优化系统手册",
+    "url": "/dev-knowledge/react/architecture/performance/react-performance-optimization",
+    "group": "React 体系 > 架构设计 > 性能思考",
+    "tags": [
+      "React",
+      "性能优化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "5adbQAa-oSA9z3QEPh58rD6x",
+    "title": "不必要 Re-render 的元凶与根治",
+    "url": "/dev-knowledge/react/architecture/thinking/unnecessary-rerender-root-cause",
+    "group": "React 体系 > 架构设计 > 研发思维",
+    "tags": [
+      "React",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "zDBtS1uQE2cJ1IUGPAvqRWYG",
+    "title": "Fiber × 并发调度 × 数据视图同步",
+    "url": "/dev-knowledge/react/architecture/thinking/fiber-concurrent-sync-formula",
+    "group": "React 体系 > 架构设计 > 研发思维",
+    "tags": [
+      "React",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Ofs0IrZZGhHliEcjAlHyGe3L",
+    "title": "大型深层对象的 zustand+selector+Immer 分频治理",
+    "url": "/dev-knowledge/react/architecture/thinking/deep-object-frequency-governance",
+    "group": "React 体系 > 架构设计 > 研发思维",
+    "tags": [
+      "React",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "AJMxSNS9mSZrOFvVARXgrLNs",
+    "title": "useEffect 原理",
+    "url": "/dev-knowledge/react/architecture/typical-analysis/use-effect",
+    "group": "React 体系 > 架构设计 > 底层原理拆解",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "R1joyK7UGQTV0m5OLb2dpwWR",
+    "title": "Hooks 执行阶段：Render vs Commit",
+    "url": "/dev-knowledge/react/architecture/typical-analysis/hooks-phase-timing",
+    "group": "React 体系 > 架构设计 > 底层原理拆解",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "soHn6g5ZccPBgJw1ZWJk0hxx",
+    "title": "Fiber Node 数据结构精讲",
+    "url": "/dev-knowledge/react/architecture/typical-analysis/fiber-node-data-structure",
+    "group": "React 体系 > 架构设计 > 底层原理拆解",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "LlgdPnhmZHXq8ule5MdYLQYz",
+    "title": "React 事件系统",
+    "url": "/dev-knowledge/react/architecture/typical-analysis/react-event-system",
+    "group": "React 体系 > 架构设计 > 底层原理拆解",
+    "tags": [
+      "React",
+      "事件系统"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "CUK7Gzgzec4GVST-l9SE1B9r",
+    "title": "Fiber 架构与并发模式原理",
+    "url": "/dev-knowledge/react/architecture/typical-analysis/react-fiber-architecture",
+    "group": "React 体系 > 架构设计 > 底层原理拆解",
+    "tags": [
+      "React",
+      "Fiber",
+      "并发模式",
+      "调度",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "sNv9cdhWy67CdYniEjbJeVq-",
+    "title": "Hooks 闭包陷阱与依赖追踪原理",
+    "url": "/dev-knowledge/react/architecture/typical-analysis/react-hooks-closure-trap",
+    "group": "React 体系 > 架构设计 > 底层原理拆解",
+    "tags": [
+      "React",
+      "Hooks",
+      "闭包",
+      "依赖追踪",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "6eliPJDqutxEb0RfSpKy_1Tx",
+    "title": "Context 底层原理与性能陷阱",
+    "url": "/dev-knowledge/react/architecture/typical-analysis/react-context-internals",
+    "group": "React 体系 > 架构设计 > 底层原理拆解",
+    "tags": [
+      "React",
+      "Context",
+      "性能优化",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "UPW63eWb-aXm1docdAvP-I4C",
+    "title": "App 项目",
+    "url": "/dev-knowledge/react/architecture/technology-selection/app-project",
+    "group": "React 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "6FW5JXCu7qS6yD-FLnEo7sn7",
+    "title": "后端项目",
+    "url": "/dev-knowledge/react/architecture/technology-selection/backend-project",
+    "group": "React 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "kUGZCfPkmuk-qqVg1ZewysiX",
+    "title": "客户端项目",
+    "url": "/dev-knowledge/react/architecture/technology-selection/client-project",
+    "group": "React 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "epaF_1tsi_qOWqJhpP_7hamS",
+    "title": "桌面端项目",
+    "url": "/dev-knowledge/react/architecture/technology-selection/desktop-project",
+    "group": "React 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "g75toUf0KdcYu280ibkMG4VE",
+    "title": "Electron + React 技术选型",
+    "url": "/dev-knowledge/react/architecture/technology-selection/electron-react",
+    "group": "React 体系 > 架构设计 > 技术选型",
+    "tags": [
+      "React"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Oy2XqO1LbQc_4Lsp1dB8oE-K",
+    "title": "React 入门：JSX、Hooks、组件模式 [P5-P6]",
+    "url": "/dev-knowledge/react/interview/intermediate/react-basics",
+    "group": "React 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "React",
+      "JSX",
+      "Hooks",
+      "组件",
+      "useState",
+      "useEffect"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "_BrpbhUgrkG4M1GpNan7hf0y",
+    "title": "Fiber 架构与优先级调度 [P6-P7]",
+    "url": "/dev-knowledge/react/interview/advanced/fiber-architecture",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "React",
+      "Fiber",
+      "时间切片",
+      "优先级调度"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "F7YeniQV2zKhgoskA9BmZTpJ",
+    "title": "并发渲染与 Suspense [P6-P7]",
+    "url": "/dev-knowledge/react/interview/advanced/concurrent-rendering",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "React",
+      "并发",
+      "Suspense",
+      "Transitions"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "JL4l0ikgoLjYHFJcqtpJUyn_",
+    "title": "React Server Components 原理 [P6-P7]",
+    "url": "/dev-knowledge/react/interview/advanced/server-components",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "React",
+      "RSC",
+      "流式渲染",
+      "序列化协议"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "evUT2Mvi8Aaktqbrkc7qo5k5",
+    "title": "状态管理本质与有限状态机 [P6-P7]",
+    "url": "/dev-knowledge/react/interview/advanced/state-machine",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "React",
+      "状态管理",
+      "有限状态机",
+      "Signals"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "FQ-_lYMmOlvhy6StMl95NhvP",
+    "title": "React 19 新特性深度解析 [P6-P7]",
+    "url": "/dev-knowledge/react/interview/advanced/react-19-features",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "React 19",
+      "use hook",
+      "Actions",
+      "useOptimistic",
+      "useFormStatus"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Rd7GV_XZb4q-MdOkPhQalZcs",
+    "title": "React Compiler 原理与实践 [P8]",
+    "url": "/dev-knowledge/react/interview/advanced/react-compiler",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "React Compiler",
+      "自动 Memo",
+      "编译时优化",
+      "React 19"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "qiIIRu9lymeurfGaJ1BuTjL6",
+    "title": "Zustand/Jotai 状态管理深度 [P6-P7]",
+    "url": "/dev-knowledge/react/interview/advanced/zustand-and-jotai",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Zustand",
+      "Jotai",
+      "React",
+      "状态管理",
+      "原子化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "1CpHo72NidT3sAX3kLk4C0Kw",
+    "title": "TanStack Query 数据获取与缓存 [P6-P7]",
+    "url": "/dev-knowledge/react/interview/advanced/tanstack-query",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "TanStack Query",
+      "React Query",
+      "数据获取",
+      "缓存",
+      "乐观更新"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "FYit0dquzPQf5SqLdY4OrzRM",
+    "title": "Next.js 15 全栈框架原理 [P8]",
+    "url": "/dev-knowledge/react/interview/advanced/nextjs-15",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Next.js 15",
+      "App Router",
+      "Server Actions",
+      "缓存",
+      "Turbopack"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "rCNQaNvdX4NLVKdRimFrrnGg",
+    "title": "React Hook Form + Zod 表单体系 [P6-P7]",
+    "url": "/dev-knowledge/react/interview/advanced/react-hook-form-and-zod",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "React Hook Form",
+      "Zod",
+      "表单",
+      "验证",
+      "Schema"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "uho-Tb7AARLjpS45V927slNF",
+    "title": "Testing Library + MSW 测试体系 [P6-P7]",
+    "url": "/dev-knowledge/react/interview/advanced/react-testing-library",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Testing Library",
+      "MSW",
+      "React",
+      "测试",
+      "用户视角"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "eDhvjsNQLR3qifv6BpkYNE73",
+    "title": "React 生态架构模式 [P8]",
+    "url": "/dev-knowledge/react/interview/advanced/react-architecture-patterns",
+    "group": "React 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "React",
+      "架构",
+      "项目结构",
+      "状态分层",
+      "代码分割"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "KbBCv62gFVzrycd3XvOO_3TP",
+    "title": "状态管理架构选型",
+    "url": "/dev-knowledge/flutter/architecture/state-management/flutter-state-management-architecture",
+    "group": "Flutter 体系 > 架构设计",
+    "tags": [
+      "Flutter"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "uHcM_T2B52yVU-u-GjENoQI0",
+    "title": "路由架构设计",
+    "url": "/dev-knowledge/flutter/architecture/routing/flutter-routing-architecture",
+    "group": "Flutter 体系 > 架构设计",
+    "tags": [
+      "Flutter"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "7Uu_qlN-TJ-WqqrOlSsH2Fnc",
+    "title": "网络层架构设计",
+    "url": "/dev-knowledge/flutter/architecture/networking/flutter-network-architecture",
+    "group": "Flutter 体系 > 架构设计",
+    "tags": [
+      "Flutter"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "isSEc6XtrCeB1vPoZaaeJx7p",
+    "title": "项目结构与分层规范",
+    "url": "/dev-knowledge/flutter/architecture/project-structure/flutter-project-structure",
+    "group": "Flutter 体系 > 架构设计",
+    "tags": [
+      "Flutter"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Bgc270M67VMEpOscZXHdzzHf",
+    "title": "渲染管线与 Impeller",
+    "url": "/dev-knowledge/flutter/architecture/rendering/flutter-rendering-pipeline",
+    "group": "Flutter 体系 > 架构设计",
+    "tags": [
+      "Flutter",
+      "渲染引擎"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "LpF1Wz_wLwzwICMW9gLR07oI",
+    "title": "性能优化实战",
+    "url": "/dev-knowledge/flutter/architecture/performance/flutter-performance-optimization",
+    "group": "Flutter 体系 > 架构设计",
+    "tags": [
+      "Flutter",
+      "性能优化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "HWDzZAuNvqSdv91bjRfEhf6c",
+    "title": "插件开发架构",
+    "url": "/dev-knowledge/flutter/architecture/plugin/flutter-plugin-architecture",
+    "group": "Flutter 体系 > 架构设计",
+    "tags": [
+      "Flutter",
+      "插件"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "-hyBAm5xogA7hMFLQXwR6Amb",
+    "title": "原生开发主流语言对比",
+    "url": "/dev-knowledge/flutter/architecture/thinking/native-languages-comparison",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "-fW5fF51prhT6C9jqfbwVbnn",
+    "title": "iOS 与 Android 必备知识",
+    "url": "/dev-knowledge/flutter/architecture/thinking/flutter-ios-android-knowledge",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "HVm3YZa2uTKGBCXNKBGbpAdD",
+    "title": "APP 启动与屏幕渲染原理",
+    "url": "/dev-knowledge/flutter/architecture/thinking/app-launch-and-rendering-pipeline",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "cfzKvw7B0xKS3wTRciuLOFa6",
+    "title": "系统内核与平台差异适配",
+    "url": "/dev-knowledge/flutter/architecture/thinking/os-kernel-platform-differences",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "8B28ShJQKM16_BXjjB6tbyU6",
+    "title": "网络层与弱网优化",
+    "url": "/dev-knowledge/flutter/architecture/thinking/mobile-network-layer",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "A-R-fVowDMq6YNjsd8Br2EDv",
+    "title": "内存管理与性能调优",
+    "url": "/dev-knowledge/flutter/architecture/thinking/memory-management-performance",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Qhw_0pOrcA1fHAwdfWfVcj7E",
+    "title": "音视频与相机管线",
+    "url": "/dev-knowledge/flutter/architecture/thinking/audio-video-camera",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "K5Rl92RPC-6HiRthT3K5ZQKV",
+    "title": "数据·算法·显示 三者分离",
+    "url": "/dev-knowledge/flutter/architecture/thinking/data-algorithm-view-separation",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "rlIouQ8Dsr1HIVb83ZNNkrlj",
+    "title": "组件设计模式",
+    "url": "/dev-knowledge/flutter/architecture/thinking/flutter-component-design-patterns",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "L8HpzqpbDGjtE01xh4QNzDPg",
+    "title": "setState 滥用与 Widget 重建失控",
+    "url": "/dev-knowledge/flutter/architecture/thinking/setstate-rebuild-chaos-root-cause",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "BHF7S0XNwLAHxncKTawqTW13",
+    "title": "Widget × 帧调度 × 三层对象同步",
+    "url": "/dev-knowledge/flutter/architecture/thinking/widget-frame-sync-formula",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "yJkjUZ6K5zfVO5wfhnLBK3Sk",
+    "title": "大型深层对象的按频率分频治理",
+    "url": "/dev-knowledge/flutter/architecture/thinking/deep-object-frequency-governance-cn",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "l0gTibqpTdhNZn4yiu8FfMvr",
+    "title": "节点数据结构精讲：三棵树",
+    "url": "/dev-knowledge/flutter/architecture/thinking/element-widget-renderobject-tree",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "93u6FYYBuUMhDs8AKUg3R0Xl",
+    "title": "存储与数据同步",
+    "url": "/dev-knowledge/flutter/architecture/thinking/storage-data-sync",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "-wXH82X5rUl4u4GWscJU9Qtu",
+    "title": "安全攻防基础",
+    "url": "/dev-knowledge/flutter/architecture/thinking/mobile-security",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "khrv3JWx-4QXNKJ7g99e1dfo",
+    "title": "混合栈与模块化架构",
+    "url": "/dev-knowledge/flutter/architecture/thinking/hybrid-stack-modularization",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "lGYwyIS94_nINNZz1XDXcPTJ",
+    "title": "CI/CD 与发布工程化",
+    "url": "/dev-knowledge/flutter/architecture/thinking/cicd-release-engineering",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "HLCXZsx12bscxu6bzHij-06z",
+    "title": "测试体系",
+    "url": "/dev-knowledge/flutter/architecture/thinking/testing-system",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "aUG6KrqH31voEkF8JFWP_69a",
+    "title": "GetX 框架底层设计原理",
+    "url": "/dev-knowledge/flutter/architecture/typical-analysis/getx-reactive-system",
+    "group": "Flutter 体系 > 架构设计 > 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "vut3BJhl2AtM1q9mJvEVfQmi",
+    "title": "Widget 重建与 Element 更新拆解",
+    "url": "/dev-knowledge/flutter/architecture/typical-analysis/flutter-widget-rebuild",
+    "group": "Flutter 体系 > 架构设计 > 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "PIGJBdMMaqpkNVEZFcgxx_9R",
+    "title": "Dart Future/Stream/Isolate 异步调度",
+    "url": "/dev-knowledge/flutter/architecture/typical-analysis/dart-async-scheduling",
+    "group": "Flutter 体系 > 架构设计 > 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "LZsPzHC1MZ1CD_qZyTB3szK0",
+    "title": "StatefulWidget 底层原理",
+    "url": "/dev-knowledge/flutter/architecture/typical-analysis/flutter-stateful-widget-internals",
+    "group": "Flutter 体系 > 架构设计 > 典型拆解",
+    "tags": [
+      "Flutter",
+      "StatefulWidget",
+      "StatelessWidget",
+      "Element",
+      "状态管理",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "in6d1Hl_mssi1o6gqqIYwsOb",
+    "title": "Dart 语言基础与核心特性 [P5-P6]",
+    "url": "/dev-knowledge/flutter/interview/intermediate/flutter-dart-basics",
+    "group": "Flutter 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "Dart",
+      "Flutter",
+      "空安全",
+      "OOP",
+      "异步"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "QKV18LLgycWkfAjy79HUk34q",
+    "title": "Widget 体系与布局系统 [P5-P6]",
+    "url": "/dev-knowledge/flutter/interview/intermediate/flutter-widget-and-layout",
+    "group": "Flutter 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "Flutter",
+      "Widget",
+      "布局",
+      "StatelessWidget",
+      "StatefulWidget"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "dGXGFv1spj2oc4tDEtuPEAGj",
+    "title": "状态管理基础 [P5-P6]",
+    "url": "/dev-knowledge/flutter/interview/intermediate/flutter-state-management-basics",
+    "group": "Flutter 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "Flutter",
+      "状态管理",
+      "setState",
+      "Provider",
+      "Bloc"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "P-Uw6FmGQpTUhjVr0e0TVxOM",
+    "title": "导航与路由实战 [P5-P6]",
+    "url": "/dev-knowledge/flutter/interview/intermediate/flutter-navigation-and-routing",
+    "group": "Flutter 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "Flutter",
+      "导航",
+      "路由",
+      "Navigator",
+      "GoRouter"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "j7rM9VOgk1uTN12yGhx_GPu5",
+    "title": "渲染引擎 [P6-P7]",
+    "url": "/dev-knowledge/flutter/interview/advanced/rendering-engine",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Flutter",
+      "Impeller",
+      "Skia",
+      "三棵树",
+      "Material 3",
+      "Web 渲染"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "w9DX0zUy_RmeeENpVzCAPS-R",
+    "title": "Dart 语言深度 [P6-P7]",
+    "url": "/dev-knowledge/flutter/interview/advanced/dart-advanced",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Dart",
+      "Isolate",
+      "AOT",
+      "JIT",
+      "Mixin"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "NmXVJAB3u6Z73UJ1gW1vwJJA",
+    "title": "状态管理架构 [P8]",
+    "url": "/dev-knowledge/flutter/interview/advanced/architecture-patterns",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Flutter",
+      "Riverpod",
+      "BLoC",
+      "DI",
+      "Clean Architecture"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "G0v8zUZoxOLs-8gpgbOEtpWb",
+    "title": "与原生交互 [P8]",
+    "url": "/dev-knowledge/flutter/interview/advanced/platform-interop",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Flutter",
+      "Platform Channel",
+      "FFI",
+      "混合栈"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "f_ZJMcefLeF1NqZn0SrRlqNH",
+    "title": "性能优化与工程化 [P8]",
+    "url": "/dev-knowledge/flutter/interview/advanced/performance-engineering",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Flutter",
+      "性能优化",
+      "内存治理",
+      "灰度发布"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "3GxIoUUdsywHvEyMQ-JS_Jxr",
+    "title": "Riverpod 状态管理深度 [P6-P7]",
+    "url": "/dev-knowledge/flutter/interview/advanced/riverpod-deep",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Riverpod",
+      "Flutter",
+      "状态管理",
+      "Codegen",
+      "Provider"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "AoOEv_P4GbqgzZX6h90LztJY",
+    "title": "BLoC/Cubit 架构模式 [P6-P7]",
+    "url": "/dev-knowledge/flutter/interview/advanced/bloc-cubit-architecture",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "BLoC",
+      "Cubit",
+      "Flutter",
+      "状态管理",
+      "事件驱动"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "SgbKK2tFJ-aPBVU6ehcJ2pBY",
+    "title": "GetX 生态体系 [P6-P7]",
+    "url": "/dev-knowledge/flutter/interview/advanced/getx-ecosystem",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "GetX",
+      "Flutter",
+      "状态管理",
+      "路由",
+      "依赖注入"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "FqUBIIsc32dgdMvsC8Wru5c7",
+    "title": "GoRouter 路由管理深度 [P6-P7]",
+    "url": "/dev-knowledge/flutter/interview/advanced/go-router-deep",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "GoRouter",
+      "Flutter",
+      "路由",
+      "Deep Link",
+      "ShellRoute"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "GAgHctm4HfKkb9nI-WwIP4Q-",
+    "title": "Dio 网络层与 HTTP 客户端 [P6-P7]",
+    "url": "/dev-knowledge/flutter/interview/advanced/dio-and-networking",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Dio",
+      "Flutter",
+      "网络",
+      "拦截器",
+      "HTTP"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "DssKXepkIEINRm-hBfmzqOpI",
+    "title": "本地存储与持久化 [P6-P7]",
+    "url": "/dev-knowledge/flutter/interview/advanced/flutter-local-storage",
+    "group": "Flutter 体系 > 面试知识库 > 高级 [P6-P7/P8]",
+    "tags": [
+      "Flutter",
+      "本地存储",
+      "SharedPreferences",
+      "Hive",
+      "SQLite",
+      "Isar"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "kO6UCEdk1rha6K4KV9OUMQOA",
+    "title": "TypeScript 类型拆解",
+    "url": "/dev-knowledge/js-ts/architecture/typical-analysis/typescript-type-analysis",
+    "group": "JS / TS 体系 > 架构设计 · 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "rA9udWF5wwQaBV5VONkhjHje",
+    "title": "Node.js 事件调度拆解",
+    "url": "/dev-knowledge/js-ts/architecture/typical-analysis/nodejs-event-scheduling",
+    "group": "JS / TS 体系 > 架构设计 · 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "8jpruzE08DnJORpME6b90wec",
+    "title": "浏览器端 JS 调度拆解",
+    "url": "/dev-knowledge/js-ts/architecture/typical-analysis/browser-js-scheduling",
+    "group": "JS / TS 体系 > 架构设计 · 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "fiSVVWqF2Dxd6X7HVZBCIf-E",
+    "title": "Promise/A+ 手写实现",
+    "url": "/dev-knowledge/js-ts/architecture/typical-analysis/promise-implementation",
+    "group": "JS / TS 体系 > 架构设计 · 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "cMDL7J_dlxosVNwZWbw3e0-3",
+    "title": "原型链与继承拆解",
+    "url": "/dev-knowledge/js-ts/architecture/typical-analysis/prototype-chain-and-inheritance",
+    "group": "JS / TS 体系 > 架构设计 · 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "VckFdImfXejTKmAFXzMrhW8v",
+    "title": "虚拟 DOM Diff 算法",
+    "url": "/dev-knowledge/js-ts/architecture/typical-analysis/virtual-dom-diff",
+    "group": "JS / TS 体系 > 架构设计 · 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "oSYkTg_vQz_QEmIz4N_zuELr",
+    "title": "响应式系统核心原理",
+    "url": "/dev-knowledge/js-ts/architecture/typical-analysis/reactive-system",
+    "group": "JS / TS 体系 > 架构设计 · 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "XC-rS--Mh3XKnZeyyoyvGsmZ",
+    "title": "深拷贝全场景拆解",
+    "url": "/dev-knowledge/js-ts/architecture/typical-analysis/deep-clone",
+    "group": "JS / TS 体系 > 架构设计 · 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "AFw4gelpkEVB4vIUYsfdZ7JC",
+    "title": "前端路由系统实现",
+    "url": "/dev-knowledge/js-ts/architecture/typical-analysis/frontend-router",
+    "group": "JS / TS 体系 > 架构设计 · 典型拆解",
+    "tags": [
+      "案例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "-8Ksefqf4tkT7hwGUQRIj8Q6",
     "title": "JavaScript 基础：变量、类型、运算 [P4-P5]",
-    "url": "/interview/junior/js-basics",
-    "group": "初级工程师（P4-P5）",
+    "url": "/dev-knowledge/js-ts/interview/junior/js-basics",
+    "group": "JS / TS 体系 > 面试知识库 > 初级 [P4-P5]",
     "tags": [
       "JavaScript",
       "变量",
       "数据类型",
       "类型转换"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "D2moxos2zS_YpdhhQVhaUUfe",
+    "id": "UItBDrfw2U9Rtr2KOnGcWUrV",
     "title": "函数与作用域基础 [P4-P5]",
-    "url": "/interview/junior/functions-and-scope",
-    "group": "初级工程师（P4-P5）",
+    "url": "/dev-knowledge/js-ts/interview/junior/functions-and-scope",
+    "group": "JS / TS 体系 > 面试知识库 > 初级 [P4-P5]",
     "tags": [
       "JavaScript",
       "函数",
@@ -3048,14 +3038,14 @@
       "this",
       "箭头函数"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "KnCcO14wUB2BNmCnpEYgb5R-",
+    "id": "YEEDCwCS-nltorVKGkBRoR3_",
     "title": "对象与类基础 [P4-P5]",
-    "url": "/interview/junior/objects-and-classes",
-    "group": "初级工程师（P4-P5）",
+    "url": "/dev-knowledge/js-ts/interview/junior/objects-and-classes",
+    "group": "JS / TS 体系 > 面试知识库 > 初级 [P4-P5]",
     "tags": [
       "JavaScript",
       "对象",
@@ -3063,14 +3053,14 @@
       "原型",
       "继承"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "Xi1uMbAODT1b6eha7Pxjq_Mn",
+    "id": "7uONuDNKP_gqPNQ-J-Jeohtc",
     "title": "DOM 操作与事件处理 [P4-P5]",
-    "url": "/interview/junior/dom-and-events",
-    "group": "初级工程师（P4-P5）",
+    "url": "/dev-knowledge/js-ts/interview/junior/dom-and-events",
+    "group": "JS / TS 体系 > 面试知识库 > 初级 [P4-P5]",
     "tags": [
       "JavaScript",
       "DOM",
@@ -3078,14 +3068,571 @@
       "事件委托",
       "事件冒泡"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "3LO0-lVXcOJEqbXIKwsAyJpB",
-    "title": "浏览器基础与 DevTools 实战 [P4-P5]",
-    "url": "/interview/junior/browser-basics",
-    "group": "初级工程师（P4-P5）",
+    "id": "cw_Z5xqtiTQKuYsB1tfHNj59",
+    "title": "TypeScript 入门：类型注解 [P4-P5]",
+    "url": "/dev-knowledge/js-ts/interview/junior/typescript-basics",
+    "group": "JS / TS 体系 > 面试知识库 > 初级 [P4-P5]",
+    "tags": [
+      "TypeScript",
+      "类型注解",
+      "接口",
+      "基础类型"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "F4VxPMbplonlBcXGir85BSRW",
+    "title": "闭包、作用域链与执行上下文 [P5-P6]",
+    "url": "/dev-knowledge/js-ts/interview/intermediate/js-closures-context",
+    "group": "JS / TS 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "JavaScript",
+      "闭包",
+      "作用域",
+      "执行上下文",
+      "this"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "nXuLnjEeFAwes6mQntpEkvhl",
+    "title": "ES6+ 模块系统与工程化 [P5-P6]",
+    "url": "/dev-knowledge/js-ts/interview/intermediate/es6-modules",
+    "group": "JS / TS 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "JavaScript",
+      "ES6",
+      "模块",
+      "ESM",
+      "CJS",
+      "tree-shaking"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "jGIyz_l6Y6fBN52EEMS7fTjd",
+    "title": "JavaScript 常用设计模式 [P5-P6]",
+    "url": "/dev-knowledge/js-ts/interview/intermediate/js-design-patterns",
+    "group": "JS / TS 体系 > 面试知识库 > 中级 [P5-P6]",
+    "tags": [
+      "JavaScript",
+      "设计模式",
+      "观察者",
+      "策略",
+      "工厂",
+      "单例"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "7FcTxvyZBydnGCbzkm5cQoxu",
+    "title": "V8 引擎与 JavaScript 运行时 [P6-P7]",
+    "url": "/dev-knowledge/js-ts/interview/javascript-advanced/engine-and-runtime",
+    "group": "JS / TS 体系 > 面试知识库 > JavaScript 深度 [P6-P7]",
+    "tags": [
+      "JavaScript",
+      "V8",
+      "引擎原理",
+      "运行时"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "gnorY4RZxUOKwykn2ioHkANp",
+    "title": "Node.js 运行时 [P6-P7]",
+    "url": "/dev-knowledge/js-ts/interview/javascript-advanced/nodejs-runtime",
+    "group": "JS / TS 体系 > 面试知识库 > JavaScript 深度 [P6-P7]",
+    "tags": [
+      "Node.js",
+      "libuv",
+      "Stream",
+      "并发"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "yFqASUX54rzj7s_cT9mVYLsZ",
+    "title": "JavaScript 类型系统深层 [P6-P7]",
+    "url": "/dev-knowledge/js-ts/interview/javascript-advanced/type-system-deep",
+    "group": "JS / TS 体系 > 面试知识库 > JavaScript 深度 [P6-P7]",
+    "tags": [
+      "JavaScript",
+      "类型系统",
+      "coercion",
+      "结构化类型"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "TgGwpjj5SXvzYLmB7Ra6JSl-",
+    "title": "异步编程模型演进 [P6-P7]",
+    "url": "/dev-knowledge/js-ts/interview/javascript-advanced/async-model",
+    "group": "JS / TS 体系 > 面试知识库 > JavaScript 深度 [P6-P7]",
+    "tags": [
+      "JavaScript",
+      "异步",
+      "Promise",
+      "Async Iterator"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "H2u9GDIVRhFh97F-lyNjerIZ",
+    "title": "GC 算法与内存管理 [P6-P7]",
+    "url": "/dev-knowledge/js-ts/interview/javascript-advanced/gc-and-memory",
+    "group": "JS / TS 体系 > 面试知识库 > JavaScript 深度 [P6-P7]",
+    "tags": [
+      "JavaScript",
+      "GC",
+      "内存泄漏",
+      "WeakRef"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "62rt3B2SWG3BEPh3K5eVjdax",
+    "title": "原型链本质与元编程 [P6-P7]",
+    "url": "/dev-knowledge/js-ts/interview/javascript-advanced/prototype-and-oop",
+    "group": "JS / TS 体系 > 面试知识库 > JavaScript 深度 [P6-P7]",
+    "tags": [
+      "JavaScript",
+      "原型链",
+      "class",
+      "Proxy",
+      "元编程"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "-NSuUpm2IdWaXYyJn0Y7UFHx",
+    "title": "ES2025/2026 新特性 [P6-P7]",
+    "url": "/dev-knowledge/js-ts/interview/javascript-advanced/es2025-2026",
+    "group": "JS / TS 体系 > 面试知识库 > JavaScript 深度 [P6-P7]",
+    "tags": [
+      "ES2025",
+      "ES2026",
+      "Temporal",
+      "Decorators",
+      "View Transitions",
+      "Scroll-driven Animations"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "lVGwkawU2L-vH4CSmKW0p0jv",
+    "title": "高级类型体操 [P6-P7]",
+    "url": "/dev-knowledge/js-ts/interview/typescript/type-challenges",
+    "group": "JS / TS 体系 > 面试知识库 > TypeScript 高阶",
+    "tags": [
+      "TypeScript",
+      "条件类型",
+      "模板字面量类型",
+      "递归类型"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "RWRfyoRtAo4F7ZGdVNEu_zfs",
+    "title": "TypeScript 编译器架构 [P8]",
+    "url": "/dev-knowledge/js-ts/interview/typescript/compiler-internals",
+    "group": "JS / TS 体系 > 面试知识库 > TypeScript 高阶",
+    "tags": [
+      "TypeScript",
+      "编译器",
+      "AST",
+      "类型检查"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Ub4w0Hzgi2rzNFbYqP_iBmHU",
+    "title": "类型系统设计哲学 [P8]",
+    "url": "/dev-knowledge/js-ts/interview/typescript/type-system-design",
+    "group": "JS / TS 体系 > 面试知识库 > TypeScript 高阶",
+    "tags": [
+      "TypeScript",
+      "HKT",
+      "brand 模式",
+      "类型安全"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "VSA0v1QWEeL1ulrWdbEpi9In",
+    "title": "TypeScript 5.x 新特性 [P6-P7]",
+    "url": "/dev-knowledge/js-ts/interview/typescript/ts5-new-features",
+    "group": "JS / TS 体系 > 面试知识库 > TypeScript 高阶",
+    "tags": [
+      "TypeScript 5",
+      "isolatedDeclarations",
+      "satisfies",
+      "const 类型参数",
+      "装饰器"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "7wIutCbmNfPBY7Rq138Yko4A",
+    "title": "项目架构与分层规范",
+    "url": "/dev-knowledge/nodejs/architecture/project-architecture/nodejs-project-architecture",
+    "group": "Node.js 体系 > 架构设计",
+    "tags": [
+      "Node.js"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "mSm7341KdjaElDSdzCEVwghS",
+    "title": "框架架构选型",
+    "url": "/dev-knowledge/nodejs/architecture/framework-selection/nodejs-framework-selection",
+    "group": "Node.js 体系 > 架构设计",
+    "tags": [
+      "Node.js"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "1-scn9M2HBhjgtw-xeJzXCw8",
+    "title": "中间件与管道架构",
+    "url": "/dev-knowledge/nodejs/architecture/middleware-patterns/nodejs-middleware-patterns",
+    "group": "Node.js 体系 > 架构设计",
+    "tags": [
+      "Node.js"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "30DSzuswZmc9NJi5FaRqOBj1",
+    "title": "构建工具链演进",
+    "url": "/dev-knowledge/nodejs/interview/advanced/build-toolchain",
+    "group": "Node.js 体系 > 面试知识库 [P6-P7]",
+    "tags": [
+      "Webpack",
+      "Vite",
+      "Turbopack",
+      "Rspack",
+      "Oxc"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "8y5-H_PDc6BKt-rWt-NCA5tc",
+    "title": "Monorepo 架构设计 [P8]",
+    "url": "/dev-knowledge/nodejs/interview/advanced/monorepo-architecture",
+    "group": "Node.js 体系 > 面试知识库 [P6-P7]",
+    "tags": [
+      "Monorepo",
+      "pnpm",
+      "Turborepo",
+      "Nx"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "7THpPiaAMhkRref1Q-hf9HU9",
+    "title": "微前端方案对比 [P8]",
+    "url": "/dev-knowledge/nodejs/interview/advanced/micro-frontend",
+    "group": "Node.js 体系 > 面试知识库 [P6-P7]",
+    "tags": [
+      "微前端",
+      "Module Federation",
+      "qiankun",
+      "WASM"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "DswTcN0VbZaOX47X8NF5jV32",
+    "title": "性能预算体系",
+    "url": "/dev-knowledge/nodejs/interview/advanced/performance-budget",
+    "group": "Node.js 体系 > 面试知识库 [P6-P7]",
+    "tags": [
+      "性能",
+      "Core Web Vitals",
+      "INP",
+      "优化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "xA1La8d66plIqrH8ic7mD9Gq",
+    "title": "Node.js Web 框架对比",
+    "url": "/dev-knowledge/nodejs/interview/advanced/nodejs-web-framework",
+    "group": "Node.js 体系 > 面试知识库 [P6-P7]",
+    "tags": [
+      "Node.js",
+      "Express",
+      "Koa",
+      "NestJS",
+      "Fastify"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "EAeWOXukZZJ1DAXH2dCi8BjJ",
+    "title": "Node.js 数据库与 ORM",
+    "url": "/dev-knowledge/nodejs/interview/advanced/nodejs-database-orm",
+    "group": "Node.js 体系 > 面试知识库 [P6-P7]",
+    "tags": [
+      "Node.js",
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "ORM"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "LIlwiTESLWx_E-2tfKOHxD1T",
+    "title": "Node.js 部署与运维",
+    "url": "/dev-knowledge/nodejs/interview/advanced/nodejs-deploy-ops",
+    "group": "Node.js 体系 > 面试知识库 [P6-P7]",
+    "tags": [
+      "Node.js",
+      "Docker",
+      "CI/CD",
+      "PM2",
+      "监控",
+      "日志"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "wsnitjiF85ksXTCIg_3yy9-y",
+    "title": "Python 项目工程化实践",
+    "url": "/dev-knowledge/python/architecture/engineering/python-engineering-practices",
+    "group": "Python 体系 > 架构设计",
+    "tags": [
+      "Python",
+      "工程化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "ITiSVHYAz4NWfQ_u4Bd_Gfvx",
+    "title": "Python 后端框架技术选型",
+    "url": "/dev-knowledge/python/architecture/technology-selection/python-backend-framework-selection",
+    "group": "Python 体系 > 架构设计",
+    "tags": [
+      "Python"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "MQeLTmqoA0Ajx_xtq52NuRN4",
+    "title": "Python AI 开发架构指南",
+    "url": "/dev-knowledge/python/architecture/ai-architecture/python-ai-development-guide",
+    "group": "Python 体系 > 架构设计",
+    "tags": [
+      "Python"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "MliV2FVS1M5SGCElBX-jy0bR",
+    "title": "前端渲染模式全解",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/frontend-rendering-modes",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "基础"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Y4-UFeJQlOoaKrBB8Zx6ube9",
+    "title": "网络通用知识",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/network-fundamentals",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "基础"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "nuHqxG_feLtvWQB6lLD22mTt",
+    "title": "Chrome 开发者工具全解",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/chrome-devtools",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "基础"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Yjsx2VyS0UhBYCkwcVsVunsB",
+    "title": "系统内核与 CPU 架构",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/os-kernel-cpu-architecture",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "基础"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "zhU8WLuufgTpd_TS8cpecQa3",
+    "title": "Linux 目录结构",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/linux-directory-structure",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "基础"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "n4-cMrm770aiE3vPbyQhXSts",
+    "title": "国内开发镜像设置与还原",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/dev-mirror-setup",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "基础"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Xol_6HFr_8Tmuw66MZhf0yn3",
+    "title": "构建优化核心概念",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/build-optimization-concepts",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "基础"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "i2FSa5ytqWGYqKuo7GoQqwlh",
+    "title": "Rolldown 与 Oxc",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/rolldown-and-oxc",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "基础"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "JG0soMNv1D3rjtVNg6OomyHc",
+    "title": "Signal 细粒度响应式",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/signal-reactivity",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "基础"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "33QWEm2o9E9pIIpGg6vzxNQ1",
+    "title": "PostgreSQL vs MySQL + MongoDB",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/postgresql-vs-mysql-mongodb",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "数据库"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "fplLRLYtyOmF9GvZtaMPYl2S",
+    "title": "HTML5 语义化 [P4-P5]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/html-semantics",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "HTML5",
+      "语义化",
+      "SEO",
+      "无障碍"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "NbcHxF0JANobWR3B1p_vOYej",
+    "title": "CSS 布局：Flexbox 与 Grid [P4-P5]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/css-layout",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "CSS",
+      "Flexbox",
+      "Grid",
+      "布局"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "1ub6Urqlo5BXTC9k9IIULSdE",
+    "title": "响应式设计与移动端适配 [P4-P5]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/responsive-design",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "响应式",
+      "媒体查询",
+      "移动端适配",
+      "rem",
+      "vw"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "L_WBws0DW2I6UojzlbOss8NT",
+    "title": "CSS 新特性：变量、动画、过渡 [P4-P5]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/css-modern-features",
+    "group": "跨域知识 > 通用基础",
+    "tags": [
+      "CSS 变量",
+      "transition",
+      "animation",
+      "calc"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "0qp4ey5mcc7uT6uztLE_bBxa",
+    "title": "浏览器基础与 DevTools [P4-P5]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/browser-basics",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "浏览器",
       "Chrome",
@@ -3093,14 +3640,14 @@
       "开发者工具",
       "渲染"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "nALkBy9NoSJGicPg7jiiue0O",
+    "id": "g3C03e8D4YB3TnRu9Rg0uBZq",
     "title": "HTTP 协议基础 [P4-P5]",
-    "url": "/interview/junior/http-basics",
-    "group": "初级工程师（P4-P5）",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/http-basics",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "HTTP",
       "HTTPS",
@@ -3108,14 +3655,14 @@
       "请求方法",
       "Header"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "q76RgMU0vIsLA-JcRcryovrt",
-    "title": "本地存储与 Cookie 基础 [P4-P5]",
-    "url": "/interview/junior/storage-and-cookie",
-    "group": "初级工程师（P4-P5）",
+    "id": "ASLmkJfHVxz3ROxAAvS4nicO",
+    "title": "本地存储与 Cookie [P4-P5]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/storage-and-cookie",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "localStorage",
       "sessionStorage",
@@ -3124,71 +3671,28 @@
       "Cache API",
       "存储"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "WnpiI8RBp0FcnAygLlsaUyn7",
-    "title": "Vue 3 入门：模板、组件、生命周期 [P4-P5]",
-    "url": "/interview/junior/vue-basics",
-    "group": "初级工程师（P4-P5）",
-    "tags": [
-      "Vue 3",
-      "模板语法",
-      "组件",
-      "生命周期"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "y1k9SUggmbTDtlyIUY8tzvuD",
-    "title": "Vue 组件模式：Props、Emit、Slots [P4-P5]",
-    "url": "/interview/junior/vue-component-patterns",
-    "group": "初级工程师（P4-P5）",
-    "tags": [
-      "Vue 3",
-      "Props",
-      "Emit",
-      "Slots",
-      "组件通信"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "F7ZcIfkVdwITh-rGr46a-1Sm",
-    "title": "TypeScript 入门：类型注解与基础类型 [P4-P5]",
-    "url": "/interview/junior/typescript-basics",
-    "group": "初级工程师（P4-P5）",
-    "tags": [
-      "TypeScript",
-      "类型注解",
-      "接口",
-      "基础类型"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "TyIn96W65PJxkplpuMqQl5_v",
-    "title": "Git 基础：分支策略与协作流程 [P4-P5]",
-    "url": "/interview/junior/git-basics",
-    "group": "初级工程师（P4-P5）",
+    "id": "vX8TwRExiv4RBTWoY-mg611T",
+    "title": "Git 基础 [P4-P5]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/git-basics",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "Git",
       "分支",
       "合并",
       "协作"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "xJdONHrmzNG_duVT3mTNvFND",
+    "id": "ppM-7-jKeU7rqzGmNf7LzhRN",
     "title": "npm/pnpm 包管理入门 [P4-P5]",
-    "url": "/interview/junior/npm-pnpm-basics",
-    "group": "初级工程师（P4-P5）",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/npm-pnpm-basics",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "npm",
       "pnpm",
@@ -3196,14 +3700,14 @@
       "package.json",
       "scripts"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "q_dqoyflerbFWJtR4_ALNpP1",
+    "id": "ZSkr8e2VnZPMUnVMieBXpjFD",
     "title": "前端调试基础 [P4-P5]",
-    "url": "/interview/junior/debugging-basics",
-    "group": "初级工程师（P4-P5）",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/debugging-basics",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "调试",
       "debugger",
@@ -3211,14 +3715,14 @@
       "断点",
       "错误排查"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "KUvbQTOAlipCbJ-sx2U_AI6v",
-    "title": "SPA 部署基础（Nginx 配置） [P4-P5]",
-    "url": "/interview/junior/spa-deploy-basics",
-    "group": "初级工程师（P4-P5）",
+    "id": "r8z4GCDOrR5Rs_LCmBmKrFbg",
+    "title": "SPA 部署基础 [P4-P5]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/spa-deploy-basics",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "部署",
       "Nginx",
@@ -3226,14 +3730,14 @@
       "CDN",
       "History 模式"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "AQCvnBeA93TCOH_VqzO-CnYn",
+    "id": "SXF6BJxAQ6rFZ12OrtRD_0vL",
     "title": "表单与验证基础 [P4-P5]",
-    "url": "/interview/junior/form-validation-basics",
-    "group": "初级工程师（P4-P5）",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/form-validation-basics",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "表单",
       "验证",
@@ -3241,14 +3745,14 @@
       "HTML5",
       "表单控件"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "-hRTDKW-Boq7Uy0Ubk2j9MLC",
-    "title": "CSS 架构：BEM/CSS Modules/Tailwind [P5-P6]",
-    "url": "/interview/intermediate/css-architecture",
-    "group": "中级工程师（P5-P6）",
+    "id": "DefrRzBLnphQ4-LHVmQallBo",
+    "title": "CSS 架构：BEM/Modules/Tailwind [P5-P6]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/css-architecture",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "CSS",
       "BEM",
@@ -3258,14 +3762,14 @@
       ":deep",
       "scoped"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "ijJ-DBX2OIgDUayfuBy-Lmia",
+    "id": "6qfm7VUBElWVIoUhEjBTA-E7",
     "title": "CSS 预处理器：Sass/Less/PostCSS [P5-P6]",
-    "url": "/interview/intermediate/css-preprocessors",
-    "group": "中级工程师（P5-P6）",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/css-preprocessors",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "CSS",
       "预处理器",
@@ -3273,61 +3777,14 @@
       "Less",
       "PostCSS"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "jVm7-xO0YpN1qWSUsD_w9xHd",
-    "title": "闭包、作用域链与执行上下文 [P5-P6]",
-    "url": "/interview/intermediate/js-closures-context",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "JavaScript",
-      "闭包",
-      "作用域",
-      "执行上下文",
-      "this"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "GZIQqV0yXfesWbJXSN6jRVgk",
-    "title": "ES6+ 模块系统与工程化 [P5-P6]",
-    "url": "/interview/intermediate/es6-modules",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "JavaScript",
-      "ES6",
-      "模块",
-      "ESM",
-      "CJS",
-      "tree-shaking"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "-mGl8kGM434YpKxL0a7MWYRh",
-    "title": "JavaScript 常用设计模式 [P5-P6]",
-    "url": "/interview/intermediate/js-design-patterns",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "JavaScript",
-      "设计模式",
-      "观察者",
-      "策略",
-      "工厂",
-      "单例"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "55nU025jMY_c5NHwqnWXrxXk",
-    "title": "HTTP 缓存策略：强缓存/协商缓存 [P5-P6]",
-    "url": "/interview/intermediate/http-caching",
-    "group": "中级工程师（P5-P6）",
+    "id": "AA1022K8PUOKk1KG_LllLOit",
+    "title": "HTTP 缓存策略 [P5-P6]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/http-caching",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "HTTP",
       "缓存",
@@ -3335,14 +3792,14 @@
       "ETag",
       "性能优化"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "nNhNbIhfrjyM8Mi-uoKo7KCs",
-    "title": "前端网络优化：预加载/懒加载/压缩 [P5-P6]",
-    "url": "/interview/intermediate/network-optimization",
-    "group": "中级工程师（P5-P6）",
+    "id": "p3gusrqwcG-UvjAmKW_0l6gk",
+    "title": "前端网络优化 [P5-P6]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/network-optimization",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "网络优化",
       "预加载",
@@ -3350,147 +3807,28 @@
       "压缩",
       "CDN"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "j9G6LqjXw9_F8fV6ykxEQQJJ",
-    "title": "Vue 3 生命周期深入 [P5-P6]",
-    "url": "/interview/intermediate/vue-lifecycle",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "Vue 3",
-      "生命周期",
-      "组合式 API",
-      "钩子"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "9emorJlnDAVrOspsE8KXTOb4",
-    "title": "Vue 组件通信方式全景 [P5-P6]",
-    "url": "/interview/intermediate/vue-communication",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "Vue 3",
-      "组件通信",
-      "Props",
-      "Emit",
-      "Provide/Inject"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "CPtj6b5l95evw09IcJEgs4NN",
-    "title": "Vue Router 路由实战 [P5-P6]",
-    "url": "/interview/intermediate/vue-router-basics",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "Vue 3",
-      "Vue Router",
-      "路由",
-      "导航守卫",
-      "懒加载"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "fn3uKl3P_vsYRj61lQlkfmW3",
-    "title": "TypeScript 类型体操入门 [P5-P6]",
-    "url": "/interview/intermediate/ts-types-practice",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "TypeScript",
-      "泛型",
-      "条件类型",
-      "映射类型",
-      "工具类型"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "g2GbycSHBNrcNORBEYQ_TAwO",
-    "title": "TypeScript 工程化实践 [P5-P6]",
-    "url": "/interview/intermediate/ts-engineering",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "TypeScript",
-      "tsconfig",
-      "声明文件",
-      "Vue",
-      "React"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "ZWnoBp1um83PwXaG37rN8GZI",
-    "title": "React 入门：JSX、Hooks、组件模式 [P5-P6]",
-    "url": "/interview/intermediate/react-basics",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "React",
-      "JSX",
-      "Hooks",
-      "组件",
-      "useState",
-      "useEffect"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "CZUtncmrcHa7XC52Yg5olGQx",
+    "id": "zlkudP7JO1wQCmjSirfYVYgb",
     "title": "前端性能优化基础 [P5-P6]",
-    "url": "/interview/intermediate/performance-basics",
-    "group": "中级工程师（P5-P6）",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/performance-basics",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "性能优化",
       "Core Web Vitals",
       "图片优化",
       "代码分割"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "5EsATXKVEymwOq8hP_rewbFG",
-    "title": "构建工具入门：Vite 配置与使用 [P5-P6]",
-    "url": "/interview/intermediate/build-tools-basics",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "构建工具",
-      "Vite",
-      "Webpack",
-      "配置",
-      "环境变量"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "4iwFYk0_6JmN2CLyMYKwWrX3",
-    "title": "前端错误处理与监控入门 [P5-P6]",
-    "url": "/interview/intermediate/error-handling",
-    "group": "中级工程师（P5-P6）",
-    "tags": [
-      "错误处理",
-      "ErrorBoundary",
-      "监控",
-      "错误上报"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "b62lCXcyY1Rza3DFfOqYJUlk",
-    "title": "Web 安全实战：CSP/SRI/依赖检查 [P5-P6]",
-    "url": "/interview/intermediate/web-security-practice",
-    "group": "中级工程师（P5-P6）",
+    "id": "xavn_AR0YSSwTN7jL1DX5HGs",
+    "title": "Web 安全实战 [P5-P6]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/web-security-practice",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "安全",
       "CSP",
@@ -3498,14 +3836,14 @@
       "依赖检查",
       "Helmet"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "sQhmacXLzuMEdWOvGLXcIOtK",
-    "title": "Docker 容器化基础与前端部署 [P5-P6]",
-    "url": "/interview/intermediate/docker-basics",
-    "group": "中级工程师（P5-P6）",
+    "id": "gttXDQGKl0OIhX_pQNIN15DH",
+    "title": "Docker 容器化基础 [P5-P6]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/docker-basics",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "Docker",
       "容器化",
@@ -3513,704 +3851,183 @@
       "Dockerfile",
       "docker-compose"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "5z8Q5YysO7DNZWWQojPtbapi",
-    "title": "Dart 语言基础与核心特性 [P5-P6]",
-    "url": "/interview/flutter-intermediate/flutter-dart-basics",
-    "group": "Flutter 中级（P5-P6）",
+    "id": "oc6SudNVCysTDj8A7_92Utz5",
+    "title": "前端错误处理与监控 [P5-P6]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/error-handling",
+    "group": "跨域知识 > 通用基础",
     "tags": [
-      "Dart",
-      "Flutter",
-      "空安全",
-      "OOP",
-      "异步"
+      "错误处理",
+      "ErrorBoundary",
+      "监控",
+      "错误上报"
     ],
-    "createdAt": "2026-10-08 10:33:21",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "-c8Yg6tvMoT5_0nTDfG-2A7m",
-    "title": "Flutter Widget 体系与布局系统 [P5-P6]",
-    "url": "/interview/flutter-intermediate/flutter-widget-and-layout",
-    "group": "Flutter 中级（P5-P6）",
-    "tags": [
-      "Flutter",
-      "Widget",
-      "布局",
-      "StatelessWidget",
-      "StatefulWidget"
-    ],
-    "createdAt": "2026-10-08 10:33:21",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "L6RYmHc5ahD3TqyDEIDrHTgl",
-    "title": "Flutter 状态管理基础：setState/Provider/Bloc [P5-P6]",
-    "url": "/interview/flutter-intermediate/flutter-state-management-basics",
-    "group": "Flutter 中级（P5-P6）",
-    "tags": [
-      "Flutter",
-      "状态管理",
-      "setState",
-      "Provider",
-      "Bloc"
-    ],
-    "createdAt": "2026-10-08 10:33:21",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "oTaHdZOJ1r1yK4c7_yCp5Mzf",
-    "title": "Flutter 导航与路由实战 [P5-P6]",
-    "url": "/interview/flutter-intermediate/flutter-navigation-and-routing",
-    "group": "Flutter 中级（P5-P6）",
-    "tags": [
-      "Flutter",
-      "导航",
-      "路由",
-      "Navigator",
-      "GoRouter"
-    ],
-    "createdAt": "2026-10-08 10:33:21",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "cVV7nF5Bm5qclsZIMLu_gujg",
-    "title": "V8 引擎与 JavaScript 运行时 [P6-P7]",
-    "url": "/interview/javascript/engine-and-runtime",
-    "group": "JavaScript & Node.js 深度（P6-P7）",
-    "tags": [
-      "JavaScript",
-      "V8",
-      "引擎原理",
-      "运行时"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "7_A9oA1iILeYn_OAew0MVwsh",
-    "title": "Node.js 运行时 [P6-P7]",
-    "url": "/interview/javascript/nodejs-runtime",
-    "group": "JavaScript & Node.js 深度（P6-P7）",
-    "tags": [
-      "Node.js",
-      "libuv",
-      "Stream",
-      "并发"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "pXGt0WCX_9qIKJ18DFsWwNiy",
-    "title": "JavaScript 类型系统深层 [P6-P7]",
-    "url": "/interview/javascript/type-system-deep",
-    "group": "JavaScript & Node.js 深度（P6-P7）",
-    "tags": [
-      "JavaScript",
-      "类型系统",
-      "coercion",
-      "结构化类型"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "buwzCf-RLHeFU8c4r3oWJFXS",
-    "title": "异步编程模型演进 [P6-P7]",
-    "url": "/interview/javascript/async-model",
-    "group": "JavaScript & Node.js 深度（P6-P7）",
-    "tags": [
-      "JavaScript",
-      "异步",
-      "Promise",
-      "Async Iterator"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "5PjcoNoRmXJUgwY0TlACnsE5",
-    "title": "GC 算法与内存管理 [P6-P7]",
-    "url": "/interview/javascript/gc-and-memory",
-    "group": "JavaScript & Node.js 深度（P6-P7）",
-    "tags": [
-      "JavaScript",
-      "GC",
-      "内存泄漏",
-      "WeakRef"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "FJFbya2AIpIaEOWyENXNRKam",
-    "title": "原型链本质与元编程 [P6-P7]",
-    "url": "/interview/javascript/prototype-and-oop",
-    "group": "JavaScript & Node.js 深度（P6-P7）",
-    "tags": [
-      "JavaScript",
-      "原型链",
-      "class",
-      "Proxy",
-      "元编程"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "lMQchCvavEeD7SCEdkRYyT-b",
-    "title": "ES2025/2026 新特性与现代 Web APIs [P6-P7]",
-    "url": "/interview/javascript/es2025-2026-and-web-apis",
-    "group": "JavaScript & Node.js 深度（P6-P7）",
-    "tags": [
-      "ES2025",
-      "ES2026",
-      "Temporal",
-      "Decorators",
-      "View Transitions",
-      "Scroll-driven Animations"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "7DdyBANJiqK8JsSdCjqaPin5",
-    "title": "高级类型体操 [P6-P7]",
-    "url": "/interview/typescript/type-challenges",
-    "group": "TypeScript 高阶（P6-P7）",
+    "id": "1T_L-cyeXl94QMJHF1SWO3JC",
+    "title": "TypeScript 类型体操入门 [P5-P6]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/ts-types-practice",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "TypeScript",
+      "泛型",
       "条件类型",
-      "模板字面量类型",
-      "递归类型"
+      "映射类型",
+      "工具类型"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "YhuQs-pklD6LcWy_Ohhq1KcB",
-    "title": "TypeScript 编译器架构 [P8]",
-    "url": "/interview/typescript/compiler-internals",
-    "group": "TypeScript 高阶（P6-P7）",
+    "id": "REyrQwhiR4JVP_7jxm1LZniO",
+    "title": "TypeScript 工程化实践 [P5-P6]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/ts-engineering",
+    "group": "跨域知识 > 通用基础",
     "tags": [
       "TypeScript",
-      "编译器",
-      "AST",
-      "类型检查"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "2AL21-tYU1P6CAt02e51CXLS",
-    "title": "类型系统设计哲学 [P8]",
-    "url": "/interview/typescript/type-system-design",
-    "group": "TypeScript 高阶（P6-P7）",
-    "tags": [
-      "TypeScript",
-      "HKT",
-      "brand 模式",
-      "类型安全"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "n7duFpQAkDmnE7RhBC34-F4Z",
-    "title": "TypeScript 5.x 新特性 [P6-P7]",
-    "url": "/interview/typescript/ts5-new-features",
-    "group": "TypeScript 高阶（P6-P7）",
-    "tags": [
-      "TypeScript 5",
-      "isolatedDeclarations",
-      "satisfies",
-      "const 类型参数",
-      "装饰器"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "1Bs6ikjDv06l2mnb_4oQrY-8",
-    "title": "Vue 响应式系统底层 [P6-P7]",
-    "url": "/interview/vue/reactivity-deep",
-    "group": "Vue 深度（P6-P7）",
-    "tags": [
+      "tsconfig",
+      "声明文件",
       "Vue",
-      "Proxy",
-      "依赖收集",
-      "调度器"
+      "React"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "hxUFlRNXwZ5LyeMFSMd3aYB0",
-    "title": "Vue 编译器优化 [P6-P7]",
-    "url": "/interview/vue/compiler-optimization",
-    "group": "Vue 深度（P6-P7）",
+    "id": "GIcm15Nw16391NYE66c6HfyN",
+    "title": "构建工具入门：Vite [P5-P6]",
+    "url": "/dev-knowledge/cross-domain/general-fundamentals/build-tools-basics",
+    "group": "跨域知识 > 通用基础",
     "tags": [
-      "Vue",
-      "编译器",
-      "静态提升",
-      "补丁标记"
+      "构建工具",
+      "Vite",
+      "Webpack",
+      "配置",
+      "环境变量"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "G84UPAl8UgfIESd40QPHEbns",
-    "title": "Vapor Mode 原理 [P6-P7]",
-    "url": "/interview/vue/vapor-mode",
-    "group": "Vue 深度（P6-P7）",
+    "id": "eAhnAv4m64JGc4-97vJEwrbo",
+    "title": "基础概念",
+    "url": "/dev-knowledge/cross-domain/data-structure/basic-concepts",
+    "group": "跨域知识 > 数据结构",
     "tags": [
-      "Vue",
-      "Vapor Mode",
-      "无虚拟DOM",
-      "编译时优化"
+      "数据结构"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "pJD9WCuda_OEfr36na8EEBEi",
-    "title": "渲染器 Patch 流程与 Diff 算法 [P6-P7]",
-    "url": "/interview/vue/renderer-patch-flow",
-    "group": "Vue 深度（P6-P7）",
+    "id": "hLmdQ-fIpv9sfS08E8VKkSai",
+    "title": "线性结构",
+    "url": "/dev-knowledge/cross-domain/data-structure/linear-structures",
+    "group": "跨域知识 > 数据结构",
     "tags": [
-      "Vue",
-      "渲染器",
-      "diff",
-      "调度更新"
+      "数据结构"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "LgIKyUlVsTKCnnrl3gO4fVh8",
-    "title": "Vue 3.5+ 新特性与响应式重构 [P6-P7]",
-    "url": "/interview/vue/vue-3.5-new-features",
-    "group": "Vue 深度（P6-P7）",
+    "id": "Nba765t4zTGR6bxXAu4UDeWF",
+    "title": "树形结构",
+    "url": "/dev-knowledge/cross-domain/data-structure/tree-structures",
+    "group": "跨域知识 > 数据结构",
     "tags": [
-      "Vue 3.5",
-      "useTemplateRef",
-      "useId",
-      "defineModel",
-      "响应式重构"
+      "数据结构"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "9SbPGff4LCkZpF_JZuS8BK1N",
-    "title": "Pinia 状态管理原理与实战 [P6-P7]",
-    "url": "/interview/vue/pinia-deep",
-    "group": "Vue 深度（P6-P7）",
+    "id": "FZCRp0v8cMzYhsd6VLrMZxZ1",
+    "title": "图结构",
+    "url": "/dev-knowledge/cross-domain/data-structure/graph-structures",
+    "group": "跨域知识 > 数据结构",
     "tags": [
-      "Pinia",
-      "Vue 3",
-      "状态管理",
-      "Plugin",
-      "持久化"
+      "数据结构"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "rbr7RLR49owTavY1hcdyqvZl",
-    "title": "Vue Router 4 路由系统深度 [P6-P7]",
-    "url": "/interview/vue/vue-router-4",
-    "group": "Vue 深度（P6-P7）",
+    "id": "I8cmlZAcRxEfENmtkH45zphN",
+    "title": "哈希表与集合",
+    "url": "/dev-knowledge/cross-domain/data-structure/hash-structures",
+    "group": "跨域知识 > 数据结构",
     "tags": [
-      "Vue Router",
-      "路由",
-      "导航守卫",
-      "动态路由",
-      "History 模式"
+      "数据结构"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "e2KMSwVPTeadxXiyrzNIfnqe",
-    "title": "Nuxt 3 全栈框架原理与实战 [P8]",
-    "url": "/interview/vue/nuxt-3-fullstack",
-    "group": "Vue 深度（P6-P7）",
+    "id": "eiDdwp9oto_GD4rNhOcSU2I-",
+    "title": "高级数据结构",
+    "url": "/dev-knowledge/cross-domain/data-structure/advanced-structures",
+    "group": "跨域知识 > 数据结构",
     "tags": [
-      "Nuxt 3",
-      "SSR",
-      "SSG",
-      "Nitro",
-      "全栈框架"
+      "数据结构"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "LCFCLRLpKSrfbhE9ItiSISz0",
-    "title": "Vue 3 生态实战模式 [P6-P7]",
-    "url": "/interview/vue/vue-ecosystem-patterns",
-    "group": "Vue 深度（P6-P7）",
+    "id": "KWmngAtU5C3Zglsn_g8xB9jQ",
+    "title": "概述",
+    "url": "/dev-knowledge/cross-domain/design-patterns/overview",
+    "group": "跨域知识 > 设计模式",
     "tags": [
-      "Vue 3",
-      "组合式 API",
-      "Suspense",
-      "Teleport",
-      "KeepAlive",
-      "provide/inject"
+      "设计模式"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "Z2CB8AWNuWQRi6gYIRNHVcr_",
-    "title": "Fiber 架构与优先级调度 [P6-P7]",
-    "url": "/interview/react/fiber-architecture",
-    "group": "React 深度（P6-P7）",
+    "id": "OftbUiQ7oLR-crBL8AczMQ5R",
+    "title": "创建型模式",
+    "url": "/dev-knowledge/cross-domain/design-patterns/creational",
+    "group": "跨域知识 > 设计模式",
     "tags": [
-      "React",
-      "Fiber",
-      "时间切片",
-      "优先级调度"
+      "设计模式"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "l4Is0ZtaxYmSXB0xYdJCzBqI",
-    "title": "并发渲染与 Suspense [P6-P7]",
-    "url": "/interview/react/concurrent-rendering",
-    "group": "React 深度（P6-P7）",
+    "id": "hsw4PbiWS_iHcxUaOSAuhw5j",
+    "title": "结构型模式",
+    "url": "/dev-knowledge/cross-domain/design-patterns/structural",
+    "group": "跨域知识 > 设计模式",
     "tags": [
-      "React",
-      "并发",
-      "Suspense",
-      "Transitions"
+      "设计模式"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "2Icnq_RxCPvP7HsAXVt4KBiO",
-    "title": "React Server Components 原理 [P6-P7]",
-    "url": "/interview/react/server-components",
-    "group": "React 深度（P6-P7）",
+    "id": "Pq3w8nCtLIZt8tW-2GNNkLiB",
+    "title": "行为型模式",
+    "url": "/dev-knowledge/cross-domain/design-patterns/behavioral",
+    "group": "跨域知识 > 设计模式",
     "tags": [
-      "React",
-      "RSC",
-      "流式渲染",
-      "序列化协议"
+      "设计模式"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "ru1zDv9HCEzFyYOcFaA2YRDY",
-    "title": "状态管理本质与有限状态机 [P6-P7]",
-    "url": "/interview/react/state-machine",
-    "group": "React 深度（P6-P7）",
-    "tags": [
-      "React",
-      "状态管理",
-      "有限状态机",
-      "Signals"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "2RNimVFWWHGZtxLKI0efqr75",
-    "title": "React 19 新特性深度解析 [P6-P7]",
-    "url": "/interview/react/react-19-features",
-    "group": "React 深度（P6-P7）",
-    "tags": [
-      "React 19",
-      "use hook",
-      "Actions",
-      "useOptimistic",
-      "useFormStatus"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "epm4TKLdxaK116z_WOwZuZpo",
-    "title": "React Compiler 原理与实践 [P8]",
-    "url": "/interview/react/react-compiler",
-    "group": "React 深度（P6-P7）",
-    "tags": [
-      "React Compiler",
-      "自动 Memo",
-      "编译时优化",
-      "React 19"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "AI5eXy7EuIviPZgv2j7VBQdk",
-    "title": "Zustand/Jotai 状态管理深度 [P6-P7]",
-    "url": "/interview/react/zustand-and-jotai",
-    "group": "React 深度（P6-P7）",
-    "tags": [
-      "Zustand",
-      "Jotai",
-      "React",
-      "状态管理",
-      "原子化"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-09 21:27:45"
-  },
-  {
-    "id": "xCDk58u_azaZtmcskbvM7tGT",
-    "title": "TanStack Query 数据获取与缓存 [P6-P7]",
-    "url": "/interview/react/tanstack-query",
-    "group": "React 深度（P6-P7）",
-    "tags": [
-      "TanStack Query",
-      "React Query",
-      "数据获取",
-      "缓存",
-      "乐观更新"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "8rMBQlP19ZVNrB45kn6W9W3P",
-    "title": "Next.js 15 全栈框架原理 [P8]",
-    "url": "/interview/react/nextjs-15",
-    "group": "React 深度（P6-P7）",
-    "tags": [
-      "Next.js 15",
-      "App Router",
-      "Server Actions",
-      "缓存",
-      "Turbopack"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "jn8AQMyXBkj8HpGS0oAWk_cu",
-    "title": "React Hook Form + Zod 表单体系 [P6-P7]",
-    "url": "/interview/react/react-hook-form-and-zod",
-    "group": "React 深度（P6-P7）",
-    "tags": [
-      "React Hook Form",
-      "Zod",
-      "表单",
-      "验证",
-      "Schema"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "leJ0fAOpVyRqKylioD_OKwz1",
-    "title": "Testing Library + MSW 测试体系 [P6-P7]",
-    "url": "/interview/react/react-testing-library",
-    "group": "React 深度（P6-P7）",
-    "tags": [
-      "Testing Library",
-      "MSW",
-      "React",
-      "测试",
-      "用户视角"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "E_NAKS7erhL_Cv8w2IfBRLna",
-    "title": "React 生态架构模式 [P8]",
-    "url": "/interview/react/react-architecture-patterns",
-    "group": "React 深度（P6-P7）",
-    "tags": [
-      "React",
-      "架构",
-      "项目结构",
-      "状态分层",
-      "代码分割"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "61Xe9qwipH9SMPTlTLr5XrWp",
-    "title": "Flutter 渲染引擎 [P6-P7]",
-    "url": "/interview/flutter/rendering-engine",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "Flutter",
-      "Impeller",
-      "Skia",
-      "三棵树",
-      "Material 3",
-      "Web 渲染"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "fGSd0nnFr4beLnZYqJJ0YTE1",
-    "title": "Dart 语言深度 [P6-P7]",
-    "url": "/interview/flutter/dart-advanced",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "Dart",
-      "Isolate",
-      "AOT",
-      "JIT",
-      "Mixin"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "9iMZqLK0tcSE6Q65j553123m",
-    "title": "Flutter 状态管理架构 [P8]",
-    "url": "/interview/flutter/architecture-patterns",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "Flutter",
-      "Riverpod",
-      "BLoC",
-      "DI",
-      "Clean Architecture"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "__FbM94OzRzKnZJt-Rq97sb1",
-    "title": "Flutter 与原生交互 [P8]",
-    "url": "/interview/flutter/platform-interop",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "Flutter",
-      "Platform Channel",
-      "FFI",
-      "混合栈"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "7kkG1g-tzS-oy0SDNC-Cpgn7",
-    "title": "Flutter 性能优化与工程化 [P8]",
-    "url": "/interview/flutter/performance-engineering",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "Flutter",
-      "性能优化",
-      "内存治理",
-      "灰度发布"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "Qp36Mvg1B3vrgzKZwja7gta7",
-    "title": "Riverpod 状态管理深度 [P6-P7]",
-    "url": "/interview/flutter/riverpod-deep",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "Riverpod",
-      "Flutter",
-      "状态管理",
-      "Codegen",
-      "Provider"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "lv-opTClrUXRUmsv5WtuPJyr",
-    "title": "BLoC/Cubit 架构模式与大规模实践 [P6-P7]",
-    "url": "/interview/flutter/bloc-cubit-architecture",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "BLoC",
-      "Cubit",
-      "Flutter",
-      "状态管理",
-      "事件驱动"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "gXZ55kgSqecmkLTvoAPxEyAp",
-    "title": "GetX 生态体系 [P6-P7]",
-    "url": "/interview/flutter/getx-ecosystem",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "GetX",
-      "Flutter",
-      "状态管理",
-      "路由",
-      "依赖注入"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "wiPtO559urkWeRCC5q3YobYj",
-    "title": "GoRouter 路由管理深度 [P6-P7]",
-    "url": "/interview/flutter/go-router-deep",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "GoRouter",
-      "Flutter",
-      "路由",
-      "Deep Link",
-      "ShellRoute"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "zXyuYgaWrKsBjSAcYfjJRa-g",
-    "title": "Dio 网络层与 HTTP 客户端体系 [P6-P7]",
-    "url": "/interview/flutter/dio-and-networking",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "Dio",
-      "Flutter",
-      "网络",
-      "拦截器",
-      "HTTP"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "4fWHCLxNVLkHi_Z5UbhEejWN",
-    "title": "Flutter 本地存储与持久化 [P6-P7]",
-    "url": "/interview/flutter/flutter-local-storage",
-    "group": "Flutter 高级与架构（P6-P7/P8）",
-    "tags": [
-      "Flutter",
-      "本地存储",
-      "SharedPreferences",
-      "Hive",
-      "SQLite",
-      "Isar"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "g7Wdhoo_LsD4D-uhWt5KxIBs",
-    "title": "浏览器渲染管线 [P6-P7]",
-    "url": "/interview/browser-and-network/rendering-pipeline",
-    "group": "浏览器与网络（P6-P7）",
+    "id": "OcxOjh2iBKv4QSzguVDiU2JU",
+    "title": "浏览器渲染管线",
+    "url": "/dev-knowledge/cross-domain/browser-and-network/rendering-pipeline",
+    "group": "跨域知识 > 浏览器与网络 [P6-P7]",
     "tags": [
       "渲染管线",
       "样式计算",
@@ -4218,28 +4035,28 @@
       "合成",
       "GPU"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "r9sw0YYB8QulwMghYYdftFeP",
-    "title": "HTTP/3、WebTransport 与 QUIC [P6-P7]",
-    "url": "/interview/browser-and-network/http3-and-webtransport",
-    "group": "浏览器与网络（P6-P7）",
+    "id": "YwedUq_OGQZTsB6i-Cqz7t7K",
+    "title": "HTTP/3、WebTransport 与 QUIC",
+    "url": "/dev-knowledge/cross-domain/browser-and-network/http3-and-webtransport",
+    "group": "跨域知识 > 浏览器与网络 [P6-P7]",
     "tags": [
       "HTTP/3",
       "QUIC",
       "WebTransport",
       "0-RTT"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "P3ID5_JZdjpbtJIppLMIZa_P",
-    "title": "WebAssembly 在前端的应用 [P6-P7]",
-    "url": "/interview/browser-and-network/wasm-frontend",
-    "group": "浏览器与网络（P6-P7）",
+    "id": "nGcgMeAyYpJcBDG2HMCIeJqc",
+    "title": "WebAssembly 在前端的应用",
+    "url": "/dev-knowledge/cross-domain/browser-and-network/wasm-frontend",
+    "group": "跨域知识 > 浏览器与网络 [P6-P7]",
     "tags": [
       "WebAssembly",
       "WASM",
@@ -4247,14 +4064,14 @@
       "编解码",
       "游戏引擎"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "kd3Asrl3siT5cloOL6roE80n",
-    "title": "浏览器安全模型 [P6-P7]",
-    "url": "/interview/browser-and-network/security-model",
-    "group": "浏览器与网络（P6-P7）",
+    "id": "H8-ZJ2JHIURR3rr17F2O14fg",
+    "title": "浏览器安全模型",
+    "url": "/dev-knowledge/cross-domain/browser-and-network/security-model",
+    "group": "跨域知识 > 浏览器与网络 [P6-P7]",
     "tags": [
       "CSP",
       "COOP",
@@ -4263,85 +4080,130 @@
       "沙箱",
       "安全"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "8J0oAWTROn00Y6qKnAbEo65y",
-    "title": "构建工具链演进 [P6-P7]",
-    "url": "/interview/engineering/build-toolchain",
-    "group": "工程化与全栈（P6-P7/P8）",
+    "id": "GxVtIgmdhfDWSV2azN12P45x",
+    "title": "前端脚手架背后的脚本语言解析",
+    "url": "/dev-knowledge/cross-domain/engineering/architecture-docs/frontend-scaffold-scripts",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
-      "Webpack",
-      "Vite",
-      "Turbopack",
-      "Rspack",
-      "Oxc"
+      "工程化"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "4a_kJzsFW8AeKktnZThGrjEQ",
-    "title": "Monorepo 架构设计 [P8]",
-    "url": "/interview/engineering/monorepo-architecture",
-    "group": "工程化与全栈（P6-P7/P8）",
+    "id": "woqsIbjYneLSBj4o06jxayDO",
+    "title": "项目根目录配置文件解析",
+    "url": "/dev-knowledge/cross-domain/engineering/architecture-docs/frontend-project-config-files",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
-      "Monorepo",
-      "pnpm",
-      "Turborepo",
-      "Nx"
+      "工程化"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "maJk4W4_uNK3HtI5NMBxcAf3",
-    "title": "微前端方案对比 [P8]",
-    "url": "/interview/engineering/micro-frontend",
-    "group": "工程化与全栈（P6-P7/P8）",
+    "id": "YEt1rCc5Pe9OeHIGdlcJgODq",
+    "title": "Docker 镜像构建脚本对比",
+    "url": "/dev-knowledge/cross-domain/engineering/architecture-docs/docker-image-build-script-comparison",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
-      "微前端",
-      "Module Federation",
-      "qiankun",
-      "WASM"
+      "工程化"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "R3HmVkMYvzW2-omeihiajtT1",
+    "id": "7Dv5hdCJfOeerLixqfDVU0xE",
+    "title": "包管理与 Monorepo 工具链",
+    "url": "/dev-knowledge/cross-domain/engineering/architecture-docs/npm-pnpm-monorepo-toolchain",
+    "group": "跨域知识 > 工程化实践",
+    "tags": [
+      "工程化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Qkfzo4-cOBqiX__PHN_xrvMF",
+    "title": "单仓 vs 多仓的选择",
+    "url": "/dev-knowledge/cross-domain/engineering/architecture-docs/monorepo-vs-polyrepo",
+    "group": "跨域知识 > 工程化实践",
+    "tags": [
+      "工程化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "5BhGRhx3PuNHtW4F5lwnTcQw",
+    "title": "常见 SaaS 平台功能",
+    "url": "/dev-knowledge/cross-domain/engineering/architecture-docs/common-saas-platform-features",
+    "group": "跨域知识 > 工程化实践",
+    "tags": [
+      "工程化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "d5pydZhFDjXrOQXF1TS4Ji1U",
+    "title": "全栈基座项目（React）",
+    "url": "/dev-knowledge/cross-domain/engineering/architecture-docs/fullstack-base-project-react",
+    "group": "跨域知识 > 工程化实践",
+    "tags": [
+      "工程化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "H73KXwMkj6dPxVRPwo99RmqC",
+    "title": "全栈基座项目（Vue）",
+    "url": "/dev-knowledge/cross-domain/engineering/architecture-docs/fullstack-base-project-vue",
+    "group": "跨域知识 > 工程化实践",
+    "tags": [
+      "工程化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "BipPU3mfoviNW2EHFyVZ0YS2",
     "title": "设计系统与组件库架构 [P8]",
-    "url": "/interview/engineering/design-system",
-    "group": "工程化与全栈（P6-P7/P8）",
+    "url": "/dev-knowledge/cross-domain/engineering/interview/design-system",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
       "设计系统",
       "headless UI",
       "design token",
       "主题引擎"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "_itcbVQ1RVRamXV04hMNHWio",
-    "title": "性能预算体系 [P6-P7]",
-    "url": "/interview/engineering/performance-budget",
-    "group": "工程化与全栈（P6-P7/P8）",
+    "id": "Xd0b3JcyZerDZxJLGxY2bzot",
+    "title": "前端 DevOps 与发布体系 [P8]",
+    "url": "/dev-knowledge/cross-domain/engineering/interview/frontend-devops",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
-      "性能",
-      "Core Web Vitals",
-      "INP",
-      "优化"
+      "CI/CD",
+      "Feature Flag",
+      "金丝雀发布",
+      "Preview Environment"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "qv8jb94JEew8grhZATAmyxtU",
+    "id": "os1oxfinwG57b4xL8G0bQyvS",
     "title": "前端测试金字塔实战 [P6-P7]",
-    "url": "/interview/engineering/testing-strategy",
-    "group": "工程化与全栈（P6-P7/P8）",
+    "url": "/dev-knowledge/cross-domain/engineering/interview/testing-strategy",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
       "测试",
       "E2E",
@@ -4350,75 +4212,14 @@
       "Vue Test Utils",
       "Playwright"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "O42bSF-2oCdGmeEhQhLh8uyG",
-    "title": "前端 DevOps 与发布体系 [P8]",
-    "url": "/interview/engineering/frontend-devops",
-    "group": "工程化与全栈（P6-P7/P8）",
-    "tags": [
-      "CI/CD",
-      "Feature Flag",
-      "金丝雀发布",
-      "Preview Environment"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "2Q1k6qw8_ZPxLkI11SFSn_yz",
-    "title": "Node.js Web 框架对比 [P6-P7]",
-    "url": "/interview/engineering/nodejs-web-framework",
-    "group": "工程化与全栈（P6-P7/P8）",
-    "tags": [
-      "Node.js",
-      "Express",
-      "Koa",
-      "NestJS",
-      "Fastify"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "3vQbrBSIZZxoUrqZ-ihyHS6F",
-    "title": "Node.js 数据库与 ORM [P6-P7]",
-    "url": "/interview/engineering/nodejs-database-orm",
-    "group": "工程化与全栈（P6-P7/P8）",
-    "tags": [
-      "Node.js",
-      "MySQL",
-      "PostgreSQL",
-      "MongoDB",
-      "Redis",
-      "ORM"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "QVYh0VgxjQLdhOnATOAm-Wfq",
-    "title": "Node.js 部署与运维 [P6-P7]",
-    "url": "/interview/engineering/nodejs-deploy-ops",
-    "group": "工程化与全栈（P6-P7/P8）",
-    "tags": [
-      "Node.js",
-      "Docker",
-      "CI/CD",
-      "PM2",
-      "监控",
-      "日志"
-    ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
-  },
-  {
-    "id": "75k_RFkDPldQMFNIE-bhkpvT",
+    "id": "vkWZmRLeh6KZy1GrOFSvj-3R",
     "title": "Vite 核心原理与插件开发 [P6-P7]",
-    "url": "/interview/build-tools/vite-internals",
-    "group": "构建工具生态（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/engineering/interview/vite-internals",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
       "Vite",
       "Vite 8",
@@ -4428,14 +4229,14 @@
       "HMR",
       "插件开发"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "n9CRfjBe23DSOHmIYNQGOoeG",
+    "id": "ua7sRCLycN5ZDC8KqYZaBwdF",
     "title": "构建工具深度对比 [P8]",
-    "url": "/interview/build-tools/build-tool-deep-comparison",
-    "group": "构建工具生态（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/engineering/interview/build-tool-deep-comparison",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
       "Vite",
       "Vite 8",
@@ -4445,14 +4246,14 @@
       "Webpack",
       "构建工具"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "LfUBp4uX0oE6N4hPFGgsjKzc",
+    "id": "t3SQ5tz4I4qkkYw6hCKF1XYt",
     "title": "Vite 插件开发实战 [P6-P7]",
-    "url": "/interview/build-tools/vite-plugin-development",
-    "group": "构建工具生态（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/engineering/interview/vite-plugin-development",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
       "Vite",
       "Vite 8",
@@ -4461,14 +4262,14 @@
       "虚拟模块",
       "Hook"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "Px3_4ar1BPylNgDG32jxG8Ce",
+    "id": "t2r4VZYDkSdv9WDoqSBPlzTe",
     "title": "Monorepo 构建优化 [P8]",
-    "url": "/interview/build-tools/monorepo-build-optimization",
-    "group": "构建工具生态（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/engineering/interview/monorepo-build-optimization",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
       "Monorepo",
       "Turborepo",
@@ -4476,14 +4277,14 @@
       "pnpm",
       "增量构建"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "cFDZAH4O2SKK9WugHSoutm-m",
+    "id": "wBva9hWkJptpXE4XFp9tbLmr",
     "title": "Rolldown 与构建工具未来 [P8]",
-    "url": "/interview/build-tools/rolldown-and-future",
-    "group": "构建工具生态（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/engineering/interview/rolldown-and-future",
+    "group": "跨域知识 > 工程化实践",
     "tags": [
       "Rolldown",
       "Oxc",
@@ -4491,56 +4292,145 @@
       "Rust",
       "构建工具"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "m1SITSIuyruUSZkEJbMqvo3O",
+    "id": "vMy__yViVkqD4jiW3U2ZfGgZ",
+    "title": "架构愿景",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/vision/architectural-vision-1",
+    "group": "跨域知识 > 架构愿景与系统设计",
+    "tags": [
+      "架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "GfZpo5ULRJ1X72jYTSDZ58_j",
+    "title": "超一线科技公司大前端架构师视野",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/vision/architect-vision-2",
+    "group": "跨域知识 > 架构愿景与系统设计",
+    "tags": [
+      "研发知识"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "jl2OSq5zOei3dMRcfapoWISL",
+    "title": "闭环设计",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/vision/closed-loop-1",
+    "group": "跨域知识 > 架构愿景与系统设计",
+    "tags": [
+      "架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "MjM0OFQja__17xR8V395Y5J7",
+    "title": "影响分析",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/vision/influence-1",
+    "group": "跨域知识 > 架构愿景与系统设计",
+    "tags": [
+      "架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "ie0G2M5NjlTdB7KvAwicBdqr",
+    "title": "设计原则",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/vision/principles-1",
+    "group": "跨域知识 > 架构愿景与系统设计",
+    "tags": [
+      "架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "b-CrKeN3Zk07ozewQ92ydT72",
+    "title": "实施报告",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/vision/report-1",
+    "group": "跨域知识 > 架构愿景与系统设计",
+    "tags": [
+      "架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "XWZko5J2JkCc6KnUaa9SPRwq",
+    "title": "路线图",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/vision/roadmap-1",
+    "group": "跨域知识 > 架构愿景与系统设计",
+    "tags": [
+      "架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Y6TKpvT2hTFeBqMvC7o65mhe",
+    "title": "检查清单",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/vision/checklist-1",
+    "group": "跨域知识 > 架构愿景与系统设计",
+    "tags": [
+      "架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "cdQlRirX639qwz0x7NnPHUKn",
     "title": "前端架构模式 [P8]",
-    "url": "/interview/architecture/frontend-architecture-patterns",
-    "group": "架构设计（P8）",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/architecture/frontend-architecture-patterns",
+    "group": "跨域知识 > 架构愿景与系统设计",
     "tags": [
       "Clean Architecture",
       "Hexagonal",
       "DDD",
       "架构模式"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "ubfTEui2DQg4fZoPLd7JhKrQ",
+    "id": "6Nv88OVMygvW0QQuf3H60-pr",
     "title": "大型应用状态架构 [P8]",
-    "url": "/interview/architecture/state-architecture",
-    "group": "架构设计（P8）",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/architecture/state-architecture",
+    "group": "跨域知识 > 架构愿景与系统设计",
     "tags": [
       "状态管理",
       "有限状态机",
       "事件溯源",
       "CQRS"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "XtibcJJE8ny_Q2sucu7FONdC",
+    "id": "uHdwKUOuI0cJ9MExkFbV1rs9",
     "title": "模块联邦 V2 [P8]",
-    "url": "/interview/architecture/module-federation-v2",
-    "group": "架构设计（P8）",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/architecture/module-federation-v2",
+    "group": "跨域知识 > 架构愿景与系统设计",
     "tags": [
       "Module Federation",
       "微前端",
+      "模块共享",
       "去中心化",
-      "共享依赖"
+      "运行时加载"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "UKloBb1wC4xcfJQP4StH2LZv",
+    "id": "LobNRwCZiI5apdBA2W95KCWH",
     "title": "AI 能力集成架构 [P8]",
-    "url": "/interview/architecture/ai-integration-architecture",
-    "group": "架构设计（P8）",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/architecture/ai-integration-architecture",
+    "group": "跨域知识 > 架构愿景与系统设计",
     "tags": [
       "AI 集成",
       "Agent",
@@ -4548,14 +4438,14 @@
       "上下文管理",
       "LLM"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "Hf3atlG1_8D44DHKv8k0Xwjp",
+    "id": "X8qLJMYXLM1N5ZcHB1sDLwTm",
     "title": "客户端数据架构 [P8]",
-    "url": "/interview/architecture/client-data-architecture",
-    "group": "架构设计（P8）",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/architecture/client-data-architecture",
+    "group": "跨域知识 > 架构愿景与系统设计",
     "tags": [
       "离线优先",
       "IndexedDB",
@@ -4563,143 +4453,169 @@
       "缓存分层",
       "数据同步"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "u0P-U-PhF9cYmHaRXcA-vb7i",
+    "id": "HVoH0OdVkGhMXkEYYXsS4AqG",
     "title": "实时协作系统设计 [P8]",
-    "url": "/interview/system-design/real-time-collaboration",
-    "group": "系统设计（P8）",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/system-design/real-time-collaboration",
+    "group": "跨域知识 > 架构愿景与系统设计",
     "tags": [
       "CRDT",
       "OT",
       "WebSocket",
       "实时协作"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "P82pObdH1zBWg0IGveTb_4F4",
+    "id": "HPfrsY-X2aaiSq6k78_5TXoY",
     "title": "低代码平台架构 [P8]",
-    "url": "/interview/system-design/low-code-platform",
-    "group": "系统设计（P8）",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/system-design/low-code-platform",
+    "group": "跨域知识 > 架构愿景与系统设计",
     "tags": [
       "低代码",
       "DSL",
       "渲染引擎",
       "扩展机制"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "iuZVylnMc5ZeTJ6wpw4PieXj",
+    "id": "eWT1ZdMRs_YpMAVgAfgGnxoc",
     "title": "Design Token 体系 [P8]",
-    "url": "/interview/system-design/design-token-system",
-    "group": "系统设计（P8）",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/system-design/design-token-system",
+    "group": "跨域知识 > 架构愿景与系统设计",
     "tags": [
       "Design Token",
       "多品牌",
       "多主题",
       "跨平台"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "XD1q6j5N_t_8JQyrnVdzED3e",
+    "id": "0b5JW1OmUfyz6o3kPGwCdfDu",
     "title": "前端可观测性 [P8]",
-    "url": "/interview/system-design/frontend-observability",
-    "group": "系统设计（P8）",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/system-design/frontend-observability",
+    "group": "跨域知识 > 架构愿景与系统设计",
     "tags": [
       "埋点",
       "性能监控",
       "错误追踪",
       "用户行为"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "Uwtn98RO7x83OHSF7ADhJkfb",
-    "title": "API 设计模式 [P8]",
-    "url": "/interview/api-architecture/api-design-patterns",
-    "group": "API 与跨平台架构（P6-P7）",
+    "id": "L9bkfQZF-7OLu21yH7cWdsww",
+    "title": "技术名词深度解析索引",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/terminology-index",
+    "group": "跨域知识 > 跨框架研发思维",
     "tags": [
-      "RESTful",
-      "GraphQL",
-      "tRPC",
-      "gRPC-Web",
-      "API 版本管理"
+      "思维"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "5Pvdm0FYhRHBa7uUvZUdfq8L",
-    "title": "BFF 模式与 API 网关 [P8]",
-    "url": "/interview/api-architecture/bff-and-gateway",
-    "group": "API 与跨平台架构（P6-P7）",
+    "id": "j4OYf7WTcPlyAuGKtyqnzQ8a",
+    "title": "跨框架研发思维对比",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/cross-framework-thinking-comparison",
+    "group": "跨域知识 > 跨框架研发思维",
     "tags": [
-      "BFF",
-      "API 网关",
-      "接口聚合",
-      "OpenAPI",
-      "Protobuf"
+      "思维"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "d6ryagn-MgK1LmnvHEDDi0nO",
-    "title": "跨端技术选型矩阵 [P8]",
-    "url": "/interview/cross-platform/cross-platform-selection",
-    "group": "API 与跨平台架构（P6-P7）",
+    "id": "_xhueKRX_CavM_eUhS3MEWn4",
+    "title": "JS · Dart · Python 三大语言 API 对比",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/js-dart-python-api-comparison",
+    "group": "跨域知识 > 跨框架研发思维",
     "tags": [
-      "React Native",
+      "JavaScript",
+      "Dart",
+      "Python",
+      "语言对比",
+      "API对比",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "w6TLaUhcFXmxfVNhfTcLENKO",
+    "title": "React 19 vs Vue 3 vs Flutter 性能对决",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/framework-performance-comparison",
+    "group": "跨域知识 > 跨框架研发思维",
+    "tags": [
+      "React",
+      "Vue",
       "Flutter",
-      "Tauri",
-      "Electron",
-      "跨端选型"
+      "思维"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "Re352iCgIf1_0NOF8V3KsXlE",
-    "title": "多端一致性方案 [P8]",
-    "url": "/interview/cross-platform/multi-platform-consistency",
-    "group": "API 与跨平台架构（P6-P7）",
+    "id": "i_5lM8uzuGpesl2xnQyrQv7h",
+    "title": "BUG 修复思维对比",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/bug-fixing-thinking",
+    "group": "跨域知识 > 跨框架研发思维",
     "tags": [
-      "多端一致性",
-      "Design Token",
-      "共享代码",
-      "平台差异抽象"
+      "思维"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "ZLmTDE08pIe0GsRZGai0MPW_",
+    "id": "NDr8mR_mk_7YkALOChLZRt9T",
+    "title": "技术迭代与学习疲态",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/tech-iteration-and-learning-fatigue",
+    "group": "跨域知识 > 跨框架研发思维",
+    "tags": [
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "ITeAx-Y4M8EEFyFpcYfoNIFl",
+    "title": "数据·算法·显示 三者分离（跨框架）",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/frontend-data-algorithm-view-separation",
+    "group": "跨域知识 > 跨框架研发思维",
+    "tags": [
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "9y4QupKd-mfzfxMi401PVaje",
     "title": "Signals vs Virtual DOM [P6-P7]",
-    "url": "/interview/framework-comparison/signal-vs-vdom",
-    "group": "框架对比与选型（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/framework-comparison/signal-vs-vdom",
+    "group": "跨域知识 > 框架对比与选型",
     "tags": [
       "Signals",
       "Virtual DOM",
       "响应式",
       "性能"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "TAY2tCoIawLxUijJsGG5m_Bq",
+    "id": "zNEvicdSAll-UgF6CMOURZH2",
     "title": "SSR/SSG/ISR 全栈方案对比 [P6-P7]",
-    "url": "/interview/framework-comparison/ssr-fullstack-comparison",
-    "group": "框架对比与选型（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/framework-comparison/ssr-fullstack-comparison",
+    "group": "跨域知识 > 框架对比与选型",
     "tags": [
       "SSR",
       "SSG",
@@ -4708,57 +4624,57 @@
       "Nuxt",
       "Astro"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "sm_NSo5_wce5sxxsYNgTDByc",
+    "id": "EtbEtNJDdJXZeYg5IhlOp7Rn",
     "title": "2026 元框架趋势 [P8]",
-    "url": "/interview/framework-comparison/meta-framework-trends",
-    "group": "框架对比与选型（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/framework-comparison/meta-framework-trends",
+    "group": "跨域知识 > 框架对比与选型",
     "tags": [
       "Turbopack",
       "Rust 工具链",
       "Edge Runtime",
       "元框架"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "2j1JeOzODWmUaOzHXxBvb5VJ",
+    "id": "E2ZIBoxv-3GN4q6hSU6IpLJ7",
     "title": "AI 辅助开发工程化 [P6-P7]",
-    "url": "/interview/ai-and-new-tech/ai-assisted-development",
-    "group": "AI 与新技术（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/ai-and-new-tech/ai-assisted-development",
+    "group": "跨域知识 > AI 与新技术",
     "tags": [
       "Copilot",
       "Prompt 工程",
       "AI 代码审查",
       "AI 辅助开发"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "dswg_3L0u6XpnQQrjcF4j4gg",
+    "id": "rD_h7n08ExU09kHJh-ZhGHKZ",
     "title": "LLM 前端集成 [P6-P7]",
-    "url": "/interview/ai-and-new-tech/llm-frontend-integration",
-    "group": "AI 与新技术（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/ai-and-new-tech/llm-frontend-integration",
+    "group": "跨域知识 > AI 与新技术",
     "tags": [
       "LLM",
       "流式输出",
       "Tokenizer",
       "本地推理",
-      "WASM"
+      "WebGPU"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "hk0x4Klk0uiwJeBCuNqqqe1b",
+    "id": "PmgbXLL3qW8QaWHWP7ug9_Cg",
     "title": "MCP 协议与 Tool Use [P6-P7]",
-    "url": "/interview/ai-and-new-tech/mcp-and-tool-use",
-    "group": "AI 与新技术（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/ai-and-new-tech/mcp-and-tool-use",
+    "group": "跨域知识 > AI 与新技术",
     "tags": [
       "MCP",
       "Tool Use",
@@ -4766,91 +4682,150 @@
       "协议",
       "AI 工具"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "PsGJG91upec0_M4u32c66Q2n",
+    "id": "X1SWHKcbC2eulD-lAH99bvcx",
     "title": "Edge Computing 前端场景 [P8]",
-    "url": "/interview/ai-and-new-tech/edge-computing",
-    "group": "AI 与新技术（P6-P7）",
+    "url": "/dev-knowledge/cross-domain/ai-and-new-tech/edge-computing",
+    "group": "跨域知识 > AI 与新技术",
     "tags": [
       "Edge SSR",
       "Deno Deploy",
       "Cloudflare Workers",
       "Edge Runtime"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "wuulhcMWh4aoEHbIUokwwIBF",
-    "title": "技术领导力 [TL]",
-    "url": "/interview/management/tech-leadership",
-    "group": "技术管理（TL）",
+    "id": "NKI5aBGugE-zK7iRJWfi3CeL",
+    "title": "API 设计模式 [P8]",
+    "url": "/dev-knowledge/cross-domain/api-and-cross-platform/api-design-patterns",
+    "group": "跨域知识 > API 与跨平台",
+    "tags": [
+      "RESTful",
+      "GraphQL",
+      "tRPC",
+      "gRPC-Web",
+      "API 版本管理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "mPo_j7MGZsANacOfW4D0jJ0y",
+    "title": "BFF 模式与 API 网关 [P8]",
+    "url": "/dev-knowledge/cross-domain/api-and-cross-platform/bff-and-gateway",
+    "group": "跨域知识 > API 与跨平台",
+    "tags": [
+      "BFF",
+      "API 网关",
+      "接口聚合",
+      "OpenAPI",
+      "Protobuf"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "lHtffp9n4GsKJCqAUscVNH1G",
+    "title": "跨端技术选型矩阵 [P8]",
+    "url": "/dev-knowledge/cross-domain/api-and-cross-platform/cross-platform-selection",
+    "group": "跨域知识 > API 与跨平台",
+    "tags": [
+      "React Native",
+      "Flutter",
+      "Tauri",
+      "Electron",
+      "跨端选型"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "8GLRHs8U1XbBfxNzEdKQQfvk",
+    "title": "多端一致性方案 [P8]",
+    "url": "/dev-knowledge/cross-domain/api-and-cross-platform/multi-platform-consistency",
+    "group": "跨域知识 > API 与跨平台",
+    "tags": [
+      "多端一致性",
+      "Design Token",
+      "共享代码",
+      "平台差异抽象"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "7_ABrrHFydDUpvkThCBURTyU",
+    "title": "技术领导力",
+    "url": "/dev-knowledge/cross-domain/management/tech-leadership",
+    "group": "跨域知识 > 技术管理 [TL]",
     "tags": [
       "技术决策",
       "RFC 流程",
       "技术债务",
       "领导力"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "6JLkC-Ls6byGDTDW8T_qjcBS",
-    "title": "团队建设方法论 [TL]",
-    "url": "/interview/management/team-building",
-    "group": "技术管理（TL）",
+    "id": "3RehZ-J2WmGLEZactnXBJ7Fh",
+    "title": "团队建设方法论",
+    "url": "/dev-knowledge/cross-domain/management/team-building",
+    "group": "跨域知识 > 技术管理 [TL]",
     "tags": [
       "招聘",
       "面试设计",
       "成长体系",
       "1on1"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "94idwcwpiXd8qsprjkGX3cvB",
-    "title": "项目交付管理 [TL]",
-    "url": "/interview/management/project-delivery",
-    "group": "技术管理（TL）",
+    "id": "bJO-sB6nEEQUM_68EIOE23fW",
+    "title": "项目交付管理",
+    "url": "/dev-knowledge/cross-domain/management/project-delivery",
+    "group": "跨域知识 > 技术管理 [TL]",
     "tags": [
       "估时",
       "风险管理",
       "质量门禁",
       "敏捷"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "jf3W-AaL3Yjo6pvGPNPkT4y3",
-    "title": "跨团队协作 [TL]",
-    "url": "/interview/management/cross-team-collaboration",
-    "group": "技术管理（TL）",
+    "id": "zUNKSYBuWKVSh2AB-XTtu1Sn",
+    "title": "跨团队协作",
+    "url": "/dev-knowledge/cross-domain/management/cross-team-collaboration",
+    "group": "跨域知识 > 技术管理 [TL]",
     "tags": [
       "接口契约",
       "联调流程",
       "SLA",
       "跨团队"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
-    "id": "2IJInL1T-hjVOnkAY3Mwnokn",
-    "title": "技术雷达与创新落地 [TL]",
-    "url": "/interview/management/tech-radar-and-innovation",
-    "group": "技术管理（TL）",
+    "id": "BLYYGHgg7tpv_m5uP-S2fnQ0",
+    "title": "技术雷达与创新落地",
+    "url": "/dev-knowledge/cross-domain/management/tech-radar-and-innovation",
+    "group": "跨域知识 > 技术管理 [TL]",
     "tags": [
       "技术选型",
       "PoC",
       "技术雷达",
       "创新"
     ],
-    "createdAt": "2026-09-10 04:06:42",
-    "updatedAt": "2026-10-08 10:33:21"
+    "createdAt": null,
+    "updatedAt": null
   }
 ]

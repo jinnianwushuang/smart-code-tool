@@ -1,0 +1,439 @@
+---
+title: '跨框架研发思维对比'
+tags: ['思维']
+---
+
+# 跨框架研发思维：Vue · React · Flutter 三大框架的底层同构与差异对比
+
+> 前端框架层出不穷，API 千差万别，但剥去所有语法糖和抽象层之后，**三大框架（Vue / React / Flutter）在底层运行着同一套思维模型**。本文作为跨框架研发思维的对比入口，将三大框架在七个核心主题上的思考方式进行横向对比——**数据·算法·显示分离、不必要渲染的元凶、底层万用公式、节点数据结构、深层对象治理、组件设计模式、性能优化模式**——帮助开发者建立跨框架的统一认知，而非孤立地学习每个框架的“最佳实践”。
+
+---
+
+## 一、对比总览
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                  三大框架的底层同构                                     │
+│                                                                      │
+│  无论框架如何演进，所有现代 UI 框架都在解决同一个问题：                │
+│  "当数据变化时，如何以最小的代价把正确的像素画到屏幕上"               │
+│                                                                      │
+│  这个大问题可以拆解为三个子问题：                                     │
+│                                                                      │
+│  ① 数据·算法·显示 三者分离                                           │
+│     → 如何组织代码，让数据获取、逻辑处理、界面渲染各司其职？          │
+│                                                                      │
+│  ② 不必要渲染的元凶                                                   │
+│     → 什么在制造无用的渲染？如何根治？                                │
+│                                                                      │
+│  ③ 底层万用公式                                                       │
+│     → 框架的渲染引擎、调度机制、数据视图同步是如何协作的？            │
+│                                                                      │
+│  三个子问题在三大框架中的表现不同，但本质相同：                       │
+│  减少不必要的工作，让每一帧都有意义                                   │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 二、主题一：数据·算法·显示 三者分离
+
+### 2.1 核心思想
+
+**接口原始数据 → 算法加工 → 界面显示数据 → 框架渲染 → 用户看到的界面**
+
+这个链条在所有框架中都存在。差异只在于：每一层用什么 API 承载，框架提供了多少"自动化管线"。
+
+### 2.2 三框架对比
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                  数据·算法·显示 三框架对比                             │
+│                                                                      │
+│           Vue 3              React 18            Flutter             │
+│  ─────    ──────────         ──────────          ──────────          │
+│                                                                      │
+│  数据层    api/*.js           Custom Hooks        Repository         │
+│           + api-request/      + React Query       + DataSource       │
+│                                                                      │
+│  算法层    transform/*.js     纯函数 + useMemo    纯函数              │
+│           （纯函数）          （手动缓存）        （无框架缓存机制）  │
+│                                                                      │
+│  显示层    ref/reactive       useState + JSX      setState + Widget  │
+│           + computed         + 模板构建           + build()          │
+│           + 模板                                                                        │
+│                                                                      │
+│  自动化    computed 自动      无自动同步          无自动同步          │
+│  程度      同步（最省心）     需 useMemo 手动     需手动在            │
+│                              声明依赖            didUpdateWidget     │
+│                                                                      │
+│  桥梁      Composable        Custom Hook         BLoC / Provider    │
+│           （use-*）          （use-*）            （Event → State）  │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 2.3 关键差异
+
+| 维度                   | Vue                              | React                    | Flutter                           |
+| ---------------------- | -------------------------------- | ------------------------ | --------------------------------- |
+| 算法→显示的自动同步    | `computed` 自动追踪依赖          | 需 `useMemo` 手动声明    | 需在 `didUpdateWidget` 中手动计算 |
+| 框架对三层分离的强制力 | 中等（Composition API 天然支持） | 低（完全靠开发者自觉）   | 低（完全靠开发者自觉）            |
+| 算法层可独立测试       | ✅ 纯函数不 import Vue           | ✅ 纯函数不 import React | ✅ 纯函数不 import Flutter        |
+
+### 2.4 各框架专属文档
+
+- **通用思想**：[前端编程的终极朴素思想：数据·算法·显示 三者分离](./frontend-data-algorithm-view-separation)
+- **Vue 视角**：[Vue 标准化架构中的数据·算法·显示分离](../../vue/architecture/thinking/data-algorithm-view-separation)
+- **React 视角**：[React Hooks 架构中的数据·算法·显示分离](../../react/architecture/hooks-patterns/data-algorithm-view-separation)
+- **Flutter 视角**：[Flutter 架构中的数据·算法·显示分离思考](../../flutter/architecture/thinking/data-algorithm-view-separation)
+
+---
+
+## 三、主题二：不必要渲染的元凶与根治
+
+### 3.1 核心问题
+
+**三大框架的性能问题，80% 都来自同一个根因：业务逻辑以不当的方式触发了大量高频且无用的渲染。** 但"无用渲染"在每个框架中的表现形式不同，因为它们的默认渲染模型不同。
+
+### 3.2 三框架对比
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                  不必要渲染的元凶 三框架对比                           │
+│                                                                      │
+│           Vue 3              React 18            Flutter             │
+│  ─────    ──────────         ──────────          ──────────          │
+│                                                                      │
+│  默认      精确更新           全量重跑            全量重建             │
+│  渲染      Proxy 依赖图       Fiber 遍历          Widget 树重建      │
+│  模型      只通知依赖组件     父变→子全跑          setState→子树重建  │
+│                                                                      │
+│  元凶      ① 逐步赋值         ① 父组件 state     ① setState 层级    │
+│  ①       ② watch 级联          变化→全子树重跑     过高              │
+│          ③ async 打断批量    ② 内联对象/函数     ② 未用 const       │
+│          ④ computed 副作用     破坏 memo           Widget            │
+│                                                                      │
+│  元凶      （Vue 较少出现     ③ useEffect 级联   ③ 动画驱动高频     │
+│  ②③      因为默认精确）      ④ Context 泛洪       setState          │
+│                              ⑤ JSX 中隐式计算   ④ Provider 泛洪    │
+│                                                                      │
+│  根治      shallowRef 切断    React.memo 阻断    const Widget 跳过  │
+│  核心      + 整体替换         + useMemo 稳定      + RepaintBoundary │
+│  手段      + computed 替代     + useCallback       + AnimatedBuilder │
+│            watch              + 状态下沉          + 状态下沉         │
+│                                                                      │
+│  优化      避免"过度响应"    主动"阻断传播"     用 const + 范围     │
+│  方向      （因为默认精确）  （因为默认全量）   限定减少重建         │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 3.3 关键洞察
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                  三大框架优化方向的"相反性"                            │
+│                                                                      │
+│  Vue：     默认精确 → 开发者要避免"让它太精确"（shallowRef）        │
+│  React：   默认全量 → 开发者要主动"阻断传播"（memo）                │
+│  Flutter： 默认全量 → 开发者要"减少重建范围"（const + Boundary）    │
+│                                                                      │
+│  方向相反，目标相同：让每次渲染都有意义                                │
+│                                                                      │
+│  Vue 开发者常犯的错误：用 ref 管理大数据 → 深度追踪制造意外通知     │
+│  React 开发者常犯的错误：忘记 memo → 父组件变化导致全子树重跑       │
+│  Flutter 开发者常犯的错误：setState 放太高 + 不用 const → 全树重建  │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 3.4 各框架专属文档
+
+- **Vue**：[Vue 3 项目卡顿的元凶：逻辑触发的混乱无序高频无效渲染](../../vue/architecture/thinking/render-chaos-root-cause)
+- **React**：[React 项目卡顿的元凶：不必要的 Re-render 与根治方案](../../react/architecture/thinking/unnecessary-rerender-root-cause)
+- **Flutter**：[Flutter 项目卡顿的元凶：setState 滥用与 Widget 树重建失控](../../flutter/architecture/thinking/setstate-rebuild-chaos-root-cause)
+
+---
+
+## 四、主题三：底层万用公式
+
+### 4.1 核心公式
+
+每个框架的底层都运行着一个"万用公式"——渲染引擎 × 调度机制 × 数据视图同步。理解它，就理解了框架一切设计决策的根因。
+
+### 4.2 三框架公式对比
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                  三大框架底层万用公式对比                              │
+│                                                                      │
+│  Vue 3：     渲染原理 × 事件调度 × 数据视图同步                     │
+│  React 18：  Fiber 架构 × 并发调度 × 数据视图同步                   │
+│  Flutter：   Widget 不可变性 × 帧调度 × 三层对象同步                │
+│                                                                      │
+│  ════════════════════════════════════════════════════════════        │
+│                                                                      │
+│  第一柱（渲染引擎）：                                                │
+│  Vue     → 浏览器渲染管线（JS 与渲染共享主线程）                    │
+│  React   → Fiber 链表（把不可中断的递归变成可中断的遍历）           │
+│  Flutter → Widget-Element-RenderObject 三层对象模型                 │
+│                                                                      │
+│  第二柱（调度机制）：                                                │
+│  Vue     → 微任务批量（同一同步块中的变更自动合并）                 │
+│  React   → 优先级调度（高优先级可中断低优先级）                     │
+│  Flutter → VSync 帧管线（Animate→Build→Layout→Paint→Composite）    │
+│                                                                      │
+│  第三柱（数据视图同步）：                                            │
+│  Vue     → Proxy 依赖图 → 精确到组件的通知                         │
+│  React   → setState → Fiber Diff → DOM Patch                       │
+│  Flutter → setState → Widget 重建 → Element Diff → Layout → Paint  │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 4.3 公式推论的跨框架对比
+
+| 推论                     | Vue                       | React               | Flutter                       |
+| ------------------------ | ------------------------- | ------------------- | ----------------------------- |
+| 为什么需要某种优化 API？ | `shallowRef` 切断深度追踪 | `memo` 阻断全量遍历 | `const Widget` 跳过 Diff      |
+| 渲染粒度的默认行为       | 组件级精确更新            | 组件级全量重跑      | 子树级全量重建                |
+| 开发者能控制什么？       | 通知的范围和时机          | 是否执行子组件函数  | 是否重建 Element/RenderObject |
+| 框架之间的根本差异       | 依赖图的精确追踪          | Fiber 的可中断遍历  | 三层对象模型的复用策略        |
+
+### 4.4 各框架专属文档
+
+- **Vue**：[渲染原理 × 事件调度 × 数据视图同步 — Vue 底层万用公式](../../vue/architecture/thinking/rendering-scheduling-sync)
+- **React**：[Fiber 架构 × 并发调度 × 数据视图同步 — React 底层万用公式](../../react/architecture/thinking/fiber-concurrent-sync-formula)
+- **Flutter**：[Widget 不可变性 × 帧调度 × 三层对象同步 — Flutter 底层万用公式](../../flutter/architecture/thinking/widget-frame-sync-formula)
+
+---
+
+## 五、统一视角：三大框架的殊途同归
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                  三大框架的殊途同归                                    │
+│                                                                      │
+│  所有现代 UI 框架都在解决同一个问题：                                 │
+│  "数据变化时，以最小代价更新界面"                                    │
+│                                                                      │
+│  它们的策略可以统一为四个环节：                                       │
+│                                                                      │
+│  ① 依赖分析 → 哪些视图需要更新？                                     │
+│     Vue：Proxy 依赖图精确知道       → 默认精确                       │
+│     React：不知道，全部重跑         → 需要 memo 剪枝                 │
+│     Flutter：不知道，全部重建       → 需要 const 跳过                │
+│                                                                      │
+│  ② 差异计算 → 具体哪些 DOM/Widget 变了？                            │
+│     Vue：组件内 Virtual DOM Diff                                    │
+│     React：Fiber 树 Diff                                            │
+│     Flutter：Widget-Element Diff                                    │
+│                                                                      │
+│  ③ 调度批量 → 多次变更合并为几次渲染？                               │
+│     Vue：微任务自动批量                                               │
+│     React：setState 自动批量（React 18）                            │
+│     Flutter：VSync 帧内自动批量                                      │
+│                                                                      │
+│  ④ 渲染输出 → 把差异画到屏幕上                                       │
+│     Vue：DOM Patch → 浏览器渲染管线                                  │
+│     React：DOM Patch → 浏览器渲染管线                                │
+│     Flutter：RenderObject → Skia/Impeller → GPU                     │
+│                                                                      │
+│  ════════════════════════════════════════════════════════════        │
+│                                                                      │
+│  性能优化的本质都一样：                                               │
+│  减少 ① 的分析范围 + 减少 ② 的计算量                                │
+│  + 减少 ③ 的渲染次数 + 减少 ④ 的绘制工作                            │
+│                                                                      │
+│  差异只在每一环的"默认策略"和"开发者需要做什么"                     │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 六、主题四：性能优化模式对比
+
+### 6.1 核心问题
+
+三大框架都有性能优化手册，但优化方向因默认渲染模型不同而截然相反：
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                  性能优化模式 三框架对比                                │
+│                                                                      │
+│           Vue 3              React 19            Flutter             │
+│  ─────    ──────────         ──────────          ──────────          │
+│                                                                      │
+│  跳过      v-once             React.memo          const Widget       │
+│  渲染      v-memo                                 + RepaintBoundary  │
+│                                                                      │
+│  缓存      computed           useMemo              手动缓存变量      │
+│  计算      （自动追踪）       （手动声明依赖）    （无框架缓存）     │
+│                                                                      │
+│  稳定      不需要             useCallback          不需要             │
+│  引用      （自动追踪）       （手动稳定引用）    （Widget 不可变）  │
+│                                                                      │
+│  缩小      组件拆分           组件拆分             组件拆分           │
+│  范围      + 状态下沉         + 状态下沉           + RepaintBoundary │
+│                                                                      │
+│  懒加载    defineAsync        React.lazy           Deferred Components│
+│           Component                                                  │
+│                                                                      │
+│  大数据    shallowRef         useSyncExternal      ValueNotifier     │
+│  控制      + computed         Store                + Listenable      │
+│                               + Immer              Builder           │
+│                                                                      │
+│  优化      减少「过度追踪」  主动「阻断传播」    用 const + 范围    │
+│  方向      （因为默认精确）  （因为默认全量）    限定减少重建        │
+│                                                                      │
+│  诊断      Vue DevTools       React DevTools       Flutter DevTools   │
+│  工具      Performance        Profiler             Performance        │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 6.2 各框架性能优化文档
+
+- **Vue**：[Vue 3 性能优化系统手册](../../vue/architecture/performance/vue-performance-optimization)
+- **React**：[React 性能优化系统手册](../../react/architecture/performance/react-performance-optimization)
+- **Flutter**：[Flutter 性能优化实战](../../flutter/architecture/performance/flutter-performance-optimization)
+
+---
+
+## 七、主题五：节点数据结构
+
+### 7.1 三框架对比
+
+每个框架内部都有一套节点数据结构来描述 UI 树。理解这套结构，就理解了框架的渲染、Diff 和性能优化的底层基础。
+
+| 维度        | Vue（VNode）                  | React（Fiber Node）                          | Flutter（Widget·Element·RenderObject）  |
+| ----------- | ----------------------------- | -------------------------------------------- | --------------------------------------- |
+| 节点本质    | 轻量 JS 对象（虚拟 DOM 节点） | JS 对象（链表化的工作单元）                  | 三层对象各司其职                        |
+| 树结构      | 子节点数组（child → parent）  | 四指针链表（child/sibling/return/alternate） | 三棵树独立：Widget→Element→RenderObject |
+| Diff 策略   | 同层双端 Diff（2026 已优化）  | 同层 Map Diff（key 驱动）                    | 同层 Diff + Element 复用                |
+| 双缓冲      | 无（每次重新创建 VNode）      | 有（current ↔ workInProgress）               | 有（Element 树持久，RenderObject 复用） |
+| 与 DOM 关系 | VNode → 浏览器 DOM            | Fiber → DOM（通过 React DOM）                | RenderObject → Skia/Impeller → GPU      |
+
+### 7.2 各框架专属文档
+
+- **Vue**：[VNode 数据结构精讲](../../vue/architecture/thinking/vnode-data-structure) — shapeFlag/patchFlag 位优化、Block 树靶向更新
+- **React**：[Fiber Node 数据结构精讲](../../react/architecture/typical-analysis/fiber-node-data-structure) — 链表遍历、双缓冲、Hooks 链表、副作用标记位
+- **Flutter**：[Widget·Element·RenderObject 三棵树](../../flutter/architecture/thinking/element-widget-renderobject-tree) — 三棵节点树的数据结构、职责分工与协同更新
+
+---
+
+## 八、主题六：深层对象治理
+
+### 8.1 三框架对比
+
+当项目中存在大型深层对象（仪表盘配置、实时数据面板、编辑器状态）时，不同更新频率的数据混在同一管道中会导致性能问题。三框架各有不同的分频治理范式。
+
+| 维度       | Vue                                 | React                             | Flutter                               |
+| ---------- | ----------------------------------- | --------------------------------- | ------------------------------------- |
+| 核心挑战   | reactive 深度追踪开销大             | setState 触发整棵子树重渲染       | setState 触发整棵子树 Widget 重建     |
+| 低频管道   | `shallowRef` + `computed`           | `zustand` + `selector`            | `Riverpod Provider` + `ref.watch`     |
+| 高频管道   | `mitt` + 节流防抖 + `computed` 终端 | `zustand` + `selector` + `Immer`  | `ValueNotifier` + `ListenableBuilder` |
+| 超高频管道 | 事件驱动 + `computed` 缓存          | `useSyncExternalStore` + throttle | `Stream` + `StreamTransformer`        |
+| 优化方向   | 减少“过度追踪”（因为默认精确）      | 主动“阻断传播”（因为默认全量）    | 用 Notifier 拆分 + const 限定减少重建 |
+
+### 8.3 各框架专属文档
+
+- **Vue**：[大型深层对象的按频率分频治理](../../vue/architecture/thinking/deep-object-frequency-governance) — shallowRef + computed 声明式管道 / mitt + 节流防抖事件驱动管道
+- **React**：[大型深层对象的 zustand+selector+Immer 分频治理](../../react/architecture/thinking/deep-object-frequency-governance) — 外部 Store + 选择性订阅 + 不可变更新
+- **Flutter**：[大型深层对象的 ValueNotifier+Riverpod+Stream 分频治理](../../flutter/architecture/thinking/deep-object-frequency-governance-cn) — 三管道分频协同 + const 全局防线
+
+---
+
+## 九、主题七：组件设计模式
+
+### 9.1 三框架对比
+
+组件是三大框架的基本构建单元，但组件的抽象方式、逻辑复用机制和设计模式各有不同。
+
+| 维度       | Vue                        | React                                | Flutter                                  |
+| ---------- | -------------------------- | ------------------------------------ | ---------------------------------------- |
+| 组件本质   | 带响应式状态的模板对象     | 纯函数（输入 props → 输出 JSX）      | 不可变描述对象（build() 返回 Widget 树） |
+| 逻辑复用   | Composable（use-* 函数）   | Custom Hook（use-* 函数）            | 普通 Dart 函数 / Mixin                   |
+| 状态管理   | ref/reactive + computed    | useState/useReducer + Context        | StatefulWidget + Notifier/Provider       |
+| 跨组件通信 | provide/inject             | Context + 状态管理库                 | InheritedWidget + Provider/Riverpod      |
+| 插槽/组合  | `<slot>` + 作用域插槽      | `children` + render props + HOC      | `child` 参数 + Builder 模式              |
+| 双向绑定   | `v-model`（语言级支持）    | `value` + `onChange`（手动）         | `onChanged` 回调（手动）                 |
+| 架构装配   | 装配器模式（自动粘合三层） | 手动组合（Hooks + Context + 组件树） | 手动组合（Widget 树 + Provider 注入）    |
+
+### 9.2 各框架专属文档
+
+- **Vue**：[组件设计模式](../../vue/architecture/standardized-template/component-design-patterns) — Composable、作用域插槽、装配器、v-model、provide/inject 等模式
+- **React**：[组件设计模式](../../react/architecture/component-patterns/react-component-design-patterns) — 容器/展示、HOC、复合组件、受控/非受控等模式
+- **Flutter**：[组件设计模式](../../flutter/architecture/thinking/flutter-component-design-patterns) — Stateless/Stateful 分离、InheritedWidget、BLoC、Key 模式等
+
+---
+
+## 十、全部文档索引
+
+### 通用思维（跨框架）
+
+| 文档                                                                        | 简述                                            |
+| --------------------------------------------------------------------------- | ----------------------------------------------- |
+| [数据·算法·显示 三者分离](./frontend-data-algorithm-view-separation)        | 前端编程终极朴素思想，与浏览器架构同构          |
+| [React 19 vs Vue 3 vs Flutter 性能对决](./framework-performance-comparison) | 内存/CPU/更新耗时/交互延迟/动画稳定性全维度对比 |
+| [BUG 修复思维对比](./bug-fixing-thinking)                                   | 工程师/架构师/主管三种视角的 BUG 修复思维       |
+| [技术迭代与学习疲态](./tech-iteration-and-learning-fatigue)                 | 研发学习疲态的本质、成因和应对策略              |
+| [跨框架研发思维对比](./cross-framework-thinking-comparison)                 | 本文：三大框架在七个核心主题上的横向对比入口    |
+
+### Vue 研发思维
+
+| 文档                                                                                | 简述                                               |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------- |
+| [数据·算法·显示 三者分离](../../vue/architecture/thinking/data-algorithm-view-separation)        | Composition API + Composable + computed 的三层分离 |
+| [shallowRef 范式与高性能架构](../../vue/architecture/thinking/shallowRef-paradigm) | shallowRef + 纯函数算法 + 调度策略 = 高性能        |
+| [无效渲染的元凶与根治](../../vue/architecture/thinking/render-chaos-root-cause)                     | 逻辑触发的混乱无序高频无效渲染                     |
+| [渲染×调度×同步 万用公式](../../vue/architecture/thinking/rendering-scheduling-sync)        | Vue 底层万用公式                                   |
+| [大型深层对象的按频率分频治理](../../vue/architecture/thinking/deep-object-frequency-governance) | shallowRef+computed / mitt+节流防抖 双管道协同     |
+
+### React 研发思维
+
+| 文档                                                                                                    | 简述                                   |
+| ------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| [数据·算法·显示 三者分离](../../react/architecture/hooks-patterns/data-algorithm-view-separation)                       | React Query + useMemo + JSX 的三层分离 |
+| [不必要 Re-render 的元凶与根治](../../react/architecture/thinking/unnecessary-rerender-root-cause)                      | 五大病灶 + 三层优化防线                |
+| [Fiber×并发调度×同步 万用公式](../../react/architecture/thinking/fiber-concurrent-sync-formula)                         | React 底层万用公式                     |
+| [大型深层对象的 zustand+selector+Immer 分频治理](../../react/architecture/thinking/deep-object-frequency-governance) | 外部 Store + 选择性订阅 + 不可变更新   |
+
+### Flutter 研发思维
+
+| 文档                                                                                     | 简述                                     |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------- |
+| [数据·算法·显示 三者分离](../../flutter/architecture/thinking/data-algorithm-view-separation)            | BLoC/Riverpod/Stream 架构下的三层分离    |
+| [setState 滥用与 Widget 重建失控](../../flutter/architecture/thinking/setstate-rebuild-chaos-root-cause) | 五大病灶 + 三层优化防线                  |
+| [Widget×帧调度×同步 万用公式](../../flutter/architecture/thinking/widget-frame-sync-formula)             | Flutter 底层万用公式                     |
+| [大型深层对象的按频率分频治理](../../flutter/architecture/thinking/deep-object-frequency-governance-cn)  | ValueNotifier+Riverpod+Stream 三管道分频 |
+
+---
+
+## 十一、总结
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                                                                      │
+│   框架会过时，API 会过时，思想不会。                                  │
+│                                                                      │
+│   数据·算法·显示 三者分离 —— 所有框架的代码组织原则                  │
+│   不必要渲染的元凶与根治 —— 所有框架的性能共性病灶                   │
+│   渲染×调度×同步 万用公式 —— 所有框架的底层同构                      │
+│   节点数据结构 —— 所有框架的渲染基础                                 │
+│   深层对象治理 —— 所有框架的频率分治                                 │
+│   组件设计模式 —— 所有框架的构建单元                                 │
+│                                                                      │
+│   理解这些主题在三大框架中的不同表现：                                │
+│   → 不是记住三套“最佳实践”                                          │
+│   → 而是理解一套底层原理在三种架构中的自然展开                      │
+│   → 从一个框架迁移到另一个框架时，底层认知可以复用                  │
+│                                                                      │
+│   这就是跨框架研发思维的价值：                                       │
+│   学一个道理，通三个框架。                                            │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```

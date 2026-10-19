@@ -21,17 +21,15 @@ const OUTPUT_PATH = resolve(ROOT, 'docs/public/doc-list.json')
 // ── 导入所有 sidebar 配置 ──
 const { psychologySidebar } = await import('../docs/.vitepress/config/sidebar/psychology.js')
 const { aiSidebar } = await import('../docs/.vitepress/config/sidebar/ai.js')
-const { architectureSidebar } = await import('../docs/.vitepress/config/sidebar/architecture.js')
 const { handbookSidebar } = await import('../docs/.vitepress/config/sidebar/handbook.js')
 const { homeSidebar } = await import('../docs/.vitepress/config/sidebar/home.js')
-const { interviewSidebar } = await import('../docs/.vitepress/config/sidebar/interview.js')
+const { devKnowledgeSidebar } = await import('../docs/.vitepress/config/sidebar/dev-knowledge.js')
 const ALL_SIDEBARS = [
   { name: '心理认知', sidebar: psychologySidebar },
   { name: 'AI', sidebar: aiSidebar },
-  { name: '架构文档', sidebar: architectureSidebar },
   { name: '开发手册', sidebar: handbookSidebar },
   { name: '首页', sidebar: homeSidebar },
-  { name: '面试', sidebar: interviewSidebar },
+  { name: '研发知识', sidebar: devKnowledgeSidebar },
 ]
 
 // ── URL 路径段 → 可读标签映射 ──
@@ -138,9 +136,8 @@ function deriveTagsFromUrl(url) {
   if (tags.length === 0 && segments.length > 0) {
     const topSeg = segments[0]
     const topMap = {
-      interview: '面试',
+      'dev-knowledge': '研发知识',
       handbook: '手册',
-      'architecture-document': '架构',
       psychology: '心理学',
       ai: 'AI',
       instructions: '指令集',

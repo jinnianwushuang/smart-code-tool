@@ -8,17 +8,12 @@ export const nav = [
   },
   { text: 'AI', link: '/ai/' },
   {
-    text: '架构',
-    link: '/architecture-document/',
-  },
-
-  {
     text: '手册',
     link: '/handbook',
   },
   {
-    text: '面试',
-    link: '/interview/',
+    text: '研发知识',
+    link: '/dev-knowledge/',
   },
   {
     text: 'AIGC',

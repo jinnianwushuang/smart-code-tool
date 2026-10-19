@@ -4,11 +4,10 @@
 import {
   psychologySidebar,
   aiSidebar,
-  architectureSidebar,
   handbookSidebar,
   homeSidebar,
-  interviewSidebar,
   aigcSidebar,
+  devKnowledgeSidebar,
 } from './sidebar/index.js'
 
 // 导出侧边栏配置函数,根据路径返回对应的侧边栏
@@ -19,14 +18,11 @@ export const sidebar = {
   // 心理认知相关路径
   '/psychology/': [psychologySidebar],
 
-  // 架构文档相关路径
-  '/architecture-document/': [architectureSidebar],
-
   // 开发手册相关路径
   '/handbook/': [handbookSidebar],
 
-  // 面试知识库相关路径
-  '/interview/': [interviewSidebar],
+  // 研发知识库（按框架优先组织）
+  '/dev-knowledge/': [devKnowledgeSidebar],
 
   // 默认侧边栏(首页等)
   // '/': [aiSidebar, psychologySidebar, architectureSidebar, handbookSidebar],
