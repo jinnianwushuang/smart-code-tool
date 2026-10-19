@@ -928,47 +928,91 @@
   {
     "id": "qlpYU_1T0skJIghsrQJ04S7d",
     "title": "useEffect 原理",
-    "url": "/architecture-document/react/principle/use-effect",
-    "group": "React 架构 > 原理说明",
+    "url": "/architecture-document/react/typical-analysis/use-effect",
+    "group": "React 架构 > 底层原理拆解",
     "tags": [
       "React"
     ],
-    "createdAt": "2026-06-20 04:04:22",
-    "updatedAt": "2026-10-07 13:05:31"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
     "id": "6dh199RccRTzLXzMGnKESNWO",
     "title": "Hooks 执行阶段：Render vs Commit",
-    "url": "/architecture-document/react/principle/hooks-phase-timing",
-    "group": "React 架构 > 原理说明",
+    "url": "/architecture-document/react/typical-analysis/hooks-phase-timing",
+    "group": "React 架构 > 底层原理拆解",
     "tags": [
       "React"
     ],
-    "createdAt": "2026-10-01 11:07:41",
-    "updatedAt": "2026-10-07 00:42:01"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
     "id": "FbNode1React_principle_fiber",
     "title": "Fiber Node 数据结构精讲",
-    "url": "/architecture-document/react/principle/fiber-node-data-structure",
-    "group": "React 架构 > 原理说明",
+    "url": "/architecture-document/react/typical-analysis/fiber-node-data-structure",
+    "group": "React 架构 > 底层原理拆解",
     "tags": [
       "React"
     ],
-    "createdAt": "2026-10-07 13:58:17",
-    "updatedAt": "2026-10-07 22:18:06"
+    "createdAt": null,
+    "updatedAt": null
   },
   {
     "id": "RctEvt6sys_principle",
     "title": "React 事件系统",
-    "url": "/architecture-document/react/principle/react-event-system",
-    "group": "React 架构 > 原理说明",
+    "url": "/architecture-document/react/typical-analysis/react-event-system",
+    "group": "React 架构 > 底层原理拆解",
     "tags": [
       "React",
       "事件系统"
     ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "QGB2M6tkazABBqGxodTaNelG",
+    "title": "Fiber 架构与并发模式原理",
+    "url": "/architecture-document/react/typical-analysis/react-fiber-architecture",
+    "group": "React 架构 > 底层原理拆解",
+    "tags": [
+      "React",
+      "Fiber",
+      "并发模式",
+      "调度",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "nE7rsAqOerLFLRWwoc0f1piX",
+    "title": "Hooks 闭包陷阱与依赖追踪原理",
+    "url": "/architecture-document/react/typical-analysis/react-hooks-closure-trap",
+    "group": "React 架构 > 底层原理拆解",
+    "tags": [
+      "React",
+      "Hooks",
+      "闭包",
+      "依赖追踪",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "N7Z81wA1NT8iZXHMj_v_M_fT",
+    "title": "Context 底层原理与性能陷阱",
+    "url": "/architecture-document/react/typical-analysis/react-context-internals",
+    "group": "React 架构 > 底层原理拆解",
+    "tags": [
+      "React",
+      "Context",
+      "性能优化",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
   },
   {
     "id": "-Im6F2jj_UN7Swx9ZiICEU3J",
@@ -1149,14 +1193,44 @@
   {
     "id": "VueReactSys1principle",
     "title": "Vue 3 响应式系统架构",
-    "url": "/architecture-document/vue/principle/vue-reactivity-system",
-    "group": "Vue 架构 > 原理说明",
+    "url": "/architecture-document/vue/typical-analysis/vue-reactivity-system",
+    "group": "Vue 架构 > 底层原理拆解",
     "tags": [
       "Vue",
       "响应式"
     ],
-    "createdAt": "2026-10-08 18:17:50",
-    "updatedAt": "2026-10-08 18:17:50"
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "OH-soAG9hHMy1vtPq7cw6Hqw",
+    "title": "Vue 3 编译器优化原理",
+    "url": "/architecture-document/vue/typical-analysis/vue-compiler-optimization",
+    "group": "Vue 架构 > 底层原理拆解",
+    "tags": [
+      "Vue",
+      "编译器",
+      "静态提升",
+      "Block Tree",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "naPefaauCNY2Onq-Qni3cJMu",
+    "title": "Vue Router 4 底层原理",
+    "url": "/architecture-document/vue/typical-analysis/vue-router-internals",
+    "group": "Vue 架构 > 底层原理拆解",
+    "tags": [
+      "Vue",
+      "Vue Router",
+      "路由",
+      "导航守卫",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
   },
   {
     "id": "VueComp3comp_patterns",
@@ -2023,7 +2097,7 @@
   },
   {
     "id": "FlTypRx1sys0getx",
-    "title": "Flutter GetX 响应式系统拆解",
+    "title": "Flutter GetX 框架底层设计原理全拆解",
     "url": "/architecture-document/flutter/typical-analysis/getx-reactive-system",
     "group": "典型拆解",
     "tags": [
@@ -2075,6 +2149,22 @@
     ],
     "createdAt": "2026-09-19 23:46:11",
     "updatedAt": "2026-10-10 20:50:46"
+  },
+  {
+    "id": "yTY0_yAiCWeuYu628WxDuRbK",
+    "title": "JS · Dart · Python 三大语言 API 与底层机制对比",
+    "url": "/architecture-document/thinking/js-dart-python-api-comparison",
+    "group": "研发思维",
+    "tags": [
+      "JavaScript",
+      "Dart",
+      "Python",
+      "语言对比",
+      "API对比",
+      "底层原理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
   },
   {
     "id": "R19vV3perf_compare_thinking",

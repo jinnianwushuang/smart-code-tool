@@ -67,7 +67,7 @@ tags: ['Flutter', '架构', '面试', '汇总']
 
 > 来源：`flutter/typical-analysis/`
 
-- [GetX 响应式系统核心原理拆解](../flutter/typical-analysis/getx-reactive-system) - `.obs` → `Obx` 依赖收集 → Worker 副作用 → 与 Vue 响应式同构
+- [GetX 框架底层设计原理全拆解](../flutter/typical-analysis/getx-reactive-system) - GetStream 底层 → `.obs` → `Obx` 依赖收集 → Worker → GetxController 生命周期 → DI 容器 → SmartManagement → 路由引擎 → RxList/RxMap → 与 Vue 响应式同构
 - [Widget 重建与 Element 更新拆解](../flutter/typical-analysis/flutter-widget-rebuild) - setState → markNeedsBuild → Element Diff → const 优化 → RepaintBoundary
 - [Dart Future/Stream/Isolate 异步调度拆解](../flutter/typical-analysis/dart-async-scheduling) - Event Loop → Future → Stream → Isolate 内存隔离模型
 
@@ -105,6 +105,7 @@ tags: ['Flutter', '架构', '面试', '汇总']
 以下文档涉及 Flutter 与其他框架的横向对比：
 
 - [跨框架研发思维对比](../thinking/cross-framework-thinking-comparison) - Vue·React·Flutter 三层分离、不必要渲染元凶、底层万用公式
+- [JS · Dart · Python 三大语言 API 与底层机制对比](../thinking/js-dart-python-api-comparison) - 数据类型、异步模型、OOP 体系、集合操作、内存管理、并发模型
 - [数据·算法·显示 三者分离（通用）](../thinking/frontend-data-algorithm-view-separation)
 - [React 19 vs Vue 3 vs Flutter 复杂业务性能对决](../thinking/framework-performance-comparison)
 - [跨端技术选型矩阵](/interview/cross-platform/cross-platform-selection)

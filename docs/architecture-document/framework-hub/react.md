@@ -43,12 +43,15 @@ tags: ['React', '架构', '面试', '汇总']
 - [Fiber × 并发调度 × 数据视图同步](../react/thinking/fiber-concurrent-sync-formula) - React 底层万用公式：Fiber 架构、并发调度、数据视图同步
 - [大型深层对象的 zustand+selector+Immer 分频治理](../react/thinking/deep-object-frequency-governance-cn) - zustand 外部 Store + selector 精确订阅 + Immer 不可变更新
 
-### 原理说明
+### 底层原理拆解
 
-- [useEffect 原理](../react/principle/use-effect) - 同步机制与 Fiber 源码深度解析
-- [Hooks 执行阶段：Render vs Commit](../react/principle/hooks-phase-timing) - 各 Hook 在渲染管线中的执行位点、三种 Effect 时序对比
-- [Fiber Node 数据结构精讲](../react/principle/fiber-node-data-structure) - Fiber 节点完整字段解析、链表遍历、双缓冲、Hooks 链表
-- [React 事件系统](../react/principle/react-event-system) - 合成事件、事件委托、冒泡捕获、闭包陷阱、Portal 事件行为
+- [useEffect 原理](../react/typical-analysis/use-effect) - 同步机制与 Fiber 源码深度解析
+- [Hooks 执行阶段：Render vs Commit](../react/typical-analysis/hooks-phase-timing) - 各 Hook 在渲染管线中的执行位点、三种 Effect 时序对比
+- [Fiber Node 数据结构精讲](../react/typical-analysis/fiber-node-data-structure) - Fiber 节点完整字段解析、链表遍历、双缓冲、Hooks 链表
+- [React 事件系统](../react/typical-analysis/react-event-system) - 合成事件、事件委托、冒泡捕获、闭包陷阱、Portal 事件行为
+- [Fiber 架构与并发模式原理](../react/typical-analysis/react-fiber-architecture) - Fiber 链表遍历、双缓冲、Lane 优先级调度、时间切片、Suspense/Transition
+- [Hooks 闭包陷阱与依赖追踪原理](../react/typical-analysis/react-hooks-closure-trap) - 闭包成因、Hooks 链表、useRef 打破闭包、与 Vue 响应式差异
+- [Context 底层原理与性能陷阱](../react/typical-analysis/react-context-internals) - Provider 变更传播、消费者重渲染、拆分 Context、外部 Store 对比
 
 ### 技术选型
 
@@ -90,6 +93,7 @@ tags: ['React', '架构', '面试', '汇总']
 以下文档涉及 React 与其他框架的横向对比：
 
 - [跨框架研发思维对比](../thinking/cross-framework-thinking-comparison) - Vue·React·Flutter 三层分离、不必要渲染元凶、底层万用公式
+- [JS · Dart · Python 三大语言 API 与底层机制对比](../thinking/js-dart-python-api-comparison) - 数据类型、异步模型、OOP 体系、集合操作、内存管理、并发模型
 - [数据·算法·显示 三者分离（通用）](../thinking/frontend-data-algorithm-view-separation)
 - [React 19 vs Vue 3 vs Flutter 复杂业务性能对决](../thinking/framework-performance-comparison)
 - [Signals vs Virtual DOM](/interview/framework-comparison/signal-vs-vdom)

@@ -423,27 +423,42 @@ const react = {
       ],
     },
     {
-      text: '原理说明',
+      text: '底层原理拆解',
       items: [
         {
           id: 'qlpYU_1T0skJIghsrQJ04S7d',
           text: 'useEffect 原理',
-          link: '/architecture-document/react/principle/use-effect',
+          link: '/architecture-document/react/typical-analysis/use-effect',
         },
         {
           text: 'Hooks 执行阶段：Render vs Commit',
-          link: '/architecture-document/react/principle/hooks-phase-timing',
+          link: '/architecture-document/react/typical-analysis/hooks-phase-timing',
           id: '6dh199RccRTzLXzMGnKESNWO',
         },
         {
           text: 'Fiber Node 数据结构精讲',
-          link: '/architecture-document/react/principle/fiber-node-data-structure',
+          link: '/architecture-document/react/typical-analysis/fiber-node-data-structure',
           id: 'FbNode1React_principle_fiber',
         },
         {
           text: 'React 事件系统',
-          link: '/architecture-document/react/principle/react-event-system',
+          link: '/architecture-document/react/typical-analysis/react-event-system',
           id: 'RctEvt6sys_principle',
+        },
+        {
+          text: 'Fiber 架构与并发模式原理',
+          link: '/architecture-document/react/typical-analysis/react-fiber-architecture',
+          id: 'QGB2M6tkazABBqGxodTaNelG',
+        },
+        {
+          text: 'Hooks 闭包陷阱与依赖追踪原理',
+          link: '/architecture-document/react/typical-analysis/react-hooks-closure-trap',
+          id: 'nE7rsAqOerLFLRWwoc0f1piX',
+        },
+        {
+          text: 'Context 底层原理与性能陷阱',
+          link: '/architecture-document/react/typical-analysis/react-context-internals',
+          id: 'N7Z81wA1NT8iZXHMj_v_M_fT',
         },
       ],
     },
@@ -552,12 +567,22 @@ const vue = {
     },
 
     {
-      text: '原理说明',
+      text: '底层原理拆解',
       items: [
         {
           text: 'Vue 3 响应式系统架构',
-          link: '/architecture-document/vue/principle/vue-reactivity-system',
+          link: '/architecture-document/vue/typical-analysis/vue-reactivity-system',
           id: 'VueReactSys1principle',
+        },
+        {
+          text: 'Vue 3 编译器优化原理',
+          link: '/architecture-document/vue/typical-analysis/vue-compiler-optimization',
+          id: 'OH-soAG9hHMy1vtPq7cw6Hqw',
+        },
+        {
+          text: 'Vue Router 4 底层原理',
+          link: '/architecture-document/vue/typical-analysis/vue-router-internals',
+          id: 'naPefaauCNY2Onq-Qni3cJMu',
         },
       ],
     },
@@ -888,7 +913,7 @@ const typicalAnalysis = {
       id: '7CtQqOZQO_bQKpUzmJTsz_kM',
     },
     {
-      text: 'Flutter GetX 响应式系统拆解',
+      text: 'Flutter GetX 框架底层设计原理全拆解',
       link: '/architecture-document/flutter/typical-analysis/getx-reactive-system',
       id: 'FlTypRx1sys0getx',
     },
@@ -919,6 +944,11 @@ const thinking = {
       text: '跨框架研发思维对比',
       link: '/architecture-document/thinking/cross-framework-thinking-comparison',
       id: 'y0ZcW5BycsZTRWZLbmie-GZX',
+    },
+    {
+      text: 'JS · Dart · Python 三大语言 API 与底层机制对比',
+      link: '/architecture-document/thinking/js-dart-python-api-comparison',
+      id: 'yTY0_yAiCWeuYu628WxDuRbK',
     },
     {
       text: 'React 19 vs Vue 3 vs Flutter 复杂业务性能对决',

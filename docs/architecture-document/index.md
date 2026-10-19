@@ -2,6 +2,7 @@
 title: '架构'
 tags: ['架构']
 ---
+
 # 🏗️ 架构文档
 
 欢迎来到架构文档中心!这里汇集了各种技术架构的设计思路、最佳实践和参考代码。
@@ -51,7 +52,7 @@ _更多文档见 [React 汇总页](./framework-hub/react)_
 
 - [架构概述](./vue/standardized-template-cn/architecture-overview-cn) - Vue 标准化装配架构总览
 - [LV1-LV5 架构演进](./vue/standardized-template-cn/architecture-evolution-cn) - 从单文件到装配器的渐进式演进
-- [Vue 3 响应式系统架构](./vue/principle/vue-reactivity-system) - Proxy 依赖收集、调度器批量更新
+- [Vue 3 响应式系统架构](./vue/typical-analysis/vue-reactivity-system) - Proxy 依赖收集、调度器批量更新
 - [渲染原理 × 事件调度 × 数据视图同步](./vue/thinking/rendering-scheduling-sync-formula) - 现代前端底层万用公式三柱合一
 
 _更多文档见 [Vue 汇总页](./framework-hub/vue)_

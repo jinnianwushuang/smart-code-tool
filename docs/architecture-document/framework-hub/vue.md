@@ -29,9 +29,11 @@ tags: ['Vue', '架构', '面试', '汇总']
 - [模块加载器](../vue/general-tools/module-loader)
 - [Payload 包装器](../vue/general-tools/wrap-with-payload)
 
-### 原理说明
+### 底层原理拆解
 
-- [Vue 3 响应式系统架构](../vue/principle/vue-reactivity-system) - Proxy 依赖收集、调度器批量更新、ref/reactive/computed 全解析
+- [Vue 3 响应式系统架构](../vue/typical-analysis/vue-reactivity-system) - Proxy 依赖收集、调度器批量更新、ref/reactive/computed 全解析
+- [Vue 3 编译器优化原理](../vue/typical-analysis/vue-compiler-optimization) - 静态提升、预字符串化、PatchFlag、Block Tree 靶向更新、事件缓存
+- [Vue Router 4 底层原理](../vue/typical-analysis/vue-router-internals) - 路由匹配算法、导航守卫执行流程、响应式路由、懒加载、滚动控制
 
 ### Composable 设计模式
 
@@ -95,5 +97,6 @@ tags: ['Vue', '架构', '面试', '汇总']
 以下文档涉及 Vue 与其他框架的横向对比：
 
 - [跨框架研发思维对比](../thinking/cross-framework-thinking-comparison) - Vue·React·Flutter 三层分离、不必要渲染元凶、底层万用公式
+- [JS · Dart · Python 三大语言 API 与底层机制对比](../thinking/js-dart-python-api-comparison) - 数据类型、异步模型、OOP 体系、集合操作、内存管理、并发模型
 - [数据·算法·显示 三者分离（通用）](../thinking/frontend-data-algorithm-view-separation)
 - [React 19 vs Vue 3 vs Flutter 复杂业务性能对决](../thinking/framework-performance-comparison)

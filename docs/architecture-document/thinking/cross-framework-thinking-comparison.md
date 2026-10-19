@@ -320,7 +320,7 @@ tags: ['思维']
 ### 7.2 各框架专属文档
 
 - **Vue**：[VNode 数据结构精讲](../vue/thinking/vnode-data-structure) — shapeFlag/patchFlag 位优化、Block 树靶向更新
-- **React**：[Fiber Node 数据结构精讲](../react/principle/fiber-node-data-structure) — 链表遍历、双缓冲、Hooks 链表、副作用标记位
+- **React**：[Fiber Node 数据结构精讲](../react/typical-analysis/fiber-node-data-structure) — 链表遍历、双缓冲、Hooks 链表、副作用标记位
 - **Flutter**：[Widget·Element·RenderObject 三棵树](../flutter/thinking/element-widget-renderobject-tree) — 三棵节点树的数据结构、职责分工与协同更新
 
 ---
