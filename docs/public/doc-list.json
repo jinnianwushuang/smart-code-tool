@@ -597,7 +597,7 @@
       "术语"
     ],
     "createdAt": "2026-09-12 23:00:31",
-    "updatedAt": "2026-10-07 00:42:01"
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "TFeoDohK0iBERYa3ZIZ15IDy",
@@ -630,7 +630,7 @@
       "前端"
     ],
     "createdAt": "2026-07-06 21:27:31",
-    "updatedAt": "2026-10-07 00:42:01"
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "8Y3J2L-M1kgTk-KcigN0W4Nd",
@@ -641,7 +641,7 @@
       "前端"
     ],
     "createdAt": "2026-07-07 04:34:10",
-    "updatedAt": "2026-10-07 00:42:01"
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "gfnojO12ayaHtb1if67m9Mxh",
@@ -751,7 +751,7 @@
       "前端"
     ],
     "createdAt": "2026-09-14 23:33:51",
-    "updatedAt": "2026-10-07 00:42:01"
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "5WIdTA0XL3LKrCqgY-GPGA-A",
@@ -773,7 +773,7 @@
       "前端"
     ],
     "createdAt": "2026-07-05 04:22:35",
-    "updatedAt": "2026-10-07 00:42:01"
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "l1YAprpeoVUh5yvf2bN1npEp",
@@ -850,7 +850,7 @@
       "后端"
     ],
     "createdAt": "2026-09-16 02:32:02",
-    "updatedAt": "2026-10-07 00:42:01"
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "95Ig3aakfPBpyUxxuXX3py47",
@@ -872,7 +872,7 @@
       "后端"
     ],
     "createdAt": "2026-07-22 00:37:42",
-    "updatedAt": "2026-10-07 00:42:01"
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "YilBKf9ZwSagCak01qiz1aAY",
@@ -1285,8 +1285,8 @@
       "P7",
       "学习路径"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "O4CwJq2yv3vr38SP4Rwd7FnU",
@@ -1664,8 +1664,8 @@
       "组件",
       "生命周期"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "ty5GgVz1dZo4abVcLyl2iXeA",
@@ -1679,8 +1679,8 @@
       "Slots",
       "组件通信"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "sCN3TnCTzy76QUKE46GtR-SR",
@@ -1809,8 +1809,8 @@
       "Plugin",
       "持久化"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "jhcNa2AR9rGwLIoYm-TNS7LN",
@@ -1839,8 +1839,8 @@
       "Nitro",
       "全栈框架"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "OqPXL8N2WahQODW_6ZtG7Nhu",
@@ -1855,8 +1855,8 @@
       "KeepAlive",
       "provide/inject"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "AFofBeLBGBaVpBDs7HDmwi1x",
@@ -2194,8 +2194,8 @@
       "Suspense",
       "Transitions"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "JL4l0ikgoLjYHFJcqtpJUyn_",
@@ -2208,8 +2208,8 @@
       "流式渲染",
       "序列化协议"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "evUT2Mvi8Aaktqbrkc7qo5k5",
@@ -2222,8 +2222,8 @@
       "有限状态机",
       "Signals"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "FQ-_lYMmOlvhy6StMl95NhvP",
@@ -2237,8 +2237,8 @@
       "useOptimistic",
       "useFormStatus"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "Rd7GV_XZb4q-MdOkPhQalZcs",
@@ -2251,8 +2251,8 @@
       "编译时优化",
       "React 19"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "qiIIRu9lymeurfGaJ1BuTjL6",
@@ -2281,8 +2281,8 @@
       "缓存",
       "乐观更新"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "FYit0dquzPQf5SqLdY4OrzRM",
@@ -2296,8 +2296,8 @@
       "缓存",
       "Turbopack"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "rCNQaNvdX4NLVKdRimFrrnGg",
@@ -2311,8 +2311,8 @@
       "验证",
       "Schema"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "uho-Tb7AARLjpS45V927slNF",
@@ -2326,8 +2326,8 @@
       "测试",
       "用户视角"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "eDhvjsNQLR3qifv6BpkYNE73",
@@ -2341,8 +2341,8 @@
       "状态分层",
       "代码分割"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "KbBCv62gFVzrycd3XvOO_3TP",
@@ -2685,8 +2685,8 @@
       "状态管理",
       "底层原理"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "in6d1Hl_mssi1o6gqqIYwsOb",
@@ -3082,8 +3082,8 @@
       "接口",
       "基础类型"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "F4VxPMbplonlBcXGir85BSRW",
@@ -3230,8 +3230,8 @@
       "View Transitions",
       "Scroll-driven Animations"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "lVGwkawU2L-vH4CSmKW0p0jv",
@@ -3244,8 +3244,8 @@
       "模板字面量类型",
       "递归类型"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "RWRfyoRtAo4F7ZGdVNEu_zfs",
@@ -3349,8 +3349,8 @@
       "Turborepo",
       "Nx"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "7THpPiaAMhkRref1Q-hf9HU9",
@@ -3363,8 +3363,8 @@
       "qiankun",
       "WASM"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "DswTcN0VbZaOX47X8NF5jV32",
@@ -3392,8 +3392,8 @@
       "NestJS",
       "Fastify"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "EAeWOXukZZJ1DAXH2dCi8BjJ",
@@ -3408,8 +3408,8 @@
       "Redis",
       "ORM"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "LIlwiTESLWx_E-2tfKOHxD1T",
@@ -3424,8 +3424,8 @@
       "监控",
       "日志"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "wsnitjiF85ksXTCIg_3yy9-y",
@@ -3745,8 +3745,8 @@
       "HTML5",
       "表单控件"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "DefrRzBLnphQ4-LHVmQallBo",
@@ -4064,8 +4064,8 @@
       "编解码",
       "游戏引擎"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "H8-ZJ2JHIURR3rr17F2O14fg",
@@ -4080,8 +4080,8 @@
       "沙箱",
       "安全"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "GxVtIgmdhfDWSV2azN12P45x",
@@ -4182,8 +4182,8 @@
       "design token",
       "主题引擎"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "Xd0b3JcyZerDZxJLGxY2bzot",
@@ -4196,8 +4196,8 @@
       "金丝雀发布",
       "Preview Environment"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "os1oxfinwG57b4xL8G0bQyvS",
@@ -4212,8 +4212,8 @@
       "Vue Test Utils",
       "Playwright"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "vkWZmRLeh6KZy1GrOFSvj-3R",
@@ -4262,8 +4262,8 @@
       "虚拟模块",
       "Hook"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "t2r4VZYDkSdv9WDoqSBPlzTe",
@@ -4312,7 +4312,7 @@
     "url": "/dev-knowledge/cross-domain/architecture-and-system/vision/architect-vision-2",
     "group": "跨域知识 > 架构愿景与系统设计",
     "tags": [
-      "研发知识"
+      "架构"
     ],
     "createdAt": null,
     "updatedAt": null
@@ -4394,8 +4394,8 @@
       "DDD",
       "架构模式"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "6Nv88OVMygvW0QQuf3H60-pr",
@@ -4408,8 +4408,8 @@
       "事件溯源",
       "CQRS"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "uHdwKUOuI0cJ9MExkFbV1rs9",
@@ -4423,8 +4423,8 @@
       "去中心化",
       "运行时加载"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "LobNRwCZiI5apdBA2W95KCWH",
@@ -4438,8 +4438,8 @@
       "上下文管理",
       "LLM"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "X8qLJMYXLM1N5ZcHB1sDLwTm",
@@ -4453,8 +4453,8 @@
       "缓存分层",
       "数据同步"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "HVoH0OdVkGhMXkEYYXsS4AqG",
@@ -4467,8 +4467,8 @@
       "WebSocket",
       "实时协作"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "HPfrsY-X2aaiSq6k78_5TXoY",
@@ -4481,8 +4481,8 @@
       "渲染引擎",
       "扩展机制"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "eWT1ZdMRs_YpMAVgAfgGnxoc",
@@ -4495,8 +4495,8 @@
       "多主题",
       "跨平台"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "0b5JW1OmUfyz6o3kPGwCdfDu",
@@ -4509,8 +4509,8 @@
       "错误追踪",
       "用户行为"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "L9bkfQZF-7OLu21yH7cWdsww",
@@ -4624,8 +4624,8 @@
       "Nuxt",
       "Astro"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "EtbEtNJDdJXZeYg5IhlOp7Rn",
@@ -4667,8 +4667,8 @@
       "本地推理",
       "WebGPU"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "PmgbXLL3qW8QaWHWP7ug9_Cg",
@@ -4682,8 +4682,8 @@
       "协议",
       "AI 工具"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "X1SWHKcbC2eulD-lAH99bvcx",
@@ -4711,8 +4711,8 @@
       "gRPC-Web",
       "API 版本管理"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 01:11:44",
+    "updatedAt": "2026-10-20 01:11:44"
   },
   {
     "id": "mPo_j7MGZsANacOfW4D0jJ0y",

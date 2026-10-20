@@ -159,6 +159,13 @@
           <RecentUpdatesTab :navigate-to="navigateTo" />
         </el-tab-pane>
 
+        <el-tab-pane name="menu">
+          <template #label>
+            <span>📋 菜单</span>
+          </template>
+          <MenuTab :navigate-to="navigateTo" :on-close="closePanel" />
+        </el-tab-pane>
+
         <el-tab-pane name="history">
           <template #label>
             <span>📜 历史</span>
@@ -188,6 +195,7 @@ import ReviewTab from './quick-tools/tabs/ReviewTab.vue'
 import LearningStreakTab from './quick-tools/tabs/LearningStreakTab.vue'
 import RecentUpdatesTab from './quick-tools/tabs/RecentUpdatesTab.vue'
 import HistoryTab from './quick-tools/tabs/HistoryTab.vue'
+import MenuTab from './quick-tools/tabs/MenuTab.vue'
 import './quick-tools/shared/quick-tools.css'
 
 // ==================== 页面信息 ====================
@@ -270,6 +278,10 @@ const badgeCount = computed(() => {
 const togglePanel = () => {
   isOpen.value = !isOpen.value
   if (isOpen.value) activeTab.value = 'progress'
+}
+
+const closePanel = () => {
+  isOpen.value = false
 }
 
 // ==================== Tab 切换 ====================

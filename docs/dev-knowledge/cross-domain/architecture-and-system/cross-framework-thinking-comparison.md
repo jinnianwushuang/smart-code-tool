@@ -385,27 +385,27 @@ tags: ['思维']
 
 ### Vue 研发思维
 
-| 文档                                                                                | 简述                                               |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------- |
+| 文档                                                                                             | 简述                                               |
+| ------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
 | [数据·算法·显示 三者分离](../../vue/architecture/thinking/data-algorithm-view-separation)        | Composition API + Composable + computed 的三层分离 |
-| [shallowRef 范式与高性能架构](../../vue/architecture/thinking/shallowRef-paradigm) | shallowRef + 纯函数算法 + 调度策略 = 高性能        |
-| [无效渲染的元凶与根治](../../vue/architecture/thinking/render-chaos-root-cause)                     | 逻辑触发的混乱无序高频无效渲染                     |
-| [渲染×调度×同步 万用公式](../../vue/architecture/thinking/rendering-scheduling-sync)        | Vue 底层万用公式                                   |
+| [shallowRef 范式与高性能架构](../../vue/architecture/thinking/shallowref-paradigm)               | shallowRef + 纯函数算法 + 调度策略 = 高性能        |
+| [无效渲染的元凶与根治](../../vue/architecture/thinking/render-chaos-root-cause)                  | 逻辑触发的混乱无序高频无效渲染                     |
+| [渲染×调度×同步 万用公式](../../vue/architecture/thinking/rendering-scheduling-sync)             | Vue 底层万用公式                                   |
 | [大型深层对象的按频率分频治理](../../vue/architecture/thinking/deep-object-frequency-governance) | shallowRef+computed / mitt+节流防抖 双管道协同     |
 
 ### React 研发思维
 
-| 文档                                                                                                    | 简述                                   |
-| ------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| [数据·算法·显示 三者分离](../../react/architecture/hooks-patterns/data-algorithm-view-separation)                       | React Query + useMemo + JSX 的三层分离 |
-| [不必要 Re-render 的元凶与根治](../../react/architecture/thinking/unnecessary-rerender-root-cause)                      | 五大病灶 + 三层优化防线                |
-| [Fiber×并发调度×同步 万用公式](../../react/architecture/thinking/fiber-concurrent-sync-formula)                         | React 底层万用公式                     |
+| 文档                                                                                                                 | 简述                                   |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| [数据·算法·显示 三者分离](../../react/architecture/hooks-patterns/data-algorithm-view-separation)                    | React Query + useMemo + JSX 的三层分离 |
+| [不必要 Re-render 的元凶与根治](../../react/architecture/thinking/unnecessary-rerender-root-cause)                   | 五大病灶 + 三层优化防线                |
+| [Fiber×并发调度×同步 万用公式](../../react/architecture/thinking/fiber-concurrent-sync-formula)                      | React 底层万用公式                     |
 | [大型深层对象的 zustand+selector+Immer 分频治理](../../react/architecture/thinking/deep-object-frequency-governance) | 外部 Store + 选择性订阅 + 不可变更新   |
 
 ### Flutter 研发思维
 
-| 文档                                                                                     | 简述                                     |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------- |
+| 文档                                                                                                     | 简述                                     |
+| -------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
 | [数据·算法·显示 三者分离](../../flutter/architecture/thinking/data-algorithm-view-separation)            | BLoC/Riverpod/Stream 架构下的三层分离    |
 | [setState 滥用与 Widget 重建失控](../../flutter/architecture/thinking/setstate-rebuild-chaos-root-cause) | 五大病灶 + 三层优化防线                  |
 | [Widget×帧调度×同步 万用公式](../../flutter/architecture/thinking/widget-frame-sync-formula)             | Flutter 底层万用公式                     |

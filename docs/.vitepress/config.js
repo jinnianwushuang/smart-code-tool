@@ -1,5 +1,4 @@
 // docs/.vitepress/config.js
-import { defineConfig } from 'vitepress'
 import { execSync } from 'node:child_process'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -13,7 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const BASE = '/smart-code-tool/'
 
-export default defineConfig({
+export default {
   title: 'YOLO',
   description: 'YOLO 文档中心',
 
@@ -74,4 +73,4 @@ export default defineConfig({
       stdio: 'inherit',
     })
   },
-})
+}
