@@ -7,17 +7,17 @@ hero:
   tagline: 读书的本质是一场合法抢劫
   actions:
     - theme: brand
+      text: 研发知识
+      link: /dev-knowledge/
+    - theme: alt
       text: 心理认知
       link: /psychology/
     - theme: alt
-      text: 架构文档
-      link: /architecture-document/
+      text: AIGC 技能
+      link: /aigc/
     - theme: alt
-      text: 开发手册
-      link: /handbook/
-    - theme: alt
-      text: 面试知识体系
-      link: /interview/
+      text: AI 知识库
+      link: /ai/
 
 features:
   - icon: 🧠
@@ -29,23 +29,22 @@ features:
     details: Do or die. Now or never. 输出替代输入，复盘驱动成长，对抗熵增。
     link: /psychology/#行动准则
   - icon: 🔮
-    title: 思维·模型
-    details: 第一性原理、疯狂愿景、强悍执行、高效迭代、抗压死磕、成本杀手。
-    link: /architecture-document/
+    title: 研发·知识
+    details: 274 篇研发知识，按 Vue / React / Flutter / JS-TS / Node.js / Python / 跨域 七大框架体系组织。
+    link: /dev-knowledge/
   - icon: 📚
-    title: 知识·体系
-    details: 140+ 篇面试知识体系、90+ 篇架构文档、55+ 篇开发手册、13 篇 AI 知识库。
-    link: /interview/
+    title: 学习·路径
+    details: 从初级到架构师，完整学习路径规划。按级别分层，每篇标注难度和目标职级。
+    link: /dev-knowledge/learning-paths/junior
   - icon: 🛠️
     title: 工具·利器
     details: 善假于物者，致千里。Excel 统计分析、实用工具集、Vue 架构验证实验场。
     link: /app-iframe/code-tool-app/
   - icon: 🤖
-    title: AI 知识库
-    details: AI 行业概念、Ollama 本地部署、Agent 实践、本地智能体最佳实践。
+    title: AI & AIGC
+    details: 78 篇 AI/AIGC 知识。涵盖 Ollama 本地部署、Agent 实践、AIGC 技能转型与变现路径。
     link: /ai/
 tags: []
-
 ---
 
 <p align="center" style="padding: 2rem 1.5rem; font-size: 1.1rem; color: var(--vp-c-text-2); max-width: 600px; margin: 0 auto;">

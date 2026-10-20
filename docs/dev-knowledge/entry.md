@@ -87,22 +87,110 @@ dev-knowledge/
 
 ---
 
-## 四、AI 协作约束
+## 四、新增文档规范
 
-1. **新增文档后必须同步更新侧边栏**：编辑 `.vitepress/config/sidebar/dev-knowledge.js`，在对应框架分组中添加菜单项
-2. **每个目录必须同时有 `entry.md` 和 `index.md`**：`entry.md` 是 AI 入口，`index.md` 是 VitePress 路由索引
-3. **侧边栏菜单项必须包含 `id` 字段**：运行 `node scripts/inject-sidebar-ids.mjs` 自动生成
-4. **文档 frontmatter 必须包含 `tags` 字段**：用于快捷工具的标签筛选和统计分布
+### 4.1 文件放置规则
+
+根据文档内容所属框架/领域，放入对应目录：
+
+| 内容属于       | 放置目录                                                | 示例                       |
+| -------------- | ------------------------------------------------------- | -------------------------- |
+| Vue 相关       | `vue/architecture/` 或 `vue/interview/<level>/`         | 组件模式、响应式原理       |
+| React 相关     | `react/architecture/` 或 `react/interview/<level>/`     | Fiber、Hooks 模式          |
+| Flutter 相关   | `flutter/architecture/` 或 `flutter/interview/<level>/` | Widget 体系、渲染引擎      |
+| JS/TS 语言层   | `js-ts/architecture/` 或 `js-ts/interview/<level>/`     | 引擎原理、类型体操         |
+| Node.js 相关   | `nodejs/architecture/` 或 `nodejs/interview/<level>/`   | 运行时、ORM                |
+| Python 相关    | `python/architecture/`                                  | 工程化、AI 开发            |
+| 跨框架通用知识 | `cross-domain/` 下对应子目录                            | 数据结构、设计模式、工程化 |
+| 学习路径规划   | `learning-paths/`                                       | 新增/更新学习路径文件      |
+
+> **判断原则**：先看内容属于哪个框架，再区分是架构设计还是面试知识。
+
+### 4.2 文件命名
+
+- 使用 **kebab-case**：`vue-lifecycle.md`、`flutter-network-architecture.md`
+- 名称要语义化，能看出内容主题
+- 面试文档可带等级后缀：`topic-name.md`（等级写在标题和 frontmatter 中）
+
+### 4.3 Frontmatter 必填字段
+
+```yaml
+---
+title: '文档标题 [P5-P6]' # 必填，含等级标签
+level: 'intermediate' # 必填：junior / intermediate / advanced
+tags: ['Vue', '响应式', 'Proxy'] # 必填，用于标签筛选
+difficulty: 'medium' # 可选：easy / medium / hard
+target: 'P5-P6 中级工程师' # 可选，目标读者
+---
+```
+
+### 4.4 文档内容结构
+
+推荐采用 **What → Why → How** 三段式：
+
+```markdown
+# 标题 [等级]
+
+> 一句话说明本文解决什么问题。
+
+## 核心概念（What）
+
+概念定义、知识框架、思维导图
+
+## 为什么需要（Why）
+
+背景、痛点、适用场景
+
+## 如何实现（How）
+
+代码示例、最佳实践、注意事项
+
+## 面试要点
+
+高频面试问题总结（面试文档必填）
+
+## 相关链接
+
+相关文档的绝对路径链接
+```
+
+### 4.5 链接规范
+
+- **使用绝对路径**：`/dev-knowledge/vue/interview/advanced/reactivity-deep`
+- **不加 `.md` 后缀**：VitePress 自动处理路由
+- **VitePress base 自动处理**：`base: '/smart-code-tool/'` 会自动拼接前缀
+
+### 4.6 新增后必做清单
+
+```
+□ 1. 将文档放入正确的框架/级别目录
+□ 2. 更新侧边栏配置：.vitepress/config/sidebar/dev-knowledge.js
+□ 3. 运行 inject IDs：node scripts/inject-sidebar-ids.mjs
+□ 4. 运行标签生成：pnpm gen:frontmatter-tags
+□ 5. 运行文档列表：pnpm gen:doc-list
+□ 6. 如有学习路径引用，同步更新 learning-paths/ 中的链接
+```
+
+### 4.7 目录级双文件约定
+
+每个目录必须同时包含：
+
+| 文件       | 用途               | 说明                                               |
+| ---------- | ------------------ | -------------------------------------------------- |
+| `entry.md` | AI 入口            | 供智能体读取模块概览、技术约束                     |
+| `index.md` | VitePress 路由索引 | 目录级链接（如 `/dev-knowledge/vue/`）解析到此文件 |
+
+> ⚠️ 如果目录只有 `entry.md` 没有 `index.md`，目录级路由会 404。
 
 ---
 
-## 五、与旧模块的关系
+## 五、历史沿革
 
-本模块从以下两个旧模块迁移而来（旧目录保留不动，作为历史归档）：
+本模块从以下两个旧模块迁移合并而来：
 
 | 旧模块                   | 文档数 | 说明                         |
 | ------------------------ | ------ | ---------------------------- |
 | `architecture-document/` | 143 篇 | 原按主题分散组织的架构文档   |
 | `interview/`             | 134 篇 | 原按等级分散组织的面试知识库 |
 
-旧模块的顶部导航入口（「架构」「面试」）在过渡期保留，新入口为「研发知识」。
+旧目录已删除，所有文档统一在 `dev-knowledge/` 下按框架组织。
