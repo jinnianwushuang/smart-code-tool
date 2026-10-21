@@ -2356,6 +2356,24 @@
     "updatedAt": null
   },
   {
+    "id": "jK4lM8nO9pQrStUvWxYzAb",
+    "title": "GetX 模块化架构与路由守卫",
+    "url": "/dev-knowledge/flutter/architecture/state-management/flutter-getx-modular-architecture-and-route-guards",
+    "group": "Flutter 体系 > 架构设计",
+    "tags": [
+      "Flutter",
+      "GetX",
+      "模块化",
+      "路由守卫",
+      "Middleware",
+      "Binding",
+      "DI",
+      "实战"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
     "id": "uHcM_T2B52yVU-u-GjENoQI0",
     "title": "路由架构设计",
     "url": "/dev-knowledge/flutter/architecture/routing/flutter-routing-architecture",
@@ -2373,6 +2391,23 @@
     "group": "Flutter 体系 > 架构设计",
     "tags": [
       "Flutter"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "mN3pQ7rT7vWxYzAbCdEfGh",
+    "title": "Dio 拦截器链与 Token 无感刷新",
+    "url": "/dev-knowledge/flutter/architecture/networking/flutter-dio-interceptor-chain-and-token-refresh",
+    "group": "Flutter 体系 > 架构设计",
+    "tags": [
+      "Flutter",
+      "Dio",
+      "拦截器",
+      "Token刷新",
+      "Completer",
+      "网络层",
+      "实战"
     ],
     "createdAt": null,
     "updatedAt": null
@@ -2408,6 +2443,24 @@
     "tags": [
       "Flutter",
       "性能优化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "cD5eF6gH7iJ8kL9mN0oPqR",
+    "title": "UI 适配·主题·加载状态设计",
+    "url": "/dev-knowledge/flutter/architecture/performance/flutter-ui-adaptation-theming-loading-states",
+    "group": "Flutter 体系 > 架构设计",
+    "tags": [
+      "Flutter",
+      "ScreenUtil",
+      "Material3",
+      "主题",
+      "骨架屏",
+      "Shimmer",
+      "暗色模式",
+      "响应式"
     ],
     "createdAt": null,
     "updatedAt": null
@@ -2640,6 +2693,75 @@
     "updatedAt": null
   },
   {
+    "id": "sT1uV2wX3yZ4aB5cD6eF7g",
+    "title": "build_runner 代码生成工程化",
+    "url": "/dev-knowledge/flutter/architecture/thinking/flutter-build-runner-code-generation",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "build_runner",
+      "Retrofit",
+      "json_serializable",
+      "slang",
+      "代码生成",
+      "工程化"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "hI8jK9lM0nO1pQ2rS3tU4v",
+    "title": "离线优先架构与分页加载",
+    "url": "/dev-knowledge/flutter/architecture/thinking/flutter-offline-first-and-pagination",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "离线优先",
+      "Hive",
+      "网络状态",
+      "分页",
+      "下拉刷新",
+      "SmartRefresher",
+      "实战"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "wX5yZ6aB7cD8eF9gH0iJ1k",
+    "title": "全局错误处理与启动优化",
+    "url": "/dev-knowledge/flutter/architecture/thinking/flutter-error-handling-and-launch-optimization",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "错误处理",
+      "FlutterError",
+      "PlatformDispatcher",
+      "启动优化",
+      "ErrorReporter",
+      "实战"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "lM2nO3pQ4rS5tU6vW7xY8z",
+    "title": "slang 国际化方案",
+    "url": "/dev-knowledge/flutter/architecture/thinking/flutter-slang-i18n-solution",
+    "group": "Flutter 体系 > 架构设计 > 思考文档",
+    "tags": [
+      "Flutter",
+      "slang",
+      "国际化",
+      "i18n",
+      "类型安全",
+      "翻译",
+      "实战"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
     "id": "aUG6KrqH31voEkF8JFWP_69a",
     "title": "GetX 框架底层设计原理",
     "url": "/dev-knowledge/flutter/architecture/typical-analysis/getx-reactive-system",
@@ -2702,8 +2824,8 @@
       "底层原理",
       "Binding"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-21 09:34:04",
+    "updatedAt": "2026-10-21 09:34:04"
   },
   {
     "id": "in6d1Hl_mssi1o6gqqIYwsOb",
@@ -4538,7 +4660,7 @@
       "思维"
     ],
     "createdAt": "2026-10-20 23:54:21",
-    "updatedAt": "2026-10-20 23:54:21"
+    "updatedAt": "2026-10-21 09:34:04"
   },
   {
     "id": "j4OYf7WTcPlyAuGKtyqnzQ8a",
@@ -4549,7 +4671,7 @@
       "思维"
     ],
     "createdAt": "2026-10-20 23:54:21",
-    "updatedAt": "2026-10-20 23:54:21"
+    "updatedAt": "2026-10-21 09:34:04"
   },
   {
     "id": "_xhueKRX_CavM_eUhS3MEWn4",

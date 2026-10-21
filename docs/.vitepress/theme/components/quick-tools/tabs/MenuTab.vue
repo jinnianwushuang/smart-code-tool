@@ -13,6 +13,10 @@
 <template>
   <div class="menu-tab-container">
     <el-tabs v-model="activeSubTab" class="menu-sub-tabs">
+      <el-tab-pane name="cascade">
+        <template #label><span>📊 级联</span></template>
+        <CascadeTab :navigate-to="navigateTo" :on-close="onClose" />
+      </el-tab-pane>
       <el-tab-pane name="tree">
         <template #label><span>🌿 铺展</span></template>
 
@@ -59,11 +63,6 @@
           </div>
         </div>
       </el-tab-pane>
-
-      <el-tab-pane name="cascade">
-        <template #label><span>📊 级联</span></template>
-        <CascadeTab :navigate-to="navigateTo" :on-close="onClose" />
-      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -81,7 +80,7 @@ const props = defineProps({
 })
 
 const route = useRoute()
-const activeSubTab = ref('tree')
+const activeSubTab = ref('cascade')
 const keyword = ref('')
 const allExpanded = ref(false)
 const expandedMap = reactive({})

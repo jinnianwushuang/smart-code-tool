@@ -41,7 +41,7 @@ Vue 3 架构设计与面试知识库，涵盖标准化模板、组件模式、�
 | 文档                                                                        | 说明                   |
 | --------------------------------------------------------------------------- | ---------------------- |
 | [数据·算法·显示 三者分离](./thinking/data-algorithm-view-separation)        | 核心研发思维：三者分离 |
-| [shallowRef 范式与高性能架构](./thinking/shallowRef-paradigm)               | shallowRef 高性能范式  |
+| [shallowRef 范式与高性能架构](./thinking/shallowref-paradigm)               | shallowRef 高性能范式  |
 | [无效渲染的元凶与根治](./thinking/render-chaos-root-cause)                  | 无效渲染根因分析与治理 |
 | [渲染原理 × 事件调度 × 数据视图同步](./thinking/rendering-scheduling-sync)  | 渲染调度与数据同步公式 |
 | [大型深层对象的按频率分频治理](./thinking/deep-object-frequency-governance) | 大对象分频治理策略     |

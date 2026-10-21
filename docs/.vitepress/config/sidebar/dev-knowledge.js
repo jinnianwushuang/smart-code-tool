@@ -108,7 +108,7 @@ const vueSection = {
             {
               id: '7vSTvvhTv_CRFphgHA_HU3id',
               text: 'shallowRef 范式与高性能架构',
-              link: '/dev-knowledge/vue/architecture/thinking/shallowRef-paradigm',
+              link: '/dev-knowledge/vue/architecture/thinking/shallowref-paradigm',
             },
             {
               id: '2AOuDMk4QL5HV9RqOUmXKofs',
@@ -561,6 +561,11 @@ const flutterSection = {
           link: '/dev-knowledge/flutter/architecture/state-management/flutter-state-management-architecture',
         },
         {
+          id: 'jK4lM8nO9pQrStUvWxYzAb',
+          text: 'GetX 模块化架构与路由守卫',
+          link: '/dev-knowledge/flutter/architecture/state-management/flutter-getx-modular-architecture-and-route-guards',
+        },
+        {
           id: 'uHcM_T2B52yVU-u-GjENoQI0',
           text: '路由架构设计',
           link: '/dev-knowledge/flutter/architecture/routing/flutter-routing-architecture',
@@ -569,6 +574,11 @@ const flutterSection = {
           id: '7Uu_qlN-TJ-WqqrOlSsH2Fnc',
           text: '网络层架构设计',
           link: '/dev-knowledge/flutter/architecture/networking/flutter-network-architecture',
+        },
+        {
+          id: 'mN3pQ7rT7vWxYzAbCdEfGh',
+          text: 'Dio 拦截器链与 Token 无感刷新',
+          link: '/dev-knowledge/flutter/architecture/networking/flutter-dio-interceptor-chain-and-token-refresh',
         },
         {
           id: 'isSEc6XtrCeB1vPoZaaeJx7p',
@@ -584,6 +594,11 @@ const flutterSection = {
           id: 'LpF1Wz_wLwzwICMW9gLR07oI',
           text: '性能优化实战',
           link: '/dev-knowledge/flutter/architecture/performance/flutter-performance-optimization',
+        },
+        {
+          id: 'cD5eF6gH7iJ8kL9mN0oPqR',
+          text: 'UI 适配·主题·加载状态设计',
+          link: '/dev-knowledge/flutter/architecture/performance/flutter-ui-adaptation-theming-loading-states',
         },
         {
           id: 'HWDzZAuNvqSdv91bjRfEhf6c',
@@ -683,6 +698,26 @@ const flutterSection = {
               id: 'HLCXZsx12bscxu6bzHij-06z',
               text: '测试体系',
               link: '/dev-knowledge/flutter/architecture/thinking/testing-system',
+            },
+            {
+              id: 'sT1uV2wX3yZ4aB5cD6eF7g',
+              text: 'build_runner 代码生成工程化',
+              link: '/dev-knowledge/flutter/architecture/thinking/flutter-build-runner-code-generation',
+            },
+            {
+              id: 'hI8jK9lM0nO1pQ2rS3tU4v',
+              text: '离线优先架构与分页加载',
+              link: '/dev-knowledge/flutter/architecture/thinking/flutter-offline-first-and-pagination',
+            },
+            {
+              id: 'wX5yZ6aB7cD8eF9gH0iJ1k',
+              text: '全局错误处理与启动优化',
+              link: '/dev-knowledge/flutter/architecture/thinking/flutter-error-handling-and-launch-optimization',
+            },
+            {
+              id: 'lM2nO3pQ4rS5tU6vW7xY8z',
+              text: 'slang 国际化方案',
+              link: '/dev-knowledge/flutter/architecture/thinking/flutter-slang-i18n-solution',
             },
           ],
         },

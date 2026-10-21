@@ -388,7 +388,7 @@ tags: ['思维']
 | 文档                                                                                             | 简述                                               |
 | ------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
 | [数据·算法·显示 三者分离](../../vue/architecture/thinking/data-algorithm-view-separation)        | Composition API + Composable + computed 的三层分离 |
-| [shallowRef 范式与高性能架构](../../vue/architecture/thinking/shallowRef-paradigm)               | shallowRef + 纯函数算法 + 调度策略 = 高性能        |
+| [shallowRef 范式与高性能架构](../../vue/architecture/thinking/shallowref-paradigm)               | shallowRef + 纯函数算法 + 调度策略 = 高性能        |
 | [无效渲染的元凶与根治](../../vue/architecture/thinking/render-chaos-root-cause)                  | 逻辑触发的混乱无序高频无效渲染                     |
 | [渲染×调度×同步 万用公式](../../vue/architecture/thinking/rendering-scheduling-sync)             | Vue 底层万用公式                                   |
 | [大型深层对象的按频率分频治理](../../vue/architecture/thinking/deep-object-frequency-governance) | shallowRef+computed / mitt+节流防抖 双管道协同     |
