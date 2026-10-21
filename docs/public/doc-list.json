@@ -2689,6 +2689,23 @@
     "updatedAt": "2026-10-20 01:11:44"
   },
   {
+    "id": "kR7mNx2QwVpL9tYjHdF3sZ8a",
+    "title": "WidgetsFlutterBinding 底层原理与启动全链路",
+    "url": "/dev-knowledge/flutter/architecture/typical-analysis/flutter-binding-init-and-engine-bootstrap",
+    "group": "Flutter 体系 > 架构设计 > 典型拆解",
+    "tags": [
+      "Flutter",
+      "WidgetsFlutterBinding",
+      "ensureInitialized",
+      "启动流程",
+      "FlutterEngine",
+      "底层原理",
+      "Binding"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
     "id": "in6d1Hl_mssi1o6gqqIYwsOb",
     "title": "Dart 语言基础与核心特性 [P5-P6]",
     "url": "/dev-knowledge/flutter/interview/intermediate/flutter-dart-basics",
@@ -4303,8 +4320,8 @@
     "tags": [
       "架构"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 23:54:21",
+    "updatedAt": "2026-10-20 23:54:21"
   },
   {
     "id": "GfZpo5ULRJ1X72jYTSDZ58_j",
@@ -4314,8 +4331,8 @@
     "tags": [
       "架构"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 23:54:21",
+    "updatedAt": "2026-10-20 23:54:21"
   },
   {
     "id": "jl2OSq5zOei3dMRcfapoWISL",
@@ -4325,8 +4342,8 @@
     "tags": [
       "架构"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 23:54:21",
+    "updatedAt": "2026-10-20 23:54:21"
   },
   {
     "id": "MjM0OFQja__17xR8V395Y5J7",
@@ -4336,8 +4353,8 @@
     "tags": [
       "架构"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 23:54:21",
+    "updatedAt": "2026-10-20 23:54:21"
   },
   {
     "id": "ie0G2M5NjlTdB7KvAwicBdqr",
@@ -4347,8 +4364,8 @@
     "tags": [
       "架构"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 23:54:21",
+    "updatedAt": "2026-10-20 23:54:21"
   },
   {
     "id": "b-CrKeN3Zk07ozewQ92ydT72",
@@ -4358,8 +4375,8 @@
     "tags": [
       "架构"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 23:54:21",
+    "updatedAt": "2026-10-20 23:54:21"
   },
   {
     "id": "XWZko5J2JkCc6KnUaa9SPRwq",
@@ -4369,8 +4386,8 @@
     "tags": [
       "架构"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 23:54:21",
+    "updatedAt": "2026-10-20 23:54:21"
   },
   {
     "id": "Y6TKpvT2hTFeBqMvC7o65mhe",
@@ -4380,8 +4397,8 @@
     "tags": [
       "架构"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 23:54:21",
+    "updatedAt": "2026-10-20 23:54:21"
   },
   {
     "id": "cdQlRirX639qwz0x7NnPHUKn",
@@ -4520,8 +4537,8 @@
     "tags": [
       "思维"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 23:54:21",
+    "updatedAt": "2026-10-20 23:54:21"
   },
   {
     "id": "j4OYf7WTcPlyAuGKtyqnzQ8a",
@@ -4531,8 +4548,8 @@
     "tags": [
       "思维"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-20 23:54:21",
+    "updatedAt": "2026-10-20 23:54:21"
   },
   {
     "id": "_xhueKRX_CavM_eUhS3MEWn4",

@@ -710,6 +710,11 @@ const flutterSection = {
               text: 'StatefulWidget 底层原理',
               link: '/dev-knowledge/flutter/architecture/typical-analysis/flutter-stateful-widget-internals',
             },
+            {
+              id: 'kR7mNx2QwVpL9tYjHdF3sZ8a',
+              text: 'WidgetsFlutterBinding 底层原理与启动全链路',
+              link: '/dev-knowledge/flutter/architecture/typical-analysis/flutter-binding-init-and-engine-bootstrap',
+            },
           ],
         },
       ],
