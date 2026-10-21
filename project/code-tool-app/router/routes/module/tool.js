@@ -5,6 +5,7 @@ import {
   CalendarOutlined,
   FileTextOutlined,
   ToolOutlined,
+  RocketOutlined,
 } from '@ant-design/icons-vue'
 import { h } from 'vue'
 
@@ -21,6 +22,12 @@ export const routes_tool = [
         name: 'domain-guide',
         meta: { title: '技术导航', icon: () => h(HomeOutlined) },
         component: () => import('project/pages/domain-guide/domain-guide.vue'),
+      },
+      {
+        path: 'aigc-guide',
+        name: 'aigc-guide',
+        meta: { title: 'AIGC导航', icon: () => h(RocketOutlined) },
+        component: () => import('project/pages/aigc-guide/aigc-guide.vue'),
       },
       {
         path: 'all-tool',
