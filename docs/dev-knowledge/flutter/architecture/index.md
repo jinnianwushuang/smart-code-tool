@@ -23,6 +23,16 @@ Flutter 架构设计与面试知识库，涵盖状态管理、路由、渲染引
 | [UI 适配·主题·加载状态设计](./performance/flutter-ui-adaptation-theming-loading-states)            | ScreenUtil + M3 主题 + 骨架屏 |
 | [插件开发架构](./plugin/flutter-plugin-architecture)                                               | 插件开发架构指南              |
 
+### 技术选型（2026）
+
+| 文档                                                    | 说明                        |
+| ------------------------------------------------------- | --------------------------- |
+| [选型总览](./technology-selection/)                     | 按项目规模推荐 + 完整技术栈 |
+| [状态管理选型](./technology-selection/state-management) | Riverpod / Bloc / GetX 对比 |
+| [路由导航选型](./technology-selection/routing)          | go_router / auto_route 对比 |
+| [网络请求选型](./technology-selection/networking)       | Dio / Retrofit / http 对比  |
+| [本地存储选型](./technology-selection/storage)          | Hive / Isar / Drift 对比    |
+
 ### 思考文档
 
 | 文档                                                                                | 说明                                 |

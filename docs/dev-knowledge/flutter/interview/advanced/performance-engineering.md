@@ -32,42 +32,46 @@ Flutter 性能优化全景：
 **核心问题**：Flutter 每一帧渲染的底层流程是什么？
 
 ```
-帧管线完整流程：
+帧管线完整流程（每个 Vsync 周期内执行）：
 
 [Vsync 信号到达] ──► 16.67ms 一次（60fps）或 8.33ms（120fps）
         ↓
-[Animation Phase]
+[1. Transient Callbacks / Animation Phase]
         ├─ 执行所有 AnimationController.tick()
-        └─ 触发 setState / notifyListeners
+        ├─ tick() 更新动画值并通知 listeners
+        └─ listeners（如 AnimatedBuilder）调用 setState → Element.markNeedsBuild() → 加入脏列表
         ↓
-[Build Phase]
-        ├─ 遍历脏节点列表（dirty elements）
-        ├─ 重新执行 build() 方法
-        └─ 生成新的 Widget 树
+[2. Build Phase]
+        ├─ 仅遍历脏 Element 列表（dirtyElements），未变化的节点跳过
+        ├─ Element 调用其持有的 Widget.build(element)，生成新 Widget 树
+        ├─ Element 对比新旧 Widget，决定复用或重建：
+        │   ├─ 复用：Widget 类型和 Key 相同 → 更新 Element 的 widget 引用
+        │   └─ 重建：Widget 类型或 Key 不同 → Widget.createElement() 创建新 Element → Element.createRenderObject() 创建 RenderObject
+        └─ build 过程中 RenderObject 属性变化会调用 markNeedsLayout() / markNeedsPaint()
         ↓
-[Layout Phase]
-        ├─ 遍历需要布局的 RenderObject
+[3. Layout Phase]
+        ├─ 仅遍历标记了 needsLayout 的 RenderObject
         ├─ 执行 performLayout() 计算尺寸和位置
         └─ 约束向下传递，尺寸向上传递
         ↓
-[Paint Phase]
-        ├─ 遍历需要绘制的 RenderObject
-        ├─ 执行 paint() 生成 Layer Tree
-        └─ Layer Tree 提交给 Engine
+[4. Compositing Bits Update]
+        ├─ 更新 RenderObject 的合成位（isRepaintBoundary 等标记）
+        └─ 决定哪些节点需要独立合成层（影响后续 Paint 范围）
         ↓
-[Compositing Phase]
-        ├─ Engine 将 Layer Tree 光栅化
-        └─ GPU 渲染到屏幕
+[5. Paint Phase]
+        ├─ 仅遍历标记了 needsPaint 的 RenderObject
+        └─ 执行 paint() 将绘制指令记录到 Layer Tree
+        ↓
+[6. Semantics Update]
+        ├─ 更新无障碍语义树（供屏幕阅读器等辅助功能使用）
+        └─ 仅在语义数据变化时执行
+        ↓
+[7. Scene 构建与提交]
+        ├─ 将 Layer Tree 构建为 Scene 对象
+        ├─ 通过 Window.render() 将 Scene 提交给 Engine
+        └─ Engine 渲染线程将 Scene 光栅化 → GPU 渲染到屏幕
 
-时间预算分配（16.67ms）：
-├─ Build: ~2-4ms
-├─ Layout: ~2-4ms
-├─ Paint: ~2-4ms
-├─ Compositing: ~2-4ms
-└─ 余量: ~2-4ms
-
-卡顿的根本原因：
-└─ 任何一阶段超时 → 总时间超过 16.67ms → 掉帧
+以上 1-7 步均在 drawFrame() 中一次性顺序执行完成。
 ```
 
 ### 2. 启动优化底层：冷启动三阶段

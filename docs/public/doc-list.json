@@ -1489,7 +1489,7 @@
   {
     "id": "7vSTvvhTv_CRFphgHA_HU3id",
     "title": "shallowRef 范式与高性能架构",
-    "url": "/dev-knowledge/vue/architecture/thinking/shallowRef-paradigm",
+    "url": "/dev-knowledge/vue/architecture/thinking/shallowref-paradigm",
     "group": "Vue 体系 > 架构设计 > 研发思维",
     "tags": [
       "Vue",
@@ -2370,8 +2370,8 @@
       "DI",
       "实战"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-21 21:39:58",
+    "updatedAt": "2026-10-21 21:39:58"
   },
   {
     "id": "uHcM_T2B52yVU-u-GjENoQI0",
@@ -2381,8 +2381,8 @@
     "tags": [
       "Flutter"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-24 10:43:29",
+    "updatedAt": "2026-10-24 10:43:29"
   },
   {
     "id": "7Uu_qlN-TJ-WqqrOlSsH2Fnc",
@@ -2409,8 +2409,8 @@
       "网络层",
       "实战"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-21 21:39:58",
+    "updatedAt": "2026-10-21 21:39:58"
   },
   {
     "id": "isSEc6XtrCeB1vPoZaaeJx7p",
@@ -2462,8 +2462,8 @@
       "暗色模式",
       "响应式"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-21 21:39:58",
+    "updatedAt": "2026-10-21 21:39:58"
   },
   {
     "id": "HWDzZAuNvqSdv91bjRfEhf6c",
@@ -2706,8 +2706,8 @@
       "代码生成",
       "工程化"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-21 21:39:58",
+    "updatedAt": "2026-10-21 21:39:58"
   },
   {
     "id": "hI8jK9lM0nO1pQ2rS3tU4v",
@@ -2724,8 +2724,8 @@
       "SmartRefresher",
       "实战"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-21 21:39:58",
+    "updatedAt": "2026-10-21 21:39:58"
   },
   {
     "id": "wX5yZ6aB7cD8eF9gH0iJ1k",
@@ -2741,8 +2741,8 @@
       "ErrorReporter",
       "实战"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-21 21:39:58",
+    "updatedAt": "2026-10-21 21:39:58"
   },
   {
     "id": "lM2nO3pQ4rS5tU6vW7xY8z",
@@ -2758,8 +2758,8 @@
       "翻译",
       "实战"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-21 21:39:58",
+    "updatedAt": "2026-10-21 21:39:58"
   },
   {
     "id": "aUG6KrqH31voEkF8JFWP_69a",
@@ -2900,8 +2900,8 @@
       "Material 3",
       "Web 渲染"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-24 10:43:29",
+    "updatedAt": "2026-10-24 10:43:29"
   },
   {
     "id": "w9DX0zUy_RmeeENpVzCAPS-R",
@@ -2915,8 +2915,8 @@
       "JIT",
       "Mixin"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-24 10:43:29",
+    "updatedAt": "2026-10-24 10:43:29"
   },
   {
     "id": "NmXVJAB3u6Z73UJ1gW1vwJJA",
@@ -2944,8 +2944,8 @@
       "FFI",
       "混合栈"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-24 10:43:29",
+    "updatedAt": "2026-10-24 10:43:29"
   },
   {
     "id": "f_ZJMcefLeF1NqZn0SrRlqNH",
@@ -3048,6 +3048,66 @@
       "Hive",
       "SQLite",
       "Isar"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "YjGY3Nh-jm4CAFZPuAnoxf7C",
+    "title": "选型总览",
+    "url": "/dev-knowledge/flutter/architecture/technology-selection/",
+    "group": "Flutter 体系 > 技术选型",
+    "tags": [
+      "Flutter",
+      "架构"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "9l3xUTzQgPKEZkFZlg0m7T8U",
+    "title": "状态管理选型",
+    "url": "/dev-knowledge/flutter/architecture/technology-selection/state-management",
+    "group": "Flutter 体系 > 技术选型",
+    "tags": [
+      "Flutter",
+      "状态管理"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "EvohiaDNjja04qXuxTpNeWI3",
+    "title": "路由导航选型",
+    "url": "/dev-knowledge/flutter/architecture/technology-selection/routing",
+    "group": "Flutter 体系 > 技术选型",
+    "tags": [
+      "Flutter",
+      "路由"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "c1835YlsFeNgTrJOxzIyw-YI",
+    "title": "网络请求选型",
+    "url": "/dev-knowledge/flutter/architecture/technology-selection/networking",
+    "group": "Flutter 体系 > 技术选型",
+    "tags": [
+      "Flutter",
+      "网络请求"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "Cb16UoRc6oA-S7a4vpFZQH7W",
+    "title": "本地存储选型",
+    "url": "/dev-knowledge/flutter/architecture/technology-selection/storage",
+    "group": "Flutter 体系 > 技术选型",
+    "tags": [
+      "Flutter",
+      "本地存储"
     ],
     "createdAt": null,
     "updatedAt": null
@@ -4660,7 +4720,7 @@
       "思维"
     ],
     "createdAt": "2026-10-20 23:54:21",
-    "updatedAt": "2026-10-21 09:34:04"
+    "updatedAt": "2026-10-21 21:39:58"
   },
   {
     "id": "j4OYf7WTcPlyAuGKtyqnzQ8a",
@@ -4671,7 +4731,7 @@
       "思维"
     ],
     "createdAt": "2026-10-20 23:54:21",
-    "updatedAt": "2026-10-21 09:34:04"
+    "updatedAt": "2026-10-21 21:39:58"
   },
   {
     "id": "_xhueKRX_CavM_eUhS3MEWn4",

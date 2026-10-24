@@ -847,6 +847,37 @@ const flutterSection = {
         },
       ],
     },
+    {
+      text: '技术选型',
+      collapsed: true,
+      items: [
+        {
+          text: '选型总览',
+          link: '/dev-knowledge/flutter/architecture/technology-selection/',
+          id: 'YjGY3Nh-jm4CAFZPuAnoxf7C',
+        },
+        {
+          text: '状态管理选型',
+          link: '/dev-knowledge/flutter/architecture/technology-selection/state-management',
+          id: '9l3xUTzQgPKEZkFZlg0m7T8U',
+        },
+        {
+          text: '路由导航选型',
+          link: '/dev-knowledge/flutter/architecture/technology-selection/routing',
+          id: 'EvohiaDNjja04qXuxTpNeWI3',
+        },
+        {
+          text: '网络请求选型',
+          link: '/dev-knowledge/flutter/architecture/technology-selection/networking',
+          id: 'c1835YlsFeNgTrJOxzIyw-YI',
+        },
+        {
+          text: '本地存储选型',
+          link: '/dev-knowledge/flutter/architecture/technology-selection/storage',
+          id: 'Cb16UoRc6oA-S7a4vpFZQH7W',
+        },
+      ],
+    },
   ],
 }
 
