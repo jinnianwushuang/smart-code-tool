@@ -153,42 +153,6 @@ const vueSection = {
             },
           ],
         },
-        {
-          text: '技术选型',
-          collapsed: true,
-          items: [
-            {
-              id: 'HT4bhn1D2I8G_E5MJ-cmjfkM',
-              text: 'App 项目',
-              link: '/dev-knowledge/vue/architecture/technology-selection/app-project',
-            },
-            {
-              id: 'C-AagpGm_uwydAP7sCKdLpMx',
-              text: '后端项目',
-              link: '/dev-knowledge/vue/architecture/technology-selection/backend-project',
-            },
-            {
-              id: '3b-AsUoYK44zklayS_8xI7nd',
-              text: '客户端项目',
-              link: '/dev-knowledge/vue/architecture/technology-selection/client-project',
-            },
-            {
-              id: 'dQRj9pvWGNzYJD4VGZgEmaIJ',
-              text: '桌面端项目',
-              link: '/dev-knowledge/vue/architecture/technology-selection/desktop-project',
-            },
-            {
-              id: 'JZ4vdWeSD_Wx9FBveCRRW6kB',
-              text: '业务组件 SDK 打包',
-              link: '/dev-knowledge/vue/architecture/technology-selection/sdk-project',
-            },
-            {
-              id: 'DI-hGS4JGqfwH4WOpv-FyIdD',
-              text: 'Electron + Vue 3 技术选型',
-              link: '/dev-knowledge/vue/architecture/technology-selection/electron-vue3',
-            },
-          ],
-        },
       ],
     },
     {
@@ -282,6 +246,42 @@ const vueSection = {
               link: '/dev-knowledge/vue/interview/advanced/vue-ecosystem-patterns',
             },
           ],
+        },
+      ],
+    },
+    {
+      text: '技术选型',
+      collapsed: true,
+      items: [
+        {
+          id: 'HT4bhn1D2I8G_E5MJ-cmjfkM',
+          text: 'App 项目',
+          link: '/dev-knowledge/vue/architecture/technology-selection/app-project',
+        },
+        {
+          id: 'C-AagpGm_uwydAP7sCKdLpMx',
+          text: '后端项目',
+          link: '/dev-knowledge/vue/architecture/technology-selection/backend-project',
+        },
+        {
+          id: '3b-AsUoYK44zklayS_8xI7nd',
+          text: '客户端项目',
+          link: '/dev-knowledge/vue/architecture/technology-selection/client-project',
+        },
+        {
+          id: 'dQRj9pvWGNzYJD4VGZgEmaIJ',
+          text: '桌面端项目',
+          link: '/dev-knowledge/vue/architecture/technology-selection/desktop-project',
+        },
+        {
+          id: 'JZ4vdWeSD_Wx9FBveCRRW6kB',
+          text: '业务组件 SDK 打包',
+          link: '/dev-knowledge/vue/architecture/technology-selection/sdk-project',
+        },
+        {
+          id: 'DI-hGS4JGqfwH4WOpv-FyIdD',
+          text: 'Electron + Vue 3 技术选型',
+          link: '/dev-knowledge/vue/architecture/technology-selection/electron-vue3',
         },
       ],
     },

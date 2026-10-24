@@ -60,10 +60,10 @@ target: 'P6+ 高级工程师'
         ↓
 [HTTP Client 发送请求]
         ↓
-[响应拦截器链（逆序执行）]
-        ├─ RetryInterceptor.onResponse(response, handler)
+[响应拦截器链（正序执行，与请求同序）]
+        ├─ AuthInterceptor.onResponse(response, handler)
         ├─ LogInterceptor.onResponse(response, handler)
-        └─ AuthInterceptor.onResponse(response, handler)
+        └─ RetryInterceptor.onResponse(response, handler)
 ```
 
 **关键洞察**：
@@ -235,10 +235,10 @@ dio.interceptors.addAll([
   LogInterceptor(),     // 2. 记录日志
 ]);
 
-// 拦截器执行顺序：
+// 拦截器执行顺序（Dio 全部 FIFO 正序，与 Axios 的请求逆序不同）：
 // 请求：AuthInterceptor.onRequest → LogInterceptor.onRequest
-// 响应：LogInterceptor.onResponse → AuthInterceptor.onResponse
-// 错误：LogInterceptor.onError → AuthInterceptor.onError
+// 响应：AuthInterceptor.onResponse → LogInterceptor.onResponse
+// 错误：AuthInterceptor.onError → LogInterceptor.onError
 ```
 
 ### Transformer（数据转换）
@@ -365,9 +365,8 @@ class RetryInterceptor extends Interceptor {
 
 **参考答案要点**：
 
-- 拦截器按注册顺序执行 onRequest
-- 响应按注册逆序执行 onResponse
-- 错误按注册逆序执行 onError
+- 请求、响应、错误拦截器**均按注册顺序执行（FIFO 正序）**
+- 底层是 `for` 循环 + `future.then()` 顺序拼接的扁平链，非 OkHttp/Axios 的嵌套回弹模型
 - handler.next() 传递给下一个拦截器
 - handler.resolve/reject 中断链
 

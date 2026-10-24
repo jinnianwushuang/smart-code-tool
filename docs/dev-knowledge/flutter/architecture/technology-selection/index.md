@@ -13,18 +13,28 @@ tags: ['Flutter', '技术选型']
 
 ### 按项目规模推荐
 
-| 类别     | 原型/小型（<1 万行）  | 中型（1-5 万行）           | 大型（>5 万行）                        |
-| -------- | --------------------- | -------------------------- | -------------------------------------- |
-| 状态管理 | GetX / Provider       | Riverpod                   | Riverpod / Bloc                        |
-| 路由     | GetX 内置 / go_router | go_router                  | go_router / auto_route                 |
-| 网络请求 | http / Dio            | Dio                        | Dio + Retrofit                         |
-| 本地存储 | shared_preferences    | Hive / Isar                | Drift / Isar                           |
-| 依赖注入 | GetX 内置             | get_it + Injectable        | Riverpod（内置）                       |
-| UI 组件  | Material 3            | Material 3 + screenutil    | Material 3 + 自建组件库                |
-| 代码生成 | —                     | json_serializable          | freezed + json_serializable + retrofit |
-| 国际化   | intl                  | slang                      | slang / easy_localization              |
-| 测试     | flutter_test          | flutter_test + mocktail    | 全套 + integration_test                |
-| CI/CD    | —                     | Codemagic / GitHub Actions | Fastlane + Codemagic                   |
+| 类别     | 原型/小型（<1 万行）   | 中型（1-5 万行）           | 大型（>5 万行）                        |
+| -------- | ---------------------- | -------------------------- | -------------------------------------- |
+| 状态管理 | GetX / Provider        | Riverpod                   | Riverpod / Bloc                        |
+| 路由     | GetX 内置 / go_router  | go_router                  | go_router / auto_route                 |
+| 网络请求 | http / Dio             | Dio                        | Dio + Retrofit                         |
+| 本地存储 | shared_preferences     | Hive / Isar                | Drift / Isar                           |
+| 安全存储 | flutter_secure_storage | flutter_secure_storage     | flutter_secure_storage + 加密策略      |
+| 依赖注入 | GetX 内置              | get_it + Injectable        | Riverpod（内置）                       |
+| UI 组件  | Material 3             | Material 3                 | Material 3 + 自建组件库                |
+| 图片加载 | cached_network_image   | cached_network_image       | cached_network_image + 预加载/降采样   |
+| 屏幕适配 | MediaQuery             | flutter_screenutil         | flutter_screenutil / 响应式断点        |
+| 动画     | Lottie                 | Lottie / Rive              | Rive（运行时状态机）                   |
+| 环境配置 | --dart-define          | envied / flutter_dotenv    | envied（类型安全 + 代码生成）          |
+| 代码生成 | —                      | json_serializable          | freezed + json_serializable + retrofit |
+| 日志     | print / logger         | logger / talker            | talker / logging + 分级落盘            |
+| 错误监控 | —                      | Sentry / Crashlytics       | Sentry + 自建上报（国内 Bugly）        |
+| 权限管理 | permission_handler     | permission_handler         | permission_handler                     |
+| 推送通知 | —                      | firebase_messaging         | firebase_messaging / 极光·个推         |
+| 埋点分析 | —                      | firebase_analytics         | firebase_analytics / 友盟·神策         |
+| 国际化   | intl                   | slang                      | slang / easy_localization              |
+| 测试     | flutter_test           | flutter_test + mocktail    | 全套 + integration_test                |
+| CI/CD    | —                      | Codemagic / GitHub Actions | Fastlane + Codemagic                   |
 
 ### 2026 年主流共识
 
@@ -221,7 +231,78 @@ Monorepo：Melos
 
 ---
 
-## 十一、完整技术栈推荐
+## 十一、工程化配套选型
+
+> 以下类别虽非架构主干，但几乎每个生产级 App 都要做选型决策。
+
+### 安全存储（Token / 密钥）
+
+| 方案                       | 说明                                        |
+| -------------------------- | ------------------------------------------- |
+| **flutter_secure_storage** | iOS Keychain / Android Keystore，Token 首选 |
+| **Hive 加密 Box**          | HiveAesCipher（AES-256），适合批量加密数据  |
+
+> ⚠️ **不要用 shared_preferences 存 Token**——它是明文存储，可被 root 设备或系统备份读取。
+
+### 图片加载
+
+| 方案                     | 说明                             |
+| ------------------------ | -------------------------------- |
+| **cached_network_image** | 网络图 + 磁盘缓存，绝对主流      |
+| **ExtendedImage**        | 功能更全（裁剪/缩放/编辑/手势）  |
+| **skeletonizer**         | 骨架屏占位（shimmer 的现代替代） |
+
+### 日志
+
+| 方案                  | 说明                                |
+| --------------------- | ----------------------------------- |
+| **logger**            | 彩色分级日志，开发调试首选          |
+| **talker**            | 带 UI 控制台 + 历史回放，可对接 Dio |
+| **logging**           | 官方底层日志 API                    |
+| **pretty_dio_logger** | Dio 请求/响应专用日志               |
+
+### 错误监控 / 崩溃上报
+
+| 方案                     | 说明                                       |
+| ------------------------ | ------------------------------------------ |
+| **Sentry**               | 全平台、开源，错误聚合 + 性能追踪 + 面包屑 |
+| **Firebase Crashlytics** | Google 生态，免费，崩溃自动聚类            |
+| **Bugly（腾讯）**        | 国内友好，符号表自动上传                   |
+
+> 三者都自动接管 `FlutterError.onError` 与 `runZonedGuarded`，并对 Native 层崩溃做符号还原。
+
+### 环境配置
+
+| 方案               | 说明                                  |
+| ------------------ | ------------------------------------- |
+| **envied**         | 类型安全，编译时读取 `.env`，代码生成 |
+| **flutter_dotenv** | 运行时读取 `.env`，简单直接           |
+| **--dart-define**  | Flutter 内置，编译时注入常量          |
+
+### 权限管理
+
+| 方案                   | 说明                       |
+| ---------------------- | -------------------------- |
+| **permission_handler** | 统一权限请求 API，绝对主流 |
+
+### 推送通知
+
+| 方案                            | 说明             |
+| ------------------------------- | ---------------- |
+| **firebase_messaging**          | FCM，海外首选    |
+| **极光 jpush / 个推 / 友盟**    | 国内厂商通道聚合 |
+| **flutter_local_notifications** | 本地/定时通知    |
+
+### 埋点分析
+
+| 方案                   | 说明     |
+| ---------------------- | -------- |
+| **firebase_analytics** | 海外主流 |
+| **友盟 U-App / 神策**  | 国内主流 |
+
+---
+
+## 十二、完整技术栈推荐
 
 ### 2026 年推荐技术栈（中大型项目）
 
@@ -250,9 +331,22 @@ shared_preferences: ^2.5.0
 hive_ce: ^2.8.0        # Hive Community Edition
 drift: ^2.25.0          # 如需关系型
 
+# 安全存储（Token/密钥，勿用 shared_preferences）
+flutter_secure_storage: ^9.2.0
+
 # UI
 flutter_screenutil: ^5.9.0
 cached_network_image: ^3.4.0
+
+# 日志与错误监控
+logger: ^2.5.0
+sentry_flutter: ^8.14.0
+
+# 环境配置（编译时读取 .env）
+envied: ^1.1.0
+
+# 权限
+permission_handler: ^11.3.0
 
 # 国际化
 slang: ^4.5.0
@@ -264,6 +358,7 @@ freezed: ^3.0.0
 json_serializable: ^6.9.0
 retrofit_generator: ^9.1.0
 riverpod_generator: ^3.0.0
+envied_generator: ^1.1.0
 
 # 测试（dev_dependencies）
 mocktail: ^1.0.0
@@ -286,13 +381,17 @@ dio: ^5.8.0
 shared_preferences: ^2.5.0
 hive_ce: ^2.8.0
 
+# 安全存储（Token）
+flutter_secure_storage: ^9.2.0
+
 # UI
 flutter_screenutil: ^5.9.0
+cached_network_image: ^3.4.0
 ```
 
 ---
 
-## 十二、选型避坑指南
+## 十三、选型避坑指南
 
 ### 不要做的事
 
