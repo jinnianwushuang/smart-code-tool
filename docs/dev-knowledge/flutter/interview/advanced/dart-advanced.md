@@ -1,9 +1,9 @@
 ---
-title: "Dart 语言深度：Isolate、Mixin、元编程 [P6-P7]"
-level: "senior"
-tags: ["Dart", "Isolate", "AOT", "JIT", "Mixin"]
-difficulty: "hard"
-target: "P6+ 高级工程师"
+title: 'Dart 语言深度：Isolate、Mixin、元编程 [P6-P7]'
+level: 'senior'
+tags: ['Dart', 'Isolate', 'AOT', 'JIT', 'Mixin']
+difficulty: 'hard'
+target: 'P6+ 高级工程师'
 ---
 
 # Dart 语言深度：Isolate、Mixin、元编程 [P6-P7]
@@ -135,6 +135,88 @@ mixin Flyer on Bird {
 }
 ```
 
+### Dart 3 类修饰符与 Mixin 演进
+
+传统 Dart 中，Class 和 Mixin 的职责泾渭分明：
+
+- **Class** —— 定义对象的本质属性和核心层级（**"是什么"**），可实例化、有构造函数
+- **Mixin** —— 提供跨层级的横向功能挂载（**"能做什么"**），不能实例化、不能有构造函数，是依附在类身上的"功能切片"
+
+Dart 3.0 引入了**类修饰符（class modifiers）**，打破了这种二元对立。`mixin` 关键字**并未废弃**，仍然完全有效；新增的 `mixin class` 是一种既能实例化又能当 mixin 用的统一声明方式。
+
+#### 类修饰符一览（Dart 3.0+）
+
+| 修饰符            | 可实例化 | 可 `extends` | 可 `implements` | 可 `with` | 定位                                   |
+| ----------------- | -------- | ------------ | --------------- | --------- | -------------------------------------- |
+| `class`（默认）   | ✅       | ✅           | ✅              | ❌        | 普通类                                 |
+| `final class`     | ✅       | ❌           | ❌              | ❌        | 封闭类，不可被继承或实现               |
+| `sealed class`    | ❌       | ❌           | ❌              | ❌        | 密封类，用于穷举匹配（switch）         |
+| `interface class` | ✅       | ❌           | ✅              | ❌        | 接口类，只能实现不能继承               |
+| `base class`      | ✅       | ✅           | ✅              | ❌        | 基类，确保运行时类型安全               |
+| `mixin class`     | ✅       | ✅           | ✅              | ✅        | **混合类，既能实例化又能混入**         |
+| `mixin`（仅声明） | ❌       | ❌           | ❌              | ✅        | 纯混入，不能实例化（原有语法，仍有效） |
+
+#### `mixin class`：Class 与 Mixin 的统一
+
+```dart
+// Dart 3.0+：mixin class 同时具备 Class 和 Mixin 的能力
+mixin class Loggable {
+  final String tag; // ✅ 可以有字段
+  Loggable(this.tag); // ✅ 可以有构造函数
+
+  void log(String msg) => print('[$tag] $msg');
+}
+
+// 作为普通类实例化
+final logger = Loggable('App'); // ✅ 合法
+logger.log('Hello'); // [App] Hello
+
+// 作为 Mixin 混入其他类
+class Service with Loggable {
+  Service() : super(tag: 'Service');
+}
+
+final service = Service();
+service.log('Working'); // [Service] Working
+```
+
+#### `sealed class`：穷举匹配
+
+```dart
+// sealed class 只能被同一文件内的类继承
+// 编译器知道所有子类，可用于 switch 穷举匹配
+sealed class Result<T> {}
+
+class Success<T> extends Result<T> {
+  final T value;
+  Success(this.value);
+}
+
+class Failure<T> extends Result<T> {
+  final Object error;
+  Failure(this.error);
+}
+
+// switch 穷举匹配，无需 default 分支
+String describe<T>(Result<T> result) => switch (result) {
+  Success(value: final v) => 'Success: $v',
+  Failure(error: final e) => 'Failed: $e',
+  // 编译器知道只有 Success 和 Failure，不需要 _ 分支
+};
+```
+
+#### 选择指南
+
+```
+需要实例化？
+├── 是 → 需要被 with 混入？
+│   ├── 是 → mixin class（Dart 3.0+）
+│   └── 否 → 普通 class / final class / base class
+└── 否 → 需要被 with 混入？
+    ├── 是 → mixin（纯混入，原有语法）
+    └── 否 → sealed class（穷举匹配）/ interface class（纯接口）
+```
+
 ### 4. AOT vs JIT 编译
 
 ```
@@ -170,10 +252,10 @@ Flutter 的编译策略：
 └── Release 模式：AOT（最优性能）
 ```
 
-### 5. Sound Null Safety（Dart 3）
+### 5. Sound Null Safety（Dart 2.12+）
 
 ```dart
-// Dart 3 强制空安全
+// Dart 2.12 引入空安全，Dart 3 强制启用
 // 类型系统保证：非空类型的变量不可能为 null
 
 // 可空类型
@@ -205,12 +287,12 @@ void example(String? name) {
 late String lazyValue; // 延迟初始化，保证使用前赋值
 ```
 
-### 6. 模式匹配（Dart 3）
+### 6. 模式匹配（Dart 3.0+，持续增强至 3.5）
 
 ```dart
-// Dart 3 引入模式匹配
+// Dart 3.0 引入模式匹配，3.2-3.5 持续增强
 
-// switch 表达式
+// ── switch 表达式（3.0）──
 String describe(Object obj) => switch (obj) {
   int n when n > 0 => 'positive',
   int n when n < 0 => 'negative',
@@ -219,7 +301,7 @@ String describe(Object obj) => switch (obj) {
   _ => 'unknown'
 };
 
-// if-case 模式
+// ── if-case 模式（3.0）──
 void process(Object obj) {
   if (obj case int n when n > 0) {
     print('Positive number: $n');
@@ -228,15 +310,30 @@ void process(Object obj) {
   }
 }
 
-// 解构模式
+// ── 解构模式（3.0）──
 var (name, age) = ('Alice', 30);
 
-// 对象解构
+// ── 对象解构（3.0）──
 final user = User('Alice', 30);
 final User(name: userName, age: userAge) = user;
 
-// 列表/Map 解构
+// ── 列表/Map 解构（3.0）──
 final [first, second, ...rest] = [1, 2, 3, 4, 5];
+
+// ── 守卫子句模式（3.2 增强）──
+// switch case 中支持更丰富的守卫表达式
+String classify(Object obj) => switch (obj) {
+  int n && n > 100 => 'large',
+  int n && n > 0 => 'small positive',
+  int n => 'non-positive',
+  String(length: > 10) => 'long string',
+  String() => 'short string',
+  _ => 'other',
+};
+
+// ── 嵌套解构（3.2+）──
+final point = (x: 1, y: (lat: 2.0, lng: 3.0));
+final (x: a, y: (lat: b, lng: c)) = point;
 ```
 
 ---
@@ -273,6 +370,7 @@ void _onButtonPressed() async {
 ### Q1: Dart 的 Isolate 和 Thread 有什么区别？
 
 **参考答案要点**：
+
 - Isolate 有独立内存堆，Thread 共享内存
 - Isolate 通过消息传递通信，Thread 通过共享内存 + 锁
 - Isolate 无数据竞争，Thread 需要同步机制
@@ -282,19 +380,23 @@ void _onButtonPressed() async {
 ### Q2: Dart 的 AOT 和 JIT 编译有什么区别？
 
 **参考答案要点**：
+
 - JIT：运行时编译，支持 Hot Reload，开发阶段使用
 - AOT：编译时完成，产物小性能高，生产发布使用
 - Flutter Debug 模式用 JIT，Release 模式用 AOT
 - AOT 不支持 dart:mirrors（反射），因为无法动态加载代码
 
-### Q3: Dart 的 Mixin 和多重继承有什么区别？
+### Q3: Dart 的 Mixin 和多重继承有什么区别？Dart 3 有什么变化？
 
 **参考答案要点**：
+
 - Mixin 不是继承，是"混入"（组合）
 - Dart 使用 C3 线性化规则解决 Mixin 冲突
 - 后面的 Mixin 覆盖前面的同名方法
-- Mixin 可以用 on 约束限制混入类型
+- Mixin 可以用 `on` 约束限制混入类型
 - 比多重继承更安全，避免了菱形继承问题
+- **Dart 3.0 新增**：`mixin class` 声明同时具备 Class 和 Mixin 能力（可实例化 + 可混入）
+- **Dart 3.0 新增**：`sealed class` 支持穷举匹配，`final class` 禁止继承
 
 ---
 
@@ -308,7 +410,8 @@ void _onButtonPressed() async {
 
 ## 参考资料
 
+- [Dart 3 类修饰符](https://dart.dev/language/class-modifiers)
+- [Dart 3 模式匹配](https://dart.dev/language/patterns)
 - [Dart 语言规范](https://dart.dev/guides/language/spec)
 - [Dart Isolate 文档](https://dart.dev/guides/language/concurrency)
 - [Flutter 编译模式](https://docs.flutter.dev/testing/build-modes)
-- [Dart 3 模式匹配](https://dart.dev/language/patterns)

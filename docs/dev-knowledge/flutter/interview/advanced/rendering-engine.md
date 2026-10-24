@@ -37,11 +37,11 @@ target: 'P6+ 高级工程师'
 
 ### 三棵树的职责
 
-| 树                    | 类型       | 职责                                              | 可变性                 |
+| 树                    | 性质       | 职责                                              | 实例生命周期           |
 | --------------------- | ---------- | ------------------------------------------------- | ---------------------- |
 | **Widget Tree**       | 不可变配置 | 描述 UI 应该长什么样                              | 每次 build 创建新实例  |
-| **Element Tree**      | 可变管理   | 管理 Widget 生命周期，连接 Widget 和 RenderObject | 持久存在，更新引用     |
-| **RenderObject Tree** | 可变渲染   | 执行布局（Layout）和绘制（Paint）                 | 持久存在，直接操作 GPU |
+| **Element Tree**      | 可变管理层 | 管理 Widget 生命周期，连接 Widget 和 RenderObject | 持久存在，按需更新引用 |
+| **RenderObject Tree** | 可变渲染层 | 执行布局（Layout）和绘制（Paint）                 | 持久存在，直接操作 GPU |
 
 ---
 
