@@ -464,7 +464,7 @@ dart run build_runner watch --delete-conflicting-outputs
 
 ### 6.1 必须提交到 Git
 
-```gitignore
+```txt
 # .gitignore 中不要忽略 *.g.dart 文件！
 
 # ❌ 错误：忽略生成文件

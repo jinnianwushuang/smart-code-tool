@@ -11,7 +11,7 @@
 
 import { nanoid } from 'nanoid'
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs'
-import { resolve, dirname } from 'node:path'
+import { resolve, dirname, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -115,16 +115,30 @@ function injectIds(filePath) {
 }
 
 // ── 主流程 ──
-const files = readdirSync(SIDEBAR_DIR).filter((f) => f.endsWith('.js') && f !== 'index.js')
+/** 递归收集 sidebar 目录下所有 .js 文件（含子目录），排除 index.js 与装配器入口 */
+function collectSidebarFiles(dir) {
+  const results = []
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const full = resolve(dir, entry.name)
+    if (entry.isDirectory()) {
+      results.push(...collectSidebarFiles(full))
+    } else if (entry.name.endsWith('.js') && entry.name !== 'index.js') {
+      results.push(full)
+    }
+  }
+  return results
+}
+
+const files = collectSidebarFiles(SIDEBAR_DIR)
 
 let totalInjected = 0
-for (const file of files) {
-  const filePath = resolve(SIDEBAR_DIR, file)
+for (const filePath of files) {
+  const rel = relative(SIDEBAR_DIR, filePath)
   const count = injectIds(filePath)
   if (count > 0) {
-    console.log(`✅ ${file}: 注入 ${count} 个 id`)
+    console.log(`✅ ${rel}: 注入 ${count} 个 id`)
   } else {
-    console.log(`⏭️  ${file}: 无需注入（全部已有 id）`)
+    console.log(`⏭️  ${rel}: 无需注入（全部已有 id）`)
   }
   totalInjected += count
 }
