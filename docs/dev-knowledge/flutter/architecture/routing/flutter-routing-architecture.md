@@ -68,7 +68,7 @@ context.go('/detail/${object.id}?tab=$tab&filter=$filter');
 
 **2. 跨端项目必须使用声明式路由**
 
-如果需要开发跨 Web 和移动端的项目，彻底废弃基于 Navigator 1.0 的命名字动词跳转，全面转向基于 URL 驱动的声明式路由库（推荐官方的 GoRouter）。它能自动处理 Web 地址栏同步与移动端 Deep Link 的映射逻辑。
+如果需要开发跨 Web 和移动端的项目，彻底废弃基于 Navigator 1.0 的命名路由跳转，全面转向基于 URL 驱动的声明式路由库（推荐官方的 GoRouter）。它能自动处理 Web 地址栏同步与移动端 Deep Link 的映射逻辑。
 
 **3. `extra` 参数的使用边界**
 
@@ -588,9 +588,9 @@ GoRouter(
 
 ## 十、与面试文档的关系说明
 
-| 面试文档                 | 面试视角                              | 本文视角                     |
-| ------------------------ | ------------------------------------- | ---------------------------- |
-| go-router-deep.md        | GoRouter 内部原理、Navigator 2.0 源码 | 项目级路由架构设计与工程实践 |
-| architecture-patterns.md | Clean Architecture 理论               | 路由守卫、导航抽象等具体实现 |
+| 面试文档                                                                                    | 面试视角                              | 本文视角                     |
+| ------------------------------------------------------------------------------------------- | ------------------------------------- | ---------------------------- |
+| [go-router-deep.md](/dev-knowledge/flutter/interview/advanced/go-router-deep)               | GoRouter 内部原理、Navigator 2.0 源码 | 项目级路由架构设计与工程实践 |
+| [architecture-patterns.md](/dev-knowledge/flutter/interview/advanced/architecture-patterns) | Clean Architecture 理论               | 路由守卫、导航抽象等具体实现 |
 
 本文不涉及 GoRouter 的源码分析或 Navigator 2.0 的底层机制，这些内容在面试文档中已有覆盖。
