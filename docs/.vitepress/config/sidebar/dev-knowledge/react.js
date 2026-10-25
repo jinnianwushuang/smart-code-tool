@@ -68,7 +68,7 @@ export const reactSection = {
           link: '/dev-knowledge/react/architecture/routing/react-router-architecture',
         },
         {
-          text: '性能思考',
+          text: '性能优化',
           collapsed: true,
           items: [
             {
@@ -83,67 +83,98 @@ export const reactSection = {
             },
           ],
         },
+      ],
+    },
+    {
+      text: '思考文档',
+      collapsed: true,
+      items: [
         {
-          text: '研发思维',
-          collapsed: true,
-          items: [
-            {
-              id: '5adbQAa-oSA9z3QEPh58rD6x',
-              text: '不必要 Re-render 的元凶与根治',
-              link: '/dev-knowledge/react/architecture/thinking/unnecessary-rerender-root-cause',
-            },
-            {
-              id: 'zDBtS1uQE2cJ1IUGPAvqRWYG',
-              text: 'Fiber × 并发调度 × 数据视图同步',
-              link: '/dev-knowledge/react/architecture/thinking/fiber-concurrent-sync-formula',
-            },
-            {
-              id: 'Ofs0IrZZGhHliEcjAlHyGe3L',
-              text: '大型深层对象的 zustand+selector+Immer 分频治理',
-              link: '/dev-knowledge/react/architecture/thinking/deep-object-frequency-governance',
-            },
-          ],
+          id: '5adbQAa-oSA9z3QEPh58rD6x',
+          text: '不必要 Re-render 的元凶与根治',
+          link: '/dev-knowledge/react/architecture/thinking/unnecessary-rerender-root-cause',
         },
         {
-          text: '底层原理拆解',
-          collapsed: true,
-          items: [
-            {
-              id: 'AJMxSNS9mSZrOFvVARXgrLNs',
-              text: 'useEffect 原理',
-              link: '/dev-knowledge/react/architecture/typical-analysis/use-effect',
-            },
-            {
-              id: 'R1joyK7UGQTV0m5OLb2dpwWR',
-              text: 'Hooks 执行阶段：Render vs Commit',
-              link: '/dev-knowledge/react/architecture/typical-analysis/hooks-phase-timing',
-            },
-            {
-              id: 'soHn6g5ZccPBgJw1ZWJk0hxx',
-              text: 'Fiber Node 数据结构精讲',
-              link: '/dev-knowledge/react/architecture/typical-analysis/fiber-node-data-structure',
-            },
-            {
-              id: 'LlgdPnhmZHXq8ule5MdYLQYz',
-              text: 'React 事件系统',
-              link: '/dev-knowledge/react/architecture/typical-analysis/react-event-system',
-            },
-            {
-              id: 'CUK7Gzgzec4GVST-l9SE1B9r',
-              text: 'Fiber 架构与并发模式原理',
-              link: '/dev-knowledge/react/architecture/typical-analysis/react-fiber-architecture',
-            },
-            {
-              id: 'sNv9cdhWy67CdYniEjbJeVq-',
-              text: 'Hooks 闭包陷阱与依赖追踪原理',
-              link: '/dev-knowledge/react/architecture/typical-analysis/react-hooks-closure-trap',
-            },
-            {
-              id: '6eliPJDqutxEb0RfSpKy_1Tx',
-              text: 'Context 底层原理与性能陷阱',
-              link: '/dev-knowledge/react/architecture/typical-analysis/react-context-internals',
-            },
-          ],
+          id: 'zDBtS1uQE2cJ1IUGPAvqRWYG',
+          text: 'Fiber × 并发调度 × 数据视图同步',
+          link: '/dev-knowledge/react/architecture/thinking/fiber-concurrent-sync-formula',
+        },
+        {
+          id: 'Ofs0IrZZGhHliEcjAlHyGe3L',
+          text: '大型深层对象的 zustand+selector+Immer 分频治理',
+          link: '/dev-knowledge/react/architecture/thinking/deep-object-frequency-governance',
+        },
+      ],
+    },
+    {
+      text: '底层原理拆解',
+      collapsed: true,
+      items: [
+        {
+          id: 'AJMxSNS9mSZrOFvVARXgrLNs',
+          text: 'useEffect 原理',
+          link: '/dev-knowledge/react/architecture/typical-analysis/use-effect',
+        },
+        {
+          id: 'R1joyK7UGQTV0m5OLb2dpwWR',
+          text: 'Hooks 执行阶段：Render vs Commit',
+          link: '/dev-knowledge/react/architecture/typical-analysis/hooks-phase-timing',
+        },
+        {
+          id: 'soHn6g5ZccPBgJw1ZWJk0hxx',
+          text: 'Fiber Node 数据结构精讲',
+          link: '/dev-knowledge/react/architecture/typical-analysis/fiber-node-data-structure',
+        },
+        {
+          id: 'LlgdPnhmZHXq8ule5MdYLQYz',
+          text: 'React 事件系统',
+          link: '/dev-knowledge/react/architecture/typical-analysis/react-event-system',
+        },
+        {
+          id: 'CUK7Gzgzec4GVST-l9SE1B9r',
+          text: 'Fiber 架构与并发模式原理',
+          link: '/dev-knowledge/react/architecture/typical-analysis/react-fiber-architecture',
+        },
+        {
+          id: 'sNv9cdhWy67CdYniEjbJeVq-',
+          text: 'Hooks 闭包陷阱与依赖追踪原理',
+          link: '/dev-knowledge/react/architecture/typical-analysis/react-hooks-closure-trap',
+        },
+        {
+          id: '6eliPJDqutxEb0RfSpKy_1Tx',
+          text: 'Context 底层原理与性能陷阱',
+          link: '/dev-knowledge/react/architecture/typical-analysis/react-context-internals',
+        },
+      ],
+    },
+    {
+      text: '技术选型',
+      collapsed: true,
+      items: [
+        {
+          id: 'UPW63eWb-aXm1docdAvP-I4C',
+          text: 'App 项目',
+          link: '/dev-knowledge/react/architecture/technology-selection/app-project',
+        },
+        {
+          id: '6FW5JXCu7qS6yD-FLnEo7sn7',
+          text: '后端项目',
+          link: '/dev-knowledge/react/architecture/technology-selection/backend-project',
+        },
+        {
+          id: 'kUGZCfPkmuk-qqVg1ZewysiX',
+          text: '客户端项目',
+          link: '/dev-knowledge/react/architecture/technology-selection/client-project',
+        },
+        {
+          id: 'epaF_1tsi_qOWqJhpP_7hamS',
+          text: '桌面端项目',
+          link: '/dev-knowledge/react/architecture/technology-selection/desktop-project',
+        },
+        {
+          id: 'g75toUf0KdcYu280ibkMG4VE',
+          text: 'Electron + React 技术选型',
+          link: '/dev-knowledge/react/architecture/technology-selection/electron-react',
         },
       ],
     },
@@ -227,37 +258,6 @@ export const reactSection = {
               link: '/dev-knowledge/react/interview/advanced/react-architecture-patterns',
             },
           ],
-        },
-      ],
-    },
-    {
-      text: '技术选型',
-      collapsed: true,
-      items: [
-        {
-          id: 'UPW63eWb-aXm1docdAvP-I4C',
-          text: 'App 项目',
-          link: '/dev-knowledge/react/architecture/technology-selection/app-project',
-        },
-        {
-          id: '6FW5JXCu7qS6yD-FLnEo7sn7',
-          text: '后端项目',
-          link: '/dev-knowledge/react/architecture/technology-selection/backend-project',
-        },
-        {
-          id: 'kUGZCfPkmuk-qqVg1ZewysiX',
-          text: '客户端项目',
-          link: '/dev-knowledge/react/architecture/technology-selection/client-project',
-        },
-        {
-          id: 'epaF_1tsi_qOWqJhpP_7hamS',
-          text: '桌面端项目',
-          link: '/dev-knowledge/react/architecture/technology-selection/desktop-project',
-        },
-        {
-          id: 'g75toUf0KdcYu280ibkMG4VE',
-          text: 'Electron + React 技术选型',
-          link: '/dev-knowledge/react/architecture/technology-selection/electron-react',
         },
       ],
     },

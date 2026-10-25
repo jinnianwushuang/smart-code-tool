@@ -12,7 +12,7 @@ export const jsTsSection = {
   collapsed: false,
   items: [
     {
-      text: '架构设计 · 典型拆解',
+      text: '底层原理拆解',
       collapsed: true,
       items: [
         {

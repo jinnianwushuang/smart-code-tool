@@ -21,14 +21,20 @@ export const pythonSection = {
           link: '/dev-knowledge/python/architecture/engineering/python-engineering-practices',
         },
         {
-          id: 'ITiSVHYAz4NWfQ_u4Bd_Gfvx',
-          text: 'Python 后端框架技术选型',
-          link: '/dev-knowledge/python/architecture/technology-selection/python-backend-framework-selection',
-        },
-        {
           id: 'MQeLTmqoA0Ajx_xtq52NuRN4',
           text: 'Python AI 开发架构指南',
           link: '/dev-knowledge/python/architecture/ai-architecture/python-ai-development-guide',
+        },
+      ],
+    },
+    {
+      text: '技术选型',
+      collapsed: true,
+      items: [
+        {
+          id: 'ITiSVHYAz4NWfQ_u4Bd_Gfvx',
+          text: 'Python 后端框架技术选型',
+          link: '/dev-knowledge/python/architecture/technology-selection/python-backend-framework-selection',
         },
       ],
     },

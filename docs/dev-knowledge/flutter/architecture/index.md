@@ -69,6 +69,7 @@ Flutter 架构设计与面试知识库，涵盖状态管理、路由、渲染引
 | [Dart Future/Stream/Isolate 异步调度](./typical-analysis/dart-async-scheduling)                            | Dart 异步调度机制            |
 | [StatefulWidget 底层原理](./typical-analysis/flutter-stateful-widget-internals)                            | StatefulWidget 底层原理      |
 | [WidgetsFlutterBinding 底层原理与启动全链路](./typical-analysis/flutter-binding-init-and-engine-bootstrap) | Binding 初始化与 Engine 启动 |
+| [Dio + Retrofit 嵌套泛型的 as 洪流](./typical-analysis/flutter-dio-retrofit-generic-cast-analysis)         | 类型断言底层拆解与治理       |
 
 ---
 

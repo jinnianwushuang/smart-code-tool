@@ -16,57 +16,87 @@ export const flutterSection = {
       collapsed: true,
       items: [
         {
-          id: 'KbBCv62gFVzrycd3XvOO_3TP',
-          text: '状态管理架构选型',
-          link: '/dev-knowledge/flutter/architecture/state-management/flutter-state-management-architecture',
+          text: '状态与路由',
+          collapsed: true,
+          items: [
+            {
+              id: 'KbBCv62gFVzrycd3XvOO_3TP',
+              text: '状态管理架构选型',
+              link: '/dev-knowledge/flutter/architecture/state-management/flutter-state-management-architecture',
+            },
+            {
+              id: 'jK4lM8nO9pQrStUvWxYzAb',
+              text: 'GetX 模块化架构与路由守卫',
+              link: '/dev-knowledge/flutter/architecture/state-management/flutter-getx-modular-architecture-and-route-guards',
+            },
+            {
+              id: 'uHcM_T2B52yVU-u-GjENoQI0',
+              text: '路由架构设计',
+              link: '/dev-knowledge/flutter/architecture/routing/flutter-routing-architecture',
+            },
+          ],
         },
         {
-          id: 'jK4lM8nO9pQrStUvWxYzAb',
-          text: 'GetX 模块化架构与路由守卫',
-          link: '/dev-knowledge/flutter/architecture/state-management/flutter-getx-modular-architecture-and-route-guards',
+          text: '网络层',
+          collapsed: true,
+          items: [
+            {
+              id: '7Uu_qlN-TJ-WqqrOlSsH2Fnc',
+              text: '网络层架构设计',
+              link: '/dev-knowledge/flutter/architecture/networking/flutter-network-architecture',
+            },
+            {
+              id: 'mN3pQ7rT7vWxYzAbCdEfGh',
+              text: 'Dio 拦截器链与 Token 无感刷新',
+              link: '/dev-knowledge/flutter/architecture/networking/flutter-dio-interceptor-chain-and-token-refresh',
+            },
+          ],
         },
         {
-          id: 'uHcM_T2B52yVU-u-GjENoQI0',
-          text: '路由架构设计',
-          link: '/dev-knowledge/flutter/architecture/routing/flutter-routing-architecture',
+          text: '渲染与性能',
+          collapsed: true,
+          items: [
+            {
+              id: 'Bgc270M67VMEpOscZXHdzzHf',
+              text: '渲染管线与 Impeller',
+              link: '/dev-knowledge/flutter/architecture/rendering/flutter-rendering-pipeline',
+            },
+            {
+              id: 'LpF1Wz_wLwzwICMW9gLR07oI',
+              text: '性能优化实战',
+              link: '/dev-knowledge/flutter/architecture/performance/flutter-performance-optimization',
+            },
+            {
+              id: 'cD5eF6gH7iJ8kL9mN0oPqR',
+              text: 'UI 适配·主题·加载状态设计',
+              link: '/dev-knowledge/flutter/architecture/performance/flutter-ui-adaptation-theming-loading-states',
+            },
+          ],
         },
         {
-          id: '7Uu_qlN-TJ-WqqrOlSsH2Fnc',
-          text: '网络层架构设计',
-          link: '/dev-knowledge/flutter/architecture/networking/flutter-network-architecture',
+          text: '工程结构',
+          collapsed: true,
+          items: [
+            {
+              id: 'isSEc6XtrCeB1vPoZaaeJx7p',
+              text: '项目结构与分层规范',
+              link: '/dev-knowledge/flutter/architecture/project-structure/flutter-project-structure',
+            },
+            {
+              id: 'HWDzZAuNvqSdv91bjRfEhf6c',
+              text: '插件开发架构',
+              link: '/dev-knowledge/flutter/architecture/plugin/flutter-plugin-architecture',
+            },
+          ],
         },
+      ],
+    },
+    {
+      text: '思考文档',
+      collapsed: true,
+      items: [
         {
-          id: 'mN3pQ7rT7vWxYzAbCdEfGh',
-          text: 'Dio 拦截器链与 Token 无感刷新',
-          link: '/dev-knowledge/flutter/architecture/networking/flutter-dio-interceptor-chain-and-token-refresh',
-        },
-        {
-          id: 'isSEc6XtrCeB1vPoZaaeJx7p',
-          text: '项目结构与分层规范',
-          link: '/dev-knowledge/flutter/architecture/project-structure/flutter-project-structure',
-        },
-        {
-          id: 'Bgc270M67VMEpOscZXHdzzHf',
-          text: '渲染管线与 Impeller',
-          link: '/dev-knowledge/flutter/architecture/rendering/flutter-rendering-pipeline',
-        },
-        {
-          id: 'LpF1Wz_wLwzwICMW9gLR07oI',
-          text: '性能优化实战',
-          link: '/dev-knowledge/flutter/architecture/performance/flutter-performance-optimization',
-        },
-        {
-          id: 'cD5eF6gH7iJ8kL9mN0oPqR',
-          text: 'UI 适配·主题·加载状态设计',
-          link: '/dev-knowledge/flutter/architecture/performance/flutter-ui-adaptation-theming-loading-states',
-        },
-        {
-          id: 'HWDzZAuNvqSdv91bjRfEhf6c',
-          text: '插件开发架构',
-          link: '/dev-knowledge/flutter/architecture/plugin/flutter-plugin-architecture',
-        },
-        {
-          text: '思考文档',
+          text: '平台与原生',
           collapsed: true,
           items: [
             {
@@ -80,34 +110,30 @@ export const flutterSection = {
               link: '/dev-knowledge/flutter/architecture/thinking/flutter-ios-android-knowledge',
             },
             {
-              id: 'HVm3YZa2uTKGBCXNKBGbpAdD',
-              text: 'APP 启动与屏幕渲染原理',
-              link: '/dev-knowledge/flutter/architecture/thinking/app-launch-and-rendering-pipeline',
-            },
-            {
               id: 'cfzKvw7B0xKS3wTRciuLOFa6',
               text: '系统内核与平台差异适配',
               link: '/dev-knowledge/flutter/architecture/thinking/os-kernel-platform-differences',
             },
             {
-              id: '8B28ShJQKM16_BXjjB6tbyU6',
-              text: '网络层与弱网优化',
-              link: '/dev-knowledge/flutter/architecture/thinking/mobile-network-layer',
+              id: 'khrv3JWx-4QXNKJ7g99e1dfo',
+              text: '混合栈与模块化架构',
+              link: '/dev-knowledge/flutter/architecture/thinking/hybrid-stack-modularization',
+            },
+          ],
+        },
+        {
+          text: '渲染与状态原理',
+          collapsed: true,
+          items: [
+            {
+              id: 'HVm3YZa2uTKGBCXNKBGbpAdD',
+              text: 'APP 启动与屏幕渲染原理',
+              link: '/dev-knowledge/flutter/architecture/thinking/app-launch-and-rendering-pipeline',
             },
             {
               id: 'A-R-fVowDMq6YNjsd8Br2EDv',
               text: '内存管理与性能调优',
               link: '/dev-knowledge/flutter/architecture/thinking/memory-management-performance',
-            },
-            {
-              id: 'Qhw_0pOrcA1fHAwdfWfVcj7E',
-              text: '音视频与相机管线',
-              link: '/dev-knowledge/flutter/architecture/thinking/audio-video-camera',
-            },
-            {
-              id: 'K5Rl92RPC-6HiRthT3K5ZQKV',
-              text: '数据·算法·显示 三者分离',
-              link: '/dev-knowledge/flutter/architecture/thinking/data-algorithm-view-separation',
             },
             {
               id: 'rlIouQ8Dsr1HIVb83ZNNkrlj',
@@ -134,21 +160,43 @@ export const flutterSection = {
               text: '节点数据结构精讲：三棵树',
               link: '/dev-knowledge/flutter/architecture/thinking/element-widget-renderobject-tree',
             },
+          ],
+        },
+        {
+          text: '数据与网络',
+          collapsed: true,
+          items: [
+            {
+              id: '8B28ShJQKM16_BXjjB6tbyU6',
+              text: '网络层与弱网优化',
+              link: '/dev-knowledge/flutter/architecture/thinking/mobile-network-layer',
+            },
+            {
+              id: 'K5Rl92RPC-6HiRthT3K5ZQKV',
+              text: '数据·算法·显示 三者分离',
+              link: '/dev-knowledge/flutter/architecture/thinking/data-algorithm-view-separation',
+            },
             {
               id: '93u6FYYBuUMhDs8AKUg3R0Xl',
               text: '存储与数据同步',
               link: '/dev-knowledge/flutter/architecture/thinking/storage-data-sync',
             },
             {
-              id: '-wXH82X5rUl4u4GWscJU9Qtu',
-              text: '安全攻防基础',
-              link: '/dev-knowledge/flutter/architecture/thinking/mobile-security',
+              id: 'hI8jK9lM0nO1pQ2rS3tU4v',
+              text: '离线优先架构与分页加载',
+              link: '/dev-knowledge/flutter/architecture/thinking/flutter-offline-first-and-pagination',
             },
             {
-              id: 'khrv3JWx-4QXNKJ7g99e1dfo',
-              text: '混合栈与模块化架构',
-              link: '/dev-knowledge/flutter/architecture/thinking/hybrid-stack-modularization',
+              id: 'Qhw_0pOrcA1fHAwdfWfVcj7E',
+              text: '音视频与相机管线',
+              link: '/dev-knowledge/flutter/architecture/thinking/audio-video-camera',
             },
+          ],
+        },
+        {
+          text: '工程化与安全',
+          collapsed: true,
+          items: [
             {
               id: 'lGYwyIS94_nINNZz1XDXcPTJ',
               text: 'CI/CD 与发布工程化',
@@ -165,11 +213,6 @@ export const flutterSection = {
               link: '/dev-knowledge/flutter/architecture/thinking/flutter-build-runner-code-generation',
             },
             {
-              id: 'hI8jK9lM0nO1pQ2rS3tU4v',
-              text: '离线优先架构与分页加载',
-              link: '/dev-knowledge/flutter/architecture/thinking/flutter-offline-first-and-pagination',
-            },
-            {
               id: 'wX5yZ6aB7cD8eF9gH0iJ1k',
               text: '全局错误处理与启动优化',
               link: '/dev-knowledge/flutter/architecture/thinking/flutter-error-handling-and-launch-optimization',
@@ -179,38 +222,79 @@ export const flutterSection = {
               text: 'slang 国际化方案',
               link: '/dev-knowledge/flutter/architecture/thinking/flutter-slang-i18n-solution',
             },
+            {
+              id: '-wXH82X5rUl4u4GWscJU9Qtu',
+              text: '安全攻防基础',
+              link: '/dev-knowledge/flutter/architecture/thinking/mobile-security',
+            },
           ],
         },
+      ],
+    },
+    {
+      text: '底层原理拆解',
+      collapsed: true,
+      items: [
         {
-          text: '典型拆解',
-          collapsed: true,
-          items: [
-            {
-              id: 'aUG6KrqH31voEkF8JFWP_69a',
-              text: 'GetX 框架底层设计原理',
-              link: '/dev-knowledge/flutter/architecture/typical-analysis/getx-reactive-system',
-            },
-            {
-              id: 'vut3BJhl2AtM1q9mJvEVfQmi',
-              text: 'Widget 重建与 Element 更新拆解',
-              link: '/dev-knowledge/flutter/architecture/typical-analysis/flutter-widget-rebuild',
-            },
-            {
-              id: 'PIGJBdMMaqpkNVEZFcgxx_9R',
-              text: 'Dart Future/Stream/Isolate 异步调度',
-              link: '/dev-knowledge/flutter/architecture/typical-analysis/dart-async-scheduling',
-            },
-            {
-              id: 'LZsPzHC1MZ1CD_qZyTB3szK0',
-              text: 'StatefulWidget 底层原理',
-              link: '/dev-knowledge/flutter/architecture/typical-analysis/flutter-stateful-widget-internals',
-            },
-            {
-              id: 'kR7mNx2QwVpL9tYjHdF3sZ8a',
-              text: 'WidgetsFlutterBinding 底层原理与启动全链路',
-              link: '/dev-knowledge/flutter/architecture/typical-analysis/flutter-binding-init-and-engine-bootstrap',
-            },
-          ],
+          id: 'aUG6KrqH31voEkF8JFWP_69a',
+          text: 'GetX 框架底层设计原理',
+          link: '/dev-knowledge/flutter/architecture/typical-analysis/getx-reactive-system',
+        },
+        {
+          id: 'vut3BJhl2AtM1q9mJvEVfQmi',
+          text: 'Widget 重建与 Element 更新拆解',
+          link: '/dev-knowledge/flutter/architecture/typical-analysis/flutter-widget-rebuild',
+        },
+        {
+          id: 'PIGJBdMMaqpkNVEZFcgxx_9R',
+          text: 'Dart Future/Stream/Isolate 异步调度',
+          link: '/dev-knowledge/flutter/architecture/typical-analysis/dart-async-scheduling',
+        },
+        {
+          id: 'LZsPzHC1MZ1CD_qZyTB3szK0',
+          text: 'StatefulWidget 底层原理',
+          link: '/dev-knowledge/flutter/architecture/typical-analysis/flutter-stateful-widget-internals',
+        },
+        {
+          id: 'kR7mNx2QwVpL9tYjHdF3sZ8a',
+          text: 'WidgetsFlutterBinding 底层原理与启动全链路',
+          link: '/dev-knowledge/flutter/architecture/typical-analysis/flutter-binding-init-and-engine-bootstrap',
+        },
+        {
+          id: 'Uete-rfcwyTrtTKsUMnrhk1c',
+          text: 'Dio + Retrofit 嵌套泛型的 as 洪流',
+          link: '/dev-knowledge/flutter/architecture/typical-analysis/flutter-dio-retrofit-generic-cast-analysis',
+        },
+      ],
+    },
+    {
+      text: '技术选型',
+      collapsed: true,
+      items: [
+        {
+          id: 'YjGY3Nh-jm4CAFZPuAnoxf7C',
+          text: '选型总览',
+          link: '/dev-knowledge/flutter/architecture/technology-selection/',
+        },
+        {
+          id: '9l3xUTzQgPKEZkFZlg0m7T8U',
+          text: '状态管理选型',
+          link: '/dev-knowledge/flutter/architecture/technology-selection/state-management',
+        },
+        {
+          id: 'EvohiaDNjja04qXuxTpNeWI3',
+          text: '路由导航选型',
+          link: '/dev-knowledge/flutter/architecture/technology-selection/routing',
+        },
+        {
+          id: 'c1835YlsFeNgTrJOxzIyw-YI',
+          text: '网络请求选型',
+          link: '/dev-knowledge/flutter/architecture/technology-selection/networking',
+        },
+        {
+          id: 'Cb16UoRc6oA-S7a4vpFZQH7W',
+          text: '本地存储选型',
+          link: '/dev-knowledge/flutter/architecture/technology-selection/storage',
         },
       ],
     },
@@ -304,37 +388,6 @@ export const flutterSection = {
               link: '/dev-knowledge/flutter/interview/advanced/flutter-local-storage',
             },
           ],
-        },
-      ],
-    },
-    {
-      text: '技术选型',
-      collapsed: true,
-      items: [
-        {
-          text: '选型总览',
-          link: '/dev-knowledge/flutter/architecture/technology-selection/',
-          id: 'YjGY3Nh-jm4CAFZPuAnoxf7C',
-        },
-        {
-          text: '状态管理选型',
-          link: '/dev-knowledge/flutter/architecture/technology-selection/state-management',
-          id: '9l3xUTzQgPKEZkFZlg0m7T8U',
-        },
-        {
-          text: '路由导航选型',
-          link: '/dev-knowledge/flutter/architecture/technology-selection/routing',
-          id: 'EvohiaDNjja04qXuxTpNeWI3',
-        },
-        {
-          text: '网络请求选型',
-          link: '/dev-knowledge/flutter/architecture/technology-selection/networking',
-          id: 'c1835YlsFeNgTrJOxzIyw-YI',
-        },
-        {
-          text: '本地存储选型',
-          link: '/dev-knowledge/flutter/architecture/technology-selection/storage',
-          id: 'Cb16UoRc6oA-S7a4vpFZQH7W',
         },
       ],
     },

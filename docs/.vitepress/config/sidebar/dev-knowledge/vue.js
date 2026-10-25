@@ -16,22 +16,6 @@ export const vueSection = {
       collapsed: true,
       items: [
         {
-          text: '通用工具',
-          collapsed: true,
-          items: [
-            {
-              id: 'WOOyjk6ud4ZontyREErymom2',
-              text: '模块加载器',
-              link: '/dev-knowledge/vue/architecture/general-tools/module-loader',
-            },
-            {
-              id: 'AMjMxQ3yJfETZYMiZKxI9gT6',
-              text: 'Payload 包装器',
-              link: '/dev-knowledge/vue/architecture/general-tools/wrap-with-payload',
-            },
-          ],
-        },
-        {
           text: '标准化模板',
           collapsed: true,
           items: [
@@ -83,6 +67,22 @@ export const vueSection = {
           ],
         },
         {
+          text: '通用工具',
+          collapsed: true,
+          items: [
+            {
+              id: 'WOOyjk6ud4ZontyREErymom2',
+              text: '模块加载器',
+              link: '/dev-knowledge/vue/architecture/general-tools/module-loader',
+            },
+            {
+              id: 'AMjMxQ3yJfETZYMiZKxI9gT6',
+              text: 'Payload 包装器',
+              link: '/dev-knowledge/vue/architecture/general-tools/wrap-with-payload',
+            },
+          ],
+        },
+        {
           id: 'jmZppMUuPce-rPkZ4M52dExt',
           text: 'Composable 设计模式',
           link: '/dev-knowledge/vue/architecture/composable-patterns/vue-composable-design-patterns',
@@ -92,62 +92,98 @@ export const vueSection = {
           text: '性能优化系统手册',
           link: '/dev-knowledge/vue/architecture/performance/vue-performance-optimization',
         },
+      ],
+    },
+    {
+      text: '思考文档',
+      collapsed: true,
+      items: [
         {
-          text: '研发思维',
-          collapsed: true,
-          items: [
-            {
-              id: 'PAykDF42Bo7mSnv02Ts6WmTd',
-              text: '数据·算法·显示 三者分离',
-              link: '/dev-knowledge/vue/architecture/thinking/data-algorithm-view-separation',
-            },
-            {
-              id: '7vSTvvhTv_CRFphgHA_HU3id',
-              text: 'shallowRef 范式与高性能架构',
-              link: '/dev-knowledge/vue/architecture/thinking/shallowref-paradigm',
-            },
-            {
-              id: '2AOuDMk4QL5HV9RqOUmXKofs',
-              text: '无效渲染的元凶与根治',
-              link: '/dev-knowledge/vue/architecture/thinking/render-chaos-root-cause',
-            },
-            {
-              id: 'SHrmpVqt9g44MEm4YG9MKs9X',
-              text: '渲染原理 × 事件调度 × 数据视图同步',
-              link: '/dev-knowledge/vue/architecture/thinking/rendering-scheduling-sync',
-            },
-            {
-              id: 'yFI4p_KcAc6j4uxs5KtNXgh3',
-              text: '大型深层对象的按频率分频治理',
-              link: '/dev-knowledge/vue/architecture/thinking/deep-object-frequency-governance',
-            },
-            {
-              id: 'TO9ExYoi-tGxuequTlEufAFB',
-              text: 'VNode 数据结构精讲',
-              link: '/dev-knowledge/vue/architecture/thinking/vnode-data-structure',
-            },
-          ],
+          id: 'PAykDF42Bo7mSnv02Ts6WmTd',
+          text: '数据·算法·显示 三者分离',
+          link: '/dev-knowledge/vue/architecture/thinking/data-algorithm-view-separation',
         },
         {
-          text: '底层原理拆解',
-          collapsed: true,
-          items: [
-            {
-              id: 'qIHz-e_lbrfPmnOXt21NKhcu',
-              text: 'Vue 3 响应式系统架构',
-              link: '/dev-knowledge/vue/architecture/typical-analysis/vue-reactivity-system',
-            },
-            {
-              id: 'gYXcE4eZYTMvdgnPjGSS7U1h',
-              text: 'Vue 3 编译器优化原理',
-              link: '/dev-knowledge/vue/architecture/typical-analysis/vue-compiler-optimization',
-            },
-            {
-              id: 'juq3DSMJcp-vvS8eNqRjAyDa',
-              text: 'Vue Router 4 底层原理',
-              link: '/dev-knowledge/vue/architecture/typical-analysis/vue-router-internals',
-            },
-          ],
+          id: '7vSTvvhTv_CRFphgHA_HU3id',
+          text: 'shallowRef 范式与高性能架构',
+          link: '/dev-knowledge/vue/architecture/thinking/shallowref-paradigm',
+        },
+        {
+          id: '2AOuDMk4QL5HV9RqOUmXKofs',
+          text: '无效渲染的元凶与根治',
+          link: '/dev-knowledge/vue/architecture/thinking/render-chaos-root-cause',
+        },
+        {
+          id: 'SHrmpVqt9g44MEm4YG9MKs9X',
+          text: '渲染原理 × 事件调度 × 数据视图同步',
+          link: '/dev-knowledge/vue/architecture/thinking/rendering-scheduling-sync',
+        },
+        {
+          id: 'yFI4p_KcAc6j4uxs5KtNXgh3',
+          text: '大型深层对象的按频率分频治理',
+          link: '/dev-knowledge/vue/architecture/thinking/deep-object-frequency-governance',
+        },
+        {
+          id: 'TO9ExYoi-tGxuequTlEufAFB',
+          text: 'VNode 数据结构精讲',
+          link: '/dev-knowledge/vue/architecture/thinking/vnode-data-structure',
+        },
+      ],
+    },
+    {
+      text: '底层原理拆解',
+      collapsed: true,
+      items: [
+        {
+          id: 'qIHz-e_lbrfPmnOXt21NKhcu',
+          text: 'Vue 3 响应式系统架构',
+          link: '/dev-knowledge/vue/architecture/typical-analysis/vue-reactivity-system',
+        },
+        {
+          id: 'gYXcE4eZYTMvdgnPjGSS7U1h',
+          text: 'Vue 3 编译器优化原理',
+          link: '/dev-knowledge/vue/architecture/typical-analysis/vue-compiler-optimization',
+        },
+        {
+          id: 'juq3DSMJcp-vvS8eNqRjAyDa',
+          text: 'Vue Router 4 底层原理',
+          link: '/dev-knowledge/vue/architecture/typical-analysis/vue-router-internals',
+        },
+      ],
+    },
+    {
+      text: '技术选型',
+      collapsed: true,
+      items: [
+        {
+          id: 'HT4bhn1D2I8G_E5MJ-cmjfkM',
+          text: 'App 项目',
+          link: '/dev-knowledge/vue/architecture/technology-selection/app-project',
+        },
+        {
+          id: 'C-AagpGm_uwydAP7sCKdLpMx',
+          text: '后端项目',
+          link: '/dev-knowledge/vue/architecture/technology-selection/backend-project',
+        },
+        {
+          id: '3b-AsUoYK44zklayS_8xI7nd',
+          text: '客户端项目',
+          link: '/dev-knowledge/vue/architecture/technology-selection/client-project',
+        },
+        {
+          id: 'dQRj9pvWGNzYJD4VGZgEmaIJ',
+          text: '桌面端项目',
+          link: '/dev-knowledge/vue/architecture/technology-selection/desktop-project',
+        },
+        {
+          id: 'JZ4vdWeSD_Wx9FBveCRRW6kB',
+          text: '业务组件 SDK 打包',
+          link: '/dev-knowledge/vue/architecture/technology-selection/sdk-project',
+        },
+        {
+          id: 'DI-hGS4JGqfwH4WOpv-FyIdD',
+          text: 'Electron + Vue 3 技术选型',
+          link: '/dev-knowledge/vue/architecture/technology-selection/electron-vue3',
         },
       ],
     },
@@ -242,42 +278,6 @@ export const vueSection = {
               link: '/dev-knowledge/vue/interview/advanced/vue-ecosystem-patterns',
             },
           ],
-        },
-      ],
-    },
-    {
-      text: '技术选型',
-      collapsed: true,
-      items: [
-        {
-          id: 'HT4bhn1D2I8G_E5MJ-cmjfkM',
-          text: 'App 项目',
-          link: '/dev-knowledge/vue/architecture/technology-selection/app-project',
-        },
-        {
-          id: 'C-AagpGm_uwydAP7sCKdLpMx',
-          text: '后端项目',
-          link: '/dev-knowledge/vue/architecture/technology-selection/backend-project',
-        },
-        {
-          id: '3b-AsUoYK44zklayS_8xI7nd',
-          text: '客户端项目',
-          link: '/dev-knowledge/vue/architecture/technology-selection/client-project',
-        },
-        {
-          id: 'dQRj9pvWGNzYJD4VGZgEmaIJ',
-          text: '桌面端项目',
-          link: '/dev-knowledge/vue/architecture/technology-selection/desktop-project',
-        },
-        {
-          id: 'JZ4vdWeSD_Wx9FBveCRRW6kB',
-          text: '业务组件 SDK 打包',
-          link: '/dev-knowledge/vue/architecture/technology-selection/sdk-project',
-        },
-        {
-          id: 'DI-hGS4JGqfwH4WOpv-FyIdD',
-          text: 'Electron + Vue 3 技术选型',
-          link: '/dev-knowledge/vue/architecture/technology-selection/electron-vue3',
         },
       ],
     },
