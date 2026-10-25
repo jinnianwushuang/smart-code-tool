@@ -116,6 +116,11 @@ export const psychologySidebar = {
           link: '/psychology/cognition-learning/anchoring-effect',
           id: 'YKtDVqHV0DcVP-dOvVs1nuwJ',
         },
+        {
+          text: '知识焦虑的解药：把学习量化成有限的数字',
+          link: '/psychology/cognition-learning/quantify-learning',
+          id: 'esSgBGGu7gcHejNyxl4yjTF6',
+        },
       ],
     },
 

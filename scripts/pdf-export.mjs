@@ -3,7 +3,9 @@
  *
  * 流程：读取 sidebar 配置 → 启动 VitePress dev server → Puppeteer 逐页渲染 → pdf-lib 合并 + 书签
  *
- * 用法：node scripts/pdf-export.mjs [--group handbook]
+ * 用法：
+ *   按分组：node scripts/pdf-export.mjs --group handbook
+ *   单篇：  node scripts/pdf-export.mjs --page /psychology/cognition-learning/quantify-learning [--title 标题]
  */
 
 import { spawn } from 'node:child_process'
@@ -27,6 +29,12 @@ const TEMP_DIR = resolve(OUTPUT_DIR, '.temp')
 const args = process.argv.slice(2)
 const groupIndex = args.indexOf('--group')
 const GROUP = groupIndex !== -1 && args[groupIndex + 1] ? args[groupIndex + 1] : 'handbook'
+
+// 单篇导出模式：--page <link> [--title <标题>]
+const pageIndex = args.indexOf('--page')
+const SINGLE_PAGE = pageIndex !== -1 && args[pageIndex + 1] ? args[pageIndex + 1] : null
+const titleIndex = args.indexOf('--title')
+const SINGLE_TITLE = titleIndex !== -1 && args[titleIndex + 1] ? args[titleIndex + 1] : null
 
 // 从 sidebar 目录读取所有可导出的分组（排除 index.js 和 home.js）
 function getAllGroups() {
@@ -329,8 +337,53 @@ function addBookmarks(pdfDoc, bookmarks) {
   }
 }
 
+// ─── 单篇导出：渲染指定 link 为独立 PDF ──────────────────────────────
+async function exportSinglePage(link, titleArg) {
+  const slug = link.split('/').filter(Boolean).pop() || 'document'
+  const title = titleArg || slug
+
+  console.log(`\n📄 单篇 PDF 导出: ${title}`)
+  console.log(`   链接: ${link}\n`)
+
+  const server = await startDevServer()
+  console.log('✅ VitePress dev server 已就绪\n')
+
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  })
+
+  let outputPath
+  try {
+    const entries = await renderPages([{ title, link, group: 'single', label: title }], browser)
+    const entry = entries[0]
+    if (!entry || !entry.buffer) {
+      throw new Error('渲染失败，未生成 PDF 内容')
+    }
+    mkdirSync(OUTPUT_DIR, { recursive: true })
+    outputPath = resolve(OUTPUT_DIR, `${slug}-${getTimestamp()}.pdf`)
+    const { writeFileSync } = await import('node:fs')
+    writeFileSync(outputPath, entry.buffer)
+    console.log(`\n✅ 输出完成: ${outputPath}`)
+  } finally {
+    await browser.close()
+    console.log('\n🛑 关闭 dev server ...')
+    server.kill('SIGTERM')
+  }
+
+  if (existsSync(TEMP_DIR)) rmSync(TEMP_DIR, { recursive: true })
+  console.log('')
+  return outputPath
+}
+
 // ─── 主流程 ─────────────────────────────────────────────────────────────────────
 async function main() {
+  // 单篇导出模式（优先于分组导出）
+  if (SINGLE_PAGE) {
+    await exportSinglePage(SINGLE_PAGE, SINGLE_TITLE)
+    return
+  }
+
   // 解析要导出的分组列表（all = 全部分组）
   const groups = GROUP === 'all' ? getAllGroups() : [GROUP]
 

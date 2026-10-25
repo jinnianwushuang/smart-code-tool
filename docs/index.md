@@ -49,5 +49,6 @@ tags: []
 
 <p align="center" style="padding: 2rem 1.5rem; font-size: 1.1rem; color: var(--vp-c-text-2); max-width: 600px; margin: 0 auto;">
 <strong style="color: var(--vp-c-text-1);">不花时间去创造想要的生活，将被迫花很多时间应付不想要的生活。</strong><br>
-学习是唯一的出路，最低成本的出路。
+学习是唯一的出路，最低成本的出路。<br>
+焦虑的反义词不是自信，是具体——把「学不完」变成「还剩多少页」。
 </p>
