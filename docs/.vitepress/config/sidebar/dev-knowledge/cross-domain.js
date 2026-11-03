@@ -607,6 +607,11 @@ export const crossDomainSection = {
           text: '多端一致性方案 [P8]',
           link: '/dev-knowledge/cross-domain/api-and-cross-platform/multi-platform-consistency',
         },
+        {
+          text: 'JSBridge 与原生通信原理 [P7-P8]',
+          link: '/dev-knowledge/cross-domain/api-and-cross-platform/jsbridge-and-native-communication',
+          id: 'MLYRZApkrojG1MncR88mTb1f',
+        },
       ],
     },
     {

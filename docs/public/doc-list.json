@@ -225,7 +225,7 @@
       "认知"
     ],
     "createdAt": "2026-10-25 11:04:04",
-    "updatedAt": "2026-10-25 11:04:04"
+    "updatedAt": "2026-10-25 23:07:12"
   },
   {
     "id": "YLPbNPAZLi6e4rGsbjUK_Vlt",
@@ -2364,8 +2364,8 @@
     "tags": [
       "Flutter"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-26 00:20:37",
+    "updatedAt": "2026-10-26 00:20:37"
   },
   {
     "id": "jK4lM8nO9pQrStUvWxYzAb",
@@ -2394,7 +2394,7 @@
       "Flutter"
     ],
     "createdAt": "2026-10-24 10:43:29",
-    "updatedAt": "2026-10-24 10:43:29"
+    "updatedAt": "2026-10-26 00:20:37"
   },
   {
     "id": "7Uu_qlN-TJ-WqqrOlSsH2Fnc",
@@ -2853,8 +2853,8 @@
       "类型断言",
       "底层原理"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-10-25 23:07:12",
+    "updatedAt": "2026-10-25 23:07:12"
   },
   {
     "id": "YjGY3Nh-jm4CAFZPuAnoxf7C",
@@ -4982,6 +4982,23 @@
       "Design Token",
       "共享代码",
       "平台差异抽象"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "MLYRZApkrojG1MncR88mTb1f",
+    "title": "JSBridge 与原生通信原理 [P7-P8]",
+    "url": "/dev-knowledge/cross-domain/api-and-cross-platform/jsbridge-and-native-communication",
+    "group": "跨域知识 > API 与跨平台",
+    "tags": [
+      "JSBridge",
+      "WebView",
+      "React Native",
+      "JSI",
+      "Expo",
+      "跨语言桥接",
+      "Platform Channel"
     ],
     "createdAt": null,
     "updatedAt": null
