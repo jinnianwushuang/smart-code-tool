@@ -506,7 +506,7 @@ export const crossDomainSection = {
         },
         {
           id: 'j4OYf7WTcPlyAuGKtyqnzQ8a',
-          text: '跨框架研发思维对比',
+          text: 'React 19 vs Vue 3 vs Flutter 研发思维对比',
           link: '/dev-knowledge/cross-domain/architecture-and-system/cross-framework-thinking-comparison',
         },
         {
@@ -518,6 +518,11 @@ export const crossDomainSection = {
           id: 'w6TLaUhcFXmxfVNhfTcLENKO',
           text: 'React 19 vs Vue 3 vs Flutter 性能对决',
           link: '/dev-knowledge/cross-domain/architecture-and-system/framework-performance-comparison',
+        },
+        {
+          text: 'React 19 vs Vue 3 vs Flutter 生命周期与钩子对比',
+          link: '/dev-knowledge/cross-domain/architecture-and-system/framework-lifecycle-hooks-comparison',
+          id: 'dZ9TgpJquNrqh93bk4G0meW5',
         },
         {
           id: 'i_5lM8uzuGpesl2xnQyrQv7h',

@@ -4753,7 +4753,7 @@
   },
   {
     "id": "j4OYf7WTcPlyAuGKtyqnzQ8a",
-    "title": "跨框架研发思维对比",
+    "title": "React 19 vs Vue 3 vs Flutter 研发思维对比",
     "url": "/dev-knowledge/cross-domain/architecture-and-system/cross-framework-thinking-comparison",
     "group": "跨域知识 > 跨框架思考文档",
     "tags": [
@@ -4787,6 +4787,23 @@
       "React",
       "Vue",
       "Flutter",
+      "思维"
+    ],
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "dZ9TgpJquNrqh93bk4G0meW5",
+    "title": "React 19 vs Vue 3 vs Flutter 生命周期与钩子对比",
+    "url": "/dev-knowledge/cross-domain/architecture-and-system/framework-lifecycle-hooks-comparison",
+    "group": "跨域知识 > 跨框架思考文档",
+    "tags": [
+      "Vue",
+      "React",
+      "Flutter",
+      "生命周期",
+      "Hooks",
+      "组合式 API",
       "思维"
     ],
     "createdAt": null,
@@ -5000,8 +5017,8 @@
       "跨语言桥接",
       "Platform Channel"
     ],
-    "createdAt": null,
-    "updatedAt": null
+    "createdAt": "2026-11-03 21:06:32",
+    "updatedAt": "2026-11-03 21:06:32"
   },
   {
     "id": "7_ABrrHFydDUpvkThCBURTyU",

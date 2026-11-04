@@ -157,3 +157,4 @@ pnpm gen:doc-list                     # 重新生成 doc-list.json
 | 日期       | 主题     | 执行结果                                                                                                     |
 | ---------- | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 2026.11.03 | JSBridge | 新建 `cross-domain/api-and-cross-platform/jsbridge-and-native-communication.md`，接入侧边栏+入口，脚本已跑通 |
+| 2026.11.04 | 三框架生命周期与 Hooks 对比 | 新建 `cross-domain/architecture-and-system/framework-lifecycle-hooks-comparison.md`（与性能对决正交维度），接入「跨框架思考文档」侧边栏+入口，脚本已跑通 |

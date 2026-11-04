@@ -6,6 +6,22 @@
  * 读取 z-doc/knowledge-point/knowledge-point.json，
  * 按 FILTER_THRESHOLD 过滤薄弱知识点，渲染为桌面壁纸 PNG。
  * 一次运行同时输出 4K 和 2K 两张壁纸。
+ *
+ * ── 数据字段（knowledge-point.json 每个知识点） ──
+ *   name        知识点名称
+ *   description 记忆锚点关键词（写作规范见下）
+ *   know_well   掌握度 1-10 → 名称右侧分数标签；仅 < FILTER_THRESHOLD 才显示
+ *   freq        面试高频度 1-3 → 名称左侧 ★ 星级（★★★ 必考 / ★☆☆ 冷门），默认按 2 处理
+ *   link        （可选）关联 dev-knowledge 深度文档，仅供数据交叉引用，壁纸不渲染
+ *
+ * ── description 写作规范 ──
+ * 壁纸用途：会议 / 面试 / 日常瞄一眼触发记忆，渲染为「名称 + 分数标签 + description 小字换行」。
+ * 因此每个知识点的 description 必须是「具体的记忆锚点关键词」，遵循两条原则：
+ *   ✅ 要具体：写能一眼唤起回忆的技术锚点，如「宏任务/微任务调度」「SharedArrayBuffer」「no-cache vs no-store」。
+ *   ❌ 去噪音：
+ *      ① 学习任务词 —— 手写实现、手写、逐行拆解、编写（对回忆无帮助）；
+ *      ② 空泛填充词 —— 应用场景、适用场景、最佳实践、策略设计、优化策略体系，以及无实义的「性能优化」尾巴。
+ *   📏 越短越好：description 越短换行越少，壁纸越紧凑。
  */
 
 import { createCanvas } from 'canvas'
@@ -97,6 +113,7 @@ const CATEGORY_COLORS = [
 const ITEM_COLOR = '#ffffff' // 知识点名称（白色，高对比度）
 const DESC_COLOR = '#565f89' // 副标题 / 水印
 const ITEM_DESC_COLOR = '#ffffff' // 知识点描述（白色，高对比度）
+const FREQ_STAR_COLOR = '#e0af68' // 面试高频度星级（金色）
 
 /** 分数区间对应的标签颜色 */
 const SCORE_COLORS = {
@@ -345,6 +362,9 @@ function generateWallpaper(presetKey, threshold) {
     padding: { top: PT, left: PL, right: PR },
   } = p
 
+  // 名称左侧为 freq 星级预留的固定宽度（3 颗星 + 间距）
+  const STAR_GUTTER = FSS * 3 + 10
+
   // ── 布局计算 ──
   const usableWidth = W - PL - PR
   const targetColumns = Math.min(
@@ -379,7 +399,7 @@ function generateWallpaper(presetKey, threshold) {
   ctx.font = `${FSD + 2}px ${FONT_FAMILY}`
   ctx.fillStyle = DESC_COLOR
   ctx.fillText(
-    `${totalItems} weak points · threshold < ${threshold} · ${new Date().toLocaleDateString('zh-CN')}`,
+    `${totalItems} weak points · threshold < ${threshold} · ★=面试高频度 · ${new Date().toLocaleDateString('zh-CN')}`,
     W / 2,
     subtitleY,
   )
@@ -421,15 +441,23 @@ function generateWallpaper(presetKey, threshold) {
       for (const item of cat.items) {
         const score = item.know_well ?? 5
         const scoreColor = getScoreColor(score)
+        const freq = item.freq ?? 2
+        const nameX = x + ITEM_INDENT + STAR_GUTTER
+
+        // 面试高频度星级（★ 实心 = 高频，☆ 空心补足 3 颗）
+        ctx.fillStyle = FREQ_STAR_COLOR
+        ctx.font = `${FSS}px ${FONT_FAMILY}`
+        ctx.textAlign = 'left'
+        ctx.fillText('★'.repeat(freq) + '☆'.repeat(3 - freq), x + ITEM_INDENT, y + FSI)
 
         // 知识点名称
         ctx.fillStyle = ITEM_COLOR
         ctx.font = `600 ${FSI}px ${FONT_FAMILY}`
-        ctx.fillText(item.name, x + ITEM_INDENT, y + FSI)
+        ctx.fillText(item.name, nameX, y + FSI)
 
         // 分数标签（半透明背景 + 居中数字）
         const nameWidth = ctx.measureText(item.name).width
-        const tagX = x + ITEM_INDENT + nameWidth + TAG_GAP
+        const tagX = nameX + nameWidth + TAG_GAP
         const tagY = y + 2
         ctx.fillStyle = scoreColor + '30' // 约 12% 透明度
         roundRect(ctx, tagX, tagY, TAG_WIDTH, TAG_HEIGHT, TAG_RADIUS)
