@@ -766,6 +766,12 @@ Python：
 
 ---
 
+## 相关链接
+
+- [JS · Dart · Python 常用 API 与易混点速查（速查版）](/dev-knowledge/cross-domain/architecture-and-system/js-dart-python-common-api-cheatsheet)
+
+---
+
 ## 参考资料
 
 - [JavaScript MDN 文档](https://developer.mozilla.org/en-US/docs/Web/JavaScript)

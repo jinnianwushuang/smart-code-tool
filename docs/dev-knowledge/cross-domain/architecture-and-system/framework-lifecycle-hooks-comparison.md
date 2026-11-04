@@ -283,6 +283,7 @@ class _UserState extends State<User> {
 
 - [React 19 vs Vue 3 vs Flutter 3.x 复杂业务性能对决](/dev-knowledge/cross-domain/architecture-and-system/framework-performance-comparison)（**性能维度**对比，与本文互补）
 - [跨框架研发思维对比](/dev-knowledge/cross-domain/architecture-and-system/cross-framework-thinking-comparison)（**思维模型维度**对比）
+- [React 19 vs Vue 3 vs Flutter 常用 API 速查](/dev-knowledge/cross-domain/architecture-and-system/framework-common-api-cheatsheet)（**API 罗列 / 易混点速查**，纯罗列一眼回忆版）
 - [Vue 官方：生命周期钩子](https://vuejs.org/guide/essentials/lifecycle.html)
 - [React 官方：You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect)
 - [React 19 新特性](https://react.dev/blog/2024/12/05/react-19)

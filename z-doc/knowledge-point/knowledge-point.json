@@ -307,7 +307,7 @@
     {
       "name": "React 19 新特性",
       "description": "use hook、Actions、useOptimistic、编译器优化",
-      "know_well": 5,
+      "know_well": 6,
       "freq": 2
     },
     {

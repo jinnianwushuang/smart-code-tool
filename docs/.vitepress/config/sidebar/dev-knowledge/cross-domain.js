@@ -515,6 +515,11 @@ export const crossDomainSection = {
           link: '/dev-knowledge/cross-domain/architecture-and-system/js-dart-python-api-comparison',
         },
         {
+          text: 'JS · Dart · Python 常用 API 速查',
+          link: '/dev-knowledge/cross-domain/architecture-and-system/js-dart-python-common-api-cheatsheet',
+          id: 'e6-4euxn3LMmCtAsNBEgXf1E',
+        },
+        {
           id: 'w6TLaUhcFXmxfVNhfTcLENKO',
           text: 'React 19 vs Vue 3 vs Flutter 性能对决',
           link: '/dev-knowledge/cross-domain/architecture-and-system/framework-performance-comparison',
@@ -523,6 +528,11 @@ export const crossDomainSection = {
           text: 'React 19 vs Vue 3 vs Flutter 生命周期与钩子对比',
           link: '/dev-knowledge/cross-domain/architecture-and-system/framework-lifecycle-hooks-comparison',
           id: 'dZ9TgpJquNrqh93bk4G0meW5',
+        },
+        {
+          text: 'React 19 vs Vue 3 vs Flutter 常用 API 速查',
+          link: '/dev-knowledge/cross-domain/architecture-and-system/framework-common-api-cheatsheet',
+          id: 'aojUWlpMen7Q-Rvi60eupTBq',
         },
         {
           id: 'i_5lM8uzuGpesl2xnQyrQv7h',
