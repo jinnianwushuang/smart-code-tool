@@ -675,11 +675,118 @@ tags: ['Vue', 'React', 'Flutter', '速查', 'API', '对比', '思维']
 
 ---
 
-## 四十九、易混点对照（重点）
+## 四十九、状态持久化与派生
+
+| 能力     | Vue 3                       | React 19               | Flutter                      |
+| -------- | --------------------------- | ---------------------- | ---------------------------- |
+| 持久化   | pinia-plugin-persistedstate | redux-persist/zustand  | shared_preferences + 序列化  |
+| 写入时机 | 订阅自动落盘                | persist 中间件         | 显式 `await setXxx`          |
+| 派生选择 | getter/computed             | selector/useSelector   | Provider `select`/`selector` |
+| 结构化   | localStorage JSON           | localStorage/IndexedDB | Hive/Isar                    |
+| 增量持久 | `partialize` 思维           | persist `partialize`   | 自定义 encoder               |
+
+---
+
+## 五十、跨层级全局事件 / 总线
+
+| 能力     | Vue 3                 | React 19           | Flutter                     |
+| -------- | --------------------- | ------------------ | --------------------------- |
+| 事件总线 | mitt（已移除 `$bus`） | 自建 EventEmitter  | `event_bus` 包              |
+| 全局单例 | Pinia store           | Context/全局 store | GetX/Riverpod               |
+| DOM 事件 | addEventListener      | addEventListener   | 无（Widget 层）             |
+| 广播通道 | BroadcastChannel      | BroadcastChannel   | SystemChannels/EventChannel |
+| 解耦通信 | emit/provide          | Context            | 回调/InheritedWidget        |
+
+---
+
+## 五十一、富文本 / Markdown / 高亮
+
+| 能力       | Vue 3              | React 19           | Flutter          |
+| ---------- | ------------------ | ------------------ | ---------------- |
+| MD 渲染    | markdown-it/marked | react-markdown     | flutter_markdown |
+| 富文本编辑 | TipTap/Quill       | TipTap/Slate       | flutter_quill    |
+| 代码高亮   | shiki/highlight.js | shiki/rehype-prism | highlight.dart   |
+| XSS 防护   | DOMPurify          | DOMPurify          | 内置 sanitizer   |
+| SSR 预览   | Nuxt               | Next.js MDX        | 无               |
+
+---
+
+## 五十二、拖拽 / 手势
+
+| 能力     | Vue 3           | React 19          | Flutter                 |
+| -------- | --------------- | ----------------- | ----------------------- |
+| 拖拽库   | vuedraggable    | dnd-kit/react-dnd | Draggable               |
+| 排序列表 | vuedraggable    | dnd-kit sortable  | ReorderableListView     |
+| 原生 DnD | HTML5 draggable | 同                | 桌面端支持              |
+| 手势     | pointer 事件    | pointer 事件      | GestureDetector         |
+| 长按双击 | 手动            | 手动              | onLongPress/onDoubleTap |
+
+---
+
+## 五十三、反馈浮层（命令式 API）
+
+| 能力     | Vue 3              | React 19       | Flutter                  |
+| -------- | ------------------ | -------------- | ------------------------ |
+| Toast    | ElMessage          | message()      | SnackBar/Get.rawSnackbar |
+| 确认框   | ElMessageBox       | Modal.confirm  | showDialog               |
+| 全局加载 | ElLoading          | 自建           | 命令式 overlay           |
+| 通知     | Notification       | notification() | 自定义 Overlay           |
+| 命令挂载 | createVNode+render | createRoot     | Overlay/Entry            |
+
+---
+
+## 五十四、状态占位（空/骨架/错误）
+
+| 能力   | Vue 3            | React 19               | Flutter                   |
+| ------ | ---------------- | ---------------------- | ------------------------- |
+| 空态   | Empty            | Empty                  | 自定义 widget             |
+| 骨架屏 | Skeleton         | react-loading-skeleton | shimmer                   |
+| 加载   | Spin             | Spin/Suspense          | CircularProgressIndicator |
+| 错误态 | errorCaptured    | ErrorBoundary          | ErrorWidget               |
+| 下拉   | van-pull-refresh | react-use              | RefreshIndicator          |
+
+---
+
+## 五十五、Web Components / 互操作
+
+| 能力       | Vue 3                 | React 19          | Flutter              |
+| ---------- | --------------------- | ----------------- | -------------------- |
+| 自定义元素 | `defineCustomElement` | 手动封装          | 无（平台视图）       |
+| 嵌入 WC    | 原生支持              | 原生支持          | PlatformView/WebView |
+| iframe     | postMessage           | postMessage       | webview channel      |
+| 微前端     | qiankun/wujie         | module federation | 无                   |
+| 原生桥     | JSBridge              | JSBridge          | MethodChannel        |
+
+---
+
+## 五十六、节点模型设计（虚拟 DOM / Fiber / Widget 树）
+
+> 三者都把「描述 UI 的轻量对象」与「实际渲染/布局的重对象」分层，差异在于中间层的数量与是否可中断。
+
+| 概念         | Vue 3                   | React 19                | Flutter                          |
+| ------------ | ----------------------- | ----------------------- | -------------------------------- |
+| 虚拟节点     | VNode                   | ReactElement            | Widget                           |
+| 运行时中间层 | 无独立层（effect 直更） | Fiber 节点              | Element                          |
+| 渲染层       | 真实 DOM                | DOM / 宿主视图          | RenderObject                     |
+| 树的数量     | 2（VNode + DOM）        | 3（Element+Fiber+宿主） | 3（Widget+Element+RenderObject） |
+| 节点性质     | 不可变、用完即弃        | Fiber 可变、可复用      | Widget 不可变 / Element 可复用   |
+| diff 策略    | 编译优化 + patchFlag    | 单链表遍历 + key        | 同类型 Element 就地复用          |
+| 可中断渲染   | ❌（同步 patch）        | ✅（时间切片）          | ❌（单帧内完成）                 |
+| key 复用     | `:key`                  | `key`                   | `ValueKey`/`GlobalKey`           |
+
+```
+React   ：ReactElement(虚拟DOM) → Fiber(调度/可中断) → 真实 DOM
+Vue 3   ：VNode(编译优化 + patchFlag) ─────────────→ 真实 DOM
+Flutter ：Widget(配置·轻量不可变) → Element(生命周期) → RenderObject(布局·绘制)
+```
+
+---
+
+## 五十七、易混点对照（重点）
 
 > 三者命名相近但语义不同，最容易记混，这里单独拉平对齐。
 
-### 49.1 「ref」三兄弟——同名不同命
+### 57.1 「ref」三兄弟——同名不同命
 
 | 名字        | 属于     | 真实语义                                  | 会不会触发重渲染 |
 | ----------- | -------- | ----------------------------------------- | ---------------- |
@@ -687,7 +794,7 @@ tags: ['Vue', 'React', 'Flutter', '速查', 'API', '对比', '思维']
 | `useRef()`  | React 19 | 可变盒子（存 DOM/值），跨渲染保持         | ❌ 不会          |
 | `GlobalKey` | Flutter  | Widget/State 的全局唯一标识，可访问 State | ❌ 本身不触发    |
 
-### 49.2 其它高频混淆对
+### 57.2 其它高频混淆对
 
 | 场景           | Vue 3                  | React 19                      | Flutter 3.x             | 关键区别                       |
 | -------------- | ---------------------- | ----------------------------- | ----------------------- | ------------------------------ |
@@ -702,7 +809,7 @@ tags: ['Vue', 'React', 'Flutter', '速查', 'API', '对比', '思维']
 | 子传父         | `emit` 事件            | 回调 prop                     | 回调参数                | 事件 vs 函数调用               |
 | 全局状态容器   | Pinia store            | Redux/Zustand store           | Provider/Riverpod/Bloc  | 单一数据源思路一致             |
 
-### 49.3 概念错位提醒
+### 57.3 概念错位提醒
 
 ```
 Vue 的 ref ≈ React 的 useState（都触发更新），而不是 React 的 useRef！
@@ -714,7 +821,7 @@ Vue watch / React useEffect / Flutter listener 三者对齐（响应变化做副
 
 ---
 
-## 五十、速记卡（一眼记忆版）
+## 五十八、速记卡（一眼记忆版）
 
 ```
 状态        Vue ref/reactive      React useState           Flutter setState/ValueNotifier
@@ -739,6 +846,12 @@ Vue watch / React useEffect / Flutter listener 三者对齐（响应变化做副
 错误边界    Vue errorCaptured     React ErrorBoundary      Flutter ErrorWidget/onError
 状态管理    Vue Pinia             React Redux/Zustand      Flutter Provider/Riverpod/Bloc
 测试        Vue Vitest+VTU        React RTL/Jest           Flutter flutter_test
+持久化      Vue persistedstate     React redux-persist      Flutter shared_preferences/Hive
+事件总线    Vue mitt               React 自建 EventEmitter  Flutter event_bus
+富文本      Vue markdown-it        React react-markdown     Flutter flutter_markdown
+拖拽        Vue vuedraggable       React dnd-kit            Flutter ReorderableListView
+反馈浮层    Vue ElMessage          React message()          Flutter SnackBar
+节点模型    VNode→DOM             Element→Fiber→DOM       Widget→Element→RenderObject
 ```
 
 ---
@@ -749,4 +862,5 @@ Vue watch / React useEffect / Flutter listener 三者对齐（响应变化做副
 - [React 19 vs Vue 3 vs Flutter 性能对决](/dev-knowledge/cross-domain/architecture-and-system/framework-performance-comparison)（**性能维度**）
 - [React 19 vs Vue 3 vs Flutter 研发思维对比](/dev-knowledge/cross-domain/architecture-and-system/cross-framework-thinking-comparison)（**思维模型维度**）
 - [JS · Dart · Python 三大语言 API 对比](/dev-knowledge/cross-domain/architecture-and-system/js-dart-python-api-comparison)（**语言层**对比）
+- [JS · Dart · Python 常用 API 与易混点速查](/dev-knowledge/cross-domain/architecture-and-system/js-dart-python-common-api-cheatsheet)（**语言层速查**，本文姊妹篇）
 - [Vue 官方 API 参考](https://vuejs.org/api/) · [React 官方 Hooks 参考](https://react.dev/reference/react) · [Flutter Widget 目录](https://docs.flutter.dev/ui/widgets)
