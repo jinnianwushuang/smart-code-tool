@@ -510,6 +510,21 @@ export const crossDomainSection = {
           link: '/dev-knowledge/cross-domain/architecture-and-system/cross-framework-thinking-comparison',
         },
         {
+          text: 'React 19 vs Vue 3 vs Flutter 生命周期与钩子对比',
+          link: '/dev-knowledge/cross-domain/architecture-and-system/framework-lifecycle-hooks-comparison',
+          id: 'dZ9TgpJquNrqh93bk4G0meW5',
+        },
+        {
+          id: 'w6TLaUhcFXmxfVNhfTcLENKO',
+          text: 'React 19 vs Vue 3 vs Flutter 性能对决',
+          link: '/dev-knowledge/cross-domain/architecture-and-system/framework-performance-comparison',
+        },
+        {
+          text: 'React 19 vs Vue 3 vs Flutter 常用 API 速查',
+          link: '/dev-knowledge/cross-domain/architecture-and-system/framework-common-api-cheatsheet',
+          id: 'aojUWlpMen7Q-Rvi60eupTBq',
+        },
+        {
           id: '_xhueKRX_CavM_eUhS3MEWn4',
           text: 'JS · Dart · Python 三大语言 API 对比',
           link: '/dev-knowledge/cross-domain/architecture-and-system/js-dart-python-api-comparison',
@@ -520,34 +535,19 @@ export const crossDomainSection = {
           id: 'e6-4euxn3LMmCtAsNBEgXf1E',
         },
         {
-          id: 'w6TLaUhcFXmxfVNhfTcLENKO',
-          text: 'React 19 vs Vue 3 vs Flutter 性能对决',
-          link: '/dev-knowledge/cross-domain/architecture-and-system/framework-performance-comparison',
-        },
-        {
-          text: 'React 19 vs Vue 3 vs Flutter 生命周期与钩子对比',
-          link: '/dev-knowledge/cross-domain/architecture-and-system/framework-lifecycle-hooks-comparison',
-          id: 'dZ9TgpJquNrqh93bk4G0meW5',
-        },
-        {
-          text: 'React 19 vs Vue 3 vs Flutter 常用 API 速查',
-          link: '/dev-knowledge/cross-domain/architecture-and-system/framework-common-api-cheatsheet',
-          id: 'aojUWlpMen7Q-Rvi60eupTBq',
-        },
-        {
           id: 'i_5lM8uzuGpesl2xnQyrQv7h',
           text: 'BUG 修复思维对比',
           link: '/dev-knowledge/cross-domain/architecture-and-system/bug-fixing-thinking',
         },
         {
-          id: 'NDr8mR_mk_7YkALOChLZRt9T',
-          text: '技术迭代与学习疲态',
-          link: '/dev-knowledge/cross-domain/architecture-and-system/tech-iteration-and-learning-fatigue',
-        },
-        {
           id: 'ITeAx-Y4M8EEFyFpcYfoNIFl',
           text: '数据·算法·显示 三者分离（跨框架）',
           link: '/dev-knowledge/cross-domain/architecture-and-system/frontend-data-algorithm-view-separation',
+        },
+        {
+          id: 'NDr8mR_mk_7YkALOChLZRt9T',
+          text: '技术迭代与学习疲态',
+          link: '/dev-knowledge/cross-domain/architecture-and-system/tech-iteration-and-learning-fatigue',
         },
       ],
     },
