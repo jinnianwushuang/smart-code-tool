@@ -108,6 +108,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { message } from 'ant-design-vue'
+import { buildExportFileName } from 'src/output/common/project-common.js'
 import {
   UploadOutlined,
   DownloadOutlined,
@@ -229,7 +230,7 @@ const exportJson = () => {
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = `i18n_full_${Date.now()}.json`
+  a.download = buildExportFileName('i18n_full', 'json')
   a.click()
 }
 

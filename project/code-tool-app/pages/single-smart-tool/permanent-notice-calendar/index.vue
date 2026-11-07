@@ -200,6 +200,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useQuasar, exportFile } from 'quasar'
+import { buildExportFileName } from 'src/output/common/project-common.js'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import { getLunarDay, getFestival, getFullLunarDetail } from './utils/lunar-utils'
@@ -372,7 +373,7 @@ const confirmClearMonth = () => {
 
 const exportToJSON = () => {
   exportFile(
-    `calendar_backup_${dayjs().format('YYYYMMDD')}.json`,
+    buildExportFileName('calendar_backup', 'json'),
     JSON.stringify(allNotes.value, null, 2),
   )
 }

@@ -38,8 +38,26 @@
               <q-badge :color="jsonError ? 'negative' : 'positive'" class="q-mr-sm">
                 {{ jsonError ? '语法错误' : '格式有效' }}
               </q-badge>
-              <q-btn outline dense icon="auto_fix_high" label="格式化" size="sm" color="indigo-8" @click="formatJSON" :disable="!!jsonError" />
-              <q-btn outline dense icon="vpn_key" label="修复 Key" size="sm" color="teal-8" @click="repairKeys" :disable="!!jsonError">
+              <q-btn
+                outline
+                dense
+                icon="auto_fix_high"
+                label="格式化"
+                size="sm"
+                color="indigo-8"
+                @click="formatJSON"
+                :disable="!!jsonError"
+              />
+              <q-btn
+                outline
+                dense
+                icon="vpn_key"
+                label="修复 Key"
+                size="sm"
+                color="teal-8"
+                @click="repairKeys"
+                :disable="!!jsonError"
+              >
                 <q-tooltip>重写所有 key 为算法生成的唯一路径 key</q-tooltip>
               </q-btn>
             </div>
@@ -59,7 +77,15 @@
             <div class="panel-statusbar">
               <span>{{ nodeStats.directories }} 个目录 / {{ nodeStats.files }} 个文件</span>
               <q-space />
-              <q-btn outline dense size="sm" icon="restart_alt" label="重置为默认" color="orange-8" @click="resetToDefault" />
+              <q-btn
+                outline
+                dense
+                size="sm"
+                icon="restart_alt"
+                label="重置为默认"
+                color="orange-8"
+                @click="resetToDefault"
+              />
             </div>
           </div>
         </template>
@@ -78,9 +104,33 @@
                 size="small"
                 allow-clear
               />
-              <q-btn outline dense icon="unfold_more" label="展开全部" size="sm" color="indigo-8" @click="expandAll" />
-              <q-btn outline dense icon="unfold_less" label="折叠全部" size="sm" color="indigo-8" @click="collapseAll" />
-              <q-btn outline dense icon="add" label="根目录" size="sm" color="positive" @click="addNode(null, 'directory')" />
+              <q-btn
+                outline
+                dense
+                icon="unfold_more"
+                label="展开全部"
+                size="sm"
+                color="indigo-8"
+                @click="expandAll"
+              />
+              <q-btn
+                outline
+                dense
+                icon="unfold_less"
+                label="折叠全部"
+                size="sm"
+                color="indigo-8"
+                @click="collapseAll"
+              />
+              <q-btn
+                outline
+                dense
+                icon="add"
+                label="根目录"
+                size="sm"
+                color="positive"
+                @click="addNode(null, 'directory')"
+              />
             </div>
             <div class="tree-scroll-area">
               <template v-if="parsedTree">
@@ -112,7 +162,10 @@
                         <a-tooltip title="编辑注释">
                           <comment-outlined @click.stop="openDescModal(key, description)" />
                         </a-tooltip>
-                        <plus-circle-outlined v-if="!isLeaf" @click.stop="addNode(key, 'directory')" />
+                        <plus-circle-outlined
+                          v-if="!isLeaf"
+                          @click.stop="addNode(key, 'directory')"
+                        />
                         <file-add-outlined v-if="!isLeaf" @click.stop="addNode(key, 'file')" />
                         <edit-outlined @click.stop="enterEdit(key, title)" />
                         <delete-outlined @click.stop="deleteNode(key)" style="color: #ff4d4f" />
@@ -120,11 +173,17 @@
                     </div>
                   </template>
                 </a-directory-tree>
-                <a-empty v-if="displayTreeData.length === 0" description="未找到匹配项" style="margin-top: 40px" />
+                <a-empty
+                  v-if="displayTreeData.length === 0"
+                  description="未找到匹配项"
+                  style="margin-top: 40px"
+                />
               </template>
               <div v-else class="tree-invalid-hint">
                 <q-icon name="warning_amber" size="48px" color="orange" />
-                <div class="text-subtitle1 q-mt-sm text-grey-7">JSON 存在语法错误，修复后自动恢复预览</div>
+                <div class="text-subtitle1 q-mt-sm text-grey-7">
+                  JSON 存在语法错误，修复后自动恢复预览
+                </div>
               </div>
             </div>
           </div>
@@ -142,6 +201,7 @@
 <script setup>
 import { ref, shallowRef, onMounted, watch, computed } from 'vue'
 import { message, Modal } from 'ant-design-vue'
+import { buildExportFileName } from 'src/output/common/project-common.js'
 import {
   PlusCircleOutlined,
   FileAddOutlined,
@@ -503,7 +563,7 @@ const downloadJSON = () => {
   const blob = new Blob([formatted], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
-  a.download = 'architecture-tree.json'
+  a.download = buildExportFileName('architecture-tree', 'json')
   a.href = url
   a.click()
   URL.revokeObjectURL(url)

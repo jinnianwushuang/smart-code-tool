@@ -1,7 +1,10 @@
 import { ref, onMounted, toRaw } from 'vue'
 import { useQuasar, exportFile } from 'quasar'
 import Dexie from 'dexie'
-import { copyText as projectCopyText } from 'src/output/common/project-common.js'
+import {
+  copyText as projectCopyText,
+  buildExportFileName,
+} from 'src/output/common/project-common.js'
 
 export function useRandomSelection() {
   const $q = useQuasar()
@@ -43,7 +46,7 @@ export function useRandomSelection() {
   const exportStandard = (type) => {
     if (processedList.value.length === 0) return
     let content = ''
-    let fileName = `standard_data_${Date.now()}`
+    let fileName = buildExportFileName('standard_data')
     let mimeType = 'text/plain'
     if (type === 'txt') {
       content = processedList.value.join('\r\n')
@@ -126,7 +129,7 @@ export function useRandomSelection() {
 
   const exportHistory = () =>
     exportFile(
-      `governance_backup.json`,
+      buildExportFileName('governance_backup', 'json'),
       JSON.stringify(historyList.value, null, 2),
       'application/json',
     )

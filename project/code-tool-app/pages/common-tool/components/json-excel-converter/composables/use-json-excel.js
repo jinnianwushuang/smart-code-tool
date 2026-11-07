@@ -2,7 +2,10 @@ import { ref, reactive, computed } from 'vue'
 import { useQuasar, exportFile } from 'quasar'
 import * as XLSX from 'xlsx'
 import * as changeCaseLib from 'change-case'
-import { copyText as projectCopyText } from 'src/output/common/project-common.js'
+import {
+  copyText as projectCopyText,
+  buildExportFileName,
+} from 'src/output/common/project-common.js'
 import { smartParse, repairType } from '../utils/data-governance.js'
 
 export function useJsonExcel() {
@@ -62,7 +65,13 @@ export function useJsonExcel() {
     if (!finalData.value.length) return []
     const keys = new Set()
     finalData.value.slice(0, 10).forEach((obj) => Object.keys(obj).forEach((k) => keys.add(k)))
-    return Array.from(keys).map((key) => ({ name: key, label: key, field: key, align: 'left', sortable: true }))
+    return Array.from(keys).map((key) => ({
+      name: key,
+      label: key,
+      field: key,
+      align: 'left',
+      sortable: true,
+    }))
   })
 
   const clearAll = () => {
@@ -83,18 +92,32 @@ export function useJsonExcel() {
     projectCopyText(txt)
   }
 
-  const downloadJson = () => exportFile(`治理结果.json`, formattedJson.value)
+  const downloadJson = () =>
+    exportFile(buildExportFileName('治理结果', 'json'), formattedJson.value)
 
   const exportToExcel = () => {
     const ws = XLSX.utils.json_to_sheet(finalData.value)
     const wb = XLSX.utils.book_new()
     XLSX.utils.book_append_sheet(wb, ws, 'Data')
-    XLSX.writeFile(wb, `数据治理导出.xlsx`)
+    XLSX.writeFile(wb, buildExportFileName('数据治理导出', 'xlsx'))
   }
 
   return {
-    inputTab, viewTab, rawInput, filePicker, filterKeys, config,
-    finalData, formattedJson, tableColumns,
-    handleParse, handleFileImport, clearAll, loadSample, copy, downloadJson, exportToExcel,
+    inputTab,
+    viewTab,
+    rawInput,
+    filePicker,
+    filterKeys,
+    config,
+    finalData,
+    formattedJson,
+    tableColumns,
+    handleParse,
+    handleFileImport,
+    clearAll,
+    loadSample,
+    copy,
+    downloadJson,
+    exportToExcel,
   }
 }

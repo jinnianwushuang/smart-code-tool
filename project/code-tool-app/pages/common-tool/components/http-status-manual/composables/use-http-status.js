@@ -3,6 +3,7 @@ import { message } from 'ant-design-vue'
 import Fuse from 'fuse.js'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+import { buildExportFileName } from 'src/output/common/project-common.js'
 import { httpStatusDb } from '../utils/http-status-data.js'
 
 export function useHttpStatus() {
@@ -40,7 +41,7 @@ export function useHttpStatus() {
 
       pdf.text('HTTP Status Manual - DevTools', 10, 10)
       pdf.addImage(imgData, 'PNG', 10, 20, imgWidth, imgHeight)
-      pdf.save(`HTTP_Manual_${new Date().getTime()}.pdf`)
+      pdf.save(buildExportFileName('HTTP_Manual', 'pdf'))
       message.success('PDF 导出成功')
     } catch (err) {
       message.error('导出失败')

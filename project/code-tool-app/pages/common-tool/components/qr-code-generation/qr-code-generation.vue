@@ -414,7 +414,10 @@ import QrcodeVue, { QrcodeCanvas, QrcodeSvg } from 'qrcode.vue'
 import jsQR from 'jsqr'
 import html2pdf from 'html2pdf.js'
 import { BrowserMultiFormatReader } from '@zxing/library'
-import { copyText as projectCopyText } from 'src/output/common/project-common.js'
+import {
+  copyText as projectCopyText,
+  buildExportFileName,
+} from 'src/output/common/project-common.js'
 const $q = useQuasar()
 
 // 基础状态
@@ -535,7 +538,7 @@ const exportBatchPDF = () => {
   const element = document.getElementById('pdf-content')
   const opt = {
     margin: 10,
-    filename: `QR_Labels_${Date.now()}.pdf`,
+    filename: buildExportFileName('QR_Labels', 'pdf'),
     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
   }
   html2pdf().set(opt).from(element).save()
@@ -599,7 +602,7 @@ const scanFromImage = (file) => {
 const downloadQR = () => {
   const url = mainCanvas.value.toDataURL()
   const a = document.createElement('a')
-  a.download = 'Design_QR.png'
+  a.download = buildExportFileName('Design_QR', 'png')
   a.href = url
   a.click()
 }

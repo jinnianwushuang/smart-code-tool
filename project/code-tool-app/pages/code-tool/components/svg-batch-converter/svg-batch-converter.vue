@@ -68,7 +68,7 @@ import { InboxOutlined, DownloadOutlined, CopyOutlined } from '@ant-design/icons
 import { parse } from 'svgson'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
-import { copyText } from 'src/output/common/project-common.js'
+import { copyText, buildExportFileName } from 'src/output/common/project-common.js'
 
 const fileList = ref([])
 const autoColor = ref(true)
@@ -142,7 +142,7 @@ const handleDownloadAll = async () => {
     zip.file(compName, vueCode)
   }
   const content = await zip.generateAsync({ type: 'blob' })
-  saveAs(content, `icons-vue-${Date.now()}.zip`)
+  saveAs(content, buildExportFileName('icons-vue', 'zip'))
 }
 </script>
 

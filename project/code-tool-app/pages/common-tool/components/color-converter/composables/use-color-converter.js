@@ -1,6 +1,9 @@
 import { ref, computed, watch, onMounted } from 'vue'
 import tinycolor from 'tinycolor2'
-import { copyText as projectCopyText } from 'src/output/common/project-common.js'
+import {
+  copyText as projectCopyText,
+  buildExportFileName,
+} from 'src/output/common/project-common.js'
 
 export function useColorConverter() {
   const colorInput = ref('#1890ff')
@@ -89,7 +92,7 @@ $primary-dark: darken($primary-color, 15%);`
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
-    link.download = `color-scheme-${colorDetails.value.hex}.json`
+    link.download = buildExportFileName(`color-scheme-${colorDetails.value.hex}`, 'json')
     link.click()
     URL.revokeObjectURL(url)
   }

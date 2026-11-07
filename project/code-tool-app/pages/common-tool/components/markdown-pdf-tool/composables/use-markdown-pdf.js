@@ -3,6 +3,7 @@ import { message } from 'ant-design-vue'
 import {
   renderMarkdown,
   buildFullHtmlDocument,
+  buildTimestampedFileName,
   exportToPdf,
   exportToImage,
   downloadTextFile,
@@ -158,13 +159,17 @@ export function useMarkdownPdf() {
   const handleExportHtml = () => {
     if (!hasContent.value) return message.warning('没有可导出的内容')
     const fullHtml = buildFullHtmlDocument(renderedHtml.value)
-    downloadTextFile(fullHtml, `${fileName.value}.html`, 'text/html')
+    downloadTextFile(fullHtml, buildTimestampedFileName(fileName.value, 'html'), 'text/html')
     message.success('HTML 文件已保存')
   }
 
   const handleSaveMarkdown = () => {
     if (!hasContent.value) return message.warning('没有可保存的内容')
-    downloadTextFile(markdownText.value, `${fileName.value}.md`, 'text/markdown')
+    downloadTextFile(
+      markdownText.value,
+      buildTimestampedFileName(fileName.value, 'md'),
+      'text/markdown',
+    )
     message.success('Markdown 文件已保存')
   }
 

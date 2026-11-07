@@ -101,7 +101,7 @@
               </a-button>
             </div>
             <a-textarea
-              v-model="markdownText"
+              v-model:value="markdownText"
               placeholder="在此粘贴 Markdown 内容...&#10;&#10;也支持拖拽 .md 文件到右侧预览区域"
               :auto-size="{ minRows: 20, maxRows: 40 }"
               class="font-mono markdown-editor"

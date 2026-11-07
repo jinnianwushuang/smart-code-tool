@@ -1,7 +1,7 @@
 import { ref, reactive, computed } from 'vue'
 import { exportFile } from 'quasar'
 import * as XLSX from 'xlsx'
-import { copyText } from 'src/output/common/project-common.js'
+import { copyText, buildExportFileName } from 'src/output/common/project-common.js'
 
 export function useExcelJson() {
   const importTab = ref('file')
@@ -96,7 +96,7 @@ export function useExcelJson() {
   }
 
   const downloadJson = () => {
-    exportFile(`data_${Date.now()}.json`, jsonString.value, 'application/json')
+    exportFile(buildExportFileName('data', 'json'), jsonString.value, 'application/json')
   }
 
   const clearAll = () => {

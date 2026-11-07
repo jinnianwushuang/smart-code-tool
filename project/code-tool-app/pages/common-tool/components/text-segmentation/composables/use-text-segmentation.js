@@ -2,7 +2,10 @@ import { ref, reactive } from 'vue'
 import { message } from 'ant-design-vue'
 import { saveAs } from 'file-saver'
 import JSZip from 'jszip'
-import { copyText as projectCopyText } from 'src/output/common/project-common.js'
+import {
+  copyText as projectCopyText,
+  buildExportFileName,
+} from 'src/output/common/project-common.js'
 
 export function useTextSegmentation() {
   const inputText = ref('')
@@ -73,13 +76,13 @@ export function useTextSegmentation() {
     })
 
     const blob = await zip.generateAsync({ type: 'blob' })
-    saveAs(blob, `text_parts_${Date.now()}.zip`)
+    saveAs(blob, buildExportFileName('text_parts', 'zip'))
     message.success('ZIP 打包导出成功')
   }
 
   const downloadAsTxt = () => {
     const blob = new Blob([results.value.join('\n\n---NEXT_PART---\n\n')], { type: 'text/plain' })
-    saveAs(blob, 'combined_parts.txt')
+    saveAs(blob, buildExportFileName('combined_parts', 'txt'))
   }
 
   const copyToClipboard = (text) => {
