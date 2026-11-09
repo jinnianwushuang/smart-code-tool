@@ -142,6 +142,11 @@ export const psychologySidebar = {
           link: '/psychology/comprehensive-guide/modern-survival-dual-guide',
           id: 'SzBWRrd5Jk9eFFoUNHFkH1EC',
         },
+        {
+          text: '车轮上的自由：适合长期房车旅行的自由职业指南',
+          link: '/psychology/comprehensive-guide/rv-nomad-freelance-guide',
+          id: '52u5CDUTG-4PAI17vkEoQiCe',
+        },
       ],
     },
   ],

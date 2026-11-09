@@ -92,6 +92,7 @@ tags: ['心理学']
 全方位的生活与生存指南:
 
 - [现代生存双指南](./comprehensive-guide/modern-survival-dual-guide) - 应对现代生活的双重策略
+- [车轮上的自由：适合长期房车旅行的自由职业指南](./comprehensive-guide/rv-nomad-freelance-guide) - 不是逃离生活，而是换一种方式去经历生活
 
 ---
 

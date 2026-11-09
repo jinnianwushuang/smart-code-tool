@@ -59,7 +59,143 @@ ComfyUI：搭建工作流 → 一键运行 → 批量输出
 
 ## 四、安装
 
-### 本地安装（推荐）
+### 方案 1：comfy-cli 命令行工具（⭐⭐ 最推荐，开发者首选）
+
+**comfy-cli 是什么**：ComfyUI 官方命令行工具，一行命令完成安装、启动、更新、插件管理，支持云端运行。
+
+**核心优势**：
+- 🚀 一行命令安装启动
+- 🔧 自动管理 Python 环境和依赖
+- 📦 一键安装/更新自定义节点
+- ☁️ 支持云端运行（无需本地 GPU）
+- 🤖 AI 助手友好（支持 JSON 输出）
+- 💻 跨平台（Windows / macOS / Linux）
+
+**安装步骤**：
+```bash
+# 1. 安装 comfy-cli（需要 Python 3.10+）
+pip install comfy-cli
+
+# 2. 交互式安装（推荐新手）
+comfy setup
+# 按提示选择：本地/云端、GPU 类型、安装路径等
+
+# 3. 或者一键安装
+comfy install
+
+# 4. 启动 ComfyUI
+comfy launch
+
+# 5. 访问：http://127.0.0.1:8188
+```
+
+**常用命令**：
+```bash
+# 安装与管理
+comfy install                    # 安装 ComfyUI
+comfy update                     # 更新到最新版
+comfy update comfy --version 0.3.0  # 切换到指定版本
+comfy launch                     # 启动
+comfy launch --background        # 后台启动
+
+# 自定义节点管理
+comfy node install comfyui-impact-pack    # 安装节点
+comfy node update all                     # 更新所有节点
+comfy node show installed                 # 查看已安装节点
+
+# 模型管理
+comfy model download --url <URL>          # 下载模型
+comfy model list                          # 列出模型
+
+# 云端运行（无需本地 GPU）
+comfy cloud login                         # 登录云端账号
+comfy run --workflow workflow.json --where cloud  # 云端运行工作流
+comfy jobs wait <prompt_id> --where cloud       # 等待任务完成
+comfy download <prompt_id> --where cloud        # 下载结果
+
+# 环境检查
+comfy env                              # 查看环境信息
+comfy system-stats                     # 查看 VRAM/RAM 使用
+```
+
+**Shell 自动补全**：
+```bash
+# 安装命令自动补全
+comfy --install-completion
+```
+
+**注意事项**：
+- ✅ 推荐使用虚拟环境（venv 或 conda）
+- ✅ 默认安装路径：`~/comfy`
+- ✅ 支持快速依赖解析：`comfy install --fast-deps`
+
+---
+
+### 方案 2：官方便携版（⭐ 推荐，新手友好）
+
+**优势**：自带独立 Python 环境，不跟系统冲突，解压即用，永远保持最新版。
+
+**下载地址**（二选一）：
+- GitHub 发布页：https://github.com/comfyanonymous/ComfyUI/releases
+  - 选择 `ComfyUI_windows_portable_nvidia.7z`（约 7GB）
+- 国内镜像：搜索"YanWenKun ComfyUI 便携包"
+
+**显卡选择**：
+| 显卡 | 下载版本 |
+|------|----------|
+| RTX 20/30/40/50 系 | 标准 nvidia 版（CUDA 13.0 + Python 3.13） |
+| GTX 10 系或更老 | cu126 旧版（CUDA 12.6 + Python 3.12） |
+
+**安装步骤**：
+```bash
+# 1. 用 7-Zip 解压到英文路径（不要有中文！）
+#    例如：D:\AI\ComfyUI_windows_portable
+
+# 2. 目录结构
+ComfyUI_windows_portable/
+├── ComfyUI/              # 主程序目录
+├── python_embeded/       # 独立 Python 环境（不要动）
+├── run_cpu.bat           # 无独显时使用
+└── run_nvidia_gpu.bat    # NVIDIA 显卡双击这个
+
+# 3. 双击 run_nvidia_gpu.bat 启动
+# 4. 浏览器访问：http://127.0.0.1:8188
+```
+
+**注意事项**：
+- ❌ 不要放在桌面、C 盘、中文路径
+- ✅ 解压路径纯英文，如 `D:\AI\ComfyUI`
+- ✅ 首次启动会下载依赖，保持网络连接
+
+---
+
+### 方案 3：官方桌面版（⭐ 最简单，适合纯新手）
+
+**特点**：图形化安装界面，一键安装，内置 ComfyUI Manager。
+
+**下载**：
+- 访问 https://www.comfy.org/download
+- 选择对应系统版本（Windows / macOS / Linux）
+
+**安装**：
+```bash
+# Windows
+1. 双击安装包
+2. 选择安装路径（建议 D 盘，预留 300GB+ 空间）
+3. 点击"安装"，等待完成
+4. 桌面双击 ComfyUI 图标启动
+5. 首次启动选择 GPU 类型（NVIDIA CUDA）
+```
+
+**优势**：
+- 自动配置环境
+- 内置 Manager 插件管理器
+- 自动更新机制
+- 可视化启动器
+
+---
+
+### 方案 4：源码安装（适合高级开发者）
 
 ```bash
 # 1. 安装 Python 3.10+
@@ -67,27 +203,104 @@ ComfyUI：搭建工作流 → 一键运行 → 批量输出
 git clone https://github.com/comfyanonymous/ComfyUI.git
 cd ComfyUI
 
-# 3. 安装依赖
+# 3. 创建虚拟环境（推荐）
+python -m venv venv
+# Windows 激活：venv\Scripts\activate
+# macOS/Linux 激活：source venv/bin/activate
+
+# 4. 安装依赖
 pip install -r requirements.txt
 
-# 4. 下载模型放到 models/checkpoints/ 目录
-# 推荐新手模型：sd_xl_base_1.0.safetensors
+# 5. 下载模型放到 models/checkpoints/ 目录
+# 推荐新手模型：
+# - SDXL: sd_xl_base_1.0.safetensors
+# - Flux: flux1-dev.safetensors（新架构，效果更好）
 
-# 5. 启动
+# 6. 启动
 python main.py
+# 访问：http://127.0.0.1:8188
 ```
 
-### 使用秋叶一键整合包（Windows）
+---
 
-搜索"秋叶 ComfyUI 整合包"，下载解压即用。
+### 方案 5：秋叶整合包（Windows 备选）
+
+**适用人群**：一看命令行就头疼的纯新手。
+
+**获取方式**：
+- B 站搜索"秋叶 ComfyUI 整合包"
+- 下载解压即用，内置启动器
+
+**注意**：
+- ⚠️ 认准作者：秋叶（aki）
+- ⚠️ 通过官方渠道下载，避免第三方篡改版本
+- ⚠️ 当前最新版本：aki-V3.7（2026 年）
+
+---
 
 ### Mac 用户
 
 ```bash
-# Mac 需要额外配置
-pip install torch torchvision torchaudio
-python main.py --force-fp16
+# 方案 A：使用桌面版（推荐）
+# 直接下载 macOS 版本，拖入应用程序文件夹
+
+# 方案 B：源码安装
+# 1. 安装 Homebrew（如果没有）
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# 2. 安装依赖
+brew install python@3.10
+pip3 install torch torchvision torchaudio
+
+# 3. 克隆并启动
+git clone https://github.com/comfyanonymous/ComfyUI.git
+cd ComfyUI
+pip3 install -r requirements.txt
+python3 main.py --force-fp16  # Mac 必须加 --force-fp16
 ```
+
+**Mac 注意事项**：
+- M1/M2/M3 芯片：原生支持，性能优秀
+- Intel 芯片：较慢，建议 16GB+ 内存
+- 必须使用 `--force-fp16` 参数
+
+---
+
+### 云端方案（无显卡/低配电脑）
+
+如果本地配置太低，可以使用云端服务：
+- **Google Colab**：免费 GPU，需科学上网
+- **AutoDL**：国内平台，按小时计费
+- **趋动云**：新用户有免费算力
+
+---
+
+### 安装后必做：安装 ComfyUI Manager
+
+**Manager 是什么**：ComfyUI 的"应用商店"，一键安装缺失节点和插件。
+
+**安装方法**：
+```bash
+# 方法 1：通过 Git 安装（推荐）
+cd ComfyUI/custom_nodes
+git clone https://github.com/Comfy-Org/ComfyUI-Manager.git
+cd comfyui-manager
+pip install -r requirements.txt
+
+# 方法 2：便携版用户
+# 下载 install-manager-for-portable-version.bat
+# 放到 ComfyUI_windows_portable 目录
+# 双击运行即可
+
+# 方法 3：桌面版
+# 通常已内置，在菜单找 "Manage Extensions"
+```
+
+**Manager 功能**：
+- 自动检测缺失节点
+- 一键安装/更新插件
+- 工作流导入导出
+- 模型管理器
 
 ---
 
